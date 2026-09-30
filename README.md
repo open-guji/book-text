@@ -9,21 +9,19 @@ Collection／Entity 條目）分立而**共用同一套 snowflake ID**，靠 ID 
 ## 目錄
 
 ```
-Work/<c1>/<c2>/<c3>/<work_id>/
-├── collated_edition/           整理本
-│   ├── index.json              清單：type、juan_files、text_quality、references…
-│   ├── juan/NNN.json           卷檔，內含 sections[]
-│   └── text/*.md               派生純文本（可重生成）
+<Work|Book>/<c1>/<c2>/<c3>/<id>/
+├── manifest.json               本條目全部版本清單（key、來源、授權、章數；versions[0] 為 default）
+├── default/                    主版本：index.json（章目錄）＋ 001.md、002.md…（整理本另有同名 001.json）
+├── <key>/                      其他版本，key 按來源：collated／wikisource／kanripo／shidian（同源第二份 -2）
 ├── fragments/<書名>.json        輯佚
 └── sources/<來源>/              抓取素材（ctext、source_text…）
 
-Book/<c1>/<c2>/<c3>/<book_id>/
-└── full_text/{index.json, NNN.md}
-
 index/                          本倉之索引分片
-├── collated/{0-f}.json
+├── texts/{0-f}.json            由各 manifest 彙總（scripts/book-text/build_texts_index.py）
 └── fragments/{0-f}.json
 ```
+
+> 2026-09-30 起改為此結構（原 `collated_edition/`、`full_text/<key>/` 與 `index/collated`、`index/full_text` 已遷移停用），規格見 open-guji-core/overview#307。
 
 `<c1>/<c2>/<c3>` 取 id **尾**三字元，與 book-index 同一套 `shard_dirs()`
 （`book_index_manager.storage`）。**凡由 id 推路徑者一律經該函式，勿自拼。**
@@ -54,7 +52,7 @@ python3 chk-cross-selftest.py     # 造微型假倉，覈諸驗是否報得出�
 
 ## 授權
 
-本倉**逐文本授權**：每份全文以其 `index.json` 之 `source.license` 為準（有 `source.upstream` 者並從其上游之約定）。倉根 `LICENSE`（CC0 1.0）只適用於本項目**自行整理**之文本與元資料，不及於轉錄自他處之全文。
+本倉**逐文本授權**：每份文本以其所屬條目 `manifest.json` 中該版本之 `license` 為準（有 `source.upstream` 者並從其上游之約定）。倉根 `LICENSE`（CC0 1.0）只適用於本項目**自行整理**之文本與元資料，不及於轉錄自他處之全文。
 
 | 來源 | 授權 | 備註 |
 |---|---|---|

@@ -12,6 +12,8 @@
 
 - **直接提交到 `main` 并推送，不开分支、不开 PR。** 全文入库是批量数据提交，一直按这个惯例办（book-text 本身没有 CI，也没有 PR 审阅流程）。
 - 推之前先 `git pull --rebase origin main`。有多条道同时往本仓推，冲突多半出在 `index/texts/`。
+- **两步提交，避免 `index/texts/` 冲突**：先只提交 `Work/`、`Book/`（不带 `index/texts`）→ `git pull --rebase origin main`（不会冲突）→ 重建 `index/texts` 单独提交 → 推送。
+- 本地已经卡在 `index/texts` 的 rebase 冲突、又被权限拦住时，不要绕：`git rebase --abort`，把提交推到自己的分支（`git push origin HEAD:refs/heads/<道名>`），在卡上说一声，由文本总管合进 main 并重建索引。
 - `index/texts/` 一律用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 由各条目 `manifest.json` 汇总重建，rebase 之后再重建一次。**不要手改。**（旧的 `index/collated`、`index/full_text` 与 `build_index.py` 已随 09-30 迁移停用。）
 - commit message 用中文，写清是哪条道、哪一批、入库多少部。
 

@@ -15,6 +15,7 @@
 - **两步提交，避免 `index/texts/` 冲突**：先只提交 `Work/`、`Book/`（不带 `index/texts`）→ `git pull --rebase origin main`（不会冲突）→ 重建 `index/texts` 单独提交 → 推送。
 - 本地已经卡在 `index/texts` 的 rebase 冲突、又被权限拦住时，不要绕：`git rebase --abort`，把提交推到自己的分支（`git push origin HEAD:refs/heads/<道名>`），在卡上说一声，由文本总管合进 main 并重建索引。
 - `index/texts/` 一律用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 由各条目 `manifest.json` 汇总重建，rebase 之后再重建一次。**不要手改。**（旧的 `index/collated`、`index/full_text` 与 `build_index.py` 已随 09-30 迁移停用。）
+- **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用 overview `项目进展/古籍文本/scripts/zi_convert.py`，查不到正字就保留组字式。
 - commit message 用中文，写清是哪条道、哪一批、入库多少部。
 
 ## 目录（09-30 起新结构，规格见 overview `项目进展/古籍索引网站/设计/阅读文本.md`，#307）

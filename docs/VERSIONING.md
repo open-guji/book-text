@@ -9,7 +9,7 @@
 2. **谁来合**：日常批次（入库、修正、撤除 50 部以内）文本总管审过就合。以下等用户点头：撤除超过 50 部；改全仓结构或规范；`original` 任何一条线升 **major**。
 3. **开 PR 前**：把 main 合进分支，用 overview `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，结果贴进 PR 描述：
    - `validate_text_format.py <本仓> --strict --baseline <overview>/项目进展/古籍文本/scripts/format_baseline.json` 退出码 0；
-   - `validate-collated.py --root <本仓>` 通过；
+   - `validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
    - 重建索引后没有未提交的 diff。
 4. 不设 CI 必过检查，靠审 PR 把关。
 
@@ -46,7 +46,7 @@
 
 - `index.json` 的 `punct_version`／`entity_version` 是镜像，必须和伴生 json 的 `version` 一致；网站从 `index.json` 读三线版本。
 - 验收记录（`text_review`／`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
-- 每次升版本，在 `original/CHANGES.md` 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。
+- 每次升版本，在 `original/CHANGES.md` 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
 
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。
@@ -79,7 +79,7 @@
 
 ## 五、什么时候开始编号
 
-- `wip/` 分支上不编号，版本字段可写 `0.x` 或不写。
+- `wip/` 分支上不编号，版本字段可写 `0.x` 或不写。`wip/` 分支不跑开 PR 前的校验；在 `wip/` 上跑 `--strict` 会因 `0.x` 报 F-OV-01，这是有意的：要并 main 就先 `--init` 定到 `1.0.0`。
 - **第一次并 main 定 `1.0.0`**，前提是够得上第 1 级；够不上不并。
 - 之后每次 squash merge，动到的线按本规范升，PR 描述列「册 · 线 · 旧 → 新 · 理由」表，文本总管对着 diff 核。
 
@@ -87,8 +87,8 @@
 
 - **升级脚本**：overview `scripts/book-text/bump_original.py`
   ```bash
-  bump_original.py <original 目录或条目目录> --init --note "首次并 main" --pr N        # 三线定 1.0.0
-  bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
+  python3 <overview>/scripts/book-text/bump_original.py <original 目录或条目目录> --init --note "首次并 main" --pr N   # 三线定 1.0.0
+  python3 <overview>/scripts/book-text/bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
   ```
   改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
 - **校验器**：overview `validate_text_format.py` 规则（只扫 key=`original` 的版本）：

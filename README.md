@@ -50,9 +50,9 @@ index/                          本倉之索引分片
 
 **minor／patch**：以一次 PR 為單位，一冊改動 ≤50 處且逐處改者為 patch；超過，或按規則成批改者（整批字符轉換、整冊重跑、換模型、新增類型……）為 minor。不確定者取 minor。文本改後伴生層錨點仍對得上：只把伴生層 `text_version` 跟過去，不升其版本。
 
-**不跟蹤**：維基文庫、Kanripo、識典等轉錄；`wip/` 分支上反覆改動時亦不編號（可暫寫 `0.x`）。第一次併入 main 定為 `1.0.0`，夠不上第 1 級者不併。
+**不跟蹤**：維基文庫、Kanripo、識典等轉錄；`wip/` 分支上反覆改動時亦不編號（可暫寫 `0.x`；`wip/` 上跑 `--strict` 會因 `0.x` 報 F-OV-01，乃有意為之，併 main 前先 `--init`）。第一次併入 main 定為 `1.0.0`，夠不上第 1 級者不併。
 
-**CHANGES.md**：每升一次，在 `original/CHANGES.md` 記一行 `| 日期 | 冊 | 線 | 舊→新 | 說明 | PR |`。升版一律用 overview `scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、寫 CHANGES.md；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
+**CHANGES.md**：每升一次，在 `original/CHANGES.md` 記一行 `| 日期 | 冊 | 線 | 舊→新 | 說明 | PR |`，「冊」欄寫 `<條目 id>/<章 NNN>`（如 `96mid1ogzk/002`）。升版一律用 `python3 <overview>/scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、寫 CHANGES.md；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
 
 詳見 [docs/VERSIONING.md](docs/VERSIONING.md)；規範全文在 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
 

@@ -14,7 +14,7 @@
 - 分支上可以多次提交；**整批做完才开一个 PR**，不要零碎开 PR。由文本总管审，审过用 **squash merge** 合并，main 上一个 PR 只留一个提交。
 - 开 PR 前，先把 main 合进分支，用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，然后跑完三项校验，结果贴进 PR 描述：
   1. `validate_text_format.py <本仓> --strict --baseline <overview>/项目进展/古籍文本/scripts/format_baseline.json` 退出码 0；
-  2. `validate-collated.py --root <本仓>` 通过；
+  2. `validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且没有本 PR 新增的问题（存量：`d59f1iqd854w/default/108.md`）；
   3. 重建索引后分支上没有未提交的 diff。
 - `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
 - **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`，本仓摘要见 `docs/VERSIONING.md`。升版本一律用 overview `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `original/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。

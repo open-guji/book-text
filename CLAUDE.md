@@ -17,7 +17,7 @@
   2. `validate-collated.py --root <本仓>` 通过；
   3. 重建索引后分支上没有未提交的 diff。
 - `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
-- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
+- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`，本仓摘要见 `docs/VERSIONING.md`。升版本一律用 overview `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `original/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
 - 合并：日常批次文本总管审过就合；撤除超过 50 部、改全仓结构或规范、`original` 升 major 的，等用户点头。
 - PR 描述和评论不写 Claude Code 署名。
 - **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用 overview `项目进展/古籍文本/scripts/zi_convert.py`，查不到正字就保留组字式。

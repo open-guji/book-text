@@ -51,6 +51,9 @@
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。
 - 文本改了：锚点全对得上 → 伴生层只把 `text_version` 跟过去，**不升**它的版本；对不上 → 伴生层按规模修，修好后自己升 patch 或 minor。
+- **伴生层 major 不得高于文本线**：文本还没到出版级，标点、实体也不能先升（F-OV-01 查）。
+- **每册只入库一份**标点稿、一份实体稿；模型对照稿只在本地测试，不进仓。
+- **书名两层都记**：标点层出一对 `《》`，实体层出 `work` 实体挂 book-index id，两层起止一致。
 
 ## 四、三级怎么升
 
@@ -92,7 +95,7 @@
   ```
   改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
 - **校验器**：overview `validate_text_format.py` 规则（只扫 key=`original` 的版本）：
-  - **F-OV-01** 三线版本号格式、≥1.0.0、镜像一致、`text_version` 不超前；
+  - **F-OV-01** 三线版本号格式、≥1.0.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本；
   - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
   - **F-OV-03** major ≥2 必须带验收记录。
-- 坐标口径与 open-guji-cv `render/siku_extract.parse_lines_md` 一致（空行不占列；夹注左行子列 a、右行 b；超框抬头负格位、无第 0 格；`[[…]]`／`□` 记作 □）。
+- 坐标口径与 open-guji-cv `render/siku_extract.parse_lines_md` 一致（空行不占列；双行夹注 `<甲|乙>` 甲是右列、先读，子列 a，乙是左列，子列 b，与 guji-format 02/04 同口径；超框抬头负格位、无第 0 格；`[[…]]`／`□` 记作 □）。

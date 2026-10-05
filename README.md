@@ -26,6 +26,36 @@ index/                          本倉之索引分片
 `<c1>/<c2>/<c3>` 取 id **尾**三字元，與 book-index 同一套 `shard_dirs()`
 （`book_index_manager.storage`）。**凡由 id 推路徑者一律經該函式，勿自拼。**
 
+## 版本
+
+只有 `original`（本項目自書影做出之文本，如四庫總目 `Book/.../96mid1ogzk/original/`）跟蹤版本。維基文庫、Kanripo、識典之轉錄**不跟蹤**，來源修訂號記於 `source`；舊有 `revision: "1.0.0"` 留而不維護。整理本（kind=collated）沿用 `bump-collated.py`。
+
+**三條線**，各自 `MAJOR.MINOR.PATCH`，互不牽連：
+
+| 線 | 檔 | 版本號記於 | 不管 |
+|---|---|---|---|
+| 文本 | `NNN.lines.md` | `original/index.json` 該章之 `text_version` | 像素坐標、字框（CV 產物） |
+| 標點 | `NNN.punct.json` | 頂層 `version`（另 `text_version`＝對著哪一版文本做） | 字 |
+| 實體 | `NNN.entity.json` | 頂層 `version`（另 `text_version`） | 字、標點 |
+
+`index.json` 之章條目同時鏡像 `punct_version`、`entity_version`，三線一目了然，網站即由此讀。
+
+**major ＝ 質量等級**，從嚴，須成文驗收記錄（`date`／`signed_by`／`sample`）及用戶點頭，腳本不升：
+
+| 等級 | 文本 | 標點 | 實體 |
+|---|---|---|---|
+| 1 可用 | 每格有定字，疑難按規範記 | 機器標點，抽 200 處一致率 ≥95% | 抽 50 個精確率 ≥90%，誤掛 ≤5% |
+| 2 出版級 | 全冊人工逐字校，抽 ≥2,000 字錯 ≤2 | 全冊人審，抽 500 處 ≥99.5% | 全部人工確認，精確率 ≥99%、召回 ≥95% |
+| 3 定本 | 兩遍獨立校並對勘，抽 ≥10,000 字錯 ≤1，簽核 | 對權威點校本逐段覈，抽 1,000 處 ≥99.9%，簽核 | 逐段補漏召回 ≥99%，鏈接全已正式建檔，簽核 |
+
+**minor／patch**：以一次 PR 為單位，一冊改動 ≤50 處且逐處改者為 patch；超過，或按規則成批改者（整批字符轉換、整冊重跑、換模型、新增類型……）為 minor。不確定者取 minor。文本改後伴生層錨點仍對得上：只把伴生層 `text_version` 跟過去，不升其版本。
+
+**不跟蹤**：維基文庫、Kanripo、識典等轉錄；`wip/` 分支上反覆改動時亦不編號（可暫寫 `0.x`；`wip/` 上跑 `--strict` 會因 `0.x` 報 F-OV-01，乃有意為之，併 main 前先 `--init`）。第一次併入 main 定為 `1.0.0`，夠不上第 1 級者不併。
+
+**CHANGES.md**：每升一次，在 `original/CHANGES.md` 記一行 `| 日期 | 冊 | 線 | 舊→新 | 說明 | PR |`，「冊」欄寫 `<條目 id>/<章 NNN>`（如 `96mid1ogzk/002`）。升版一律用 `python3 <overview>/scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、寫 CHANGES.md；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
+
+詳見 [docs/VERSIONING.md](docs/VERSIONING.md)；規範全文在 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
+
 ## 與 book-index 之繫連
 
 | 方向 | 欄位 |

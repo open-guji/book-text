@@ -8,13 +8,17 @@
 
 本仓的会话如需读 overview，用只读方式 `add_repo`（access: read）。
 
-## 提交与推送
+## 提交与推送（10-05 起：main 受保护，一律走 PR）
 
-- **直接提交到 `main` 并推送，不开分支、不开 PR。** 全文入库是批量数据提交，一直按这个惯例办（book-text 本身没有 CI，也没有 PR 审阅流程）。
-- 推之前先 `git pull --rebase origin main`。有多条道同时往本仓推，冲突多半出在 `index/texts/`。
-- **两步提交，避免 `index/texts/` 冲突**：先只提交 `Work/`、`Book/`（不带 `index/texts`）→ `git pull --rebase origin main`（不会冲突）→ 重建 `index/texts` 单独提交 → 推送。
-- 本地已经卡在 `index/texts` 的 rebase 冲突、又被权限拦住时，不要绕：`git rebase --abort`，把提交推到自己的分支（`git push origin HEAD:refs/heads/<道名>`），在卡上说一声，由文本总管合进 main 并重建索引。
-- `index/texts/` 一律用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 由各条目 `manifest.json` 汇总重建，rebase 之后再重建一次。**不要手改。**（旧的 `index/collated`、`index/full_text` 与 `build_index.py` 已随 09-30 迁移停用。）
+- **不直接推 main。** 一批活开一个分支，命名 `<道名>-<主题>`，比如 `t65-wiki-match`；`wip/` 前缀是反复改动中的工作分支，用户点头前不并 main。
+- 分支上可以多次提交；**整批做完才开一个 PR**，不要零碎开 PR。由文本总管审，审过用 **squash merge** 合并，main 上一个 PR 只留一个提交。
+- 开 PR 前，先把 main 合进分支，用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，然后跑完三项校验，结果贴进 PR 描述：
+  1. `validate_text_format.py <本仓> --strict --baseline <overview>/项目进展/古籍文本/scripts/format_baseline.json` 退出码 0；
+  2. `validate-collated.py --root <本仓>` 通过；
+  3. 重建索引后分支上没有未提交的 diff。
+- `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
+- 版本号（各版本 `index.json` 的 `revision`）何时升 major/minor/patch，见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
+- PR 描述和评论不写 Claude Code 署名。
 - **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用 overview `项目进展/古籍文本/scripts/zi_convert.py`，查不到正字就保留组字式。
 - commit message 用中文，写清是哪条道、哪一批、入库多少部。
 

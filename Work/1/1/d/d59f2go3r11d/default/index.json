@@ -1,42 +1,43 @@
 {
-  "version_label": "律呂成書（Kanripo WYG 本）",
-  "edition_note": "SBCK 补字码（&KRxxxx;）查 KR-Gaiji 字表仍无解 111 处，已记 □；已解补字 3 处（KR-Gaiji 字表 3、已验证 IDS 0）；Kanripo 原文括号不配对 1 处（档内左括号总数多于右括号，EOF 仍有左括号配不到右括号），按字面保留（guji-markdown 里 `(`/`)` 本来就不是记号），未当夹注处理；异体字未统一（Kanripo 底本本身有系统性异体归并，见 31-Kanripo评估.md §一.2），仅做机械格式转换；以上补字统计按 KR1i0006 全仓计。Kanripo 上游把《苑洛志樂》卷一至三误置于本仓 _003–_005，09-28 已移到苑洛志樂（d59f2nkydz41）的 kanripo-01，本书只留卷首、卷一、卷二（□ 330 处）；并按新转换器重转（章题按正文自题）。",
-  "fetched_at": "2026-09-27",
-  "line_is_column": true,
-  "revision": "1.0.0",
   "work_id": "d59f2go3r11d",
+  "version_label": "律呂成書",
+  "source": {
+    "name": "維基文庫",
+    "url": "https://zh.wikisource.org/wiki/%E5%BE%8B%E5%90%95%E6%88%90%E6%9B%B8%20%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29",
+    "page_title": "律吕成書 (四庫全書本)",
+    "revid": 729663,
+    "dump_date": "2026-10-02",
+    "license": "CC BY-SA 4.0",
+    "siku_class": "經部/樂類"
+  },
+  "edition_note": "T65（overview#384）维基与作品重配：按书名配上后逐部核作者（页头/提要/正文作者行），作者对上或经判读为同一部书才收，未逐部人工核对具体底本。",
+  "total_chapters": 2,
   "chapters": [
     {
       "n": 1,
+      "title": "卷1",
       "file": "001",
-      "title": "卷首",
-      "has_json": false,
-      "md_len": 1455
+      "page_title": "律吕成書 (四庫全書本)/卷1",
+      "revid": 759197,
+      "md_len": 14789,
+      "has_json": false
     },
     {
       "n": 2,
-      "file": "002",
-      "title": "卷1",
-      "has_json": false,
-      "md_len": 16731
-    },
-    {
-      "n": 3,
-      "file": "003",
       "title": "卷2",
-      "has_json": false,
-      "md_len": 28769
+      "file": "002",
+      "page_title": "律吕成書 (四庫全書本)/卷2",
+      "revid": 759198,
+      "md_len": 23607,
+      "has_json": false
     }
   ],
-  "source": {
-    "name": "Kanripo",
-    "url": "https://github.com/kanripo/KR1i0006",
-    "license": "CC BY-SA 4.0",
-    "base_edition": "WYG",
-    "commit": "64be37834737144ff1b21ea860b7dd041aac46e1"
-  },
-  "total_chapters": 3,
   "text_quality": {
     "grade": "source"
-  }
+  },
+  "fetched_at": "2026-10-05",
+  "fetch_stats": {
+    "source": "dump"
+  },
+  "revision": "1.0.0"
 }

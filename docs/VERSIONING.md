@@ -25,7 +25,7 @@
 
 | 线 | 文件 | 跟踪什么 | 不管什么 |
 |---|---|---|---|
-| 文本 | `NNN.lines.md` | 按「页:列:格」坐标定下来的字流：哪格是哪个字、分列、夹注、抬头、阙文 | 像素坐标、字框、`pages.json`、guji-page（CV 产物） |
+| 文本 | `NNN.char.json` | 每一格定下的字：哪格是哪个字、分列、夹注、抬头、阙文（guji-format 02） | 像素框（`cord.json`，CV 产物）、候选字（`decision.json`） |
 | 标点 | `NNN.punct.json` | 句读、点号、书名号、引号、分段 | 字 |
 | 实体 | `NNN.entity.json` | 专名区间、类型（人、地、书、官、朝代）、链到 book-index 的 id | 字、标点 |
 
@@ -35,17 +35,21 @@
 // original/index.json
 { "chapters": [
   { "n": 2, "file": "002",
-    "text_version": "1.4.1", "punct_version": "1.2.0", "entity_version": "1.0.3",
-    "text_review": { … }        // 仅文本线 major ≥2 时
+    "text_version": "1.4.1", "punct_version": "1.2.0", "entity_version": "1.0.3"
   } ] }
+
+// original/002.char.json 顶层
+{ "version": "1.4.1",
+  "review": { … } }             // 仅文本线 major ≥2 时
 
 // original/002.punct.json、002.entity.json 顶层
 { "version": "1.2.0", "text_version": "1.4.1",
   "review": { … } }             // 仅本线 major ≥2 时
 ```
 
-- `index.json` 的 `punct_version`／`entity_version` 是镜像，必须和伴生 json 的 `version` 一致；网站从 `index.json` 读三线版本。
-- 验收记录（`text_review`／`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
+- `index.json` 的 `text_version`／`punct_version`／`entity_version` 都是镜像，必须和 char、punct、entity 各自顶层的 `version` 一致；网站从 `index.json` 读三线版本。
+- **过渡**：10-06 以前文本线跟踪的是 `lines.md`，文本线验收记录放在 `index.json` 的 `text_review`。`bump_original.py` 和校验器 F-OV-* 改读 char.json 之前，仍按旧口径跑。
+- 验收记录（`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
 - 每次升版本，在 `original/CHANGES.md` 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
 
 ### 三条线之间
@@ -98,4 +102,4 @@
   - **F-OV-01** 三线版本号格式、≥1.0.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本；
   - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
   - **F-OV-03** major ≥2 必须带验收记录。
-- 坐标口径与 open-guji-cv `render/siku_extract.parse_lines_md` 一致（空行不占列；双行夹注 `<甲|乙>` 甲是右列、先读，子列 a，乙是左列，子列 b，与 guji-format 02/04 同口径；超框抬头负格位、无第 0 格；`[[…]]`／`□` 记作 □）。
+- 格位 key 的定义见 guji-format 02（char）§二：双行夹注 a 是右列、先读，b 是左列；超框抬头负格位、无第 0 格；阙文写 □ 并带 `lacuna: true`。

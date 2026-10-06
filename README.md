@@ -34,7 +34,7 @@ index/                          本倉之索引分片
 
 | 線 | 檔 | 版本號記於 | 不管 |
 |---|---|---|---|
-| 文本 | `NNN.lines.md` | `original/index.json` 該章之 `text_version` | 像素坐標、字框（CV 產物） |
+| 文本 | `NNN.char.json` | 頂層 `version`（`index.json` 該章 `text_version` 為其鏡像） | 像素框（`cord.json`）、候選字 |
 | 標點 | `NNN.punct.json` | 頂層 `version`（另 `text_version`＝對著哪一版文本做） | 字 |
 | 實體 | `NNN.entity.json` | 頂層 `version`（另 `text_version`） | 字、標點 |
 

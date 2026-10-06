@@ -1,23 +1,23 @@
 {
-  "chars": 30402,
-  "slots": 30402,
+  "chars": 30480,
+  "slots": 30480,
   "unmatched_chars": 0,
-  "paragraphs": 199,
-  "chunks": 252,
+  "paragraphs": 159,
+  "chunks": 220,
   "chunks_failed": 5,
   "chunks_missing": 0,
-  "chars_unpunctuated": 156,
-  "points": 6434,
-  "breaks": 198,
-  "entities": 1280,
-  "matched": 432,
-  "new_candidate": 848,
+  "chars_unpunctuated": 458,
+  "points": 6496,
+  "breaks": 158,
+  "entities": 1306,
+  "matched": 437,
+  "new_candidate": 869,
   "by_type": {
-    "dynasty": 43,
-    "office": 50,
-    "people": 358,
-    "place": 54,
-    "work": 775
+    "dynasty": 47,
+    "office": 57,
+    "people": 361,
+    "place": 58,
+    "work": 783
   },
   "reflow": {
     "full_slots": [
@@ -27,13 +27,13 @@
       21
     ],
     "break_raised": 6,
-    "break_short": 192,
-    "near_full_break": 36,
-    "paragraphs": 199,
+    "break_short": 152,
+    "near_full_break": 8,
+    "paragraphs": 159,
     "lines": 1668,
     "profile": "default"
   },
-  "model_substitutions": 52,
+  "model_substitutions": 58,
   "failed": [
     {
       "para": 0,
@@ -44,7 +44,15 @@
       "head": "欽定四庫全總目卷"
     },
     {
-      "para": 63,
+      "para": 32,
+      "anchor": "29:3:18",
+      "chars": 298,
+      "bad": 300,
+      "note": "LLM 调用失败：LLM 调用失败：HTTP Error 429: Too Many Requests",
+      "head": "七卷唐志所載葢併索隱畧例數之實非舛誤至宋"
+    },
+    {
+      "para": 56,
       "anchor": "61:6:18",
       "chars": 54,
       "bad": 3,
@@ -52,23 +60,15 @@
       "head": "書錄解題病其詞㫖深晦然晁公武讀書志謂其以"
     },
     {
-      "para": 143,
-      "anchor": "145:6:3",
-      "chars": 37,
+      "para": 113,
+      "anchor": "135:9:14",
+      "chars": 59,
       "bad": 2,
-      "note": "LLM 增删 1、换字 1/37，本块不标点",
-      "head": "宋趙以夫撰以夫字用父宗室子居於長樂嘉定十"
+      "note": "LLM 增删 2、换字 0/59，本块不标点",
+      "head": "傳則此書彌可寶貴矣董眞𨜊胡一桂皆稱是書爲"
     },
     {
-      "para": 173,
-      "anchor": "167:2:3",
-      "chars": 18,
-      "bad": 31,
-      "note": "LLM 增删 31、换字 0/18，本块不标点",
-      "head": "禹稷契臯陶在朝之論隨之初九則取舜賓于"
-    },
-    {
-      "para": 197,
+      "para": 157,
       "anchor": "188:5:1",
       "chars": 39,
       "bad": 3,
@@ -129,13 +129,19 @@
       "anchor": "19:8:4",
       "base": "晩",
       "model": "晚",
-      "context": "氏家姜始授以句讀【晩】乃卓然□立葢亦奇"
+      "context": "氏家姜始授以句讀【晩】乃卓然自立葢亦奇"
     },
     {
       "anchor": "27:7:18",
       "base": "淸",
       "model": "清",
       "context": "書省著作郞據袁桷【淸】容居士集載資州有"
+    },
+    {
+      "anchor": "37:3:9",
+      "base": "無",
+      "model": "无",
+      "context": "唐郭京之名亦在有【無】疑似之間也顧其所"
     },
     {
       "anchor": "37:5:20",
@@ -186,22 +192,16 @@
       "context": "薦由布衣拜校書郞【歴】太常博士致仕歸事"
     },
     {
+      "anchor": "46:7:21",
+      "base": "𢑱",
+      "model": "彝",
+      "context": "後乃并失其傳故朱【𢑱】尊經義考亦註爲已"
+    },
+    {
       "anchor": "52:2:4",
       "base": "歳",
       "model": "歲",
       "context": "其成耳籕又稱洵晩【歳】讀易玩其爻象因得"
-    },
-    {
-      "anchor": "55:6:20",
-      "base": "詞",
-      "model": "辭",
-      "context": "祚周易集解例惟繫【詞】傳說卦傳雜卦傳無"
-    },
-    {
-      "anchor": "55:9:20",
-      "base": "詞",
-      "model": "辭",
-      "context": "不爲無據謂不注繫【詞】說卦雜卦以擬王弼"
     },
     {
       "anchor": "64:8:4",
@@ -276,18 +276,6 @@
       "context": "與政之書無復存者【黄】中雖有易解而流傳"
     },
     {
-      "anchor": "91:7:14",
-      "base": "没",
-      "model": "沒",
-      "context": "而流傳未廣恐後冺【没】然當黃中旣没勉齋"
-    },
-    {
-      "anchor": "91:7:20",
-      "base": "没",
-      "model": "沒",
-      "context": "後冺没然當黃中旣【没】勉齋黃氏爲文祭之"
-    },
-    {
       "anchor": "93:4:5",
       "base": "歴",
       "model": "歷",
@@ -300,10 +288,22 @@
       "context": "邵子加一倍法據繫【詞】說卦發明其義用逆"
     },
     {
-      "anchor": "104:4:13",
-      "base": "䟦",
-      "model": "跋",
-      "context": "溺於象數之學陸游【䟦】兼山易說則謂程氏"
+      "anchor": "101:2:17",
+      "base": "𨒪",
+      "model": "𨒦",
+      "context": "本刪之又雜卦傳咸【𨒪】也恒久也下今本惟"
+    },
+    {
+      "anchor": "101:3:9",
+      "base": "𨒪",
+      "model": "𨒦",
+      "context": "久也下今本惟註咸【𨒪】恒久四字讀者恒以"
+    },
+    {
+      "anchor": "101:4:8",
+      "base": "𨒪",
+      "model": "𨒦",
+      "context": "疑考驗此本乃是感【𨒪】常久經後人傳刻而"
     },
     {
       "anchor": "104:6:10",
@@ -318,16 +318,40 @@
       "context": "撰尋除御史改起居【郞】事蹟具宋史本傳先"
     },
     {
+      "anchor": "106:4:3",
+      "base": "元",
+      "model": "玄",
+      "context": "人事者百家上起鄭【元】下迄王安石編爲一"
+    },
+    {
+      "anchor": "106:4:16",
+      "base": "頴",
+      "model": "穎",
+      "context": "石編爲一集仍以孔【頴】達正義冠之其有異"
+    },
+    {
       "anchor": "107:8:17",
       "base": "没",
       "model": "沒",
       "context": "採擷精華使古書不【没】於後世衡亦可謂有"
     },
     {
-      "anchor": "122:5:14",
-      "base": "間",
-      "model": "间",
-      "context": "可磨滅至今猶在人【間】也大易粹言十卷蘇"
+      "anchor": "108:8:7",
+      "base": "眞",
+      "model": "真",
+      "context": "辭天一地二一章較【眞】𨜊所見彌爲殘缺然"
+    },
+    {
+      "anchor": "110:6:14",
+      "base": "卽",
+      "model": "即",
+      "context": "之趣然彦肅說易在【卽】象數以求義理以六"
+    },
+    {
+      "anchor": "113:4:20",
+      "base": "歴",
+      "model": "歷",
+      "context": "如朱門之有黃幹又【歴】官中外政績可觀在"
     },
     {
       "anchor": "133:9:13",
@@ -340,6 +364,12 @@
       "base": "高",
       "model": "髙",
       "context": "以己意原書十五卷【高】斯得嘗與誦詩訓合"
+    },
+    {
+      "anchor": "153:3:12",
+      "base": "注",
+      "model": "註",
+      "context": "故是編所錄雖止於【注】疏釋文而採掇謹嚴"
     },
     {
       "anchor": "156:8:19",
@@ -372,6 +402,12 @@
       "context": "之類其說頗異至謂【尙】書顧命天球河圖在"
     },
     {
+      "anchor": "180:4:6",
+      "base": "别",
+      "model": "別",
+      "context": "別傳諸書今惟易外【别】傳有本單行讀易舉"
+    },
+    {
       "anchor": "180:5:17",
       "base": "毁",
       "model": "毀",
@@ -391,8 +427,8 @@
     }
   ],
   "vol": 2,
-  "lines_md": "/home/user/book-text/Book/k/z/g/96mid1ogzk/original/002.lines.md",
+  "lines_md": "/tmp/claude-0/-home-user/895b3cdc-5f1f-5981-95bb-ccc51556bfd6/scratchpad/f3/002.lines.md",
   "pages": null,
   "model": "glm:glm-4.5-flash",
-  "seconds": 273.3
+  "seconds": 470.6
 }

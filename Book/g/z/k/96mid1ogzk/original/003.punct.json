@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/punct/v0.1.json",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "text_version": "0.1.1",
   "book_id": "96mid1ogzk",
   "metadata": {
@@ -10,11 +10,11 @@
     "description": "基于 original 底本自动生成独立外挂标点与分段，正文字符保持严格解耦。"
   },
   "stats": {
-    "total_annotations": 3615,
-    "points": 3511,
-    "paragraph_breaks": 104,
+    "total_annotations": 3616,
+    "points": 3509,
+    "paragraph_breaks": 107,
     "periods": 571,
-    "commas": 1604
+    "commas": 1603
   },
   "punctuations": [
     {
@@ -43,6 +43,24 @@
       "pre_char": "四",
       "anchor": "3:3:4",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "《",
+      "kind": "point",
+      "pos": "before",
+      "char_offset": 16,
+      "pre_char": "讀",
+      "anchor": "3:4:-1",
+      "source": "glm:glm-4.5-flash"
+    },
+    {
+      "mark": "》",
+      "kind": "point",
+      "pos": "after",
+      "char_offset": 19,
+      "pre_char": "言",
+      "anchor": "3:4:3",
+      "source": "glm:glm-4.5-flash"
     },
     {
       "mark": "\n\n",
@@ -16128,16 +16146,7 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "mark": "《",
-      "kind": "point",
-      "pos": "before",
-      "char_offset": 8722,
-      "pre_char": "象",
-      "anchor": "55:5:20",
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "mark": "》",
+      "mark": "、",
       "kind": "point",
       "pos": "after",
       "char_offset": 8722,
@@ -16605,7 +16614,7 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "mark": "。",
+      "mark": "，",
       "kind": "point",
       "pos": "after",
       "char_offset": 8958,
@@ -16650,22 +16659,13 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "mark": "《",
-      "kind": "point",
-      "pos": "before",
-      "char_offset": 8973,
-      "pre_char": "欽",
-      "anchor": "59:1:1",
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "mark": "》",
-      "kind": "point",
+      "mark": "\n\n",
+      "kind": "break",
       "pos": "after",
-      "char_offset": 8980,
-      "pre_char": "目",
-      "anchor": "59:1:8",
-      "source": "glm:glm-4.5-flash"
+      "char_offset": 8972,
+      "pre_char": "矣",
+      "anchor": "57:1:4",
+      "source": "rule:reflow"
     },
     {
       "mark": "\n\n",
@@ -21951,7 +21951,7 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "mark": "，",
+      "mark": "。",
       "kind": "point",
       "pos": "after",
       "char_offset": 11581,
@@ -21994,6 +21994,15 @@
       "pre_char": "矣",
       "anchor": "75:3:19",
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "mark": "\n\n",
+      "kind": "break",
+      "pos": "after",
+      "char_offset": 11612,
+      "pre_char": "矣",
+      "anchor": "75:3:19",
+      "source": "rule:reflow"
     },
     {
       "mark": "《",
@@ -27831,15 +27840,6 @@
       "mark": "，",
       "kind": "point",
       "pos": "after",
-      "char_offset": 14522,
-      "pre_char": "序",
-      "anchor": "93:3:12",
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "mark": "，",
-      "kind": "point",
-      "pos": "after",
       "char_offset": 14530,
       "pre_char": "丑",
       "anchor": "93:3:20",
@@ -28060,6 +28060,15 @@
       "pre_char": "矣",
       "anchor": "94:2:19",
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "mark": "\n\n",
+      "kind": "break",
+      "pos": "after",
+      "char_offset": 14681,
+      "pre_char": "矣",
+      "anchor": "94:2:19",
+      "source": "rule:reflow"
     },
     {
       "mark": "《",

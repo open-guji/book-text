@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.1.json",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,8 +11,8 @@
   },
   "stats": {
     "total_entities": 708,
-    "matched": 179,
-    "new_candidates": 529,
+    "matched": 235,
+    "new_candidates": 462,
     "works": 442,
     "people": 162,
     "places": 40,
@@ -54,8 +54,10 @@
         "end_offset": 39
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河內"
+        "status": "matched",
+        "entity_id": "1jb8lqn358dfy",
+        "canonical_name": "河內縣",
+        "href": "book-index://Entity/1jb8lqn358dfy"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -166,8 +168,10 @@
         "end_offset": 171
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -203,8 +207,10 @@
         "end_offset": 177
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -431,8 +437,10 @@
         "end_offset": 303
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "婺源"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1gn",
+        "canonical_name": "婺源縣",
+        "href": "book-index://Entity/1jb8ku5oqg1gn"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -787,8 +795,10 @@
         "end_offset": 793
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崇仁"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60co6",
+        "canonical_name": "崇仁縣",
+        "href": "book-index://Entity/1jb8kv8c60co6"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -805,8 +815,30 @@
         "end_offset": 795
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -841,8 +873,12 @@
         "end_offset": 820
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "翰林學士"
+        "status": "matched",
+        "entity_id": "1jb8ajoi81j40",
+        "canonical_name": "翰林學士",
+        "href": "book-index://Entity/1jb8ajoi81j40",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -1733,8 +1769,10 @@
         "end_offset": 1837
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐",
+        "href": "book-index://Entity/hixi1ubjgowi"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -1879,8 +1917,10 @@
         "end_offset": 1927
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -1897,8 +1937,10 @@
         "end_offset": 1928
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2109,8 +2151,10 @@
         "end_offset": 2393
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "潼川"
+        "status": "matched",
+        "entity_id": "1jb8mv4orykzz",
+        "canonical_name": "潼川府",
+        "href": "book-index://Entity/1jb8mv4orykzz"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2376,7 +2420,7 @@
     },
     {
       "id": "e00126",
-      "type": "people",
+      "type": "place",
       "text": "資州",
       "anchor": {
         "start": "21:4:11",
@@ -2387,8 +2431,10 @@
         "end_offset": 2994
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "資州"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cr4",
+        "canonical_name": "資州",
+        "href": "book-index://Entity/1jb8kv8c60cr4"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2405,8 +2451,10 @@
         "end_offset": 2999
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九江"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cos",
+        "canonical_name": "九江府",
+        "href": "book-index://Entity/1jb8kv8c60cos"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2613,8 +2661,10 @@
         "end_offset": 3352
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淸江"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cnz",
+        "canonical_name": "清江縣",
+        "href": "book-index://Entity/1jb8kv8c60cnz"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3204,8 +3254,10 @@
         "end_offset": 3738
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "邛州"
+        "status": "matched",
+        "entity_id": "1jb8mv4oryl0v",
+        "canonical_name": "邛州",
+        "href": "book-index://Entity/1jb8mv4oryl0v"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3449,8 +3501,30 @@
         "end_offset": 3971
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3715,8 +3789,10 @@
         "end_offset": 4292
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "婺源"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1gn",
+        "canonical_name": "婺源縣",
+        "href": "book-index://Entity/1jb8ku5oqg1gn"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3769,8 +3845,10 @@
         "end_offset": 4313
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3959,8 +4037,30 @@
         "end_offset": 4456
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4238,8 +4338,11 @@
         "end_offset": 4817
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南昌"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cni",
+        "canonical_name": "南昌縣",
+        "href": "book-index://Entity/1jb8kv8c60cni",
+        "note": "default"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4274,8 +4377,10 @@
         "end_offset": 4923
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5100,8 +5205,30 @@
         "end_offset": 6385
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5249,8 +5376,10 @@
         "end_offset": 6486
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7"
       },
       "source": "claude:manual"
     },
@@ -5285,8 +5414,11 @@
         "end_offset": 6497
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鄱陽"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cog",
+        "canonical_name": "鄱陽縣",
+        "href": "book-index://Entity/1jb8kv8c60cog",
+        "note": "default"
       },
       "source": "claude:manual"
     },
@@ -5986,8 +6118,10 @@
         "end_offset": 7372
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "湖州"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1ei",
+        "canonical_name": "湖州府",
+        "href": "book-index://Entity/1jb8ku5oqg1ei"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6527,8 +6661,10 @@
         "end_offset": 7985
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃巖"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1e8",
+        "canonical_name": "黃巖縣",
+        "href": "book-index://Entity/1jb8ku5oqg1e8"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6675,8 +6811,10 @@
         "end_offset": 8477
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "新喻"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60co1",
+        "canonical_name": "新喻縣",
+        "href": "book-index://Entity/1jb8kv8c60co1"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6693,8 +6831,10 @@
         "end_offset": 8479
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6729,8 +6869,10 @@
         "end_offset": 8502
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6933,8 +7075,10 @@
         "end_offset": 8715
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "休寧"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1gm",
+        "canonical_name": "休寧縣",
+        "href": "book-index://Entity/1jb8ku5oqg1gm"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -7583,8 +7727,10 @@
         "end_offset": 9509
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉江"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cpa",
+        "canonical_name": "晉江縣",
+        "href": "book-index://Entity/1jb8kv8c60cpa"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -7764,8 +7910,10 @@
         "end_offset": 9884
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安陽"
+        "status": "matched",
+        "entity_id": "1jb8lqn358dfw",
+        "canonical_name": "安陽縣",
+        "href": "book-index://Entity/1jb8lqn358dfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8285,8 +8433,10 @@
         "end_offset": 10176
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "朝邑"
+        "status": "matched",
+        "entity_id": "1jb8lqn358dgq",
+        "canonical_name": "朝邑縣",
+        "href": "book-index://Entity/1jb8lqn358dgq"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8507,8 +8657,30 @@
         "end_offset": 10348
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8563,8 +8735,18 @@
         "end_offset": 10386
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "同安"
+        "status": "ambiguous",
+        "canonical_name": "同安",
+        "candidates": [
+          {
+            "entity_id": "1jb8ku5oqg1go",
+            "canonical_name": "桐城縣"
+          },
+          {
+            "entity_id": "1jb8kv8c60cpb",
+            "canonical_name": "同安縣"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8943,8 +9125,10 @@
         "end_offset": 10909
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "餘干"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60coh",
+        "canonical_name": "餘干縣",
+        "href": "book-index://Entity/1jb8kv8c60coh"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9037,8 +9221,10 @@
         "end_offset": 11007
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9528,8 +9714,10 @@
         "end_offset": 12181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖",
+        "href": "book-index://Entity/hixi1ubq0obq"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9546,8 +9734,10 @@
         "end_offset": 12187
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬曆"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆",
+        "href": "book-index://Entity/hixi1ubqbwu9"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9564,8 +9754,12 @@
         "end_offset": 12192
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "總督"
+        "status": "matched",
+        "entity_id": "1jb8awb9gvg8w",
+        "canonical_name": "總督",
+        "href": "book-index://Entity/1jb8awb9gvg8w",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9582,8 +9776,12 @@
         "end_offset": 12197
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "巡撫"
+        "status": "matched",
+        "entity_id": "1jb8awb8rl88w",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/1jb8awb8rl88w",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9673,8 +9871,10 @@
         "end_offset": 12250
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "隆慶"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu8",
+        "canonical_name": "隆慶",
+        "href": "book-index://Entity/hixi1ubqbwu8"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9691,8 +9891,10 @@
         "end_offset": 12255
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬曆"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆",
+        "href": "book-index://Entity/hixi1ubqbwu9"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10064,8 +10266,10 @@
         "end_offset": 13231
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "婺源"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1gn",
+        "canonical_name": "婺源縣",
+        "href": "book-index://Entity/1jb8ku5oqg1gn"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10478,8 +10682,10 @@
         "end_offset": 13496
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武進"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1fd",
+        "canonical_name": "武進縣",
+        "href": "book-index://Entity/1jb8ku5oqg1fd"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10514,8 +10720,12 @@
         "end_offset": 13526
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太僕寺卿"
+        "status": "matched",
+        "entity_id": "1jb8c7wirezgg",
+        "canonical_name": "太僕寺卿",
+        "href": "book-index://Entity/1jb8c7wirezgg",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10744,8 +10954,10 @@
         "end_offset": 13929
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "無錫"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1fe",
+        "canonical_name": "無錫縣",
+        "href": "book-index://Entity/1jb8ku5oqg1fe"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10780,8 +10992,12 @@
         "end_offset": 13947
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太子少保"
+        "status": "matched",
+        "entity_id": "1jb8awb96kmbk",
+        "canonical_name": "太子少保",
+        "href": "book-index://Entity/1jb8awb96kmbk",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11198,8 +11414,10 @@
         "end_offset": 14193
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "右僉都御史"
+        "status": "matched",
+        "entity_id": "1jb8awb9nffnk",
+        "canonical_name": "僉都御史",
+        "href": "book-index://Entity/1jb8awb9nffnk"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11270,8 +11488,34 @@
         "end_offset": 14270
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏"
+        "status": "ambiguous",
+        "canonical_name": "魏",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubk35za",
+            "canonical_name": "三國魏"
+          },
+          {
+            "entity_id": "hixi1ubk35zd",
+            "canonical_name": "冉魏"
+          },
+          {
+            "entity_id": "hixi1ubkeej2",
+            "canonical_name": "北魏"
+          },
+          {
+            "entity_id": "hixi1ubkeeja",
+            "canonical_name": "東魏"
+          },
+          {
+            "entity_id": "hixi1ubkeejb",
+            "canonical_name": "西魏"
+          },
+          {
+            "entity_id": "hixi1ubk35z7",
+            "canonical_name": "魏（李密）"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11288,8 +11532,30 @@
         "end_offset": 14271
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "ambiguous",
+        "canonical_name": "晉",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeejg",
+            "canonical_name": "春秋晉"
+          },
+          {
+            "entity_id": "hixi1ubjrxfy",
+            "canonical_name": "晉"
+          },
+          {
+            "entity_id": "hixi1ubkeeiu",
+            "canonical_name": "西晉"
+          },
+          {
+            "entity_id": "hixi1ubkeeip",
+            "canonical_name": "東晉"
+          },
+          {
+            "entity_id": "hixi1ubk3600",
+            "canonical_name": "後晉"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11306,8 +11572,10 @@
         "end_offset": 14272
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐",
+        "href": "book-index://Entity/hixi1ubjgowi"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11440,8 +11708,10 @@
         "end_offset": 14411
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "無錫"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1fe",
+        "canonical_name": "無錫縣",
+        "href": "book-index://Entity/1jb8ku5oqg1fe"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11498,8 +11768,10 @@
         "end_offset": 14435
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武進"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1fd",
+        "canonical_name": "武進縣",
+        "href": "book-index://Entity/1jb8ku5oqg1fd"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11706,8 +11978,10 @@
         "end_offset": 14705
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "連江"
+        "status": "matched",
+        "entity_id": "1jb8mv4orykxk",
+        "canonical_name": "連江縣",
+        "href": "book-index://Entity/1jb8mv4orykxk"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11880,8 +12154,10 @@
         "end_offset": 15051
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漳浦"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cpg",
+        "canonical_name": "漳浦縣",
+        "href": "book-index://Entity/1jb8kv8c60cpg"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11898,8 +12174,12 @@
         "end_offset": 15066
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "少詹事"
+        "status": "matched",
+        "entity_id": "1jb8bbtganm68",
+        "canonical_name": "少詹事",
+        "href": "book-index://Entity/1jb8bbtganm68",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11916,8 +12196,10 @@
         "end_offset": 15071
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐",
+        "href": "book-index://Entity/hixi1ubjgowi"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12176,8 +12458,30 @@
         "end_offset": 15475
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋"
+        "status": "ambiguous",
+        "canonical_name": "宋",
+        "candidates": [
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋"
+          },
+          {
+            "entity_id": "hixi1ubjrxfq",
+            "canonical_name": "宋（輔公祏）"
+          },
+          {
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zj",
+            "canonical_name": "北宋"
+          },
+          {
+            "entity_id": "hixi1ubk35zp",
+            "canonical_name": "南宋"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12491,8 +12795,10 @@
         "end_offset": 15678
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "上虞"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1e1",
+        "canonical_name": "上虞縣",
+        "href": "book-index://Entity/1jb8ku5oqg1e1"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12545,8 +12851,12 @@
         "end_offset": 15700
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "翰林學士"
+        "status": "matched",
+        "entity_id": "1jb8ajoi81j40",
+        "canonical_name": "翰林學士",
+        "href": "book-index://Entity/1jb8ajoi81j40",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12713,8 +13023,10 @@
         "end_offset": 15944
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12827,8 +13139,10 @@
         "end_offset": 16114
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鄞縣"
+        "status": "matched",
+        "entity_id": "1jb8kgdh3psf0",
+        "canonical_name": "鄞縣",
+        "href": "book-index://Entity/1jb8kgdh3psf0"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12905,8 +13219,10 @@
         "end_offset": 16730
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉江"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cpa",
+        "canonical_name": "晉江縣",
+        "href": "book-index://Entity/1jb8kv8c60cpa"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12941,8 +13257,10 @@
         "end_offset": 16745
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐",
+        "href": "book-index://Entity/hixi1ubjgowi"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13050,8 +13368,22 @@
         "end_offset": 16790
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "江南"
+        "status": "ambiguous",
+        "canonical_name": "江南",
+        "candidates": [
+          {
+            "entity_id": "1jb8kgdh3psef",
+            "canonical_name": "江南道"
+          },
+          {
+            "entity_id": "1jb8mpch5grgu",
+            "canonical_name": "江南路"
+          },
+          {
+            "entity_id": "1jb8mpch5grh3",
+            "canonical_name": "南直隸"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13278,8 +13610,18 @@
         "end_offset": 17084
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "海寧"
+        "status": "ambiguous",
+        "canonical_name": "海寧",
+        "candidates": [
+          {
+            "entity_id": "1jb8ku5oqg1f5",
+            "canonical_name": "海寧縣"
+          },
+          {
+            "entity_id": "1jb8mv4orykue",
+            "canonical_name": "海州"
+          }
+        ]
       },
       "source": "glm:glm-4.5-flash"
     },

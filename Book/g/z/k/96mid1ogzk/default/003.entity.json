@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.1.json",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -10,13 +10,13 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 708,
-    "matched": 235,
-    "new_candidates": 462,
+    "total_entities": 719,
+    "matched": 250,
+    "new_candidates": 456,
     "works": 442,
-    "people": 162,
-    "places": 40,
-    "offices": 35,
+    "people": 161,
+    "places": 46,
+    "offices": 41,
     "dynasties": 25,
     "reigns": 4
   },
@@ -2670,21 +2670,61 @@
     },
     {
       "id": "e00139",
-      "type": "office",
-      "text": "福建儒學提舉",
+      "type": "place",
+      "text": "福建",
       "anchor": {
         "start": "23:6:18",
-        "end": "23:7:4"
+        "end": "23:6:19"
       },
       "span": {
         "start_offset": 3357,
+        "end_offset": 3359
+      },
+      "target": {
+        "status": "ambiguous",
+        "canonical_name": "福建",
+        "candidates": [
+          {
+            "entity_id": "1jb8kox0psbv2",
+            "canonical_name": "福建路"
+          },
+          {
+            "entity_id": "1jb8kv8c60cn5",
+            "canonical_name": "福建省"
+          }
+        ]
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00139",
+        "text": "福建儒學提舉",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00710",
+      "type": "office",
+      "text": "儒學提舉",
+      "anchor": {
+        "start": "23:6:20",
+        "end": "23:7:4"
+      },
+      "span": {
+        "start_offset": 3359,
         "end_offset": 3363
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "福建儒學提舉"
+        "status": "matched",
+        "entity_id": "1jb8c7wjagglc",
+        "canonical_name": "儒學提舉",
+        "href": "book-index://Entity/1jb8c7wjagglc"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00139",
+        "text": "福建儒學提舉",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00140",
@@ -3816,21 +3856,55 @@
     },
     {
       "id": "e00199",
-      "type": "office",
-      "text": "蘭溪州學正",
+      "type": "place",
+      "text": "蘭溪州",
       "anchor": {
         "start": "29:2:12",
-        "end": "29:2:16"
+        "end": "29:2:14"
       },
       "span": {
         "start_offset": 4305,
+        "end_offset": 4308
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1e3",
+        "canonical_name": "蘭溪縣",
+        "href": "book-index://Entity/1jb8ku5oqg1e3"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00199",
+        "text": "蘭溪州學正",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00711",
+      "type": "office",
+      "text": "學正",
+      "anchor": {
+        "start": "29:2:15",
+        "end": "29:2:16"
+      },
+      "span": {
+        "start_offset": 4308,
         "end_offset": 4310
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘭溪州學正"
+        "status": "matched",
+        "entity_id": "1jb8awb7rdp8g",
+        "canonical_name": "學正",
+        "href": "book-index://Entity/1jb8awb7rdp8g",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00199",
+        "text": "蘭溪州學正",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00200",
@@ -4637,21 +4711,53 @@
     },
     {
       "id": "e00241",
-      "type": "office",
-      "text": "湖廣儒學提舉",
+      "type": "place",
+      "text": "湖廣",
       "anchor": {
         "start": "35:5:6",
-        "end": "35:5:11"
+        "end": "35:5:7"
       },
       "span": {
         "start_offset": 5354,
+        "end_offset": 5356
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cn6",
+        "canonical_name": "湖廣省",
+        "href": "book-index://Entity/1jb8kv8c60cn6"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00241",
+        "text": "湖廣儒學提舉",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00712",
+      "type": "office",
+      "text": "儒學提舉",
+      "anchor": {
+        "start": "35:5:8",
+        "end": "35:5:11"
+      },
+      "span": {
+        "start_offset": 5356,
         "end_offset": 5360
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "湖廣儒學提舉"
+        "status": "matched",
+        "entity_id": "1jb8c7wjagglc",
+        "canonical_name": "儒學提舉",
+        "href": "book-index://Entity/1jb8c7wjagglc"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00241",
+        "text": "湖廣儒學提舉",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00242",
@@ -7736,21 +7842,75 @@
     },
     {
       "id": "e00380",
-      "type": "office",
-      "text": "南京國子監祭酒",
+      "type": "place",
+      "text": "南京",
       "anchor": {
         "start": "62:6:6",
-        "end": "62:6:12"
+        "end": "62:6:7"
       },
       "span": {
         "start_offset": 9518,
+        "end_offset": 9520
+      },
+      "target": {
+        "status": "ambiguous",
+        "canonical_name": "南京",
+        "candidates": [
+          {
+            "entity_id": "1jb8lqn358di0",
+            "canonical_name": "順天府"
+          },
+          {
+            "entity_id": "1jb8lqn358dfo",
+            "canonical_name": "歸德府"
+          },
+          {
+            "entity_id": "1jb8mpch5grh3",
+            "canonical_name": "南直隸"
+          },
+          {
+            "entity_id": "1jb8lqn358dfk",
+            "canonical_name": "開封府"
+          },
+          {
+            "entity_id": "1jb8kox0psbv8",
+            "canonical_name": "南京路"
+          }
+        ]
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00380",
+        "text": "南京國子監祭酒",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00713",
+      "type": "office",
+      "text": "國子監祭酒",
+      "anchor": {
+        "start": "62:6:8",
+        "end": "62:6:12"
+      },
+      "span": {
+        "start_offset": 9520,
         "end_offset": 9525
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南京國子監祭酒"
+        "status": "matched",
+        "entity_id": "1jb8ajoi6skxs",
+        "canonical_name": "國子監祭酒",
+        "href": "book-index://Entity/1jb8ajoi6skxs",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00380",
+        "text": "南京國子監祭酒",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00381",
@@ -8752,21 +8912,53 @@
     },
     {
       "id": "e00433",
-      "type": "office",
-      "text": "廣東提學僉事",
+      "type": "place",
+      "text": "廣東",
       "anchor": {
         "start": "67:9:8",
-        "end": "67:9:13"
+        "end": "67:9:9"
       },
       "span": {
         "start_offset": 10395,
+        "end_offset": 10397
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cn9",
+        "canonical_name": "廣東省",
+        "href": "book-index://Entity/1jb8kv8c60cn9"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00433",
+        "text": "廣東提學僉事",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00714",
+      "type": "office",
+      "text": "提學僉事",
+      "anchor": {
+        "start": "67:9:10",
+        "end": "67:9:13"
+      },
+      "span": {
+        "start_offset": 10397,
         "end_offset": 10401
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣東提學僉事"
+        "status": "matched",
+        "entity_id": "1jb8c7wiwq0ow",
+        "canonical_name": "提學僉事",
+        "href": "book-index://Entity/1jb8c7wiwq0ow"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00433",
+        "text": "廣東提學僉事",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00434",
@@ -10276,20 +10468,54 @@
     {
       "id": "e00514",
       "type": "office",
-      "text": "尙寶司少卿",
+      "text": "尙寶司",
       "anchor": {
         "start": "85:3:8",
-        "end": "85:3:12"
+        "end": "85:3:10"
       },
       "span": {
         "start_offset": 13240,
+        "end_offset": 13243
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8bl210yzgg",
+        "canonical_name": "尚寶司",
+        "href": "book-index://Entity/1jb8bl210yzgg"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00514",
+        "text": "尙寶司少卿",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00715",
+      "type": "office",
+      "text": "少卿",
+      "anchor": {
+        "start": "85:3:11",
+        "end": "85:3:12"
+      },
+      "span": {
+        "start_offset": 13243,
         "end_offset": 13245
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "尙寶司少卿"
+        "status": "matched",
+        "entity_id": "1jb8awb8fez28",
+        "canonical_name": "少卿",
+        "href": "book-index://Entity/1jb8awb8fez28",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00514",
+        "text": "尙寶司少卿",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00515",
@@ -11004,20 +11230,52 @@
     {
       "id": "e00552",
       "type": "office",
-      "text": "兵部尙書",
+      "text": "兵部",
       "anchor": {
         "start": "89:7:14",
-        "end": "89:7:17"
+        "end": "89:7:15"
       },
       "span": {
         "start_offset": 13947,
-        "end_offset": 13951
+        "end_offset": 13949
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "兵部尙書"
+        "canonical_name": "兵部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00552",
+        "text": "兵部尙書",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00716",
+      "type": "office",
+      "text": "尙書",
+      "anchor": {
+        "start": "89:7:16",
+        "end": "89:7:17"
+      },
+      "span": {
+        "start_offset": 13949,
+        "end_offset": 13951
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ajoi8z8qo",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/1jb8ajoi8z8qo",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00552",
+        "text": "兵部尙書",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00553",
@@ -11913,20 +12171,52 @@
     {
       "id": "e00597",
       "type": "office",
-      "text": "太僕寺少卿",
+      "text": "太僕寺",
       "anchor": {
         "start": "93:7:19",
-        "end": "93:8:4"
+        "end": "93:7:21"
       },
       "span": {
         "start_offset": 14605,
-        "end_offset": 14610
+        "end_offset": 14608
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "太僕寺少卿"
+        "canonical_name": "太僕寺"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00597",
+        "text": "太僕寺少卿",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00717",
+      "type": "office",
+      "text": "少卿",
+      "anchor": {
+        "start": "93:8:3",
+        "end": "93:8:4"
+      },
+      "span": {
+        "start_offset": 14608,
+        "end_offset": 14610
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb8fez28",
+        "canonical_name": "少卿",
+        "href": "book-index://Entity/1jb8awb8fez28",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00597",
+        "text": "太僕寺少卿",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00598",
@@ -12805,38 +13095,102 @@
     {
       "id": "e00638",
       "type": "office",
-      "text": "戸部尙書",
+      "text": "戸部",
       "anchor": {
         "start": "100:5:5",
-        "end": "100:5:8"
+        "end": "100:5:6"
       },
       "span": {
         "start_offset": 15687,
-        "end_offset": 15691
+        "end_offset": 15689
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "戸部尙書"
+        "canonical_name": "戸部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00638",
+        "text": "戸部尙書",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00718",
+      "type": "office",
+      "text": "尙書",
+      "anchor": {
+        "start": "100:5:7",
+        "end": "100:5:8"
+      },
+      "span": {
+        "start_offset": 15689,
+        "end_offset": 15691
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ajoi8z8qo",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/1jb8ajoi8z8qo",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00638",
+        "text": "戸部尙書",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00639",
       "type": "office",
-      "text": "禮部尙書",
+      "text": "禮部",
       "anchor": {
         "start": "100:5:10",
-        "end": "100:5:13"
+        "end": "100:5:11"
       },
       "span": {
         "start_offset": 15692,
-        "end_offset": 15696
+        "end_offset": 15694
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "禮部尙書"
+        "canonical_name": "禮部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00639",
+        "text": "禮部尙書",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00719",
+      "type": "office",
+      "text": "尙書",
+      "anchor": {
+        "start": "100:5:12",
+        "end": "100:5:13"
+      },
+      "span": {
+        "start_offset": 15694,
+        "end_offset": 15696
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ajoi8z8qo",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/1jb8ajoi8z8qo",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00639",
+        "text": "禮部尙書",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00640",
@@ -13303,20 +13657,52 @@
     {
       "id": "e00664",
       "type": "office",
-      "text": "禮部尙書",
+      "text": "禮部",
       "anchor": {
         "start": "106:9:18",
-        "end": "106:9:21"
+        "end": "106:9:19"
       },
       "span": {
         "start_offset": 16754,
-        "end_offset": 16758
+        "end_offset": 16756
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "禮部尙書"
+        "canonical_name": "禮部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00664",
+        "text": "禮部尙書",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e00720",
+      "type": "office",
+      "text": "尙書",
+      "anchor": {
+        "start": "106:9:20",
+        "end": "106:9:21"
+      },
+      "span": {
+        "start_offset": 16756,
+        "end_offset": 16758
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ajoi8z8qo",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/1jb8ajoi8z8qo",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00664",
+        "text": "禮部尙書",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00665",

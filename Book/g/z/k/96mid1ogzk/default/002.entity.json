@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.1.json",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "volume": 2,
@@ -10,13 +10,13 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 1351,
-    "matched": 542,
-    "new_candidates": 796,
+    "total_entities": 1368,
+    "matched": 567,
+    "new_candidates": 787,
     "works": 793,
     "people": 407,
-    "places": 58,
-    "offices": 54,
+    "places": 66,
+    "offices": 63,
     "dynasties": 37,
     "reigns": 2
   },
@@ -667,20 +667,52 @@
     {
       "id": "e00035",
       "type": "office",
-      "text": "大理寺評事",
+      "text": "大理寺",
       "anchor": {
         "start": "9:9:10a",
-        "end": "9:9:5b"
+        "end": "9:9:12a"
       },
       "span": {
         "start_offset": 1121,
-        "end_offset": 1126
+        "end_offset": 1124
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "大理寺評事"
+        "canonical_name": "大理寺"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00035",
+        "text": "大理寺評事",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01355",
+      "type": "office",
+      "text": "評事",
+      "anchor": {
+        "start": "9:9:13a",
+        "end": "9:9:5b"
+      },
+      "span": {
+        "start_offset": 1124,
+        "end_offset": 1126
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb9axxxc",
+        "canonical_name": "評事",
+        "href": "book-index://Entity/1jb8awb9axxxc",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00035",
+        "text": "大理寺評事",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00036",
@@ -1274,20 +1306,52 @@
     {
       "id": "e00066",
       "type": "office",
-      "text": "禮部尚書",
+      "text": "禮部",
       "anchor": {
         "start": "13:1:6",
-        "end": "13:1:9"
+        "end": "13:1:7"
       },
       "span": {
         "start_offset": 1529,
-        "end_offset": 1533
+        "end_offset": 1531
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "禮部尚書"
+        "canonical_name": "禮部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00066",
+        "text": "禮部尚書",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01356",
+      "type": "office",
+      "text": "尚書",
+      "anchor": {
+        "start": "13:1:8",
+        "end": "13:1:9"
+      },
+      "span": {
+        "start_offset": 1531,
+        "end_offset": 1533
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ajoi8z8qo",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/1jb8ajoi8z8qo",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00066",
+        "text": "禮部尚書",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00067",
@@ -3811,21 +3875,55 @@
     },
     {
       "id": "e00198",
-      "type": "office",
-      "text": "揚州刺史",
+      "type": "place",
+      "text": "揚州",
       "anchor": {
         "start": "24:3:19",
-        "end": "24:4:3"
+        "end": "24:3:20"
       },
       "span": {
         "start_offset": 3410,
+        "end_offset": 3412
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1gb",
+        "canonical_name": "揚州府",
+        "href": "book-index://Entity/1jb8ku5oqg1gb"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00198",
+        "text": "揚州刺史",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01357",
+      "type": "office",
+      "text": "刺史",
+      "anchor": {
+        "start": "24:3:21",
+        "end": "24:4:3"
+      },
+      "span": {
+        "start_offset": 3412,
         "end_offset": 3414
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "揚州刺史"
+        "status": "matched",
+        "entity_id": "1jb8ajoi9aha8",
+        "canonical_name": "刺史",
+        "href": "book-index://Entity/1jb8ajoi9aha8",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00198",
+        "text": "揚州刺史",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00199",
@@ -4223,20 +4321,52 @@
     {
       "id": "e00220",
       "type": "office",
-      "text": "秘書省著作郞",
+      "text": "秘書省",
       "anchor": {
         "start": "27:7:9",
-        "end": "27:7:14"
+        "end": "27:7:11"
       },
       "span": {
         "start_offset": 3970,
-        "end_offset": 3976
+        "end_offset": 3973
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "秘書省著作郞"
+        "canonical_name": "秘書省"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00220",
+        "text": "秘書省著作郞",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01358",
+      "type": "office",
+      "text": "著作郞",
+      "anchor": {
+        "start": "27:7:12",
+        "end": "27:7:14"
+      },
+      "span": {
+        "start_offset": 3973,
+        "end_offset": 3976
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8bbtgopam8",
+        "canonical_name": "著作郎",
+        "href": "book-index://Entity/1jb8bbtgopam8",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00220",
+        "text": "秘書省著作郞",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00221",
@@ -4339,20 +4469,52 @@
     {
       "id": "e00226",
       "type": "office",
-      "text": "秘閣學士",
+      "text": "秘閣",
       "anchor": {
         "start": "27:9:6",
-        "end": "27:9:9"
+        "end": "27:9:7"
       },
       "span": {
         "start_offset": 4005,
+        "end_offset": 4007
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8bl21019ts",
+        "canonical_name": "祕閣",
+        "href": "book-index://Entity/1jb8bl21019ts"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00226",
+        "text": "秘閣學士",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01359",
+      "type": "office",
+      "text": "學士",
+      "anchor": {
+        "start": "27:9:8",
+        "end": "27:9:9"
+      },
+      "span": {
+        "start_offset": 4007,
         "end_offset": 4009
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "秘閣學士"
+        "status": "matched",
+        "entity_id": "1jb8b4jvnk83k",
+        "canonical_name": "學士",
+        "href": "book-index://Entity/1jb8b4jvnk83k"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00226",
+        "text": "秘閣學士",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00227",
@@ -5843,21 +6005,55 @@
     },
     {
       "id": "e00304",
-      "type": "office",
-      "text": "蘇州司戸叅軍",
+      "type": "place",
+      "text": "蘇州",
       "anchor": {
         "start": "35:6:5",
-        "end": "35:6:10"
+        "end": "35:6:6"
       },
       "span": {
         "start_offset": 5306,
+        "end_offset": 5308
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kgdh3psem",
+        "canonical_name": "蘇州",
+        "href": "book-index://Entity/1jb8kgdh3psem"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00304",
+        "text": "蘇州司戸叅軍",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01360",
+      "type": "office",
+      "text": "司戸叅軍",
+      "anchor": {
+        "start": "35:6:7",
+        "end": "35:6:10"
+      },
+      "span": {
+        "start_offset": 5308,
         "end_offset": 5312
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇州司戸叅軍"
+        "status": "matched",
+        "entity_id": "1jb8bbtglw5q8",
+        "canonical_name": "司戶參軍",
+        "href": "book-index://Entity/1jb8bbtglw5q8",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00304",
+        "text": "蘇州司戸叅軍",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00305",
@@ -8886,20 +9082,52 @@
     {
       "id": "e00460",
       "type": "office",
-      "text": "兵部員外郞",
+      "text": "兵部",
       "anchor": {
         "start": "57:2:3",
-        "end": "57:2:7"
+        "end": "57:2:4"
       },
       "span": {
         "start_offset": 8745,
-        "end_offset": 8750
+        "end_offset": 8747
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "兵部員外郞"
+        "canonical_name": "兵部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00460",
+        "text": "兵部員外郞",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01361",
+      "type": "office",
+      "text": "員外郞",
+      "anchor": {
+        "start": "57:2:5",
+        "end": "57:2:7"
+      },
+      "span": {
+        "start_offset": 8747,
+        "end_offset": 8750
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb7z6mtc",
+        "canonical_name": "員外郎",
+        "href": "book-index://Entity/1jb8awb7z6mtc",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00460",
+        "text": "兵部員外郞",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00461",
@@ -11683,20 +11911,52 @@
     {
       "id": "e00602",
       "type": "office",
-      "text": "禮部侍郞",
+      "text": "禮部",
       "anchor": {
         "start": "77:6:7",
-        "end": "77:6:10"
+        "end": "77:6:8"
       },
       "span": {
         "start_offset": 12046,
-        "end_offset": 12050
+        "end_offset": 12048
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "禮部侍郞"
+        "canonical_name": "禮部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00602",
+        "text": "禮部侍郞",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01362",
+      "type": "office",
+      "text": "侍郞",
+      "anchor": {
+        "start": "77:6:9",
+        "end": "77:6:10"
+      },
+      "span": {
+        "start_offset": 12048,
+        "end_offset": 12050
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb81222o",
+        "canonical_name": "侍郎",
+        "href": "book-index://Entity/1jb8awb81222o",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00602",
+        "text": "禮部侍郞",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00603",
@@ -14570,21 +14830,53 @@
     },
     {
       "id": "e00749",
-      "type": "office",
-      "text": "永興軍路提刑",
+      "type": "place",
+      "text": "永興軍路",
       "anchor": {
         "start": "103:7:12",
-        "end": "103:7:17"
+        "end": "103:7:15"
       },
       "span": {
         "start_offset": 16370,
+        "end_offset": 16374
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kox0psbuu",
+        "canonical_name": "永興軍路",
+        "href": "book-index://Entity/1jb8kox0psbuu"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00749",
+        "text": "永興軍路提刑",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01363",
+      "type": "office",
+      "text": "提刑",
+      "anchor": {
+        "start": "103:7:16",
+        "end": "103:7:17"
+      },
+      "span": {
+        "start_offset": 16374,
         "end_offset": 16376
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "永興軍路提刑"
+        "status": "matched",
+        "entity_id": "1jb8awb9ozmdc",
+        "canonical_name": "提點刑獄公事",
+        "href": "book-index://Entity/1jb8awb9ozmdc"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00749",
+        "text": "永興軍路提刑",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00750",
@@ -15198,21 +15490,55 @@
     },
     {
       "id": "e00782",
-      "type": "office",
-      "text": "婺州教授",
+      "type": "place",
+      "text": "婺州",
       "anchor": {
         "start": "106:9:8",
-        "end": "106:9:11"
+        "end": "106:9:9"
       },
       "span": {
         "start_offset": 16901,
+        "end_offset": 16903
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1ey",
+        "canonical_name": "婺州",
+        "href": "book-index://Entity/1jb8ku5oqg1ey"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00782",
+        "text": "婺州教授",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01364",
+      "type": "office",
+      "text": "教授",
+      "anchor": {
+        "start": "106:9:10",
+        "end": "106:9:11"
+      },
+      "span": {
+        "start_offset": 16903,
         "end_offset": 16905
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "婺州教授"
+        "status": "matched",
+        "entity_id": "1jb8ajoi9lpts",
+        "canonical_name": "教授",
+        "href": "book-index://Entity/1jb8ajoi9lpts",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00782",
+        "text": "婺州教授",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00783",
@@ -18848,20 +19174,52 @@
     {
       "id": "e00972",
       "type": "place",
-      "text": "南康都昌",
+      "text": "南康",
       "anchor": {
         "start": "132:5:18",
-        "end": "132:5:21"
+        "end": "132:5:19"
       },
       "span": {
         "start_offset": 21098,
+        "end_offset": 21100
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cov",
+        "canonical_name": "南康軍",
+        "href": "book-index://Entity/1jb8kv8c60cov"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00972",
+        "text": "南康都昌",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01365",
+      "type": "place",
+      "text": "都昌",
+      "anchor": {
+        "start": "132:5:20",
+        "end": "132:5:21"
+      },
+      "span": {
+        "start_offset": 21100,
         "end_offset": 21102
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南康都昌"
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cow",
+        "canonical_name": "都昌縣",
+        "href": "book-index://Entity/1jb8kv8c60cow"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge00972",
+        "text": "南康都昌",
+        "kind": "compound"
+      }
     },
     {
       "id": "e00973",
@@ -20095,21 +20453,55 @@
     },
     {
       "id": "e01027",
-      "type": "office",
-      "text": "韶州教授",
+      "type": "place",
+      "text": "韶州",
       "anchor": {
         "start": "136:6:4",
-        "end": "136:6:7"
+        "end": "136:6:5"
       },
       "span": {
         "start_offset": 21776,
+        "end_offset": 21778
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8mv4orykzi",
+        "canonical_name": "韶州府",
+        "href": "book-index://Entity/1jb8mv4orykzi"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01027",
+        "text": "韶州教授",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01366",
+      "type": "office",
+      "text": "教授",
+      "anchor": {
+        "start": "136:6:6",
+        "end": "136:6:7"
+      },
+      "span": {
+        "start_offset": 21778,
         "end_offset": 21780
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "韶州教授"
+        "status": "matched",
+        "entity_id": "1jb8ajoi9lpts",
+        "canonical_name": "教授",
+        "href": "book-index://Entity/1jb8ajoi9lpts",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01027",
+        "text": "韶州教授",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01028",
@@ -20434,20 +20826,60 @@
     {
       "id": "e01044",
       "type": "place",
-      "text": "潭州寧鄉",
+      "text": "潭州",
       "anchor": {
         "start": "138:7:18",
-        "end": "138:7:21"
+        "end": "138:7:19"
       },
       "span": {
         "start_offset": 22132,
+        "end_offset": 22134
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8kv8c60cq7",
+        "canonical_name": "潭州",
+        "href": "book-index://Entity/1jb8kv8c60cq7"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01044",
+        "text": "潭州寧鄉",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01367",
+      "type": "place",
+      "text": "寧鄉",
+      "anchor": {
+        "start": "138:7:20",
+        "end": "138:7:21"
+      },
+      "span": {
+        "start_offset": 22134,
         "end_offset": 22136
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "潭州寧鄉"
+        "status": "ambiguous",
+        "canonical_name": "寧鄉",
+        "candidates": [
+          {
+            "entity_id": "1jb8p6f6mrwcq",
+            "canonical_name": "寧鄉縣"
+          },
+          {
+            "entity_id": "1jb8kv8c60cqd",
+            "canonical_name": "寧鄉縣"
+          }
+        ]
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01044",
+        "text": "潭州寧鄉",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01045",
@@ -22391,20 +22823,52 @@
     {
       "id": "e01146",
       "type": "office",
-      "text": "吏部侍郞",
+      "text": "吏部",
       "anchor": {
         "start": "155:3:10",
-        "end": "155:3:13"
+        "end": "155:3:11"
       },
       "span": {
         "start_offset": 24851,
-        "end_offset": 24855
+        "end_offset": 24853
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "吏部侍郞"
+        "canonical_name": "吏部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01146",
+        "text": "吏部侍郞",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01368",
+      "type": "office",
+      "text": "侍郞",
+      "anchor": {
+        "start": "155:3:12",
+        "end": "155:3:13"
+      },
+      "span": {
+        "start_offset": 24853,
+        "end_offset": 24855
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb81222o",
+        "canonical_name": "侍郎",
+        "href": "book-index://Entity/1jb8awb81222o",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01146",
+        "text": "吏部侍郞",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01147",
@@ -22998,20 +23462,52 @@
     {
       "id": "e01178",
       "type": "office",
-      "text": "戸部侍郞",
+      "text": "戸部",
       "anchor": {
         "start": "161:8:13",
-        "end": "161:8:16"
+        "end": "161:8:14"
       },
       "span": {
         "start_offset": 25955,
-        "end_offset": 25959
+        "end_offset": 25957
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "戸部侍郞"
+        "canonical_name": "戸部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01178",
+        "text": "戸部侍郞",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01369",
+      "type": "office",
+      "text": "侍郞",
+      "anchor": {
+        "start": "161:8:15",
+        "end": "161:8:16"
+      },
+      "span": {
+        "start_offset": 25957,
+        "end_offset": 25959
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb81222o",
+        "canonical_name": "侍郎",
+        "href": "book-index://Entity/1jb8awb81222o",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01178",
+        "text": "戸部侍郞",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01179",
@@ -23969,38 +24465,102 @@
     {
       "id": "e01229",
       "type": "place",
-      "text": "台州臨海",
+      "text": "台州",
       "anchor": {
         "start": "171:3:11",
-        "end": "171:3:14"
+        "end": "171:3:12"
       },
       "span": {
         "start_offset": 27534,
+        "end_offset": 27536
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1f2",
+        "canonical_name": "台州",
+        "href": "book-index://Entity/1jb8ku5oqg1f2"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01229",
+        "text": "台州臨海",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01370",
+      "type": "place",
+      "text": "臨海",
+      "anchor": {
+        "start": "171:3:13",
+        "end": "171:3:14"
+      },
+      "span": {
+        "start_offset": 27536,
         "end_offset": 27538
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "台州臨海"
+        "status": "matched",
+        "entity_id": "1jb8ku5oqg1dx",
+        "canonical_name": "臨海縣",
+        "href": "book-index://Entity/1jb8ku5oqg1dx"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01229",
+        "text": "台州臨海",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01230",
       "type": "office",
-      "text": "吏部郞中",
+      "text": "吏部",
       "anchor": {
         "start": "171:4:5",
-        "end": "171:4:8"
+        "end": "171:4:6"
       },
       "span": {
         "start_offset": 27547,
-        "end_offset": 27551
+        "end_offset": 27549
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "吏部郞中"
+        "canonical_name": "吏部"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01230",
+        "text": "吏部郞中",
+        "kind": "compound"
+      }
+    },
+    {
+      "id": "e01371",
+      "type": "office",
+      "text": "郞中",
+      "anchor": {
+        "start": "171:4:7",
+        "end": "171:4:8"
+      },
+      "span": {
+        "start_offset": 27549,
+        "end_offset": 27551
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "1jb8awb7xb7k0",
+        "canonical_name": "郎中",
+        "href": "book-index://Entity/1jb8awb7xb7k0",
+        "level": "concept",
+        "note": "未定朝代，挂概念条"
+      },
+      "source": "glm:glm-4.5-flash",
+      "group": {
+        "id": "ge01230",
+        "text": "吏部郞中",
+        "kind": "compound"
+      }
     },
     {
       "id": "e01231",

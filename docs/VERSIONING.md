@@ -1,5 +1,7 @@
 # book-text 版本号与仓库流程（摘要）
 
+> 条目布局以 guji-format spec/07-book-text-条目布局.md（§2.3、§3.3）为准。
+
 > 规范全文：overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`（v2，用户 10-05 定）。
 > 本文是摘要，两边不一致时以规范全文为准。落地任务卡：open-guji-core/overview#400（T67）。
 
@@ -32,17 +34,17 @@
 ### 版本号落点（每册一套）
 
 ```jsonc
-// original/index.json
+// <版本目录>/index.json
 { "chapters": [
   { "n": 2, "file": "002",
     "text_version": "1.4.1", "punct_version": "1.2.0", "entity_version": "1.0.3"
   } ] }
 
-// original/002.char.json 顶层
+// <版本目录>/002.char.json 顶层
 { "version": "1.4.1",
   "review": { … } }             // 仅文本线 major ≥2 时
 
-// original/002.punct.json、002.entity.json 顶层
+// <版本目录>/002.punct.json、002.entity.json 顶层
 { "version": "1.2.0", "text_version": "1.4.1",
   "review": { … } }             // 仅本线 major ≥2 时
 ```
@@ -50,7 +52,7 @@
 - `index.json` 的 `text_version`／`punct_version`／`entity_version` 都是镜像，必须和 char、punct、entity 各自顶层的 `version` 一致；网站从 `index.json` 读三线版本。
 - **过渡**：10-06 以前文本线跟踪的是 `lines.md`，文本线验收记录放在 `index.json` 的 `text_review`。`bump_original.py` 和校验器 F-OV-* 改读 char.json 之前，仍按旧口径跑。
 - 验收记录（`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
-- 每次升版本，在 `original/CHANGES.md` 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
+- 每次升版本，在 `<版本目录>/CHANGES.md`（`<版本目录>` 同上：manifest 里 `is_original` 为 true 的版本目录，常为 `default/`，旧条目仍可能是 `original/`） 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
 
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""检查 Book 条目的授权字段：值必须是非空字符串，不得为 null、「未知」「unknown」。
+"""检查 Book、Work 条目的授权字段：值必须是非空字符串，不得为 null、「未知」「unknown」。
 
-读 Book/*/*/*/*/manifest.json 的 versions[].license，以及 default/ 或 original/
+读 Book、Work 下 */*/*/*/manifest.json 的 versions[].license，以及 default/ 或 original/
 版本目录 index.json 里的 source.license（有则查）。逐值统计，有违规退出码 1。
 用法：python3 scripts/check_license.py [仓根目录]
 """
@@ -22,7 +22,9 @@ def check(root):
         if not isinstance(value, str) or not value.strip() or value.strip().lower() in BAD:
             bad.append((os.path.relpath(path, root), value))
 
-    for mp in sorted(glob.glob(os.path.join(root, 'Book', '*', '*', '*', '*', 'manifest.json'))):
+    manifests = sorted(p for top in ('Book', 'Work')
+                       for p in glob.glob(os.path.join(root, top, '*', '*', '*', '*', 'manifest.json')))
+    for mp in manifests:
         with open(mp, encoding='utf-8') as f:
             manifest = json.load(f)
         for v in manifest.get('versions', []):

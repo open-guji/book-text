@@ -16,3 +16,5 @@
 | 2026-10-08 | 96mid1ogzk/003 | 实体 | 1.2.0→1.3.0 | 专名回挂(T 批1)：朝代／年号／官职／地名整串命中键表者 target→matched、多候选记 ambiguous；订正 003 e00126 資州 type people→place；复合名拆分另批 |  |
 | 2026-10-08 | 96mid1ogzk/002 | 实体 | 1.3.0→1.4.0 | 复合专名拆相邻 span(T 批2)：官署＋官职、地名＋官职、州＋縣 共 28 处整串 span 换成两个相邻 span（各带逐字 anchor 与 target，整串信息放可选 group） |  |
 | 2026-10-08 | 96mid1ogzk/003 | 实体 | 1.3.0→1.4.0 | 复合专名拆相邻 span(T 批2)：官署＋官职、地名＋官职、州＋縣 共 28 处整串 span 换成两个相邻 span（各带逐字 anchor 与 target，整串信息放可选 group） |  |
+| 2026-10-09 | 96mid1ogzk/002 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 |  |
+| 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 |  |

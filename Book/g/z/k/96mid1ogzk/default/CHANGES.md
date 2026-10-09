@@ -16,5 +16,7 @@
 | 2026-10-08 | 96mid1ogzk/003 | 实体 | 1.2.0→1.3.0 | 专名回挂(T 批1)：朝代／年号／官职／地名整串命中键表者 target→matched、多候选记 ambiguous；订正 003 e00126 資州 type people→place；复合名拆分另批 | #26 |
 | 2026-10-08 | 96mid1ogzk/002 | 实体 | 1.3.0→1.4.0 | 复合专名拆相邻 span(T 批2)：官署＋官职、地名＋官职、州＋縣 共 28 处整串 span 换成两个相邻 span（各带逐字 anchor 与 target，整串信息放可选 group） | #27 |
 | 2026-10-08 | 96mid1ogzk/003 | 实体 | 1.3.0→1.4.0 | 复合专名拆相邻 span(T 批2)：官署＋官职、地名＋官职、州＋縣 共 28 处整串 span 换成两个相邻 span（各带逐字 anchor 与 target，整串信息放可选 group） | #27 |
-| 2026-10-09 | 96mid1ogzk/002 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 |  |
-| 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 |  |
+| 2026-10-09 | 96mid1ogzk/002 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 | #28 |
+| 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.4.0→1.4.1 | $schema 改为 guji-entity v0.2 地址（对照 guji-format PR#6 的 spec/05）；stats 补 ambiguous 计数 | #28 |
+| 2026-10-09 | 96mid1ogzk/002 | 实体 | 1.4.1→1.5.0 | 对齐 entity v0.2：同名待消歧 new_candidate→ambiguous＋candidates（127 条，11 条候选 id 查不到保持 new_candidate）；补 2 个孤立《》的 work 实体；CHANGES 补 PR 号 | #29 |
+| 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.4.1→1.5.0 | 对齐 entity v0.2：同名待消歧 new_candidate→ambiguous＋candidates（127 条，11 条候选 id 查不到保持 new_candidate）；补 2 个孤立《》的 work 实体；CHANGES 补 PR 号 | #29 |

@@ -1,5 +1,7 @@
 # `original`：一章有哪些文件（10-06 用户定）
 
+> 条目布局以 guji-format spec/07-book-text-条目布局.md（§2.3、§3.3）为准。
+
 > 只管 `original`（本项目从书影做出来的文本）。格式见 guji-format 规范：01 cord、02 char、03 markdown、04 punct、05 entity。版本号见 [VERSIONING.md](VERSIONING.md)。
 
 ## 一、文件和代号
@@ -26,7 +28,7 @@
 
 ## 二、章条目里声明各层文件
 
-`original/index.json` 的 `chapters[]` 每一章用 `*_file` 字段声明有哪些文件：**有这个字段 = 有这个文件**，写了就必须存在。
+`<版本目录>/index.json`（`<版本目录>` 指 manifest 里 `is_original` 为 true 的版本目录，常为 `default/`，旧条目仍可能是 `original/`） 的 `chapters[]` 每一章用 `*_file` 字段声明有哪些文件：**有这个字段 = 有这个文件**，写了就必须存在。
 
 | 字段 | 文件 | 必填 |
 |---|---|---|

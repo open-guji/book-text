@@ -44,7 +44,7 @@
 例（main）：
 
 ```json
-{ "n": 2, "file": "002", "title": "卷首二（經部總敘·易類一至三）",
+{ "n": 2, "file": "002", "title": "經部總敘·易類一至三",
   "char_file": "002.char.json", "cord_file": "002.cord.json",
   "punct_file": "002.punct.json", "entity_file": "002.entity.json", "norm_file": "002.norm.json",
   "text_version": "1.0.0", "punct_version": "1.0.0", "entity_version": "1.0.0",

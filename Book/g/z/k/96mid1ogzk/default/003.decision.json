@@ -1,0 +1,243 @@
+{
+  "$schema": "https://open-guji.org/schema/decision/v0.1.json",
+  "book_id": "96mid1ogzk",
+  "volume": 3,
+  "items": [
+    {
+      "cell": "4:7:17",
+      "current": "未",
+      "kind": "uncertain",
+      "status": "open",
+      "cands": [
+        {
+          "text": "末",
+          "src": "cv",
+          "conf": 0.46,
+          "why": "字形匹配次优"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "6:9:15",
+      "current": "已",
+      "kind": "uncertain",
+      "status": "open",
+      "cands": [
+        {
+          "text": "己",
+          "src": "cv",
+          "conf": 0.52,
+          "why": "字形匹配次优"
+        },
+        {
+          "text": "巳",
+          "src": "cv",
+          "conf": 0.31,
+          "why": "字形匹配次优"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "6:8:13",
+      "current": "曰",
+      "kind": "uncertain",
+      "status": "open",
+      "cands": [
+        {
+          "text": "日",
+          "src": "cv",
+          "conf": 0.44,
+          "why": "字形匹配次优"
+        },
+        {
+          "text": "白",
+          "src": "gemini",
+          "note": "对读他本"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "51:6:13",
+      "current": "戌",
+      "kind": "uncertain",
+      "status": "open",
+      "cands": [
+        {
+          "text": "戍",
+          "src": "cv",
+          "conf": 0.4,
+          "why": "字形匹配次优"
+        },
+        {
+          "text": "戊",
+          "src": "cv",
+          "conf": 0.35,
+          "why": "字形匹配次优"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "73:1:11",
+      "current": "才",
+      "kind": "uncertain",
+      "status": "open",
+      "cands": [
+        {
+          "text": "纔",
+          "src": "table",
+          "note": "同书他处作纔"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "5:9:16",
+      "current": "末",
+      "kind": "uncertain",
+      "status": "resolved",
+      "cands": [
+        {
+          "text": "未",
+          "src": "cv",
+          "conf": 0.48,
+          "why": "字形匹配次优"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；对原书影，确为末"
+    },
+    {
+      "cell": "7:3:10",
+      "current": "曰",
+      "kind": "uncertain",
+      "status": "resolved",
+      "cands": [
+        {
+          "text": "日",
+          "src": "cv",
+          "conf": 0.45,
+          "why": "字形匹配次优"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；对原书影，确为曰"
+    },
+    {
+      "cell": "7:4:3",
+      "current": "曰",
+      "kind": "uncertain",
+      "status": "rejected",
+      "cands": [
+        {
+          "text": "日",
+          "src": "cv",
+          "conf": 0.38,
+          "why": "字形匹配次优"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；候选不成立，维持曰"
+    },
+    {
+      "cell": "11:5:16",
+      "current": "已",
+      "kind": "uncertain",
+      "status": "rejected",
+      "cands": [
+        {
+          "text": "己",
+          "src": "cv",
+          "conf": 0.33,
+          "why": "字形匹配次优"
+        }
+      ],
+      "by": "rule",
+      "note": "演示数据，非真实裁决；上下文「已」不可替换"
+    },
+    {
+      "cell": "3:5:12",
+      "current": "內",
+      "kind": "variant",
+      "status": "open",
+      "cands": [
+        {
+          "text": "内",
+          "src": "table"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "3:8:15",
+      "current": "於",
+      "kind": "variant",
+      "status": "open",
+      "cands": [
+        {
+          "text": "于",
+          "src": "table"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "16:3:11",
+      "current": "並",
+      "kind": "variant",
+      "status": "open",
+      "cands": [
+        {
+          "text": "并",
+          "src": "table"
+        }
+      ],
+      "note": "演示数据，非真实裁决"
+    },
+    {
+      "cell": "5:1:11a",
+      "current": "内",
+      "kind": "variant",
+      "status": "resolved",
+      "cands": [
+        {
+          "text": "內",
+          "src": "table"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；本书统一作「内」，不并"
+    },
+    {
+      "cell": "17:4:3",
+      "current": "眞",
+      "kind": "variant",
+      "status": "resolved",
+      "cands": [
+        {
+          "text": "真",
+          "src": "table"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；本书作「眞」，不并"
+    },
+    {
+      "cell": "44:7:14",
+      "current": "跡",
+      "kind": "variant",
+      "status": "rejected",
+      "cands": [
+        {
+          "text": "蹟",
+          "src": "table"
+        }
+      ],
+      "by": "human",
+      "note": "演示数据，非真实裁决；跡、蹟并存，不并"
+    }
+  ]
+}

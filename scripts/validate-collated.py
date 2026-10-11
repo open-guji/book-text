@@ -1,4 +1,4 @@
-# 来源：open-guji-core/overview 的 scripts/validate-collated.py @ 9cd45542（复制进本仓；源头改后人工同步）
+# 来源：open-guji-core/overview 的 scripts/validate-collated.py @ 67c61371（复制进本仓；源头改后人工同步）
 """
 整理本 / 全文 数据自洽性校验（按 manifest 认新结构，#307／#346，2026-10-02 改写）
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 来源：open-guji-core/overview 的 项目进展/古籍文本/scripts/validate_text_format.py @ 9cd45542（复制进本仓；源头改后人工同步）
+# 来源：open-guji-core/overview 的 项目进展/古籍文本/scripts/validate_text_format.py @ 67c61371（复制进本仓；源头改后人工同步）
 # -*- coding: utf-8 -*-
 """
 book-text 文本格式校验器（T5 道，服务
@@ -273,6 +273,11 @@ FR_REQUIRED_FIELDS = [
     "provenance", "provenance_note", "schema_ref", "schema_version", "statement",
     "title", "type", "work_id",
 ]
+# F-MD-07 结构豁免（2026-10-11 T6，Maren 裁，overview#535）：武職選簿 d59f2nfhf8cg 的 20 处标题跳级是该书真实结构，不是笔误——
+#   (a) 50–53、73 册缺类目层：册标题 H1 下直接是全部 H3 条目（json level=3 即条目，无 level=2 类目）；
+#   (b) 56–60、65、74 册等类目 H2 下直接接 H4 次级注释标题（「原簿目錄」「指揮使七員」等）。
+# 「压缩层级」会改成百上千个 section 的 level、还要编类目名，且该书 json 带下游补的 type／work_id，不能按 sync-wuzhi-xuanbu 流程重派，故按结构豁免，不改数据。
+HEADING_JUMP_EXEMPT_WORKS = {"d59f2nfhf8cg"}
 # F-MD-11 排除：<…> 内容含字书／音韵用语（通俗正同聲平去入）的不是组字描述，见调用处注释。
 _ZI_LEXICON_RE = re.compile("[通俗正同聲平去入]")
 # F-CE-06：曾登记补南齊書經籍志（d59f2ofu9i4i）用 paragraphs 代替 content 的存量例外；
@@ -493,7 +498,7 @@ def check(root: str, scan_root: str = None):
                 continue
             lvl = len(m.group(1))
             work_heading_levels[wid].add(lvl)
-            if prev_level is not None and lvl > prev_level + 1:
+            if prev_level is not None and lvl > prev_level + 1 and wid not in HEADING_JUMP_EXEMPT_WORKS:
                 add(r_md07, f, f"{f}: 标题从 {'#'*prev_level} 跳到 {'#'*lvl}", sub=jump_seq)
                 jump_seq += 1
             prev_level = lvl

@@ -2,7 +2,8 @@
 """检查 Book、Work 条目的授权字段：值必须是非空字符串，不得为 null、「未知」「unknown」。
 
 读 Book、Work 下 */*/*/*/manifest.json 的 versions[].license，以及 default/ 或 original/
-版本目录 index.json 里的 source.license（有则查）。逐值统计，有违规退出码 1。
+版本目录 index.json 里的 source.license（有则查）。CC0 1.0 只允许 is_original 为 true 的版本。
+逐值统计，有违规退出码 1。
 用法：python3 scripts/check_license.py [仓根目录]
 """
 import glob
@@ -17,18 +18,24 @@ BAD = {'未知', 'unknown'}
 def check(root):
     counts, bad = Counter(), []
 
-    def look(path, value):
+    def rel(path):
+        return os.path.relpath(path, root)
+
+    def look(path, value, version):
         counts[repr(value)] += 1
         if not isinstance(value, str) or not value.strip() or value.strip().lower() in BAD:
-            bad.append((os.path.relpath(path, root), value))
+            bad.append((rel(path), f'license={value!r}'))
+        elif value == 'CC0 1.0' and not (version or {}).get('is_original'):
+            bad.append((rel(path), f"CC0 1.0 仅限 is_original 版本（key={(version or {}).get('key')}）"))
 
     manifests = sorted(p for top in ('Book', 'Work')
                        for p in glob.glob(os.path.join(root, top, '*', '*', '*', '*', 'manifest.json')))
     for mp in manifests:
         with open(mp, encoding='utf-8') as f:
             manifest = json.load(f)
-        for v in manifest.get('versions', []):
-            look(mp, v.get('license'))
+        versions = manifest.get('versions', [])
+        for v in versions:
+            look(mp, v.get('license'), v)
         for key in ('default', 'original'):
             ip = os.path.join(os.path.dirname(mp), key, 'index.json')
             if not os.path.isfile(ip):
@@ -36,7 +43,7 @@ def check(root):
             with open(ip, encoding='utf-8') as f:
                 src = json.load(f).get('source') or {}
             if 'license' in src:
-                look(ip, src['license'])
+                look(ip, src['license'], next((v for v in versions if v.get('key') == key), None))
     return counts, bad
 
 
@@ -45,8 +52,8 @@ def main(argv):
     counts, bad = check(root)
     for value, n in counts.most_common():
         print(f'{n}\t{value}')
-    for path, value in bad:
-        print(f'违规: {path}: license={value!r}')
+    for path, reason in bad:
+        print(f'违规: {path}: {reason}')
     return 1 if bad else 0
 
 

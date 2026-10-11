@@ -1,8 +1,8 @@
 # `original`：一章有哪些文件（10-06 用户定）
 
-> 条目布局以 guji-format spec/07-book-text-条目布局.md（§2.3、§3.3）为准。
+> 条目布局以 guji-format spec/07-book-text-条目布局.md（§2.3、§3.3）为准；manifest 一侧（kind／is_original／source／license）见 spec 07 §二。
 
-> 只管 `original`（本项目从书影做出来的文本）。格式见 guji-format 规范：01 cord、02 char、03 markdown、04 punct、05 entity。版本号见 [VERSIONING.md](VERSIONING.md)。
+> 只管 `original`（本项目从书影做出来的文本）。格式见 guji-format 规范：01 cord、02 char、03 markdown、04 punct、05 entity、06 norm、07 条目布局、08 decision。版本号见 [VERSIONING.md](VERSIONING.md)。
 
 ## 一、文件和代号
 
@@ -15,7 +15,7 @@
 | **punct** | `NNN.punct.json` | 标点、分段、书名号 | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
-| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | **待设计**，先留白 |
+| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1，正式）；校验 F-OV-05 待落地 |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
 
@@ -37,7 +37,9 @@
 | `punct_file` | `NNN.punct.json` | 否 |
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
-| `decision_file` | `NNN.decision.json` | 否（待设计） |
+| `decision_file` | `NNN.decision.json` | 否（规范见 08；F-OV-05 待落地） |
+
+`chapters[]` 另有 `text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
 
 生成分支上的 `index.json` 另外加 `lines_file`、`rich_file`。前端读哪些文件、读哪个分支，由网站决定。
 
@@ -66,6 +68,6 @@
 - 生成分支只由脚本写，不手改，也不往回并 main。
 - 分支名和生成脚本随第一次落地时定（见 overview 卡）。
 
-## 五、现状（10-06）
+## 五、现状（10-11）
 
-四庫總目 vol02、vol03 还在 `wip/siku` 上，是旧形态：`lines.md` 是真源，`pages.json` 里带字。要先把它们转成 char、cord，并写好生成脚本，才能按本规范并 main。
+四庫總目 vol02、vol03 已并 main，在 `Book/g/z/k/96mid1ogzk/default/` 下，五层齐全（char／cord／punct／entity／norm）；vol03 另有 `003.decision.json`。

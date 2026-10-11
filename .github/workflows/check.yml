@@ -1,0 +1,74 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: checkout guji-format (schemas)
+        uses: actions/checkout@v4
+        with:
+          repository: open-guji/guji-format
+          path: guji-format
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install jsonschema pytest
+
+      - name: manifest / index schema
+        run: |
+          python3 - <<'EOF'
+          import glob, json, os, sys
+          import jsonschema
+          gf = 'guji-format/schemas'
+          M = jsonschema.Draft202012Validator(json.load(open(os.path.join(gf, 'book_text_manifest_v1.schema.json'))))
+          I = jsonschema.Draft202012Validator(json.load(open(os.path.join(gf, 'book_text_index_v1.schema.json'))))
+          mf = sorted(glob.glob('Work/*/*/*/*/manifest.json') + glob.glob('Book/*/*/*/*/manifest.json'))
+          ix = sorted(glob.glob('Work/*/*/*/*/*/index.json') + glob.glob('Book/*/*/*/*/*/index.json'))
+          bad = []
+          for p, v in [(p, M) for p in mf] + [(p, I) for p in ix]:
+              e = next(v.iter_errors(json.load(open(p, encoding='utf-8'))), None)
+              if e:
+                  bad.append((p, e.message[:150]))
+          print(f'manifests {len(mf)}, indexes {len(ix)}, violations {len(bad)}')
+          for p, m in bad[:20]:
+              print(f'违规: {p}: {m}')
+          sys.exit(1 if bad else 0)
+          EOF
+
+      - name: V1 validate-collated（只允许存量 d59f1iqd854w/default/108.md）
+        run: |
+          python3 scripts/validate-collated.py --root . --json > v1.json
+          python3 - <<'EOF'
+          import json, sys
+          d = json.load(open('v1.json', encoding='utf-8'))
+          known = {('Work:d59f1iqd854w/default', '磁盘上有未登记的章文件')}
+          extra = [p for p in d['problems'] if (p['wid'], p['kind']) not in known]
+          print(f"owners {d['n_owners']}, versions {d['n_versions']}, problems {len(d['problems'])}, new {len(extra)}")
+          for p in extra:
+              print(f"新问题: {p}")
+          sys.exit(1 if extra else 0)
+          EOF
+        env:
+          BOOK_TEXT_REPO: ${{ github.workspace }}
+
+      - name: V2 validate_text_format --strict
+        run: python3 scripts/validate_text_format.py . --strict --baseline scripts/format_baseline.json
+
+      - name: V3 check_license
+        run: python3 scripts/check_license.py .
+
+      - name: license unit test
+        run: python3 -m pytest scripts/tests -k license -q

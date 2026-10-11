@@ -15,11 +15,38 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: checkout guji-format (schemas)
+        uses: actions/checkout@v4
+        with:
+          repository: open-guji/guji-format
+          path: guji-format
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - run: pip install pytest
+      - run: pip install jsonschema pytest
+
+      - name: manifest / index schema
+        run: |
+          python3 - <<'EOF'
+          import glob, json, os, sys
+          import jsonschema
+          gf = 'guji-format/schemas'
+          M = jsonschema.Draft202012Validator(json.load(open(os.path.join(gf, 'book_text_manifest_v1.schema.json'))))
+          I = jsonschema.Draft202012Validator(json.load(open(os.path.join(gf, 'book_text_index_v1.schema.json'))))
+          mf = sorted(glob.glob('Work/*/*/*/*/manifest.json') + glob.glob('Book/*/*/*/*/manifest.json'))
+          ix = sorted(glob.glob('Work/*/*/*/*/*/index.json') + glob.glob('Book/*/*/*/*/*/index.json'))
+          bad = []
+          for p, v in [(p, M) for p in mf] + [(p, I) for p in ix]:
+              e = next(v.iter_errors(json.load(open(p, encoding='utf-8'))), None)
+              if e:
+                  bad.append((p, e.message[:150]))
+          print(f'manifests {len(mf)}, indexes {len(ix)}, violations {len(bad)}')
+          for p, m in bad[:20]:
+              print(f'违规: {p}: {m}')
+          sys.exit(1 if bad else 0)
+          EOF
 
       - name: V1 validate-collated（只允许存量 d59f1iqd854w/default/108.md）
         run: |

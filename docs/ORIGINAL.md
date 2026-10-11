@@ -22,7 +22,7 @@
 - **真源**：仓里别的文件算不出来，改动要靠人或模型做。main 只存真源。
 - **生成**：脚本从 main 的真源算出来，不手改；放在单独的生成分支上，main 不存。reflow（无标点的自然段稿）不再单独生成，直接出 rich。
 - **两种坐标**：**cell** 是格位 key `页:列:格[子列]`（如 `3:5:12a`），char、punct、entity、norm 都用它；**box** 是像素框 `[x, y, w, h]`，只在 cord 里。
-- 原来说的 Level 1／2／3、像素坐标层、文本层都不再用：Level 1 → cord（＋待设计的 decision），Level 2 → char，Level 3a → lines。
+- 原来说的 Level 1／2／3、像素坐标层、文本层都不再用：Level 1 → cord（＋decision，规范见 guji-format 08），Level 2 → char，Level 3a → lines。
 - 书影、cv 的中间产物、人裁事件、字形库不在 book-text，留在 IA 和 guji-workspace。
 - 抽检表、运行报告、新实体候选表、模型对照稿这些工作文件只放 `wip/` 分支，不进 main。
 

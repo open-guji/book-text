@@ -19,6 +19,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: open-guji/guji-format
+          # 固定到已核对的 commit，不跟着 main 漂（overview#543，Maren）
+          ref: dcc99c5ac4378596b90252da0008dfeb73c42016
           path: guji-format
 
       - uses: actions/setup-python@v5

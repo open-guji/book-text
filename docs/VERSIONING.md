@@ -10,10 +10,10 @@
 1. **main 受保护，一律走 PR。** 一批活开一个分支（`<道名>-<主题>`，如 `t65-wiki-match`），分支上可以多次提交，整批做完开**一个** PR，审过 **squash merge**。`wip/` 前缀是反复改动中的工作分支（如 `wip/siku-vol02`），用户点头前不并 main。
 2. **谁来合**：日常批次（入库、修正、撤除 50 部以内）文本总管审过就合。以下等用户点头：撤除超过 50 部；改全仓结构或规范；`original` 任何一条线升 **major**。
 3. **开 PR 前**：把 main 合进分支，用 overview `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，结果贴进 PR 描述：
-   - `validate_text_format.py <本仓> --strict --baseline <overview>/项目进展/古籍文本/scripts/format_baseline.json` 退出码 0；
-   - `validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
+   - `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0（脚本与基线是 overview 的副本，来源 commit 以脚本头为准；overview 改规则后要同步）；
+   - `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
    - 重建索引后没有未提交的 diff。
-4. 不设 CI 必过检查，靠审 PR 把关。
+4. PR 和推到 main 都跑 `.github/workflows/check.yml`（V1 validate-collated、V2 validate_text_format `--strict --baseline`、V3 check_license），仍靠审 PR 把关。
 
 ## 二、跟踪范围
 
@@ -50,7 +50,7 @@
 ```
 
 - `index.json` 的 `text_version`／`punct_version`／`entity_version` 都是镜像，必须和 char、punct、entity 各自顶层的 `version` 一致；网站从 `index.json` 读三线版本。
-- **过渡**：10-06 以前文本线跟踪的是 `lines.md`，文本线验收记录放在 `index.json` 的 `text_review`。`bump_original.py` 和校验器 F-OV-* 改读 char.json 之前，仍按旧口径跑。
+- **过渡已完成**（T68 #417 起）：文本线跟踪 `NNN.char.json`，验收记录放 char 顶层 `review`，`index.json` 的 `text_review` 不再用。`bump_original.py` 和校验器 F-OV-* 已读 char.json。
 - 验收记录（`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
 - 每次升版本，在 `<版本目录>/CHANGES.md`（`<版本目录>` 同上：manifest 里 `is_original` 为 true 的版本目录，常为 `default/`，旧条目仍可能是 `original/`） 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
 
@@ -104,4 +104,6 @@
   - **F-OV-01** 三线版本号格式、≥1.0.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本；
   - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
   - **F-OV-03** major ≥2 必须带验收记录。
+  - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填）。
+  - **F-OV-05** decision 相关规则，待落地。
 - 格位 key 的定义见 guji-format 02（char）§二：双行夹注 a 是右列、先读，b 是左列；超框抬头负格位、无第 0 格；阙文写 □ 并带 `lacuna: true`。

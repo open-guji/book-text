@@ -22,3 +22,4 @@
 | 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.4.1→1.5.0 | 对齐 entity v0.2：同名待消歧 new_candidate→ambiguous＋candidates（127 条，11 条候选 id 查不到保持 new_candidate）；补 2 个孤立《》的 work 实体；CHANGES 补 PR 号 | #33 |
 | 2026-10-09 | 96mid1ogzk/002 | 实体 | 1.5.0→1.5.1 | 改指向合并后的 id（鄭元→鄭玄 hixhd2f8wajv 10 条、趙鼎 hixhd2h9bfda 1 条，book-index#48）；人名误标地名：蘇濬→people 并 matched、吳玉墀→people | #34 |
 | 2026-10-09 | 96mid1ogzk/003 | 实体 | 1.5.0→1.5.1 | 改指向合并后的 id（鄭元→鄭玄 hixhd2f8wajv 10 条、趙鼎 hixhd2h9bfda 1 条，book-index#48）；人名误标地名：蘇濬→people 并 matched、吳玉墀→people | #34 |
+| 2026-10-11 | 96mid1ogzk/002 | 实体 | 1.5.1→1.5.2 | #543 机械单A（易類一试点块）：删卦名／爻位／X彖 X大象 X象傳 引文定位误标 25、總敘十类名误标 10；「唐」误标朝代的 4 处（唐會要、唐書、舊唐書經籍志、新唐書藝文志）改为 work new_candidate |  |

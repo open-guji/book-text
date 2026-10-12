@@ -72,5 +72,5 @@ jobs:
       - name: V3 check_license
         run: python3 scripts/check_license.py .
 
-      - name: license unit test
-        run: python3 -m pytest scripts/tests -k license -q
+      - name: unit tests (scripts/tests)
+        run: python3 -m pytest scripts/tests -q

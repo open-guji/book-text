@@ -263,6 +263,58 @@ FT_SIDECAR_FILES = {"index.json", "pages.tsv"}
 # original（本项目从书影自做的文本）一册一组（book-text docs/ORIGINAL.md，10-06 用户定）：
 # 真源 NNN.char／cord／punct／entity／norm／decision.json，生成分支上另有 lines.md、rich.md；
 # 以及版本日志 CHANGES.md。
+DECISION_SCHEMA_URL = "https://open-guji.org/schema/decision/v0.1.json"
+
+
+def decision_problems(dd, char):
+    """F-OV-05：decision.json 对照同章 char，返回 [(说明, 子类)]。"""
+    out = []
+    if dd.get("$schema") != DECISION_SCHEMA_URL:
+        out.append((f"$schema={dd.get('$schema')!r}，应为 {DECISION_SCHEMA_URL!r}", "schema"))
+    if dd.get("book_id") != char.get("book_id"):
+        out.append((f"book_id={dd.get('book_id')!r} 与 char 的 {char.get('book_id')!r} 不一致", "book_id"))
+    if dd.get("volume") != char.get("volume") or isinstance(dd.get("volume"), bool):
+        out.append((f"volume={dd.get('volume')!r} 与 char 的 {char.get('volume')!r} 不一致", "volume"))
+    items = dd.get("items")
+    if not isinstance(items, list):
+        return out + [("items 不是数组", "items")]
+    cells = dict(OV.char_slots(char))
+    seen = set()
+    for i, it in enumerate(items):
+        if not isinstance(it, dict):
+            out.append((f"items[{i}] 不是对象", f"{i}:type"))
+            continue
+        cell, cur = it.get("cell"), it.get("current")
+        tag = f"items[{i}]({cell})"
+        if cell not in cells:
+            out.append((f"{tag} 格位在 char 里不存在", f"{i}:cell"))
+        elif cur != cells[cell]:
+            out.append((f"{tag} current={cur!r} 与 char 该格的 {cells[cell]!r} 不一致", f"{i}:current"))
+        if cell in seen:
+            out.append((f"{tag} 同一格位出现多条", f"{i}:dup"))
+        seen.add(cell)
+        if it.get("kind") not in ("uncertain", "variant"):
+            out.append((f"{tag} kind={it.get('kind')!r} 不合法", f"{i}:kind"))
+        st = it.get("status")
+        if st not in ("open", "resolved", "rejected"):
+            out.append((f"{tag} status={st!r} 不合法", f"{i}:status"))
+        cands = it.get("cands")
+        if not isinstance(cands, list) or not cands or len(cands) > 5:
+            out.append((f"{tag} cands 须为 1–5 项的数组", f"{i}:cands"))
+            cands = []
+        for j, c in enumerate(cands):
+            if not isinstance(c, dict) or not c.get("text") or not c.get("src"):
+                out.append((f"{tag} cands[{j}] 缺 text／src", f"{i}:cand{j}"))
+            elif c["text"] == cur:
+                out.append((f"{tag} cands[{j}].text 等于 current", f"{i}:cand{j}:same"))
+        if st == "resolved" and any(isinstance(c, dict) and c.get("text") == cur for c in cands):
+            out.append((f"{tag} 已裁（resolved）但 current 仍在 cands 里", f"{i}:resolved"))
+        if st in ("resolved", "rejected") and it.get("by") not in ("human", "rule"):
+            out.append((f"{tag} {st} 须写 by（human／rule），现为 {it.get('by')!r}", f"{i}:by"))
+    return out
+
+
+
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md"}
 ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
@@ -564,6 +616,11 @@ def check(root: str, scan_root: str = None):
     r_ov02 = rule("F-OV-02", "HARD")
     r_ov03 = rule("F-OV-03", "HARD")
     r_ov04 = rule("F-OV-04", "HARD")
+    # F-OV-05 decision 候选字层（guji-format 08 §七）：$schema、book_id／volume 与 char 一致；
+    #         每条 cell 在 char 里存在且只出现一次，current 等于 char 该格的字；kind／status 取值合法；
+    #         cands 非空（≤5）、每项有 text／src、text 不等于 current；resolved 时 current 不在 cands 里；
+    #         resolved／rejected 必带 by（human／rule）。
+    r_ov05 = rule("F-OV-05", "HARD")
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -611,6 +668,16 @@ def check(root: str, scan_root: str = None):
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")
+            dec_name = ch.get("decision_file")
+            if dec_name and os.path.isfile(os.path.join(od, dec_name)):
+                r_ov05["n_scanned"] += 1
+                dpath = os.path.join(od, dec_name)
+                dd, derr = jload(dpath)
+                if derr or not isinstance(dd, dict):
+                    add(r_ov05, dpath, f"{dpath}: JSON 解析失败：{derr}", sub="parse")
+                else:
+                    for msg, sub in decision_problems(dd, char):
+                        add(r_ov05, dpath, f"{dpath}: {msg}", sub=sub)
             for line in ("punct", "entity"):
                 cf = OV.companion_path(od, stem, line)
                 if not os.path.isfile(cf):

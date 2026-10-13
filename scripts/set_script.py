@@ -54,23 +54,38 @@ def band(ratio):
     return 'hant'
 
 
+HANS_CHAPTER_SHARE = 0.9
+
+
 def classify_version(vdir):
-    """返回 (band, T, S)；没有可计字的返回 ('empty', 0, 0)。"""
+    """返回 (band, T, S)；没有可计字的返回 ('empty', 0, 0)。
+
+    整版 band 为 hans 时，若 hans 章占比 < 0.9（有字的章中，单章 band 为 hans 的比例），改判 mixed。
+    """
     T = S = 0
+    chapters = []
     for f in sorted(os.listdir(vdir)):
         if not VERSION_FILE.match(f):
             continue
         with open(os.path.join(vdir, f), encoding='utf-8') as fh:
             text = COMMENT.sub('', fh.read())
+        ct = cs = 0
         for c, n in collections.Counter(c for c in text if cjk(c)).items():
             k = kind(c)
             if k == 'T':
-                T += n
+                ct += n
             elif k == 'S':
-                S += n
+                cs += n
+        T += ct
+        S += cs
+        if ct + cs:
+            chapters.append(band(cs / (ct + cs)))
     if T + S == 0:
         return 'empty', T, S
-    return band(S / (T + S)), T, S
+    b = band(S / (T + S))
+    if b == 'hans' and chapters.count('hans') / len(chapters) < HANS_CHAPTER_SHARE:
+        b = 'mixed'
+    return b, T, S
 
 
 def iter_manifests(root):

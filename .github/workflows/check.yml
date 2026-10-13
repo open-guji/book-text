@@ -15,12 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 读 guji-format 固定版本
+        id: pin
+        # 固定到已核对的 commit，不跟着 main 漂（overview#543，Maren）；改 pin 只改 .github/guji-format.pin 一行
+        run: echo "ref=$(tr -d '[:space:]' < .github/guji-format.pin)" >> "$GITHUB_OUTPUT"
+
       - name: checkout guji-format (schemas)
         uses: actions/checkout@v4
         with:
           repository: open-guji/guji-format
-          # 固定到已核对的 commit，不跟着 main 漂（overview#543，Maren）
-          ref: dcc99c5ac4378596b90252da0008dfeb73c42016
+          ref: ${{ steps.pin.outputs.ref }}
           path: guji-format
 
       - uses: actions/setup-python@v5
@@ -80,3 +84,35 @@ jobs:
 
       - name: unit tests (scripts/tests)
         run: python3 -m pytest scripts/tests -q
+
+  pin-drift:
+    # guji-format main 的 schemas/ 与 pin 处不同＝schema 已变而本仓没跟上：此作业红。
+    # 不阻塞合并（continue-on-error），但 PR 页上能看到；处理办法见 docs/GUJI-FORMAT-PIN.md
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: checkout guji-format（含历史）
+        uses: actions/checkout@v4
+        with:
+          repository: open-guji/guji-format
+          ref: main
+          fetch-depth: 0
+          path: guji-format
+
+      - name: schemas/ 树哈希：pin vs main
+        run: |
+          pin=$(tr -d '[:space:]' < .github/guji-format.pin)
+          main=$(git -C guji-format rev-parse HEAD)
+          a=$(git -C guji-format rev-parse "$pin:schemas")
+          b=$(git -C guji-format rev-parse "$main:schemas")
+          echo "pin  $pin  schemas=$a"
+          echo "main $main schemas=$b"
+          if [ "$a" != "$b" ]; then
+            echo "::error::guji-format main 的 schemas/ 与 pin 不同：请按 docs/GUJI-FORMAT-PIN.md 开 bump pin 的 PR"
+            git -C guji-format diff --stat "$pin" "$main" -- schemas | tail -10
+            exit 1
+          fi
+          echo "pin 与 main 的 schemas/ 一致"

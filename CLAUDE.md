@@ -30,7 +30,7 @@
 
 ## 目录（09-30 起新结构）
 
-条目布局以 guji-format spec/07 为准（旧稿 overview `阅读文本.md` #307 仅作背景）。
+条目布局以 guji-format spec/07 为准（旧稿 overview `项目进展/古籍索引网站/设计/阅读文本.md`（#307） 仅作背景）。
 
 - 每个条目（Work 或 Book）一个目录 `<Work|Book>/<c1>/<c2>/<c3>/<id>/`，其下：
   - `manifest.json`：本条目全部版本的清单（key、kind、label、source、source_name、source_url、license、quality、chapters_total）。`kind` 取 `transcription`／`collated`／`self_collated`，另有 `edition_label`、`is_original`、`note`、`visibility`，完整字段见 spec 07 §2.2。`versions[0]` 永远是 `default`。

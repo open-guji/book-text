@@ -2,13 +2,15 @@
 
 古籍全文数据仓，由文本总管管理。数据的格式规范、判准、脚本和任务卡都在 `open-guji-core/overview`：
 - 任务：看板 issue，标签 `块:文本`；
-- 规划：`项目进展/总调度/规划/文本.md`；
+- 规划：`team/文本/目标.md`（长中短期目标）与 `team/文本/队列.md`（就绪队列）；
 - 格式：`项目进展/古籍文本/`；
 - 脚本：`scripts/fetch-book-fulltext/`、`scripts/book-text/`。
 
 本仓的会话如需读 overview，用只读方式 `add_repo`（access: read）。
 
 仓根 `scripts/`、`.claude-inbox/` 不属数据，不要当数据目录处理。
+
+校验脚本（`scripts/validate_text_format.py`、`scripts/validate-collated.py`、`scripts/original_version.py`）在本仓与 overview `项目进展/古籍文本/scripts/` 各有一份，**改动须两份同改、字节一致**（仅文件头注释行可不同）；以本仓 CI（`check.yml`）所跑的为准。
 
 ## 提交与推送（10-05 起：main 受保护，一律走 PR）
 

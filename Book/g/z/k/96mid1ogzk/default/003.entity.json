@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,12 +11,12 @@
   },
   "stats": {
     "total_entities": 720,
-    "matched": 329,
+    "matched": 331,
     "ambiguous": 23,
-    "new_candidates": 368,
+    "new_candidates": 366,
     "works": 443,
-    "people": 163,
-    "places": 44,
+    "people": 162,
+    "places": 45,
     "offices": 41,
     "dynasties": 25,
     "reigns": 4
@@ -6912,7 +6912,7 @@
     },
     {
       "id": "e00321",
-      "type": "people",
+      "type": "place",
       "text": "天台",
       "anchor": {
         "start": "51:3:10",
@@ -6923,8 +6923,11 @@
         "end_offset": 7958
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天台"
+        "status": "matched",
+        "entity_id": "hixi5whkr37k",
+        "canonical_name": "天台縣",
+        "href": "book-index://Entity/hixi5whkr37k",
+        "note": "#543退回：由people改place，按天台縣简称核对"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6999,8 +7002,11 @@
         "end_offset": 8152
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "㕘同契"
+        "status": "matched",
+        "entity_id": "d59f23jy2h34",
+        "canonical_name": "周易參同契",
+        "href": "book-index://Work/d59f23jy2h34",
+        "note": "#543退回：㕘同契=參同契，按魏伯陽撰核对"
       },
       "source": "glm:glm-4.5-flash"
     },

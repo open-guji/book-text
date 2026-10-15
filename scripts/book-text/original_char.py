@@ -18,7 +18,7 @@ import os
 import re
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "项目进展", "古籍文本", "scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from original_version import dump_compact, dumps_compact  # noqa: E402,F401  写盘一格一行
 
 CHAR_SCHEMA = "https://open-guji.org/schema/char/v0.1.json"

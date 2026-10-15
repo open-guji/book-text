@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """给 book-text 某册 `original` 的一条线升版本号（T67 #400）。
 
-规范：项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md（v2）。
+规范：docs/design/2026-10-文本版本号与仓库流程.md（v2）。
 只管 `original`（本项目从书影自做的文本）；维基、Kanripo、识典的转录不跟踪版本。
 
 三条线各自 MAJOR.MINOR.PATCH（文件体系见 book-text docs/ORIGINAL.md）：
@@ -31,12 +31,12 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "..", "项目进展", "古籍文本", "scripts"))
+sys.path.insert(0, os.path.join(HERE, ".."))
 import original_version as OV  # noqa: E402
 
 CHANGES_HEADER = (
     "# original 版本日志\n\n"
-    "规范见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。\n\n"
+    "规范见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`。\n\n"
     "| 日期 | 册 | 线 | 旧→新 | 说明 | PR |\n"
     "|---|---|---|---|---|---|\n"
 )

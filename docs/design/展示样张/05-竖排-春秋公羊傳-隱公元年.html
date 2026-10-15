@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>《春秋公羊傳》隱公元年（竖排） · 竖排样张</title>
+<style>
+/*!
+ * guji.css — 古籍 Markdown 基础样式（横排）
+ * @open-guji/markdown-web · Apache-2.0
+ *
+ * 渲染结果本身只是一段 HTML 片段，请把它放进一个带 .guji-doc 的容器里：
+ *
+ *   <article class="guji-doc">…渲染结果…</article>
+ *
+ * 所有可调项都是自定义属性，覆盖 .guji-doc 上的变量即可换主题。
+ */
+
+.guji-doc {
+  /* 字体与行距 */
+  --guji-font: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong",
+    "SimSun", "Nimbus Roman", serif;
+  --guji-line-height: 1.95;
+
+  /* 抬头：一格的尺寸，以及为抬头预留的最大格数 */
+  --guji-raise-unit: 1em;
+  --guji-max-raise: 2;
+
+  /* 夹注 */
+  --guji-jz-size: 0.78em;
+  --guji-jz-color: #55524c;
+
+  /* 校勘三式：补（绿）、删（红加删除线）、改（灰） */
+  --guji-bz-color: #1d7a4c;
+  --guji-sz-color: #b3261e;
+  --guji-gz-color: #6f6f6f;
+
+  /* 专名号 / 书名号 */
+  --guji-line-color: currentColor;
+  --guji-line-thickness: 0.06em;
+  --guji-line-offset: 0.18em;
+
+  font-family: var(--guji-font);
+  line-height: var(--guji-line-height);
+  text-align: justify;
+
+  /* 抬头是向行首方向外移的，容器要先让出这些空间 */
+  padding-inline-start: calc(var(--guji-max-raise) * var(--guji-raise-unit));
+}
+
+/* ------------------------------------------------------------------ 夹注 */
+
+.guji-jz {
+  font-size: var(--guji-jz-size);
+  color: var(--guji-jz-color);
+  line-height: 1.4;
+}
+
+/* 可选：加圆括号，便于无样式降级与纯文本复制之外的场合区分正文与注 */
+.guji-doc--jz-parens .guji-jz::before {
+  content: "（";
+}
+.guji-doc--jz-parens .guji-jz::after {
+  content: "）";
+}
+
+/* ------------------------------------------- 校勘：补字 / 删字 / 改字 */
+
+/*
+ * 三种记号必须一眼可分（见 spec/syntax.md §5）：
+ *   ((甲))   补字   绿          底本无、定本有，凭空新增
+ *   {{甲}}   删字   红 + 删除线  底本有、定本无
+ *   [甲]{{乙}} 改字  灰 + 红删除线  以甲改乙，一次操作的两面
+ *
+ * <ins> 在浏览器里默认带下划线，这里必须显式清掉，
+ * 否则补字、改字会与专名号的线混淆。
+ */
+
+.guji-bz,
+.guji-gz {
+  text-decoration: none;
+}
+
+.guji-bz {
+  color: var(--guji-bz-color);
+  text-decoration: var(--guji-bz-decoration, none);
+  text-underline-offset: var(--guji-line-offset);
+}
+
+.guji-sz {
+  color: var(--guji-sz-color);
+  text-decoration-line: line-through;
+  text-decoration-color: currentColor;
+}
+
+.guji-gz {
+  color: var(--guji-gz-color);
+}
+
+/*
+ * 可选：改用点校本的括号体例，〔補〕〔改〕（刪）。
+ * 只靠颜色区分对色觉障碍读者不友好，需要无障碍时打开这一条。
+ */
+.guji-doc--jiaokan-marks .guji-bz::before,
+.guji-doc--jiaokan-marks .guji-gz::before {
+  content: "〔";
+}
+.guji-doc--jiaokan-marks .guji-bz::after,
+.guji-doc--jiaokan-marks .guji-gz::after {
+  content: "〕";
+}
+.guji-doc--jiaokan-marks .guji-bz {
+  text-decoration: none;
+}
+.guji-doc--jiaokan-marks .guji-sz {
+  text-decoration: none;
+}
+.guji-doc--jiaokan-marks .guji-sz::before {
+  content: "（";
+}
+.guji-doc--jiaokan-marks .guji-sz::after {
+  content: "）";
+}
+
+/* ------------------------------------------------------- 抬头 / 空格 */
+
+/*
+ * 抬头是一整行的事，所以行盒必须是块级的；
+ * data-guji-n 只在这里翻译成数值，其余规则统一用 --guji-n。
+ */
+.guji-tt {
+  display: block;
+  margin-inline-start: calc(var(--guji-n, 1) * var(--guji-raise-unit) * -1);
+}
+
+.guji-tt[data-guji-n="1"] { --guji-n: 1; }
+.guji-tt[data-guji-n="2"] { --guji-n: 2; }
+.guji-tt[data-guji-n="3"] { --guji-n: 3; }
+.guji-tt[data-guji-n="4"] { --guji-n: 4; }
+.guji-tt[data-guji-n="5"] { --guji-n: 5; }
+.guji-tt[data-guji-n="6"] { --guji-n: 6; }
+.guji-tt[data-guji-n="7"] { --guji-n: 7; }
+.guji-tt[data-guji-n="8"] { --guji-n: 8; }
+.guji-tt[data-guji-n="9"] { --guji-n: 9; }
+
+/* 容器形态：多行同时抬头。抬头是逐行的事，所以块内保留源文的换行 */
+.guji-tt-block > :first-child { margin-block-start: 0; }
+.guji-tt-block > :last-child { margin-block-end: 0; }
+.guji-tt-block p { white-space: pre-line; }
+
+/*
+ * 空格里放的是真的表意空格（U+3000），复制粘贴与纯文本提取都能保留，
+ * 所以这里只要保证它不被折叠掉。
+ */
+.guji-kg {
+  white-space: pre;
+}
+
+/* -------------------------------------------------- 专名号 / 书名号 */
+
+.guji-zm {
+  text-decoration-line: underline;
+  text-decoration-color: var(--guji-line-color);
+  text-decoration-thickness: var(--guji-line-thickness);
+  text-underline-offset: var(--guji-line-offset);
+}
+
+.guji-sm {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--guji-line-color);
+  text-decoration-thickness: var(--guji-line-thickness);
+  text-underline-offset: var(--guji-line-offset);
+}
+
+/* 《》本身不参与画线，只是可选的可见标点 */
+.guji-sm-mark {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------- 其他 */
+
+.guji-unknown {
+  border-block-end: 1px dashed rgba(128, 128, 128, 0.6);
+}
+
+@media print {
+  .guji-doc {
+    orphans: 2;
+    widows: 2;
+  }
+}
+
+/*!
+ * guji-vertical.css — 竖排（右起直行）主题
+ * 依赖 guji.css，需在其后引入。
+ *
+ *   <article class="guji-doc guji-vertical">…</article>
+ *
+ * 重要：竖排下"一行有多长"由容器的**高度**决定——vertical-rl 的行内轴是竖直的，
+ * 所以对这个元素来说 height 才是 inline-size，block-size 反而是宽度。
+ * 本文件刻意不设定尺寸，请在宿主页面给容器一个确定的高度，用物理的 height 最不容易搞混：
+ *
+ *   .reader        { height: 30rem; overflow-x: auto; }
+ *   .guji-vertical { height: 100%; }
+ *
+ * 没有确定高度时，一列会无限长，整篇挤成一条。
+ */
+
+.guji-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  --guji-line-offset: 0.22em;
+}
+
+/* 竖排的专名线、书名线画在字的左侧 */
+.guji-vertical .guji-zm,
+.guji-vertical .guji-sm {
+  text-underline-position: left;
+}
+
+/* 竖排通常以波浪线代替《》 */
+.guji-vertical .guji-sm-mark {
+  display: none;
+}
+
+/* 竖排下夹注仍是小字，跟随正文流 */
+.guji-vertical .guji-jz {
+  font-size: 0.62em;
+  line-height: 1.25;
+}
+
+/*
+ * 双行夹注（opt-in）：把注文塞进与正文等宽的两个短列。
+ * 这是纯 CSS 能做到的最接近效果；注文超过 --guji-jz-rows 行会溢出，
+ * 需要精确断行请用 pdf 包的排版后端。
+ *
+ *   <article class="guji-doc guji-vertical guji-doc--jz-double">
+ */
+.guji-doc--jz-double.guji-vertical .guji-jz {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  font-size: 0.5em;
+  line-height: 1.05;
+  column-count: 2;
+  column-fill: auto;
+  column-gap: 0;
+  /* 行内轴是竖直的，所以"每列多长"用 inline-size 表达 */
+  inline-size: calc(var(--guji-jz-rows, 12) * 1em);
+  vertical-align: top;
+}
+
+/* 竖排下段落之间留一列的空隙更接近雕版 */
+.guji-vertical > * + * {
+  margin-block-start: 0.6em;
+}
+
+body{ font-family:"Noto Serif CJK SC","Songti SC",serif; background:#fdfaf4; margin:0; padding:20px 28px 50px; }
+h1{ font-size:19px; margin:0 0 4px; }
+.src{ color:#888; font-size:12px; margin-bottom:16px; }
+.reader{ height:34rem; overflow-x:auto; border:1px solid #ddd6c8; padding:12px 20px; background:#fff; }
+.guji-vertical{ height:100%; font-size:19px; line-height:2.05; }
+note{ display:block; font-size:12px; color:#999; margin-top:14px; }
+
+</style>
+</head>
+<body>
+<h1>《春秋公羊傳》隱公元年（竖排）</h1>
+<div class="src">来源：book-text 001.md 隱公元年段　·　用 @open-guji/markdown-web 的 gujiToHtml 直接渲染，guji-vertical.css 未改动</div>
+<div class="reader">
+  <article class="guji-doc guji-vertical guji-doc--jz-double">
+  <p>元年春，王正月。<span class="guji-jz">元年者何？君之始年也。春者何？歲之始也。王者孰謂？謂文王也。曷為先言王而後言正月？王正月也。何言乎王正月？大一統也。公何以不言即位？成公意也。何成乎公之意？公將平國而反之桓。曷為反之桓？桓幼而貴，隱長而卑，其為尊卑也微，國人莫知。隱長又賢，諸大夫扳隱而立之。隱於是焉而辭立，則未知桓之將必得立也。且如桓立，則恐諸大夫之不能相幼君也，故凡隱之立為桓立也。隱長又賢，何以不宜立？立適以長不以賢，立子以貴不以長。桓何以貴？母貴也。母貴則子何以貴？子以母貴，母以子貴。</span></p>
+<p>三月，公及邾婁儀父盟于眛。<span class="guji-jz">及者何？與也。會、及、暨，皆與也。曷為或言會，或言及，或言暨？會猶最也；及猶汲汲也；暨猶暨暨也。及，我欲之；暨，不得已也。儀父者何？邾婁之君也。何以名？字也。曷為稱字？褒之也。曷為褒之？為其與公盟也。與公盟者眾矣，曷為獨褒乎此？因其可褒而褒之。此其為可褒奈何？漸進也。眛者何？地期也。</span></p>
+<p>夏，五月，鄭伯克段于鄢。<span class="guji-jz">克之者何？殺之也。殺之則曷為謂之克？大鄭伯之惡也。曷為大鄭伯之惡？母欲立之，己殺之，如勿與而已矣。段者何？鄭伯之弟也。何以不稱弟？當國也。其地何？當國也。齊人殺無知何以不地？在內也。在內雖當國不地也。不當國雖在外亦不地也。</span></p>
+<p>秋，七月，天王使宰咺來歸惠公、仲子之赗。<span class="guji-jz">宰者何？官也。咺者何？名也。曷為以官氏？宰士也。惠公者何？隱之考也。仲子者何？桓之母也。何以不稱夫人？桓未君也。赗者何？喪事有赗。赗者蓋以馬，以乘馬束帛。車馬曰赗，貨財曰賻，衣被曰襚。桓未君則諸侯曷為來赗之？隱為桓立，故以桓母之喪告于諸侯。然則何言爾？成公意也。其言來何？不及事也。其言「惠公、仲子」何？兼之，兼之，非禮也。何以不言「及仲子」？仲子微也。</span></p>
+<p>九月，及宋人盟于宿。<span class="guji-jz">孰及之？內之微者也。</span></p>
+<p>冬，十有二月，祭伯來。<span class="guji-jz">祭伯者何？天子之大夫也。何以不稱使？奔也。奔則曷為不言奔？王者無外，言奔則有外之辭也。</span></p>
+<p>公子益師卒。<span class="guji-jz">何以不日？遠也。所見異辭，所聞異辭，所傳聞異辭。</span></p>
+  </article>
+</div>
+<note>横向滚动条对应"翻页"；夹注按双行小字排入与正文等宽的两栏（CSS column，纯样式层，不改数据）。</note>
+</body>
+</html>

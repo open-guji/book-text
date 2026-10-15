@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<title>T19 表格记法方案 · 样张索引</title>
+<style>
+body { font-family: "Noto Serif CJK TC", "Songti TC", serif; margin: 2em; background: #faf7f0; color: #2a2015; max-width: 900px; }
+h1 { font-size: 1.3em; }
+table { border-collapse: collapse; width: 100%; margin-top: 1em; }
+th, td { border: 1px solid #c9b998; padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: #eee0c4; }
+a { color: #7a3b1e; }
+code { background: #f0e6d0; padding: 1px 4px; }
+</style></head>
+<body>
+<h1>T19 · 表格正式记法方案 · 6 个转换样例</h1>
+<p>全部由 <code>scripts/table_convert.py demo</code> 联网重抓维基文库原始 wikitext/HTML 现场生成，
+未改动 book-text／guji-markdown／kaiyuanguji-web 任何数据。每行给「推荐记法 .md」与「浏览器预览 .html」两个链接。</p>
+<table>
+<tr><th>#</th><th>章</th><th>覆盖的形态</th><th>记法</th><th>预览</th></tr>
+<tr><td>1</td><td>宋史/卷210 宰輔年表</td><td>纯矩阵；现有管线丢空单元格的典型样本（源文显式 <code>||   ||</code> 三处空格被吞）</td>
+  <td><a href="01-宋史卷210-宰輔年表.md">.md</a></td><td><a href="01-宋史卷210-宰輔年表.html">.html</a></td></tr>
+<tr><td>2</td><td>漢書/卷013 異姓諸侯王表</td><td>两层表头＋真实 colspan（如「楚」跨 4 列）＋大量夹注（<code>{{*|…}}</code> 模板）</td>
+  <td><a href="02-漢書卷013-異姓諸侯王表.md">.md</a></td><td><a href="02-漢書卷013-異姓諸侯王表.html">.html</a></td></tr>
+<tr><td>3</td><td>新唐書/卷073上 宰相世系表</td><td>稀疏矩阵：12 列固定，几乎全用全角空格「　」占位，无 colspan/rowspan（14 个子表，一姓一表）</td>
+  <td><a href="03-新唐書卷073上-宰相世系表.md">.md</a></td><td><a href="03-新唐書卷073上-宰相世系表.html">.html</a></td></tr>
+<tr><td>4</td><td>元史/卷096 食貨志官俸表</td><td>小表＋前导空格错位：3 列，首格为空时现有管线整行错位</td>
+  <td><a href="04-元史卷096-食貨志官俸表.md">.md</a></td><td><a href="04-元史卷096-食貨志官俸表.html">.html</a></td></tr>
+<tr><td>5</td><td>遼史/卷66 皇族表</td><td>真实 rowspan＋colspan 密集出现（全量扫描 24/129 章命中真合并格之一），验证 <code>^</code>／<code>{n}</code> 续格标记</td>
+  <td><a href="05-遼史卷066-皇族表.md">.md</a></td><td><a href="05-遼史卷066-皇族表.html">.html</a></td></tr>
+<tr><td>6</td><td>遼史/卷42 曆象志損益表</td><td>裸 HTML <code>&lt;table&gt;</code> 写法（<code>&lt;th&gt;</code>/<code>&lt;td&gt;</code>/<code>&lt;p&gt;</code> 规范嵌套），与前 5 例的 wikitext <code>{|...|}</code> 对照</td>
+  <td><a href="06-遼史卷042-曆象志損益表.md">.md</a></td><td><a href="06-遼史卷042-曆象志損益表.html">.html</a></td></tr>
+</table>
+<h1 style="margin-top:2em;">T22 · 宋史 32 章试点 · 3 章真实入库结果</h1>
+<p>与上面 6 个「demo 命令现场生成」样例不同，下面 3 页是<b>直接读取已推送 book-text 仓的
+真实 <code>.md</code> 章节文件</b>现场渲染（章内散文原样保留，`:::table` 块转真
+<code>&lt;table&gt;</code> 展示），给网站总管当 <code>&lt;GujiTable&gt;</code> 组件的
+渲染参照——不是另造的孤立表格片段，是整章上下文里的真实结果。</p>
+<table>
+<tr><th>#</th><th>章</th><th>看点</th><th>预览</th></tr>
+<tr><td>1</td><td>宋史/卷210 宰輔年表</td><td>最常见形态：纯矩阵＋源文显式空格，34 表里的多数</td>
+  <td><a href="T22-01-宋史卷210-宰輔年表-真实入库.html">.html</a></td></tr>
+<tr><td>2</td><td>宋史/卷215 宗室世系一</td><td>一章三个 <code>:::table</code> 块（分存 3 个维基子页）；
+  第一块带表说明「燕王房」（wikitext <code>|+</code> 说明文字，不属于任何一行，T22 改成渲染在表前一行，不再静默丢字）</td>
+  <td><a href="T22-02-宋史卷215-宗室世系一-真实入库.html">.html</a></td></tr>
+<tr><td>3</td><td>宋史/卷234 宗室世系</td><td>13 列世系树状表；第 803／809 两行源 wikitext 本身各漏一个 <code>|</code>
+  （非清洗管线弄丢），靠"同代固定一列"规律核实缺格位置后定点补正，见 done 单细节</td>
+  <td><a href="T22-03-宋史卷234-宗室世系-真实入库.html">.html</a></td></tr>
+</table>
+<p style="margin-top:2em;color:#86745a;font-size:.9em;">方案全文见
+<a href="../2026-09-表格记法方案.md">../2026-09-表格记法方案.md</a>；T22 任务书见
+<a href="../../../总调度/古籍索引三块/任务书/T22-宋史表格转table试点.md">任务书/T22-宋史表格转table试点.md</a>。
+宋史 32 章实测：0 处真实 colspan/rowspan（与 T19 统计一致，合并格语法已在 6 个 demo 样例里验证过，
+这批真实数据本身用不上）。</p>
+</body></html>

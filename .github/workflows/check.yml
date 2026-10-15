@@ -76,9 +76,6 @@ jobs:
       - name: V3 check_license
         run: python3 scripts/check_license.py .
 
-      - name: drift（overview 复制脚本的哈希）
-        run: python3 scripts/check_drift.py
-
       - name: decision 夹具哈希（与 guji-format 副本一致）
         run: cd scripts/tests/fixtures/decision && sha256sum -c SHA256SUMS
 

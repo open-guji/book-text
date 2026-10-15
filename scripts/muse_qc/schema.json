@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chunk_id", "verdict", "issues"],
+  "properties": {
+    "chunk_id": { "type": "string" },
+    "verdict": { "type": "string", "enum": ["ok", "suspect"] },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "quote", "note"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["template", "wikilink", "html", "garbled", "non_text", "table", "other"]
+          },
+          "quote": { "type": "string", "maxLength": 40 },
+          "note": { "type": "string", "maxLength": 60 }
+        }
+      }
+    }
+  }
+}

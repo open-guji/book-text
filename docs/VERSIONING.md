@@ -96,14 +96,14 @@
 
 - **升级脚本**：overview `scripts/book-text/bump_original.py`
   ```bash
-  python3 <overview>/scripts/book-text/bump_original.py <original 目录或条目目录> --init --note "首次并 main" --pr N   # 三线定 1.0.0
-  python3 <overview>/scripts/book-text/bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
+  python3 scripts/book-text/bump_original.py <original 目录或条目目录> --init --note "首次并 main" --pr N   # 三线定 1.0.0
+  python3 scripts/book-text/bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
   ```
   改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
-- **校验器**：overview `validate_text_format.py` 规则（只扫 key=`original` 的版本）：
+- **校验器**：本仓 `scripts/validate_text_format.py` 规则（只扫 key=`original` 的版本）：
   - **F-OV-01** 三线版本号格式、≥1.0.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本；
   - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
   - **F-OV-03** major ≥2 必须带验收记录。
   - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填）。
-  - **F-OV-05** decision 相关规则，待落地。
+  - **F-OV-05** decision.json 对照同章 char：`$schema`、`book_id`／`volume` 一致，候选字层合法（已落地，含 `scripts/tests/test_decision.py`）。
 - 格位 key 的定义见 guji-format 02（char）§二：双行夹注 a 是右列、先读，b 是左列；超框抬头负格位、无第 0 格；阙文写 □ 并带 `lacuna: true`。

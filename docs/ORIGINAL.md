@@ -15,7 +15,7 @@
 | **punct** | `NNN.punct.json` | 标点、分段、书名号 | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
-| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1，正式）；校验 F-OV-05 待落地 |
+| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1，正式）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
 
@@ -37,7 +37,7 @@
 | `punct_file` | `NNN.punct.json` | 否 |
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
-| `decision_file` | `NNN.decision.json` | 否（规范见 08；F-OV-05 待落地） |
+| `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
 
 `chapters[]` 另有 `text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
 

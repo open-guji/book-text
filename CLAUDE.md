@@ -1,31 +1,29 @@
 # book-text
 
-古籍全文数据仓，由文本总管管理。数据的格式规范、判准、脚本和任务卡都在 `open-guji-core/overview`：
-- 任务：看板 issue，标签 `块:文本`；
-- 规划：`team/文本/目标.md`（长中短期目标）与 `team/文本/队列.md`（就绪队列）；
-- 格式：`项目进展/古籍文本/`；
-- 脚本：`scripts/fetch-book-fulltext/`、`scripts/book-text/`。
-
-本仓的会话如需读 overview，用只读方式 `add_repo`（access: read）。
+古籍全文数据仓，由文本总管管理。数据的格式规范、判准、脚本和任务卡现分布如下（2026-10-15 起 overview 拆空）：
+- 任务：Jira（项目 GUJI），标签 `项目-X`；
+- 规划：`open-guji-core/ai-team` 的 `team/文本/`（目标、队列、台账）；
+- 格式与判准：本仓 `docs/`（索引见 `docs/INDEX.md`：`docs/design/` 规范与设计、`docs/专名/` 专名判准与建档记录、`docs/reports/` 报告）；
+- 脚本：本仓 `scripts/`（见 `scripts/README.md`）；抓取脚本 `scripts/fetch-book-fulltext/` 仍在 overview 根，待迁。
 
 仓根 `scripts/`、`.claude-inbox/` 不属数据，不要当数据目录处理。
 
-校验脚本（`scripts/validate_text_format.py`、`scripts/validate-collated.py`、`scripts/original_version.py`）在本仓与 overview `项目进展/古籍文本/scripts/` 各有一份，**改动须两份同改、字节一致**（仅文件头注释行可不同）；以本仓 CI（`check.yml`）所跑的为准。
+校验脚本（`scripts/validate_text_format.py`、`scripts/validate-collated.py`、`scripts/original_version.py`）与 `scripts/book-text/` 下的工具脚本（`bump_original.py`、`build_texts_index.py` 等）**只在本仓一份**（2026-10-15 GUJI-361 起 overview 拆空，已迁入，不再有 drift 检查）；以本仓 CI（`check.yml`）所跑的为准。
 
 ## 提交与推送（10-05 起：main 受保护，一律走 PR）
 
 - **不直接推 main。** 一批活开一个分支，命名 `<道名>-<主题>`，比如 `t65-wiki-match`；`wip/` 前缀是反复改动中的工作分支，用户点头前不并 main。
 - 分支上可以多次提交；**整批做完才开一个 PR**，不要零碎开 PR。由文本总管审，审过用 **squash merge** 合并，main 上一个 PR 只留一个提交。
-- 开 PR 前，先把 main 合进分支，用 overview 的 `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，然后跑完三项校验，结果贴进 PR 描述：
+- 开 PR 前，先把 main 合进分支，用本仓 `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，然后跑完三项校验，结果贴进 PR 描述：
   1. `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0；
   2. `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且没有本 PR 新增的问题（存量：`d59f1iqd854w/default/108.md`）；
   3. 重建索引后分支上没有未提交的 diff。
 - PR 上 CI（`check.yml`）会跑同样三项。
 - `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
-- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`，本仓摘要见 `docs/VERSIONING.md`。升版本一律用 overview `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `<版本目录>/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
+- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`，摘要见 `docs/VERSIONING.md`。升版本一律用本仓 `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `<版本目录>/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
 - 合并：日常批次文本总管审过就合；撤除超过 50 部、改全仓结构或规范、`original` 升 major 的，等用户点头。
 - PR 描述和评论不写 Claude Code 署名。
-- **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用 overview `项目进展/古籍文本/scripts/zi_convert.py`，查不到正字就保留组字式。
+- **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用本仓 `scripts/zi_convert.py`，查不到正字就保留组字式。
 - commit message 用中文，写清是哪条道、哪一批、入库多少部。
 
 ## 目录（09-30 起新结构）

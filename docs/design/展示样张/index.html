@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>T7 展示格式样张 · 索引</title>
+<style>
+  body{ font-family:"Noto Serif CJK SC","Songti SC",serif; background:#fdfaf4; color:#2a2a2a; margin:0; padding:32px; max-width:760px; }
+  h1{ font-size:20px; }
+  ul{ line-height:2; }
+  li b{ color:#7b6a54; }
+  .note{ color:#888; font-size:13px; margin-top:24px; }
+</style>
+</head>
+<body>
+<h1>T7 展示格式方案 · 样张索引</h1>
+<p>服务 <code>项目进展/古籍文本/整体设计/2026-09-展示格式方案.md</code>。全部静态 HTML，直接在浏览器打开即可比较，不依赖网络。</p>
+<ul>
+  <li><a href="01-漢書藝文志-六藝略.html">01　《漢書藝文志》六藝略</a> — <b>条目分行／自然段聚合</b> × <b>繁／简</b> 四格对照</li>
+  <li><a href="02-論語-學而第一.html">02　《論語》學而第一</a> — 同上四格，语录体（条目本已有段落边界）</li>
+  <li><a href="03-春秋公羊傳-隱公元年至三年.html">03　《春秋公羊傳》隱公元年—三年</a> — 同上四格，经传夹注体（傳文即长夹注）</li>
+  <li><a href="04-竖排-漢書藝文志-易類.html">04　竖排 · 漢書藝文志·易類</a> — 用 <code>@open-guji/markdown-web</code> 真实渲染，guji-vertical.css 未改动</li>
+  <li><a href="05-竖排-春秋公羊傳-隱公元年.html">05　竖排 · 春秋公羊傳·隱公元年</a> — 同上，双行小注夹注</li>
+  <li><a href="06-竖排-webtex-cn-漢書藝文志-易類.html">06　竖排 · webtex-cn 版 · 漢書藝文志·易類</a> — 版心／鱼尾／夹注双栏平衡的四库全书仿真版式，同一批数据手转 <code>\夹注{…}</code> 语法后喂给 <code>webtex-cn</code></li>
+</ul>
+<p class="note">生成脚本：<code>build.mjs</code>／<code>vertical.mjs</code>（本目录 <code>scripts/</code>）。异体字/原书字形模式未出样张——现有数据不支持，见方案档 §二·2。</p>
+</body>
+</html>

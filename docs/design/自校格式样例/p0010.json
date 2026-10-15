@@ -1,0 +1,61 @@
+{
+  "schema": "guji-layout/v1",
+  "_note": "T10 草案样例，只读产出，未写回任何代码仓/数据仓。见同目录 README.md 的数据来源与限制说明。",
+  "book_id": "96mid1ogzk",
+  "book_title": "欽定四庫全書總目武英殿刻本",
+  "cv_book": "vol01",
+  "page": 10,
+  "page_image": {
+    "width": 2396,
+    "height": 3085,
+    "note": "data_full/zongmu/vol01/10.png 实测像素尺寸（guji-workspace 私有仓只读所得，PNG 头部直接解出，未装依赖库）"
+  },
+  "coord_space": "raw_page_px@top-right",
+  "coord_space_note": "右上原点，x 向左递增，y 向下递增；本页字符坐标已从 glyph_store 实例记录的 raw_page_px@top-left（core/spec.py:21 注释「OpenCV / 旧 v1 产物」）用 core/anchor.py:20-32 的 bbox_tl_to_tr(bbox, width) 换算得来，width 取本页实测像素宽 2396。",
+  "border": {
+    "_note": "版框/界行几何本页未能核实（guji-workspace 不含 Step1 borders.py 的数值产物，见 README.md §一），此处留空，字段形态见 open_guji_cv/products/kinds/borders.py 的 Borders/HLineRec/VLineRec/HeadRaiseRec。",
+    "top": null,
+    "bottom": null,
+    "verticals": null
+  },
+  "columns": [
+    {
+      "col": 1,
+      "col_kind": "body",
+      "n_raised": 0,
+      "lead_blank": 0,
+      "_note": "真实数据：guji-workspace『96mid1ogzk-欽定四庫全書總目武英殿刻本』output/glyph_store/instances/vol01.jsonl 第 10 页第 1 列前 10 条实例（source_id=vol01），字符、col、idx（≈slot，本页此段无空白/夹注，slot 与 idx 一致）、bbox 均取自该文件，bbox 已换算到 raw_page_px@top-right（见页级 coord_space_note）。channel/human_reviewed 由该实例的 label_status 字段近似映射（align→非人工放行通道；human→人工），非 CV 管线 AdmitRec.channel 原始枚举值——真实 seed_admit 产物本页无法读取，见 README.md §一 的数据缺口说明。",
+      "cells": [
+        {"id": "vol01:10:1:1", "glyph_id": "vol01:10:1:1", "char": "籍", "slot": 1, "sub": null, "order": 1, "kind": "char", "bbox": [722.0, 137.0, 844.0, 254.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:2", "glyph_id": "vol01:10:1:2", "char": "根", "slot": 2, "sub": null, "order": 2, "kind": "char", "bbox": [721.0, 259.0, 845.0, 366.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:3", "glyph_id": "vol01:10:1:3", "char": "源", "slot": 3, "sub": null, "order": 3, "kind": "char", "bbox": [723.0, 370.0, 837.0, 489.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:4", "glyph_id": "vol01:10:1:4", "char": "乃", "slot": 4, "sub": null, "order": 4, "kind": "char", "bbox": [730.0, 478.0, 843.0, 591.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:5", "glyph_id": "vol01:10:1:5", "char": "因", "slot": 5, "sub": null, "order": 5, "kind": "char", "bbox": [731.0, 603.0, 826.0, 707.0], "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:6", "glyph_id": "vol01:10:1:6", "char": "各", "slot": 6, "sub": null, "order": 6, "kind": "char", "bbox": [720.0, 715.0, 844.0, 827.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:7", "glyph_id": "vol01:10:1:7", "char": "韻", "slot": 7, "sub": null, "order": 7, "kind": "char", "bbox": [725.0, 830.0, 842.0, 938.0], "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:8", "glyph_id": "vol01:10:1:8", "char": "轇", "slot": 8, "sub": null, "order": 8, "kind": "char", "bbox": [720.0, 939.0, 846.0, 1050.0], "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:9", "glyph_id": "vol01:10:1:9", "char": "轕", "slot": 9, "sub": null, "order": 9, "kind": "char", "bbox": [722.0, 1044.0, 846.0, 1167.0], "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:1:10", "glyph_id": "vol01:10:1:10", "char": "於", "slot": 10, "sub": null, "order": 10, "kind": "char", "bbox": [721.0, 1166.0, 848.0, 1278.0], "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null}
+      ]
+    },
+    {
+      "col": 99,
+      "col_kind": "body",
+      "n_raised": 1,
+      "lead_blank": 0,
+      "_illustrative": true,
+      "_note": "示意列，col=99 不是本页真实列号（本页 expected_cols=9，见 books/vol01.yaml）——真实 Step3/Step7 数值产物（cells.json/seed_admit.json）不进 git（guji-workspace .gitignore 明文排除 products/），仓内没有任何一页能直接取到真实的抬头/夹注/阙文/空白 kind 标记，故本列用于**演示格式字段覆盖**，不代表页 10 的真实版式。字符借用本书真实见过的字（見 col=1 同页），排列顺序为构造，非原书文字顺序。",
+      "cells": [
+        {"id": "vol01:10:99:1", "glyph_id": "vol01:10:99:1", "char": "於", "slot": -1, "sub": null, "order": 1, "kind": "char", "bbox": null, "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null, "_note": "抬头字：slot=-1（cells.py:5-6「抬头格 -n_raised..-1」），级数读列级 n_raised=1"},
+        {"id": "vol01:10:99:2", "glyph_id": "vol01:10:99:2", "char": "詩", "slot": 1, "sub": null, "order": 2, "kind": "char", "bbox": null, "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:99:3", "glyph_id": "vol01:10:99:3", "char": "先", "slot": 2, "sub": null, "order": 3, "kind": "char", "bbox": null, "channel": "align", "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:99:4a", "glyph_id": "vol01:10:99:4a", "char": "列", "slot": 3, "sub": "a", "order": 4, "kind": "jiazhu_a", "bbox": null, "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null, "_note": "双行夹注 a 列首字，sort_by_reading 保证同段 a 全部排在 b 之前（open_guji_cv/render/guji_markdown.py:71 注释）"},
+        {"id": "vol01:10:99:5a", "glyph_id": "vol01:10:99:5a", "char": "蒙", "slot": 4, "sub": "a", "order": 5, "kind": "jiazhu_a", "bbox": null, "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:99:4b", "glyph_id": "vol01:10:99:4b", "char": "卦", "slot": 3, "sub": "b", "order": 6, "kind": "jiazhu_b", "bbox": null, "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:99:5b", "glyph_id": "vol01:10:99:5b", "char": "書", "slot": 4, "sub": "b", "order": 7, "kind": "jiazhu_b", "bbox": null, "channel": "human", "human_reviewed": true, "excluded": false, "defect": false, "unreadable": false, "guess": null},
+        {"id": "vol01:10:99:6", "glyph_id": "vol01:10:99:6", "char": null, "slot": 5, "sub": null, "order": 8, "kind": "char", "bbox": null, "channel": null, "human_reviewed": false, "excluded": false, "defect": false, "unreadable": true, "guess": null, "_note": "阙文：admit=False and char is None and not excluded（open_guji_cv/report/slots.py:24 三分表第4行），渲染出 [[]]"},
+        {"id": "vol01:10:99:7", "glyph_id": null, "char": null, "slot": 6, "sub": null, "order": 9, "kind": "blank", "bbox": null, "channel": null, "human_reviewed": false, "excluded": false, "defect": false, "unreadable": false, "guess": null, "_note": "版式留白：kind=blank，Step7 不为它产出 AdmitRec（open_guji_cv/report/slots.py:207-213），不占字数、渲染时跳过"}
+      ]
+    }
+  ]
+}

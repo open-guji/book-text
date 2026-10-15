@@ -1,4 +1,3 @@
-# 来源：open-guji-core/overview 的 项目进展/古籍文本/scripts/original_version.py @ 67c61371（复制进本仓；源头改后人工同步）
 # -*- coding: utf-8 -*-
 """book-text `original` 三线版本号的公共部分（T67 #400）。
 

@@ -1,0 +1,737 @@
+{
+  "total_seeded": 30,
+  "found": 30,
+  "found_rate": 1.0,
+  "type_correct": 30,
+  "type_correct_rate": 1.0,
+  "per_category": {
+    "template": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    },
+    "wikilink": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    },
+    "html": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    },
+    "garbled": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    },
+    "non_text": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    },
+    "table": {
+      "total": 5,
+      "found": 5,
+      "type_correct": 5,
+      "missed_seed_ids": []
+    }
+  },
+  "rows": [
+    {
+      "seed_id": "d59ezak6jq4g/009.md#12~seed-template",
+      "defect_type": "template",
+      "injected_text": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "殘留維基簡繁轉換NoteTA模板標記",
+          "quote": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+          "type": "template"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/233.md#1~seed-template",
+      "defect_type": "template",
+      "injected_text": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基NoteTA模板标记",
+          "quote": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+          "type": "template"
+        },
+        {
+          "note": "维基辅助节标题，非古籍正文",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "维基魔术字残留",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "维基魔术字残留",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezajmkjcw/061.md#1~seed-template",
+      "defect_type": "template",
+      "injected_text": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基NoteTA简繁转换模板未清洗",
+          "quote": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+          "type": "template"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezajmkjcw/034.md#1~seed-template",
+      "defect_type": "template",
+      "injected_text": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基NoteTA模板标记，未清洗去除",
+          "quote": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+          "type": "template"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/181.md#1~seed-template",
+      "defect_type": "template",
+      "injected_text": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基辅助节标题註解混入非古籍正文",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "维基魔术字残留应清洗去掉",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "残留维基模板标记NoteTA未清洗",
+          "quote": "{{NoteTA|1=zh-hans:里;zh-hant:裏;}}",
+          "type": "template"
+        },
+        {
+          "note": "维基魔术字残留应清洗去掉",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezakdey2o/010.md#1~seed-wikilink",
+      "defect_type": "wikilink",
+      "injected_text": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "殘留維基內鏈標記[[…]]未清洗",
+          "quote": "參見[[維基文庫:凡例]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "殘留維基內鏈標記[[…]]未清洗",
+          "quote": "另見[[漢典]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "殘留維基列表標記*未清洗",
+          "quote": "*易經：",
+          "type": "other"
+        },
+        {
+          "note": "殘留維基定義列表標記;未清洗",
+          "quote": ";乾",
+          "type": "other"
+        },
+        {
+          "note": "殘留T|雜項標記疑似模板殘留",
+          "quote": "T|周易/乾",
+          "type": "other"
+        },
+        {
+          "note": "殘留alt=圖片雜項標記非正文",
+          "quote": "alt=䷀ 乾下乾上",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/222.md#1~seed-wikilink",
+      "defect_type": "wikilink",
+      "injected_text": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基内链标记[[…]]未清洗",
+          "quote": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+          "type": "wikilink"
+        },
+        {
+          "note": "维基辅助节标题混入，非古籍正文",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "维基魔术字残留，应清洗去掉",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "维基魔术字残留，应清洗去掉",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/162.md#1~seed-wikilink",
+      "defect_type": "wikilink",
+      "injected_text": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基内链标记未清洗",
+          "quote": "[[維基文庫:凡例]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "残留维基内链标记未清洗",
+          "quote": "[[漢典]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "维基魔术字残留，非正文应去除",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "维基编辑控制标记残留应去除",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        },
+        {
+          "note": "维基辅助节标题混入，非古籍正文",
+          "quote": "## 註解",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/277.md#1~seed-wikilink",
+      "defect_type": "wikilink",
+      "injected_text": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基内链标记，应清洗去除",
+          "quote": "[[維基文庫:凡例]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "残留维基内链标记，应清洗去除",
+          "quote": "[[漢典]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "维基辅助导航行，非古籍正文，应去除",
+          "quote": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+          "type": "non_text"
+        },
+        {
+          "note": "维基辅助节标题，非古籍正文，应去除",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "MediaWiki魔术字残留，非正文内容",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "MediaWiki魔术字残留，非正文内容",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak6jq4g/010.md#16~seed-wikilink",
+      "defect_type": "wikilink",
+      "injected_text": "參見[[維基文庫:凡例]]，另見[[漢典]]。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "殘留維基內鏈標記，應清洗去除",
+          "quote": "[[維基文庫:凡例]]",
+          "type": "wikilink"
+        },
+        {
+          "note": "殘留維基內鏈標記，應清洗去除",
+          "quote": "[[漢典]]",
+          "type": "wikilink"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/107.md#1~seed-html",
+      "defect_type": "html",
+      "injected_text": "<span style=\"color:red\">校勘</span>&nbsp;此處存疑。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留HTML开始标签，非古籍夹注应去除",
+          "quote": "<span style=\"color:red\">",
+          "type": "html"
+        },
+        {
+          "note": "残留HTML结束标签，应去除",
+          "quote": "</span>",
+          "type": "html"
+        },
+        {
+          "note": "残留HTML实体，应清洗为空格或删除",
+          "quote": "&nbsp;",
+          "type": "html"
+        },
+        {
+          "note": "疑似维基校勘注记，非古籍正文混入",
+          "quote": "此處存疑。",
+          "type": "non_text"
+        },
+        {
+          "note": "维基辅助节标题，非古籍正文应去除",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "维基魔术字残留，不属于正文应去除",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "维基魔术字残留，不属于正文应去除",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezajmkjcw/004.md#1~seed-html",
+      "defect_type": "html",
+      "injected_text": "<span style=\"color:red\">校勘</span>&nbsp;此處存疑。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留HTML标签span及实体nbsp，非古籍夹注",
+          "quote": "<span style=\"color:red\">校勘</span>&nbsp;",
+          "type": "html"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/063.md#1~seed-html",
+      "defect_type": "html",
+      "injected_text": "<span style=\"color:red\">校勘</span>&nbsp;此處存疑。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留HTML span开始标签",
+          "quote": "<span style=\"color:red\">",
+          "type": "html"
+        },
+        {
+          "note": "残留HTML span结束标签",
+          "quote": "</span>",
+          "type": "html"
+        },
+        {
+          "note": "残留HTML实体&nbsp;",
+          "quote": "&nbsp;",
+          "type": "html"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59f1ioj1tz4/004.md#1~seed-html",
+      "defect_type": "html",
+      "injected_text": "<span style=\"color:red\">校勘</span>&nbsp;此處存疑。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留HTML标签span及实体&nbsp;未清洗",
+          "quote": "<span style=\"color:red\">校勘</span>&nbsp;",
+          "type": "html"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezajwvda8/011.md#2~seed-html",
+      "defect_type": "html",
+      "injected_text": "<span style=\"color:red\">校勘</span>&nbsp;此處存疑。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留HTML标签span及实体nbsp，非古籍夹注",
+          "quote": "<span style=\"color:red\">校勘</span>&nbsp;",
+          "type": "html"
+        },
+        {
+          "note": "混入维基校勘辅助注，非孟子正文内容",
+          "quote": "校勘</span>&nbsp;此處存疑。",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59f1iofm800/005.md#1~seed-garbled",
+      "defect_type": "garbled",
+      "injected_text": "锟斤拷烫烫烫���",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "编码错乱mojibake及替换字符�残留",
+          "quote": "锟斤拷烫烫烫���",
+          "type": "garbled"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/123.md#1~seed-garbled",
+      "defect_type": "garbled",
+      "injected_text": "锟斤拷烫烫烫���",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基魔术字残留，不属于古籍正文",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "典型编码错乱与替换字符乱码",
+          "quote": "锟斤拷烫烫烫���",
+          "type": "garbled"
+        },
+        {
+          "note": "维基魔术字残留，不属于古籍正文",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezakdey2o/070.md#1~seed-garbled",
+      "defect_type": "garbled",
+      "injected_text": "锟斤拷烫烫烫���",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "典型编码错乱mojibake，含替换字符�",
+          "quote": "锟斤拷烫烫烫���",
+          "type": "garbled"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak6jq4g/010.md#6~seed-garbled",
+      "defect_type": "garbled",
+      "injected_text": "锟斤拷烫烫烫���",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "首行编码错乱mojibake及替换字符",
+          "quote": "锟斤拷烫烫烫���",
+          "type": "garbled"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak3445c/013.md#2~seed-garbled",
+      "defect_type": "garbled",
+      "injected_text": "锟斤拷烫烫烫���",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "编码错乱乱码，含锟斤拷与替换字符�",
+          "quote": "锟斤拷烫烫烫���",
+          "type": "garbled"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59f1iofm800/026.md#1~seed-non_text",
+      "defect_type": "non_text",
+      "injected_text": "本作品在全世界都属于公有领域，因为作者逝世已经超过100年，并且于1929年1月1日之前出版。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基文库版权页脚，非古籍正文，应清洗去除",
+          "quote": "本作品在全世界都属于公有领域",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59f24mpohs2/012.md#1~seed-non_text",
+      "defect_type": "non_text",
+      "injected_text": "本作品在全世界都属于公有领域，因为作者逝世已经超过100年，并且于1929年1月1日之前出版。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基文库版权页脚，非古籍正文，应清洗去除",
+          "quote": "本作品在全世界都属于公有领域",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezajmkjcw/048.md#1~seed-non_text",
+      "defect_type": "non_text",
+      "injected_text": "本作品在全世界都属于公有领域，因为作者逝世已经超过100年，并且于1929年1月1日之前出版。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基公有领域版权页脚，非古籍正文混入",
+          "quote": "本作品在全世界都属于公有领域",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/052.md#1~seed-non_text",
+      "defect_type": "non_text",
+      "injected_text": "==校勘記==\n卷中「云云」當作「雲雲」，據四庫本改。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "維基校勘記輔助節及其內容，非古籍正文",
+          "quote": "==校勘記==\n卷中「云云」當作「雲雲」，據四庫本改。",
+          "type": "non_text"
+        },
+        {
+          "note": "維基輔助節空標題，非古籍正文殘留",
+          "quote": "## 註解",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezakdey2o/005.md#1~seed-non_text",
+      "defect_type": "non_text",
+      "injected_text": "==校勘記==\n卷中「云云」當作「雲雲」，據四庫本改。",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "維基輔助節「校勘記」及其校勘內容混入正文",
+          "quote": "==校勘記==",
+          "type": "non_text"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak3445c/017.md#3~seed-table",
+      "defect_type": "table",
+      "injected_text": "{| class=\"wikitable\"\n|-\n| 甲 || 乙\n|-\n| 丙 || 丁\n|}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基表格起始标记",
+          "quote": "{| class=\"wikitable\"",
+          "type": "table"
+        },
+        {
+          "note": "残留维基表格行分隔标记及单元格标记",
+          "quote": "|-\n| 甲 || 乙",
+          "type": "table"
+        },
+        {
+          "note": "残留维基表格行分隔标记及单元格标记",
+          "quote": "|-\n| 丙 || 丁",
+          "type": "table"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59f1ioj1tz4/011.md#1~seed-table",
+      "defect_type": "table",
+      "injected_text": "{| class=\"wikitable\"\n|-\n| 甲 || 乙\n|-\n| 丙 || 丁\n|}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "残留维基表格起始标记{|",
+          "quote": "{| class=\"wikitable\"",
+          "type": "table"
+        },
+        {
+          "note": "残留维基表格行分隔标记|-",
+          "quote": "|-\n| 甲 || 乙",
+          "type": "table"
+        },
+        {
+          "note": "残留维基表格行分隔标记|-",
+          "quote": "|-\n| 丙 || 丁",
+          "type": "table"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak9zc3k/183.md#1~seed-table",
+      "defect_type": "table",
+      "injected_text": "{| class=\"wikitable\"\n|-\n| 甲 || 乙\n|-\n| 丙 || 丁\n|}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基表格起始标记残留未清洗",
+          "quote": "{| class=\"wikitable\"",
+          "type": "table"
+        },
+        {
+          "note": "维基表格行分隔标记残留未清洗",
+          "quote": "|-",
+          "type": "table"
+        },
+        {
+          "note": "维基辅助节标题混入非古籍正文",
+          "quote": "## 註解",
+          "type": "non_text"
+        },
+        {
+          "note": "维基魔术字残留应清洗",
+          "quote": "__NOTOC__",
+          "type": "other"
+        },
+        {
+          "note": "维基魔术字残留应清洗",
+          "quote": "__NOEDITSECTION__",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezak3445c/002.md#2~seed-table",
+      "defect_type": "table",
+      "injected_text": "{| class=\"wikitable\"\n|-\n| 甲 || 乙\n|-\n| 丙 || 丁\n|}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "殘留維基表格原始標記",
+          "quote": "{| class=\"wikitable\"",
+          "type": "table"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    },
+    {
+      "seed_id": "d59ezakdey2o/071.md#1~seed-table",
+      "defect_type": "table",
+      "injected_text": "{| class=\"wikitable\"\n|-\n| 甲 || 乙\n|-\n| 丙 || 丁\n|}",
+      "muse_verdict": "suspect",
+      "muse_issues": [
+        {
+          "note": "维基表格起始标记残留",
+          "quote": "{| class=\"wikitable\"",
+          "type": "table"
+        },
+        {
+          "note": "维基表格行分隔标记残留",
+          "quote": "|-",
+          "type": "table"
+        },
+        {
+          "note": "维基定义列表标记分号残留",
+          "quote": ";比",
+          "type": "other"
+        },
+        {
+          "note": "维基列表标记星号残留",
+          "quote": "*易經：",
+          "type": "other"
+        },
+        {
+          "note": "维基列表标记*#残留",
+          "quote": "*#初六：有孚，比之，无咎。",
+          "type": "other"
+        }
+      ],
+      "found": true,
+      "type_correct": true
+    }
+  ]
+}

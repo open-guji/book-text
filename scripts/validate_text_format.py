@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# 来源：open-guji-core/overview 的 项目进展/古籍文本/scripts/validate_text_format.py @ 67c61371（复制进本仓；源头改后人工同步）
 # -*- coding: utf-8 -*-
 """
 book-text 文本格式校验器（T5 道，服务

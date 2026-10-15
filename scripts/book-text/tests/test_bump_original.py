@@ -1,0 +1,274 @@
+# -*- coding: utf-8 -*-
+"""單測：bump_original.py ＋ validate_text_format.py 的 F-OV-* 規則（T67 #400）。
+
+自造一個最小 book-text：Book/aa/bb/cc/testbook/ 下一個 original 版本、一冊 002，
+覆蓋 init、patch、minor、major 拒絕、文本改字後錨點漂移報錯，以及 ≥2 級缺驗收記錄。
+T68 #417 起文本線跟蹤 002.char.json（由下面的 lines.md 轉出），lines.md 不再放在 original/ 裏。
+"""
+import contextlib
+import io
+import json
+import os
+import sys
+import tempfile
+import unittest
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(HERE, "..", "..", "..", "项目进展", "古籍文本", "scripts"))
+import bump_original as B  # noqa: E402
+import original_char as C  # noqa: E402
+import original_version as OV  # noqa: E402
+import validate_text_format as V  # noqa: E402
+
+LINES_MD = "<!-- p3 -->\n子夏易傳十一卷\n^內府藏本<舊本題|卜子夏撰>\n"
+# 坐標：p3 第 1 列「子夏易傳十一卷」1..7；第 2 列抬一格「內」-1、「府」1…；夾注前半（右列，先讀）a、後半（左列）b
+
+
+def _write(p, obj):
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, "w", encoding="utf-8") as f:
+        if isinstance(obj, str):
+            f.write(obj)
+        else:
+            json.dump(obj, f, ensure_ascii=False)
+
+
+def _read(p):
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def make_repo(root):
+    entry = os.path.join(root, "Book", "aa", "bb", "cc", "testbook")
+    od = os.path.join(entry, "original")
+    _write(os.path.join(entry, "manifest.json"), {"versions": [{"key": "original", "kind": "original"}]})
+    _write(os.path.join(od, "index.json"), {
+        "book_id": "testbook", "revision": "1.0.0",
+        "chapters": [{"n": 2, "file": "002", "char_file": "002.char.json",
+                      "punct_file": "002.punct.json", "entity_file": "002.entity.json"}],
+        "source": {"name": "本项目", "license": "CC BY 4.0"}, "total_chapters": 1,
+        "version_label": "原书影", "fetched_at": "2026-10-05"})
+    _write(os.path.join(od, "002.char.json"), C.make_char(C.parse_lines_md(LINES_MD), "testbook", 2, "0.1.0"))
+    _write(os.path.join(od, "002.punct.json"), {
+        "version": "0.1.0", "punctuations": [
+            {"mark": "。", "anchor": "3:1:7", "pre_char": "卷"},
+            {"mark": "，", "anchor": "3:2:3", "pre_char": "本"},
+        ]})
+    _write(os.path.join(od, "002.entity.json"), {
+        "version": "0.1.0", "entities": [
+            {"id": "e1", "type": "work", "text": "子夏易傳", "anchor": {"start": "3:1:1", "end": "3:1:4"}},
+            {"id": "e2", "type": "people", "text": "卜子夏", "anchor": {"start": "3:2:4b", "end": "3:2:6b"}},
+        ]})
+    return entry, od
+
+
+def run(*args):
+    if "--pr" not in args:  # --pr 必填（B3 步 2(a)）
+        args = args + ("--pr", "0")
+    err = io.StringIO()
+    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(err):
+        code = B.main(list(args) + ["--date", "2026-10-05"])
+    return code, err.getvalue()
+
+
+def ov_violations(root):
+    report, _s, _t = V.check(root)
+    return {rid: [v["note"] for v in report[rid]["violations"]]
+            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-FT-01")}
+
+
+class TestBumpOriginal(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = self.tmp.name
+        self.entry, self.od = make_repo(self.root)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def idx(self):
+        return _read(os.path.join(self.od, "index.json"))["chapters"][0]
+
+    def comp(self, line):
+        return _read(os.path.join(self.od, f"002.{line}.json"))
+
+    def test_slots_match_cv_convention(self):
+        self.assertEqual(OV.char_slots(self.comp("char")), OV.lines_slots(LINES_MD))
+        slots = dict(OV.char_slots(self.comp("char")))
+        self.assertEqual(slots["3:1:7"], "卷")
+        self.assertEqual(slots["3:2:-1"], "內")
+        self.assertEqual(slots["3:2:3"], "本")
+        self.assertEqual(slots["3:2:4a"], "舊")
+        self.assertEqual(slots["3:2:4b"], "卜")
+
+    def test_before_init_validator_flags_0x(self):
+        v = ov_violations(self.root)
+        self.assertTrue(v["F-OV-01"], "0.x／缺 text_version 应报 F-OV-01")
+        self.assertEqual(v["F-FT-01"], [], "original 的 char.json／punct.json 不该被当成章节文件名不合规")
+
+    def test_text_version_mirror(self):
+        run(self.entry, "--init")
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["text_version"] = "1.0.1"
+        _write(os.path.join(self.od, "index.json"), idx)
+        notes = ov_violations(self.root)["F-OV-01"]
+        self.assertEqual(len(notes), 1)
+        self.assertIn("text_version='1.0.1'", notes[0])
+
+    def test_file_fields(self):
+        run(self.entry, "--init")
+        self.assertEqual(ov_violations(self.root)["F-OV-04"], [])
+        idx = _read(os.path.join(self.od, "index.json"))
+        ch = idx["chapters"][0]
+        ch["cord_file"] = "002.cord.json"      # 声明了但没有文件
+        ch["rich_file"] = "002.rich.json"      # 文件名不对
+        del ch["char_file"]                    # 必填缺了
+        _write(os.path.join(self.od, "index.json"), idx)
+        notes = ov_violations(self.root)["F-OV-04"]
+        self.assertEqual(len(notes), 3)
+        self.assertTrue(any("文件不存在" in n for n in notes))
+        self.assertTrue(any("002.rich.md" in n for n in notes))
+        self.assertTrue(any("缺 char_file" in n for n in notes))
+
+    def test_no_char_json(self):
+        os.remove(os.path.join(self.od, "002.char.json"))
+        code, err = run(self.entry, "--init")
+        self.assertEqual(code, 1)
+        self.assertIn("002.char.json", err)
+        self.assertTrue(any("char.json" in n for n in ov_violations(self.root)["F-OV-01"]))
+
+    def test_init(self):
+        code, _ = run(self.entry, "--init", "--note", "首次并 main", "--pr", "7")
+        self.assertEqual(code, 0)
+        ch = self.idx()
+        self.assertEqual((ch["text_version"], ch["punct_version"], ch["entity_version"]), ("1.0.0",) * 3)
+        self.assertEqual(self.comp("char")["version"], "1.0.0")
+        self.assertEqual(self.comp("punct")["text_version"], "1.0.0")
+        # char.json 仍是一格一行
+        self.assertIn('{"a": "3:1:1", "c": "子"}', OV.read_text(os.path.join(self.od, "002.char.json")))
+        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
+        self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
+        self.assertEqual(ov_violations(self.root),
+                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-FT-01": []})
+        code, err = run(self.entry, "--init")
+        self.assertEqual(code, 1)
+        self.assertIn("不能再 init", err)
+
+    def test_patch_and_minor(self):
+        run(self.entry, "--init")
+        code, _ = run(self.od, "--line", "punct", "--level", "patch", "--note", "改两处逗号", "--pr", "8")
+        self.assertEqual(code, 0)
+        self.assertEqual(self.comp("punct")["version"], "1.0.1")
+        self.assertEqual(self.idx()["punct_version"], "1.0.1")
+        code, _ = run(self.od, "--line", "entity", "--level", "minor", "--note", "整册重识别")
+        self.assertEqual(code, 0)
+        self.assertEqual(self.idx()["entity_version"], "1.1.0")
+        code, _ = run(self.od, "--line", "text", "--level", "minor", "--note", "PUA 转 Unicode", "--chapter", "2")
+        self.assertEqual(code, 0)
+        # 文本没动字，锚点都对得上：伴生层只跟 text_version，不升自己的版本
+        self.assertEqual(self.idx()["text_version"], "1.1.0")
+        self.assertEqual(self.comp("char")["version"], "1.1.0")
+        self.assertEqual(self.comp("punct")["text_version"], "1.1.0")
+        self.assertEqual(self.comp("punct")["version"], "1.0.1")
+        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
+        self.assertIn("| 标点 | 1.0.0→1.0.1 | 改两处逗号 | #8 |", changes)
+        self.assertIn("| 文本 | 1.0.0→1.1.0 | PUA 转 Unicode | #0 |", changes)
+        self.assertEqual(ov_violations(self.root)["F-OV-01"], [])
+
+    def test_major_refused(self):
+        run(self.entry, "--init")
+        before = OV.read_text(os.path.join(self.od, "index.json"))
+        code, err = run(self.od, "--line", "text", "--level", "major", "--note", "出版级")
+        self.assertEqual(code, 1)
+        self.assertIn("脚本不升", err)
+        self.assertEqual(before, OV.read_text(os.path.join(self.od, "index.json")))
+
+    def test_anchor_drift(self):
+        run(self.entry, "--init")
+        # 改字：「卜」→「十」，正好落在实体 e2 的锚点上
+        _write(os.path.join(self.od, "002.char.json"), OV.read_text(os.path.join(self.od, "002.char.json")).replace("卜", "十"))
+        code, err = run(self.od, "--line", "text", "--level", "patch", "--note", "改一字")
+        self.assertEqual(code, 0)
+        self.assertIn("实体层有 1 处锚点对不上", err)
+        self.assertEqual(self.comp("punct")["text_version"], "1.0.1")   # 标点没受影响，跟过去
+        self.assertEqual(self.comp("entity")["text_version"], "1.0.0")  # 实体对不上，原地不动
+        v = ov_violations(self.root)
+        self.assertEqual(len(v["F-OV-02"]), 1)
+        self.assertIn("卜子夏", v["F-OV-02"][0])
+        # 锚点没修好，实体线不许升
+        code, err = run(self.od, "--line", "entity", "--level", "patch", "--note", "x")
+        self.assertEqual(code, 1)
+        self.assertIn("锚点", err)
+        # 修好实体再升：实体 1.0.1，text_version 跟上，校验器清零
+        ent = self.comp("entity")
+        ent["entities"][1]["text"] = "十子夏"
+        _write(os.path.join(self.od, "002.entity.json"), ent)
+        code, _ = run(self.od, "--line", "entity", "--level", "patch", "--note", "修锚点")
+        self.assertEqual(code, 0)
+        self.assertEqual((self.comp("entity")["version"], self.comp("entity")["text_version"]), ("1.0.1", "1.0.1"))
+        self.assertEqual(ov_violations(self.root)["F-OV-02"], [])
+
+    def test_major_needs_review(self):
+        run(self.entry, "--init")
+        p = os.path.join(self.od, "002.punct.json")
+        d = self.comp("punct")
+        d["version"] = "2.0.0"
+        _write(p, d)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["punct_version"] = "2.0.0"
+        _write(os.path.join(self.od, "index.json"), idx)
+        self.assertEqual(len(ov_violations(self.root)["F-OV-03"]), 1)
+        d["review"] = {"date": "2026-11-01", "signed_by": "用户", "sample": "抽 500 处，一致 499"}
+        _write(p, d)
+        self.assertEqual(ov_violations(self.root)["F-OV-03"], [])
+
+    def test_companion_major_not_above_text(self):
+        run(self.entry, "--init")
+        p = os.path.join(self.od, "002.punct.json")
+        d = self.comp("punct")
+        d["version"] = "2.0.0"
+        d["review"] = {"date": "2026-11-01", "signed_by": "用户", "sample": "抽 500 处，一致 499"}
+        _write(p, d)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["punct_version"] = "2.0.0"
+        _write(os.path.join(self.od, "index.json"), idx)
+        notes = ov_violations(self.root)["F-OV-01"]
+        self.assertEqual(len(notes), 1)
+        self.assertIn("高于文本线", notes[0])
+        idx["chapters"][0]["text_version"] = "2.0.0"
+        _write(os.path.join(self.od, "index.json"), idx)
+        char = self.comp("char")
+        char["version"] = "2.0.0"
+        _write(os.path.join(self.od, "002.char.json"), char)
+        self.assertEqual(ov_violations(self.root)["F-OV-01"], [])
+        # 文本线 ≥2 级的验收记录在 char.json 顶层 review
+        self.assertEqual(len(ov_violations(self.root)["F-OV-03"]), 1)
+        char["review"] = {"date": "2026-11-01", "signed_by": "用户", "sample": "抽 2000 字，错 1"}
+        _write(os.path.join(self.od, "002.char.json"), char)
+        self.assertEqual(ov_violations(self.root)["F-OV-03"], [])
+
+    def test_major_above_3_rejected(self):
+        run(self.entry, "--init")
+        p = os.path.join(self.od, "002.entity.json")
+        d = self.comp("entity")
+        d["version"] = "4.0.0"
+        d["review"] = {"date": "2026-11-01", "signed_by": "用户", "sample": "x"}
+        _write(p, d)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["entity_version"] = "4.0.0"
+        _write(os.path.join(self.od, "index.json"), idx)
+        notes = ov_violations(self.root)["F-OV-01"]
+        self.assertEqual(len(notes), 1)
+        self.assertIn("超过 3", notes[0])
+
+
+class PrRequiredTest(unittest.TestCase):
+    def test_missing_pr_rejected(self):
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stderr(io.StringIO()):
+            B.main(["/nonexistent", "--line", "text", "--level", "patch", "--note", "x"])
+        self.assertEqual(cm.exception.code, 2)
+
+
+if __name__ == "__main__":
+    unittest.main()

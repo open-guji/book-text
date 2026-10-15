@@ -22,7 +22,7 @@
 - **仍在 overview、待 P2／P7 收口后迁入**：漏标处置／漏标候选／漏标停用词、回挂小单、P7 重对结果与回挂行、批 2 候选表。
 
 ## reports/ 长期有用的报告
-元素类型清单（07）、与 guji-markdown 对齐（08）、全文搜集落点（11）、Kanripo 评估（31）、四庫页眉剥除判准（48）、d59dh3vo9af4 json／md 偏移结论、维基文库版本完整度总表、网络来源核查、阅读页 404 查证。
+元素类型清单（07）、与 guji-markdown 对齐（08）、全文搜集落点（11）、Kanripo 评估（31）、四庫页眉剥除判准（48）、d59dh3vo9af4 json／md 偏移结论、维基文库版本完整度总表、网络来源核查、阅读页 404 查证、535 余清单（Livia，「䆿」的证据，Tristan 核后在文件末尾补结论）。
 
 ## 其他
 `VERSIONING.md`（版本号摘要）、`ORIGINAL.md`（original 文件体系）、`GUJI-FORMAT-PIN.md`（guji-format pin）。脚本见 `scripts/README.md`。

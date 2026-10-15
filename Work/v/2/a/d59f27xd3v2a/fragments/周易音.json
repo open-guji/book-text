@@ -1,0 +1,66 @@
+{
+  "work_id": "d59f27xd3v2a",
+  "title": "周易音",
+  "type": "fragments",
+  "schema_version": 2,
+  "coverage": {
+    "level": "catalog",
+    "note": "本檔止於著錄層。考證所載者為輯家、條數與出處，其佚文原文考證本不錄——其文在諸家輯本及所引類書原書，本庫俱無，故 fragments 為空。",
+    "fragments_attested": null,
+    "fragments_attested_note": "考證未言條數。",
+    "fragments_recorded": 0,
+    "text_available": false
+  },
+  "loss_status": "partially_extant",
+  "statement": "《周易音》已亡佚。輯之者1家：馬國翰（玉函山房輯佚書），條數未詳。所輯之數未詳，正文未錄。佚文所見之書：《一切經音義》。本條之據為《隋書經籍志考證》，未覆核輯本原書。",
+  "provenance": "secondary",
+  "provenance_note": "本檔據下列考證所載輯本序與按語錄成，未覆核輯本原書及所引類書。",
+  "based_on": [
+    {
+      "source": "隋書經籍志考證",
+      "source_bid": "d59f2mp0flz6",
+      "field": "emendated_by"
+    },
+    {
+      "source": "玉函山房輯佚書",
+      "source_bid": "d59f2mua7w8y",
+      "field": "collated_edition"
+    }
+  ],
+  "collectors": [
+    {
+      "collector": "馬國翰",
+      "work": "玉函山房輯佚書",
+      "count": null,
+      "count_unit": null,
+      "statement": "《晉書》無李軌傳，唐釋玄應《一切經音義》引「李洪範",
+      "statement_label": "馬氏玉函山房輯本序",
+      "basis": "考證載其輯本序；玉函山房輯佚書目錄（光緒九年長沙嫏嬛館補校刊本）著錄本書",
+      "work_id": "d59f2mua7w8y",
+      "sections": [
+        {
+          "file": "經編·易類.json",
+          "index": 37,
+          "title": "周易李氏音一卷",
+          "part": "main",
+          "juan_no": 6,
+          "lei": "易類"
+        }
+      ]
+    }
+  ],
+  "cited_in_summary": [
+    {
+      "title": "一切經音義",
+      "juan": null,
+      "count": null,
+      "resolved": false,
+      "attested_by": "《隋書經籍志考證》"
+    }
+  ],
+  "cited_in_summary_note": "resolved 為假者，謂該處之佚文尚未析出為 fragments 之條目；得文本後逐條析出，乃改為真。count 為空者，考證未言其數。",
+  "fragments": [],
+  "ai_note": "本檔為輯佚著錄層，自考證本文機讀生成：輯本序取引號內全文，條數取序中「凡／共／得 N 條」，出處取「《某書》[卷]引」而限於類書、古注、政書之屬。考證未言者一律留空，不以他書推補。得輯本原書或類書文本後，當逐條補 fragments 之 text 並改 coverage.level 為文本層。　本檔所列出處已逐條精讀：皆《考證》之敘述語——或云引幾條幾節，或云所記何事，或為輯本序之文而非本書之文——非逐字錄文，故 fragments 仍空。此非漏輯，乃考證書之體例：錄輯本之目與序，不錄輯本之文。　loss_status 由中文值「全佚」遷為枚舉 lost（見 SCHEMA「loss_status 枚舉」）。\n\nN4 輯佚檔歸一（2026-08-24）：`1ewsa4a2igjng`（周易李氏音）併入本 work（周易音）時，其 fragments 目錄未隨（坑 16），本輪遷入後本條遂有二檔而所記同是一書之輯本（馬國翰玉函山房《周易李氏音》一卷，李軌音）。今歸一：取本檔為底，把所併之檔所記之玉函山房 section 繫連（經編·易類.json #37）併入本檔之馬國翰條——chk〈整理本繫之而輯佚檔未記其 section_file〉即由此消。\n\n2026-08-24 併孤懸之輯佚檔：《周易李氏音》（1ewsa4a2igjng）已併入本條，而其輯佚檔 Work/1/e/w/1ewsa4a2igjng/fragments/周易李氏音.json 未隨遷，遂成孤懸——記錄檔已無而輯佚檔猶在，chk 報「work 不存在」。今自其中取《玉函山房輯佚書》經編·易類第 37 條之 section（卷 6，題「周易李氏音一卷」）補入本檔之馬國翰條，並補《隋書經籍志考證》於 based_on，而後刪其目錄。\n\n2026-08-24 併條所遷：原《周易李氏音》（work 1ewsa4a2igjng）之輯佚檔併入本檔，其 collectors／based_on 已合。\n\nN 合流按（2026-08-24）：本檔本輪與並行會話同日各有改動，合流以本輪之判為底，補對方獨有之欄位與案語段落，二者俱存。",
+  "statement_note": "本 statement 由本檔已有之欄（collectors、coverage、cited_in_summary、based_on）連綴而成，未引外據。",
+  "schema_ref": "SCHEMA.md#輯佚檔fragments"
+}

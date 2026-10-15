@@ -28,7 +28,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "..", "项目进展", "古籍文本", "scripts"))
+sys.path.insert(0, os.path.join(HERE, ".."))
 import original_char as C  # noqa: E402
 import original_version as OV  # noqa: E402
 

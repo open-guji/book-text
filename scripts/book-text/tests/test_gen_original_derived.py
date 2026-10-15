@@ -8,7 +8,7 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
-sys.path.insert(0, os.path.join(HERE, "..", "..", "..", "项目进展", "古籍文本", "scripts"))
+sys.path.insert(0, os.path.join(HERE, "..", ".."))
 import gen_original_derived as G  # noqa: E402
 
 

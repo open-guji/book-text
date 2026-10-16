@@ -10,6 +10,8 @@
 读序：就是 char.json 里该列 cells 的出现顺序（夹注 a 右行在前、b 左行在后，文件序已是读序）。
 把握：高＝臣在末尾「臣＋2–4 字」且姓名格全无 a／b 后缀、臣的字宽明显小于姓名字宽；
       中＝结构对但字宽/后缀证据不全；低＝只能按位置切；待人核＝切不出（无臣、姓名过短过长、含缺字□）。
+交接：定稿导出时必须附 NNN.cord.json，否则无字宽证据、全部把握只能判低。
+以「職名」结尾的列（如「…諸臣職名」）一律标 heading。
 无「臣」的列标 heading（类目、总裁官等标题列）。不猜：证据不够就标待人核。
 """
 import argparse
@@ -19,6 +21,9 @@ import statistics
 import sys
 
 SUFFIX = ('a', 'b')
+
+
+HEADING_TAILS = ('諸臣職名', '臣職名', '職名')
 
 
 def is_small(anchor):
@@ -47,6 +52,8 @@ def parse_column(cells, box, min_name=2, max_name=4):
     """cells: [{'a','c',(lacuna)}]，返回 dict。"""
     s = ''.join(('□' if c.get('lacuna') else c['c']) for c in cells)
     idx = [i for i, c in enumerate(cells) if c['c'] == '臣' and not c.get('lacuna')]
+    if s.endswith(HEADING_TAILS):
+        return {'kind': 'heading', 'text': s, 'conf': '', 'note': '标题（諸臣職名／職名）'}
     if not idx:
         return {'kind': 'heading', 'text': s, 'conf': '', 'note': '无臣'}
     i = idx[-1]

@@ -45,6 +45,12 @@ def test_heading_and_unsure():
     assert rows[1]['kind'] == '待人核'
 
 
+def test_title_with_chen_is_heading():
+    h = [(c, '', 120) for c in '欽定四庫全書勘閱繕校諸臣職名']
+    rows = fixture([(1, h)])
+    assert rows[0]['kind'] == 'heading'
+
+
 def test_wide_chen_lowers_confidence():
     spec = [(c, '', 120) for c in '吏部尚書'] + [('臣', '', 118)] + [(c, '', 120) for c in '劉墉']
     r = fixture([(3, spec)])[0]

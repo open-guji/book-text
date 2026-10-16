@@ -39,7 +39,7 @@
 | `norm_file` | `NNN.norm.json` | 否 |
 | `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
 
-`chapters[]` 另有 `text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
+`chapters[]` 另有 `proofing`（选填布尔，校对中；文本线 0.x 时必填 true，F-OV-06；网站据此挂「欢迎帮助校对」banner）、`text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
 
 生成分支上的 `index.json` 另外加 `lines_file`、`rich_file`。前端读哪些文件、读哪个分支，由网站决定。
 

@@ -600,8 +600,9 @@ def check(root: str, scan_root: str = None):
     # ---- original 三线版本号（T67 #400，规范 2026-10-文本版本号与仓库流程.md；T68 #417 起文本线读 char）----
     # 只管 key=original 的版本；维基、Kanripo、识典的转录不跟踪版本，不在此列。
     # 文本线的版本是 NNN.char.json 顶层 version，index.json 的 text_version 是镜像。
-    # F-OV-01 版本号格式：每册文本／标点／实体三线都要有 MAJOR.MINOR.PATCH，且 1.0.0 ≤ 版本、major ≤3
-    #         （0.x 只许留在 wip/ 分支，并 main 时 init 为 1.0.0）；index.json 里的
+    # F-OV-01 版本号格式：每册文本／标点／实体三线都要有 MAJOR.MINOR.PATCH，且文本线 0.1.0 ≤ 版本、伴生层 1.0.0 ≤ 版本、major ≤3
+    #         （文本线可停在 0.x，最低 0.1.0，此时 proofing 必须为 true，见 F-OV-06；标点、实体线仍须 ≥1.0.0，
+    #         且 major 不得高于文本线，所以文本线 0.x 时不会有伴生层）；index.json 里的
     #         text_version／punct_version／entity_version 要与 char、punct、entity 的 version 一致；伴生层的
     #         text_version 不能超前于当前文本版本；标点、实体的 major 不得高于文本线的 major
     #         （文本还没到出版级，伴生层也不能先升，10-05 用户定）。
@@ -620,6 +621,10 @@ def check(root: str, scan_root: str = None):
     #         cands 非空（≤5）、每项有 text／src、text 不等于 current；resolved 时 current 不在 cands 里；
     #         resolved／rejected 必带 by（human／rule）。
     r_ov05 = rule("F-OV-05", "HARD")
+    # F-OV-06 校对状态开关（GUJI-543）：章条目的 proofing 只能是布尔；文本线 major＝0（粗校完、
+    #         精校未完）时必须 proofing: true；major≥1 时可写 true（补走精校）或不写／false。
+    #         网站据此挂「欢迎帮助校对」banner，不从版本号推。
+    r_ov06 = rule("F-OV-06", "HARD")
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -657,13 +662,19 @@ def check(root: str, scan_root: str = None):
             tvt = OV.parse_version(tv)
             if tvt is None:
                 add(r_ov01, char_path, f"{char_path}: version={tv!r} 不是 MAJOR.MINOR.PATCH", sub="version")
-            elif tvt[0] < 1:
-                add(r_ov01, char_path, f"{char_path}: version={tv} 还是 0.x（并 main 前须 init 为 1.0.0）", sub="version")
+            elif tvt < OV.MIN_TEXT_0X:
+                add(r_ov01, char_path, f"{char_path}: version={tv} 低于 0.1.0（粗校完的第一版是 0.1.0）", sub="version")
             elif tvt[0] > OV.MAX_MAJOR:
                 add(r_ov01, char_path, f"{char_path}: version={tv} 的 major 超过 {OV.MAX_MAJOR}（质量等级只有 1–3）", sub="version")
             elif tvt[0] >= 2 and OV.review_missing(char.get("review")):
                 add(r_ov03, char_path, f"{char_path}: 文本线 {tv} ≥2 级，review 缺 {OV.review_missing(char.get('review'))}",
                     sub="review")
+            r_ov06["n_scanned"] += 1
+            pf = ch.get("proofing")
+            if "proofing" in ch and not isinstance(pf, bool):
+                add(r_ov06, f, f"{f}: 册 {stem} proofing={pf!r} 不是布尔", sub=f"{stem}:type")
+            elif OV.proofing_expected(tv) and pf is not True:
+                add(r_ov06, f, f"{f}: 册 {stem} 文本线 {tv} 是 0.x（精校未完），proofing 必须为 true", sub=f"{stem}:required")
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")

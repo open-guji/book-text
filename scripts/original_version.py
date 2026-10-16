@@ -29,6 +29,7 @@ import os
 import re
 
 LINES = ("text", "punct", "entity")
+MIN_TEXT_0X = (0, 1, 0)  # 粗校完的第一版；文本线在 main 上可停在 0.x（精校前），0.0.x 不存在
 MAX_MAJOR = 3  # major＝质量等级：1 可用／2 出版级／3 定本；guji-format 04/05 schema 同口径
 VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 # 验收记录（major ≥2）至少要有的键：日期、签核人、抽检数据
@@ -57,6 +58,12 @@ def bump(v, level):
     if level == "minor":
         return fmt_version((t[0], t[1] + 1, 0))
     raise ValueError(f"脚本不支持 level={level!r}")
+
+
+def proofing_expected(text_ver):
+    """文本线 major＝0（粗校完、精校未完）时，章条目必须带 proofing: true。"""
+    t = parse_version(text_ver)
+    return t is not None and t[0] == 0
 
 
 def review_missing(rec):

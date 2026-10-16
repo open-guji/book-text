@@ -58,3 +58,5 @@
 | 2026-10-16 | 96mid1ogzk/003 | 实体 | 1.8.0→1.8.1 | P7 第1批回挂：people 唯一命中＋work 题名唯一命中（抽审后）＋Sabine 分流表带目标 id 的已有Work漏匹配，new_candidate/ambiguous→matched（只改 target） | #117 |
 | 2026-10-16 | 96mid1ogzk/002 | 实体 | 1.8.1→1.8.2 | P7 第2批回挂：人名按上下文朝代消歧＋书名按上下文作者消歧，ambiguous/new_candidate→matched（只改 target）；撤回 e00183 误挂为 new_candidate | #119 |
 | 2026-10-16 | 96mid1ogzk/003 | 实体 | 1.8.1→1.8.2 | P7 第2批回挂：人名按上下文朝代消歧＋书名按上下文作者消歧，ambiguous/new_candidate→matched（只改 target） | #119 |
+| 2026-10-16 | 96mid1ogzk/002 | 实体 | 1.8.2→1.8.3 | GUJI-523：删 3 个误标 work 实体（002 e01039「事」、e01041「禮」；003 e00555「易」，均非书名），重算 stats | #129 |
+| 2026-10-16 | 96mid1ogzk/003 | 实体 | 1.8.2→1.8.3 | GUJI-523：删 3 个误标 work 实体（002 e01039「事」、e01041「禮」；003 e00555「易」，均非书名），重算 stats | #129 |

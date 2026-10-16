@@ -51,6 +51,7 @@ DYN_AMBIGUOUS = ['魏', '周', '唐', '宋', '元', '金', '吳', '梁', '陳', 
 
 # 人工确认过「朝代＋人名」的歧义前缀写法（库里 canonical 把朝代并进了名字）
 KNOWN_DYN_PREFIXED = {'魏王弼'}
+SURNAME_ONLY_WEAK = {'陳'}  # 弱旁证不拆的前缀（常作姓）；需 matched 且 canonical＝rest 才拆
 
 # N4 异体归一：用 entity_missing.py 的 FOLD（逐字映射，长度不变，只用于查键，原文字符不动），不另写一份
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I 不带脚本目录
@@ -183,7 +184,10 @@ def _dyn_prefix(e, names_here):
                 return d, rest
             if tg.get('status') == 'matched' and canon == t:
                 continue
-            if (tg.get('status') == 'matched' and canon == rest) or rest in names_here:
+            if tg.get('status') == 'matched' and canon == rest:
+                return d, rest
+            # 弱旁证（同册别处单独出现过 rest）对「陳」不够：陳器之 的「陳」是姓、器之是字（GUJI-537）
+            if rest in names_here and d not in SURNAME_ONLY_WEAK:
                 return d, rest
     return None
 

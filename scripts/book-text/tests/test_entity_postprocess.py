@@ -202,6 +202,20 @@ class N7(unittest.TestCase):
         self.assertEqual([x['text'] for x in out['entities']], ['魏', '王弼'])
         self.assertEqual(out['entities'][1]['target']['status'], 'new_candidate')
 
+    def test_chen_surname_weak_evidence_not_split(self):
+        # GUJI-537：陳器之 的「陳」是姓；同册别处单独出现「器之」只是弱旁证，对「陳」不拆
+        t = '其學出於陳器之器之出於朱子'
+        ents = [ent(1, 'people', '陳器之', t), ent(2, 'people', '器之', t, nth=1)]
+        out, log = ep.run(doc(ents), t, ['N7'])
+        self.assertEqual([e['text'] for e in out['entities']], ['陳器之', '器之'])
+        self.assertEqual(log.rows, [])
+
+    def test_chen_dynasty_strong_evidence_still_split(self):
+        t = '陳徐陵撰'
+        e = ent(1, 'people', '陳徐陵', t, status='matched', canon='徐陵')
+        out, _ = ep.run(doc([e]), t, ['N7'])
+        self.assertEqual([x['text'] for x in out['entities']], ['陳', '徐陵'])
+
     def test_surname_not_split(self):
         # 魏了翁：库里 canonical 就是 魏了翁，魏是姓
         t = '魏了翁撰，又魏了翁'

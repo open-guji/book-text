@@ -5,7 +5,7 @@
 只比 --rules 指定的规则：输入若已应用过某规则（如 N1–N4 已落库），重跑不会再触发，不能拿来比。
 
 用法  python3 check_postprocess_replay.py <in.entity.json> <金标 postprocess_log.tsv>
-          [--rules N6,N7] [--book-index <book-index 根>]
+          [--rules N7,N6] [--book-index <book-index 根>]
 退出码  0＝一致；1＝有差异（列出两侧独有条目）。
 """
 import argparse
@@ -30,7 +30,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('entity_json')
     ap.add_argument('gold_log')
-    ap.add_argument('--rules', default='N6,N7')
+    ap.add_argument('--rules', default='N7,N6', help='按此顺序执行；N7 必须先于 N6（N6 要用 N7 拆出的全名）')
     ap.add_argument('--book-index')
     a = ap.parse_args(argv)
     rules = set(a.rules.split(','))

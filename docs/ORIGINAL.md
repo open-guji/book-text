@@ -33,7 +33,7 @@
 | 字段 | 文件 | 必填 |
 |---|---|---|
 | `char_file` | `NNN.char.json` | 是 |
-| `cord_file` | `NNN.cord.json` | 否 |
+| `cord_file` | `NNN.cord.json` | 否（文本线 0.x、校对中的册必填：精校页按格位查像素框；F-OV-04） |
 | `punct_file` | `NNN.punct.json` | 否 |
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |

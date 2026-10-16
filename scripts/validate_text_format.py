@@ -633,7 +633,7 @@ def check(root: str, scan_root: str = None):
     # F-OV-03 任一线 major ≥2，必须带验收记录（date／signed_by／sample）：
     #         文本线在 char.json 顶层的 review，标点、实体在各自 json 顶层的 review。
     # F-OV-04 章条目的文件声明（ORIGINAL.md §二）：char_file 必填；写了的 *_file 必须存在，
-    #         且文件名是 NNN.<代号>.json／.md。
+    #         且文件名是 NNN.<代号>.json／.md；文本线 0.x（校对中）的册还必须声明 cord_file（GUJI-551）。
     ov_dirs = sorted(v for v, _l in ft_vdirs if OV.is_original_dir(v))
     r_ov01 = rule("F-OV-01", "HARD")
     r_ov02 = rule("F-OV-02", "HARD")
@@ -697,6 +697,9 @@ def check(root: str, scan_root: str = None):
                 add(r_ov03, char_path, f"{char_path}: 文本线 {tv} ≥2 级，review 缺 {OV.review_missing(char.get('review'))}",
                     sub="review")
             r_ov06["n_scanned"] += 1
+            if OV.proofing_expected(tv) and "cord_file" not in ch:
+                add(r_ov04, f, f"{f}: 册 {stem} 文本线 {tv} 是 0.x（校对中），须同时声明 cord_file（精校页按格位查像素框）",
+                    sub=f"{stem}:nocord")
             pf = ch.get("proofing")
             if "proofing" in ch and not isinstance(pf, bool):
                 add(r_ov06, f, f"{f}: 册 {stem} proofing={pf!r} 不是布尔", sub=f"{stem}:type")

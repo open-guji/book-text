@@ -112,7 +112,7 @@
   - **F-OV-01** 三线版本号格式、文本线 ≥0.1.0（伴生层 ≥1.0.0）、镜像一致、`text_version` 不超前、伴生层 major 不高于文本（所以文本线 0.x 时不能有伴生层）；
   - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
   - **F-OV-03** major ≥2 必须带验收记录。
-  - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填）。
+  - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填；文本线 0.x 的册 `cord_file` 也必填）。
   - **F-OV-05** decision.json 对照同章 char：`$schema`、`book_id`／`volume` 一致，候选字层合法（已落地，含 `scripts/tests/test_decision.py`）。
   - **F-OV-06** 章条目的 `proofing`（校对中）只能是布尔；文本线 0.x 时必须为 `true`，≥1 时可写 `true`（补走精校）或不写。网站据此挂「欢迎帮助校对」banner，**不从版本号推**。
   - **F-OV-07** 章条目的 `pending_file`（册级待审清单）只在 `proofing: true` 时存在；文件顶层 `rev`＝`<册>-r<n>`、`cv_commit` 必填、`cv_version` 为字符串或 null，`cells` 每项有 `cell` 与 `review`。

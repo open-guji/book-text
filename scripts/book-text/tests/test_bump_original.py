@@ -162,7 +162,18 @@ class TestBumpOriginal(unittest.TestCase):
         idx = _read(os.path.join(self.od, "index.json"))
         for k in ("punct_file", "entity_file"):
             del idx["chapters"][0][k]
+        idx["chapters"][0]["cord_file"] = "002.cord.json"
         _write(os.path.join(self.od, "index.json"), idx)
+        _write(os.path.join(self.od, "002.cord.json"), {"cells": {}})
+
+    def test_0x_needs_cord_file(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        self.assertEqual(ov_violations(self.root)["F-OV-04"], [])
+        idx = _read(os.path.join(self.od, "index.json"))
+        del idx["chapters"][0]["cord_file"]
+        _write(os.path.join(self.od, "index.json"), idx)
+        self.assertTrue(any("cord_file" in n for n in ov_violations(self.root)["F-OV-04"]))
 
     def test_init_0_1_0_coarse(self):
         self._coarse_only()

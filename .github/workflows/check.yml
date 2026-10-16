@@ -79,8 +79,8 @@ jobs:
       - name: decision 夹具哈希（与 guji-format 副本一致）
         run: cd scripts/tests/fixtures/decision && sha256sum -c SHA256SUMS
 
-      - name: unit tests (scripts/tests)
-        run: python3 -m pytest scripts/tests -q
+      - name: unit tests (scripts/tests, scripts/book-text/tests)
+        run: python3 -m pytest scripts/tests scripts/book-text/tests -q
 
   pin-drift:
     # guji-format main 的 schemas/ 与 pin 处不同＝schema 已变而本仓没跟上：此作业红。

@@ -629,7 +629,7 @@ def check(root: str, scan_root: str = None):
     #         text_version／punct_version／entity_version 要与 char、punct、entity 的 version 一致；伴生层的
     #         text_version 不能超前于当前文本版本；标点、实体的 major 不得高于文本线的 major
     #         （文本还没到出版级，伴生层也不能先升，10-05 用户定）。
-    # F-OV-02 伴生层的 text_version 落后于当前文本时，逐个核锚点校验字（按 char 的格位和字），对不上就报。
+    # F-OV-02 伴生层锚点校验字（text_version 落后或与文本同版本时都核，GUJI-543）（按 char 的格位和字），对不上就报。
     # F-OV-03 任一线 major ≥2，必须带验收记录（date／signed_by／sample）：
     #         文本线在 char.json 顶层的 review，标点、实体在各自 json 顶层的 review。
     # F-OV-04 章条目的文件声明（ORIGINAL.md §二）：char_file 必填；写了的 *_file 必须存在，
@@ -761,10 +761,12 @@ def check(root: str, scan_root: str = None):
                     continue
                 if ctvt > tvt:
                     add(r_ov01, cf, f"{cf}: text_version={ctv} 超前于当前文本 {tv}", sub="ahead")
-                elif ctvt < tvt:
+                else:
+                    # GUJI-543/541：不论是否落后都核锚点（改字类修订合入时，同版本也要发现伴生层失效）
                     bad = OV.anchor_mismatches(char, line, cd)
+                    why = f"落后于文本（{ctv} < {tv}）且" if ctvt < tvt else f"text_version 与文本同为 {tv}，但"
                     for i, note in bad[:20]:
-                        add(r_ov02, cf, f"{cf}: 落后于文本（{ctv} < {tv}）且{note}", sub=f"anchor:{i}")
+                        add(r_ov02, cf, f"{cf}: {why}{note}", sub=f"anchor:{i}")
                     if len(bad) > 20:
                         add(r_ov02, cf, f"{cf}: 另有 {len(bad) - 20} 处锚点对不上未逐条列出", sub="anchor:more",
                             weight=len(bad) - 20)

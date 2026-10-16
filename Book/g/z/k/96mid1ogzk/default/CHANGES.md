@@ -54,3 +54,5 @@
 | 2026-10-15 | 96mid1ogzk/002 | 实体 | 1.7.6→1.7.7 | GUJI-375/334：《三墳訓義》e01381 挂 Work；两处《外傳》补 work 实体，重算 stats | #113 |
 | 2026-10-15 | 96mid1ogzk/002 | 实体 | 1.7.7→1.8.0 | GUJI-376：P2 漏标补标写入 621（002×417、003×204），重算 stats | #116 |
 | 2026-10-15 | 96mid1ogzk/003 | 实体 | 1.7.5→1.8.0 | GUJI-376：P2 漏标补标写入 621（002×417、003×204），重算 stats | #116 |
+| 2026-10-16 | 96mid1ogzk/002 | 实体 | 1.8.0→1.8.1 | P7 第1批回挂：people 唯一命中＋work 题名唯一命中（抽审后）＋Sabine 分流表带目标 id 的已有Work漏匹配，new_candidate/ambiguous→matched（只改 target） | #117 |
+| 2026-10-16 | 96mid1ogzk/003 | 实体 | 1.8.0→1.8.1 | P7 第1批回挂：people 唯一命中＋work 题名唯一命中（抽审后）＋Sabine 分流表带目标 id 的已有Work漏匹配，new_candidate/ambiguous→matched（只改 target） | #117 |

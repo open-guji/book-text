@@ -23,6 +23,11 @@ major 是质量等级（1 可用／2 出版级／3 定本），要验收记录�
     bump_original.py <original 目录或其上层条目目录> --line text --level patch --note "改 3 字" --pr 12
     bump_original.py <目录> --line punct --level minor --note "整册重跑标点" [--chapter 002]
     bump_original.py <目录> --init --note "四庫 vol02 首次并 main" --pr 12   # 三线都定为 1.0.0
+    bump_original.py <目录> --init --version 0.1.0 --note "粗校完" --pr 12   # 只定文本线 0.1.0，proofing=true
+    bump_original.py <目录> --proofing off --note "精校完" --pr 12           # 只改校对状态开关（见下）
+文本线可停在 0.x（粗校完 0.1.0，之后 patch／minor 照升）；0.x 阶段章条目必须 proofing: true（F-OV-06），
+此时没有标点、实体线，升它们会报错。精校完升 1.0.0 是 major：手工改 char.json 版本和验收记录，
+再 `--proofing off`。vol02／03 这类按旧定义已是 1.0.0、补走精校的，用 `--proofing on`。
 不给 --chapter 时作用于 index.json 里全部的册。
 """
 import argparse
@@ -97,7 +102,7 @@ def _pr(pr):
     return f"#{pr}" if pr else ""
 
 
-def do_init(od, chapters, note, pr, today):
+def do_init(od, chapters, note, pr, today, version="1.0.0"):
     index = OV.load_json(os.path.join(od, "index.json"))
     rows, pending = [], []
     for ch in select_chapters(index, chapters):
@@ -109,14 +114,18 @@ def do_init(od, chapters, note, pr, today):
         old = OV.parse_version(char.get("version"))
         if old and old[0] >= 1:
             raise BumpError(f"册 {stem} 已是 {char['version']}，不能再 init")
-        char["version"] = "1.0.0"
+        char["version"] = version
         pending.append((char_path, char))
-        ch["text_version"] = "1.0.0"
+        ch["text_version"] = version
         lines = ["text"]
+        if version == "0.1.0":
+            ch["proofing"] = True
         for line in ("punct", "entity"):
             cf = OV.companion_path(od, stem, line)
             if not os.path.isfile(cf):
                 continue
+            if version == "0.1.0":
+                raise BumpError(f"册 {stem} 有 {os.path.basename(cf)}：0.1.0 是粗校完的文本线，标点、实体要等精校完（1.0.0）再开")
             cd = OV.load_json(cf)
             cd["version"] = "1.0.0"
             cd["text_version"] = "1.0.0"
@@ -124,7 +133,7 @@ def do_init(od, chapters, note, pr, today):
             ch[f"{line}_version"] = "1.0.0"
             lines.append(line)
         rows.append((today, f"{_book_id(od)}/{stem}", "＋".join(LINE_NAME[x] for x in lines),
-                     "→1.0.0", note or "首次并 main", _pr(pr)))
+                     f"→{version}", note or "首次并 main", _pr(pr)))
     # 全部核完再落盘：中途报错时一个文件都不改
     for path, obj in pending:
         _dump(path, obj)
@@ -152,7 +161,7 @@ def do_bump(od, line, level, chapters, note, pr, today):
         char = OV.load_json(char_path)
         if line == "text":
             old = char.get("version")
-            if not OV.parse_version(old) or OV.parse_version(old)[0] < 1:
+            if not OV.parse_version(old) or OV.parse_version(old) < OV.MIN_TEXT_0X:
                 raise BumpError(f"{stem}.char.json version={old!r}，先 --init")
             new = OV.bump(old, level)
             char["version"] = new
@@ -172,6 +181,8 @@ def do_bump(od, line, level, chapters, note, pr, today):
                     cd["text_version"] = new
                     pending.append((cf, cd))
         else:
+            if OV.proofing_expected(char.get("version")):
+                raise BumpError(f"册 {stem} 文本线还是 {char.get('version')}（精校未完），标点、实体线要等文本 1.0.0 再开")
             cf = OV.companion_path(od, stem, line)
             if not os.path.isfile(cf):
                 raise BumpError(f"册 {stem} 没有 {os.path.basename(cf)}")
@@ -197,10 +208,30 @@ def do_bump(od, line, level, chapters, note, pr, today):
     return rows, warnings
 
 
+def do_proofing(od, flag, chapters, note, pr, today):
+    index = OV.load_json(os.path.join(od, "index.json"))
+    rows = []
+    for ch in select_chapters(index, chapters):
+        stem = OV.chapter_file(ch)
+        tv = OV.load_json(OV.companion_path(od, stem, "text")).get("version")
+        if not flag and OV.proofing_expected(tv):
+            raise BumpError(f"册 {stem} 文本线 {tv} 是 0.x（精校未完），不能关校对状态；先手工升 1.0.0")
+        old = ch.get("proofing") is True
+        ch["proofing"] = flag
+        rows.append((today, f"{_book_id(od)}/{stem}", "校对状态",
+                     f"{'开' if old else '关'}→{'开' if flag else '关'}", note, _pr(pr)))
+    OV.dump_json(os.path.join(od, "index.json"), index)
+    append_changes(od, rows)
+    return rows
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("dir", help="original 目录，或含 original/ 的条目目录")
     ap.add_argument("--init", action="store_true", help="首次并 main：三线都定为 1.0.0")
+    ap.add_argument("--version", choices=("0.1.0", "1.0.0"), default="1.0.0",
+                    help="--init 定的版本：粗校完 0.1.0（只文本线），或 1.0.0（默认）")
+    ap.add_argument("--proofing", choices=("on", "off"), help="只改章条目的 proofing 开关（校对中），不升版本")
     ap.add_argument("--line", choices=OV.LINES)
     ap.add_argument("--level", choices=("patch", "minor", "major"))
     ap.add_argument("--chapter", action="append", help="只动这一册（NNN），可重复；不给就是全部")
@@ -211,10 +242,16 @@ def main(argv=None):
     today = a.date or datetime.date.today().isoformat()
     try:
         od = resolve_original(a.dir)
-        if a.init:
+        if a.proofing:
+            if a.init or a.line or a.level:
+                ap.error("--proofing 单独用")
+            if not a.note:
+                ap.error("--proofing 需要 --note")
+            rows, warnings = do_proofing(od, a.proofing == "on", a.chapter, a.note, a.pr, today), []
+        elif a.init:
             if a.line or a.level:
                 ap.error("--init 不和 --line／--level 同用")
-            rows, warnings = do_init(od, a.chapter, a.note, a.pr, today), []
+            rows, warnings = do_init(od, a.chapter, a.note, a.pr, today, a.version), []
         else:
             if not (a.line and a.level):
                 ap.error("需要 --line 和 --level（或 --init）")

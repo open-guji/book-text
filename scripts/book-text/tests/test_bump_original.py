@@ -75,7 +75,7 @@ def run(*args):
 def ov_violations(root):
     report, _s, _t = V.check(root)
     return {rid: [v["note"] for v in report[rid]["violations"]]
-            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-FT-01")}
+            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-FT-01")}
 
 
 class TestBumpOriginal(unittest.TestCase):
@@ -150,10 +150,125 @@ class TestBumpOriginal(unittest.TestCase):
         changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
         self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
         self.assertEqual(ov_violations(self.root),
-                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-FT-01": []})
+                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-FT-01": []})
         code, err = run(self.entry, "--init")
         self.assertEqual(code, 1)
         self.assertIn("不能再 init", err)
+
+    def _coarse_only(self):
+        """粗校完的形态：只有文本线，没有标点、实体稿。"""
+        for line in ("punct", "entity"):
+            os.remove(os.path.join(self.od, f"002.{line}.json"))
+        idx = _read(os.path.join(self.od, "index.json"))
+        for k in ("punct_file", "entity_file"):
+            del idx["chapters"][0][k]
+        idx["chapters"][0]["cord_file"] = "002.cord.json"
+        _write(os.path.join(self.od, "index.json"), idx)
+        _write(os.path.join(self.od, "002.cord.json"), {"cells": {}})
+
+    def test_0x_needs_cord_file(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        self.assertEqual(ov_violations(self.root)["F-OV-04"], [])
+        idx = _read(os.path.join(self.od, "index.json"))
+        del idx["chapters"][0]["cord_file"]
+        _write(os.path.join(self.od, "index.json"), idx)
+        self.assertTrue(any("cord_file" in n for n in ov_violations(self.root)["F-OV-04"]))
+
+    def test_init_0_1_0_coarse(self):
+        self._coarse_only()
+        code, _ = run(self.entry, "--init", "--version", "0.1.0", "--note", "粗校完", "--pr", "9")
+        self.assertEqual(code, 0)
+        ch = self.idx()
+        self.assertEqual((ch["text_version"], ch["proofing"]), ("0.1.0", True))
+        self.assertNotIn("punct_version", ch)
+        self.assertEqual(self.comp("char")["version"], "0.1.0")
+        self.assertIn("| 文本 | →0.1.0 | 粗校完 | #9 |",
+                      OV.read_text(os.path.join(self.od, "CHANGES.md")))
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
+
+    def test_init_0_1_0_refuses_companions(self):
+        code, err = run(self.entry, "--init", "--version", "0.1.0")
+        self.assertEqual(code, 1)
+        self.assertIn("精校完", err)
+
+    def test_0x_bump_and_companions_refused(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        code, _ = run(self.od, "--line", "text", "--level", "minor", "--note", "重切 3 页")
+        self.assertEqual(code, 0)
+        self.assertEqual((self.idx()["text_version"], self.comp("char")["version"]), ("0.2.0", "0.2.0"))
+        self.assertTrue(self.idx()["proofing"])
+        code, err = run(self.od, "--line", "punct", "--level", "patch", "--note", "x")
+        self.assertEqual(code, 1)
+        self.assertIn("精校未完", err)
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()))
+
+    def test_proofing_required_while_0x(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        for bad in (None, False, "yes"):
+            idx = _read(os.path.join(self.od, "index.json"))
+            if bad is None:
+                del idx["chapters"][0]["proofing"]
+            else:
+                idx["chapters"][0]["proofing"] = bad
+            _write(os.path.join(self.od, "index.json"), idx)
+            self.assertEqual(len(ov_violations(self.root)["F-OV-06"]), 1, bad)
+        code, err = run(self.od, "--proofing", "off", "--note", "x")
+        self.assertEqual(code, 1)
+        self.assertIn("精校未完", err)
+
+    def test_below_0_1_0_flagged(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        d = self.comp("char")
+        d["version"] = "0.0.9"
+        _write(os.path.join(self.od, "002.char.json"), d)
+        self.assertTrue(any("低于 0.1.0" in n for n in ov_violations(self.root)["F-OV-01"]))
+
+    def _pending(self, **over):
+        pd = {"rev": "002-r1", "cv_version": None, "cv_commit": "abc1234",
+              "cells": [{"cell": "p3-r2-c5", "review": "pending"}]}
+        pd.update(over)
+        _write(os.path.join(self.od, "002.pending.json"), pd)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["pending_file"] = "002.pending.json"
+        _write(os.path.join(self.od, "index.json"), idx)
+
+    def test_pending_file(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        self._pending()
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
+        for bad in ({"rev": "x-r1"}, {"cv_commit": ""}, {"cv_commit": None}, {"cv_version": 1},
+                    {"cells": {}}, {"cells": [{"cell": "a"}]}):
+            self._pending(**bad)
+            self.assertEqual(len(ov_violations(self.root)["F-OV-07"]), 1, bad)
+        self._pending(cv_version="cv-v0.1.0")
+        self.assertEqual(ov_violations(self.root)["F-OV-07"], [])
+
+    def test_pending_file_needs_proofing_and_exists(self):
+        run(self.entry, "--init")
+        self._pending()
+        self.assertEqual(len(ov_violations(self.root)["F-OV-07"]), 1)
+        run(self.od, "--proofing", "on", "--note", "补走精校")
+        self.assertEqual(ov_violations(self.root)["F-OV-07"], [])
+        os.remove(os.path.join(self.od, "002.pending.json"))
+        self.assertEqual(len(ov_violations(self.root)["F-OV-04"]), 1)
+
+    def test_proofing_switch_after_1_0_0(self):
+        run(self.entry, "--init")
+        self.assertNotIn("proofing", self.idx())
+        code, _ = run(self.od, "--proofing", "on", "--note", "旧定义 1.0.0，补走精校", "--pr", "5")
+        self.assertEqual(code, 0)
+        self.assertTrue(self.idx()["proofing"])
+        self.assertEqual(ov_violations(self.root)["F-OV-06"], [])
+        code, _ = run(self.od, "--proofing", "off", "--note", "精校完")
+        self.assertEqual(code, 0)
+        self.assertFalse(self.idx()["proofing"])
+        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
+        self.assertIn("| 校对状态 | 关→开 | 旧定义 1.0.0，补走精校 | #5 |", changes)
 
     def test_patch_and_minor(self):
         run(self.entry, "--init")

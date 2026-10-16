@@ -33,13 +33,16 @@
 | 字段 | 文件 | 必填 |
 |---|---|---|
 | `char_file` | `NNN.char.json` | 是 |
-| `cord_file` | `NNN.cord.json` | 否 |
+| `cord_file` | `NNN.cord.json` | 否（文本线 0.x、校对中的册必填：精校页按格位查像素框；F-OV-04） |
 | `punct_file` | `NNN.punct.json` | 否 |
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
 | `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
+| `pending_file` | `NNN.pending.json` | 否（册级待审清单，仅 `proofing: true` 时存在；校验 F-OV-07） |
 
-`chapters[]` 另有 `text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
+`NNN.pending.json` 由整理侧导出（GUJI-543 §6.2）：顶层 `rev`（`<册>-r<n>`）、`cv_version`（字符串，首个正式 `cv-vX.Y.Z` tag 前可为 `null`）、`cv_commit`（必填）、`cells`（先只列格号 `cell` 与 `review` 状态；`why`／`cls` 等归 guji-proof 0.2）。坐标是原图轴对齐框。它不是版本线，不进 `*_version`、不进 CHANGES.md。
+
+`chapters[]` 另有 `proofing`（选填布尔，校对中；文本线 0.x 时必填 true，F-OV-06；网站据此挂「欢迎帮助校对」banner）、`text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
 
 生成分支上的 `index.json` 另外加 `lines_file`、`rich_file`。前端读哪些文件、读哪个分支，由网站决定。
 

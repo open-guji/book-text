@@ -314,11 +314,34 @@ def decision_problems(dd, char):
 
 
 
+def pending_problems(pd, stem):
+    """F-OV-07：NNN.pending.json 顶层与 cells 的形状，返回 [(说明, 子类)]。"""
+    out = []
+    rev = pd.get("rev")
+    if not isinstance(rev, str) or not re.fullmatch(re.escape(str(stem)) + r"-r\d+", rev):
+        out.append((f"rev={rev!r} 应形如 {stem}-r<n>", "rev"))
+    cc = pd.get("cv_commit")
+    if not isinstance(cc, str) or not cc.strip():
+        out.append((f"cv_commit={cc!r} 必填且为非空字符串", "cv_commit"))
+    cv = pd.get("cv_version")
+    if cv is not None and not isinstance(cv, str):
+        out.append((f"cv_version={cv!r} 应为字符串或 null", "cv_version"))
+    cells = pd.get("cells")
+    if not isinstance(cells, list):
+        out.append(("cells 不是列表", "cells"))
+    else:
+        for i, c in enumerate(cells):
+            if not isinstance(c, dict) or c.get("cell") in (None, "") or not isinstance(c.get("review"), str) or not c.get("review"):
+                out.append((f"cells[{i}] 须有 cell（格号）与 review（状态字符串）", "cell"))
+                break
+    return out
+
+
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md"}
-ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision)\.json$|^\d+\.(lines|rich)\.md$")
+ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|pending)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file",
-                        "lines_file", "rich_file")
+                        "pending_file", "lines_file", "rich_file")
 FR_REQUIRED_FIELDS = [
     "ai_note", "based_on", "collectors", "coverage", "fragments", "loss_status",
     "provenance", "provenance_note", "schema_ref", "schema_version", "statement",
@@ -625,6 +648,10 @@ def check(root: str, scan_root: str = None):
     #         精校未完）时必须 proofing: true；major≥1 时可写 true（补走精校）或不写／false。
     #         网站据此挂「欢迎帮助校对」banner，不从版本号推。
     r_ov06 = rule("F-OV-06", "HARD")
+    # F-OV-07 册级待审清单（GUJI-543 §6.2）：章条目的 pending_file（NNN.pending.json）只在 proofing: true 时存在；
+    #         文件顶层 rev 形如 <册>-r<n>、cv_commit 必填非空字符串、cv_version 为字符串或 null（首个正式 tag 前），
+    #         cells 是列表，每项有 cell（格号）与 review（状态字符串）；why／cls 等归 guji-proof 0.2，这里不查。
+    r_ov07 = rule("F-OV-07", "HARD")
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -675,6 +702,19 @@ def check(root: str, scan_root: str = None):
                 add(r_ov06, f, f"{f}: 册 {stem} proofing={pf!r} 不是布尔", sub=f"{stem}:type")
             elif OV.proofing_expected(tv) and pf is not True:
                 add(r_ov06, f, f"{f}: 册 {stem} 文本线 {tv} 是 0.x（精校未完），proofing 必须为 true", sub=f"{stem}:required")
+            pn = ch.get("pending_file")
+            if pn:
+                r_ov07["n_scanned"] += 1
+                if ch.get("proofing") is not True:
+                    add(r_ov07, f, f"{f}: 册 {stem} 有 pending_file 但 proofing 不是 true（待审清单只在校对中存在）", sub=f"{stem}:proofing")
+                ppath = os.path.join(od, pn)
+                if os.path.isfile(ppath):
+                    pd, perr = jload(ppath)
+                    if perr or not isinstance(pd, dict):
+                        add(r_ov07, ppath, f"{ppath}: JSON 解析失败：{perr}", sub="parse")
+                    else:
+                        for msg, sub in pending_problems(pd, stem):
+                            add(r_ov07, ppath, f"{ppath}: {msg}", sub=sub)
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")

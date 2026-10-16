@@ -75,7 +75,7 @@ def run(*args):
 def ov_violations(root):
     report, _s, _t = V.check(root)
     return {rid: [v["note"] for v in report[rid]["violations"]]
-            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-FT-01")}
+            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-FT-01")}
 
 
 class TestBumpOriginal(unittest.TestCase):
@@ -150,7 +150,7 @@ class TestBumpOriginal(unittest.TestCase):
         changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
         self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
         self.assertEqual(ov_violations(self.root),
-                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-FT-01": []})
+                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-FT-01": []})
         code, err = run(self.entry, "--init")
         self.assertEqual(code, 1)
         self.assertIn("不能再 init", err)
@@ -215,6 +215,36 @@ class TestBumpOriginal(unittest.TestCase):
         d["version"] = "0.0.9"
         _write(os.path.join(self.od, "002.char.json"), d)
         self.assertTrue(any("低于 0.1.0" in n for n in ov_violations(self.root)["F-OV-01"]))
+
+    def _pending(self, **over):
+        pd = {"rev": "002-r1", "cv_version": None, "cv_commit": "abc1234",
+              "cells": [{"cell": "p3-r2-c5", "review": "pending"}]}
+        pd.update(over)
+        _write(os.path.join(self.od, "002.pending.json"), pd)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["pending_file"] = "002.pending.json"
+        _write(os.path.join(self.od, "index.json"), idx)
+
+    def test_pending_file(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        self._pending()
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
+        for bad in ({"rev": "x-r1"}, {"cv_commit": ""}, {"cv_commit": None}, {"cv_version": 1},
+                    {"cells": {}}, {"cells": [{"cell": "a"}]}):
+            self._pending(**bad)
+            self.assertEqual(len(ov_violations(self.root)["F-OV-07"]), 1, bad)
+        self._pending(cv_version="cv-v0.1.0")
+        self.assertEqual(ov_violations(self.root)["F-OV-07"], [])
+
+    def test_pending_file_needs_proofing_and_exists(self):
+        run(self.entry, "--init")
+        self._pending()
+        self.assertEqual(len(ov_violations(self.root)["F-OV-07"]), 1)
+        run(self.od, "--proofing", "on", "--note", "补走精校")
+        self.assertEqual(ov_violations(self.root)["F-OV-07"], [])
+        os.remove(os.path.join(self.od, "002.pending.json"))
+        self.assertEqual(len(ov_violations(self.root)["F-OV-04"]), 1)
 
     def test_proofing_switch_after_1_0_0(self):
         run(self.entry, "--init")

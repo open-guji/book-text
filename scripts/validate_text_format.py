@@ -54,6 +54,7 @@ import argparse
 import collections
 import datetime
 import glob as _glob
+import hashlib
 import json
 import os
 import re
@@ -469,6 +470,61 @@ def assets_problems(pd, ad):
     return out
 
 
+ASSETS_URL = "https://github.com/open-guji/open-guji-dataset/releases/download/{tag}/assets.json"
+SHA256_RE = re.compile(r"[0-9a-f]{64}")
+TAG_RE = re.compile(r"[A-Za-z0-9._-]+")
+
+
+def fetch_bytes(url, tries=3, timeout=30):
+    """下载一个 URL 的字节；失败重试 tries 次，仍失败抛最后一个异常。单独成函数，测试里可替换。"""
+    import time
+    import urllib.request
+    last = None
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(url, timeout=timeout) as r:
+                return r.read()
+        except Exception as e:  # noqa: BLE001 — 网络类错误都按「取不到」处理
+            last = e
+            time.sleep(2 * (i + 1))
+    raise last
+
+
+def pointer_assets(ptr, pd, fetch, book=None, stem=None):
+    """F-OV-09／11：按 proof/<书>/<册>/sprites.pointer.json 取桶清单（GUJI-557）。返回 (assets 或 None, [(说明, 规则号, 子类)])。
+    指针只放 tag／manifest_sha256／rev 三项。rev 须等于 pending.json 的 rev（离线即可核）；
+    fetch 为真时再从数据桶 Release 下载 assets.json，sha256 须等于 manifest_sha256，返回的清单交给 assets_problems 核 09／10／11；下载失败只记 F-OV-09w（SOFT 警告，不阻塞）。
+    fetch 为假（本地跑）时只核指针本身，返回 (None, …)，调用方不再按「没有 assets.json」报。"""
+    out = []
+    if not isinstance(ptr, dict) or not all(isinstance(ptr.get(k), str) and ptr[k] for k in ("tag", "manifest_sha256", "rev")):
+        return None, [("sprites.pointer.json 须为 {tag, manifest_sha256, rev} 三个非空字符串", "F-OV-09", "pointer")]
+    if not SHA256_RE.fullmatch(ptr["manifest_sha256"]):
+        out.append((f"sprites.pointer.json manifest_sha256={ptr['manifest_sha256']!r} 须为 64 位小写十六进制", "F-OV-09", "pointer"))
+    if not TAG_RE.fullmatch(ptr["tag"]) or set(ptr["tag"]) <= {"."}:
+        out.append((f"sprites.pointer.json tag={ptr['tag']!r} 只许字母数字和 . _ -，且不能全是点号", "F-OV-09", "pointer"))
+    if ptr["rev"] != pd.get("rev"):
+        out.append((f"sprites.pointer.json rev={ptr['rev']!r} 与 pending.json rev={pd.get('rev')!r} 不一致", "F-OV-11", "rev"))
+    if out or not fetch:
+        return None, out
+    url = ASSETS_URL.format(tag=ptr["tag"])
+    try:
+        raw = fetch_bytes(url)
+    except Exception as e:  # noqa: BLE001
+        return None, [(f"取不到 {url}（只警告，不阻塞）：{e}", "F-OV-09w", "fetch")]
+    got = hashlib.sha256(raw).hexdigest()
+    if got != ptr["manifest_sha256"]:
+        return None, [(f"{url} 的 sha256={got} 与指针 manifest_sha256={ptr['manifest_sha256']} 不一致", "F-OV-09", "sha")]
+    try:
+        ad = json.loads(raw.decode("utf-8"))
+    except Exception as e:  # noqa: BLE001
+        return None, [(f"{url} 不是合法 JSON：{e}", "F-OV-09", "parse")]
+    if isinstance(ad, dict):  # 清单自称的书／册须与指针所在目录一致（防指针指到别册的清单）
+        want_vol = int(stem) if isinstance(stem, str) and stem.isdigit() else None
+        if (book is not None and ad.get("book") != book) or (want_vol is not None and ad.get("volume") != want_vol):
+            return None, [(f"{url} 的 book={ad.get('book')!r} volume={ad.get('volume')!r} 与指针所在目录 {book}/{stem} 不一致", "F-OV-09", "ident")]
+    return ad, []
+
+
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json"}
 ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|pending)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
@@ -546,11 +602,12 @@ def discover_versions(root, scan_root):
     return versions, problems
 
 
-def check(root: str, scan_root: str = None):
+def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     """跑全部规则，返回 (report, scanned_counts, total_scanned)。
 
     root：基线 key 里"文件路径"锚定的根（一律用它算相对路径，跨 --path 范围也能合用同一份基线）。
     scan_root：实际去 glob 扫描的目录，默认等于 root；--path 时是 root 下的某棵子树。
+    fetch_assets：真则按 proof/<书>/<册>/sprites.pointer.json 从数据桶下载 assets.json 核 sha256 与 F-OV-09／10（CI 用）；默认离线。
     report[rule_id] = {"level", "n_scanned", "violations": [{"key","note","weight"}, ...]}
     """
     if scan_root is None:
@@ -787,12 +844,16 @@ def check(root: str, scan_root: str = None):
     #         只做类型检查，0.1 的键与未知键放过；img.s／ex.*.s 须在桶清单里（桶清单路径定案前由调用方传 sprite_names，CLI 暂不核）。
     r_ov07 = rule("F-OV-07", "HARD")
     r_ov08 = rule("F-OV-08", "HARD")
-    # F-OV-09～11 桶清单（GUJI-557，同 pending.json 目录的 assets.json，guji-proof-assets/0.1，静态不联网）：
-    #         09 每个 img／ctximg／ex 的 s 须在 files[].name（有 s 而无 assets.json 亦报）；10 x+w≤w、y+h≤h；11 assets.rev＝pending.rev。
+    # F-OV-09～11 桶清单 assets.json（GUJI-557，guji-proof-assets/0.1）：不进本仓，按 proof/<书>/<册>/sprites.pointer.json
+    #         （tag／manifest_sha256／rev）从数据桶 Release 下载、核 sha256（--fetch-assets，CI 用；本地默认不联网，只核指针）；
+    #         同目录有 assets.json 时仍直接用它（导出自检）。
+    #         09 每个 img／ctximg／ex 的 s 须在 files[].name（有 s 而无清单亦报；指针 sha 对不上也在此报；下载失败只记 F-OV-09w 警告）；
+    #         10 x+w≤w、y+h≤h；11 assets.rev＝pending.rev（指针 rev 同）。
     r_ov09 = rule("F-OV-09", "HARD")
     r_ov10 = rule("F-OV-10", "HARD")
     r_ov11 = rule("F-OV-11", "HARD")
-    ov_assets_rules = {"F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
+    r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
+    ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -866,8 +927,22 @@ def check(root: str, scan_root: str = None):
                         if aerr:
                             add(r_ov09, apath, f"{apath}: JSON 解析失败：{aerr}", sub="parse")
                         else:
-                            for msg, rid, sub in assets_problems(pd, ad):
-                                add(ov_assets_rules[rid], apath if ad is not None else ppath, f"{ppath}: {msg}", sub=sub)
+                            skip_assets = False
+                            if ad is None:  # 同目录没有 assets.json：看有没有指针（桶清单不进本仓，按指针去数据桶取）
+                                kpath = os.path.join(root, "proof", os.path.basename(os.path.dirname(od)), str(stem), "sprites.pointer.json")
+                                if os.path.isfile(kpath):
+                                    ptr, kerr = jload(kpath)
+                                    if kerr:
+                                        add(r_ov09, kpath, f"{kpath}: JSON 解析失败：{kerr}", sub="pointer")
+                                        skip_assets = True
+                                    else:
+                                        ad, pprob = pointer_assets(ptr, pd, fetch_assets, os.path.basename(os.path.dirname(od)), str(stem))
+                                        for msg, rid, sub in pprob:
+                                            add(ov_assets_rules[rid], kpath, f"{kpath}: {msg}", sub=sub)
+                                        skip_assets = ad is None  # 取不到／未联网：不再按「没有 assets.json」报
+                            if not skip_assets:
+                                for msg, rid, sub in assets_problems(pd, ad):
+                                    add(ov_assets_rules[rid], apath if ad is not None else ppath, f"{ppath}: {msg}", sub=sub)
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")
@@ -1374,6 +1449,8 @@ def main():
     ap.add_argument("--path", metavar="SUBDIR", help="只扫 root 下的这棵子树（相对路径，或 root 下的绝对路径），供单部入库自检用")
     ap.add_argument("--baseline", metavar="JSON", help="基线文件路径；配合 --strict 只对不在基线里的违规失败；文件不存在时改为冻结当次全部违规写出")
     ap.add_argument("--update-baseline", action="store_true", help="收缩式刷新基线：这次已不违规的项剔除，不新增；需要 --baseline")
+    ap.add_argument("--fetch-assets", action="store_true",
+                    help="按 proof/<书>/<册>/sprites.pointer.json 从数据桶 Release 下载 assets.json，核 sha256 与 F-OV-09／10（CI 用，需联网）；默认只核指针本身")
     ap.add_argument("--selftest", action="store_true", help="造坏样本自测（含基线机制），不需要真仓")
     args = ap.parse_args()
 
@@ -1403,7 +1480,7 @@ def main():
                   file=sys.stderr)
             sys.exit(2)
 
-    report, scanned, total_scanned = check(root, scan_root)
+    report, scanned, total_scanned = check(root, scan_root, fetch_assets=args.fetch_assets)
 
     print(f"扫描档数：{scanned}（合计 {total_scanned}）", file=sys.stderr)
     if total_scanned == 0:

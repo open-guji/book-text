@@ -294,6 +294,71 @@ class TestBumpOriginal(unittest.TestCase):
         self._pending()  # 无 s 时不要求 assets.json
         self.assertTrue(all(not x for x in ov_violations(self.root).values()), ov_violations(self.root))
 
+    def test_assets_pointer(self):
+        """桶清单不进仓：按 proof/<书>/<册>/sprites.pointer.json 取；离线只核指针，--fetch-assets 才下载核 sha256。"""
+        import hashlib
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        cell = {"cell": "a", "review": "pending", "img": {"s": "p0003.webp", "x": 96, "y": 0, "w": 96, "h": 96}}
+        assets = {"schema": "guji-proof-assets/0.1", "book": "testbook", "volume": 2, "rev": "002-r1",
+                  "files": [{"name": "p0003.webp", "bytes": 1, "sha256": "x", "w": 192, "h": 96}]}
+        raw = json.dumps(assets).encode("utf-8")
+        sha = hashlib.sha256(raw).hexdigest()
+        kpath = os.path.join(self.root, "proof", "testbook", "002", "sprites.pointer.json")
+        ptr = {"tag": "proof-testbook-002-1", "manifest_sha256": sha, "rev": "002-r1"}
+        self._pending(cells=[cell])
+        orig = V.fetch_bytes
+        urls = []
+
+        def fake(url, **kw):
+            urls.append(url)
+            return raw
+
+        V.fetch_bytes = fake
+        try:
+            def viol(fetch):
+                report, _s, _t = V.check(self.root, fetch_assets=fetch)
+                return {r: [v["note"] for v in report[r]["violations"]] for r in ("F-OV-09", "F-OV-10", "F-OV-11", "F-OV-09w")}
+
+            self.assertEqual(len(viol(False)["F-OV-09"]), 1)  # 有 s，无 assets.json、无指针
+            _write(kpath, ptr)
+            v = viol(False)
+            self.assertTrue(all(not x for x in v.values()), v)  # 离线：只核指针
+            self.assertEqual(urls, [])
+            v = viol(True)
+            self.assertTrue(all(not x for x in v.values()), v)  # 联网：sha 对、越界检查过
+            self.assertEqual(urls, ["https://github.com/open-guji/open-guji-dataset/releases/download/proof-testbook-002-1/assets.json"])
+            _write(kpath, dict(ptr, manifest_sha256="0" * 64))
+            self.assertEqual(len(viol(True)["F-OV-09"]), 1)  # sha 不一致
+            self.assertTrue(all(not x for x in viol(False).values()))
+            _write(kpath, dict(ptr, rev="002-r2"))
+            self.assertEqual(len(viol(False)["F-OV-11"]), 1)  # 指针 rev 与 pending 不一致，离线即报
+            for bad_tag in ("..", "a/b", "x y"):
+                _write(kpath, dict(ptr, tag=bad_tag))
+                self.assertEqual(len(viol(False)["F-OV-09"]), 1, bad_tag)  # tag 不合规，不拼 URL
+            _write(kpath, {"tag": "t"})
+            self.assertEqual(len(viol(False)["F-OV-09"]), 1)  # 指针形状不对
+            _write(kpath, ptr)
+            V.fetch_bytes = lambda url, **kw: json.dumps(dict(assets, files=[dict(assets["files"][0], w=191)])).encode("utf-8")
+            self.assertEqual(len(viol(True)["F-OV-09"]), 1)  # 内容变了 sha 对不上
+            bad = json.dumps(dict(assets, files=[dict(assets["files"][0], w=191)])).encode("utf-8")
+            _write(kpath, dict(ptr, manifest_sha256=hashlib.sha256(bad).hexdigest()))
+            self.assertEqual(len(viol(True)["F-OV-10"]), 1)  # sha 对但越界
+
+            for other in (dict(assets, book="otherbook"), dict(assets, volume=3)):
+                rawo = json.dumps(other).encode("utf-8")
+                _write(kpath, dict(ptr, manifest_sha256=hashlib.sha256(rawo).hexdigest()))
+                V.fetch_bytes = lambda url, rawo=rawo, **kw: rawo
+                self.assertEqual(len(viol(True)["F-OV-09"]), 1)  # 清单的 book／volume 与指针目录不一致
+
+            def boom(url, **kw):
+                raise OSError("offline")
+            V.fetch_bytes = boom
+            v = viol(True)
+            self.assertEqual((len(v["F-OV-09w"]), len(v["F-OV-09"])), (1, 0))  # 下载失败：只警告（SOFT），不记 HARD
+        finally:
+            V.fetch_bytes = orig
+
     def test_pending_file_needs_proofing_and_exists(self):
         run(self.entry, "--init")
         self._pending()

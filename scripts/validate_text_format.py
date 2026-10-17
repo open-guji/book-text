@@ -422,7 +422,54 @@ def proof02_cell_problems(c, sprite_names=None):
     return out
 
 
-ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md"}
+def cell_boxes(c):
+    """一格里引用雪碧图的 (键, {s,x,y,w,h})：img／ctximg／ex.<候选字>[i]；形状不对的跳过（那是 F-OV-08 的事）。"""
+    out = []
+    for k in ("img", "ctximg"):
+        if _is_box(c.get(k)):
+            out.append((k, c[k]))
+    ex = c.get("ex")
+    if isinstance(ex, dict):
+        for ch, v in ex.items():
+            if isinstance(v, list):
+                out += [(f"ex.{ch}[{j}]", b) for j, b in enumerate(v) if _is_box(b)]
+    return out
+
+
+def assets_problems(pd, ad):
+    """F-OV-09／10／11：桶清单 assets.json（guji-proof-assets/0.1）对 pending.json 的静态核对，返回 [(说明, 规则号, 子类)]。
+    ad 为 None＝同目录没有 assets.json：cells 里没有任何 s 才合法。"""
+    cells = pd.get("cells") if isinstance(pd.get("cells"), list) else []
+    refs = [(c.get("cell"), k, b) for c in cells if isinstance(c, dict) for k, b in cell_boxes(c)]
+    out = []
+    if ad is None:
+        if refs:
+            out.append((f"cells 引用了 {len(refs)} 处雪碧图（如 {refs[0][1]}.s={refs[0][2]['s']!r}），但同目录没有 assets.json", "F-OV-09", "noassets"))
+        return out
+    files = {}
+    if not isinstance(ad, dict) or ad.get("schema") != "guji-proof-assets/0.1" or not isinstance(ad.get("files"), list):
+        return [("assets.json 须为 {schema:'guji-proof-assets/0.1', files:[…]}", "F-OV-09", "shape")]
+    for i, f in enumerate(ad["files"]):
+        if isinstance(f, dict) and isinstance(f.get("name"), str) and f["name"]:
+            files[f["name"]] = f
+        else:
+            out.append((f"assets.json files[{i}] 须有非空字符串 name", "F-OV-09", "shape"))
+    if ad.get("rev") != pd.get("rev"):
+        out.append((f"assets.json rev={ad.get('rev')!r} 与 pending.json rev={pd.get('rev')!r} 不一致", "F-OV-11", "rev"))
+    for cell, k, b in refs:
+        f = files.get(b["s"])
+        if f is None:
+            out.append((f"格 {cell} 的 {k}.s={b['s']!r} 不在 assets.json files[].name 里", "F-OV-09", "missing"))
+            continue
+        fw, fh = f.get("w"), f.get("h")
+        if not (isinstance(fw, int) and isinstance(fh, int)) or isinstance(fw, bool) or isinstance(fh, bool):
+            out.append((f"assets.json 里 {b['s']} 缺整数 w／h，无法核 {k} 是否越界", "F-OV-10", "nowh"))
+        elif b["x"] < 0 or b["y"] < 0 or b["w"] <= 0 or b["h"] <= 0 or b["x"] + b["w"] > fw or b["y"] + b["h"] > fh:
+            out.append((f"格 {cell} 的 {k}=({b['x']},{b['y']},{b['w']},{b['h']}) 越出 {b['s']} 的 {fw}×{fh}", "F-OV-10", "bounds"))
+    return out
+
+
+ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json"}
 ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|pending)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file",
@@ -740,6 +787,12 @@ def check(root: str, scan_root: str = None):
     #         只做类型检查，0.1 的键与未知键放过；img.s／ex.*.s 须在桶清单里（桶清单路径定案前由调用方传 sprite_names，CLI 暂不核）。
     r_ov07 = rule("F-OV-07", "HARD")
     r_ov08 = rule("F-OV-08", "HARD")
+    # F-OV-09～11 桶清单（GUJI-557，同 pending.json 目录的 assets.json，guji-proof-assets/0.1，静态不联网）：
+    #         09 每个 img／ctximg／ex 的 s 须在 files[].name（有 s 而无 assets.json 亦报）；10 x+w≤w、y+h≤h；11 assets.rev＝pending.rev。
+    r_ov09 = rule("F-OV-09", "HARD")
+    r_ov10 = rule("F-OV-10", "HARD")
+    r_ov11 = rule("F-OV-11", "HARD")
+    ov_assets_rules = {"F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -807,6 +860,14 @@ def check(root: str, scan_root: str = None):
                         r_ov08["n_scanned"] += 1
                         for msg, sub in pending_problems(pd, stem):
                             add(r_ov08 if sub.startswith("p02:") else r_ov07, ppath, f"{ppath}: {msg}", sub=sub)
+                        apath = os.path.join(os.path.dirname(ppath), "assets.json")
+                        ad, aerr = jload(apath) if os.path.isfile(apath) else (None, None)
+                        r_ov09["n_scanned"] += 1
+                        if aerr:
+                            add(r_ov09, apath, f"{apath}: JSON 解析失败：{aerr}", sub="parse")
+                        else:
+                            for msg, rid, sub in assets_problems(pd, ad):
+                                add(ov_assets_rules[rid], apath if ad is not None else ppath, f"{ppath}: {msg}", sub=sub)
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")

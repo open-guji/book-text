@@ -15,7 +15,7 @@
 | **punct** | `NNN.punct.json` | 标点、分段、书名号 | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
-| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1，正式）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
+| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1 正式；v0.2 增可选 reason／route／route_ref，v0.1 文件仍合法）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
 

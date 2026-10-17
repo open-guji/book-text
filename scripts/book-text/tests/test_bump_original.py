@@ -75,7 +75,7 @@ def run(*args):
 def ov_violations(root):
     report, _s, _t = V.check(root)
     return {rid: [v["note"] for v in report[rid]["violations"]]
-            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-FT-01")}
+            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-OV-08", "F-FT-01")}
 
 
 class TestBumpOriginal(unittest.TestCase):
@@ -150,7 +150,7 @@ class TestBumpOriginal(unittest.TestCase):
         changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
         self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
         self.assertEqual(ov_violations(self.root),
-                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-FT-01": []})
+                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-OV-08": [], "F-FT-01": []})
         code, err = run(self.entry, "--init")
         self.assertEqual(code, 1)
         self.assertIn("不能再 init", err)
@@ -247,6 +247,30 @@ class TestBumpOriginal(unittest.TestCase):
             self.assertEqual(len(ov_violations(self.root)["F-OV-07"]), 1, bad)
         self._pending(cv_version="cv-v0.1.0")
         self.assertEqual(ov_violations(self.root)["F-OV-07"], [])
+
+    def test_pending_file_proof02_fields(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        good = {"cell": "p3-r2-c5", "review": "pending", "why": ["none"], "cls": "replace_align", "conf": 0.62,
+                "margin": None, "lib_top": [{"c": "己", "s": 0.9123}], "lib": {"verdict": "ok", "cov": 0.5, "wmax": 0.7},
+                "ctx": {"c": "己", "margin": 0.2, "src": "m"}, "ref": {"c": "已", "op": "coord"},
+                "ocr": [{"c": "己", "src": "x"}], "stale": {"c": "己", "ts": "t", "state": "valid"},
+                "occ": {"c": "非字", "ref_blank": False}, "img": {"s": "p0003.webp", "x": 0, "y": 0, "w": 96, "h": 96},
+                "ex": {}, "future_key": {"anything": 1}}
+        self._pending(cells=[good])
+        self.assertEqual(ov_violations(self.root)["F-OV-08"], [])
+        for k, v in (("why", "none"), ("cls", 1), ("lib_top", [{"c": "己"}]), ("lib", {"verdict": "ok"}),
+                     ("stale", {"c": "己", "ts": "t", "state": "weird"}), ("img", {"s": "a.webp", "x": "0", "y": 0, "w": 1, "h": 1}),
+                     ("ex", {"己": [{"s": "a"}]}), ("occ", {"c": "x"})):
+            self._pending(cells=[dict(good, **{k: v})])
+            self.assertEqual(len(ov_violations(self.root)["F-OV-08"]), 1, k)
+
+    def test_proof02_sprite_manifest(self):
+        cell = {"img": {"s": "p1.webp", "x": 0, "y": 0, "w": 96, "h": 96}, "ex": {"己": [{"s": "ex-1.webp", "x": 0, "y": 0, "w": 96, "h": 96}]}}
+        self.assertEqual(V.proof02_cell_problems(cell), [])
+        self.assertEqual(V.proof02_cell_problems(cell, {"p1.webp", "ex-1.webp"}), [])
+        self.assertEqual(len(V.proof02_cell_problems(cell, {"p1.webp"})), 1)
+        self.assertEqual(len(V.proof02_cell_problems(cell, set())), 2)
 
     def test_pending_file_needs_proofing_and_exists(self):
         run(self.entry, "--init")

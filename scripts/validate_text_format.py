@@ -338,8 +338,9 @@ def decision_problems(dd, char):
 
 
 
-def pending_problems(pd, stem):
-    """F-OV-07：NNN.pending.json 顶层与 cells 的形状，返回 [(说明, 子类)]。"""
+def pending_problems(pd, stem, sprite_names=None):
+    """F-OV-07：NNN.pending.json 顶层与 cells 的形状，返回 [(说明, 子类)]。
+    cells 里 guji-proof/0.2 新键的类型检查走 proof02_cell_problems（F-OV-08 口径，同在本函数里报，子类前缀 p02:）。"""
     out = []
     rev = pd.get("rev")
     if not isinstance(rev, str) or not re.fullmatch(re.escape(str(stem)) + r"-r\d+", rev):
@@ -358,6 +359,66 @@ def pending_problems(pd, stem):
             if not isinstance(c, dict) or c.get("cell") in (None, "") or not isinstance(c.get("review"), str) or not c.get("review"):
                 out.append((f"cells[{i}] 须有 cell（格号）与 review（状态字符串）", "cell"))
                 break
+        for i, c in enumerate(cells):
+            if isinstance(c, dict):
+                for m in proof02_cell_problems(c, sprite_names):
+                    out.append((f"cells[{i}]({c.get('cell')}) {m}", f"p02:{i}"))
+    return out
+
+
+def _is_num(x):
+    return isinstance(x, (int, float)) and not isinstance(x, bool)
+
+
+def _is_box(b, keys=("s", "x", "y", "w", "h")):
+    return (isinstance(b, dict) and isinstance(b.get("s"), str) and bool(b["s"])
+            and all(isinstance(b.get(k), int) and not isinstance(b.get(k), bool) for k in keys[1:]))
+
+
+def proof02_cell_problems(c, sprite_names=None):
+    """F-OV-08：guji-proof/0.2 新增键的类型检查（字段表见 ai-team team/CV/guji-proof-0.2-字段表-GUJI-557.md）。
+    0.1 的键与未知键一律放过；有 sprite_names（桶清单里的文件名集合）时再核 img.s／ex.*.s 存在。返回 [说明]。"""
+    out = []
+
+    def need(key, ok, what):
+        if key in c and not ok(c[key]):
+            out.append(f"{key} 应为{what}")
+
+    need("why", lambda v: isinstance(v, list) and all(isinstance(x, str) and x for x in v), "字符串数组")
+    need("cls", lambda v: isinstance(v, str) and v, "非空字符串")
+    need("cls_sub", lambda v: isinstance(v, str), "字符串")
+    need("conf", lambda v: v is None or _is_num(v), "数字或 null")
+    need("margin", lambda v: v is None or _is_num(v), "数字或 null")
+    need("lib_top", lambda v: isinstance(v, list) and len(v) <= 5 and all(
+        isinstance(x, dict) and isinstance(x.get("c"), str) and _is_num(x.get("s")) for x in v), "至多 5 项的 [{c:字符串, s:数字}]")
+    need("lib", lambda v: isinstance(v, dict) and isinstance(v.get("verdict"), str)
+         and _is_num(v.get("cov")) and _is_num(v.get("wmax")), "{verdict:字符串, cov:数字, wmax:数字}")
+    need("ctx", lambda v: isinstance(v, dict) and isinstance(v.get("c"), str)
+         and _is_num(v.get("margin")) and isinstance(v.get("src"), str), "{c:字符串, margin:数字, src:字符串}")
+    need("ref", lambda v: isinstance(v, dict) and isinstance(v.get("c"), str) and isinstance(v.get("op"), str), "{c:字符串, op:字符串}")
+    need("ocr", lambda v: isinstance(v, list) and all(
+        isinstance(x, dict) and isinstance(x.get("c"), str) and isinstance(x.get("src"), str) for x in v), "[{c:字符串, src:字符串}]")
+    need("stale", lambda v: isinstance(v, dict) and isinstance(v.get("c"), str) and isinstance(v.get("ts"), str)
+         and v.get("state") in ("valid", "rebound", "stale", "withdrawn"), "{c, ts:字符串, state:valid／rebound／stale／withdrawn}")
+    need("occ", lambda v: isinstance(v, dict) and isinstance(v.get("c"), str) and isinstance(v.get("ref_blank"), bool), "{c:字符串, ref_blank:布尔}")
+    need("img", _is_box, "{s:字符串, x,y,w,h:整数}")
+    need("ctximg", _is_box, "{s:字符串, x,y,w,h:整数}")
+    ex = c.get("ex")
+    if "ex" in c:
+        if not isinstance(ex, dict) or not all(isinstance(k, str) and isinstance(v, list) and len(v) <= 5
+                                               and all(_is_box(b) for b in v) for k, v in ex.items()):
+            out.append("ex 应为 {候选字: 至多 5 个 {s,x,y,w,h}}")
+            ex = None
+    if sprite_names is not None:
+        names = []
+        for k in ("img", "ctximg"):
+            if _is_box(c.get(k)):
+                names.append((k, c[k]["s"]))
+        if isinstance(ex, dict):
+            names += [(f"ex.{k}", b["s"]) for k, v in ex.items() for b in v]
+        for k, n in names:
+            if n not in sprite_names:
+                out.append(f"{k}.s={n!r} 不在桶清单里")
     return out
 
 
@@ -674,8 +735,11 @@ def check(root: str, scan_root: str = None):
     r_ov06 = rule("F-OV-06", "HARD")
     # F-OV-07 册级待审清单（GUJI-543 §6.2）：章条目的 pending_file（NNN.pending.json）只在 proofing: true 时存在；
     #         文件顶层 rev 形如 <册>-r<n>、cv_commit 必填非空字符串、cv_version 为字符串或 null（首个正式 tag 前），
-    #         cells 是列表，每项有 cell（格号）与 review（状态字符串）；why／cls 等归 guji-proof 0.2，这里不查。
+    #         cells 是列表，每项有 cell（格号）与 review（状态字符串）。
+    # F-OV-08 guji-proof/0.2 单格新键（why／cls／lib_top／lib／ctx／ref／ocr／stale／occ／img／ctximg／ex／conf／margin）
+    #         只做类型检查，0.1 的键与未知键放过；img.s／ex.*.s 须在桶清单里（桶清单路径定案前由调用方传 sprite_names，CLI 暂不核）。
     r_ov07 = rule("F-OV-07", "HARD")
+    r_ov08 = rule("F-OV-08", "HARD")
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
@@ -740,8 +804,9 @@ def check(root: str, scan_root: str = None):
                     if perr or not isinstance(pd, dict):
                         add(r_ov07, ppath, f"{ppath}: JSON 解析失败：{perr}", sub="parse")
                     else:
+                        r_ov08["n_scanned"] += 1
                         for msg, sub in pending_problems(pd, stem):
-                            add(r_ov07, ppath, f"{ppath}: {msg}", sub=sub)
+                            add(r_ov08 if sub.startswith("p02:") else r_ov07, ppath, f"{ppath}: {msg}", sub=sub)
             if ch.get("text_version") != tv:
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")

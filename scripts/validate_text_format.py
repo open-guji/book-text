@@ -472,6 +472,7 @@ def assets_problems(pd, ad):
 
 ASSETS_URL = "https://github.com/open-guji/open-guji-dataset/releases/download/{tag}/assets.json"
 SHA256_RE = re.compile(r"[0-9a-f]{64}")
+TAG_RE = re.compile(r"[A-Za-z0-9._-]+")
 
 
 def fetch_bytes(url, tries=3, timeout=30):
@@ -489,7 +490,7 @@ def fetch_bytes(url, tries=3, timeout=30):
     raise last
 
 
-def pointer_assets(ptr, pd, fetch):
+def pointer_assets(ptr, pd, fetch, book=None, stem=None):
     """F-OV-09／11：按 proof/<书>/<册>/sprites.pointer.json 取桶清单（GUJI-557）。返回 (assets 或 None, [(说明, 规则号, 子类)])。
     指针只放 tag／manifest_sha256／rev 三项。rev 须等于 pending.json 的 rev（离线即可核）；
     fetch 为真时再从数据桶 Release 下载 assets.json，sha256 须等于 manifest_sha256，返回的清单交给 assets_problems 核 09／10／11；下载失败只记 F-OV-09w（SOFT 警告，不阻塞）。
@@ -499,6 +500,8 @@ def pointer_assets(ptr, pd, fetch):
         return None, [("sprites.pointer.json 须为 {tag, manifest_sha256, rev} 三个非空字符串", "F-OV-09", "pointer")]
     if not SHA256_RE.fullmatch(ptr["manifest_sha256"]):
         out.append((f"sprites.pointer.json manifest_sha256={ptr['manifest_sha256']!r} 须为 64 位小写十六进制", "F-OV-09", "pointer"))
+    if not TAG_RE.fullmatch(ptr["tag"]) or set(ptr["tag"]) <= {"."}:
+        out.append((f"sprites.pointer.json tag={ptr['tag']!r} 只许字母数字和 . _ -，且不能全是点号", "F-OV-09", "pointer"))
     if ptr["rev"] != pd.get("rev"):
         out.append((f"sprites.pointer.json rev={ptr['rev']!r} 与 pending.json rev={pd.get('rev')!r} 不一致", "F-OV-11", "rev"))
     if out or not fetch:
@@ -512,9 +515,14 @@ def pointer_assets(ptr, pd, fetch):
     if got != ptr["manifest_sha256"]:
         return None, [(f"{url} 的 sha256={got} 与指针 manifest_sha256={ptr['manifest_sha256']} 不一致", "F-OV-09", "sha")]
     try:
-        return json.loads(raw.decode("utf-8")), []
+        ad = json.loads(raw.decode("utf-8"))
     except Exception as e:  # noqa: BLE001
         return None, [(f"{url} 不是合法 JSON：{e}", "F-OV-09", "parse")]
+    if isinstance(ad, dict):  # 清单自称的书／册须与指针所在目录一致（防指针指到别册的清单）
+        want_vol = int(stem) if isinstance(stem, str) and stem.isdigit() else None
+        if (book is not None and ad.get("book") != book) or (want_vol is not None and ad.get("volume") != want_vol):
+            return None, [(f"{url} 的 book={ad.get('book')!r} volume={ad.get('volume')!r} 与指针所在目录 {book}/{stem} 不一致", "F-OV-09", "ident")]
+    return ad, []
 
 
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json"}
@@ -928,7 +936,7 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                                         add(r_ov09, kpath, f"{kpath}: JSON 解析失败：{kerr}", sub="pointer")
                                         skip_assets = True
                                     else:
-                                        ad, pprob = pointer_assets(ptr, pd, fetch_assets)
+                                        ad, pprob = pointer_assets(ptr, pd, fetch_assets, os.path.basename(os.path.dirname(od)), str(stem))
                                         for msg, rid, sub in pprob:
                                             add(ov_assets_rules[rid], kpath, f"{kpath}: {msg}", sub=sub)
                                         skip_assets = ad is None  # 取不到／未联网：不再按「没有 assets.json」报

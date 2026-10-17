@@ -300,7 +300,7 @@ class TestBumpOriginal(unittest.TestCase):
         self._coarse_only()
         run(self.entry, "--init", "--version", "0.1.0")
         cell = {"cell": "a", "review": "pending", "img": {"s": "p0003.webp", "x": 96, "y": 0, "w": 96, "h": 96}}
-        assets = {"schema": "guji-proof-assets/0.1", "book": "b", "volume": 2, "rev": "002-r1",
+        assets = {"schema": "guji-proof-assets/0.1", "book": "testbook", "volume": 2, "rev": "002-r1",
                   "files": [{"name": "p0003.webp", "bytes": 1, "sha256": "x", "w": 192, "h": 96}]}
         raw = json.dumps(assets).encode("utf-8")
         sha = hashlib.sha256(raw).hexdigest()
@@ -333,6 +333,9 @@ class TestBumpOriginal(unittest.TestCase):
             self.assertTrue(all(not x for x in viol(False).values()))
             _write(kpath, dict(ptr, rev="002-r2"))
             self.assertEqual(len(viol(False)["F-OV-11"]), 1)  # 指针 rev 与 pending 不一致，离线即报
+            for bad_tag in ("..", "a/b", "x y"):
+                _write(kpath, dict(ptr, tag=bad_tag))
+                self.assertEqual(len(viol(False)["F-OV-09"]), 1, bad_tag)  # tag 不合规，不拼 URL
             _write(kpath, {"tag": "t"})
             self.assertEqual(len(viol(False)["F-OV-09"]), 1)  # 指针形状不对
             _write(kpath, ptr)
@@ -341,6 +344,12 @@ class TestBumpOriginal(unittest.TestCase):
             bad = json.dumps(dict(assets, files=[dict(assets["files"][0], w=191)])).encode("utf-8")
             _write(kpath, dict(ptr, manifest_sha256=hashlib.sha256(bad).hexdigest()))
             self.assertEqual(len(viol(True)["F-OV-10"]), 1)  # sha 对但越界
+
+            for other in (dict(assets, book="otherbook"), dict(assets, volume=3)):
+                rawo = json.dumps(other).encode("utf-8")
+                _write(kpath, dict(ptr, manifest_sha256=hashlib.sha256(rawo).hexdigest()))
+                V.fetch_bytes = lambda url, rawo=rawo, **kw: rawo
+                self.assertEqual(len(viol(True)["F-OV-09"]), 1)  # 清单的 book／volume 与指针目录不一致
 
             def boom(url, **kw):
                 raise OSError("offline")

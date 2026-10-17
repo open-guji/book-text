@@ -71,7 +71,7 @@ jobs:
           BOOK_TEXT_REPO: ${{ github.workspace }}
 
       - name: V2 validate_text_format --strict
-        run: python3 scripts/validate_text_format.py . --strict --baseline scripts/format_baseline.json
+        run: python3 scripts/validate_text_format.py . --strict --fetch-assets --baseline scripts/format_baseline.json
 
       - name: V3 check_license
         run: python3 scripts/check_license.py .

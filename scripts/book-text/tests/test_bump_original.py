@@ -75,7 +75,7 @@ def run(*args):
 def ov_violations(root):
     report, _s, _t = V.check(root)
     return {rid: [v["note"] for v in report[rid]["violations"]]
-            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-OV-08", "F-FT-01")}
+            for rid in ("F-OV-01", "F-OV-02", "F-OV-03", "F-OV-04", "F-OV-06", "F-OV-07", "F-OV-08", "F-OV-09", "F-OV-10", "F-OV-11", "F-FT-01")}
 
 
 class TestBumpOriginal(unittest.TestCase):
@@ -150,7 +150,7 @@ class TestBumpOriginal(unittest.TestCase):
         changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
         self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
         self.assertEqual(ov_violations(self.root),
-                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-OV-08": [], "F-FT-01": []})
+                         {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-OV-08": [], "F-OV-09": [], "F-OV-10": [], "F-OV-11": [], "F-FT-01": []})
         code, err = run(self.entry, "--init")
         self.assertEqual(code, 1)
         self.assertIn("不能再 init", err)
@@ -271,6 +271,28 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual(V.proof02_cell_problems(cell, {"p1.webp", "ex-1.webp"}), [])
         self.assertEqual(len(V.proof02_cell_problems(cell, {"p1.webp"})), 1)
         self.assertEqual(len(V.proof02_cell_problems(cell, set())), 2)
+
+    def test_assets_json(self):
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        apath = os.path.join(self.od, "assets.json")
+        cell = {"cell": "a", "review": "pending", "img": {"s": "p0003.webp", "x": 96, "y": 0, "w": 96, "h": 96}}
+        assets = {"schema": "guji-proof-assets/0.1", "book": "b", "volume": 2, "rev": "002-r1",
+                  "files": [{"name": "p0003.webp", "bytes": 1, "sha256": "x", "w": 192, "h": 96}]}
+        self._pending(cells=[cell])
+        v = ov_violations(self.root)
+        self.assertEqual(len(v["F-OV-09"]), 1)  # 有 s 无 assets.json
+        _write(apath, assets)
+        self.assertTrue(all(not x for x in ov_violations(self.root).values()), ov_violations(self.root))
+        _write(apath, dict(assets, rev="002-r2"))
+        self.assertEqual(len(ov_violations(self.root)["F-OV-11"]), 1)
+        _write(apath, dict(assets, files=[dict(assets["files"][0], w=191)]))
+        self.assertEqual(len(ov_violations(self.root)["F-OV-10"]), 1)
+        _write(apath, dict(assets, files=[dict(assets["files"][0], name="p0004.webp")]))
+        self.assertEqual(len(ov_violations(self.root)["F-OV-09"]), 1)
+        os.remove(apath)
+        self._pending()  # 无 s 时不要求 assets.json
+        self.assertTrue(all(not x for x in ov_violations(self.root).values()), ov_violations(self.root))
 
     def test_pending_file_needs_proofing_and_exists(self):
         run(self.entry, "--init")

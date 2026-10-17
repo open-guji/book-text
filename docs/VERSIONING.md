@@ -56,7 +56,7 @@
 
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。
-- 文本改了：锚点全对得上 → 伴生层只把 `text_version` 跟过去，**不升**它的版本（由 `bump_original.py --line text` 自动做，所以文本线一律用脚本升；手改 char.json 版本号会让伴生层 `text_version` 落后，F-OV-02 才会去核锚点）；对不上 → 伴生层按规模修，修好后自己升 patch 或 minor。
+- 文本改了：锚点全对得上 → 伴生层只把 `text_version` 跟过去，**不升**它的版本（由 `bump_original.py --line text` 自动做，所以文本线一律用脚本升；手改 char.json 版本号会让伴生层 `text_version` 落后；F-OV-02 不论是否落后都核锚点，所以改字类修订合入时，同版本的标点／实体失效也会被当场发现）；对不上 → 伴生层按规模修，修好后自己升 patch 或 minor。
 - **伴生层 major 不得高于文本线**：文本还没到出版级，标点、实体也不能先升（F-OV-01 查）。
 - **每册只入库一份**标点稿、一份实体稿；模型对照稿只在本地测试，不进仓。
 - **书名两层都记**：标点层出一对 `《》`，实体层出 `work` 实体挂 book-index id，两层起止一致。
@@ -110,7 +110,7 @@
   改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
 - **校验器**：本仓 `scripts/validate_text_format.py` 规则（只扫 key=`original` 的版本）：
   - **F-OV-01** 三线版本号格式、文本线 ≥0.1.0（伴生层 ≥1.0.0）、镜像一致、`text_version` 不超前、伴生层 major 不高于文本（所以文本线 0.x 时不能有伴生层）；
-  - **F-OV-02** 伴生层 `text_version` 落后时锚点校验字必须仍对得上；
+  - **F-OV-02** 伴生层（标点、实体两线）的锚点校验字必须仍对得上 char——`text_version` 落后或与文本同版本都核（GUJI-561，book-text#149）；
   - **F-OV-03** major ≥2 必须带验收记录。
   - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填；文本线 0.x 的册 `cord_file` 也必填）。
   - **F-OV-05** decision.json 对照同章 char：`$schema`、`book_id`／`volume` 一致，候选字层合法（已落地，含 `scripts/tests/test_decision.py`）。

@@ -263,13 +263,18 @@ FT_SIDECAR_FILES = {"index.json", "pages.tsv"}
 # 真源 NNN.char／cord／punct／entity／norm／decision.json，生成分支上另有 lines.md、rich.md；
 # 以及版本日志 CHANGES.md。
 DECISION_SCHEMA_URL = "https://open-guji.org/schema/decision/v0.1.json"
+DECISION_SCHEMA_URL_V02 = "https://open-guji.org/schema/decision/v0.2.json"
+DECISION_V02_KEYS = ("reason", "route", "route_ref")
+DECISION_REASONS = ("unclear", "seg_bad", "seg_recut", "seg_missing_page")
+DECISION_ROUTES = ("recut", "list", "add_page")
 
 
 def decision_problems(dd, char):
     """F-OV-05：decision.json 对照同章 char，返回 [(说明, 子类)]。"""
     out = []
-    if dd.get("$schema") != DECISION_SCHEMA_URL:
-        out.append((f"$schema={dd.get('$schema')!r}，应为 {DECISION_SCHEMA_URL!r}", "schema"))
+    schema = dd.get("$schema")
+    if schema not in (DECISION_SCHEMA_URL, DECISION_SCHEMA_URL_V02):
+        out.append((f"$schema={schema!r}，应为 {DECISION_SCHEMA_URL!r} 或 {DECISION_SCHEMA_URL_V02!r}", "schema"))
     if dd.get("book_id") != char.get("book_id"):
         out.append((f"book_id={dd.get('book_id')!r} 与 char 的 {char.get('book_id')!r} 不一致", "book_id"))
     if dd.get("volume") != char.get("volume") or isinstance(dd.get("volume"), bool):
@@ -310,6 +315,25 @@ def decision_problems(dd, char):
             out.append((f"{tag} 已裁（resolved）但 current 仍在 cands 里", f"{i}:resolved"))
         if st in ("resolved", "rejected") and it.get("by") not in ("human", "rule"):
             out.append((f"{tag} {st} 须写 by（human／rule），现为 {it.get('by')!r}", f"{i}:by"))
+        # v0.2：reason／route／route_ref（guji-format 08 §3.4）
+        if schema == DECISION_SCHEMA_URL:
+            for k in DECISION_V02_KEYS:
+                if k in it:
+                    out.append((f"{tag} 带 {k}，这是 v0.2 才有的键，$schema 应写 {DECISION_SCHEMA_URL_V02!r}", f"{i}:{k}:v01"))
+            continue
+        reason, route, ref = it.get("reason"), it.get("route"), it.get("route_ref")
+        if "reason" in it and reason not in DECISION_REASONS:
+            out.append((f"{tag} reason={reason!r} 不合法（unclear／seg_bad／seg_recut／seg_missing_page）", f"{i}:reason"))
+        if "route" in it and route not in DECISION_ROUTES:
+            out.append((f"{tag} route={route!r} 不合法（recut／list／add_page）", f"{i}:route"))
+        if "route_ref" in it and (not isinstance(ref, str) or not ref):
+            out.append((f"{tag} route_ref={ref!r} 应为非空字符串", f"{i}:route_ref"))
+        if isinstance(reason, str) and reason.startswith("seg_") and "route" not in it:
+            out.append((f"{tag} reason={reason} 是切分问题，须带 route", f"{i}:route:missing"))
+        if "route" in it and reason in (None, "unclear"):
+            out.append((f"{tag} reason 缺省或 unclear 时不得带 route", f"{i}:route:unexpected"))
+        if "route_ref" in it and "route" not in it:
+            out.append((f"{tag} route_ref 须与 route 同在", f"{i}:route_ref:alone"))
     return out
 
 

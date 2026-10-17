@@ -46,3 +46,45 @@ def test_book_id_and_volume_mismatch():
     d['book_id'], d['volume'] = 'other', 2
     s = [x for _m, x in vtf.decision_problems(d, load('char.json'))]
     assert 'book_id' in s and 'volume' in s
+
+
+def v02(**kw):
+    d = load('valid.decision.json')
+    d['$schema'] = 'https://open-guji.org/schema/decision/v0.2.json'
+    d['items'][0].update(kw)
+    return [x for _m, x in vtf.decision_problems(d, load('char.json'))]
+
+
+def test_v01_file_still_valid():
+    assert subs('valid.decision.json') == []
+
+
+def test_v02_without_new_keys_valid():
+    assert v02() == []
+
+
+def test_v02_seg_with_route_valid():
+    assert v02(reason='seg_bad', route='recut') == []
+    assert v02(reason='seg_missing_page', route='add_page', route_ref='GUJI-558') == []
+    assert v02(reason='unclear') == []
+
+
+def test_v02_seg_needs_route():
+    assert any(x.endswith(':route:missing') for x in v02(reason='seg_recut'))
+
+
+def test_v02_unclear_or_absent_rejects_route():
+    assert any(x.endswith(':route:unexpected') for x in v02(reason='unclear', route='recut'))
+    assert any(x.endswith(':route:unexpected') for x in v02(route='list'))
+
+
+def test_v02_bad_enums_and_lone_ref():
+    assert any(x.endswith(':reason') for x in v02(reason='blurry'))
+    assert any(x.endswith(':route') for x in v02(reason='seg_bad', route='elsewhere'))
+    assert any(x.endswith(':route_ref:alone') for x in v02(route_ref='GUJI-1'))
+
+
+def test_v01_schema_rejects_v02_keys():
+    d = load('valid.decision.json')
+    d['items'][0]['reason'] = 'unclear'
+    assert any(x.endswith(':reason:v01') for _m, x in vtf.decision_problems(d, load('char.json')))

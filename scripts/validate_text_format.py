@@ -492,7 +492,7 @@ def fetch_bytes(url, tries=3, timeout=30):
 def pointer_assets(ptr, pd, fetch):
     """F-OV-09／11：按 proof/<书>/<册>/sprites.pointer.json 取桶清单（GUJI-557）。返回 (assets 或 None, [(说明, 规则号, 子类)])。
     指针只放 tag／manifest_sha256／rev 三项。rev 须等于 pending.json 的 rev（离线即可核）；
-    fetch 为真时再从数据桶 Release 下载 assets.json，sha256 须等于 manifest_sha256，返回的清单交给 assets_problems 核 09／10／11。
+    fetch 为真时再从数据桶 Release 下载 assets.json，sha256 须等于 manifest_sha256，返回的清单交给 assets_problems 核 09／10／11；下载失败只记 F-OV-09w（SOFT 警告，不阻塞）。
     fetch 为假（本地跑）时只核指针本身，返回 (None, …)，调用方不再按「没有 assets.json」报。"""
     out = []
     if not isinstance(ptr, dict) or not all(isinstance(ptr.get(k), str) and ptr[k] for k in ("tag", "manifest_sha256", "rev")):
@@ -507,7 +507,7 @@ def pointer_assets(ptr, pd, fetch):
     try:
         raw = fetch_bytes(url)
     except Exception as e:  # noqa: BLE001
-        return None, [(f"取不到 {url}：{e}", "F-OV-09", "fetch")]
+        return None, [(f"取不到 {url}（只警告，不阻塞）：{e}", "F-OV-09w", "fetch")]
     got = hashlib.sha256(raw).hexdigest()
     if got != ptr["manifest_sha256"]:
         return None, [(f"{url} 的 sha256={got} 与指针 manifest_sha256={ptr['manifest_sha256']} 不一致", "F-OV-09", "sha")]
@@ -839,12 +839,13 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-09～11 桶清单 assets.json（GUJI-557，guji-proof-assets/0.1）：不进本仓，按 proof/<书>/<册>/sprites.pointer.json
     #         （tag／manifest_sha256／rev）从数据桶 Release 下载、核 sha256（--fetch-assets，CI 用；本地默认不联网，只核指针）；
     #         同目录有 assets.json 时仍直接用它（导出自检）。
-    #         09 每个 img／ctximg／ex 的 s 须在 files[].name（有 s 而无清单亦报；指针 sha 对不上、下载失败也在此报）；
+    #         09 每个 img／ctximg／ex 的 s 须在 files[].name（有 s 而无清单亦报；指针 sha 对不上也在此报；下载失败只记 F-OV-09w 警告）；
     #         10 x+w≤w、y+h≤h；11 assets.rev＝pending.rev（指针 rev 同）。
     r_ov09 = rule("F-OV-09", "HARD")
     r_ov10 = rule("F-OV-10", "HARD")
     r_ov11 = rule("F-OV-11", "HARD")
-    ov_assets_rules = {"F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
+    r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
+    ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
     for od in ov_dirs:
         f = os.path.join(od, "index.json")

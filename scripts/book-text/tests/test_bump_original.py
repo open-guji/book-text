@@ -318,7 +318,7 @@ class TestBumpOriginal(unittest.TestCase):
         try:
             def viol(fetch):
                 report, _s, _t = V.check(self.root, fetch_assets=fetch)
-                return {r: [v["note"] for v in report[r]["violations"]] for r in ("F-OV-09", "F-OV-10", "F-OV-11")}
+                return {r: [v["note"] for v in report[r]["violations"]] for r in ("F-OV-09", "F-OV-10", "F-OV-11", "F-OV-09w")}
 
             self.assertEqual(len(viol(False)["F-OV-09"]), 1)  # 有 s，无 assets.json、无指针
             _write(kpath, ptr)
@@ -345,7 +345,8 @@ class TestBumpOriginal(unittest.TestCase):
             def boom(url, **kw):
                 raise OSError("offline")
             V.fetch_bytes = boom
-            self.assertEqual(len(viol(True)["F-OV-09"]), 1)  # 下载失败
+            v = viol(True)
+            self.assertEqual((len(v["F-OV-09w"]), len(v["F-OV-09"])), (1, 0))  # 下载失败：只警告（SOFT），不记 HARD
         finally:
             V.fetch_bytes = orig
 

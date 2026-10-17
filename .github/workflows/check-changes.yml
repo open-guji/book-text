@@ -1,0 +1,23 @@
+# GUJI-559 方案 C：CHANGES.md 三项对应（文本版本 ↔ r 号 ↔ cv 版本）只读校验。非必需检查；只读、无令牌；仅 CHANGES.md 变动时触发。
+name: check-changes
+on:
+  pull_request:
+    paths: ["**/CHANGES.md"]
+  push:
+    branches: [main]
+    paths: ["**/CHANGES.md"]
+permissions:
+  contents: read
+jobs:
+  three-way:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 文本版本 ↔ r 号 ↔ cv 版本
+        run: |
+          rc=0
+          for f in $(git ls-files '**/CHANGES.md'); do
+            echo "== $f"
+            python3 scripts/check_changes.py "$f" --since-date 2026-10-17 || rc=1
+          done
+          exit $rc

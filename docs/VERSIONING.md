@@ -57,14 +57,15 @@
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。
 - 文本改了：锚点全对得上 → 伴生层只把 `text_version` 跟过去，**不升**它的版本（由 `bump_original.py --line text` 自动做，所以文本线一律用脚本升；手改 char.json 版本号会让伴生层 `text_version` 落后；F-OV-02 不论是否落后都核锚点，所以改字类修订合入时，同版本的标点／实体失效也会被当场发现）；对不上 → 伴生层按规模修，修好后自己升 patch 或 minor。
-- **伴生层 major 不得高于文本线**：文本还没到出版级，标点、实体也不能先升（F-OV-01 查）。
+- **伴生层 major 不得高于文本线**：文本还没到出版级，标点、实体也不能先升（F-OV-01 查）。文本 0.x 时伴生层也只能是 0.x。
 - **每册只入库一份**标点稿、一份实体稿；模型对照稿只在本地测试，不进仓。
 - **书名两层都记**：标点层出一对 `《》`，实体层出 `work` 实体挂 book-index id，两层起止一致。
 
 ## 四、三级怎么升
 
 - **major = 质量等级**：0 粗校、1 可用（精校完）、2 出版级、3 定本。1 起从严，绝大多数停在 1；升要成文验收记录并用户点头；一升 minor、patch 归零。
-- **0.x = 平台粗校完、精校未完**（2026-10-16 用户定，GUJI-543）：只有**文本线**有 0.x，粗校全流程跑完、各步 gate 过了就以 **0.1.0** 并 main，网站挂「欢迎帮助校对」；之后改格、重切照 patch／minor 升。0.x 阶段**没有标点、实体线**（精校完才开工），所以不存在伴生层 0.x。0.x → 1.0.0 是 major，走验收记录。
+- **0.x = 平台粗校完、精校未完**（2026-10-16 用户定，GUJI-543）：只有**文本线**有 0.x，粗校全流程跑完、各步 gate 过了就以 **0.1.0** 并 main，网站挂「欢迎帮助校对」；之后改格、重切照 patch／minor 升。0.x → 1.0.0 是 major，走验收记录。
+- **文本 0.x 时也可以加标点、实体**（2026-10-18 用户定，GUJI-240；~~原规定：0.x 阶段没有标点、实体线，精校完才开工~~）：伴生层从 **0.1.0** 起，照常 patch／minor；文本精校时改字，伴生层照「三条线之间」跟 `text_version` 或修锚点。伴生层 0.x → 1.0.0 也是 major，手工改并附验收记录，可晚于文本升 1。
 - **minor = 较大改动**：新功能、新分段、整批字符转换、质量小幅提升、整册重跑。
 - **patch = 其余小范围改动**（最常见）。
 - 拿不准 patch 还是 minor，选 minor；major 没有「拿不准」，达不到门槛就不升。
@@ -92,8 +93,8 @@
 
 - `wip/` 分支上不编号，版本字段可写 `0.x` 或不写。`wip/` 分支不跑开 PR 前的校验。
 - **第一次并 main**（2026-10-16 起，GUJI-543）：
-  - **粗校完**够得上 0.1.0 门槛的，以 **`0.1.0`** 并 main：`bump_original.py <目录> --init --version 0.1.0`，只定文本线，章条目写 `proofing: true`；没有标点、实体稿。
-  - **精校完**够得上第 1 级的，升 **`1.0.0`**（major，手工改版本号并附验收记录），`--proofing off`；之后标点、实体线开工，各自从 `1.0.0` 起（`--init` 默认）。
+  - **粗校完**够得上 0.1.0 门槛的，以 **`0.1.0`** 并 main：`bump_original.py <目录> --init --version 0.1.0`，章条目写 `proofing: true`；同时有标点、实体稿的一并定 0.1.0。文本已在 main、后来才加标点或实体的，用 `--init --line punct|entity` 开那条线（文本 0.x 时定 0.1.0，≥1 时定 1.0.0）。
+  - **精校完**够得上第 1 级的，升 **`1.0.0`**（major，手工改版本号并附验收记录），`--proofing off`；此时才开工的标点、实体线从 `1.0.0` 起（`--init` 默认或 `--init --line`）。
   - 已按旧定义以 1.0.0 并 main 的册（四庫 vol02、vol03）保留 1.0.0，CHANGES 记一句「按旧定义定的 1.0.0」，补走精校时 `--proofing on`，精校合入算文本 minor。
   - 够不上 0.1.0 不并 main。
 - 之后每次 squash merge，动到的线按本规范升，PR 描述列「册 · 线 · 旧 → 新 · 理由」表，文本总管对着 diff 核。
@@ -103,13 +104,14 @@
 - **升级脚本**：overview `scripts/book-text/bump_original.py`
   ```bash
   python3 scripts/book-text/bump_original.py <original 目录或条目目录> --init --note "首次并 main" --pr N   # 三线定 1.0.0
-  python3 scripts/book-text/bump_original.py <目录> --init --version 0.1.0 --note "粗校完" --pr N        # 只定文本线 0.1.0，proofing=true
+  python3 scripts/book-text/bump_original.py <目录> --init --version 0.1.0 --note "粗校完" --pr N        # 文本线 0.1.0，proofing=true；有伴生稿的同定 0.1.0
+  python3 scripts/book-text/bump_original.py <目录> --init --line punct|entity --note "…" --pr N         # 新开一条伴生线（文本 0.x→0.1.0，≥1→1.0.0）
   python3 scripts/book-text/bump_original.py <目录> --proofing on|off --note "…" --pr N                  # 只改校对状态开关
   python3 scripts/book-text/bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
   ```
   改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
 - **校验器**：本仓 `scripts/validate_text_format.py` 规则（只扫 key=`original` 的版本）：
-  - **F-OV-01** 三线版本号格式、文本线 ≥0.1.0（伴生层 ≥1.0.0）、镜像一致、`text_version` 不超前、伴生层 major 不高于文本（所以文本线 0.x 时不能有伴生层）；
+  - **F-OV-01** 三线版本号格式、三线都 ≥0.1.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本（所以文本线 0.x 时伴生层也是 0.x）；
   - **F-OV-02** 伴生层（标点、实体两线）的锚点校验字必须仍对得上 char——`text_version` 落后或与文本同版本都核（GUJI-561，book-text#149）；
   - **F-OV-03** major ≥2 必须带验收记录。
   - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填；文本线 0.x 的册 `cord_file` 也必填）。

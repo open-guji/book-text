@@ -187,12 +187,57 @@ class TestBumpOriginal(unittest.TestCase):
                       OV.read_text(os.path.join(self.od, "CHANGES.md")))
         self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
 
-    def test_init_0_1_0_refuses_companions(self):
-        code, err = run(self.entry, "--init", "--version", "0.1.0")
-        self.assertEqual(code, 1)
-        self.assertIn("精校完", err)
+    def test_init_0_1_0_with_companions(self):
+        # 10-18 用户定（GUJI-240）：文本 0.x 时也可以有标点、实体，伴生层同为 0.1.0
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["cord_file"] = "002.cord.json"
+        _write(os.path.join(self.od, "index.json"), idx)
+        _write(os.path.join(self.od, "002.cord.json"), {"cells": {}})
+        code, _ = run(self.entry, "--init", "--version", "0.1.0", "--note", "粗校完", "--pr", "9")
+        self.assertEqual(code, 0)
+        ch = self.idx()
+        self.assertEqual((ch["text_version"], ch["punct_version"], ch["entity_version"]), ("0.1.0",) * 3)
+        self.assertEqual(self.comp("punct")["text_version"], "0.1.0")
+        self.assertIn("| 文本＋标点＋实体 | →0.1.0 | 粗校完 | #9 |",
+                      OV.read_text(os.path.join(self.od, "CHANGES.md")))
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
+        # 伴生层 1.x 高于文本 0.x：报
+        d = self.comp("punct")
+        d["version"] = "1.0.0"
+        _write(os.path.join(self.od, "002.punct.json"), d)
+        idx = _read(os.path.join(self.od, "index.json"))
+        idx["chapters"][0]["punct_version"] = "1.0.0"
+        _write(os.path.join(self.od, "index.json"), idx)
+        self.assertTrue(any("高于文本线" in n for n in ov_violations(self.root)["F-OV-01"]))
 
-    def test_0x_bump_and_companions_refused(self):
+    def test_0x_init_line_later(self):
+        # 文本先以 0.x 并 main，标点、实体后开：--init --line，定 0.1.0，text_version 跟当前文本
+        punct, entity = self.comp("punct"), self.comp("entity")
+        self._coarse_only()
+        run(self.entry, "--init", "--version", "0.1.0")
+        run(self.od, "--line", "text", "--level", "patch", "--note", "改 1 字")
+        _write(os.path.join(self.od, "002.punct.json"), punct)
+        _write(os.path.join(self.od, "002.entity.json"), entity)
+        code, err = run(self.od, "--init", "--line", "punct", "--note", "标点首版", "--pr", "11")
+        self.assertEqual(code, 0, err)
+        ch = self.idx()
+        self.assertEqual((ch["punct_version"], ch["punct_file"]), ("0.1.0", "002.punct.json"))
+        self.assertEqual(self.comp("punct")["text_version"], "0.1.1")
+        code, err = run(self.od, "--init", "--line", "punct", "--note", "x")
+        self.assertEqual(code, 1)
+        self.assertIn("不能再 init", err)
+        run(self.od, "--init", "--line", "entity", "--note", "实体首版")
+        self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
+        code, _ = run(self.od, "--line", "entity", "--level", "minor", "--note", "补链")
+        self.assertEqual(code, 0)
+        self.assertEqual(self.idx()["entity_version"], "0.2.0")
+        # 0.0.x 不合格
+        d = self.comp("punct")
+        d["version"] = "0.0.1"
+        _write(os.path.join(self.od, "002.punct.json"), d)
+        self.assertTrue(any("低于 0.1.0" in n for n in ov_violations(self.root)["F-OV-01"]))
+
+    def test_0x_bump(self):
         self._coarse_only()
         run(self.entry, "--init", "--version", "0.1.0")
         code, _ = run(self.od, "--line", "text", "--level", "minor", "--note", "重切 3 页")
@@ -200,8 +245,8 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual((self.idx()["text_version"], self.comp("char")["version"]), ("0.2.0", "0.2.0"))
         self.assertTrue(self.idx()["proofing"])
         code, err = run(self.od, "--line", "punct", "--level", "patch", "--note", "x")
-        self.assertEqual(code, 1)
-        self.assertIn("精校未完", err)
+        self.assertEqual(code, 1)  # 没有标点稿
+        self.assertIn("002.punct.json", err)
         self.assertTrue(all(not v for v in ov_violations(self.root).values()))
 
     def test_proofing_required_while_0x(self):

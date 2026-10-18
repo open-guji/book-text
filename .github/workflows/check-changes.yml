@@ -1,23 +1,42 @@
-# GUJI-559 方案 C：CHANGES.md 三项对应（文本版本 ↔ r 号 ↔ cv 版本）只读校验。非必需检查；只读、无令牌；仅 CHANGES.md 变动时触发。
+# GUJI-559 方案 C：CHANGES.md 三项对应（文本版本 ↔ r 号 ↔ cv 版本）只读校验。非必需检查；只读、无令牌；
+# CHANGES.md、本工作流或 check_changes.py 变动时触发，也可手动跑（GUJI-593）。
+# 方案 C 只做 dry-run 式校验：真推 ws 的 snap/<册>-r<n>（snapshot_push.py --apply）仍由整理员在用户同意后手动跑，不在这里。
 name: check-changes
 on:
   pull_request:
-    paths: ["**/CHANGES.md"]
+    paths: ["**/CHANGES.md", "scripts/check_changes.py", "scripts/tests/test_check_changes.py", ".github/workflows/check-changes.yml"]
   push:
     branches: [main]
-    paths: ["**/CHANGES.md"]
+    paths: ["**/CHANGES.md", "scripts/check_changes.py", "scripts/tests/test_check_changes.py", ".github/workflows/check-changes.yml"]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   three-way:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
+      # 只取 CHANGES.md 与脚本（全仓约 19 万文件，整仓 checkout 要两分钟）
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            **/CHANGES.md
+            scripts/check_changes.py
+            scripts/tests/test_check_changes.py
+          sparse-checkout-cone-mode: false
+      - name: check_changes.py 单测
+        run: |
+          pip install -q pytest
+          python3 -m pytest scripts/tests/test_check_changes.py -q
       - name: 文本版本 ↔ r 号 ↔ cv 版本
         run: |
           rc=0
+          n=0
           for f in $(git ls-files '**/CHANGES.md'); do
             echo "== $f"
+            n=$((n+1))
             python3 scripts/check_changes.py "$f" --since-date 2026-10-17 || rc=1
           done
+          echo "共查 $n 份 CHANGES.md"
+          [ "$n" -gt 0 ] || { echo "::error::一份 CHANGES.md 也没找到（checkout 范围不对？）"; exit 1; }
           exit $rc

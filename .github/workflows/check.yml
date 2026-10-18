@@ -12,6 +12,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    outputs:
+      ov02_punct: ${{ steps.ov02.outputs.punct }}
+      ov02_entity: ${{ steps.ov02.outputs.entity }}
     steps:
       - uses: actions/checkout@v4
 
@@ -71,7 +74,31 @@ jobs:
           BOOK_TEXT_REPO: ${{ github.workspace }}
 
       - name: V2 validate_text_format --strict
-        run: python3 scripts/validate_text_format.py . --strict --fetch-assets --baseline scripts/format_baseline.json
+        run: python3 scripts/validate_text_format.py . --strict --fetch-assets --baseline scripts/format_baseline.json --ov02-summary ov02.md
+
+      - name: F-OV-02 报数（标点 pre_char 对不上／实体失效待看，GUJI-591）
+        id: ov02
+        # V2 红了也要报（F-OV-02 本身就会让 V2 红）；N>0 时另由 ov02-comment 作业贴到 PR
+        if: ${{ !cancelled() && hashFiles('ov02.md') != '' }}
+        run: |
+          cat ov02.md >> "$GITHUB_STEP_SUMMARY"
+          np=$(sed -n 's/.*<!-- ov02: punct=\([0-9]*\) entity=\([0-9]*\) -->.*/\1/p' ov02.md)
+          ne=$(sed -n 's/.*<!-- ov02: punct=\([0-9]*\) entity=\([0-9]*\) -->.*/\2/p' ov02.md)
+          echo "punct=$np" >> "$GITHUB_OUTPUT"
+          echo "entity=$ne" >> "$GITHUB_OUTPUT"
+          if [ "$np" != 0 ] || [ "$ne" != 0 ]; then
+            echo "::warning title=F-OV-02::标点 pre_char 对不上 $np 条、实体失效待看 $ne 条（明细见本次运行的 Summary）"
+          else
+            echo "F-OV-02：标点 pre_char 对不上 0 条、实体失效待看 0 条"
+          fi
+
+      - name: 上传 F-OV-02 报告
+        if: ${{ !cancelled() && hashFiles('ov02.md') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ov02-report
+          path: ov02.md
+          retention-days: 7
 
       - name: V3 check_license
         run: python3 scripts/check_license.py .
@@ -81,6 +108,44 @@ jobs:
 
       - name: unit tests (scripts/tests, scripts/book-text/tests)
         run: python3 -m pytest scripts/tests scripts/book-text/tests -q
+
+  ov02-comment:
+    # GUJI-591：F-OV-02 有数（N>0）时在 PR 上贴一条置顶评论（之后的推送原地更新）；N 回到 0 时把那条改成一行绿色说明。
+    # N 一直是 0 就不发评论（只在 check 的 Summary 里一行）。fork 来的 PR 的 GITHUB_TOKEN 只读，跳过，看 Summary／注解即可。
+    needs: check
+    if: >-
+      ${{ !cancelled() && github.event_name == 'pull_request'
+          && github.event.pull_request.head.repo.full_name == github.repository
+          && needs.check.outputs.ov02_punct != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ov02-report
+      - name: 贴／更新 PR 评论
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          NP: ${{ needs.check.outputs.ov02_punct }}
+          NE: ${{ needs.check.outputs.ov02_entity }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- ov02-report -->"))) | .id' | head -n1)
+          if [ "$NP" = 0 ] && [ "$NE" = 0 ] && [ -z "$id" ]; then
+            echo "N=0 且没有旧评论：不打扰"; exit 0
+          fi
+          { cat ov02.md; echo; echo "<sub>[本次 CI]($RUN_URL) · \`${HEAD_SHA::9}\`</sub>"; } > body.md
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@body.md --jq .html_url
+          else
+            gh api "repos/$REPO/issues/$PR/comments" -F body=@body.md --jq .html_url
+          fi
 
   pin-drift:
     # guji-format main 的 schemas/ 与 pin 处不同＝schema 已变而本仓没跟上：此作业红。

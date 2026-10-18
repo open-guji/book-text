@@ -29,7 +29,7 @@ import os
 import re
 
 LINES = ("text", "punct", "entity")
-MIN_TEXT_0X = (0, 1, 0)  # 粗校完的第一版；文本线在 main 上可停在 0.x（精校前），0.0.x 不存在
+MIN_TEXT_0X = (0, 1, 0)  # 三线最低版本；文本线在 main 上可停在 0.x（精校前），标点、实体此时也从 0.1.0 起（10-18 用户定），0.0.x 不存在
 MAX_MAJOR = 3  # major＝质量等级：1 可用／2 出版级／3 定本；guji-format 04/05 schema 同口径
 VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 # 验收记录（major ≥2）至少要有的键：日期、签核人、抽检数据

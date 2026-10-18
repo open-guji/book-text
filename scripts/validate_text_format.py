@@ -812,9 +812,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # ---- original 三线版本号（T67 #400，规范 2026-10-文本版本号与仓库流程.md；T68 #417 起文本线读 char）----
     # 只管 key=original 的版本；维基、Kanripo、识典的转录不跟踪版本，不在此列。
     # 文本线的版本是 NNN.char.json 顶层 version，index.json 的 text_version 是镜像。
-    # F-OV-01 版本号格式：每册文本／标点／实体三线都要有 MAJOR.MINOR.PATCH，且文本线 0.1.0 ≤ 版本、伴生层 1.0.0 ≤ 版本、major ≤3
-    #         （文本线可停在 0.x，最低 0.1.0，此时 proofing 必须为 true，见 F-OV-06；标点、实体线仍须 ≥1.0.0，
-    #         且 major 不得高于文本线，所以文本线 0.x 时不会有伴生层）；index.json 里的
+    # F-OV-01 版本号格式：每册文本／标点／实体三线都要有 MAJOR.MINOR.PATCH，且三线都 0.1.0 ≤ 版本、major ≤3
+    #         （文本线可停在 0.x，最低 0.1.0，此时 proofing 必须为 true，见 F-OV-06；10-18 用户定（GUJI-240）：
+    #         文本 0.x 时也可以加标点、实体，伴生层从 0.1.0 起；major 不得高于文本线，所以文本 0.x 时伴生层也是 0.x）；index.json 里的
     #         text_version／punct_version／entity_version 要与 char、punct、entity 的 version 一致；伴生层的
     #         text_version 不能超前于当前文本版本；标点、实体的 major 不得高于文本线的 major
     #         （文本还没到出版级，伴生层也不能先升，10-05 用户定）。
@@ -971,8 +971,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                     continue
                 v, ctv = cd.get("version"), cd.get("text_version")
                 vt, ctvt = OV.parse_version(v), OV.parse_version(ctv)
-                if vt is None or vt[0] < 1:
-                    add(r_ov01, cf, f"{cf}: version={v!r} 不合格式或还是 0.x", sub="version")
+                if vt is None or vt < OV.MIN_TEXT_0X:
+                    add(r_ov01, cf, f"{cf}: version={v!r} 不合格式或低于 0.1.0", sub="version")
                 elif vt[0] > OV.MAX_MAJOR:
                     add(r_ov01, cf, f"{cf}: version={v} 的 major 超过 {OV.MAX_MAJOR}（质量等级只有 1–3）", sub="version")
                 elif vt[0] >= 2 and OV.review_missing(cd.get("review")):
@@ -982,8 +982,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 if ch.get(f"{line}_version") != v:
                     add(r_ov01, f, f"{f}: 册 {stem} {line}_version={ch.get(f'{line}_version')!r} 与 {os.path.basename(cf)} 的 version={v!r} 不一致",
                         sub=f"{stem}:{line}:mirror")
-                if ctvt is None or ctvt[0] < 1:
-                    add(r_ov01, cf, f"{cf}: text_version={ctv!r} 不合格式或还是 0.x", sub="text_version")
+                if ctvt is None or ctvt < OV.MIN_TEXT_0X:
+                    add(r_ov01, cf, f"{cf}: text_version={ctv!r} 不合格式或低于 0.1.0", sub="text_version")
                     continue
                 if tvt is None:
                     continue

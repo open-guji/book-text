@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.8.8",
+  "version": "1.9.0",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 888,
-    "matched": 648,
-    "ambiguous": 4,
-    "new_candidates": 236,
+    "matched": 741,
+    "ambiguous": 0,
+    "new_candidates": 147,
     "works": 411,
     "people": 362,
     "places": 45,
@@ -96,7 +96,8 @@
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "集賢殿大學士兼國子祭酒"
+        "canonical_name": "集賢殿大學士兼國子祭酒",
+        "note": "不建档：「集賢殿大學士兼國子祭酒」为两官连写未拆；建议拆为 集賢殿大學士（库只有宋具体条 1jb8bbthp8268，元许衡不合）、國子祭酒（概念 hixi4udstrls）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -249,9 +250,11 @@
         "end_offset": 176
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "文類",
-        "note": "前接人名「蘇天爵」与同名 3 条撰人皆不合"
+        "status": "matched",
+        "entity_id": "d59f2godfdvl",
+        "canonical_name": "元文類",
+        "href": "book-index://Work/d59f2godfdvl",
+        "note": "GUJI-240 补挂：元蘇天爵《文類》＝《元文類》（總目著錄條）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -429,8 +432,11 @@
         "end_offset": 230
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "簡"
+        "status": "matched",
+        "entity_id": "hixhd2h9bds5",
+        "canonical_name": "李簡",
+        "href": "book-index://Entity/hixhd2h9bds5",
+        "note": "GUJI-240 补挂：上文「元李簡之書」，「簡所撰學易記」名简称"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -507,8 +513,11 @@
         "end_offset": 260
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "簡"
+        "status": "matched",
+        "entity_id": "hixhd2h9bds5",
+        "canonical_name": "李簡",
+        "href": "book-index://Entity/hixhd2h9bds5",
+        "note": "GUJI-240 补挂：「則非簡書明甚」，李簡"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -626,7 +635,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -645,7 +654,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "前接人名「諸儒」与同名 2 条撰人皆不合"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -704,7 +713,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -1272,8 +1281,12 @@
         "end_offset": 814
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "翰林應奉文字"
+        "status": "matched",
+        "entity_id": "hixi5kwigetc",
+        "canonical_name": "應奉翰林文字",
+        "href": "book-index://Entity/hixi5kwigetc",
+        "level": "concept",
+        "note": "GUJI-240 补挂：元吳澄「翰林應奉文字」，库中已是應奉翰林文字概念条之别名；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -1489,8 +1502,11 @@
         "end_offset": 978
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "許愼"
+        "status": "matched",
+        "entity_id": "hixhd2h9be5n",
+        "canonical_name": "許慎",
+        "href": "book-index://Entity/hixhd2h9be5n",
+        "note": "GUJI-240 补挂：「許愼說文」，东汉许慎，异体愼＝慎"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2287,7 +2303,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭傳",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭傳）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2325,7 +2341,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2403,8 +2419,11 @@
         "end_offset": 1510
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "纂言"
+        "status": "matched",
+        "entity_id": "d59f2govj5ds",
+        "canonical_name": "易纂言",
+        "href": "book-index://Work/d59f2govj5ds",
+        "note": "GUJI-240 补挂：簡稱，吳澄《易纂言》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2484,7 +2503,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易原",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：《易纂言外翼》篇目（十一曰易原），非獨立之書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2559,7 +2578,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易原",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：《易纂言外翼》篇目（易原），非獨立之書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2596,9 +2615,11 @@
         "end_offset": 1840
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正義",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f28kra4n7",
+        "canonical_name": "周易正義",
+        "href": "book-index://Work/d59f28kra4n7",
+        "note": "GUJI-240 补挂：「唐定正義」＝孔穎達《周易正義》，挂正式庫周易正義條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2730,8 +2751,11 @@
         "end_offset": 1965
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "纂言"
+        "status": "matched",
+        "entity_id": "d59f2govj5ds",
+        "canonical_name": "易纂言",
+        "href": "book-index://Work/d59f2govj5ds",
+        "note": "GUJI-240 补挂：簡稱，吳澄《易纂言》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3332,8 +3356,11 @@
         "end_offset": 2483
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程子"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhc1",
+        "canonical_name": "程頤",
+        "href": "book-index://Entity/hixhd2h9bhc1",
+        "note": "GUJI-240 补挂：「伊川程子」，程頤"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3371,8 +3398,11 @@
         "end_offset": 2504
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3409,8 +3439,11 @@
         "end_offset": 2528
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3467,8 +3500,11 @@
         "end_offset": 2638
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3505,8 +3541,11 @@
         "end_offset": 2650
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：胡廣之修大全＝《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3543,8 +3582,11 @@
         "end_offset": 2664
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3782,8 +3824,12 @@
         "end_offset": 3010
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "景星書院山長"
+        "status": "matched",
+        "entity_id": "hixi5uk9r9c5",
+        "canonical_name": "書院山長",
+        "href": "book-index://Entity/hixi5uk9r9c5",
+        "level": "concrete",
+        "note": "GUJI-240 补挂：元黃澤「景星書院山長」，库无整名亦无山長概念条，挂核心官名書院山長元代条（concrete）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3800,8 +3846,12 @@
         "end_offset": 3018
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "東湖書院山長"
+        "status": "matched",
+        "entity_id": "hixi5uk9r9c5",
+        "canonical_name": "書院山長",
+        "href": "book-index://Entity/hixi5uk9r9c5",
+        "level": "concrete",
+        "note": "GUJI-240 补挂：元黃澤「東湖書院山長」，挂核心官名書院山長元代条（concrete）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3838,22 +3888,11 @@
         "end_offset": 3075
       },
       "target": {
-        "status": "ambiguous",
-        "canonical_name": "春秋指要",
-        "candidates": [
-          {
-            "entity_id": "d59f2nd70lc3",
-            "canonical_name": "春秋指要"
-          },
-          {
-            "entity_id": "d59f2ps58mio",
-            "canonical_name": "春秋指要"
-          },
-          {
-            "entity_id": "d59f2q00cute",
-            "canonical_name": "春秋指要"
-          }
-        ]
+        "status": "matched",
+        "entity_id": "d59f2gdksxky",
+        "canonical_name": "春秋旨要",
+        "href": "book-index://Work/d59f2gdksxky",
+        "note": "GUJI-240 补挂：黃澤《春秋指要》，庫題作《春秋旨要》（指／旨同書異寫），挂元黃澤條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -3890,22 +3929,11 @@
         "end_offset": 3106
       },
       "target": {
-        "status": "ambiguous",
-        "canonical_name": "春秋指要",
-        "candidates": [
-          {
-            "entity_id": "d59f2nd70lc3",
-            "canonical_name": "春秋指要"
-          },
-          {
-            "entity_id": "d59f2ps58mio",
-            "canonical_name": "春秋指要"
-          },
-          {
-            "entity_id": "d59f2q00cute",
-            "canonical_name": "春秋指要"
-          }
-        ]
+        "status": "matched",
+        "entity_id": "d59f2gdksxky",
+        "canonical_name": "春秋旨要",
+        "href": "book-index://Work/d59f2gdksxky",
+        "note": "GUJI-240 补挂：黃澤《春秋指要》＝庫中《春秋旨要》元黃澤條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4306,9 +4334,11 @@
         "end_offset": 3571
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59f2nji9csj",
         "canonical_name": "授經圖",
-        "note": "前接人名「朱睦㮮」与同名 4 条撰人皆不合"
+        "href": "book-index://Work/d59f2nji9csj",
+        "note": "GUJI-240 补挂：朱睦㮮《授經圖》，挂明朱睦㮮條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4325,9 +4355,11 @@
         "end_offset": 3579
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59f2gd572f4",
         "canonical_name": "周易圖",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "href": "book-index://Work/d59f2gd572f4",
+        "note": "GUJI-240 补挂：「理之書有周易圖三卷」，張理《周易圖》三卷，庫條同題同撰人同卷數"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4405,9 +4437,11 @@
         "end_offset": 3600
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "經籍志",
-        "note": "前接人名「焦竑」与同名 1 条撰人皆不合"
+        "status": "matched",
+        "entity_id": "d59f2nl40936",
+        "canonical_name": "國史經籍志",
+        "href": "book-index://Work/d59f2nl40936",
+        "note": "GUJI-240 补挂：前接焦竑，焦竑《國史經籍志》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4424,9 +4458,11 @@
         "end_offset": 3606
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59f2nji9csj",
         "canonical_name": "授經圖",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "href": "book-index://Work/d59f2nji9csj",
+        "note": "GUJI-240 补挂：承上朱睦㮮《授經圖》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4602,8 +4638,12 @@
         "end_offset": 3775
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武昌路南陽書院山長"
+        "status": "matched",
+        "entity_id": "hixi5uk9r9c5",
+        "canonical_name": "書院山長",
+        "href": "book-index://Entity/hixi5uk9r9c5",
+        "level": "concrete",
+        "note": "GUJI-240 补挂：元皇慶間「武昌路南陽書院山長」，挂核心官名書院山長元代条（concrete）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4621,7 +4661,8 @@
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "慈利州天門山"
+        "canonical_name": "慈利州天門山",
+        "note": "不建档：「寓居慈利州天門山」，库无慈利州、天門山，不挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4660,7 +4701,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "春秋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《春秋》經或春秋學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4679,7 +4720,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4736,8 +4777,11 @@
         "end_offset": 3880
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程子"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhc1",
+        "canonical_name": "程頤",
+        "href": "book-index://Entity/hixhd2h9bhc1",
+        "note": "GUJI-240 补挂：「陳摶邵子程子朱子之說」，论易之程子，程頤"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4776,7 +4820,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4973,7 +5017,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5010,7 +5054,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易說",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：陽氏（陽枋之族）所著易說二卷，撰人名不明、庫無此書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5229,8 +5273,12 @@
         "end_offset": 4303
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "信州道一書院山長"
+        "status": "matched",
+        "entity_id": "hixi5uk9r9c5",
+        "canonical_name": "書院山長",
+        "href": "book-index://Entity/hixi5uk9r9c5",
+        "level": "concrete",
+        "note": "GUJI-240 补挂：元胡炳文「信州道一書院山長」，挂核心官名書院山長元代条（concrete）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5403,7 +5451,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5420,9 +5468,11 @@
         "end_offset": 4380
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "精義",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2gohsphd",
+        "canonical_name": "周易本義通釋",
+        "href": "book-index://Work/d59f2gohsphd",
+        "note": "GUJI-240 补挂：胡炳文《周易本義通釋》初名精義，同一書，挂胡炳文《周易本義通釋》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5439,9 +5489,11 @@
         "end_offset": 4393
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "通釋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2gohsphd",
+        "canonical_name": "周易本義通釋",
+        "href": "book-index://Work/d59f2gohsphd",
+        "note": "GUJI-240 补挂：胡炳文《周易本義通釋》簡稱"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5602,8 +5654,11 @@
         "end_offset": 4525
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5620,8 +5675,11 @@
         "end_offset": 4544
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5638,9 +5696,11 @@
         "end_offset": 4552
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "通釋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2gohsphd",
+        "canonical_name": "周易本義通釋",
+        "href": "book-index://Work/d59f2gohsphd",
+        "note": "GUJI-240 补挂：胡炳文《周易本義通釋》簡稱"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5657,8 +5717,11 @@
         "end_offset": 4565
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5675,8 +5738,11 @@
         "end_offset": 4574
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5713,8 +5779,11 @@
         "end_offset": 4684
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懋竑"
+        "status": "matched",
+        "entity_id": "hixhd2h9bcls",
+        "canonical_name": "王懋竑",
+        "href": "book-index://Entity/hixhd2h9bcls",
+        "note": "GUJI-240 补挂：「懋竑葢未見旦序」，王懋竑名简称"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5731,8 +5800,11 @@
         "end_offset": 4696
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5749,8 +5821,11 @@
         "end_offset": 4768
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大全"
+        "status": "matched",
+        "entity_id": "d59f2nk9q874",
+        "canonical_name": "周易傳義大全",
+        "href": "book-index://Work/d59f2nk9q874",
+        "note": "GUJI-240 补挂：簡稱，胡廣等《周易傳義大全》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5927,8 +6002,11 @@
         "end_offset": 4951
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5945,8 +6023,11 @@
         "end_offset": 4955
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6309,8 +6390,11 @@
         "end_offset": 5177
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "義海"
+        "status": "matched",
+        "entity_id": "d59f2hglgu0x",
+        "canonical_name": "周易義海",
+        "href": "book-index://Work/d59f2hglgu0x",
+        "note": "GUJI-240 补挂：房審權《義海》＝《周易義海》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6621,7 +6705,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "周易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：「仁夫所著周易」泛指其說易之作，不能確指為庫中哪部"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6957,8 +7041,11 @@
         "end_offset": 6019
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "邵氏"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnqc",
+        "canonical_name": "邵雍",
+        "href": "book-index://Entity/hixhd2h9bnqc",
+        "note": "GUJI-240 补挂：「其說雖亦出於邵氏」，邵雍"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -7140,8 +7227,11 @@
         "end_offset": 6419
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "解縉春雨堂集"
+        "status": "matched",
+        "entity_id": "d59fxroulyiu",
+        "canonical_name": "春雨堂集",
+        "href": "book-index://Work/d59fxroulyiu",
+        "note": "GUJI-240 补挂：GUJI-240 新建档：春雨堂集"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -7304,7 +7394,7 @@
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bdsa",
-        "canonical_name": "董眞卿",
+        "canonical_name": "董真卿",
         "href": "book-index://Entity/hixhd2h9bdsa"
       },
       "source": "claude:manual"
@@ -7363,8 +7453,11 @@
         "end_offset": 6511
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "一桂"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdrw",
+        "canonical_name": "胡一桂",
+        "href": "book-index://Entity/hixhd2h9bdrw",
+        "note": "GUJI-240 补挂：「受學於胡一桂，斯編實本一桂之纂疏」，名简称"
       },
       "source": "claude:manual"
     },
@@ -7381,8 +7474,11 @@
         "end_offset": 6514
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "纂疏"
+        "status": "matched",
+        "entity_id": "d59f2gnu2o76",
+        "canonical_name": "易本義附錄纂疏",
+        "href": "book-index://Work/d59f2gnu2o76",
+        "note": "GUJI-240 补挂：胡一桂《纂疏》＝《周易本義附錄纂疏》，庫題《易本義附錄纂疏》元胡一桂，照清單回挂"
       },
       "source": "claude:manual"
     },
@@ -7439,8 +7535,11 @@
         "end_offset": 6543
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "文王"
+        "status": "matched",
+        "entity_id": "hixhd2h9bjh7",
+        "canonical_name": "周文王",
+        "href": "book-index://Entity/hixhd2h9bjh7",
+        "note": "GUJI-240 补挂：「伏羲文王周公之經」，周文王"
       },
       "source": "claude:manual"
     },
@@ -7497,8 +7596,11 @@
         "end_offset": 6594
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "朱子"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgah",
+        "canonical_name": "朱熹",
+        "href": "book-index://Entity/hixhd2h9bgah",
+        "note": "GUJI-240 补挂：「朱子之本義」，朱熹"
       },
       "source": "claude:manual"
     },
@@ -7515,8 +7617,11 @@
         "end_offset": 6597
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "claude:manual"
     },
@@ -7553,8 +7658,11 @@
         "end_offset": 6628
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "一桂"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdrw",
+        "canonical_name": "胡一桂",
+        "href": "book-index://Entity/hixhd2h9bdrw",
+        "note": "GUJI-240 补挂：「取一桂纂疏」，胡一桂"
       },
       "source": "claude:manual"
     },
@@ -7571,8 +7679,11 @@
         "end_offset": 6630
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "纂疏"
+        "status": "matched",
+        "entity_id": "d59f2gnu2o76",
+        "canonical_name": "易本義附錄纂疏",
+        "href": "book-index://Work/d59f2gnu2o76",
+        "note": "GUJI-240 补挂：「一桂纂疏」＝胡一桂《周易本義附錄纂疏》"
       },
       "source": "claude:manual"
     },
@@ -7627,9 +7738,11 @@
         "end_offset": 6656
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義",
-        "note": "短书名（疑《周易本義》），近旁无撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "claude:T-manual"
     },
@@ -7971,7 +8084,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "周易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：指《永樂大典》中周易各卦之部，非一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8031,7 +8144,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8104,7 +8217,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8242,7 +8355,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "大傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：經傳篇名（大傳＝繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8443,7 +8556,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8462,7 +8575,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "洪範",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：《尚書》篇名（洪範）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8602,7 +8715,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8904,7 +9017,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9080,8 +9193,12 @@
         "end_offset": 8488
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "集慶路儒學訓導"
+        "status": "matched",
+        "entity_id": "hixi5v2mvvux",
+        "canonical_name": "訓導",
+        "href": "book-index://Entity/hixi5v2mvvux",
+        "level": "concept",
+        "note": "GUJI-240 补挂：元梁寅「集慶路儒學訓導」，库无整名，挂核心官名「訓導」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9177,8 +9294,11 @@
         "end_offset": 8537
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周禮考註"
+        "status": "matched",
+        "entity_id": "d59f2gd2p62r",
+        "canonical_name": "周禮考注",
+        "href": "book-index://Work/d59f2gd2p62r",
+        "note": "GUJI-240 补挂：梁寅（梁五經）《周禮考註》，庫有梁寅《周禮考注》（經義考著錄）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9216,22 +9336,11 @@
         "end_offset": 8551
       },
       "target": {
-        "status": "ambiguous",
-        "canonical_name": "周易義疏",
-        "candidates": [
-          {
-            "entity_id": "d59f283zl62s",
-            "canonical_name": "周易義疏"
-          },
-          {
-            "entity_id": "d59f2848n1tt",
-            "canonical_name": "周易義疏"
-          },
-          {
-            "entity_id": "d59f7z42h79d",
-            "canonical_name": "周易義疏"
-          }
-        ]
+        "status": "matched",
+        "entity_id": "d59f2njagete",
+        "canonical_name": "周易參義",
+        "href": "book-index://Work/d59f2njagete",
+        "note": "GUJI-240 补挂：「此乃所作周易義疏」指本條所述梁寅之書，即總目著錄之《周易參義》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9248,8 +9357,11 @@
         "end_offset": 8568
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程傳"
+        "status": "matched",
+        "entity_id": "d59f2hpuj1mp",
+        "canonical_name": "伊川易傳",
+        "href": "book-index://Work/d59f2hpuj1mp",
+        "note": "GUJI-240 补挂：程傳＝程頤《伊川易傳》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9266,8 +9378,11 @@
         "end_offset": 8572
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9406,7 +9521,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9425,7 +9540,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "春秋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《春秋》經或春秋學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9500,8 +9615,11 @@
         "end_offset": 8808
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "邵氏"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnqc",
+        "canonical_name": "邵雍",
+        "href": "book-index://Entity/hixhd2h9bnqc",
+        "note": "GUJI-240 补挂：「兼用邵氏之學」，邵雍"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9540,7 +9658,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "春秋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《春秋》經或春秋學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9559,7 +9677,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "春秋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《春秋》經或春秋學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9578,7 +9696,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9597,7 +9715,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "春秋",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《春秋》經或春秋學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -9654,7 +9772,7 @@
       "target": {
         "status": "matched",
         "entity_id": "d59f2nk9q874",
-        "canonical_name": "周易大全",
+        "canonical_name": "周易傳義大全",
         "href": "book-index://Work/d59f2nk9q874"
       },
       "source": "glm:glm-4.5-flash"
@@ -9917,7 +10035,7 @@
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bdsa",
-        "canonical_name": "董眞卿",
+        "canonical_name": "董真卿",
         "href": "book-index://Entity/hixhd2h9bdsa"
       },
       "source": "glm:glm-4.5-flash"
@@ -10353,8 +10471,11 @@
         "end_offset": 9552
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10371,8 +10492,11 @@
         "end_offset": 9561
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10389,8 +10513,11 @@
         "end_offset": 9584
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10467,8 +10594,11 @@
         "end_offset": 9711
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10646,8 +10776,12 @@
         "end_offset": 9899
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南京禮部侍郞"
+        "status": "matched",
+        "entity_id": "hixi4u82hwjm",
+        "canonical_name": "侍郎",
+        "href": "book-index://Entity/hixi4u82hwjm",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明崔銑「南京禮部侍郞」，库无整名，挂核心官名「侍郎」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10682,8 +10816,11 @@
         "end_offset": 9915
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程傳"
+        "status": "matched",
+        "entity_id": "d59f2hpuj1mp",
+        "canonical_name": "伊川易傳",
+        "href": "book-index://Work/d59f2hpuj1mp",
+        "note": "GUJI-240 补挂：程傳＝程頤《伊川易傳》，照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10784,7 +10921,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10857,7 +10994,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11079,18 +11216,21 @@
     {
       "id": "e00415",
       "type": "work",
-      "text": "易學啟𫎇",
+      "text": "易學啟𫎇意見",
       "anchor": {
         "start": "66:4:1",
-        "end": "66:4:4"
+        "end": "66:4:6"
       },
       "span": {
         "start_offset": 10148,
-        "end_offset": 10152
+        "end_offset": 10154
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易學啟𫎇"
+        "status": "matched",
+        "entity_id": "d59f2njhbmrm",
+        "canonical_name": "易學啟蒙意見",
+        "href": "book-index://Work/d59f2njhbmrm",
+        "note": "GUJI-240 补挂：下條書題「易學啟𫎇意見五卷……明韓邦奇撰」，span 只截「易學啟𫎇」，實指韓邦奇《易學啟蒙意見》；span 斷讀有誤"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11167,8 +11307,12 @@
         "end_offset": 10191
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南京兵部尙書"
+        "status": "matched",
+        "entity_id": "hixi4udstrm6",
+        "canonical_name": "尚書",
+        "href": "book-index://Entity/hixi4udstrm6",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明韓邦奇「南京兵部尙書」，库无整名，挂核心官名「尚書」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11227,8 +11371,11 @@
         "end_offset": 10232
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "邵氏"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnqc",
+        "canonical_name": "邵雍",
+        "href": "book-index://Entity/hixhd2h9bnqc",
+        "note": "GUJI-240 补挂：「推演邵氏之學」，邵雍"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11307,8 +11454,11 @@
         "end_offset": 10353
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢",
+        "href": "book-index://Entity/hixi1ubjgow9",
+        "note": "GUJI-240 补挂：「宋儒之易非漢儒之易」，泛指漢代，挂兩漢"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11515,8 +11665,11 @@
         "end_offset": 10447
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本義"
+        "status": "matched",
+        "entity_id": "d59f2q19m9s0",
+        "canonical_name": "周易本義",
+        "href": "book-index://Work/d59f2q19m9s0",
+        "note": "GUJI-240 补挂：簡稱，朱熹《周易本義》（朱子語境），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -11798,7 +11951,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12014,7 +12167,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12033,7 +12186,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12153,7 +12306,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12170,8 +12323,12 @@
         "end_offset": 11052
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "御史"
+        "status": "matched",
+        "entity_id": "hixi5kwirncx",
+        "canonical_name": "監察御史",
+        "href": "book-index://Entity/hixi5kwirncx",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明萬曆「御史李頤」；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12229,9 +12386,11 @@
         "end_offset": 11071
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59fxroulyiv",
         "canonical_name": "易傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "href": "book-index://Work/d59fxroulyiv",
+        "note": "GUJI-240 补挂：GUJI-240 新建档：易傳"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12248,9 +12407,11 @@
         "end_offset": 11074
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59fxroulyiw",
         "canonical_name": "春秋傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "href": "book-index://Work/d59fxroulyiw",
+        "note": "GUJI-240 补挂：GUJI-240 新建档：春秋傳"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12693,7 +12854,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "大傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：經傳篇名（大傳＝繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13238,8 +13399,12 @@
         "end_offset": 12207
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "翰林院待詔"
+        "status": "matched",
+        "entity_id": "hixi5kwirnd1",
+        "canonical_name": "翰林待詔",
+        "href": "book-index://Entity/hixi5kwirnd1",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明來知德「翰林院待詔」，为翰林待詔概念条别名；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13296,7 +13461,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13355,7 +13520,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13374,7 +13539,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13428,8 +13593,11 @@
         "end_offset": 12495
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "知德"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdsm",
+        "canonical_name": "來知德",
+        "href": "book-index://Entity/hixhd2h9bdsm",
+        "note": "GUJI-240 补挂：本条來知德撰，「知德縱橫推闡」名简称"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -13937,7 +14105,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14074,8 +14242,11 @@
         "end_offset": 13341
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "義海"
+        "status": "matched",
+        "entity_id": "d59f2hglgu0x",
+        "canonical_name": "周易義海",
+        "href": "book-index://Work/d59f2hglgu0x",
+        "note": "GUJI-240 补挂：《周易義海》簡稱（房審權），照清單回挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14092,9 +14263,11 @@
         "end_offset": 13346
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "集解",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f28mx07wm",
+        "canonical_name": "周易集解",
+        "href": "book-index://Work/d59f28mx07wm",
+        "note": "GUJI-240 补挂：「周易集解」承上，李鼎祚《周易集解》（下文「李書」），挂唐李鼎祚條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14188,8 +14361,11 @@
         "end_offset": 13379
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "義海"
+        "status": "matched",
+        "entity_id": "d59f2hglgu0x",
+        "canonical_name": "周易義海",
+        "href": "book-index://Work/d59f2hglgu0x",
+        "note": "GUJI-240 补挂：義海一百卷＝房審權《周易義海》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14227,8 +14403,11 @@
         "end_offset": 13416
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋志"
+        "status": "matched",
+        "entity_id": "d59f2gonq7sy",
+        "canonical_name": "宋史",
+        "href": "book-index://Work/d59f2gonq7sy",
+        "note": "GUJI-240 补挂：宋志＝《宋史·藝文志》，照隋志挂《隋書》之例挂《宋史》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14326,8 +14505,12 @@
         "end_offset": 13512
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "福建道監察御史"
+        "status": "matched",
+        "entity_id": "hixi5kwirncx",
+        "canonical_name": "監察御史",
+        "href": "book-index://Entity/hixi5kwirncx",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明錢一本「福建道監察御史」，库无整名，挂核心官名「監察御史」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14389,7 +14572,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14569,9 +14752,11 @@
         "end_offset": 13875
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59f205cxd6o",
         "canonical_name": "易緯",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "href": "book-index://Work/d59f205cxd6o",
+        "note": "GUJI-240 补挂：卦氣起中孚之說出《易緯》，挂正式庫《易緯》條（d59f205cxd6o）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14649,8 +14834,12 @@
         "end_offset": 13942
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "左都御史"
+        "status": "matched",
+        "entity_id": "hixi5kwirnd3",
+        "canonical_name": "都御史",
+        "href": "book-index://Entity/hixi5kwirnd3",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明高攀龍「左都御史」，左右分置属都御史，挂都御史概念条（concept；明具体条 hixi5kwirnd4 已收左都御史为别名）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14689,8 +14878,12 @@
         "end_offset": 13949
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "兵部"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwv1",
+        "canonical_name": "兵部",
+        "href": "book-index://Entity/hixi1ubqbwv1",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明高攀龍贈「兵部尙書」之官署；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash",
       "group": {
@@ -14762,7 +14955,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14802,7 +14995,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14821,7 +15014,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14840,7 +15033,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14859,7 +15052,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14878,7 +15071,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14897,7 +15090,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14916,7 +15109,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14935,7 +15128,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14954,7 +15147,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14973,7 +15166,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15032,7 +15225,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15051,7 +15244,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15108,8 +15301,11 @@
         "end_offset": 14179
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "松溪"
+        "status": "matched",
+        "entity_id": "hixi4uk8r37k",
+        "canonical_name": "松溪縣",
+        "href": "book-index://Entity/hixi4uk8r37k",
+        "note": "GUJI-240 补挂：明魏濬「松溪人」，挂松溪縣（正式库条）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15146,8 +15342,12 @@
         "end_offset": 14197
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "巡撫湖廣"
+        "status": "matched",
+        "entity_id": "hixi4udt505e",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi4udt505e",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明魏濬「巡撫湖廣」，挂核心官名「巡撫」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15184,8 +15384,11 @@
         "end_offset": 14269
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢",
+        "href": "book-index://Entity/hixi1ubjgow9",
+        "note": "GUJI-240 补挂：「漢魏晉唐諸人」，泛指漢代，挂兩漢"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15287,7 +15490,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易義",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：書題《易義古象通》之冠首二字，非書名"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15606,8 +15809,12 @@
         "end_offset": 14594
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "御史"
+        "status": "matched",
+        "entity_id": "hixi5kwirncx",
+        "canonical_name": "監察御史",
+        "href": "book-index://Entity/hixi5kwirncx",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明錢一本「爲御史建言」；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15624,8 +15831,12 @@
         "end_offset": 14608
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太僕寺"
+        "status": "matched",
+        "entity_id": "hixi5dv8bb42",
+        "canonical_name": "太僕寺",
+        "href": "book-index://Entity/hixi5dv8bb42",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明錢一本追贈「太僕寺少卿」之官署；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash",
       "group": {
@@ -15682,19 +15893,21 @@
     {
       "id": "e00599",
       "type": "work",
-      "text": "易",
+      "text": "易用",
       "anchor": {
         "start": "94:3:1",
-        "end": "94:3:1"
+        "end": "94:3:2"
       },
       "span": {
         "start_offset": 14682,
-        "end_offset": 14683
+        "end_offset": 14684
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2nl2rb41",
+        "canonical_name": "易用",
+        "href": "book-index://Work/d59f2nl2rb41",
+        "note": "GUJI-240 补挂：下條書題「易用五卷……明陳祖念撰」，span 只截「易」，實指陳祖念《易用》；span 斷讀有誤"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15851,9 +16064,11 @@
         "end_offset": 14819
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "用",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2nl2rb41",
+        "canonical_name": "易用",
+        "href": "book-index://Work/d59f2nl2rb41",
+        "note": "GUJI-240 补挂：「故名曰用」指陳祖念《易用》本書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -15994,8 +16209,11 @@
         "end_offset": 15074
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "聿鍵"
+        "status": "matched",
+        "entity_id": "hixi4rb309oq",
+        "canonical_name": "朱聿鍵",
+        "href": "book-index://Entity/hixi4rb309oq",
+        "note": "GUJI-240 补挂：「明亡後爲唐王聿鍵禮部尙書」，南明唐王朱聿鍵，名简称"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -16187,7 +16405,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "大傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：經傳篇名（大傳＝繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -16285,9 +16503,11 @@
         "end_offset": 15481
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易傳",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "status": "matched",
+        "entity_id": "d59f2huvvx8i",
+        "canonical_name": "易小傳",
+        "href": "book-index://Work/d59f2huvvx8i",
+        "note": "GUJI-240 补挂：宋沈該之易傳＝沈該《易小傳》（總目著錄），挂南宋沈該條"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -16622,8 +16842,12 @@
         "end_offset": 15689
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "戸部"
+        "status": "matched",
+        "entity_id": "hixi5dv72cxs",
+        "canonical_name": "戶部",
+        "href": "book-index://Entity/hixi5dv72cxs",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明倪元璐「戸部尙書」，异体戸＝戶；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash",
       "group": {
@@ -16672,8 +16896,12 @@
         "end_offset": 15694
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "禮部"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwv2",
+        "canonical_name": "禮部",
+        "href": "book-index://Entity/hixi1ubqbwv2",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明倪元璐兼「禮部尙書」；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash",
       "group": {
@@ -16953,7 +17181,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -16993,7 +17221,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "易",
-        "note": "短书名（多为简称），近旁不见 book-index 同名条目的撰人，不挂"
+        "note": "不建档：泛称（指《易》經或易學），非具體一部書"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17312,8 +17540,12 @@
         "end_offset": 16744
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吏科給事中"
+        "status": "matched",
+        "entity_id": "hixi4udstrlx",
+        "canonical_name": "給事中",
+        "href": "book-index://Entity/hixi4udstrlx",
+        "level": "concept",
+        "note": "GUJI-240 补挂：明何楷「吏科給事中」，库无整名，挂核心官名「給事中」概念条（concept）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17350,8 +17582,11 @@
         "end_offset": 16748
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "聿鍵"
+        "status": "matched",
+        "entity_id": "hixi4rb309oq",
+        "canonical_name": "朱聿鍵",
+        "href": "book-index://Entity/hixi4rb309oq",
+        "note": "GUJI-240 补挂：「唐王聿鍵起兵於閩」，朱聿鍵"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17368,8 +17603,11 @@
         "end_offset": 16752
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "閩"
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "href": "book-index://Entity/hixi4u82hwjo",
+        "note": "GUJI-240 补挂：「唐王聿鍵起兵於閩」，閩指福建，挂福建省（非閩縣、非五代閩国）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17386,8 +17624,12 @@
         "end_offset": 16756
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "禮部"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwv2",
+        "canonical_name": "禮部",
+        "href": "book-index://Entity/hixi1ubqbwv2",
+        "level": "concept",
+        "note": "GUJI-240 补挂：南明唐王授何楷「禮部尙書」；未定朝代，挂概念条（concept）"
       },
       "source": "glm:glm-4.5-flash",
       "group": {
@@ -17477,22 +17719,9 @@
         "end_offset": 16790
       },
       "target": {
-        "status": "ambiguous",
+        "status": "new_candidate",
         "canonical_name": "江南",
-        "candidates": [
-          {
-            "entity_id": "1jb8kgdh3psef",
-            "canonical_name": "江南道"
-          },
-          {
-            "entity_id": "1jb8mpch5grgu",
-            "canonical_name": "江南路"
-          },
-          {
-            "entity_id": "1jb8mpch5grh3",
-            "canonical_name": "南直隸"
-          }
-        ]
+        "note": "不建档：「其管𣙜江南時所作」，明代泛称区域，库无相应江南条（江南省为清省名），不挂"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17531,7 +17760,7 @@
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bgu8",
-        "canonical_name": "高貴鄉公",
+        "canonical_name": "曹髦",
         "href": "book-index://Entity/hixhd2h9bgu8"
       },
       "source": "glm:glm-4.5-flash"
@@ -17589,7 +17818,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "繫辭",
-        "note": "經傳篇名，不挂、不建档"
+        "note": "不建档：經傳篇名（繫辭）"
       },
       "source": "glm:glm-4.5-flash"
     },

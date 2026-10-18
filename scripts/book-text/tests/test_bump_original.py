@@ -435,6 +435,41 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual((self.comp("entity")["version"], self.comp("entity")["text_version"]), ("1.0.1", "1.0.1"))
         self.assertEqual(ov_violations(self.root)["F-OV-02"], [])
 
+    def test_ov02_summary(self):
+        """GUJI-591：CI 在 PR 上报「标点 pre_char 对不上 N 条、实体失效待看 N 条」。"""
+        run(self.entry, "--init")
+        report, _s, _t = V.check(self.root)
+        np_, ne, md = V.ov02_summary(report)
+        self.assertEqual((np_, ne), (0, 0))
+        self.assertIn("<!-- ov02: punct=0 entity=0 -->", md)
+        self.assertIn("✅", md)
+        self.assertIn("核了标点 1 册 2 条、实体 1 册 2 条", md)
+        # 同版本改字（不升文本版本，模拟改字 PR 未跟伴生层）：「卷」→「巻」碰标点 #0，「卜」→「十」碰实体 e2
+        cp = os.path.join(self.od, "002.char.json")
+        _write(cp, OV.read_text(cp).replace("卷", "巻").replace("卜", "十"))
+        report, _s, _t = V.check(self.root)
+        np_, ne, md = V.ov02_summary(report)
+        self.assertEqual((np_, ne), (1, 1))
+        self.assertTrue(md.startswith(V.OV02_MARK))
+        self.assertIn("<!-- ov02: punct=1 entity=1 -->", md)
+        self.assertIn("标点 pre_char 对不上 1 条、实体失效待看 1 条", md)
+        self.assertIn("| `Book/aa/bb/cc/testbook/original/002.punct.json` | 标点 | 1 |", md)
+        self.assertIn("| `Book/aa/bb/cc/testbook/original/002.entity.json` | 实体 | 1 |", md)
+        self.assertIn("卜子夏", md)
+        self.assertNotIn(self.root, md)  # 明细只用相对路径
+
+    def test_ov02_summary_truncated(self):
+        """一个文件超过 20 条时，「另有 N 处」那条的权重也计入总数。"""
+        run(self.entry, "--init")
+        p = os.path.join(self.od, "002.entity.json")
+        ent = self.comp("entity")
+        ent["entities"] = [dict(ent["entities"][0], id=f"x{i}", text="錯") for i in range(25)]
+        _write(p, ent)
+        report, _s, _t = V.check(self.root)
+        np_, ne, md = V.ov02_summary(report)
+        self.assertEqual((np_, ne), (0, 25))
+        self.assertIn("另有 5 处未逐条列出", md)
+
     def test_major_needs_review(self):
         run(self.entry, "--init")
         p = os.path.join(self.od, "002.punct.json")

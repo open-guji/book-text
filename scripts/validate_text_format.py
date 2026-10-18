@@ -855,6 +855,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
     ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
+    # F-OV-02 报数（GUJI-591）：实际核了锚点的伴生层文件数与条目数，供 ov02_summary 写进 PR
+    ov02_checked = {"punct": [0, 0], "entity": [0, 0]}
+    r_ov02["checked"] = ov02_checked
     for od in ov_dirs:
         f = os.path.join(od, "index.json")
         d, err = jload(f)
@@ -989,12 +992,16 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 else:
                     # GUJI-543/541：不论是否落后都核锚点（改字类修订合入时，同版本也要发现伴生层失效）
                     bad = OV.anchor_mismatches(char, line, cd)
+                    ov02_checked[line][0] += 1
+                    ov02_checked[line][1] += len(cd.get("punctuations" if line == "punct" else "entities") or [])
                     why = f"落后于文本（{ctv} < {tv}）且" if ctvt < tvt else f"text_version 与文本同为 {tv}，但"
                     for i, note in bad[:20]:
                         add(r_ov02, cf, f"{cf}: {why}{note}", sub=f"anchor:{i}")
+                        r_ov02["violations"][-1].update(line=line, detail=f"{why}{note}")
                     if len(bad) > 20:
                         add(r_ov02, cf, f"{cf}: 另有 {len(bad) - 20} 处锚点对不上未逐条列出", sub="anchor:more",
                             weight=len(bad) - 20)
+                        r_ov02["violations"][-1].update(line=line, detail=f"另有 {len(bad) - 20} 处未逐条列出")
     scanned["original 册（三线版本号）"] = n_ov_chapters
 
     # ---- :::table 容器块语法（F-MD-09，T22 新增，服务 2026-09-表格记法方案.md）----
@@ -1171,6 +1178,48 @@ def _work_id_from_path(path):
 # ---------------------------------------------------------------------------
 # 报告渲染
 # ---------------------------------------------------------------------------
+
+OV02_MARK = "<!-- ov02-report -->"
+
+
+def ov02_summary(report):
+    """F-OV-02 报数（GUJI-591，设计「文本整理三阶段流程」§6.3）：改字 PR 合入时，CI 在 PR 上报
+    「标点 pre_char 对不上 N 条、实体失效待看 N 条」，N>0 才要标点／专名负责人介入。
+    返回 (n_punct, n_entity, markdown)；markdown 首行是 OV02_MARK 与机读计数，供工作流解析、找置顶评论。"""
+    r = report.get("F-OV-02") or {"violations": [], "checked": {}}
+    checked = r.get("checked") or {}
+    n = {"punct": 0, "entity": 0}
+    per_file = collections.OrderedDict()
+    for v in r["violations"]:
+        line = v.get("line")
+        if line not in n:  # 只有锚点核对产生的条目带 line（F-OV-02 现在也只有这一种）
+            continue
+        n[line] += v["weight"]
+        relf = v["key"].split("::", 1)[0]
+        e = per_file.setdefault(relf, {"line": line, "n": 0, "details": []})
+        e["n"] += v["weight"]
+        e["details"].append(v.get("detail") or v["note"])
+    cp, ce = checked.get("punct", [0, 0]), checked.get("entity", [0, 0])
+    scope = f"核了标点 {cp[0]} 册 {cp[1]} 条、实体 {ce[0]} 册 {ce[1]} 条"
+    head = f"{OV02_MARK}\n<!-- ov02: punct={n['punct']} entity={n['entity']} -->"
+    title = f"标点 pre_char 对不上 {n['punct']} 条、实体失效待看 {n['entity']} 条"
+    if not per_file:
+        return n["punct"], n["entity"], f"{head}\n✅ **F-OV-02 伴生层锚点**：{title}（{scope}）。\n"
+    out = [head, f"⚠️ **F-OV-02 伴生层锚点**：{title}（{scope}）。", "",
+           "文本改了字，下面这些标点／专名的锚点校验字和现文本对不上，需要标点（pre_char）、专名（text）负责人看："
+           "确属改字引起的，按新字改校验字并升该线 patch（`scripts/book-text/bump_original.py --line punct|entity`）；"
+           "不该改的字请文本侧撤回。", "",
+           "| 文件 | 线 | 条数 |", "|---|---|---|"]
+    for relf, e in per_file.items():
+        out.append(f"| `{relf}` | {'标点' if e['line'] == 'punct' else '实体'} | {e['n']} |")
+    out += ["", "<details><summary>明细（每个文件最多列 20 条）</summary>", ""]
+    for relf, e in per_file.items():
+        out.append(f"**`{relf}`**")
+        out += [f"- {d}" for d in e["details"]]
+        out.append("")
+    out.append("</details>")
+    return n["punct"], n["entity"], "\n".join(out) + "\n"
+
 
 def render_markdown(report, scanned, total_scanned):
     lines = ["# book-text 文本格式校验报告", ""]
@@ -1451,6 +1500,8 @@ def main():
     ap.add_argument("--update-baseline", action="store_true", help="收缩式刷新基线：这次已不违规的项剔除，不新增；需要 --baseline")
     ap.add_argument("--fetch-assets", action="store_true",
                     help="按 proof/<书>/<册>/sprites.pointer.json 从数据桶 Release 下载 assets.json，核 sha256 与 F-OV-09／10（CI 用，需联网）；默认只核指针本身")
+    ap.add_argument("--ov02-summary", metavar="OUT",
+                    help="把 F-OV-02 报数（标点 pre_char 对不上 N 条、实体失效待看 N 条＋明细）写成 Markdown，供 CI 贴到 PR（GUJI-591）")
     ap.add_argument("--selftest", action="store_true", help="造坏样本自测（含基线机制），不需要真仓")
     args = ap.parse_args()
 
@@ -1504,6 +1555,10 @@ def main():
     if args.json:
         with open(args.json, "w", encoding="utf-8") as f:
             json.dump(render_json(report, scanned, total_scanned), f, ensure_ascii=False, indent=2)
+
+    if args.ov02_summary:
+        with open(args.ov02_summary, "w", encoding="utf-8") as f:
+            f.write(ov02_summary(report)[2])
 
     if args.strict:
         baseline_keys = set()

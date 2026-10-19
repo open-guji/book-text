@@ -59,7 +59,7 @@ def test_extract_headings():
     assert OV.extract_headings(CHAR, GOOD) == [
         {'level': 1, 'label': '卷二　經部二', 'anchor': '39:1:1'},
         {'level': 2, 'label': '易類二', 'anchor': '39:3:1'},
-        {'level': 3, 'label': '《易數鈎隱圖》三卷', 'anchor': '39:4:1'},
+        {'level': 3, 'label': '易數鈎隱圖', 'anchor': '39:4:1'},
     ]
 
 
@@ -119,3 +119,12 @@ def test_sync_headings(tmp_path):
     assert got['chapters'][0]['headings'] == OV.extract_headings(CHAR, GOOD)
     assert 'headings' not in got['chapters'][1]      # 没有标题符的册删掉旧缓存
     assert OV.sync_headings(str(od)) is False         # 再跑一次不动盘
+
+
+def test_heading_label_book_entry():
+    from original_version import heading_label
+    assert heading_label('《子夏易傳》十一卷内府藏本') == '子夏易傳'
+    assert heading_label('新本《鄭氏周易》三卷江蘇巡撫採進本') == '新本鄭氏周易'
+    assert heading_label('《某書》不分卷') == '某書'
+    assert heading_label('讀《論語》法') == '讀論語法'      # 不是书目条：只去书名号
+    assert heading_label('卷一　經部一') == '卷一　經部一'

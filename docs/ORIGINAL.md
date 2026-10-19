@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | **char** | `NNN.char.json` | 每一格定下的字和版式。**文本版本号跟踪它** | 真源 | main |
 | **cord** | `NNN.cord.json` | 每一格的像素框，**不存字**，按格位 key 对到 char | 真源 | main |
-| **punct** | `NNN.punct.json` | 标点、分段、书名号 | 真源 | main |
+| **punct** | `NNN.punct.json` | 标点、分段、书名号、分卷与各级标题（v0.2 标题符） | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
 | **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1 正式；v0.2 增可选 reason／route／route_ref，v0.1 文件仍合法）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
@@ -43,6 +43,8 @@
 `NNN.pending.json` 由整理侧导出（GUJI-543 §6.2）：顶层 `rev`（`<册>-r<n>`）、`cv_version`（字符串，首个正式 `cv-vX.Y.Z` tag 前可为 `null`）、`cv_commit`（必填）、`cells`（必有格号 `cell` 与 `review` 状态；guji-proof/0.2 的 `why`／`cls`／`lib_top`／`lib`／`ctx`／`ref`／`ocr`／`stale`／`occ`／`img`／`ctximg`／`ex` 等可选键由 F-OV-08 做类型检查，未知键忽略）。坐标是原图轴对齐框。它不是版本线，不进 `*_version`、不进 CHANGES.md。
 
 `chapters[]` 另有 `proofing`（选填布尔，校对中；文本线 0.x 时必填 true，F-OV-06；网站据此挂「欢迎帮助校对」banner）、`text_version`（必填）、`punct_version`（有 punct 时必填）、`entity_version`（有 entity 时必填）、`pages`（选填）、`n`／`file`／`title`；`*_version` 与各文件顶层 `version` 相等（F-OV-01，不手改）。字段见 spec 07 §3.3。版本 `index.json` 顶层字段同见 spec 07 §3.3。
+
+**分卷与标题**（GUJI-240，guji-format 04 v0.2 §4.2）：标题符是 punct 里 `kind: heading` 的条目，`pos: before` 锚标题首字，`mark` 的 `#` 个数是级别，标题到下一个分段符为止；可选 `label`（目录名）、`toc: false`（副题行不进目录）；**不写 `pre_char`**，改字不影响标题。分段符一律锚段末字之后（`pos: after`）；在两段交界处插字时由改字工具判定新字归前段还是后段，归前段就把分段符挪到新字上。章条目的 `headings`（`[{level, label, anchor}]`）是从 punct 现算的目录缓存，由 `build_texts_index.py` 写，不手改；版本 `index.json` 顶层可写 `heading_levels`（各级名称，如 `["卷","類","書"]`）。校验 F-OV-12。
 
 生成分支上的 `index.json` 另外加 `lines_file`、`rich_file`。前端读哪些文件、读哪个分支，由网站决定。
 

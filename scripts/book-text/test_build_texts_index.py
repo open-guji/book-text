@@ -38,3 +38,25 @@ def test_script_passthrough_and_absent(tmp_path):
     assert out['abc2'][0]['script'] == 'hans'
     # 既有键不受影响
     assert out['abc1'][0]['quality'] == 'source' and out['abc1'][0]['chapters_total'] == 1
+
+
+def test_original_headings_cache(tmp_path):
+    """original 版本：按各册 punct 的标题符重算 index.json 章条目的 headings（GUJI-240）；其他版本不碰。"""
+    oid = 'bk01'
+    d = tmp_path / 'Book' / oid[0] / oid[1] / oid[2] / oid
+    od = d / 'original'
+    od.mkdir(parents=True)
+    (d / 'manifest.json').write_text(json.dumps({'id': oid, 'versions': [_ver('default'), _ver('original', is_original=True)]}),
+                                     encoding='utf-8')
+    char = {'pages': [{'page': 1, 'columns': [{'col': 1, 'cells': [{'a': '1:1:1', 'c': '卷'}, {'a': '1:1:2', 'c': '一'}]},
+                                                {'col': 2, 'cells': [{'a': '1:2:1', 'c': '正'}]}]}]}
+    punct = {'$schema': 'https://open-guji.org/schema/punct/v0.2.json', 'punctuations': [
+        {'mark': '#', 'kind': 'heading', 'pos': 'before', 'anchor': '1:1:1'},
+        {'mark': '\n\n', 'kind': 'break', 'pos': 'after', 'anchor': '1:1:2', 'pre_char': '一'}]}
+    (od / '001.char.json').write_text(json.dumps(char, ensure_ascii=False), encoding='utf-8')
+    (od / '001.punct.json').write_text(json.dumps(punct, ensure_ascii=False), encoding='utf-8')
+    (od / 'index.json').write_text(json.dumps({'chapters': [{'n': 1, 'file': '001'}]}), encoding='utf-8')
+    subprocess.run([sys.executable, os.path.join(HERE, 'build_texts_index.py'), '--root', str(tmp_path)], check=True,
+                   capture_output=True)
+    idx = json.loads((od / 'index.json').read_text(encoding='utf-8'))
+    assert idx['chapters'][0]['headings'] == [{'level': 1, 'label': '卷一', 'anchor': '1:1:1'}]

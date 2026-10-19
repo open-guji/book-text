@@ -354,10 +354,10 @@ def _render_tokens(char, break_after):
 
 
 def _punct_order(p, off):
-    """同一字上的先后（同 cv `punct_order`）：before 在 after 前、分段符最后；
+    """同一字上的先后（同 cv `punct_order`）：标题符最先，before 在 after 前、分段符最后；
     before 里《排在「后，after 里》排在最前。"""
     inner = (p["mark"] == "《") if p["pos"] == "before" else (p["mark"] != "》")
-    return (off, p["pos"] != "before", p["kind"] == "break", inner)
+    return (off, p.get("kind") != "heading", p["pos"] != "before", p["kind"] == "break", inner)
 
 
 def resolve_offsets(char, items, key):
@@ -427,13 +427,17 @@ def render_rich(char, punct=None, entity=None):
 
     out, pending_marks, pending_breaks = [], [], []
 
-    def flush_marks():
-        # 版面记号的次序：先收小注（`>`、`]{…}`），再分段，再页码标记／开小注
+    def flush_marks(heading=None):
+        # 版面记号的次序：先收小注（`>`、`]{…}`），再分段，再标题（`#`× 级别加空格，须在行首），再页码标记／开小注
         k = 0
         while k < len(pending_marks) and pending_marks[k][:1] in (">", "]"):
             k += 1
         out.extend(pending_marks[:k])
         out.extend(pending_breaks)
+        if heading:
+            if out and not out[-1].endswith("\n"):
+                out.append("\n\n")   # 标题前没有分段符（校验器 F-OV-12 会报）：仍保证另起一行
+            out.append(heading)
         out.extend(pending_marks[k:])
         pending_marks.clear()
         pending_breaks.clear()
@@ -443,9 +447,11 @@ def render_rich(char, punct=None, entity=None):
         if ch == "":
             pending_marks.append(orig)
             continue
-        flush_marks()
-        for p in punct_map.get(pi, ()):
-            if p["pos"] == "before":
+        here = punct_map.get(pi, ())
+        head = next((p for p in here if p.get("kind") == "heading"), None)
+        flush_marks(head["mark"] + " " if head else None)
+        for p in here:
+            if p["pos"] == "before" and p.get("kind") != "heading":
                 out.append(p["mark"])
         if pi in ent_starts:
             e = ent_starts[pi]

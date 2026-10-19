@@ -6,6 +6,9 @@
 
     python3 build_texts_index.py --root <book-text 仓根>
 
+另：original 版本（目录名 original，或 manifest 里 is_original 的版本）的 index.json，按各册 punct 的标题符
+重算章条目的 headings（目录缓存，guji-format spec/07 §3.3，GUJI-240）；没有标题符的册不写该键。
+
 输出格式与 migrate_texts.py 的 build_global_index 完全一致：
     { "<id>": [ {"key", "kind", "label", "chapters_total"[, "edition_label"][, "quality"][, "script"]}, ... ] }（edition_label 可选，10-01 起；quality 可选，10-10 起——book-index 的 none／placeholder 过滤靠它；script 可选，10-13 起——hant／hans／mixed，manifest 缺则这里也缺，不写 null，overview#605 E2），按 manifest.versions 顺序，
     分片用与 migrate_texts.shard() 相同的哈希。
@@ -14,6 +17,10 @@ import argparse
 import glob
 import json
 import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import original_version as OV  # noqa: E402
 
 
 def shard(i):
@@ -36,7 +43,7 @@ def main():
     ap.add_argument('--root', required=True)
     a = ap.parse_args()
     buckets = {c: {} for c in '0123456789abcdef'}
-    n = 0
+    n = nh = 0
     for m in (sorted(glob.glob(os.path.join(a.root, 'Work/*/*/*/*/manifest.json'))) +
               sorted(glob.glob(os.path.join(a.root, 'Book/*/*/*/*/manifest.json')))):
         d = json.load(open(m, encoding='utf-8'))
@@ -51,9 +58,14 @@ def main():
             for v in vs
         ]
         n += 1
+        for v in vs:
+            vdir = os.path.join(os.path.dirname(m), v['key'])
+            if os.path.isfile(os.path.join(vdir, 'index.json')) and OV.is_original_dir(vdir):
+                if OV.sync_headings(vdir):
+                    nh += 1
     for s, b in buckets.items():
         write_json(os.path.join(a.root, 'index', 'texts', f'{s}.json'), b)
-    print(f'index/texts/  {n} 个条目')
+    print(f'index/texts/  {n} 个条目' + (f'；重算目录缓存 headings {nh} 个版本' if nh else ''))
 
 
 if __name__ == '__main__':

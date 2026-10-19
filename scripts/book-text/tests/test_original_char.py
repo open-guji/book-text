@@ -137,6 +137,17 @@ class TestRich(unittest.TestCase):
         got = C.render_rich(self.char, p, None)
         self.assertTrue(got.startswith("<!-- p3 -->子夏易傳<舊本卜子>\n\n<題夏撰>內府<!-- p4 -->"), got)
 
+    def test_heading(self):
+        # 标题符（punct v0.2）：段首写 `#`× 级别加空格，排在页码注释与其他 before 标点之前；不带 pre_char
+        p = punct(("《", "point", "before", "3:1:1", "子"), ("\n\n", "break", "after", "3:1:4", "傳"),
+                  ("\n\n", "break", "after", "3:2:4", "府"))
+        p["punctuations"] += [{"mark": "#", "kind": "heading", "pos": "before", "anchor": "3:1:1"},
+                              {"mark": "##", "kind": "heading", "pos": "before", "anchor": "4:1:1"}]
+        got = C.render_rich(self.char, p, None)
+        self.assertTrue(got.startswith("# <!-- p3 -->《子夏易傳\n\n<舊本卜子題夏撰>內府\n\n"), got)
+        # 4:1:1 前一字没有分段符（校验器会报）：仍另起一行，标题不粘在上一段末尾
+        self.assertIn("<!-- p4 -->藏\n\n## 本", got)
+
     def test_bad_anchor(self):
         with self.assertRaises(C.FormatError):
             C.render_rich(self.char, punct(("，", "point", "after", "3:1:1", "夏")), None)

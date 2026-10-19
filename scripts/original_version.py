@@ -257,3 +257,162 @@ def anchor_mismatches(char, line, data):
             if "text" in e and got != e["text"]:
                 bad.append((i, f"实体 #{i} {s}–{t} 校验字应为 {e['text']!r}，文本现为 {got!r}"))
     return bad
+
+
+# ── 标题符（guji-format spec/04 v0.2 §4.2，GUJI-240）──────────────────────────
+# punct 里 kind: heading 的条目锚在标题首字前（pos: before），mark 是 1～6 个 #（级别），
+# 标题到下一个分段符为止；不写 pre_char（改字不影响标题）。分段符只锚段末字之后（pos: after），
+# 在分段处插字时由改字工具判定归前段还是后段、挪不挪分段符。
+
+PUNCT_V02 = "https://open-guji.org/schema/punct/v0.2.json"
+PUNCT_KINDS = ("point", "break", "heading")
+_HEADING_MARK = re.compile(r"^#{1,6}$")
+
+
+def _pkind(p):
+    return p.get("kind") or "point"
+
+
+def _ppos(p):
+    return p.get("pos") or "after"
+
+
+def extract_headings(char, punct):
+    """char ＋ punct → 本册目录 [{level, label, anchor}]，按读序；只收 toc 不为 false 的标题。
+    label：标题符的 label，缺省是标题原文（首字到下一个分段符之间的字，带其间的点号与成对标号）。
+    与网站 book-index-ui `headingsFromPunct` 同口径。"""
+    puncts = (punct or {}).get("punctuations") or []
+    if not any(_pkind(p) == "heading" for p in puncts):
+        return []
+    by = {}
+    for p in puncts:
+        by.setdefault(p.get("anchor"), []).append(p)
+    out, cur = [], None
+
+    def close():
+        nonlocal cur
+        if cur is not None:
+            h, text, fixed = cur
+            if not fixed:
+                h["label"] = text.strip()
+            if h["label"]:
+                out.append(h)
+        cur = None
+
+    for a, c in char_slots(char):
+        here = by.get(a, [])
+        head = next((p for p in here if _pkind(p) == "heading" and _ppos(p) == "before"
+                     and _HEADING_MARK.match(p.get("mark") or "")), None)
+        if head is not None:
+            close()
+        if head is not None and head.get("toc") is not False:
+            label = head.get("label").strip() if isinstance(head.get("label"), str) else ""
+            cur = [{"level": len(head["mark"]), "label": label, "anchor": a}, "", bool(label)]
+        if cur is not None and not cur[2]:
+            cur[1] += "".join(p["mark"] for p in here if _pkind(p) == "point" and _ppos(p) == "before")
+            cur[1] += c
+            cur[1] += "".join(p["mark"] for p in here if _pkind(p) == "point" and _ppos(p) != "before")
+        if any(_pkind(p) == "break" and _ppos(p) != "before" for p in here):
+            close()
+    close()
+    return out
+
+
+def heading_problems(char, punct):
+    """标题符与 v0.2 标点类别的结构检查（F-OV-12），返回 [(说明, sub)]。锚点存在与否由 F-OV-02 管。"""
+    puncts = (punct or {}).get("punctuations") or []
+    slots = char_slots(char)
+    pos = {a: i for i, (a, _c) in enumerate(slots)}
+    probs = []
+    uses_v02 = False
+    ends = set()                     # 段终点：分段符所在字（锚段末字之后）
+    heads = []
+    seen_head = set()
+    for i, p in enumerate(puncts):
+        k, ps = _pkind(p), _ppos(p)
+        if k not in PUNCT_KINDS:
+            probs.append((f"标点 #{i} kind={k!r} 不认识（只许 point／break／heading）", f"kind:{i}"))
+            continue
+        if ps not in ("before", "after"):
+            probs.append((f"标点 #{i} pos={ps!r} 不认识（只许 before／after）", f"pos:{i}"))
+            continue
+        if k != "heading" and ("label" in p or "toc" in p):
+            probs.append((f"标点 #{i} label／toc 只能出现在标题符上", f"label:{i}"))
+        if k == "break":
+            if p.get("mark") != "\n\n":
+                probs.append((f"分段符 #{i} mark 应为 \"\\n\\n\"", f"brkmark:{i}"))
+            if ps == "before":
+                probs.append((f"分段符 #{i}（{p.get('anchor')}）pos 必须是 after（锚段末字之后）", f"brkpos:{i}"))
+                continue
+            a = p.get("anchor")
+            if a in pos:
+                ends.add(pos[a])
+        elif k == "heading":
+            uses_v02 = True
+            a = p.get("anchor")
+            if ps != "before":
+                probs.append((f"标题符 #{i}（{a}）pos 必须是 before", f"hpos:{i}"))
+            if not _HEADING_MARK.match(p.get("mark") or ""):
+                probs.append((f"标题符 #{i}（{a}）mark={p.get('mark')!r} 应为 1～6 个 #", f"hmark:{i}"))
+                continue
+            if "pre_char" in p:
+                probs.append((f"标题符 #{i}（{a}）不写 pre_char（改字不影响标题）", f"hpre:{i}"))
+            if "label" in p and not (isinstance(p["label"], str) and p["label"].strip()):
+                probs.append((f"标题符 #{i}（{a}）label 须为非空字符串", f"hlabel:{i}"))
+            if "toc" in p and not isinstance(p["toc"], bool):
+                probs.append((f"标题符 #{i}（{a}）toc 须为布尔", f"htoc:{i}"))
+            if a in seen_head:
+                probs.append((f"标题符 #{i}（{a}）同一格有两个标题符", f"hdup:{i}"))
+            seen_head.add(a)
+            if a in pos:
+                heads.append((pos[a], len(p["mark"]), a, i))
+    if uses_v02 and (punct or {}).get("$schema") != PUNCT_V02:
+        probs.append((f"用了标题符，$schema 应为 {PUNCT_V02}", "schema"))
+    heads.sort()
+    prev_level = None
+    for n, (off, level, a, i) in enumerate(heads):
+        if not (off == 0 or (off - 1) in ends):
+            probs.append((f"标题符 #{i}（{a}）前面不是分段处（前一字须带分段符）", f"hstart:{i}"))
+        nxt = heads[n + 1][0] if n + 1 < len(heads) else len(slots)
+        if not any(off <= e < nxt for e in ends):
+            where = "下一个标题之前" if n + 1 < len(heads) else "册末之前"
+            probs.append((f"标题符 #{i}（{a}）到{where}没有分段符", f"hend:{i}"))
+        if prev_level is not None and level > prev_level + 1:
+            probs.append((f"标题符 #{i}（{a}）跳级：{'#' * prev_level} 之后直接是 {'#' * level}", f"hskip:{i}"))
+        prev_level = level
+    return probs
+
+
+def sync_headings(odir):
+    """把各册 punct 的标题符现算成 index.json 章条目的 `headings`（目录缓存，spec/07 §3.3）。
+    有进目录的标题就写，没有就删掉该键；内容不变不动盘。返回 True＝改了 index.json。"""
+    ipath = os.path.join(odir, "index.json")
+    try:
+        idx = load_json(ipath)
+    except (OSError, ValueError):
+        return False
+    changed = False
+    for ch in idx.get("chapters") or []:
+        if not isinstance(ch, dict):
+            continue
+        stem = chapter_file(ch)
+        cpath = companion_path(odir, stem, "text") if stem else None
+        ppath = companion_path(odir, stem, "punct") if stem else None
+        heads = []
+        if cpath and ppath and os.path.isfile(cpath) and os.path.isfile(ppath):
+            try:
+                punct = load_json(ppath)
+                if any(_pkind(p) == "heading" for p in punct.get("punctuations") or []):
+                    heads = extract_headings(load_json(cpath), punct)
+            except (OSError, ValueError):
+                heads = ch.get("headings") or []   # 解析失败由校验器报，这里不动
+        if heads:
+            if ch.get("headings") != heads:
+                ch["headings"] = heads
+                changed = True
+        elif "headings" in ch:
+            del ch["headings"]
+            changed = True
+    if changed:
+        dump_json(ipath, idx)
+    return changed

@@ -29,7 +29,7 @@ def ours(vol, name):
         if blk in name.split('+'): sel.append((s, e))
     gaps = collections.defaultdict(str)   # gap index g: 在 slot g 之前（g 即 slot 号）
     for p in pu['punctuations']:
-        if p['kind'] == 'break': continue
+        if p.get('kind') in ('break', 'heading'): continue   # 分段符、标题符不是点号
         i = pos[p['anchor']]; g = i if p['pos'] == 'before' else i + 1
         gaps[g] += p['mark']
     chars = []; gapl = []; anch = []

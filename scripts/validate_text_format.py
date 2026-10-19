@@ -852,6 +852,12 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     r_ov09 = rule("F-OV-09", "HARD")
     r_ov10 = rule("F-OV-10", "HARD")
     r_ov11 = rule("F-OV-11", "HARD")
+    # F-OV-12 标题符（guji-format spec/04 v0.2 §4.2，GUJI-240）：kind 只许 point／break／heading、pos 只许 before／after；
+    #         分段符 pos 只许 after（锚段末字之后）；标题符 pos=before、mark 为 1～6 个 #、不写 pre_char，label 非空、
+    #         toc 布尔，同格至多一个；标题前一字、标题末字都带分段符，级别不跳级；用了标题符的文件 $schema 须为 punct v0.2。
+    #         章条目的 headings（目录缓存，spec/07 §3.3）须与 punct 现算的一致（build_texts_index.py 生成，不手改）；
+    #         heading_levels 若有须是字符串列表。
+    r_ov12 = rule("F-OV-12", "HARD")
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
     ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
@@ -959,6 +965,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 else:
                     for msg, sub in decision_problems(dd, char):
                         add(r_ov05, dpath, f"{dpath}: {msg}", sub=sub)
+            r_ov12["n_scanned"] += 1
+            want_heads = []
             for line in ("punct", "entity"):
                 cf = OV.companion_path(od, stem, line)
                 if not os.path.isfile(cf):
@@ -969,6 +977,10 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 if cerr or not isinstance(cd, dict):
                     add(r_ov01, cf, f"{cf}: JSON 解析失败：{cerr}", sub="parse")
                     continue
+                if line == "punct":
+                    for msg, sub in OV.heading_problems(char, cd):
+                        add(r_ov12, cf, f"{cf}: {msg}", sub=sub)
+                    want_heads = OV.extract_headings(char, cd)
                 v, ctv = cd.get("version"), cd.get("text_version")
                 vt, ctvt = OV.parse_version(v), OV.parse_version(ctv)
                 if vt is None or vt < OV.MIN_TEXT_0X:
@@ -1002,6 +1014,14 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                         add(r_ov02, cf, f"{cf}: 另有 {len(bad) - 20} 处锚点对不上未逐条列出", sub="anchor:more",
                             weight=len(bad) - 20)
                         r_ov02["violations"][-1].update(line=line, detail=f"另有 {len(bad) - 20} 处未逐条列出")
+            if want_heads and ch.get("headings") != want_heads:
+                add(r_ov12, f, f"{f}: 册 {stem} headings 与 punct 标题符现算的不一致（跑 build_texts_index.py 重建，不手改）",
+                    sub=f"{stem}:headings")
+            elif not want_heads and "headings" in ch:
+                add(r_ov12, f, f"{f}: 册 {stem} punct 没有进目录的标题符，不应有 headings", sub=f"{stem}:headings:extra")
+        hl = d.get("heading_levels")
+        if hl is not None and not (isinstance(hl, list) and all(isinstance(x, str) and x for x in hl) and len(hl) <= 6):
+            add(r_ov12, f, f"{f}: heading_levels 须是 1～6 个非空字符串的列表", sub="heading_levels")
     scanned["original 册（三线版本号）"] = n_ov_chapters
 
     # ---- :::table 容器块语法（F-MD-09，T22 新增，服务 2026-09-表格记法方案.md）----

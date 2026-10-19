@@ -1,6 +1,6 @@
 {
-  "$schema": "https://open-guji.org/schema/punct/v0.1.json",
-  "version": "1.3.5",
+  "$schema": "https://open-guji.org/schema/punct/v0.2.json",
+  "version": "1.4.0",
   "text_version": "1.0.0",
   "book_id": "96mid1ogzk",
   "metadata": {
@@ -10,13 +10,23 @@
     "description": "基于 original 底本自动生成独立外挂标点与分段，正文字符保持严格解耦。"
   },
   "stats": {
-    "total_annotations": 6783,
+    "total_annotations": 6851,
     "points": 6625,
     "paragraph_breaks": 158,
     "periods": 978,
-    "commas": 2906
+    "commas": 2906,
+    "headings": 68
   },
   "punctuations": [
+    {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 0,
+      "anchor": "3:1:1",
+      "label": "卷一　經部一",
+      "source": "claude:GUJI-240"
+    },
     {
       "mark": "\n\n",
       "kind": "break",
@@ -25,6 +35,14 @@
       "pre_char": "卷",
       "anchor": "3:1:8",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "##",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 8,
+      "anchor": "3:2:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -1188,6 +1206,15 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 532,
+      "anchor": "6:2:2",
+      "toc": false,
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -1195,6 +1222,14 @@
       "pre_char": "一",
       "anchor": "6:2:4",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "##",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 535,
+      "anchor": "6:3:3",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -1690,6 +1725,14 @@
       "pre_char": "左",
       "anchor": "8:1:13",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 818,
+      "anchor": "8:2:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -3177,6 +3220,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 1477,
+      "anchor": "12:7:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -4266,6 +4317,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 1985,
+      "anchor": "15:8:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -4777,6 +4836,14 @@
       "pre_char": "矣",
       "anchor": "17:5:15",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 2281,
+      "anchor": "17:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -5614,6 +5681,14 @@
       "pre_char": "云",
       "anchor": "19:8:14",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 2668,
+      "anchor": "19:9:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -7137,6 +7212,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 3345,
+      "anchor": "23:9:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -8386,6 +8469,14 @@
       "pre_char": "歟",
       "anchor": "27:4:6",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 3934,
+      "anchor": "27:5:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -9655,6 +9746,14 @@
       "pre_char": "也",
       "anchor": "31:5:18",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 4645,
+      "anchor": "31:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -11052,6 +11151,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 5272,
+      "anchor": "35:4:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -12006,6 +12113,15 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 5791,
+      "anchor": "39:1:1",
+      "label": "卷二　經部二",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -12013,6 +12129,15 @@
       "pre_char": "二",
       "anchor": "39:1:10",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 5801,
+      "anchor": "39:2:2",
+      "toc": false,
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -12024,6 +12149,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "##",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 5804,
+      "anchor": "39:3:3",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -12031,6 +12164,14 @@
       "pre_char": "二",
       "anchor": "39:3:5",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 5807,
+      "anchor": "39:4:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -13176,6 +13317,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 6330,
+      "anchor": "42:5:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -14236,6 +14385,14 @@
       "pre_char": "也",
       "anchor": "45:8:10",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 6904,
+      "anchor": "45:9:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -15462,6 +15619,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 7464,
+      "anchor": "49:3:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -16018,6 +16183,14 @@
       "pre_char": "矣",
       "anchor": "51:3:6",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 7801,
+      "anchor": "51:4:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -16857,6 +17030,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 8301,
+      "anchor": "54:4:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -17557,6 +17738,14 @@
       "pre_char": "矣",
       "anchor": "56:6:6",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 8677,
+      "anchor": "56:7:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -18684,6 +18873,14 @@
       "source": "claude:T-manual"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 9189,
+      "anchor": "59:8:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -19296,6 +19493,14 @@
       "source": "claude:T-manual"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 9557,
+      "anchor": "62:1:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -19888,6 +20093,14 @@
       "pre_char": "矣",
       "anchor": "63:8:3",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 9856,
+      "anchor": "63:9:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -20547,6 +20760,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 10197,
+      "anchor": "66:1:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -21139,6 +21360,14 @@
       "pre_char": "歟",
       "anchor": "67:4:6",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 10423,
+      "anchor": "67:5:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -22581,6 +22810,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 11183,
+      "anchor": "72:1:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -23146,6 +23383,14 @@
       "pre_char": "矣",
       "anchor": "73:7:10",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 11469,
+      "anchor": "73:8:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -24354,6 +24599,15 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 11995,
+      "anchor": "77:1:1",
+      "label": "卷三　經部三",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -24361,6 +24615,15 @@
       "pre_char": "三",
       "anchor": "77:1:10",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "#",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 12005,
+      "anchor": "77:2:2",
+      "toc": false,
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -24372,6 +24635,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "##",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 12008,
+      "anchor": "77:3:3",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -24379,6 +24650,14 @@
       "pre_char": "三",
       "anchor": "77:3:5",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 12011,
+      "anchor": "77:4:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -25776,6 +26055,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 12708,
+      "anchor": "81:6:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -27088,6 +27375,14 @@
       "pre_char": "云",
       "anchor": "83:5:7",
       "source": "claude:T-manual"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 13029,
+      "anchor": "83:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -29079,6 +29374,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 13863,
+      "anchor": "88:6:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -30492,6 +30795,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 14630,
+      "anchor": "93:2:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -31255,6 +31566,14 @@
       "pre_char": "焉",
       "anchor": "95:7:16",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 15073,
+      "anchor": "95:8:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -33822,6 +34141,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 16325,
+      "anchor": "103:5:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -34605,6 +34932,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 16709,
+      "anchor": "105:8:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -35359,6 +35694,14 @@
       "pre_char": "矣",
       "anchor": "107:9:8",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 17073,
+      "anchor": "108:1:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -36468,6 +36811,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 17592,
+      "anchor": "111:3:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -37323,6 +37674,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 18122,
+      "anchor": "114:5:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -37897,6 +38256,14 @@
       "pre_char": "也",
       "anchor": "116:7:7",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 18502,
+      "anchor": "116:8:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -39330,6 +39697,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 19142,
+      "anchor": "120:7:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -39823,6 +40198,14 @@
       "pre_char": "也",
       "anchor": "122:5:15",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 19455,
+      "anchor": "122:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -40327,6 +40710,14 @@
       "pre_char": "云",
       "anchor": "124:2:8",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 19722,
+      "anchor": "124:3:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -41589,6 +41980,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 20349,
+      "anchor": "128:1:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -42478,6 +42877,14 @@
       "pre_char": "爾",
       "anchor": "130:5:17",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 20773,
+      "anchor": "130:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -44838,6 +45245,14 @@
       "source": "claude:T-manual"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 21742,
+      "anchor": "136:4:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -45423,6 +45838,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 22100,
+      "anchor": "138:6:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -45934,6 +46357,14 @@
       "pre_char": "矣",
       "anchor": "140:4:13",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 22413,
+      "anchor": "140:5:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -46483,6 +46914,14 @@
       "pre_char": "也",
       "anchor": "142:4:6",
       "source": "claude:T-manual"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 22736,
+      "anchor": "142:5:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -47403,6 +47842,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 23236,
+      "anchor": "145:5:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -48258,6 +48705,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 23679,
+      "anchor": "148:2:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -49059,6 +49514,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 24026,
+      "anchor": "150:3:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -49633,6 +50096,14 @@
       "pre_char": "焉",
       "anchor": "152:1:12",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 24337,
+      "anchor": "152:2:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -50641,6 +51112,14 @@
       "pre_char": "矣",
       "anchor": "154:9:4",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 24811,
+      "anchor": "155:1:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -51957,6 +52436,14 @@
       "source": "claude:T-manual"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 25494,
+      "anchor": "159:2:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -52468,6 +52955,14 @@
       "pre_char": "也",
       "anchor": "161:5:15",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 25907,
+      "anchor": "161:6:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -53676,6 +54171,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 26497,
+      "anchor": "165:2:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -54736,6 +55239,14 @@
       "pre_char": "也",
       "anchor": "168:6:17",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 27094,
+      "anchor": "168:7:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "\n\n",
@@ -56034,6 +56545,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 27806,
+      "anchor": "172:9:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "《",
       "kind": "point",
       "pos": "before",
@@ -57051,6 +57570,14 @@
       "source": "rule:reflow"
     },
     {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 28423,
+      "anchor": "176:6:1",
+      "source": "claude:GUJI-240"
+    },
+    {
       "mark": "\n\n",
       "kind": "break",
       "pos": "after",
@@ -57706,6 +58233,14 @@
       "pre_char": "耳",
       "anchor": "178:6:19",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 28773,
+      "anchor": "178:7:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -58399,6 +58934,14 @@
       "pre_char": "矣",
       "anchor": "180:7:10",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 29115,
+      "anchor": "180:8:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",
@@ -59101,6 +59644,14 @@
       "pre_char": "焉",
       "anchor": "183:3:9",
       "source": "rule:reflow"
+    },
+    {
+      "mark": "###",
+      "kind": "heading",
+      "pos": "before",
+      "char_offset": 29532,
+      "anchor": "183:4:1",
+      "source": "claude:GUJI-240"
     },
     {
       "mark": "《",

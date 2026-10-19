@@ -267,6 +267,19 @@ def anchor_mismatches(char, line, data):
 PUNCT_V02 = "https://open-guji.org/schema/punct/v0.2.json"
 PUNCT_KINDS = ("point", "break", "heading")
 _HEADING_MARK = re.compile(r"^#{1,6}$")
+# 书目条：「[前缀]《书名》N卷…」，卷数起是著录信息（卷数、版本来源），目录只留书名
+_BOOK_ENTRY = re.compile(r"^([^《》]*)《([^《》]+)》\s*(?:[〇零一二三四五六七八九十百千]+|不分|無|无)卷")
+_TITLE_MARKS = str.maketrans("", "", "《》〈〉")
+
+
+def heading_label(text):
+    """标题原文 → 目录名：书目条只留书名（连前缀，如「新本」）；书名号一律去掉。
+    与网站 book-index-ui `headingLabel` 同口径。显式 label 不经过这里。"""
+    t = (text or "").strip()
+    m = _BOOK_ENTRY.match(t)
+    if m:
+        t = m.group(1) + m.group(2)
+    return t.translate(_TITLE_MARKS).strip()
 
 
 def _pkind(p):
@@ -279,7 +292,8 @@ def _ppos(p):
 
 def extract_headings(char, punct):
     """char ＋ punct → 本册目录 [{level, label, anchor}]，按读序；只收 toc 不为 false 的标题。
-    label：标题符的 label，缺省是标题原文（首字到下一个分段符之间的字，带其间的点号与成对标号）。
+    label：标题符的 label，缺省由标题原文（首字到下一个分段符之间的字，带其间的点号与成对标号）
+    经 heading_label 化简：书目条只留书名，去书名号。
     与网站 book-index-ui `headingsFromPunct` 同口径。"""
     puncts = (punct or {}).get("punctuations") or []
     if not any(_pkind(p) == "heading" for p in puncts):
@@ -294,7 +308,7 @@ def extract_headings(char, punct):
         if cur is not None:
             h, text, fixed = cur
             if not fixed:
-                h["label"] = text.strip()
+                h["label"] = heading_label(text)
             if h["label"]:
                 out.append(h)
         cur = None

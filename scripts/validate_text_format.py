@@ -105,19 +105,21 @@ def t26_new_syntax_counts(masked_text: str):
     jz_split = 0
     for line in masked_text.splitlines():
         i, L = 0, len(line)
-        while i < L:
-            if line[i] == "<":
-                j = i + 1
-                if j < L:
-                    c = line[j]
-                    if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
-                        close = line.find(">", j)
-                        if close != -1:
-                            content = line[j:close]
-                            if content.strip() and "|" in content:
-                                jz_split += 1
-                            i = close + 1
-                            continue
+        while True:
+            i = line.find("<", i)   # 绝大多数行没有 <：直接跳到下一个 <（CI 提速，行为不变）
+            if i == -1:
+                break
+            j = i + 1
+            if j < L:
+                c = line[j]
+                if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
+                    close = line.find(">", j)
+                    if close != -1:
+                        content = line[j:close]
+                        if content.strip() and "|" in content:
+                            jz_split += 1
+                        i = close + 1
+                        continue
             i += 1
     return {"阙文 [[…]]": qw, "缺字猜测 □{guess=…}": qz, "夹注分行 <a|b>": jz_split}
 
@@ -127,17 +129,19 @@ def spec_angle_jiazhu_count(masked_text: str):
     n = 0
     for line in masked_text.splitlines():
         i, L = 0, len(line)
-        while i < L:
-            if line[i] == "<":
-                j = i + 1
-                if j < L:
-                    c = line[j]
-                    if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
-                        close = line.find(">", j)
-                        if close != -1 and line[j:close].strip():
-                            n += 1
-                            i = close + 1
-                            continue
+        while True:
+            i = line.find("<", i)
+            if i == -1:
+                break
+            j = i + 1
+            if j < L:
+                c = line[j]
+                if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
+                    close = line.find(">", j)
+                    if close != -1 and line[j:close].strip():
+                        n += 1
+                        i = close + 1
+                        continue
             i += 1
     return n
 
@@ -146,17 +150,19 @@ def iter_jz_spans(masked_text: str):
     """按 spec §1 生效条件逐一取出 <…> 夹注的内容，供 F-MD-11 复用（不只计数）。"""
     for line in masked_text.splitlines():
         i, L = 0, len(line)
-        while i < L:
-            if line[i] == "<":
-                j = i + 1
-                if j < L:
-                    c = line[j]
-                    if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
-                        close = line.find(">", j)
-                        if close != -1 and line[j:close].strip():
-                            yield line[j:close]
-                            i = close + 1
-                            continue
+        while True:
+            i = line.find("<", i)
+            if i == -1:
+                break
+            j = i + 1
+            if j < L:
+                c = line[j]
+                if not (c.isascii() and (c.isalpha() or c in "/!?> \t")):
+                    close = line.find(">", j)
+                    if close != -1 and line[j:close].strip():
+                        yield line[j:close]
+                        i = close + 1
+                        continue
             i += 1
 
 
@@ -200,6 +206,8 @@ def scan_table_blocks(masked_text):
     一个 open 后，下一行裸 `:::` 就是它的 close；如果在关闭前又遇到另一个 open，
     判前一个未闭合。返回 (blocks, unclosed_count)；blocks 是 [(name='table' 的)
     (start_line_idx, end_line_idx, body_lines)]。"""
+    if ":::" not in masked_text:   # 没有容器指令的文本（绝大多数）直接过，不逐行跑正则
+        return [], 0
     lines = masked_text.splitlines()
     blocks = []
     unclosed = 0
@@ -1069,6 +1077,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 t26_totals[name] += n
                 t26_docs[name].add(f)
         for zi_seq, content in enumerate(iter_jz_spans(masked)):
+            # ids／nested-ids 的每一种写法都含「上」或「左」；没有的不可能分到这两类，省掉 classify 的一串正则（CI 提速，结果不变）
+            if "上" not in content and "左" not in content:
+                continue
             zc = _zi_classify(content)
             if zc.kind in ("ids", "nested-ids"):
                 # 2026-10-11 T6（overview#535，Maren 裁）：字样书／音注用语「上通下正」「並上俗下正」「上聲下同」

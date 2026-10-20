@@ -5,6 +5,7 @@
 | 目录／文件 | 用途 |
 |---|---|
 | `validate_text_format.py`、`format_baseline.json` | 格式校验器，CI V2：`python3 scripts/validate_text_format.py . --strict --baseline scripts/format_baseline.json` |
+| `local_check.py` | **提交前本地检查**：只查改动条目的 V2，加 V1／V3 与索引一致，几秒；`--all` 全仓。PR 不再跑云端 CI，用它代替 |
 | `validate-collated.py` | 整理本校验（manifest／index.json／磁盘章文件一一对应），CI V1 |
 | `check_license.py` | 授权串校验，CI V3 |
 | `original_version.py` | `original` 三线版本号规则（F-OV-01～04） |

@@ -18,7 +18,7 @@
   1. `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0；
   2. `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且没有本 PR 新增的问题（存量：`d59f1iqd854w/default/108.md`）；
   3. 重建索引后分支上没有未提交的 diff。
-- PR 上 CI（`check.yml`）会跑同样三项。
+- **PR 不再跑云端 CI**（2026-10-20 用户定，仓库大、PR 频繁）：开 PR 前在本地跑 `python3 scripts/local_check.py`（只查改动条目，几秒；`--all` 全仓），结果贴进 PR 描述。云端 `check.yml` 只留每夜全量（洛杉矶 04:00）和手动触发兜底，出问题再修。
 - `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
 - **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`，摘要见 `docs/VERSIONING.md`。升版本一律用本仓 `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `<版本目录>/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
 - 合并：日常批次文本总管审过就合；撤除超过 50 部、改全仓结构或规范、`original` 升 major 的，等用户点头。

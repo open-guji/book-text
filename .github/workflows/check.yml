@@ -154,7 +154,11 @@ jobs:
     continue-on-error: true
     timeout-minutes: 5
     steps:
+      # 只要 .github/guji-format.pin 一个文件；整仓 checkout 要一分多钟
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github
+          sparse-checkout-cone-mode: false
 
       - name: checkout guji-format（含历史）
         uses: actions/checkout@v4

@@ -1,14 +1,26 @@
 {
   "$schema": "https://open-guji.org/schema/punct/v0.2.json",
   "version": "1.0.0",
-  "text_version": "1.0.0",
+  "text_version": "1.0.1",
   "review": {
     "date": "2026-10-20",
     "signed_by": "sheldon（用户点头）；抽样由 Claude 自评，GUJI-240",
     "standard": "docs/VERSIONING.md §四 第 1 级：机器标点只插不改字；抽 200 处一致率 ≥95%",
-    "sample": {"seed": 240, "population": 3277, "n": 200, "ok": 199, "doubtful": 1, "wrong": 0, "rate": 0.995,
-               "doubtful_note": "6:9「四庫《七畧》」疑点清单写不加书名号，稿里加了，可改可不改"},
-    "checks": {"pre_char_mismatch": 0, "anchor_missing": 0, "max_unpunctuated_run_chars": 28}
+    "sample": {
+      "seed": 240,
+      "population": 3277,
+      "n": 200,
+      "ok": 199,
+      "doubtful": 1,
+      "wrong": 0,
+      "rate": 0.995,
+      "doubtful_note": "6:9「四庫《七畧》」疑点清单写不加书名号，稿里加了，可改可不改"
+    },
+    "checks": {
+      "pre_char_mismatch": 0,
+      "anchor_missing": 0,
+      "max_unpunctuated_run_chars": 28
+    }
   },
   "book_id": "96mid1ogzk",
   "metadata": {

@@ -2,12 +2,8 @@
 # CHANGES.md、本工作流或 check_changes.py 变动时触发，也可手动跑（GUJI-593）。
 # 方案 C 只做 dry-run 式校验：真推 ws 的 snap/<册>-r<n>（snapshot_push.py --apply）仍由整理员在用户同意后手动跑，不在这里。
 name: check-changes
+# 2026-10-20 起不再随 PR／合并自动跑（提交前本地跑 scripts/local_check.py）；需要时手动触发。
 on:
-  pull_request:
-    paths: ["**/CHANGES.md", "scripts/check_changes.py", "scripts/tests/test_check_changes.py", ".github/workflows/check-changes.yml"]
-  push:
-    branches: [main]
-    paths: ["**/CHANGES.md", "scripts/check_changes.py", "scripts/tests/test_check_changes.py", ".github/workflows/check-changes.yml"]
   workflow_dispatch:
 permissions:
   contents: read

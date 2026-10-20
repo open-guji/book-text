@@ -1,9 +1,11 @@
 name: check
 
+# 2026-10-20 起 PR 和合并不再自动跑（仓库大，整仓检出就要两分多钟，PR 又很频繁）：
+# 提交前在本地跑 `python3 scripts/local_check.py`（只查改动条目，几秒）；这里只留夜间全量和手动触发兜底。
 on:
-  pull_request:
-  push:
-    branches: [main]
+  schedule:
+    - cron: '0 11 * * *'   # 每天 11:00 UTC（洛杉矶 04:00）
+  workflow_dispatch:
 
 permissions:
   contents: read

@@ -38,7 +38,7 @@
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
 | `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
-| `pending_file` | `NNN.pending.json` | 否（册级待审清单，仅 `proofing: true` 时存在；校验 F-OV-07） |
+| `pending_file` | `NNN.pending.json` | 否（旧：册级待审清单。2026-10-20 起待审单只放中心库、每日发布到 COS，本仓不再放；已有的仍照 F-OV-07 校验） |
 
 `NNN.pending.json` 由整理侧导出（GUJI-543 §6.2）：顶层 `rev`（`<册>-r<n>`）、`cv_version`（字符串，首个正式 `cv-vX.Y.Z` tag 前可为 `null`）、`cv_commit`（必填）、`cells`（必有格号 `cell` 与 `review` 状态；guji-proof/0.2 的 `why`／`cls`／`lib_top`／`lib`／`ctx`／`ref`／`ocr`／`stale`／`occ`／`img`／`ctximg`／`ex` 等可选键由 F-OV-08 做类型检查，未知键忽略）。坐标是原图轴对齐框。它不是版本线，不进 `*_version`、不进 CHANGES.md。
 

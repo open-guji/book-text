@@ -64,7 +64,7 @@
 
 - **册号** = 章条目的 `n` = 各文件顶层的 `volume` = IIIF canvas 网址里的两位册号。
 - **页号 N**：格位 key 的「页」、cord 里的 `page`，都是这一册扫描图的**顺序号，从 1 起**（不是刻本的版心叶码，版心叶码记在 char 的 `label`）。
-- 对应的 IIIF canvas：`https://data.kaiyuanguji.com/iiif/<book_id>/canvas/<册号两位>/<N 四位>`，即 cord 里该页的 `canvas.id`。
+- 对应的 IIIF canvas：`https://data.openguji.com/iiif/<book_id>/canvas/<册号两位>/<N 四位>`，即 cord 里该页的 `canvas.id`。（2026-10-21 起用新数据域名；此前是 data.kaiyuanguji.com，旧域名跳转到新域名，网站只按路径取页序。）
 - 章条目的 `pages`（如 `"1-188"`）是这一章覆盖的页号范围，首尾都含。
 
 ## 四、生成分支

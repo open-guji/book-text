@@ -11,6 +11,7 @@
   V1  validate-collated（全仓，2 秒；只允许存量 d59f1iqd854w/default/108.md）
   V3  check_license（全仓，1 秒）
   索引  重建 index/texts 后工作区不应多出未提交的改动（有就先 git add／提交）
+  出处  格变动出处（check_cell_provenance.py，只告警）：char 里有格变了，CHANGES 新增行要有意见 id／事件 id／r 号／GUJI 卡号
 没做：manifest／index 的 schema 校验（需要 guji-format 副本）、pin-drift、单元测试；这几项仍可手动跑，或随夜间全量 CI 兜底。
 退出码 0 = 全过，1 = 有不通过项。
 """
@@ -90,6 +91,10 @@ def main():
     new = after - before
     report("索引 index/texts 与数据一致", r.returncode == 0 and not new,
            "重建后多出未提交的改动，请 git add／提交 index/texts" if new else "")
+
+    # 格变动出处（GUJI-733）：缺省只告警，不影响退出码；跑顺后改 --strict 转红
+    r = sh(PY, "scripts/check_cell_provenance.py", "--base", args.base)
+    print(r.stdout.strip() or "格变动出处：（无输出）")
 
     ok = all(results)
     print("\n全部通过" if ok else "\n有不通过项")

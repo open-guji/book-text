@@ -347,6 +347,197 @@ def decision_problems(dd, char):
 
 
 
+# ---- F-OV-13 图片格与插图块（guji-format 09 guji-fig v0.1、02 §4.7、01 §3.6；GUJI-737／739）----
+FIG_SCHEMA_URL = "https://open-guji.org/schema/fig/v0.1.json"
+CHAR_SCHEMA_URL_V03 = "https://open-guji.org/schema/char/v0.3.json"
+CORD_SCHEMA_URL_V02 = "https://open-guji.org/schema/cord/v0.2.json"
+FIG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+FIG_MIME_EXT = {"image/png": ".png", "image/webp": ".webp", "image/svg+xml": ".svg"}
+FIG_MAX_BYTES = 1024 * 1024
+FIG_REQUIRED = ("id", "kind", "page", "box", "alt", "file", "sha256", "mime", "width", "height", "source")
+FIG_CELL_FORBIDDEN = ("lacuna", "guess", "guess_c", "zi")
+# SVG 只许图形元素：不许脚本、foreignObject、内嵌位图、外链（href 只许页内 #id）
+SVG_BAD_RE = re.compile(r"<\s*(script|foreignObject|image|iframe|object|embed)\b|\bon[a-z]+\s*=|(?:xlink:)?href\s*=\s*[\"'](?!#)", re.I)
+
+
+def char_fig_refs(char):
+    """char → ({图 id: [(页, 格位), …]} 图片格, {图 id: [列对象及页]} 图列, [(说明, 子类)] char 自身的问题)。"""
+    cells, cols, out = collections.defaultdict(list), collections.defaultdict(list), []
+    for pg in char.get("pages") or []:
+        page = pg.get("page")
+        for col in pg.get("columns") or []:
+            if not isinstance(col, dict):
+                continue
+            if col.get("kind") == "figure":
+                fid = col.get("fig")
+                if not isinstance(fid, str) or not FIG_ID_RE.match(fid):
+                    out.append((f"页 {page} 列 {col.get('col')} 是图列，fig={fid!r} 缺或不合 [a-z0-9][a-z0-9-]*", f"col:{page}:{col.get('col')}:fig"))
+                else:
+                    cols[fid].append((page, col))
+                if col.get("cells"):
+                    out.append((f"页 {page} 列 {col.get('col')} 是图列，cells 应为空", f"col:{page}:{col.get('col')}:cells"))
+            elif "fig" in col or "span" in col:
+                out.append((f"页 {page} 列 {col.get('col')} 不是图列（kind={col.get('kind', 'body')!r}），不许有 fig／span", f"col:{page}:{col.get('col')}:notfig"))
+            for c in col.get("cells") or []:
+                if not isinstance(c, dict) or "fig" not in c:
+                    continue
+                a, fid = c.get("a"), c.get("fig")
+                if not isinstance(fid, str) or not FIG_ID_RE.match(fid):
+                    out.append((f"格 {a} fig={fid!r} 不合 [a-z0-9][a-z0-9-]*", f"cell:{a}:id"))
+                    continue
+                if c.get("c") != "□":
+                    out.append((f"格 {a} 是图片格，c 应为 □，现为 {c.get('c')!r}", f"cell:{a}:c"))
+                bad = [k for k in FIG_CELL_FORBIDDEN if k in c]
+                if bad:
+                    out.append((f"格 {a} 是图片格，不许带 {'、'.join(bad)}", f"cell:{a}:mixed"))
+                cells[fid].append((page, a))
+    return cells, cols, out
+
+
+def _box_eq(b1, b2, tol=0.5):
+    return (isinstance(b1, list) and isinstance(b2, list) and len(b1) == len(b2) == 4
+            and all(_is_num(x) and _is_num(y) and abs(x - y) <= tol for x, y in zip(b1, b2)))
+
+
+def _outer_box(boxes):
+    x0 = min(b[0] for b in boxes); y0 = min(b[1] for b in boxes)
+    x1 = max(b[0] + b[2] for b in boxes); y1 = max(b[1] + b[3] for b in boxes)
+    return [x0, y0, x1 - x0, y1 - y0]
+
+
+def fig_problems(fd, char, cord=None, norm=None, vdir=None, stem=None):
+    """F-OV-13：fig.json 对照同章 char（及 cord、norm、图片文件），返回 [(说明, 子类)]。
+    fd 为 None 表示章条目没声明 fig_file：char 里有图就报 nofig。vdir 为版本目录（核文件存在、sha256、大小、SVG 内容）；
+    cord、norm 为 None 时跳过对应核对。"""
+    cells, cols, out = char_fig_refs(char)
+    used = set(cells) | set(cols)
+    if used and char.get("$schema") != CHAR_SCHEMA_URL_V03:
+        out.append((f"char 用了图片格／图列，$schema 应为 {CHAR_SCHEMA_URL_V03!r}，现为 {char.get('$schema')!r}", "char_schema"))
+    if fd is None:
+        if used:
+            out.append((f"char 里有图（{len(used)} 张：{'、'.join(sorted(used)[:5])}），章条目须声明 fig_file", "nofig"))
+        return out
+    if fd.get("$schema") != FIG_SCHEMA_URL:
+        out.append((f"$schema={fd.get('$schema')!r}，应为 {FIG_SCHEMA_URL!r}", "schema"))
+    if fd.get("book_id") != char.get("book_id"):
+        out.append((f"book_id={fd.get('book_id')!r} 与 char 的 {char.get('book_id')!r} 不一致", "book_id"))
+    if fd.get("volume") != char.get("volume") or isinstance(fd.get("volume"), bool):
+        out.append((f"volume={fd.get('volume')!r} 与 char 的 {char.get('volume')!r} 不一致", "volume"))
+    figs = fd.get("figures")
+    if not isinstance(figs, list):
+        return out + [("figures 不是数组", "figures")]
+    cord_cells, cord_marks = {}, collections.defaultdict(list)
+    if isinstance(cord, dict):
+        for pg in cord.get("pages") or []:
+            for c in pg.get("cells") or []:
+                if isinstance(c, dict) and "a" in c:
+                    cord_cells[c["a"]] = c.get("box")
+            for m in pg.get("marks") or []:
+                if isinstance(m, dict) and m.get("kind") == "figure":
+                    cord_marks[m.get("fig")].append((pg.get("page"), m))
+        if cord_marks and cord.get("$schema") != CORD_SCHEMA_URL_V02:
+            out.append((f"cord 用了 marks.figure，$schema 应为 {CORD_SCHEMA_URL_V02!r}", "cord_schema"))
+    seen = set()
+    for i, f in enumerate(figs):
+        if not isinstance(f, dict):
+            out.append((f"figures[{i}] 不是对象", f"{i}:type"))
+            continue
+        fid = f.get("id")
+        tag = f"figures[{i}]({fid})"
+        miss = [k for k in FIG_REQUIRED if k not in f]
+        if miss:
+            out.append((f"{tag} 缺 {miss}", f"{i}:missing"))
+        if not isinstance(fid, str) or not FIG_ID_RE.match(fid):
+            out.append((f"{tag} id 不合 [a-z0-9][a-z0-9-]*", f"{i}:id"))
+            continue
+        if fid in seen:
+            out.append((f"{tag} id 重复", f"{i}:dup"))
+        seen.add(fid)
+        if not isinstance(f.get("alt"), str) or not f.get("alt").strip():
+            out.append((f"{tag} alt 须为非空字符串（悬停、读屏、复制都靠它）", f"{i}:alt"))
+        kind = f.get("kind")
+        if fid not in used:
+            out.append((f"{tag} 没有被 char 引用（孤图）", f"{i}:orphan"))
+        elif fid in cells and kind != "inline":
+            out.append((f"{tag} 被图片格引用，kind 应为 inline，现为 {kind!r}", f"{i}:kind"))
+        elif fid in cols and kind != "block":
+            out.append((f"{tag} 被图列引用，kind 应为 block，现为 {kind!r}", f"{i}:kind"))
+        if fid in cells and fid in cols:
+            out.append((f"{tag} 同时被图片格和图列引用", f"{i}:both"))
+        # 页与框对 cord
+        page, box = f.get("page"), f.get("box")
+        if fid in cells:
+            pages = {pg for pg, _a in cells[fid]}
+            if pages != {page}:
+                out.append((f"{tag} page={page!r} 与引用它的格所在页 {sorted(pages)} 不一致", f"{i}:page"))
+            if cord is not None:
+                boxes = [cord_cells.get(a) for _pg, a in cells[fid]]
+                if any(not _is_box_list(b) for b in boxes):
+                    out.append((f"{tag} 引用它的格在 cord 里没有框", f"{i}:nobox"))
+                elif not _box_eq(box, _outer_box(boxes)):
+                    out.append((f"{tag} box={box!r} 与 cord 里这{'几' if len(boxes) > 1 else ''}格的框 {_outer_box(boxes)} 不一致", f"{i}:box"))
+        if fid in cols:
+            if len(cols[fid]) > 1:
+                out.append((f"{tag} 被 {len(cols[fid])} 个图列引用（一张插图块只能有一个图列）", f"{i}:multicol"))
+            cpage, ccol = cols[fid][0]
+            if cpage != page:
+                out.append((f"{tag} page={page!r} 与图列所在页 {cpage} 不一致", f"{i}:page"))
+            if cord is not None:
+                ms = cord_marks.get(fid) or []
+                if len(ms) != 1:
+                    out.append((f"{tag} cord 里 kind: figure、fig={fid} 的 marks 应恰有 1 个，现有 {len(ms)} 个", f"{i}:mark"))
+                else:
+                    mpage, m = ms[0]
+                    if mpage != page or not _box_eq(box, m.get("box")):
+                        out.append((f"{tag} page／box 与 cord marks.figure（页 {mpage}，框 {m.get('box')}）不一致", f"{i}:box"))
+                    if m.get("col") != ccol.get("col") or m.get("span", 1) != ccol.get("span", 1):
+                        out.append((f"{tag} cord marks.figure 的 col／span（{m.get('col')}／{m.get('span', 1)}）与 char 图列"
+                                    f"（{ccol.get('col')}／{ccol.get('span', 1)}）不一致", f"{i}:col"))
+        # 文件
+        mime, path, src = f.get("mime"), f.get("file"), f.get("source")
+        ext = FIG_MIME_EXT.get(mime)
+        if ext is None:
+            out.append((f"{tag} mime={mime!r} 不合法（image/png／image/webp／image/svg+xml）", f"{i}:mime"))
+        if src not in ("crop", "redraw"):
+            out.append((f"{tag} source={src!r} 不合法（crop／redraw）", f"{i}:source"))
+        elif src == "crop" and mime == "image/svg+xml":
+            out.append((f"{tag} 书影裁图（crop）只许 png／webp", f"{i}:source"))
+        want_dir = f"fig/{stem}/" if stem else "fig/"
+        if not isinstance(path, str) or not path.startswith(want_dir) or os.path.basename(path) != f"{fid}{ext or os.path.splitext(path)[1]}" \
+                or "/" in path[len(want_dir):]:
+            out.append((f"{tag} file={path!r}，应为 {want_dir}{fid}{ext or '.<扩展名>'}", f"{i}:path"))
+            continue
+        if ext and not path.endswith(ext):
+            out.append((f"{tag} file 扩展名与 mime={mime} 不一致", f"{i}:ext"))
+        if vdir is None:
+            continue
+        fp = os.path.join(vdir, path)
+        if not os.path.isfile(fp):
+            out.append((f"{tag} 文件 {path} 不存在", f"{i}:nofile"))
+            continue
+        data = open(fp, "rb").read()
+        if len(data) > FIG_MAX_BYTES:
+            out.append((f"{tag} 文件 {len(data)} 字节，超过 1 MB", f"{i}:size"))
+        if hashlib.sha256(data).hexdigest() != f.get("sha256"):
+            out.append((f"{tag} sha256 与文件不符", f"{i}:sha"))
+        if mime == "image/svg+xml":
+            hit = SVG_BAD_RE.search(data.decode("utf-8", "replace"))
+            if hit:
+                out.append((f"{tag} SVG 含不许的内容 {hit.group(0)!r}（不许脚本、事件属性、内嵌位图、外链）", f"{i}:svg"))
+    for fid in sorted(used - seen):
+        out.append((f"char 引用的图 {fid} 在 fig.json 里没有", f"ref:{fid}"))
+    if isinstance(norm, dict):
+        figcells = {a for v in cells.values() for _pg, a in v}
+        for j, it in enumerate(norm.get("items") or []):
+            if isinstance(it, dict) and it.get("a") in figcells:
+                out.append((f"norm items[{j}]（{it.get('a')}）是图片格，图没有通行字，不许进 norm", f"norm:{it.get('a')}"))
+    return out
+
+
+def _is_box_list(b):
+    return isinstance(b, list) and len(b) == 4 and all(_is_num(x) for x in b)
+
+
 def pending_problems(pd, stem, sprite_names=None):
     """F-OV-07：NNN.pending.json 顶层与 cells 的形状，返回 [(说明, 子类)]。
     cells 里 guji-proof/0.2 新键的类型检查走 proof02_cell_problems（F-OV-08 口径，同在本函数里报，子类前缀 p02:）。"""
@@ -533,10 +724,10 @@ def pointer_assets(ptr, pd, fetch, book=None, stem=None):
     return ad, []
 
 
-ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json"}
-ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|pending)\.json$|^\d+\.(lines|rich)\.md$")
+ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig"}  # fig/：图片目录（F-OV-13）
+ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|pending)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
-ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file",
+ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file", "fig_file",
                         "pending_file", "lines_file", "rich_file")
 FR_REQUIRED_FIELDS = [
     "ai_note", "based_on", "collectors", "coverage", "fragments", "loss_status",
@@ -866,6 +1057,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     #         章条目的 headings（目录缓存，spec/07 §3.3）须与 punct 现算的一致（build_texts_index.py 生成，不手改）；
     #         heading_levels 若有须是字符串列表。
     r_ov12 = rule("F-OV-12", "HARD")
+    # F-OV-13 图片格与插图块（guji-format 09、02 §4.7，GUJI-737）：char 有图就须声明 fig_file；fig.json 与 char／cord／norm／
+    #         图片文件对得上（引用、kind、页与框、文件存在、sha256、≤1 MB、SVG 无脚本外链）；norm 不许有图片格。
+    r_ov13 = rule("F-OV-13", "HARD")
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
     ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
@@ -973,6 +1167,27 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 else:
                     for msg, sub in decision_problems(dd, char):
                         add(r_ov05, dpath, f"{dpath}: {msg}", sub=sub)
+            r_ov13["n_scanned"] += 1
+            fig_name = ch.get("fig_file")
+            fpath = os.path.join(od, fig_name) if fig_name else None
+            if fpath and not os.path.isfile(fpath):
+                pass  # 声明了但文件不在：F-OV-04 已报
+            else:
+                fd, ferr = jload(fpath) if fpath else (None, None)
+                if ferr or (fpath and not isinstance(fd, dict)):
+                    add(r_ov13, fpath, f"{fpath}: JSON 解析失败：{ferr}", sub="parse")
+                else:
+                    def _side(key):
+                        n = ch.get(key)
+                        if not n or not os.path.isfile(os.path.join(od, n)):
+                            return None
+                        sd, serr = jload(os.path.join(od, n))
+                        return sd if not serr and isinstance(sd, dict) else None
+                    # 没声明 fig_file 时只核 char 自身（便宜）；声明了才读 cord／norm 逐张核
+                    probs = (fig_problems(None, char) if fd is None
+                             else fig_problems(fd, char, _side("cord_file"), _side("norm_file"), od, stem))
+                    for msg, sub in probs:
+                        add(r_ov13, fpath or f, f"{fpath or f}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
             r_ov12["n_scanned"] += 1
             want_heads = []
             for line in ("punct", "entity"):

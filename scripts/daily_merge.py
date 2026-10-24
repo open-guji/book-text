@@ -85,7 +85,9 @@ def main() -> int:
     if sh("git", "status", "--porcelain", "--untracked-files=no").stdout.strip():
         print("✗ 工作区有未提交的改动，先处理")
         return 2
-    sh("git", "fetch", "-q", "origin", "main", "dev", check=True)
+    # 显式 refspec：单分支克隆（remote.origin.fetch 只有 main）里 `git fetch origin dev` 不更新 origin/dev
+    sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main",
+       "+refs/heads/dev:refs/remotes/origin/dev", check=True)
     commits = sh("git", "log", "--oneline", "origin/main..origin/dev").stdout.strip().splitlines()
     files = sh("git", "diff", "--name-only", "origin/main", "origin/dev").stdout.split()
     print(f"dev 比 main 多 {len(commits)} 个提交、{len(files)} 个文件")
@@ -155,7 +157,7 @@ def main() -> int:
         return 1
     print(f"✓ PR #{n} 已合并进 main")
     # dev 快进到 main 的合并提交，明天从同一点起（不快进也行，明天第 2 步会把 main 合回来，只是多一个空合并）
-    sh("git", "fetch", "-q", "origin", "main")
+    sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main")
     if sh("git", "push", "-q", "origin", "origin/main:refs/heads/dev").returncode:
         print("ⓘ dev 没能快进到 main（期间有人推了 dev），明天照常合")
     return 0

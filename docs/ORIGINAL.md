@@ -16,6 +16,7 @@
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
 | **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1 正式；v0.2 增可选 reason／route／route_ref，v0.1 文件仍合法）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
+| **fig** | `NNN.fig.json`＋`fig/NNN/*` | 图片格（占一格的图形）与插图块的图：来源、说明、文件；**只有用到图的章才有** | 真源 | 规范见 guji-format 09（v0.1）、02 §4.7；校验 F-OV-13（`scripts/tests/test_fig.py`）；设计见 `docs/design/2026-10-图片格与插图设计.md` |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
 
@@ -38,6 +39,7 @@
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
 | `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
+| `fig_file` | `NNN.fig.json` | char 里有图片格或图列时必填（规范见 09；F-OV-13） |
 | `pending_file` | `NNN.pending.json` | 否（旧：册级待审清单。2026-10-20 起待审单只放中心库、每日发布到 COS，本仓不再放；已有的仍照 F-OV-07 校验） |
 
 `NNN.pending.json` 由整理侧导出（GUJI-543 §6.2）：顶层 `rev`（`<册>-r<n>`）、`cv_version`（字符串，首个正式 `cv-vX.Y.Z` tag 前可为 `null`）、`cv_commit`（必填）、`cells`（必有格号 `cell` 与 `review` 状态；guji-proof/0.2 的 `why`／`cls`／`lib_top`／`lib`／`ctx`／`ref`／`ocr`／`stale`／`occ`／`img`／`ctximg`／`ex` 等可选键由 F-OV-08 做类型检查，未知键忽略）。坐标是原图轴对齐框。它不是版本线，不进 `*_version`、不进 CHANGES.md。

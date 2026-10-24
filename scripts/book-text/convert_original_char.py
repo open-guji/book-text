@@ -67,7 +67,9 @@ def convert_chapter(od, ch, book_id, version, schemas):
     pj = OV.load_json(pages_path)
     cord = C.pages_to_cord(pj, book_id, vol)
     char = C.make_char(C.parse_lines_md(text, cord), book_id, vol, version)
-    if C.render_lines(char) != text:
+    fig_path = os.path.join(od, ch["fig_file"]) if ch.get("fig_file") else None
+    fig = OV.load_json(fig_path) if fig_path and os.path.isfile(fig_path) else None
+    if C.render_lines(char, fig) != text:
         raise C.FormatError(f"{stem}: char 生成的 lines.md 与原文件不一致")
     old = [c for p in pj["pages"] for c in sorted(p["cells"], key=lambda c: c["o"] if isinstance(c["o"], int) else c["o"][0])]
     for k, (oc, (a, c)) in enumerate(zip(old, C.char_slots(char))):

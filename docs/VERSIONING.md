@@ -8,7 +8,7 @@
 ## 一、仓库流程
 
 1. **main 受保护，一律走 PR。** 一批活开一个分支（`<道名>-<主题>`，如 `t65-wiki-match`），分支上可以多次提交，整批做完开**一个** PR，审过 **squash merge**。`wip/` 前缀是反复改动中的工作分支（如 `wip/siku-vol02`），用户点头前不并 main。
-2. **谁来合**：日常批次（入库、修正、撤除 50 部以内）文本总管审过就合。以下等用户点头：撤除超过 50 部；改全仓结构或规范；`original` 任何一条线升 **major**。
+2. **谁来合**（2026-10-24 用户定）：PR 自建、自审、自合并——日常批次（入库、修正、撤除 50 部以内）由提 PR 的会话自己审 diff、跑校验，与最初定下的设计和要求一致就自己合。以下先问用户：撤除超过 50 部；改全仓结构或规范；`original` 任何一条线升 **major**。
 3. **开 PR 前**：把 main 合进分支，用 overview `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，结果贴进 PR 描述：
    - `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0（脚本与基线是 overview 的副本，来源 commit 以脚本头为准；overview 改规则后要同步）；
    - `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
@@ -97,7 +97,7 @@
   - **精校完**够得上第 1 级的，升 **`1.0.0`**（major，手工改版本号并附验收记录），`--proofing off`；此时才开工的标点、实体线从 `1.0.0` 起（`--init` 默认或 `--init --line`）。
   - 已按旧定义以 1.0.0 并 main 的册（四庫 vol02、vol03）保留 1.0.0，CHANGES 记一句「按旧定义定的 1.0.0」，补走精校时 `--proofing on`，精校合入算文本 minor。
   - 够不上 0.1.0 不并 main。
-- 之后每次 squash merge，动到的线按本规范升，PR 描述列「册 · 线 · 旧 → 新 · 理由」表，文本总管对着 diff 核。
+- 之后每次 squash merge，动到的线按本规范升，PR 描述列「册 · 线 · 旧 → 新 · 理由」表，提 PR 的会话自己对着 diff 核。
 
 ## 六、工具
 
@@ -121,4 +121,5 @@
   - **F-OV-08** `pending.json` 每格的 guji-proof/0.2 新键（`why`／`cls`／`conf`／`margin`／`lib_top`／`lib`／`ctx`／`ref`／`ocr`／`stale`／`occ`／`img`／`ctximg`／`ex`）只做类型检查，0.1 的键与未知键放过。字段表见 ai-team `team/CV/guji-proof-0.2-字段表-GUJI-557.md`。
   - **F-OV-09／10／11** 桶清单 `assets.json`（`guji-proof-assets/0.1`）不进本仓，仓里只放指针 `proof/<书>/<册>/sprites.pointer.json`（`tag`／`manifest_sha256`／`rev` 三项）；CI 带 `--fetch-assets`，按 tag 从 open-guji-dataset 的 Release 下载 `assets.json` 并核 sha256，本地默认不联网、只核指针。同目录放有 `assets.json` 时仍直接用它（导出自检）。09 每格 `img`／`ctximg`／`ex` 的 `s` 须在 `files[].name`（有 `s` 而既无清单也无指针同报，无 `s` 时不要求有；指针形状不对、sha256 对不上也报 09；下载失败只记 `F-OV-09w`（SOFT 警告，不阻塞）)；10 `x+w≤files[].w`、`y+h≤files[].h`；11 `assets.json.rev`（指针 `rev` 同）须等于 `pending.json.rev`。
   - **F-OV-12** 标题符（guji-format 04 v0.2 §4.2，GUJI-240）：`kind` 只许 point／break／heading；分段符 `pos` 只许 `after`；标题符 `pos: before`、`mark` 为 1～6 个 `#`、不写 `pre_char`，`label` 非空、`toc` 布尔，同格至多一个；标题前一字、标题末字都带分段符，级别不跳级；用了标题符的文件 `$schema` 须为 punct v0.2；章条目 `headings` 须与 punct 现算的一致（`build_texts_index.py` 生成），版本 `heading_levels` 须是 1～6 个字符串（含 `scripts/tests/test_headings.py`）。
+  - **F-OV-13** 图片格与插图块（guji-format 09、02 §4.7，GUJI-737）：char 里有图片格（格上 `fig`）或图列（`kind: figure`）就须声明 `fig_file`，char `$schema` 须为 v0.3；图片格 `c` 为 □、不带 `lacuna`／`guess`／`guess_c`／`zi`，图列 `cells` 为空；fig.json 与 char 引用两头对上（无孤图，`kind` 格对 inline、图列对 block）；`page`／`box` 与 cord 一致（图片格对 `cells[]`、多格取外包框，插图块对 `marks.figure` 且 `col`／`span` 一致，cord `$schema` 须为 v0.2）；文件 `fig/<NNN>/<id>.<扩展名>` 存在、sha256 对、≤1 MB，扩展名与 `mime` 一致，书影裁图只许 png／webp，SVG 不许脚本、事件属性、内嵌位图、外链；norm 不许有图片格（含 `scripts/tests/test_fig.py`）。
 - 格位 key 的定义见 guji-format 02（char）§二：双行夹注 a 是右列、先读，b 是左列；超框抬头负格位、无第 0 格；阙文写 □ 并带 `lacuna: true`。

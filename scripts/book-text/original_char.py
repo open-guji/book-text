@@ -8,6 +8,9 @@
   只作兼容、核旧数据用）。
 - `render_lines`：char → 分行稿，记法与 cv `guji_char_cord.char_to_lines_md`（Step9 9.1）逐字相同：
   空列不出行；单边夹注写 `<x>`；残字 `□{guess=X}`；组字 `:zi[…]`；单行小注里的阙文写「□」。
+  给了同章 fig.json（`fig=`），图片格写 `:tu[说明]{id=…}`、图列单独一行 `::tu[说明]{id=…}`（GUJI-737，
+  spec 03 §三·5）；不给就照旧：图片格写 □、图列不出（同 cv `char_to_lines_md` 不给 `fig`）。
+  `parse_lines_md` 把 `:tu` 读回图片格、`::tu` 读回图列（列号、列数取 cord 的 `marks.figure`）。
 - `render_rich`：char ＋ punct ＋ entity → `NNN.rich.md`，与 cv `siku_extract.assemble_volume`
   出 rich 的口径一致（照它重写，不 import cv）；
 - `pages_to_cord`：旧形态 `NNN.pages.json`（cv 导出，带字）→ cord（不带字，格位照抄 pages.json 的 cv 锚点）。
@@ -26,6 +29,9 @@ CORD_SCHEMA = "https://open-guji.org/schema/cord/v0.1.json"
 SOLO_ATTR = "{type=单行}"
 LACUNA = "[[]]"
 BOX = "□"
+FIG_DEFAULT_ALT = "图形符号"           # 人定是图时没写说明（spec 09 §3.2；同 cv guji_char_cord）
+_FIG_ID = re.compile(r"[a-z0-9][a-z0-9-]*")
+_TU_LINE = re.compile(r"^::tu\[(?P<alt>[^\]]*)\]\{id=(?P<id>[^}]*)\}$")
 
 _PAGE = re.compile(r"^<!--\s*p(\d+)\s*-->$")
 _PREFIX = re.compile(r"^(\^*)(\.*)")
@@ -33,10 +39,12 @@ _UNIT = re.compile(
     r"<(?P<jz>[^<>]*)>"
     r"|:jz\[(?P<dj>[^\]]*)\](?P<djattr>\{[^}]*\})?"
     r"|:zi\[(?P<zi>[^\]]*)\]"
+    r"|:tu\[[^\]]*\]\{id=(?P<tu>[^}]*)\}"
     r"|(?P<gap>\[\[[^\]]*\]\])"
     r"|□\{guess=(?P<guess>[^}]*)\}"
     r"|(?P<ch>.)", re.S)
-_INNER = re.compile(r":zi\[(?P<zi>[^\]]*)\]|(?P<gap>\[\[[^\]]*\]\])|□\{guess=(?P<guess>[^}]*)\}|(?P<ch>.)", re.S)
+_INNER = re.compile(r":zi\[(?P<zi>[^\]]*)\]|:tu\[[^\]]*\]\{id=(?P<tu>[^}]*)\}|(?P<gap>\[\[[^\]]*\]\])"
+                    r"|□\{guess=(?P<guess>[^}]*)\}|(?P<ch>.)", re.S)
 _KEY = re.compile(r"^(\d+):(\d+):(-?[1-9]\d*)([ab]?)$")
 
 
@@ -60,6 +68,10 @@ def _unit_cell(m, where, *, in_solo=False):
         if m.group("gap") != LACUNA:
             raise FormatError(f"{where}: 阙文里有字 {m.group('gap')!r}，char 记不下")
         return {"c": BOX, "lacuna": True}
+    if m.group("tu") is not None:
+        if not _FIG_ID.fullmatch(m.group("tu")):
+            raise FormatError(f"{where}: 图片格的 id {m.group('tu')!r} 不合 [a-z0-9][a-z0-9-]*")
+        return {"c": BOX, "fig": m.group("tu")}         # 说明不进 char（在 fig.json 的 alt）
     if m.group("zi") is not None:
         raise FormatError(f"{where}: 组字 :zi[{m.group('zi')}] 在分行稿里不带近似字，还原不出 char 的 c")
     if m.group("guess") is not None:
@@ -123,7 +135,8 @@ def _lines_keys(page, col, raised, dots, cells):
 
 
 def _cord_skeleton(cord):
-    """cord → {页: (列号表, [格位 key…])}；列号表含没有字的列（cord.columns 与格位里出现过的列取并集）。"""
+    """cord → {页: (列号表, [格位 key…], {图 id: (列号, 列数)})}；列号表含没有字的列（cord.columns 与格位里
+    出现过的列取并集）和图列（`marks.figure`），图块占住的其余列号不算。"""
     out = {}
     for p in cord.get("pages") or []:
         keys = [c["a"] for c in p.get("cells") or []]
@@ -133,7 +146,12 @@ def _cord_skeleton(cord):
             if not m:
                 raise FormatError(f"cord 格位 key 不对：{a!r}")
             cols.add(int(m.group(2)))
-        out[p["page"]] = (sorted(cols), keys)
+        figs = {m["fig"]: (int(m["col"]), m.get("span"))
+                for m in p.get("marks") or [] if m.get("kind") == "figure"}
+        for col, span in figs.values():
+            cols.add(col)
+            cols -= set(range(col + 1, col + (span or 1)))
+        out[p["page"]] = (sorted(cols), keys, figs)
     return out
 
 
@@ -155,6 +173,14 @@ def parse_lines_md(text, cord=None):
             continue
         if cur is None:
             raise FormatError(f"第 {ln} 行在第一个页码标记之前")
+        tm = _TU_LINE.match(raw)
+        if tm:                                           # 图列：单独一行 `::tu[说明]{id=…}`
+            if not _FIG_ID.fullmatch(tm.group("id")):
+                raise FormatError(f"第 {ln} 行：图列的 id {tm.group('id')!r} 不合 [a-z0-9][a-z0-9-]*")
+            lines_of[cur["page"]].append((ln, None, None, tm.group("id")))
+            continue
+        if raw.startswith("::"):
+            raise FormatError(f"第 {ln} 行：块级指令只认 `::tu[说明]{{id=…}}`：{raw!r}")
         mp = _PREFIX.match(raw)
         lines_of[cur["page"]].append((ln, len(mp.group(1)), len(mp.group(2)),
                                       _line_cells(raw[mp.end():], f"第 {ln} 行")))
@@ -164,11 +190,25 @@ def parse_lines_md(text, cord=None):
                           f"只在 cord {sorted(set(skel) - set(lines_of))[:5]}")
     for page in pages:
         pn = page["page"]
+        items = lines_of[pn]
+        fig_lines = [(i, x) for i, x in enumerate(items) if x[1] is None]
+        lines_of[pn] = [x for x in items if x[1] is not None]
         if skel is None:
-            cols_with_text = list(range(1, len(lines_of[pn]) + 1))
-            all_cols, keys = cols_with_text, None
+            # 旧 lines 口径：每行一列，图列也按一列数、不记 span
+            all_cols, keys = list(range(1, len(items) + 1)), None
+            fig_col = {i + 1: x[3] for i, x in fig_lines}
+            cols_with_text = [c for c in all_cols if c not in fig_col]
+            spans = {}
         else:
-            all_cols, keys = skel[pn]
+            all_cols, keys, cord_figs = skel[pn]
+            fig_col, spans = {}, {}
+            for i, (ln, _r, _d, fid) in fig_lines:
+                if fid not in cord_figs:
+                    raise FormatError(f"第 {ln} 行：图列 {fid} 在 cord p{pn} 的 marks.figure 里没有")
+                col, span = cord_figs[fid]
+                fig_col[col], spans[col] = fid, span
+            if set(fig_col.values()) != set(cord_figs):
+                raise FormatError(f"p{pn}: cord 有插图块 {sorted(set(cord_figs) - set(fig_col.values()))}，分行稿里没有 ::tu 行")
             seen = []
             for a in keys:
                 c = int(_KEY.match(a).group(2))
@@ -182,9 +222,24 @@ def parse_lines_md(text, cord=None):
                 raise FormatError(f"p{pn}: 分行稿 {len(lines_of[pn])} 行 {n_cells} 字，cord 有字的列 "
                                   f"{len(cols_with_text)} 列、{len(keys)} 格，对不上")
         text_col = dict(zip(cols_with_text, lines_of[pn]))
+        if keys is not None:
+            # 图列在分行稿里的位置要和列号读序对上：前面的字行数 = 列号更小的有字列数
+            for i, (ln, _r, _d, fid) in fig_lines:
+                col = next(c for c, f in fig_col.items() if f == fid)
+                before = sum(1 for x in items[:i] if x[1] is not None)
+                if before != sum(1 for c in cols_with_text if c < col):
+                    raise FormatError(f"第 {ln} 行：图列 {fid}（第 {col} 列）在分行稿里的位置与 cord 列序对不上")
         ki = 0
         for col in all_cols:
             column = {"col": col}
+            if col in fig_col:
+                column["kind"] = "figure"
+                if spans.get(col) is not None:
+                    column["span"] = spans[col]
+                column["fig"] = fig_col[col]
+                column["cells"] = []
+                page["columns"].append(column)
+                continue
             if col not in text_col:
                 column["kind"] = "blank"
                 column["cells"] = []
@@ -220,6 +275,8 @@ def parse_lines_md(text, cord=None):
                 for k in ("lacuna", "guess"):
                     if fields.get(k):
                         cell[k] = True
+                if fields.get("fig"):
+                    cell["fig"] = fields["fig"]
                 out.append(cell)
             column["cells"] = out
             page["columns"].append(column)
@@ -270,8 +327,24 @@ def _runs(cells):
     return runs
 
 
-def _glyph(cell, in_solo=False):
+def fig_alts(fig):
+    """同章 fig.json → {图 id: 说明}；没有 fig.json 给 None（图片格写 □、图列不出）。"""
+    if fig is None:
+        return None
+    return {f["id"]: f.get("alt") for f in fig.get("figures") or []}
+
+
+def _tu(fid, alts, block=False):
+    alt = alts.get(fid) or FIG_DEFAULT_ALT
+    if any(ch in alt for ch in "[]{}\n"):
+        raise FormatError(f"图 {fid} 的说明 {alt!r} 里有方括号、花括号或换行，写不进 :tu[…]")
+    return f"{'::' if block else ':'}tu[{alt}]{{id={fid}}}"
+
+
+def _glyph(cell, in_solo=False, alts=None):
     """一格在分行稿／rich 里的写法（同 cv `guji_char_cord._tok`）。"""
+    if cell.get("fig") is not None:
+        return cell["c"] if alts is None else _tu(cell["fig"], alts)
     if cell.get("lacuna"):
         return BOX if in_solo else LACUNA
     if cell.get("zi") is not None:
@@ -281,16 +354,16 @@ def _glyph(cell, in_solo=False):
     return cell["c"]
 
 
-def _column_body(column):
+def _column_body(column, alts=None):
     out = []
     for kind, cells in _runs(column.get("cells") or []):
         if kind == "main":
-            out.extend(_glyph(c) for c in cells)
+            out.extend(_glyph(c, alts=alts) for c in cells)
         elif kind == "solo":
-            out.append(":jz[" + "".join(_glyph(c, True) for c in cells) + "]" + SOLO_ATTR)
+            out.append(":jz[" + "".join(_glyph(c, True, alts) for c in cells) + "]" + SOLO_ATTR)
         else:
-            a = "".join(_glyph(c) for c in cells if cell_lane(c) == "jz_r")
-            b = "".join(_glyph(c) for c in cells if cell_lane(c) == "jz_l")
+            a = "".join(_glyph(c, alts=alts) for c in cells if cell_lane(c) == "jz_r")
+            b = "".join(_glyph(c, alts=alts) for c in cells if cell_lane(c) == "jz_l")
             out.append(f"<{a}|{b}>" if a and b else f"<{a}{b}>")
     return "".join(out)
 
@@ -299,15 +372,21 @@ def _is_blank_column(column):
     return not column.get("cells")
 
 
-def render_lines(char):
-    """char → 分行稿全文（末尾带换行）。没有字的列不出行（同 cv `char_to_lines_md`、现有 lines.md）。"""
+def render_lines(char, fig=None):
+    """char → 分行稿全文（末尾带换行）。没有字的列不出行（同 cv `char_to_lines_md`、现有 lines.md）。
+    `fig` 是同章 fig.json：给了，图片格写 `:tu[…]`、图列出一行 `::tu[…]`；不给，图片格写 □、图列不出。"""
+    alts = fig_alts(fig)
     out = []
     for page in char.get("pages") or []:
         out.append(f"<!-- p{page['page']} -->")
         for column in page.get("columns") or []:
+            if column.get("kind") == "figure":
+                if alts is not None:
+                    out.append(_tu(column["fig"], alts, block=True))
+                continue
             if _is_blank_column(column):
                 continue
-            out.append("^" * column.get("raised", 0) + "." * column.get("lead_blank", 0) + _column_body(column))
+            out.append("^" * column.get("raised", 0) + "." * column.get("lead_blank", 0) + _column_body(column, alts))
     return "\n".join(out) + "\n"
 
 
@@ -316,7 +395,7 @@ def render_lines(char):
 _OPEN_JZ, _CLOSE_JZ = "<", ">"
 
 
-def _render_tokens(char, break_after):
+def _render_tokens(char, break_after, alts=None):
     """char → [(原文片段, 字)]，字为空串的是版面记号。口径同 cv reflow 后的段落拼接：
     夹注去掉 |；页码标记放在每页第一列前（没有字的页不出）；上一段夹注紧接下一段夹注、
     中间没有分段的，合成一条（cv reflow 的跨列夹注合并）。`break_after` 是分段处的字下标集合。"""
@@ -325,6 +404,13 @@ def _render_tokens(char, break_after):
     for page in char.get("pages") or []:
         first = True
         for column in page.get("columns") or []:
+            if column.get("kind") == "figure":
+                if alts is not None:                     # 插图块：单独成段，版面记号（不占字下标）
+                    if first:
+                        toks.append((f"<!-- p{page['page']} -->", ""))
+                        first = False
+                    toks.append((_tu(column["fig"], alts, block=True), ""))
+                continue
             if _is_blank_column(column):
                 continue
             if first:
@@ -344,7 +430,7 @@ def _render_tokens(char, break_after):
                 else:
                     ordered = cells
                 for c in ordered:
-                    toks.append((_glyph(c, kind == "solo"), c["c"]))
+                    toks.append((_glyph(c, kind == "solo", alts), c["c"]))
                     idx += 1
                 if kind == "jz":
                     toks.append((_CLOSE_JZ, ""))
@@ -372,8 +458,8 @@ def resolve_offsets(char, items, key):
     return out
 
 
-def render_rich(char, punct=None, entity=None):
-    """char ＋ punct ＋ entity → rich.md 全文（末尾带换行）。"""
+def render_rich(char, punct=None, entity=None, fig=None):
+    """char ＋ punct ＋ entity → rich.md 全文（末尾带换行）。`fig` 同 `render_lines`；插图块单独成段。"""
     slots = char_slots(char)
     puncts = list((punct or {}).get("punctuations") or [])
     p_off = resolve_offsets(char, puncts, lambda p: p.get("anchor"))
@@ -390,7 +476,7 @@ def render_rich(char, punct=None, entity=None):
             raise FormatError(f"实体 {e.get('id')} 校验字应为 {e['text']!r}，char 为 {got!r}")
 
     break_after = {p_off[k] for k in order if puncts[k]["kind"] == "break"}
-    tokens = _render_tokens(char, break_after)
+    tokens = _render_tokens(char, break_after, fig_alts(fig))
 
     punct_map = {}
     for k in order:
@@ -438,7 +524,13 @@ def render_rich(char, punct=None, entity=None):
             if out and not out[-1].endswith("\n"):
                 out.append("\n\n")   # 标题前没有分段符（校验器 F-OV-12 会报）：仍保证另起一行
             out.append(heading)
-        out.extend(pending_marks[k:])
+        for mk in pending_marks[k:]:
+            if mk.startswith("::tu["):                   # 插图块（leaf 指令）须独占一行，前后空行
+                if out and not out[-1].endswith("\n"):
+                    out.append("\n\n")
+                out.append(mk + "\n\n")
+            else:
+                out.append(mk)
         pending_marks.clear()
         pending_breaks.clear()
 
@@ -533,6 +625,13 @@ def pages_to_cord(pages_json, book_id, volume):
     return {"$schema": CORD_SCHEMA, "book_id": book_id, "volume": volume, "pages": pages}
 
 
+CHAR_SCHEMA_FIG = "https://open-guji.org/schema/char/v0.3.json"
+
+
 def make_char(pages, book_id, volume, version):
-    return {"$schema": CHAR_SCHEMA, "version": version, "book_id": book_id, "volume": volume, "pages": pages}
+    """用了图片格或图列的写 char v0.3（spec 02 §4.7），否则照旧 v0.1。"""
+    has_fig = any(col.get("kind") == "figure" or any("fig" in c for c in col.get("cells") or [])
+                  for p in pages for col in p.get("columns") or [])
+    return {"$schema": CHAR_SCHEMA_FIG if has_fig else CHAR_SCHEMA, "version": version, "book_id": book_id,
+            "volume": volume, "pages": pages}
 

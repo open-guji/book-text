@@ -69,7 +69,9 @@ def gen_chapter(od, ch):
     if not os.path.isfile(char_path):
         return {}, f"{stem}: 没有 {char_name}，跳过"
     char = OV.load_json(char_path)
-    out = {f"{stem}.lines.md": C.render_lines(char)}
+    fig_path = os.path.join(od, ch["fig_file"]) if ch.get("fig_file") else None
+    fig = OV.load_json(fig_path) if fig_path and os.path.isfile(fig_path) else None    # 有图：写 :tu／::tu
+    out = {f"{stem}.lines.md": C.render_lines(char, fig)}
     notes = [f"{stem}: lines.md"]
     punct_path = os.path.join(od, ch.get("punct_file") or f"{stem}.punct.json")
     if os.path.isfile(punct_path):
@@ -80,7 +82,7 @@ def gen_chapter(od, ch):
             ent_path = os.path.join(od, ch.get("entity_file") or f"{stem}.entity.json")
             entity = OV.load_json(ent_path) if os.path.isfile(ent_path) else None
             try:
-                out[f"{stem}.rich.md"] = C.render_rich(char, punct, entity)
+                out[f"{stem}.rich.md"] = C.render_rich(char, punct, entity, fig)
                 notes.append("rich.md" + ("（含实体）" if entity else "（无实体层）"))
             except C.FormatError as e:
                 # 伴生层还没跟上文本（锚点对不上）：只出 lines，等标点、实体修好再出 rich

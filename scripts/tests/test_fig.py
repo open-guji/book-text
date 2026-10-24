@@ -239,3 +239,9 @@ def test_norm_on_fig_cell(vdir):
     n = copy.deepcopy(NORM)
     n['items'] = [{"a": "148:2:14", "c": "□", "t": "○"}]
     assert 'norm:148:2:14' in subs(fig_doc(), vdir, norm=n)
+
+
+# 7. F-FT-01 不把 fig 文件、fig/ 目录当成坏章名
+def test_fig_files_allowed_in_original_dir():
+    assert vtf.ORIGINAL_FILE_RE.match('005.fig.json')
+    assert 'fig' in vtf.ORIGINAL_SIDECAR_FILES

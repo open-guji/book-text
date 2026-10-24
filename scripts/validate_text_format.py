@@ -724,8 +724,8 @@ def pointer_assets(ptr, pd, fetch, book=None, stem=None):
     return ad, []
 
 
-ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json"}
-ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|pending)\.json$|^\d+\.(lines|rich)\.md$")
+ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig"}  # fig/：图片目录（F-OV-13）
+ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|pending)\.json$|^\d+\.(lines|rich)\.md$")
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file", "fig_file",
                         "pending_file", "lines_file", "rich_file")

@@ -13,7 +13,8 @@
    - `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0（脚本与基线是 overview 的副本，来源 commit 以脚本头为准；overview 改规则后要同步）；
    - `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
    - 重建索引后没有未提交的 diff。
-4. PR 和推到 main 都跑 `.github/workflows/check.yml`（V1 validate-collated、V2 validate_text_format `--strict --baseline`、V3 check_license），仍靠审 PR 把关。
+4. **流程化小改走 `dev`**（2026-10-24 用户定）：精校落票、网站意见修订这类机器产出的 0.x 升版直接提交到 `dev`（推前 `local_check.py --dev`，不提交 `index/texts/`，CHANGES 的 PR 列写 `#TBD`），每天洛杉矶 03:30 由 `scripts/daily_merge.py` 开一个 dev→main 的 PR、换上 PR 号、以 merge commit 合并。上面第 1 条的「一律走 PR」只管其余改动。
+5. PR 和推到 main 都跑 `.github/workflows/check.yml`（V1 validate-collated、V2 validate_text_format `--strict --baseline`、V3 check_license），仍靠审 PR 把关。
 
 ## 二、跟踪范围
 

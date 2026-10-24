@@ -5,6 +5,7 @@
     python3 scripts/local_check.py            # 对比 origin/main，查分支上全部改动＋工作区未提交改动
     python3 scripts/local_check.py --base HEAD~1
     python3 scripts/local_check.py --all      # 全仓（等同原来的云端 CI，约 1 分钟）
+    python3 scripts/local_check.py --dev      # 往 dev 直接提交前：对比 origin/dev，不查索引（dev 上不提交 index/texts）
 
 做的事（对应原 CI 的 V1／V2／V3 与索引一致）：
   V2  validate_text_format --strict --baseline，对每个改动条目 `--path <条目>`
@@ -47,7 +48,11 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--base", default="origin/main", help="对比基准，缺省 origin/main")
     ap.add_argument("--all", action="store_true", help="V2 查全仓而不只查改动条目")
+    ap.add_argument("--dev", action="store_true",
+                    help="往 dev 直接提交前用：基准缺省改 origin/dev，跳过索引检查（每日合并时统一重建）")
     args = ap.parse_args()
+    if args.dev and args.base == "origin/main":
+        args.base = "origin/dev"
 
     results = []
 
@@ -85,12 +90,17 @@ def main():
     r = sh(PY, "scripts/check_license.py", ".")
     report("V3 授权串", r.returncode == 0, "" if r.returncode == 0 else r.stdout[-500:])
 
-    before = set(sh("git", "status", "--porcelain", "--", "index/texts").stdout.splitlines())
-    r = sh(PY, "scripts/book-text/build_texts_index.py", "--root", ".")
-    after = set(sh("git", "status", "--porcelain", "--", "index/texts").stdout.splitlines())
-    new = after - before
-    report("索引 index/texts 与数据一致", r.returncode == 0 and not new,
-           "重建后多出未提交的改动，请 git add／提交 index/texts" if new else "")
+    if args.dev:
+        print("跳过  索引 index/texts（dev 上不提交，每日合并时重建）")
+        staged = sh("git", "diff", "--name-only", args.base, "--", "index/texts").stdout.split()
+        report("dev 上没有改 index/texts", not staged, f"{len(staged)} 个文件，请撤回（git checkout {args.base} -- index/texts）" if staged else "")
+    else:
+        before = set(sh("git", "status", "--porcelain", "--", "index/texts").stdout.splitlines())
+        r = sh(PY, "scripts/book-text/build_texts_index.py", "--root", ".")
+        after = set(sh("git", "status", "--porcelain", "--", "index/texts").stdout.splitlines())
+        new = after - before
+        report("索引 index/texts 与数据一致", r.returncode == 0 and not new,
+               "重建后多出未提交的改动，请 git add／提交 index/texts" if new else "")
 
     # 格变动出处（GUJI-733）：缺省只告警，不影响退出码；跑顺后改 --strict 转红
     r = sh(PY, "scripts/check_cell_provenance.py", "--base", args.base)

@@ -12,6 +12,15 @@
 
 ## 提交与推送（10-05 起：main 受保护，一律走 PR）
 
+### 流程化小改走 dev，每天合一次 main（2026-10-24 用户定）
+
+- **`dev` 分支收流程化的小改动，直接提交、不开 PR**：精校落票（cv `proof_cycle`／`republish`）、网站意见修订（`guji opinions auto`）这类机器产出、已过检查门的 0.x patch／minor 升版。
+  - 先 `git pull --rebase origin dev` 再推；推前跑 `python3 scripts/local_check.py --dev`（对比 origin/dev，只查自己的改动，不查索引）。
+  - **dev 上不提交 `index/texts/`**（多个会话同时推，最容易在这个生成目录上冲突），每日合并时统一重建。
+  - `bump_original.py --pr TBD`：CHANGES 的 PR 列先写 `#TBD`，每日合并时换成当天合并 PR 的号。
+- **每天一个 dev→main 的 PR**：定时任务在洛杉矶 03:30 跑 `python3 scripts/daily_merge.py`（合入 main 的新提交 → 重建索引 → `local_check.py --all` → 开或更新 PR → `#TBD` 换成 PR 号 → **merge commit** 合并，不 squash，好让 dev 与 main 保持同一条历史）。检查不过就不合，留 PR 报原因。
+- **仍单独开 PR 投 main 的**：major 升版、撤除超过 50 部、改全仓结构或规范、新入库批次、人手改动；规矩照下面。这些 PR 合并后，下一次每日合并会把 main 合回 dev。
+
 - **不直接推 main。** 一批活开一个分支，命名 `<道名>-<主题>`，比如 `t65-wiki-match`；`wip/` 前缀是反复改动中的工作分支，用户点头前不并 main。
 - 分支上可以多次提交；**整批做完才开一个 PR**，不要零碎开 PR。**PR 自建、自审、自合并**（2026-10-24 用户定，取代原「文本总管审」）：提 PR 的会话自己读 diff、跑校验，与最初定下的设计和要求一致就自己用 **squash merge** 合并，main 上一个 PR 只留一个提交。
 - 开 PR 前，先把 main 合进分支，用本仓 `scripts/book-text/build_texts_index.py --root <本仓>` 重建 `index/texts`，然后跑完三项校验，结果贴进 PR 描述：

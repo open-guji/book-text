@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 2,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 3043,
-    "matched": 2936,
+    "matched": 2939,
     "ambiguous": 6,
-    "new_candidates": 101,
+    "new_candidates": 98,
     "works": 1059,
     "people": 1379,
     "places": 186,
@@ -219,11 +219,25 @@
         "end_offset": 159
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢唐",
-        "note": "不建档：泛称｜漢、唐合稱"
+        "status": "matched_multi",
+        "canonical_name": "兩漢＋唐",
+        "targets": [
+          {
+            "part": "漢",
+            "entity_id": "hixi1ubjgow9",
+            "canonical_name": "兩漢",
+            "href": "book-index://Entity/hixi1ubjgow9"
+          },
+          {
+            "part": "唐",
+            "entity_id": "hixi1ubjgowi",
+            "canonical_name": "唐",
+            "href": "book-index://Entity/hixi1ubjgowi"
+          }
+        ],
+        "note": "漢、唐合稱，一个专名挂两条"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01388",
@@ -10980,11 +10994,43 @@
         "end_offset": 5053
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "六朝",
-        "note": "不建档：泛称｜六朝合稱，庫無此條"
+        "status": "matched_multi",
+        "canonical_name": "三國吳＋東晉＋南朝宋＋南朝齊＋南朝梁＋南朝陳",
+        "targets": [
+          {
+            "entity_id": "hixi1ubk35z8",
+            "canonical_name": "三國吳",
+            "href": "book-index://Entity/hixi1ubk35z8"
+          },
+          {
+            "entity_id": "hixi1ubkeeip",
+            "canonical_name": "東晉",
+            "href": "book-index://Entity/hixi1ubkeeip"
+          },
+          {
+            "entity_id": "hixi1ubkeej4",
+            "canonical_name": "南朝宋",
+            "href": "book-index://Entity/hixi1ubkeej4"
+          },
+          {
+            "entity_id": "hixi1ubkeej7",
+            "canonical_name": "南朝齊",
+            "href": "book-index://Entity/hixi1ubkeej7"
+          },
+          {
+            "entity_id": "hixi1ubkeej5",
+            "canonical_name": "南朝梁",
+            "href": "book-index://Entity/hixi1ubkeej5"
+          },
+          {
+            "entity_id": "hixi1ubkeej6",
+            "canonical_name": "南朝陳",
+            "href": "book-index://Entity/hixi1ubkeej6"
+          }
+        ],
+        "note": "六朝合稱＝吳、東晉、宋、齊、梁、陳"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e02059",
@@ -16540,11 +16586,25 @@
         "end_offset": 7741
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏晉",
-        "note": "不建档：泛称：「魏晉人」魏、晉合稱，庫無合稱條"
+        "status": "matched_multi",
+        "canonical_name": "三國魏＋晉",
+        "targets": [
+          {
+            "part": "魏",
+            "entity_id": "hixi1ubk35za",
+            "canonical_name": "三國魏",
+            "href": "book-index://Entity/hixi1ubk35za"
+          },
+          {
+            "part": "晉",
+            "entity_id": "hixi1ubjrxfy",
+            "canonical_name": "晉",
+            "href": "book-index://Entity/hixi1ubjrxfy"
+          }
+        ],
+        "note": "魏、晉合稱"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e00419",

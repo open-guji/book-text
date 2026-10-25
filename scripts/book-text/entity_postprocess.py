@@ -381,7 +381,7 @@ def recount(doc):
     es = doc['entities']
     st = doc.setdefault('stats', {})
     st['total_entities'] = len(es)
-    st['matched'] = sum(e['target']['status'] == 'matched' for e in es)
+    st['matched'] = sum(e['target']['status'] in ('matched', 'matched_multi') for e in es)  # 多链接也算已链接
     st['new_candidates'] = sum(e['target']['status'] == 'new_candidate' for e in es)
     plural = {'work': 'works', 'people': 'people', 'place': 'places', 'office': 'offices', 'dynasty': 'dynasties'}
     for ty, key in plural.items():

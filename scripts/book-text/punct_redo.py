@@ -310,7 +310,7 @@ def cmd_apply(a):
     vol_targets = collections.defaultdict(collections.Counter)
     tjson = {}
     for x in ej["entities"]:
-        if x["target"].get("status") == "matched":
+        if x["target"].get("status") in ("matched", "matched_multi"):
             k = json.dumps(x["target"], ensure_ascii=False, sort_keys=True)
             vol_targets[(x["type"], x["text"])][k] += 1
             tjson[k] = x["target"]
@@ -380,7 +380,7 @@ def cmd_apply(a):
     if "stats" in ej:
         st = collections.Counter(x["target"].get("status") for x in E)
         tc = collections.Counter(x["type"] for x in E)
-        ej["stats"].update({"total_entities": len(E), "matched": st["matched"], "ambiguous": st["ambiguous"],
+        ej["stats"].update({"total_entities": len(E), "matched": st["matched"] + st["matched_multi"], "ambiguous": st["ambiguous"],
                             "new_candidates": st["new_candidate"], "works": tc["work"], "people": tc["people"],
                             "places": tc["place"], "offices": tc["office"], "dynasties": tc["dynasty"],
                             "reigns": tc["reign"]})

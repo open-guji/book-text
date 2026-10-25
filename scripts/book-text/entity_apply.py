@@ -35,7 +35,8 @@ def recount(en):
         st[key] = sum(1 for x in E if x['type'] == ty)
     st['total_entities'] = len(E)
     for key, sv in (('matched', 'matched'), ('ambiguous', 'ambiguous'), ('new_candidates', 'new_candidate')):
-        st[key] = sum(1 for x in E if x['target'].get('status') == sv)
+        st[key] = sum(1 for x in E if x['target'].get('status') == sv
+                      or (sv == 'matched' and x['target'].get('status') == 'matched_multi'))  # 多链接也算已链接
 
 
 # ---- N5：对现库重对 new_candidate（--rematch）----

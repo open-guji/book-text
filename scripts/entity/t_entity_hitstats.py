@@ -27,6 +27,10 @@ def main(argv):
             if tg["status"] == "matched":
                 hit[tg["entity_id"]] += 1
                 name[tg["entity_id"]] = (e["type"], tg["canonical_name"], tg.get("level", ""))
+            elif tg["status"] == "matched_multi":
+                for t in tg["targets"]:  # 多链接：每个目标各记一次命中
+                    hit[t["entity_id"]] += 1
+                    name[t["entity_id"]] = (e["type"], t["canonical_name"], t.get("level", ""))
             elif tg["status"] == "ambiguous":
                 amb[(e["type"], e["text"], tuple(x["canonical_name"] for x in tg["candidates"]))] += 1
             else:

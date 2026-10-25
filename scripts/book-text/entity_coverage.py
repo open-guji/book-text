@@ -10,6 +10,7 @@ for p in sorted(glob.glob(str(root / f'*/*/*/*/{bid}/default/*.entity.json'))):
     e = json.load(open(p)); vol = Path(p).name.split('.')[0]
     for x in e['entities']:
         s = x['target']['status']
+        s = 'matched' if s == 'matched_multi' else s  # 多链接也算已链接
         cnt[(vol, x['type'])][s] += 1; cnt[('全部', x['type'])][s] += 1; cnt[(vol, '合计')][s] += 1; cnt[('全部', '合计')][s] += 1
 print(f"{'册':<6}{'类型':<8}{'总':>6}{'matched':>9}{'ambig':>7}{'new':>6}{'链接率':>8}")
 for (vol, ty), c in sorted(cnt.items(), key=lambda kv: (kv[0][0] != '全部', kv[0])):

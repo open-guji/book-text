@@ -239,6 +239,76 @@ class TestCvKeys(unittest.TestCase):
             C.parse_lines_md(LINES, bad)
 
 
+FIG = {"figures": [{"id": "f3-1-2", "kind": "inline", "alt": "左半圈"},
+                   {"id": "p4-fig1", "kind": "block", "alt": "河圖"}]}
+LINES_FIG = ("<!-- p3 -->\n甲:tu[左半圈]{id=f3-1-2}乙\n丙\n"
+             "<!-- p4 -->\n丁\n::tu[河圖]{id=p4-fig1}\n戊\n")
+CORD_FIG = {"pages": [
+    {"page": 3, "cells": [{"a": "3:1:1"}, {"a": "3:1:2"}, {"a": "3:1:3"}, {"a": "3:2:1"}]},
+    {"page": 4, "cells": [{"a": "4:1:1"}, {"a": "4:4:1"}],
+     "marks": [{"kind": "figure", "fig": "p4-fig1", "col": 2, "span": 2, "box": [0, 0, 5, 5]}]},
+]}
+
+
+class TestFigure(unittest.TestCase):
+    """图片格 `:tu[…]`、图列 `::tu[…]`（GUJI-737，spec 03 §三·5）：char ⇄ lines.md 往返。"""
+
+    def setUp(self):
+        self.char = C.make_char(C.parse_lines_md(LINES_FIG, CORD_FIG), "bk", 5, "1.0.0")
+
+    def test_parse(self):
+        self.assertEqual(self.char["$schema"], C.CHAR_SCHEMA_FIG)
+        p3, p4 = self.char["pages"]
+        self.assertEqual(p3["columns"][0]["cells"][1], {"a": "3:1:2", "c": "□", "fig": "f3-1-2"})
+        self.assertEqual(p4["columns"], [
+            {"col": 1, "cells": [_cell("4:1:1", "丁")]},
+            {"col": 2, "kind": "figure", "span": 2, "fig": "p4-fig1", "cells": []},     # 第 3 列被图占住，不另出
+            {"col": 4, "cells": [_cell("4:4:1", "戊")]},
+        ])
+        self.assertEqual([c for _a, c in C.char_slots(self.char)], list("甲□乙丙丁戊"))
+
+    def test_roundtrip(self):
+        self.assertEqual(C.render_lines(self.char, FIG), LINES_FIG)
+        again = C.make_char(C.parse_lines_md(C.render_lines(self.char, FIG), CORD_FIG), "bk", 5, "1.0.0")
+        self.assertEqual(again, self.char)
+
+    def test_without_fig_json(self):
+        # 不给 fig.json：图片格写 □、图列不出（同 cv char_to_lines_md 不给 fig）
+        self.assertEqual(C.render_lines(self.char), "<!-- p3 -->\n甲□乙\n丙\n<!-- p4 -->\n丁\n戊\n")
+
+    def test_default_alt_and_bad_alt(self):
+        self.assertIn(":tu[图形符号]{id=f3-1-2}", C.render_lines(self.char, {"figures": []}))
+        with self.assertRaises(C.FormatError):
+            C.render_lines(self.char, {"figures": [{"id": "f3-1-2", "alt": "九宫[图]"}]})
+
+    def test_mismatch(self):
+        moved = LINES_FIG.replace("丁\n::tu[河圖]{id=p4-fig1}\n戊", "丁\n戊\n::tu[河圖]{id=p4-fig1}")
+        with self.assertRaisesRegex(C.FormatError, "位置"):
+            C.parse_lines_md(moved, CORD_FIG)
+        no_mark = json.loads(json.dumps(CORD_FIG))
+        del no_mark["pages"][1]["marks"]
+        with self.assertRaisesRegex(C.FormatError, "marks.figure"):
+            C.parse_lines_md(LINES_FIG, no_mark)
+        with self.assertRaisesRegex(C.FormatError, "没有 ::tu"):
+            C.parse_lines_md(LINES_FIG.replace("::tu[河圖]{id=p4-fig1}\n", ""),
+                             {"pages": [CORD_FIG["pages"][0], dict(CORD_FIG["pages"][1])]})
+        with self.assertRaises(C.FormatError):
+            C.parse_lines_md(LINES_FIG.replace("id=f3-1-2", "id=F 1"), CORD_FIG)
+        with self.assertRaises(C.FormatError):
+            C.parse_lines_md("<!-- p1 -->\n::zz[x]{id=a}\n")
+
+    def test_legacy_lines_keys(self):
+        # 不给 cord：每行一列，图列按一列数、不记 span
+        char = C.parse_lines_md(LINES_FIG)
+        self.assertEqual(char[1]["columns"][1], {"col": 2, "kind": "figure", "fig": "p4-fig1", "cells": []})
+        self.assertEqual(char[1]["columns"][2]["cells"], [_cell("4:3:1", "戊")])
+
+    def test_rich(self):
+        got = C.render_rich(self.char, None, None, FIG)
+        self.assertEqual(got, "<!-- p3 -->甲:tu[左半圈]{id=f3-1-2}乙丙<!-- p4 -->丁\n\n::tu[河圖]{id=p4-fig1}\n\n戊\n")
+        self.assertEqual(C.render_rich(self.char), "<!-- p3 -->甲□乙丙<!-- p4 -->丁戊\n")
+
+
 def quiet(fn, args):
     out, err = io.StringIO(), io.StringIO()
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):

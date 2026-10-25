@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.11.1",
+  "version": "1.14.3",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -10,11 +10,11 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 1701,
-    "matched": 1602,
-    "ambiguous": 0,
-    "new_candidates": 99,
-    "works": 546,
+    "total_entities": 1688,
+    "matched": 1633,
+    "ambiguous": 6,
+    "new_candidates": 49,
+    "works": 533,
     "people": 744,
     "places": 116,
     "offices": 92,
@@ -175,9 +175,23 @@
         "end_offset": 53
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "集賢殿大學士兼國子祭酒",
-        "note": "不建档：「集賢殿大學士兼國子祭酒」为两官连写未拆；建议拆为 集賢殿大學士（库只有宋具体条 1jb8bbthp8268，元许衡不合）、國子祭酒（概念 hixi4udstrls）"
+        "status": "matched_multi",
+        "canonical_name": "集賢殿大學士＋國子祭酒",
+        "targets": [
+          {
+            "part": "集賢殿大學士兼",
+            "entity_id": "hixibwhw2z28",
+            "canonical_name": "集賢殿大學士",
+            "href": "book-index://Entity/hixibwhw2z28"
+          },
+          {
+            "part": "國子祭酒",
+            "entity_id": "hixi5uk9g0sk",
+            "canonical_name": "國子祭酒",
+            "href": "book-index://Entity/hixi5uk9g0sk"
+          }
+        ],
+        "note": "兼任兩官，元許衡"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -942,8 +956,12 @@
         "end_offset": 330
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元史儒學傳"
+        "status": "matched",
+        "entity_id": "d59f2njivtog",
+        "canonical_name": "元史",
+        "href": "book-index://Work/d59f2njivtog",
+        "note": "篇名，暫挂上位書《元史》（A33 書名細配 2026-10-25：元史篇（儒學傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2273,24 +2291,6 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e00048",
-      "type": "work",
-      "text": "師卦",
-      "anchor": {
-        "start": "9:2:5",
-        "end": "9:2:6"
-      },
-      "span": {
-        "start_offset": 934,
-        "end_offset": 936
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "師卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00049",
       "type": "people",
       "text": "崔憬",
@@ -2332,24 +2332,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00051",
-      "type": "work",
-      "text": "比卦",
-      "anchor": {
-        "start": "9:3:3",
-        "end": "9:3:4"
-      },
-      "span": {
-        "start_offset": 951,
-        "end_offset": 953
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "比卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00052",
       "type": "people",
       "text": "王肅",
@@ -2367,24 +2349,6 @@
         "canonical_name": "王肅",
         "href": "book-index://Entity/hixhd2h9bhx4",
         "note": "規則3：王肅，三國魏"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00053",
-      "type": "work",
-      "text": "小畜卦",
-      "anchor": {
-        "start": "9:3:17",
-        "end": "9:3:19"
-      },
-      "span": {
-        "start_offset": 965,
-        "end_offset": 968
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "小畜卦"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2493,24 +2457,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00060",
-      "type": "work",
-      "text": "泰卦",
-      "anchor": {
-        "start": "9:5:9",
-        "end": "9:5:10"
-      },
-      "span": {
-        "start_offset": 995,
-        "end_offset": 997
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "泰卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00061",
       "type": "work",
       "text": "說文",
@@ -2549,24 +2495,6 @@
         "canonical_name": "虞翻",
         "href": "book-index://Entity/hixhd2h9bne4",
         "note": "規則3：虞翻，三國吳"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00063",
-      "type": "work",
-      "text": "大畜卦",
-      "anchor": {
-        "start": "9:6:4",
-        "end": "9:6:6"
-      },
-      "span": {
-        "start_offset": 1009,
-        "end_offset": 1012
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "大畜卦"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2629,24 +2557,6 @@
         "entity_id": "hixhd2h9bdqh",
         "canonical_name": "陸希聲",
         "href": "book-index://Entity/hixhd2h9bdqh"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00067",
-      "type": "work",
-      "text": "萃卦",
-      "anchor": {
-        "start": "9:7:6",
-        "end": "9:7:7"
-      },
-      "span": {
-        "start_offset": 1030,
-        "end_offset": 1032
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "萃卦"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -2734,24 +2644,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00072",
-      "type": "work",
-      "text": "困卦",
-      "anchor": {
-        "start": "9:8:4",
-        "end": "9:8:5"
-      },
-      "span": {
-        "start_offset": 1047,
-        "end_offset": 1049
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "困卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00073",
       "type": "people",
       "text": "荀爽",
@@ -2813,24 +2705,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00076",
-      "type": "work",
-      "text": "鼎卦",
-      "anchor": {
-        "start": "9:8:19",
-        "end": "9:8:20"
-      },
-      "span": {
-        "start_offset": 1062,
-        "end_offset": 1064
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "鼎卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00077",
       "type": "people",
       "text": "鄭元",
@@ -2848,24 +2722,6 @@
         "canonical_name": "鄭玄",
         "href": "book-index://Entity/hixhd2f8wajv",
         "note": "避諱字還原「鄭元」→「鄭玄」；原候选 hixhd2j3sw7e 已并入 hixhd2f8wajv（book-index#48）"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00078",
-      "type": "work",
-      "text": "比",
-      "anchor": {
-        "start": "9:9:12",
-        "end": "9:9:12"
-      },
-      "span": {
-        "start_offset": 1075,
-        "end_offset": 1076
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "比"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -4268,10 +4124,23 @@
         "end_offset": 1912
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程"
+        "status": "matched_multi",
+        "canonical_name": "程顥＋程頤",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bnt7",
+            "canonical_name": "程顥",
+            "href": "book-index://Entity/hixhd2h9bnt7"
+          },
+          {
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "「周程張朱」之程，指二程，一个专名挂两条；若所在句仅指伊川（如胡程）则只挂程頤"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e00097",
@@ -4286,10 +4155,13 @@
         "end_offset": 1913
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "朱"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgah",
+        "canonical_name": "朱熹",
+        "href": "book-index://Entity/hixhd2h9bgah",
+        "note": "省称补全：「程朱」「朱蔡牧之圖」之朱＝朱熹"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e00098",
@@ -6234,9 +6106,10 @@
         "end_offset": 2719
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixibvzkij9c",
         "canonical_name": "將仕佐郞",
-        "note": "不建档：官名未收：元散官將仕佐郎"
+        "href": "book-index://Entity/hixibvzkij9c"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -7311,8 +7184,11 @@
         "end_offset": 3370
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太極圖"
+        "status": "matched",
+        "entity_id": "d59f2hd1hjb8",
+        "canonical_name": "太極圖說",
+        "href": "book-index://Work/d59f2hd1hjb8",
+        "note": "A33 書名細配 2026-10-25：省称：附近撰人所著书＋有全文；周敦頤撰；太極圖說"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -8917,9 +8793,40 @@
         "end_offset": 4006
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易說",
-        "note": "不建档：書未收：陽氏所著易說二卷，撰人名不明"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f2gk2wwzm",
+            "canonical_name": "易說",
+            "author": "胡次和"
+          },
+          {
+            "entity_id": "d59f2hdp7kle",
+            "canonical_name": "易說",
+            "author": "丘義"
+          },
+          {
+            "entity_id": "d59f2nhxre2r",
+            "canonical_name": "易說",
+            "author": "馮時可"
+          },
+          {
+            "entity_id": "d59f2pr5yt4w",
+            "canonical_name": "易說",
+            "author": "馮大受"
+          },
+          {
+            "entity_id": "d59f2prhttz5",
+            "canonical_name": "易説",
+            "author": "陳梁"
+          },
+          {
+            "entity_id": "d59f6elai3no",
+            "canonical_name": "易説",
+            "author": "王義朝"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名130 部同名，上下文未能定"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -10734,8 +10641,12 @@
         "end_offset": 4889
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元史選舉志"
+        "status": "matched",
+        "entity_id": "d59f2njivtog",
+        "canonical_name": "元史",
+        "href": "book-index://Work/d59f2njivtog",
+        "note": "篇名，暫挂上位書《元史》（A33 書名細配 2026-10-25：元史篇（選舉志））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12030,9 +11941,30 @@
         "end_offset": 5347
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吉安府志",
-        "note": "不建档：無從確定：吉安府志庫有多部（劉養正、王時槐等），不能確指"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f2ntu0veo",
+            "canonical_name": "吉安府志",
+            "author": "陳奕禧"
+          },
+          {
+            "entity_id": "d59f6eq9zk03",
+            "canonical_name": "吉安府志",
+            "author": "劉養正"
+          },
+          {
+            "entity_id": "d59f6eqaasjk",
+            "canonical_name": "吉安府志",
+            "author": "王安"
+          },
+          {
+            "entity_id": "d59f2ngrmcxu",
+            "canonical_name": "吉安府志",
+            "author": "王時槐"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名4 部同名，上下文未能定"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -12120,8 +12052,12 @@
         "end_offset": 5370
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元史儒學傳劉詵傳"
+        "status": "matched",
+        "entity_id": "d59f2njivtog",
+        "canonical_name": "元史",
+        "href": "book-index://Work/d59f2njivtog",
+        "note": "篇名，暫挂上位書《元史》（A33 書名細配 2026-10-25：元史篇（儒學傳劉詵傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12239,9 +12175,30 @@
         "end_offset": 5425
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吉安府志",
-        "note": "不建档：無從確定：吉安府志庫有多部，不能確指"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f2ntu0veo",
+            "canonical_name": "吉安府志",
+            "author": "陳奕禧"
+          },
+          {
+            "entity_id": "d59f6eq9zk03",
+            "canonical_name": "吉安府志",
+            "author": "劉養正"
+          },
+          {
+            "entity_id": "d59f6eqaasjk",
+            "canonical_name": "吉安府志",
+            "author": "王安"
+          },
+          {
+            "entity_id": "d59f2ngrmcxu",
+            "canonical_name": "吉安府志",
+            "author": "王時槐"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名4 部同名，上下文未能定"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -12361,9 +12318,30 @@
         "end_offset": 5504
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吉安府志",
-        "note": "不建档：無從確定：吉安府志庫有多部，不能確指"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f2ntu0veo",
+            "canonical_name": "吉安府志",
+            "author": "陳奕禧"
+          },
+          {
+            "entity_id": "d59f6eq9zk03",
+            "canonical_name": "吉安府志",
+            "author": "劉養正"
+          },
+          {
+            "entity_id": "d59f6eqaasjk",
+            "canonical_name": "吉安府志",
+            "author": "王安"
+          },
+          {
+            "entity_id": "d59f2ngrmcxu",
+            "canonical_name": "吉安府志",
+            "author": "王時槐"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名4 部同名，上下文未能定"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -12461,9 +12439,11 @@
         "end_offset": 5559
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周易",
-        "note": "不建档：無從確定：仁夫所著周易泛指其易說，不能確指"
+        "status": "matched",
+        "entity_id": "d59f2gpsxji9",
+        "canonical_name": "周易集傳",
+        "href": "book-index://Work/d59f2gpsxji9",
+        "note": "A33 書名細配 2026-10-25：龍仁夫所著周易，即《周易集傳》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -12641,8 +12621,11 @@
         "end_offset": 5696
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "三山書傳"
+        "status": "matched",
+        "entity_id": "d59f2hpex6gx",
+        "canonical_name": "尚書全解",
+        "href": "book-index://Work/d59f2hpex6gx",
+        "note": "林之奇號三山（A11 2026-10-25 裁定）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -14255,8 +14238,11 @@
         "end_offset": 6642
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "會通"
+        "status": "matched",
+        "entity_id": "d59f2gpl4lxd",
+        "canonical_name": "周易會通",
+        "href": "book-index://Work/d59f2gpl4lxd",
+        "note": "董真卿《周易會通》簡稱（A11 2026-10-25 裁定）"
       },
       "source": "claude:manual"
     },
@@ -15011,60 +14997,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00289",
-      "type": "work",
-      "text": "坤卦",
-      "anchor": {
-        "start": "46:3:12",
-        "end": "46:3:13"
-      },
-      "span": {
-        "start_offset": 7130,
-        "end_offset": 7132
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "坤卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00290",
-      "type": "work",
-      "text": "坤卦",
-      "anchor": {
-        "start": "46:5:7",
-        "end": "46:5:8"
-      },
-      "span": {
-        "start_offset": 7163,
-        "end_offset": 7165
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "坤卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e00291",
-      "type": "work",
-      "text": "艮卦",
-      "anchor": {
-        "start": "46:6:11",
-        "end": "46:6:12"
-      },
-      "span": {
-        "start_offset": 7186,
-        "end_offset": 7188
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "艮卦"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00292",
       "type": "work",
       "text": "易",
@@ -15098,8 +15030,12 @@
         "end_offset": 7307
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元史忠義傳"
+        "status": "matched",
+        "entity_id": "d59f2njivtog",
+        "canonical_name": "元史",
+        "href": "book-index://Work/d59f2njivtog",
+        "note": "篇名，暫挂上位書《元史》（A33 書名細配 2026-10-25：元史篇（忠義傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17655,8 +17591,12 @@
         "end_offset": 8761
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -17900,8 +17840,11 @@
         "end_offset": 8964
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "文詮"
+        "status": "matched",
+        "entity_id": "d59f2go0mnls",
+        "canonical_name": "周易文詮",
+        "href": "book-index://Work/d59f2go0mnls",
+        "note": "近似：趙汸《周易文詮》（A11 2026-10-25 裁定）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -19475,8 +19418,12 @@
         "end_offset": 9532
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -20207,8 +20154,12 @@
         "end_offset": 9909
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -20349,8 +20300,12 @@
         "end_offset": 9975
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "上經卦略"
+        "status": "matched",
+        "entity_id": "d59f2nj7yio1",
+        "canonical_name": "讀易餘言",
+        "href": "book-index://Work/d59f2nj7yio1",
+        "note": "篇名，暫挂上位書《讀易餘言》（A33 書名細配 2026-10-25：崔銑《讀易餘言》之篇（上經卦略））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -20367,8 +20322,12 @@
         "end_offset": 9979
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "下經卦略"
+        "status": "matched",
+        "entity_id": "d59f2nj7yio1",
+        "canonical_name": "讀易餘言",
+        "href": "book-index://Work/d59f2nj7yio1",
+        "note": "篇名，暫挂上位書《讀易餘言》（A33 書名細配 2026-10-25：崔銑《讀易餘言》之篇（下經卦略））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -20385,8 +20344,11 @@
         "end_offset": 9982
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大象說"
+        "status": "matched",
+        "entity_id": "d59f2nifjx8j",
+        "canonical_name": "易大象說",
+        "href": "book-index://Work/d59f2nifjx8j",
+        "note": "A33 書名細配 2026-10-25：崔銑《易大象說》（即《讀易餘言》卷三，別本單行）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -20716,8 +20678,11 @@
         "end_offset": 10121
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大象說"
+        "status": "matched",
+        "entity_id": "d59f2nifjx8j",
+        "canonical_name": "易大象說",
+        "href": "book-index://Work/d59f2nifjx8j",
+        "note": "A33 書名細配 2026-10-25：崔銑《易大象說》"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -21522,9 +21487,30 @@
         "end_offset": 10412
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泉州府志",
-        "note": "不建档：无从确定：泉州府志明清多部，提要未指明哪一部"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f6eoyjhfo",
+            "canonical_name": "泉州府志",
+            "author": "黄光昇"
+          },
+          {
+            "entity_id": "d59f6eoy88w7",
+            "canonical_name": "泉州府志",
+            "author": "林俊"
+          },
+          {
+            "entity_id": "d59f2n6q5fr5",
+            "canonical_name": "泉州府志",
+            "author": "懷蔭布"
+          },
+          {
+            "entity_id": "d59f2nipjitd",
+            "canonical_name": "泉州府志",
+            "author": "黃鳳翔"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名4 部同名，上下文未能定"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -21561,8 +21547,12 @@
         "end_offset": 10426
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -21989,11 +21979,25 @@
         "end_offset": 10588
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正嘉",
-        "note": "不建档：泛称：正德、嘉靖合稱，不能單挂一條"
+        "status": "matched_multi",
+        "canonical_name": "正德＋嘉靖",
+        "targets": [
+          {
+            "part": "正",
+            "entity_id": "hixi1ubq0obp",
+            "canonical_name": "正德",
+            "href": "book-index://Entity/hixi1ubq0obp"
+          },
+          {
+            "part": "嘉",
+            "entity_id": "hixi1ubq0obq",
+            "canonical_name": "嘉靖",
+            "href": "book-index://Entity/hixi1ubq0obq"
+          }
+        ],
+        "note": "正德、嘉靖合稱"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01431",
@@ -22761,8 +22765,12 @@
         "end_offset": 10919
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -23496,8 +23504,12 @@
         "end_offset": 11194
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史文苑傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（文苑傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -23997,9 +24009,25 @@
         "end_offset": 11363
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易象",
-        "note": "不建档：书未收：左傳所記魯太史藏《易象》，非庫中同名後世書"
+        "status": "ambiguous",
+        "candidates": [
+          {
+            "entity_id": "d59f6etjo0si",
+            "canonical_name": "易象",
+            "author": "樊良樞"
+          },
+          {
+            "entity_id": "d59fxvl5h2iq",
+            "canonical_name": "易象",
+            "author": "沈南一"
+          },
+          {
+            "entity_id": "d59f2m90u0ao",
+            "canonical_name": "易象",
+            "author": "王明弼"
+          }
+        ],
+        "note": "A33 書名細配 2026-10-25：庫有同名3 部同名，上下文未能定"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -25453,8 +25481,12 @@
         "end_offset": 12229
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史儒林傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（儒林傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -25962,8 +25994,12 @@
         "end_offset": 12670
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史文苑傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（文苑傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -27047,8 +27083,12 @@
         "end_offset": 13255
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明史李沂傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8",
+        "note": "篇名，暫挂上位書《明史》（A33 書名細配 2026-10-25：明史篇（李沂傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -32142,10 +32182,13 @@
         "end_offset": 15536
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "都氏"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdr1",
+        "canonical_name": "都絜",
+        "href": "book-index://Entity/hixhd2h9bdr1",
+        "note": "「沈該之易傳、都絜之易變體義」，沈氏都氏之書＝沈該、都絜；此处都氏＝都絜（沈氏另标沈該 hixhd2h9bdqx）"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e00705",
@@ -32861,8 +32904,12 @@
         "end_offset": 15886
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢書兒寛傳"
+        "status": "matched",
+        "entity_id": "d59f1iqd854w",
+        "canonical_name": "漢書",
+        "href": "book-index://Work/d59f1iqd854w",
+        "note": "篇名，暫挂上位書《漢書》（A33 書名細配 2026-10-25：漢書篇（兒寛傳））",
+        "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -33630,11 +33677,25 @@
         "end_offset": 16342
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋元",
-        "note": "不建档：泛称：宋、元合稱"
+        "status": "matched_multi",
+        "canonical_name": "趙宋＋元",
+        "targets": [
+          {
+            "part": "宋",
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋",
+            "href": "book-index://Entity/hixi1ubjrxgo"
+          },
+          {
+            "part": "元",
+            "entity_id": "hixi1ubjgow7",
+            "canonical_name": "元",
+            "href": "book-index://Entity/hixi1ubjgow7"
+          }
+        ],
+        "note": "宋、元合稱"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01712",
@@ -34382,11 +34443,25 @@
         "end_offset": 16979
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢晉",
-        "note": "不建档：泛称：漢、晉合稱"
+        "status": "matched_multi",
+        "canonical_name": "兩漢＋晉",
+        "targets": [
+          {
+            "part": "漢",
+            "entity_id": "hixi1ubjgow9",
+            "canonical_name": "兩漢",
+            "href": "book-index://Entity/hixi1ubjgow9"
+          },
+          {
+            "part": "晉",
+            "entity_id": "hixi1ubjrxfy",
+            "canonical_name": "晉",
+            "href": "book-index://Entity/hixi1ubjrxfy"
+          }
+        ],
+        "note": "漢、晉合稱，漢＝漢代"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01726",
@@ -34609,24 +34684,6 @@
         "href": "book-index://Entity/hixi1ubqbwuc"
       },
       "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e00680",
-      "type": "work",
-      "text": "乾卦",
-      "anchor": {
-        "start": "109:4:15",
-        "end": "109:4:16"
-      },
-      "span": {
-        "start_offset": 17162,
-        "end_offset": 17164
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "乾卦"
-      },
-      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e00926",

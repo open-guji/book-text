@@ -69,7 +69,8 @@
 - **文本 0.x 时也可以加标点、实体**（2026-10-18 用户定，GUJI-240；~~原规定：0.x 阶段没有标点、实体线，精校完才开工~~）：伴生层从 **0.1.0** 起，照常 patch／minor；文本精校时改字，伴生层照「三条线之间」跟 `text_version` 或修锚点。伴生层 0.x → 1.0.0 也是 major，手工改并附验收记录，可晚于文本升 1。
 - **minor = 较大改动**：新功能、新分段、整批字符转换、质量小幅提升、整册重跑。
 - **patch = 其余小范围改动**（最常见）。
-- 拿不准 patch 还是 minor，选 minor；major 没有「拿不准」，达不到门槛就不升。
+- 拿不准 patch 还是 minor：文本线选 minor，**标点、实体线选 patch**；major 没有「拿不准」，达不到门槛就不升。
+- **标点、实体线从严升 minor**（2026-10-25 用户定：伴生层版本升得太快）：伴生层大部分改动只升 **patch**，不论一次改多少处——人工复核、补链／改链、改边界与类型、按新判准重链（如书名细配、合称多链接）、new_candidate 建档后回填 id、修锚点，都是 patch。只有很少的改动才升 **minor**：整册重跑（换模型、换提示词重标）、新增标点类型或实体类型、新分段规则。下面「一册 ≤约 50 处」的数法只用于文本线。
 
 ### major 门槛
 
@@ -85,10 +86,10 @@
 | 线 | minor | patch |
 |---|---|---|
 | 文本 | 整批字符转换（PUA→Unicode、组字式→IDS、整册统一某异体记法）；新分列／夹注规则整册重排；一批人审裁决落地使覆盖率升 ≥10 个百分点；新增标记功能（`zi` 层、抬头记法） | 改个别字（一册 ≤约 50 处、位置已知）；补几处阙文 guess；记法笔误 |
-| 标点 | 整册重跑或换模型、换提示词；新分段规则；新增标点类型；批量修一类错误 | 改几处、几十处标点；修少量锚点 |
-| 实体 | 新增实体类型；整册重识别；一批 new_candidate 建档后集中回填 id；匹配器换规则后重链 | 改个别实体的边界、类型、链接；修少量锚点 |
+| 标点 | 整册重跑或换模型、换提示词；新分段规则；新增标点类型 | 其余一律 patch：人工复核改标点（多少处都算）、批量修一类错误、修锚点 |
+| 实体 | 新增实体类型；整册重识别 | 其余一律 patch：改边界、类型、链接，按新判准重链，new_candidate 建档后回填 id，修锚点 |
 
-**「小范围」怎么数**：以一次 PR 为单位，一册改动 ≤约 50 处 → patch；超过或按规则成批改 → minor。
+**「小范围」怎么数**（只用于文本线）：以一次 PR 为单位，一册改动 ≤约 50 处 → patch；超过或按规则成批改 → minor。标点、实体线不按处数，照上一节只在整册重跑、新增类型、新分段规则时升 minor（2026-10-25 起；此前已升的版本不回改）。
 
 ## 五、什么时候开始编号
 
@@ -123,4 +124,5 @@
   - **F-OV-09／10／11** 桶清单 `assets.json`（`guji-proof-assets/0.1`）不进本仓，仓里只放指针 `proof/<书>/<册>/sprites.pointer.json`（`tag`／`manifest_sha256`／`rev` 三项）；CI 带 `--fetch-assets`，按 tag 从 open-guji-dataset 的 Release 下载 `assets.json` 并核 sha256，本地默认不联网、只核指针。同目录放有 `assets.json` 时仍直接用它（导出自检）。09 每格 `img`／`ctximg`／`ex` 的 `s` 须在 `files[].name`（有 `s` 而既无清单也无指针同报，无 `s` 时不要求有；指针形状不对、sha256 对不上也报 09；下载失败只记 `F-OV-09w`（SOFT 警告，不阻塞）)；10 `x+w≤files[].w`、`y+h≤files[].h`；11 `assets.json.rev`（指针 `rev` 同）须等于 `pending.json.rev`。
   - **F-OV-12** 标题符（guji-format 04 v0.2 §4.2，GUJI-240）：`kind` 只许 point／break／heading；分段符 `pos` 只许 `after`；标题符 `pos: before`、`mark` 为 1～6 个 `#`、不写 `pre_char`，`label` 非空、`toc` 布尔，同格至多一个；标题前一字、标题末字都带分段符，级别不跳级；用了标题符的文件 `$schema` 须为 punct v0.2；章条目 `headings` 须与 punct 现算的一致（`build_texts_index.py` 生成），版本 `heading_levels` 须是 1～6 个字符串（含 `scripts/tests/test_headings.py`）。
   - **F-OV-13** 图片格与插图块（guji-format 09、02 §4.7，GUJI-737）：char 里有图片格（格上 `fig`）或图列（`kind: figure`）就须声明 `fig_file`，char `$schema` 须为 v0.3；图片格 `c` 为 □、不带 `lacuna`／`guess`／`guess_c`／`zi`，图列 `cells` 为空；fig.json 与 char 引用两头对上（无孤图，`kind` 格对 inline、图列对 block）；`page`／`box` 与 cord 一致（图片格对 `cells[]`、多格取外包框，插图块对 `marks.figure` 且 `col`／`span` 一致，cord `$schema` 须为 v0.2）；文件 `fig/<NNN>/<id>.<扩展名>` 存在、sha256 对、≤1 MB，扩展名与 `mime` 一致，书影裁图只许 png／webp，SVG 不许脚本、事件属性、内嵌位图、外链；norm 不许有图片格（含 `scripts/tests/test_fig.py`）。
+  - **F-OV-14** 专名多链接（契约 §二·二）：entity.json 里 `target.status: matched_multi` 的 `targets` 须 ≥2 项，每项有 `entity_id`／`canonical_name`／`href` 且 href 尾段＝entity_id，顶层不得带 `entity_id`／`href`，`part` 若有须是 span 文本里的片段、每项都写时按序拼起来等于 span 文本（含 `scripts/tests/test_entity_multi.py`）。
 - 格位 key 的定义见 guji-format 02（char）§二：双行夹注 a 是右列、先读，b 是左列；超框抬头负格位、无第 0 格；阙文写 □ 并带 `lacuna: true`。

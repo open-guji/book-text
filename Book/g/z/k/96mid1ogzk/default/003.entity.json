@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 1688,
-    "matched": 1625,
+    "matched": 1628,
     "ambiguous": 6,
-    "new_candidates": 57,
+    "new_candidates": 54,
     "works": 533,
     "people": 744,
     "places": 116,
@@ -21943,11 +21943,25 @@
         "end_offset": 10588
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正嘉",
-        "note": "不建档：泛称：正德、嘉靖合稱，不能單挂一條"
+        "status": "matched_multi",
+        "canonical_name": "正德＋嘉靖",
+        "targets": [
+          {
+            "part": "正",
+            "entity_id": "hixi1ubq0obp",
+            "canonical_name": "正德",
+            "href": "book-index://Entity/hixi1ubq0obp"
+          },
+          {
+            "part": "嘉",
+            "entity_id": "hixi1ubq0obq",
+            "canonical_name": "嘉靖",
+            "href": "book-index://Entity/hixi1ubq0obq"
+          }
+        ],
+        "note": "正德、嘉靖合稱"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01431",
@@ -33627,11 +33641,25 @@
         "end_offset": 16342
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋元",
-        "note": "不建档：泛称：宋、元合稱"
+        "status": "matched_multi",
+        "canonical_name": "趙宋＋元",
+        "targets": [
+          {
+            "part": "宋",
+            "entity_id": "hixi1ubjrxgo",
+            "canonical_name": "趙宋",
+            "href": "book-index://Entity/hixi1ubjrxgo"
+          },
+          {
+            "part": "元",
+            "entity_id": "hixi1ubjgow7",
+            "canonical_name": "元",
+            "href": "book-index://Entity/hixi1ubjgow7"
+          }
+        ],
+        "note": "宋、元合稱"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01712",
@@ -34379,11 +34407,25 @@
         "end_offset": 16979
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢晉",
-        "note": "不建档：泛称：漢、晉合稱"
+        "status": "matched_multi",
+        "canonical_name": "兩漢＋晉",
+        "targets": [
+          {
+            "part": "漢",
+            "entity_id": "hixi1ubjgow9",
+            "canonical_name": "兩漢",
+            "href": "book-index://Entity/hixi1ubjgow9"
+          },
+          {
+            "part": "晉",
+            "entity_id": "hixi1ubjrxfy",
+            "canonical_name": "晉",
+            "href": "book-index://Entity/hixi1ubjrxfy"
+          }
+        ],
+        "note": "漢、晉合稱，漢＝漢代"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01726",

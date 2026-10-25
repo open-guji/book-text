@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "text_version": "1.0.1",
   "review": {
     "date": "2026-10-20",
@@ -28,15 +28,15 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 2212,
-    "matched": 2123,
+    "total_entities": 2209,
+    "matched": 2126,
     "ambiguous": 2,
-    "new_candidates": 87,
+    "new_candidates": 81,
     "works": 236,
     "people": 696,
     "places": 41,
     "offices": 1063,
-    "dynasties": 147,
+    "dynasties": 144,
     "reigns": 36
   },
   "entities": [
@@ -4141,11 +4141,13 @@
         "end_offset": 3977
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "炎漢",
-        "note": "炎漢泛指漢統（東漢末／蜀漢），不硬挂"
+        "status": "matched",
+        "entity_id": "hixi1ubk35z9",
+        "canonical_name": "三國蜀",
+        "href": "book-index://Entity/hixi1ubk35z9",
+        "note": "炎漢指漢室正統，上下文「關帝力扶炎漢」即蜀漢"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00186",
@@ -7892,41 +7894,35 @@
     {
       "id": "e00367",
       "type": "dynasty",
-      "text": "唐",
+      "text": "唐虞",
       "anchor": {
         "start": "44:1:4",
-        "end": "44:1:4"
-      },
-      "span": {
-        "start_offset": 6998,
-        "end_offset": 6999
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubjgowi",
-        "canonical_name": "唐",
-        "href": "book-index://Entity/hixi1ubjgowi"
-      },
-      "source": "claude:GUJI-240"
-    },
-    {
-      "id": "e00368",
-      "type": "dynasty",
-      "text": "虞",
-      "anchor": {
-        "start": "44:1:5",
         "end": "44:1:5"
       },
       "span": {
-        "start_offset": 6999,
+        "start_offset": 6998,
         "end_offset": 7000
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞",
-        "note": "唐虞之虞（有虞氏），庫無朝代條"
+        "status": "matched_multi",
+        "canonical_name": "陶唐氏＋有虞氏",
+        "targets": [
+          {
+            "part": "唐",
+            "entity_id": "hixibvs00d1c",
+            "canonical_name": "陶唐氏",
+            "href": "book-index://Entity/hixibvs00d1c"
+          },
+          {
+            "part": "虞",
+            "entity_id": "hixibvs0mu4g",
+            "canonical_name": "有虞氏",
+            "href": "book-index://Entity/hixibvs0mu4g"
+          }
+        ],
+        "note": "唐虞合稱＝唐堯陶唐氏、虞舜有虞氏；原「唐」误挂唐朝"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00369",
@@ -8427,41 +8423,35 @@
     {
       "id": "e00393",
       "type": "dynasty",
-      "text": "唐",
+      "text": "唐虞",
       "anchor": {
         "start": "45:1:12",
-        "end": "45:1:12"
-      },
-      "span": {
-        "start_offset": 7186,
-        "end_offset": 7187
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubjgowi",
-        "canonical_name": "唐",
-        "href": "book-index://Entity/hixi1ubjgowi"
-      },
-      "source": "claude:GUJI-240"
-    },
-    {
-      "id": "e00394",
-      "type": "dynasty",
-      "text": "虞",
-      "anchor": {
-        "start": "45:1:13",
         "end": "45:1:13"
       },
       "span": {
-        "start_offset": 7187,
+        "start_offset": 7186,
         "end_offset": 7188
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞",
-        "note": "唐虞之虞（有虞氏），庫無朝代條"
+        "status": "matched_multi",
+        "canonical_name": "陶唐氏＋有虞氏",
+        "targets": [
+          {
+            "part": "唐",
+            "entity_id": "hixibvs00d1c",
+            "canonical_name": "陶唐氏",
+            "href": "book-index://Entity/hixibvs00d1c"
+          },
+          {
+            "part": "虞",
+            "entity_id": "hixibvs0mu4g",
+            "canonical_name": "有虞氏",
+            "href": "book-index://Entity/hixibvs0mu4g"
+          }
+        ],
+        "note": "唐虞合稱＝唐堯陶唐氏、虞舜有虞氏；原「唐」误挂唐朝"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00395",
@@ -8628,41 +8618,35 @@
     {
       "id": "e00403",
       "type": "dynasty",
-      "text": "唐",
+      "text": "唐虞",
       "anchor": {
         "start": "45:2:18",
-        "end": "45:2:18"
-      },
-      "span": {
-        "start_offset": 7212,
-        "end_offset": 7213
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubjgowi",
-        "canonical_name": "唐",
-        "href": "book-index://Entity/hixi1ubjgowi"
-      },
-      "source": "claude:GUJI-240"
-    },
-    {
-      "id": "e00404",
-      "type": "dynasty",
-      "text": "虞",
-      "anchor": {
-        "start": "45:2:19",
         "end": "45:2:19"
       },
       "span": {
-        "start_offset": 7213,
+        "start_offset": 7212,
         "end_offset": 7214
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞",
-        "note": "唐虞之虞（有虞氏），庫無朝代條"
+        "status": "matched_multi",
+        "canonical_name": "陶唐氏＋有虞氏",
+        "targets": [
+          {
+            "part": "唐",
+            "entity_id": "hixibvs00d1c",
+            "canonical_name": "陶唐氏",
+            "href": "book-index://Entity/hixibvs00d1c"
+          },
+          {
+            "part": "虞",
+            "entity_id": "hixibvs0mu4g",
+            "canonical_name": "有虞氏",
+            "href": "book-index://Entity/hixibvs0mu4g"
+          }
+        ],
+        "note": "唐虞合稱＝唐堯陶唐氏、虞舜有虞氏；原「唐」误挂唐朝"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00405",
@@ -12806,11 +12790,13 @@
         "end_offset": 11204
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
         "canonical_name": "周",
-        "note": "不建档：泛称｜周漢並稱之周，泛指周代，庫無周代統稱條"
+        "href": "book-index://Entity/hixibw36ohs0",
+        "note": "周漢並稱之周，泛指周代"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00602",
@@ -14990,11 +14976,13 @@
         "end_offset": 12932
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞",
-        "note": "唐虞之虞（有虞氏），庫無朝代條"
+        "status": "matched",
+        "entity_id": "hixibvs0mu4g",
+        "canonical_name": "有虞氏",
+        "href": "book-index://Entity/hixibvs0mu4g",
+        "note": "虞夏之虞，有虞氏"
       },
-      "source": "claude:GUJI-240"
+      "source": "claude:A33"
     },
     {
       "id": "e00709",

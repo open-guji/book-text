@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 1688,
-    "matched": 1629,
+    "matched": 1630,
     "ambiguous": 6,
-    "new_candidates": 53,
+    "new_candidates": 52,
     "works": 533,
     "people": 744,
     "places": 116,
@@ -175,9 +175,23 @@
         "end_offset": 53
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "集賢殿大學士兼國子祭酒",
-        "note": "不建档：「集賢殿大學士兼國子祭酒」为两官连写未拆；建议拆为 集賢殿大學士（库只有宋具体条 1jb8bbthp8268，元许衡不合）、國子祭酒（概念 hixi4udstrls）"
+        "status": "matched_multi",
+        "canonical_name": "集賢殿大學士＋國子祭酒",
+        "targets": [
+          {
+            "part": "集賢殿大學士兼",
+            "entity_id": "hixibwhw2z28",
+            "canonical_name": "集賢殿大學士",
+            "href": "book-index://Entity/hixibwhw2z28"
+          },
+          {
+            "part": "國子祭酒",
+            "entity_id": "hixi5uk9g0sk",
+            "canonical_name": "國子祭酒",
+            "href": "book-index://Entity/hixi5uk9g0sk"
+          }
+        ],
+        "note": "兼任兩官，元許衡"
       },
       "source": "glm:glm-4.5-flash"
     },

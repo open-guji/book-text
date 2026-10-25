@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "text_version": "1.0.1",
   "review": {
     "date": "2026-10-20",
@@ -29,9 +29,9 @@
   },
   "stats": {
     "total_entities": 2209,
-    "matched": 2129,
+    "matched": 2131,
     "ambiguous": 2,
-    "new_candidates": 78,
+    "new_candidates": 76,
     "works": 236,
     "people": 696,
     "places": 41,
@@ -8967,9 +8967,23 @@
         "end_offset": 7396
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "健銳火器營",
-        "note": "庫無"
+        "status": "matched_multi",
+        "canonical_name": "健銳營＋火器營",
+        "targets": [
+          {
+            "part": "健銳",
+            "entity_id": "hixibvz4a70g",
+            "canonical_name": "健銳營",
+            "href": "book-index://Entity/hixibvz4a70g"
+          },
+          {
+            "part": "火器營",
+            "entity_id": "hixibvz4wo3k",
+            "canonical_name": "火器營",
+            "href": "book-index://Entity/hixibvz4wo3k"
+          }
+        ],
+        "note": "健銳營、火器營合稱"
       },
       "source": "claude:GUJI-240",
       "group": {
@@ -29751,9 +29765,23 @@
         "end_offset": 15496
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "總校兼提調官",
-        "note": "不建档：官名未收｜四庫館職名，庫無此官條"
+        "status": "matched_multi",
+        "canonical_name": "四庫全書館總校官＋四庫全書館提調官",
+        "targets": [
+          {
+            "part": "總校兼",
+            "entity_id": "hixibvu0ff28",
+            "canonical_name": "四庫全書館總校官",
+            "href": "book-index://Entity/hixibvu0ff28"
+          },
+          {
+            "part": "提調官",
+            "entity_id": "hixibvu4hi4g",
+            "canonical_name": "四庫全書館提調官",
+            "href": "book-index://Entity/hixibvu4hi4g"
+          }
+        ],
+        "note": "總校與提調官兼任"
       },
       "source": "claude:GUJI-240复核"
     },

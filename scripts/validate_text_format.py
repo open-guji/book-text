@@ -405,6 +405,37 @@ def _outer_box(boxes):
     return [x0, y0, x1 - x0, y1 - y0]
 
 
+def entity_multi_problems(ed):
+    """F-OV-14：entity.json 里 target.status=matched_multi 的形状，返回 [(说明, 子类)]。
+    targets ≥2；每项有非空 entity_id／canonical_name／href，href 尾段＝entity_id；part 若有须是 span 文本里的非空片段；
+    顶层不得同时带 entity_id／href。"""
+    out = []
+    for i, e in enumerate(ed.get("entities") or []):
+        t = e.get("target") or {}
+        if t.get("status") != "matched_multi":
+            continue
+        tag = f"实体 {e.get('id', '#%d' % i)}（{e.get('text')}）"
+        ts = t.get("targets")
+        if not isinstance(ts, list) or len(ts) < 2:
+            out.append((f"{tag} matched_multi 的 targets 须是 ≥2 项的列表", f"{i}:count"))
+            ts = ts if isinstance(ts, list) else []
+        for k in ("entity_id", "href"):
+            if k in t:
+                out.append((f"{tag} matched_multi 的顶层不得带 {k}（链接只放 targets[]）", f"{i}:top"))
+        for j, x in enumerate(ts):
+            if not isinstance(x, dict):
+                out.append((f"{tag} targets[{j}] 须是对象", f"{i}:{j}:shape"))
+                continue
+            miss = [k for k in ("entity_id", "canonical_name", "href") if not (isinstance(x.get(k), str) and x[k])]
+            if miss:
+                out.append((f"{tag} targets[{j}] 缺 {'／'.join(miss)}", f"{i}:{j}:field"))
+            elif x["href"].rsplit("/", 1)[-1] != x["entity_id"]:
+                out.append((f"{tag} targets[{j}] 的 href 尾段 {x['href'].rsplit('/', 1)[-1]!r} 不等于 entity_id {x['entity_id']!r}", f"{i}:{j}:href"))
+            if "part" in x and not (isinstance(x["part"], str) and x["part"] and x["part"] in (e.get("text") or "")):
+                out.append((f"{tag} targets[{j}].part={x['part']!r} 须是 span 文本里的非空片段", f"{i}:{j}:part"))
+    return out
+
+
 def fig_problems(fd, char, cord=None, norm=None, vdir=None, stem=None):
     """F-OV-13：fig.json 对照同章 char（及 cord、norm、图片文件），返回 [(说明, 子类)]。
     fd 为 None 表示章条目没声明 fig_file：char 里有图就报 nofig。vdir 为版本目录（核文件存在、sha256、大小、SVG 内容）；
@@ -1060,6 +1091,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-13 图片格与插图块（guji-format 09、02 §4.7，GUJI-737）：char 有图就须声明 fig_file；fig.json 与 char／cord／norm／
     #         图片文件对得上（引用、kind、页与框、文件存在、sha256、≤1 MB、SVG 无脚本外链）；norm 不许有图片格。
     r_ov13 = rule("F-OV-13", "HARD")
+    # F-OV-14 专名多链接（target.status=matched_multi）形状：targets ≥2，每项带 entity_id／canonical_name／href 且 href 尾段＝entity_id，
+    #         顶层不带 entity_id／href，part 若有须是 span 文本里的片段。
+    r_ov14 = rule("F-OV-14", "HARD")
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
     ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
@@ -1200,6 +1234,10 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 if cerr or not isinstance(cd, dict):
                     add(r_ov01, cf, f"{cf}: JSON 解析失败：{cerr}", sub="parse")
                     continue
+                if line == "entity":
+                    r_ov14["n_scanned"] += 1
+                    for msg, sub in entity_multi_problems(cd):
+                        add(r_ov14, cf, f"{cf}: {msg}", sub=sub)
                 if line == "punct":
                     for msg, sub in OV.heading_problems(char, cd):
                         add(r_ov12, cf, f"{cf}: {msg}", sub=sub)

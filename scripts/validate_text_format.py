@@ -408,7 +408,7 @@ def _outer_box(boxes):
 def entity_multi_problems(ed):
     """F-OV-14：entity.json 里 target.status=matched_multi 的形状，返回 [(说明, 子类)]。
     targets ≥2；每项有非空 entity_id／canonical_name／href，href 尾段＝entity_id；part 若有须是 span 文本里的非空片段；
-    顶层不得同时带 entity_id／href。"""
+    顶层不得同时带 entity_id／href；每项都写 part 时按序拼起来须等于 span 文本。"""
     out = []
     for i, e in enumerate(ed.get("entities") or []):
         t = e.get("target") or {}
@@ -433,6 +433,8 @@ def entity_multi_problems(ed):
                 out.append((f"{tag} targets[{j}] 的 href 尾段 {x['href'].rsplit('/', 1)[-1]!r} 不等于 entity_id {x['entity_id']!r}", f"{i}:{j}:href"))
             if "part" in x and not (isinstance(x["part"], str) and x["part"] and x["part"] in (e.get("text") or "")):
                 out.append((f"{tag} targets[{j}].part={x['part']!r} 须是 span 文本里的非空片段", f"{i}:{j}:part"))
+        if ts and all(isinstance(x, dict) and isinstance(x.get("part"), str) for x in ts) and "".join(x["part"] for x in ts) != (e.get("text") or ""):
+            out.append((f"{tag} 各项 part 按序拼起来 {''.join(x['part'] for x in ts)!r} 不等于 span 文本 {e.get('text')!r}", f"{i}:parts"))
     return out
 
 

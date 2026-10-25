@@ -39,3 +39,5 @@ def test_bad_shapes():
     bad2 = tg("a1", "正德"); del bad2["canonical_name"]
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[bad2, tg("b2", "嘉靖")])))
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "隆"), tg("b2", "嘉靖")])))  # part 不在 text
+    assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "嘉"), tg("b2", "嘉靖", "正")])))  # 全写 part 但拼不回 text
+    assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "正"), tg("b2", "嘉靖", "嘉")]), text="正嘉以")) # 少一字

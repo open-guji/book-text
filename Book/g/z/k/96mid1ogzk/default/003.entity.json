@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 3,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 1688,
-    "matched": 1628,
+    "matched": 1629,
     "ambiguous": 6,
-    "new_candidates": 54,
+    "new_candidates": 53,
     "works": 533,
     "people": 744,
     "places": 116,
@@ -4110,10 +4110,23 @@
         "end_offset": 1912
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "程"
+        "status": "matched_multi",
+        "canonical_name": "程顥＋程頤",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bnt7",
+            "canonical_name": "程顥",
+            "href": "book-index://Entity/hixhd2h9bnt7"
+          },
+          {
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "「周程張朱」之程，指二程，一个专名挂两条；若所在句仅指伊川（如胡程）则只挂程頤"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e00097",

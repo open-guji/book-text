@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "text_version": "1.0.3",
   "book_id": "96mid1ogzk",
   "volume": 2,
@@ -11,9 +11,9 @@
   },
   "stats": {
     "total_entities": 3043,
-    "matched": 2939,
+    "matched": 2951,
     "ambiguous": 6,
-    "new_candidates": 98,
+    "new_candidates": 86,
     "works": 1059,
     "people": 1379,
     "places": 186,
@@ -16320,11 +16320,23 @@
         "end_offset": 7620
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二程",
-        "note": "不建档：合稱（程顥、程頤），不挂單人"
+        "status": "matched_multi",
+        "canonical_name": "程顥＋程頤",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bnt7",
+            "canonical_name": "程顥",
+            "href": "book-index://Entity/hixhd2h9bnt7"
+          },
+          {
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "二程＝程顥、程頤，不能拆成两个 span，一个 span 挂两条"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e00411",
@@ -16946,11 +16958,28 @@
         "end_offset": 7911
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇氏",
-        "note": "不建档：合稱（蘇洵、蘇軾、蘇轍），不挂單人"
+        "status": "matched_multi",
+        "canonical_name": "蘇洵＋蘇軾＋蘇轍",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bene",
+            "canonical_name": "蘇洵",
+            "href": "book-index://Entity/hixhd2h9bene"
+          },
+          {
+            "entity_id": "hixhd2h9bdqq",
+            "canonical_name": "蘇軾",
+            "href": "book-index://Entity/hixhd2h9bdqq"
+          },
+          {
+            "entity_id": "hixhd2h9bdyf",
+            "canonical_name": "蘇轍",
+            "href": "book-index://Entity/hixhd2h9bdyf"
+          }
+        ],
+        "note": "「蘇氏父子兄弟合力爲之」，一个 span 挂三条"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e00424",
@@ -44985,10 +45014,25 @@
         "end_offset": 21930
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "胡程"
+        "status": "matched_multi",
+        "canonical_name": "胡瑗＋程頤",
+        "targets": [
+          {
+            "part": "胡",
+            "entity_id": "hixhd2h9bdwz",
+            "canonical_name": "胡瑗",
+            "href": "book-index://Entity/hixhd2h9bdwz"
+          },
+          {
+            "part": "程",
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "胡（安定）程（伊川）并称，祖其義理；可拆为「胡」「程」两 span"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e03046",
@@ -55281,10 +55325,25 @@
         "end_offset": 26927
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "老莊"
+        "status": "matched_multi",
+        "canonical_name": "老子＋莊周",
+        "targets": [
+          {
+            "part": "老",
+            "entity_id": "hixhd2h9bk46",
+            "canonical_name": "老子",
+            "href": "book-index://Entity/hixhd2h9bk46"
+          },
+          {
+            "part": "莊",
+            "entity_id": "hixhd2h9bk4g",
+            "canonical_name": "莊周",
+            "href": "book-index://Entity/hixhd2h9bk4g"
+          }
+        ],
+        "note": "合称"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e01212",
@@ -55340,10 +55399,25 @@
         "end_offset": 26981
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "老莊"
+        "status": "matched_multi",
+        "canonical_name": "老子＋莊周",
+        "targets": [
+          {
+            "part": "老",
+            "entity_id": "hixhd2h9bk46",
+            "canonical_name": "老子",
+            "href": "book-index://Entity/hixhd2h9bk46"
+          },
+          {
+            "part": "莊",
+            "entity_id": "hixhd2h9bk4g",
+            "canonical_name": "莊周",
+            "href": "book-index://Entity/hixhd2h9bk4g"
+          }
+        ],
+        "note": "合称"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e01215",
@@ -55399,10 +55473,25 @@
         "end_offset": 27043
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "莊列"
+        "status": "matched_multi",
+        "canonical_name": "莊周＋列御寇",
+        "targets": [
+          {
+            "part": "莊",
+            "entity_id": "hixhd2h9bk4g",
+            "canonical_name": "莊周",
+            "href": "book-index://Entity/hixhd2h9bk4g"
+          },
+          {
+            "part": "列",
+            "entity_id": "hixhd2h9bjxx",
+            "canonical_name": "列御寇",
+            "href": "book-index://Entity/hixhd2h9bjxx"
+          }
+        ],
+        "note": "合称"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e01217",
@@ -56193,11 +56282,13 @@
         "start_offset": 27424,
         "end_offset": 27425
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixibvx7apzj",
         "canonical_name": "商湯",
-        "note": "不建档：合稱「湯武」之商湯，库无唯一条目"
+        "href": "book-index://Entity/hixibvx7apzj",
+        "note": "合称拆开：「湯武」合称：湯、武各一 span"
       }
     },
     {
@@ -56212,11 +56303,13 @@
         "start_offset": 27425,
         "end_offset": 27426
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixibvx7apzf",
         "canonical_name": "周武王",
-        "note": "不建档：合稱「湯武」之周武王，库无唯一条目"
+        "href": "book-index://Entity/hixibvx7apzf",
+        "note": "合称拆开：同上"
       }
     },
     {
@@ -56700,11 +56793,13 @@
         "start_offset": 27611,
         "end_offset": 27612
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二程",
-        "note": "不建档：合稱「程朱」之二程，库无唯一条目"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhc1",
+        "canonical_name": "程頤",
+        "href": "book-index://Entity/hixhd2h9bhc1",
+        "note": "程子（程頤）"
       }
     },
     {
@@ -56740,11 +56835,13 @@
         "start_offset": 27618,
         "end_offset": 27619
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二程",
-        "note": "不建档：合稱「程朱」之二程，库无唯一条目"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhc1",
+        "canonical_name": "程頤",
+        "href": "book-index://Entity/hixhd2h9bhc1",
+        "note": "程子（程頤）"
       }
     },
     {
@@ -59890,11 +59987,23 @@
         "start_offset": 28870,
         "end_offset": 28871
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二程",
-        "note": "不建档：合稱「程朱」之二程，库无唯一条目"
+        "status": "matched_multi",
+        "canonical_name": "程顥＋程頤",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bnt7",
+            "canonical_name": "程顥",
+            "href": "book-index://Entity/hixhd2h9bnt7"
+          },
+          {
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "「周程張朱」之程，指二程，一个专名挂两条；若所在句仅指伊川（如胡程）则只挂程頤"
       }
     },
     {
@@ -59930,11 +60039,23 @@
         "start_offset": 28877,
         "end_offset": 28878
       },
-      "source": "claude:GUJI-240复核",
+      "source": "claude:A33",
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二程",
-        "note": "不建档：合稱「程朱」之二程，库无唯一条目"
+        "status": "matched_multi",
+        "canonical_name": "程顥＋程頤",
+        "targets": [
+          {
+            "entity_id": "hixhd2h9bnt7",
+            "canonical_name": "程顥",
+            "href": "book-index://Entity/hixhd2h9bnt7"
+          },
+          {
+            "entity_id": "hixhd2h9bhc1",
+            "canonical_name": "程頤",
+            "href": "book-index://Entity/hixhd2h9bhc1"
+          }
+        ],
+        "note": "「周程張朱」之程，指二程，一个专名挂两条；若所在句仅指伊川（如胡程）则只挂程頤"
       }
     },
     {

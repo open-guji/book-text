@@ -63,6 +63,17 @@ def main():
             if os.path.isfile(os.path.join(vdir, 'index.json')) and OV.is_original_dir(vdir):
                 if OV.sync_headings(vdir):
                     nh += 1
+    # 防稀疏检出／缺文件：找到的条目远少于现有索引时拒绝覆盖（2026-10-25 #246 曾因稀疏检出把索引写成空 {}）
+    old = 0
+    for s in buckets:
+        f = os.path.join(a.root, 'index', 'texts', f'{s}.json')
+        if os.path.isfile(f):
+            try:
+                old += len(json.load(open(f, encoding='utf-8')))
+            except ValueError:
+                pass
+    if n == 0 or n < old * 0.9:
+        sys.exit(f'拒绝覆盖：只找到 {n} 个 manifest，现有索引 {old} 条。请在完整检出（含全部 manifest.json）上运行。')
     for s, b in buckets.items():
         write_json(os.path.join(a.root, 'index', 'texts', f'{s}.json'), b)
     print(f'index/texts/  {n} 个条目' + (f'；重算目录缓存 headings {nh} 个版本' if nh else ''))

@@ -758,7 +758,8 @@ def pointer_assets(ptr, pd, fetch, book=None, stem=None):
 
 
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig"}  # fig/：图片目录（F-OV-13）
-ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|pending)\.json$|^\d+\.(lines|rich)\.md$")
+ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|pending|char-edits)\.json$|^\d+\.(lines|rich)\.md$")
+# NNN.char-edits.json（改字清单）是旁路文件：不在 index.json 声明，见 F-OV-15
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file", "fig_file",
                         "pending_file", "lines_file", "rich_file")
@@ -1096,6 +1097,12 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-14 专名多链接（target.status=matched_multi）形状：targets ≥2，每项带 entity_id／canonical_name／href 且 href 尾段＝entity_id，
     #         顶层不带 entity_id／href，part 若有须是 span 文本里的片段。
     r_ov14 = rule("F-OV-14", "HARD")
+    # F-OV-15 改字清单 NNN.char-edits.json（docs/design/2026-10-改字清单.md）：只许文本线 0.x；schema／book_id／volume；
+    #         每条 anchor／old／new／base_commit，锚点在文本里、文本现为 new；伴生层 text_version 不得落后于 base_text_version。
+    #         F-OV-02s：已登记的改字格放行为软提示；F-OV-15s：清单里各伴生层都已对上的格（可清）。
+    r_ov15 = rule("F-OV-15", "HARD")
+    r_ov02s = rule("F-OV-02s", "SOFT")
+    r_ov15s = rule("F-OV-15s", "SOFT")
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
     ov_assets_rules = {"F-OV-09w": r_ov09w, "F-OV-09": r_ov09, "F-OV-10": r_ov10, "F-OV-11": r_ov11}
     n_ov_chapters = 0
@@ -1226,6 +1233,14 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                         add(r_ov13, fpath or f, f"{fpath or f}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
             r_ov12["n_scanned"] += 1
             want_heads = []
+            ce_path = OV.char_edits_path(od, stem)
+            edits, ce_layers = None, {}
+            if os.path.isfile(ce_path):
+                r_ov15["n_scanned"] += 1
+                edits, eerr = jload(ce_path)
+                if eerr or not isinstance(edits, dict):
+                    add(r_ov15, ce_path, f"{ce_path}: JSON 解析失败：{eerr}", sub="parse")
+                    edits = None
             for line in ("punct", "entity"):
                 cf = OV.companion_path(od, stem, line)
                 if not os.path.isfile(cf):
@@ -1246,6 +1261,7 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                     want_heads = OV.extract_headings(char, cd)
                 v, ctv = cd.get("version"), cd.get("text_version")
                 vt, ctvt = OV.parse_version(v), OV.parse_version(ctv)
+                ce_layers[line] = (cd, ctv)
                 if vt is None or vt < OV.MIN_TEXT_0X:
                     add(r_ov01, cf, f"{cf}: version={v!r} 不合格式或低于 0.1.0", sub="version")
                 elif vt[0] > OV.MAX_MAJOR:
@@ -1266,7 +1282,12 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                     add(r_ov01, cf, f"{cf}: text_version={ctv} 超前于当前文本 {tv}", sub="ahead")
                 else:
                     # GUJI-543/541：不论是否落后都核锚点（改字类修订合入时，同版本也要发现伴生层失效）
-                    bad = OV.anchor_mismatches(char, line, cd)
+                    soft02 = []
+                    bad = OV.anchor_mismatches(char, line, cd, edits, soft=soft02)
+                    for i, note in soft02[:20]:
+                        add(r_ov02s, cf, f"{cf}: {note}", sub=f"anchor:{i}")
+                    if len(soft02) > 20:
+                        add(r_ov02s, cf, f"{cf}: 另有 {len(soft02) - 20} 处已登记改字待同步", sub="anchor:more", weight=len(soft02) - 20)
                     ov02_checked[line][0] += 1
                     ov02_checked[line][1] += len(cd.get("punctuations" if line == "punct" else "entities") or [])
                     why = f"落后于文本（{ctv} < {tv}）且" if ctvt < tvt else f"text_version 与文本同为 {tv}，但"
@@ -1277,6 +1298,13 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                         add(r_ov02, cf, f"{cf}: 另有 {len(bad) - 20} 处锚点对不上未逐条列出", sub="anchor:more",
                             weight=len(bad) - 20)
                         r_ov02["violations"][-1].update(line=line, detail=f"另有 {len(bad) - 20} 处未逐条列出")
+            if edits is not None:
+                ce_hard, ce_soft = OV.char_edits_problems(char, edits, stem=stem,
+                                                          book_id=os.path.basename(os.path.dirname(od)), layers=ce_layers)
+                for msg, sub in ce_hard:
+                    add(r_ov15, ce_path, f"{ce_path}: {msg}", sub=sub)
+                for msg, sub in ce_soft:
+                    add(r_ov15s, ce_path, f"{ce_path}: {msg}", sub=sub)
             if want_heads and ch.get("headings") != want_heads:
                 add(r_ov12, f, f"{f}: 册 {stem} headings 与 punct 标题符现算的不一致（跑 build_texts_index.py 重建，不手改）",
                     sub=f"{stem}:headings")

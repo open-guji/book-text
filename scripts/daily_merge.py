@@ -19,6 +19,7 @@
 from __future__ import annotations
 
 import argparse
+import glob
 import datetime as dt
 import json
 import os
@@ -76,6 +77,21 @@ def fill_tbd(files: list[str], base: str, n: int) -> int:
     return k
 
 
+def char_edits_report() -> str:
+    """各册未清的改字清单（NNN.char-edits.json，docs/design/2026-10-改字清单.md）：每日合并 PR 里报条数。"""
+    rows = []
+    for path in sorted(glob.glob("Book/**/*.char-edits.json", recursive=True) + glob.glob("Work/**/*.char-edits.json", recursive=True)):
+        try:
+            with open(path, encoding="utf-8") as f:
+                n = len(json.load(f).get("edits") or [])
+        except Exception:  # noqa: BLE001 坏文件由 local_check 报
+            n = -1
+        rows.append(f"- `{path}`：{n if n >= 0 else '解析失败'} 格待同步")
+    if not rows:
+        return "改字清单：无未清条目。\n"
+    return f"改字清单：{len(rows)} 册有未清条目（标点／实体待 A33 用 `char_edits.py sync` 同步）\n" + "\n".join(rows) + "\n"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--no-merge", action="store_true", help="只开／更新 PR，不合")
@@ -123,7 +139,7 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=-7))).strftime("%Y-%m-%d")
     log = sh("git", "log", "--oneline", "--no-merges", "origin/main..HEAD").stdout.strip()
     body = (f"每日 dev→main 合并（{today}，`scripts/daily_merge.py`）。\n\n提交：\n```\n{log[:6000]}\n```\n\n"
-            f"`python3 scripts/local_check.py --all`：\n```\n{chk.stdout.strip()[-3000:]}\n```\n")
+            f"`python3 scripts/local_check.py --all`：\n```\n{chk.stdout.strip()[-3000:]}\n```\n\n{char_edits_report()}")
     prs = gh(f"repos/{REPO}/pulls?state=open&base=main&head=open-guji:dev")
     if prs:
         n = prs[0]["number"]

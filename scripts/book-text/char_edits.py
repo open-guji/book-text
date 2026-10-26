@@ -47,7 +47,11 @@ def diff_slots(old_char, new_char):
     old, new = OV.char_slots(old_char), OV.char_slots(new_char)
     if [a for a, _c in old] != [a for a, _c in new]:
         raise ValueError("新旧文本的格序不一致（有增删字）：改字清单只收单格替换，请推分支请 A33 重标")
-    return [(a, o, n) for (a, o), (_a, n) in zip(old, new) if o != n]
+    out = [(a, o, n) for (a, o), (_a, n) in zip(old, new) if o != n]
+    bad = [(a, o, n) for a, o, n in out if len(o) != 1 or len(n) != 1]
+    if bad:
+        raise ValueError(f"格里不是单个字：{bad[:3]}（一格一字，清单只收单字替换）")
+    return out
 
 
 def merge(edits, changes, base_commit, ref=None, by=None):
@@ -147,7 +151,8 @@ def sync(vdir, chapter, dry_run=False, out=None):
         for p in files["punct"][1].get("punctuations") or []:
             a = p.get("anchor")
             e = em.get(a)
-            if e and p.get("pre_char") == e["old"] and a in pos and slots[pos[a]][1] == e["new"]:
+            if (e and len(e["new"]) == 1 and p.get("pre_char") == e["old"] and a in pos
+                    and slots[pos[a]][1] == e["new"]):
                 p["pre_char"] = e["new"]
                 changed["punct"] += 1
             if p.get("mark") in ENDS and a in pos:
@@ -165,7 +170,7 @@ def sync(vdir, chapter, dry_run=False, out=None):
             hit = False
             for k, (a, now) in enumerate(seg):
                 e = em.get(a)
-                if e and txt[k] == e["old"] and now == e["new"]:
+                if e and len(now) == 1 and txt[k] == e["old"] and now == e["new"]:
                     txt[k] = now
                     hit = True
             if hit:

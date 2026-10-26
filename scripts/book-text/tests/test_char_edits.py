@@ -109,3 +109,14 @@ def test_insert_rejected_and_unlisted_hard(tmp_path):
     bad = dict(ed, edits=[dict(ed["edits"][0], new="乙")], base_text_version="0.3.5")
     subs = {s for _m, s in OV.char_edits_problems(ch, bad, layers={"entity": (E, "0.3.0")})[0]}
     assert "e0:stale" in subs and "entity:base" in subs
+
+
+def test_multichar_and_missing_anchor_hard(tmp_path):
+    c = char("甲乙丁丁")
+    ed = {"schema": OV.CHAR_EDITS_SCHEMA, "book_id": "bk0000000001", "volume": 1, "base_text_version": "0.3.0",
+          "edits": [{"anchor": "1:1:3", "old": "丙丙", "new": "丁", "base_commit": "abc"},
+                    {"anchor": "1:1:9", "old": "丙", "new": "丁", "base_commit": "abc"},
+                    {"anchor": "1:1:2", "old": "甲", "new": "", "base_commit": "abc"}]}
+    hard, _soft = OV.char_edits_problems(c, ed, "001", "bk0000000001")
+    subs = {s for _m, s in hard}
+    assert "e0:len" in subs and "e1:anchor" in subs and "e2" in subs

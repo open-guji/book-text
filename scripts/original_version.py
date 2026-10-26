@@ -345,6 +345,10 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
         if not (isinstance(a, str) and isinstance(old, str) and isinstance(new, str)) or not old or not new:
             hard.append((f"edits[{k}] 须有 anchor／old／new（非空字符串）", f"e{k}"))
             continue
+        if len(old) != 1 or len(new) != 1:
+            hard.append((f"edits[{k}] {a} 的 old={old!r}／new={new!r} 须各是单个字（一格一字；"
+                         "sync 写出的 pre_char 是多字或空串时，阅读器会丢掉整条标点）", f"e{k}:len"))
+            continue
         if a in seen:
             hard.append((f"edits[{k}] 锚点 {a} 重复登记（同格多次改字合并成一条：old 取最早、new 取最新）", f"dup:{a}"))
         seen.add(a)

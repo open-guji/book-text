@@ -25,6 +25,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 REPO = "open-guji/book-text"
@@ -88,6 +89,16 @@ def main() -> int:
     # 显式 refspec：单分支克隆（remote.origin.fetch 只有 main）里 `git fetch origin dev` 不更新 origin/dev
     sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main",
        "+refs/heads/dev:refs/remotes/origin/dev", check=True)
+    # 浅克隆里两边可能找不到共同祖先（merge 报 unrelated histories），逐步加深到找得到为止
+    for depth in (100, 500, 2000):
+        if sh("git", "merge-base", "origin/main", "origin/dev").returncode == 0:
+            break
+        sh("git", "fetch", "-q", f"--deepen={depth}", "origin", "+refs/heads/main:refs/remotes/origin/main",
+           "+refs/heads/dev:refs/remotes/origin/dev")
+    else:
+        if sh("git", "merge-base", "origin/main", "origin/dev").returncode:
+            print("✗ 浅克隆加深后 main 与 dev 仍找不到共同祖先，请 `git fetch --unshallow` 后重跑")
+            return 2
     commits = sh("git", "log", "--oneline", "origin/main..origin/dev").stdout.strip().splitlines()
     files = sh("git", "diff", "--name-only", "origin/main", "origin/dev").stdout.split()
     print(f"dev 比 main 多 {len(commits)} 个提交、{len(files)} 个文件")
@@ -149,6 +160,11 @@ def main() -> int:
         print(f"PR #{n} 已就绪（--no-merge，不合）")
         return 0
     head = sh("git", "rev-parse", "HEAD").stdout.strip()
+    # 刚推完 GitHub 还在算能不能合（mergeable 为 null），这时合并会报 405；等它算完
+    for _ in range(12):
+        if gh(f"repos/{REPO}/pulls/{n}").get("mergeable") is not None:
+            break
+        time.sleep(5)
     try:
         gh("-X", "PUT", f"repos/{REPO}/pulls/{n}/merge", "-f", "merge_method=merge", "-f", f"sha={head}",
            "-f", f"commit_title=每日合并 dev→main（{today}） (#{n})")

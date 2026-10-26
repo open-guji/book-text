@@ -67,6 +67,9 @@ def test_record_soft_and_sync(tmp_path, capsys):
     assert char_edits.main(["sync", d, "--chapter", "001"]) == 0
     out = capsys.readouterr().out
     assert "乙丙→乙丁" in out and "核挂法" in out
+    # 受影响句里人裁来源的标点与专名单列，末尾汇总、提示升 patch
+    assert "人裁条目" in out and "标点 #0 1:1:3" in out and "专名 e1 1:1:2～1:1:3" in out
+    assert "涉及人裁 1 句" in out and "请对 punct 线、entity 线 升 patch" in out
     P, E = load(d, "001.punct.json"), load(d, "001.entity.json")
     assert P["punctuations"][0] == {"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:3",
                                     "pre_char": "丁", "char_offset": 0, "source": "human"}
@@ -120,3 +123,10 @@ def test_multichar_and_missing_anchor_hard(tmp_path):
     hard, _soft = OV.char_edits_problems(c, ed, "001", "bk0000000001")
     subs = {s for _m, s in hard}
     assert "e0:len" in subs and "e1:anchor" in subs and "e2" in subs
+
+
+def test_record_warns_missing_ref(tmp_path, capsys):
+    d = setup(tmp_path)
+    assert char_edits.main(["record", d, "--chapter", "001", "--old-char", os.path.join(d, "old.json"),
+                            "--base-commit", "abc123", "--dry-run"]) == 0
+    assert "没给 --ref" in capsys.readouterr().err

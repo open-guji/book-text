@@ -13,8 +13,9 @@
           按清单机械同步：punct 的 pre_char、entity 的 text 里，落在登记格上、仍是 old 的字改成 new。
           只改校验字，不重新断句、不动 target、不动 source（人裁／手改的条目也只同步校验字）。
           同步完列出：字变了的专名（要核挂法是否还对）、改字所在的句子（要不要重标由人定，
-          要重标的用 punct_redo.py plan/apply）。清单里同步完的格删掉，清空就删文件。
-          之后用 bump_original.py 给有改动的线升 patch。
+          要重标的用 punct_redo.py plan/apply）、这些句子里人裁／手改来源的标点与专名（单列，
+          末尾汇总「涉及人裁 N 句」，要重标的先交 A34）。清单里同步完的格删掉，清空就删文件。
+          末尾提示哪条线要升 patch；升版用 bump_original.py，必须在 sync 之后。
 """
 from __future__ import annotations
 
@@ -31,6 +32,13 @@ import original_version as OV  # noqa: E402
 from punct_redo import load_old_char  # noqa: E402
 
 ENDS = set("。？！")
+MANUAL_KEYS = ("human", "manual", "人裁", "手改")
+
+
+def is_manual(source):
+    """人裁／手改来源：source 里含 human、manual（如 claude:manual、claude:T-manual）、人裁、手改。"""
+    s = str(source or "").lower()
+    return any(k in s for k in MANUAL_KEYS)
 
 
 def _resolve(ref, vdir):
@@ -95,6 +103,9 @@ def cmd_record(a):
     except ValueError as e:
         print(str(e), file=sys.stderr)
         return 2
+    if not a.ref:
+        print("警告：没给 --ref（出处：意见 id／待审单 r 号／GUJI 卡号）。建议必填，"
+              "便于和 CHANGES 的格变动出处（check_cell_provenance）对照", file=sys.stderr)
     if a.old_char.startswith("git:"):
         base = a.base_commit or _resolve(a.old_char[4:], a.vdir)
     elif a.base_commit:
@@ -200,6 +211,9 @@ def sync(vdir, chapter, dry_run=False, out=None):
     for eid, was, now, st, cn, src in touched_ents:
         print(f"  专名 {eid} {was}→{now}（{st} {cn or ''}，source={src}）：核挂法是否还对", file=out)
     seen = set()
+    manual_sents = 0
+    pts = (files["punct"][1].get("punctuations") or []) if "punct" in files else []
+    ents = (files["entity"][1].get("entities") or []) if "entity" in files else []
     for e in edits["edits"]:
         if e["anchor"] not in pos:
             continue
@@ -208,6 +222,29 @@ def sync(vdir, chapter, dry_run=False, out=None):
             continue
         seen.add((s, t))
         print(f"  句 {slots[s][0]}：{text[s:t]}", file=out)
+        man = []
+        for k, p in enumerate(pts):
+            i = pos.get(p.get("anchor"))
+            if i is not None and s <= i < t and is_manual(p.get("source")):
+                man.append(f"标点 #{k} {p.get('anchor')} {p.get('mark') or p.get('kind')}（source={p.get('source')}）")
+        for x in ents:
+            anc = x.get("anchor") or {}
+            i, j = pos.get(anc.get("start")), pos.get(anc.get("end"))
+            if i is not None and j is not None and i < t and j >= s and is_manual(x.get("source")):
+                man.append(f"专名 {x.get('id')} {anc.get('start')}～{anc.get('end')} {x.get('type')} {x.get('text')}"
+                           f"（source={x.get('source')}）")
+        if man:
+            manual_sents += 1
+            print("    人裁条目（要重标须先交 A34）：", file=out)
+            for m in man:
+                print(f"      {m}", file=out)
+    print(f"涉及人裁 {manual_sents} 句", file=out)
+    tv = OV.parse_version(char.get("version"))
+    todo = [line for line, (_cf, data) in files.items()
+            if changed[line] or OV.parse_version(data.get("text_version")) != tv]
+    if todo:
+        print("请对 " + "、".join(f"{line} 线" for line in todo) + " 升 patch（bump_original.py --line <线> --level patch，"
+              "须在本次 sync 之后）", file=out)
     if not dry_run:
         for line, (cf, data) in files.items():
             if changed[line]:
@@ -218,7 +255,8 @@ def sync(vdir, chapter, dry_run=False, out=None):
             OV.dump_json(path, edits)
         else:
             os.remove(path)
-    return {"punct": changed["punct"], "entity": changed["entity"], "cleared": cleared}
+    return {"punct": changed["punct"], "entity": changed["entity"], "cleared": cleared,
+            "manual_sentences": manual_sents, "bump": todo}
 
 
 def main(argv=None):
@@ -232,7 +270,7 @@ def main(argv=None):
         p.add_argument("--dry-run", action="store_true")
     r.add_argument("--old-char", required=True, help="改字前的 char.json 路径，或 git:<提交>")
     r.add_argument("--base-commit", help="改字前的提交号（--old-char 给文件时必填）")
-    r.add_argument("--ref", help="出处：意见 id／事件 id／待审单 r 号／GUJI 卡号")
+    r.add_argument("--ref", help="出处：意见 id／事件 id／待审单 r 号／GUJI 卡号（建议必填，缺了会警告）")
     r.add_argument("--by", help="改字方，如 A32")
     a = ap.parse_args(argv)
     if a.cmd == "record":

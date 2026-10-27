@@ -679,19 +679,19 @@
 | 2026-10-27 | 96mid1ogzk/008 | 实体 | 0.2.1→0.2.2 | 回挂 18 处，据 book-index 新建地名两层／人物条 | #314 |
 | 2026-10-27 | 96mid1ogzk/033 | 标点 | →0.1.0 | A33 第33册标点首版（载记类，逐句标注） | #315 |
 | 2026-10-27 | 96mid1ogzk/033 | 实体 | →0.1.0 | A33 第33册专名首版（载记类，逐句标注，对接 A12 实体库） | #315 |
-| 2026-10-27 | 96mid1ogzk/001 | 实体 | 1.5.1→1.5.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/002 | 实体 | 1.15.1→1.15.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/003 | 实体 | 1.15.1→1.15.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/004 | 实体 | 0.5.3→0.5.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/005 | 实体 | 1.3.1→1.3.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/006 | 实体 | 0.2.3→0.2.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/007 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/008 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/009 | 实体 | 0.2.3→0.2.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/010 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/011 | 实体 | 0.1.1→0.1.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/012 | 实体 | 0.2.1→0.2.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/015 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/017 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/018 | 实体 | 0.2.4→0.2.5 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
-| 2026-10-27 | 96mid1ogzk/033 | 实体 | 0.1.0→0.1.1 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #TBD |
+| 2026-10-27 | 96mid1ogzk/001 | 实体 | 1.5.1→1.5.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/002 | 实体 | 1.15.1→1.15.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/003 | 实体 | 1.15.1→1.15.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/004 | 实体 | 0.5.3→0.5.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/005 | 实体 | 1.3.1→1.3.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/006 | 实体 | 0.2.3→0.2.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/007 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/008 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/009 | 实体 | 0.2.3→0.2.4 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/010 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/011 | 实体 | 0.1.1→0.1.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/012 | 实体 | 0.2.1→0.2.2 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/015 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/017 | 实体 | 0.2.2→0.2.3 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/018 | 实体 | 0.2.4→0.2.5 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |
+| 2026-10-27 | 96mid1ogzk/033 | 实体 | 0.1.0→0.1.1 | A33 复验：target 改指现行 id（staging→生产 id 经 promotions 映射 250 组；合并墓碑改指链末；ambiguous 候选去重；4 处 staging id 已不存在据书名重挂） | #316 |

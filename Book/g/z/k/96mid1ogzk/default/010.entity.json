@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "text_version": "0.4.0",
   "book_id": "96mid1ogzk",
   "volume": 10,
@@ -10,13 +10,13 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 1902,
-    "matched": 1866,
+    "total_entities": 1898,
+    "matched": 1869,
     "ambiguous": 0,
-    "new_candidates": 36,
+    "new_candidates": 29,
     "works": 808,
     "people": 740,
-    "places": 102,
+    "places": 98,
     "offices": 57,
     "dynasties": 140,
     "reigns": 55
@@ -1414,9 +1414,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2q5nkcn4",
-        "canonical_name": "唐六典",
-        "href": "book-index://Work/d59f2q5nkcn4"
+        "entity_id": "d59f28kqnnk4",
+        "canonical_name": "大唐六典",
+        "href": "book-index://Work/d59f28kqnnk4"
       },
       "source": "claude:A33"
     },
@@ -1556,9 +1556,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1exocgvapds03",
+        "entity_id": "d59fyh4kttkw",
         "canonical_name": "七畧",
-        "href": "book-index://Work/1exocgvapds03"
+        "href": "book-index://Work/d59fyh4kttkw"
       },
       "source": "claude:A33"
     },
@@ -5819,9 +5819,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2gl6vaio",
-        "canonical_name": "梅磵詩話",
-        "href": "book-index://Work/d59f2gl6vaio"
+        "entity_id": "d59f2hfireo1",
+        "canonical_name": "梅澗詩話",
+        "href": "book-index://Work/d59f2hfireo1"
       },
       "source": "claude:A33"
     },
@@ -9709,9 +9709,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8awb92ij9c",
+        "entity_id": "hixia8mwssu8",
         "canonical_name": "朝散大夫",
-        "href": "book-index://Entity/1jb8awb92ij9c"
+        "href": "book-index://Entity/hixia8mwssu8"
       },
       "source": "claude:A33"
     },
@@ -10728,9 +10728,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2govj5dt",
-        "canonical_name": "周官集傳",
-        "href": "book-index://Work/d59f2govj5dt",
+        "entity_id": "d59f2gel0gld",
+        "canonical_name": "周禮集傳",
+        "href": "book-index://Work/d59f2gel0gld",
         "note": "按撰人「毛應龍」核对"
       },
       "source": "claude:A33"
@@ -12240,9 +12240,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2govj5dt",
-        "canonical_name": "周官集傳",
-        "href": "book-index://Work/d59f2govj5dt",
+        "entity_id": "d59f2gel0gld",
+        "canonical_name": "周禮集傳",
+        "href": "book-index://Work/d59f2gel0gld",
         "note": "毛應龍撰"
       },
       "source": "claude:A33"
@@ -12281,9 +12281,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2govj5dt",
-        "canonical_name": "周官集傳",
-        "href": "book-index://Work/d59f2govj5dt",
+        "entity_id": "d59f2gel0gld",
+        "canonical_name": "周禮集傳",
+        "href": "book-index://Work/d59f2gel0gld",
         "note": "毛應龍撰"
       },
       "source": "claude:A33"
@@ -16319,8 +16319,11 @@
         "end_offset": 10625
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宿遷"
+        "status": "matched",
+        "entity_id": "hixicl8ftly2",
+        "canonical_name": "宿遷縣",
+        "href": "book-index://Entity/hixicl8ftly2",
+        "note": "回挂：「宿遷」按別名／沿革名／異體字配「宿遷縣」"
       },
       "source": "claude:A33"
     },
@@ -21269,8 +21272,11 @@
         "end_offset": 15046
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汴京"
+        "status": "matched",
+        "entity_id": "hixi4ugtrl6p",
+        "canonical_name": "開封府",
+        "href": "book-index://Entity/hixi4ugtrl6p",
+        "note": "回挂：「汴京」按別名／沿革名／異體字配「開封府」"
       },
       "source": "claude:A33"
     },
@@ -21652,9 +21658,11 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1exp0i3uob280",
-        "canonical_name": "宋史藝文志",
-        "href": "book-index://Work/1exp0i3uob280"
+        "entity_id": "d59f2gonq7sy",
+        "canonical_name": "宋史",
+        "href": "book-index://Work/d59f2gonq7sy",
+        "coarse": "part_of_work",
+        "note": "原 staging id 已不存在，据书名重挂（A33 复验）"
       },
       "source": "claude:A33"
     },
@@ -24903,40 +24911,21 @@
     },
     {
       "id": "e01210",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "105:5:7a",
-        "end": "105:5:8a"
-      },
-      "span": {
-        "start_offset": 17296,
-        "end_offset": 17298
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01211",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "105:5:9a",
         "end": "105:5:10a"
       },
       "span": {
-        "start_offset": 17298,
+        "start_offset": 17296,
         "end_offset": 17300
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -26475,9 +26464,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn"
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm"
       },
       "source": "claude:A33"
     },
@@ -26830,40 +26819,21 @@
     },
     {
       "id": "e01302",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "112:4:8a",
-        "end": "112:4:9a"
-      },
-      "span": {
-        "start_offset": 18463,
-        "end_offset": 18465
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01303",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "112:4:10a",
         "end": "112:4:11a"
       },
       "span": {
-        "start_offset": 18465,
+        "start_offset": 18463,
         "end_offset": 18467
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -27513,9 +27483,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn",
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm",
         "note": "庫條未記朝代，按書名撰人核对"
       },
       "source": "claude:A33"
@@ -27534,9 +27504,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn",
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm",
         "note": "省稱，指汪克寛"
       },
       "source": "claude:A33"
@@ -27738,9 +27708,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn",
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm",
         "note": "省稱，指汪克寛"
       },
       "source": "claude:A33"
@@ -28399,9 +28369,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2njeii9t",
-        "canonical_name": "篁墩集",
-        "href": "book-index://Work/d59f2njeii9t",
+        "entity_id": "d59f2njwm9kw",
+        "canonical_name": "篁墩文集",
+        "href": "book-index://Work/d59f2njwm9kw",
         "note": "按撰人「程敏政」核对"
       },
       "source": "claude:A33"
@@ -28420,9 +28390,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2njeii9t",
-        "canonical_name": "篁墩集",
-        "href": "book-index://Work/d59f2njeii9t",
+        "entity_id": "d59f2njwm9kw",
+        "canonical_name": "篁墩文集",
+        "href": "book-index://Work/d59f2njwm9kw",
         "note": "篇名，暫挂上位書《篁墩集》（A33）；程敏政跋",
         "coarse": "part_of_work"
       },
@@ -28442,9 +28412,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn"
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm"
       },
       "source": "claude:A33"
     },
@@ -34609,40 +34579,21 @@
     },
     {
       "id": "e01679",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "151:5:9a",
-        "end": "151:5:10a"
-      },
-      "span": {
-        "start_offset": 24941,
-        "end_offset": 24943
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01680",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "151:5:11a",
         "end": "151:5:12a"
       },
       "span": {
-        "start_offset": 24943,
+        "start_offset": 24941,
         "end_offset": 24945
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -37189,9 +37140,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f206t1zwg",
+        "entity_id": "d59fy0zwmdxe",
         "canonical_name": "淮南子",
-        "href": "book-index://Work/d59f206t1zwg",
+        "href": "book-index://Work/d59fy0zwmdxe",
         "note": "篇名，暫挂上位書《淮南子》（A33）",
         "coarse": "part_of_work"
       },
@@ -37708,8 +37659,10 @@
         "end_offset": 27852
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "龍里縣"
+        "status": "matched",
+        "entity_id": "hixicl8evwcw",
+        "canonical_name": "龍里縣",
+        "href": "book-index://Entity/hixicl8evwcw"
       },
       "source": "claude:A33"
     },
@@ -38149,39 +38102,21 @@
     },
     {
       "id": "e01848",
-      "type": "place",
-      "text": "兩淮",
+      "type": "office",
+      "text": "兩淮鹽政",
       "anchor": {
         "start": "170:8:9a",
-        "end": "170:8:10a"
-      },
-      "span": {
-        "start_offset": 28222,
-        "end_offset": 28224
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩淮"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01849",
-      "type": "office",
-      "text": "鹽政",
-      "anchor": {
-        "start": "170:8:11a",
         "end": "170:8:12a"
       },
       "span": {
-        "start_offset": 28224,
+        "start_offset": 28222,
         "end_offset": 28226
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8bbth9m70g",
-        "canonical_name": "巡鹽御史",
-        "href": "book-index://Entity/1jb8bbth9m70g"
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
       },
       "source": "claude:A33"
     },

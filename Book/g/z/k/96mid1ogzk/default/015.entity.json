@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "text_version": "0.4.0",
   "book_id": "96mid1ogzk",
   "volume": 15,
@@ -10,13 +10,13 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 1927,
-    "matched": 1796,
+    "total_entities": 1918,
+    "matched": 1797,
     "ambiguous": 0,
-    "new_candidates": 131,
+    "new_candidates": 121,
     "works": 550,
     "people": 870,
-    "places": 206,
+    "places": 197,
     "offices": 89,
     "dynasties": 163,
     "reigns": 49
@@ -263,9 +263,11 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1exp0i3uob280",
-        "canonical_name": "宋史藝文志",
-        "href": "book-index://Work/1exp0i3uob280"
+        "entity_id": "d59f2gonq7sy",
+        "canonical_name": "宋史",
+        "href": "book-index://Work/d59f2gonq7sy",
+        "coarse": "part_of_work",
+        "note": "原 staging id 已不存在，据书名重挂（A33 复验）"
       },
       "source": "claude:A33"
     },
@@ -304,9 +306,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hrrihoh",
-        "canonical_name": "龍川集",
-        "href": "book-index://Work/d59f2hrrihoh",
+        "entity_id": "d59f2hq8kq2o",
+        "canonical_name": "龍川文集",
+        "href": "book-index://Work/d59f2hq8kq2o",
         "note": "陳亮撰"
       },
       "source": "claude:A33"
@@ -468,9 +470,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhgyrw4wjn",
-        "canonical_name": "汪克寛",
-        "href": "book-index://Entity/hixhgyrw4wjn"
+        "entity_id": "hixhd2h9bgdm",
+        "canonical_name": "汪克寬",
+        "href": "book-index://Entity/hixhd2h9bgdm"
       },
       "source": "claude:A33"
     },
@@ -1184,9 +1186,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bizx",
-        "canonical_name": "武后",
-        "href": "book-index://Entity/hixhd2h9bizx"
+        "entity_id": "hixhd2h9bnsp",
+        "canonical_name": "武曌（武則天）",
+        "href": "book-index://Entity/hixhd2h9bnsp"
       },
       "source": "claude:A33"
     },
@@ -4127,39 +4129,21 @@
     },
     {
       "id": "e00201",
-      "type": "place",
-      "text": "兩淮",
+      "type": "office",
+      "text": "兩淮鹽政",
       "anchor": {
         "start": "23:6:14a",
-        "end": "23:6:15a"
-      },
-      "span": {
-        "start_offset": 3698,
-        "end_offset": 3700
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩淮"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00202",
-      "type": "office",
-      "text": "鹽政",
-      "anchor": {
-        "start": "23:6:16a",
         "end": "23:6:17a"
       },
       "span": {
-        "start_offset": 3700,
+        "start_offset": 3698,
         "end_offset": 3702
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8bbth9m70g",
-        "canonical_name": "巡鹽御史",
-        "href": "book-index://Entity/1jb8bbth9m70g"
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
       },
       "source": "claude:A33"
     },
@@ -4620,8 +4604,10 @@
         "end_offset": 4029
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臨榆縣"
+        "status": "matched",
+        "entity_id": "hixicl8evw9m",
+        "canonical_name": "臨榆縣",
+        "href": "book-index://Entity/hixicl8evw9m"
       },
       "source": "claude:A33"
     },
@@ -4791,40 +4777,21 @@
     },
     {
       "id": "e00234",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "26:7:8a",
-        "end": "26:7:9a"
-      },
-      "span": {
-        "start_offset": 4220,
-        "end_offset": 4222
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00235",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "26:7:10a",
         "end": "26:7:11a"
       },
       "span": {
-        "start_offset": 4222,
+        "start_offset": 4220,
         "end_offset": 4224
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -5590,39 +5557,21 @@
     },
     {
       "id": "e00273",
-      "type": "place",
-      "text": "兩淮",
+      "type": "office",
+      "text": "兩淮鹽政",
       "anchor": {
         "start": "30:8:11a",
-        "end": "30:8:12a"
-      },
-      "span": {
-        "start_offset": 4895,
-        "end_offset": 4897
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩淮"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00274",
-      "type": "office",
-      "text": "鹽政",
-      "anchor": {
-        "start": "30:8:13a",
         "end": "30:8:14a"
       },
       "span": {
-        "start_offset": 4897,
+        "start_offset": 4895,
         "end_offset": 4899
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8bbth9m70g",
-        "canonical_name": "巡鹽御史",
-        "href": "book-index://Entity/1jb8bbth9m70g"
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
       },
       "source": "claude:A33"
     },
@@ -10140,9 +10089,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8cswp1wpvk",
+        "entity_id": "hixia8o204jn",
         "canonical_name": "協辦大學士",
-        "href": "book-index://Entity/1jb8cswp1wpvk",
+        "href": "book-index://Entity/hixia8o204jn",
         "level": "concrete"
       },
       "source": "claude:A33"
@@ -18015,40 +17964,21 @@
     },
     {
       "id": "e00884",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "80:3:15a",
-        "end": "80:3:16a"
-      },
-      "span": {
-        "start_offset": 13006,
-        "end_offset": 13008
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00885",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "80:3:17a",
         "end": "80:3:18a"
       },
       "span": {
-        "start_offset": 13008,
+        "start_offset": 13006,
         "end_offset": 13010
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -21216,40 +21146,21 @@
     },
     {
       "id": "e01043",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "88:3:10a",
-        "end": "88:3:11a"
-      },
-      "span": {
-        "start_offset": 14360,
-        "end_offset": 14362
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01044",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "88:3:12a",
         "end": "88:3:13a"
       },
       "span": {
-        "start_offset": 14362,
+        "start_offset": 14360,
         "end_offset": 14364
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -23546,40 +23457,21 @@
     },
     {
       "id": "e01157",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "95:9:13a",
-        "end": "95:9:14a"
-      },
-      "span": {
-        "start_offset": 15600,
-        "end_offset": 15602
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01158",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "95:9:9b",
         "end": "95:9:10b"
       },
       "span": {
-        "start_offset": 15602,
+        "start_offset": 15600,
         "end_offset": 15604
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -24467,9 +24359,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59fyghr981u",
-        "canonical_name": "古文孝經孔氏傳",
-        "href": "book-index://Work/d59fyghr981u",
+        "entity_id": "d59f21ep59mo",
+        "canonical_name": "古文孝經",
+        "href": "book-index://Work/d59f21ep59mo",
         "note": "舊題孔安國"
       },
       "source": "claude:A33"
@@ -24925,9 +24817,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bjk3",
-        "canonical_name": "陸元朗",
-        "href": "book-index://Entity/hixhd2h9bjk3"
+        "entity_id": "hixhd2h9bhuk",
+        "canonical_name": "陸德明",
+        "href": "book-index://Entity/hixhd2h9bhuk"
       },
       "source": "claude:A33"
     },
@@ -25703,9 +25595,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐玄宗"
       },
       "source": "claude:A33"
@@ -25884,9 +25776,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -25943,9 +25835,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -26046,9 +25938,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐明皇"
       },
       "source": "claude:A33"
@@ -26188,9 +26080,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -26231,9 +26123,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -26652,9 +26544,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8cswnsyjnk",
+        "entity_id": "hixia8mxf9xd",
         "canonical_name": "春坊庶子",
-        "href": "book-index://Entity/1jb8cswnsyjnk",
+        "href": "book-index://Entity/hixia8mxf9xd",
         "level": "concrete"
       },
       "source": "claude:A33"
@@ -26923,9 +26815,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -27152,9 +27044,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4watiiog",
-        "canonical_name": "武則天",
-        "href": "book-index://Entity/hixi4watiiog"
+        "entity_id": "hixhd2h9bnsp",
+        "canonical_name": "武曌（武則天）",
+        "href": "book-index://Entity/hixhd2h9bnsp"
       },
       "source": "claude:A33"
     },
@@ -27526,9 +27418,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -27547,9 +27439,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -27729,9 +27621,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐明皇"
       },
       "source": "claude:A33"
@@ -28099,9 +27991,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "1jb8awb9s3zsw",
+        "entity_id": "hixia8p1wf0g",
         "canonical_name": "直祕閣",
-        "href": "book-index://Entity/1jb8awb9s3zsw"
+        "href": "book-index://Entity/hixia8p1wf0g"
       },
       "source": "claude:A33"
     },
@@ -28386,9 +28278,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -29968,40 +29860,21 @@
     },
     {
       "id": "e01473",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "118:6:7a",
-        "end": "118:6:8a"
-      },
-      "span": {
-        "start_offset": 19260,
-        "end_offset": 19262
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01474",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "118:6:9a",
         "end": "118:6:10a"
       },
       "span": {
-        "start_offset": 19262,
+        "start_offset": 19260,
         "end_offset": 19264
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -30476,40 +30349,21 @@
     },
     {
       "id": "e01498",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "120:8:7a",
-        "end": "120:8:8a"
-      },
-      "span": {
-        "start_offset": 19616,
-        "end_offset": 19618
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01499",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "120:8:9a",
         "end": "120:8:10a"
       },
       "span": {
-        "start_offset": 19618,
+        "start_offset": 19616,
         "end_offset": 19620
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -32223,9 +32077,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"
@@ -32244,9 +32098,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2mohpddt",
-        "canonical_name": "御纂孝經集注",
-        "href": "book-index://Work/d59f2mohpddt"
+        "entity_id": "d59f2my7b5s0",
+        "canonical_name": "孝經集注",
+        "href": "book-index://Work/d59f2my7b5s0"
       },
       "source": "claude:A33"
     },
@@ -32284,9 +32138,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bk45",
-        "canonical_name": "世宗憲皇帝",
-        "href": "book-index://Entity/hixhd2h9bk45"
+        "entity_id": "hixhd2h9bhwk",
+        "canonical_name": "清世宗",
+        "href": "book-index://Entity/hixhd2h9bhwk"
       },
       "source": "claude:A33"
     },
@@ -32667,9 +32521,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bk45",
-        "canonical_name": "世宗憲皇帝",
-        "href": "book-index://Entity/hixhd2h9bk45"
+        "entity_id": "hixhd2h9bhwk",
+        "canonical_name": "清世宗",
+        "href": "book-index://Entity/hixhd2h9bhwk"
       },
       "source": "claude:A33"
     },
@@ -33554,40 +33408,21 @@
     },
     {
       "id": "e01649",
-      "type": "place",
-      "text": "兩江",
+      "type": "office",
+      "text": "兩江總督",
       "anchor": {
         "start": "135:1:11a",
-        "end": "135:1:12a"
-      },
-      "span": {
-        "start_offset": 21770,
-        "end_offset": 21772
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩江"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01650",
-      "type": "office",
-      "text": "總督",
-      "anchor": {
-        "start": "135:1:13a",
         "end": "135:1:14a"
       },
       "span": {
-        "start_offset": 21772,
+        "start_offset": 21770,
         "end_offset": 21774
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5v2mknbb",
-        "canonical_name": "總督",
-        "href": "book-index://Entity/hixi5v2mknbb",
-        "note": "清代官制條（按上下文朝代）"
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
       },
       "source": "claude:A33"
     },
@@ -36337,9 +36172,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bo6w",
-        "canonical_name": "李隆基",
-        "href": "book-index://Entity/hixhd2h9bo6w",
+        "entity_id": "hixhd2f8wam8",
+        "canonical_name": "李隆基（唐玄宗）",
+        "href": "book-index://Entity/hixhd2f8wam8",
         "note": "唐元宗即玄宗"
       },
       "source": "claude:A33"

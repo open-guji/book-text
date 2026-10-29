@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 69,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2306,
-    "matched": 971,
+    "total_entities": 2215,
+    "matched": 1243,
     "ambiguous": 0,
-    "new_candidates": 1335,
-    "works": 985,
-    "people": 930,
-    "places": 391,
+    "new_candidates": 972,
+    "works": 924,
+    "people": 902,
+    "places": 389,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -100,24 +100,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00005",
-      "type": "people",
-      "text": "屈原宋玉",
-      "anchor": {
-        "start": "1:5:8",
-        "end": "1:5:11"
-      },
-      "span": {
-        "start_offset": 61,
-        "end_offset": 65
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "屈原宋玉"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00006",
       "type": "people",
       "text": "武帝",
@@ -166,8 +148,10 @@
         "end_offset": 93
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "相如"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgao",
+        "canonical_name": "司馬相如",
+        "href": "book-index://Entity/hixhd2h9bgao"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -204,8 +188,10 @@
         "end_offset": 105
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "孔融"
+        "status": "matched",
+        "entity_id": "hixhd2h9bi0j",
+        "canonical_name": "孔融",
+        "href": "book-index://Entity/hixhd2h9bi0j"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -222,8 +208,10 @@
         "end_offset": 126
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "貫休"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfb3",
+        "canonical_name": "釋貫休",
+        "href": "book-index://Entity/hixhd2h9bfb3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -334,8 +322,10 @@
         "end_offset": 234
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "篋中集"
+        "status": "matched",
+        "entity_id": "d59f28l00rus",
+        "canonical_name": "篋中集",
+        "href": "book-index://Work/d59f28l00rus"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -430,8 +420,10 @@
         "end_offset": 316
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鍾嶸"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk3r",
+        "canonical_name": "鍾嶸",
+        "href": "book-index://Entity/hixhd2h9bk3r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -566,24 +558,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00030",
-      "type": "people",
-      "text": "王李",
-      "anchor": {
-        "start": "4:2:9",
-        "end": "4:2:10"
-      },
-      "span": {
-        "start_offset": 522,
-        "end_offset": 524
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "王李"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00031",
       "type": "people",
       "text": "嚴嵩",
@@ -660,24 +634,6 @@
         "entity_id": "d59f2mxg5iiq",
         "canonical_name": "列朝詩集",
         "href": "book-index://Work/d59f2mxg5iiq"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00035",
-      "type": "people",
-      "text": "屈宋",
-      "anchor": {
-        "start": "5:2:5",
-        "end": "5:2:6"
-      },
-      "span": {
-        "start_offset": 649,
-        "end_offset": 651
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "屈宋"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -774,8 +730,11 @@
         "end_offset": 678
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "辨騷"
+        "status": "matched",
+        "entity_id": "d59f286w5o1u",
+        "canonical_name": "文心雕龍",
+        "href": "book-index://Work/d59f286w5o1u",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1444,8 +1403,11 @@
         "end_offset": 984
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "七諫"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1560,24 +1522,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00082",
-      "type": "work",
-      "text": "九思",
-      "anchor": {
-        "start": "7:4:19",
-        "end": "7:4:20"
-      },
-      "span": {
-        "start_offset": 1018,
-        "end_offset": 1020
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九思"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00083",
       "type": "people",
       "text": "班固",
@@ -1612,24 +1556,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "二叙"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00085",
-      "type": "work",
-      "text": "九思",
-      "anchor": {
-        "start": "7:5:17",
-        "end": "7:5:18"
-      },
-      "span": {
-        "start_offset": 1035,
-        "end_offset": 1037
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九思"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1728,24 +1654,6 @@
         "entity_id": "hixhd2h9bhmd",
         "canonical_name": "謝靈運",
         "href": "book-index://Entity/hixhd2h9bhmd"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00091",
-      "type": "work",
-      "text": "山居賦",
-      "anchor": {
-        "start": "7:7:14",
-        "end": "7:7:16"
-      },
-      "span": {
-        "start_offset": 1070,
-        "end_offset": 1073
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "山居賦"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1898,8 +1806,11 @@
         "end_offset": 1175
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九辨"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1916,8 +1827,11 @@
         "end_offset": 1181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九辨"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2130,8 +2044,11 @@
         "end_offset": 1297
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "離騷經"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2584,8 +2501,10 @@
         "end_offset": 1565
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "海陵集"
+        "status": "matched",
+        "entity_id": "d59f2hroe48y",
+        "canonical_name": "海陵集",
+        "href": "book-index://Work/d59f2hroe48y"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2796,24 +2715,6 @@
         "entity_id": "hixhd2h9bi89",
         "canonical_name": "王逸",
         "href": "book-index://Entity/hixhd2h9bi89"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00147",
-      "type": "work",
-      "text": "章句",
-      "anchor": {
-        "start": "11:3:12",
-        "end": "11:3:13"
-      },
-      "span": {
-        "start_offset": 1656,
-        "end_offset": 1658
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "章句"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3060,8 +2961,11 @@
         "end_offset": 1787
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "辨騷"
+        "status": "matched",
+        "entity_id": "d59f286w5o1u",
+        "canonical_name": "文心雕龍",
+        "href": "book-index://Work/d59f286w5o1u",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3196,8 +3100,11 @@
         "end_offset": 1835
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "辨騷"
+        "status": "matched",
+        "entity_id": "d59f286w5o1u",
+        "canonical_name": "文心雕龍",
+        "href": "book-index://Work/d59f286w5o1u",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3314,8 +3221,10 @@
         "end_offset": 1976
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楚辭集註"
+        "status": "matched",
+        "entity_id": "d59f2hpjai2q",
+        "canonical_name": "楚辭集注",
+        "href": "book-index://Work/d59f2hpjai2q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3392,24 +3301,6 @@
         "entity_id": "hixhd2h9bi89",
         "canonical_name": "王逸",
         "href": "book-index://Entity/hixhd2h9bi89"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00178",
-      "type": "work",
-      "text": "章句",
-      "anchor": {
-        "start": "13:4:12",
-        "end": "13:4:13"
-      },
-      "span": {
-        "start_offset": 1999,
-        "end_offset": 2001
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "章句"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3736,8 +3627,11 @@
         "end_offset": 2134
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "七諫"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3836,42 +3730,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00201",
-      "type": "work",
-      "text": "九思",
-      "anchor": {
-        "start": "14:3:5",
-        "end": "14:3:6"
-      },
-      "span": {
-        "start_offset": 2144,
-        "end_offset": 2146
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九思"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00202",
-      "type": "work",
-      "text": "九思",
-      "anchor": {
-        "start": "14:3:10",
-        "end": "14:3:11"
-      },
-      "span": {
-        "start_offset": 2149,
-        "end_offset": 2151
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九思"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00203",
       "type": "work",
       "text": "七諫九懷九歎",
@@ -3962,8 +3820,11 @@
         "end_offset": 2182
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "七諫"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4326,8 +4187,10 @@
         "end_offset": 2372
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "古周易"
+        "status": "matched",
+        "entity_id": "d59f2hrkyi9u",
+        "canonical_name": "古周易",
+        "href": "book-index://Work/d59f2hrkyi9u"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4498,8 +4361,10 @@
         "end_offset": 2539
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "伯益"
+        "status": "matched",
+        "entity_id": "hixiby7kdy4i",
+        "canonical_name": "伯益",
+        "href": "book-index://Entity/hixiby7kdy4i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4790,24 +4655,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00251",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "18:2:10",
-        "end": "18:2:11"
-      },
-      "span": {
-        "start_offset": 2776,
-        "end_offset": 2778
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00252",
       "type": "people",
       "text": "宋",
@@ -4846,24 +4693,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00254",
-      "type": "work",
-      "text": "章句",
-      "anchor": {
-        "start": "18:7:10",
-        "end": "18:7:11"
-      },
-      "span": {
-        "start_offset": 2871,
-        "end_offset": 2873
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "章句"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00255",
       "type": "people",
       "text": "三閭大夫鄭詹尹",
@@ -4894,8 +4723,10 @@
         "end_offset": 2906
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漁父"
+        "status": "matched",
+        "entity_id": "d59f2ew6aby8",
+        "canonical_name": "漁父",
+        "href": "book-index://Work/d59f2ew6aby8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4974,24 +4805,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00261",
-      "type": "work",
-      "text": "香草",
-      "anchor": {
-        "start": "19:2:8",
-        "end": "19:2:9"
-      },
-      "span": {
-        "start_offset": 2945,
-        "end_offset": 2947
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "香草"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00262",
       "type": "work",
       "text": "楚辭",
@@ -5024,8 +4837,11 @@
         "end_offset": 3001
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "離騷經"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5080,8 +4896,11 @@
         "end_offset": 3025
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九辨"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5122,24 +4941,6 @@
         "entity_id": "d59f2ew51ds0",
         "canonical_name": "大招",
         "href": "book-index://Work/d59f2ew51ds0"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00269",
-      "type": "work",
-      "text": "香草",
-      "anchor": {
-        "start": "19:7:19",
-        "end": "19:7:20"
-      },
-      "span": {
-        "start_offset": 3039,
-        "end_offset": 3041
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "香草"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5262,24 +5063,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00276",
-      "type": "people",
-      "text": "李氏",
-      "anchor": {
-        "start": "20:7:18",
-        "end": "20:7:19"
-      },
-      "span": {
-        "start_offset": 3179,
-        "end_offset": 3181
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00277",
       "type": "work",
       "text": "離騷解義",
@@ -5352,24 +5135,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "沈亞之屈原"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00281",
-      "type": "work",
-      "text": "外傳",
-      "anchor": {
-        "start": "20:9:12",
-        "end": "20:9:13"
-      },
-      "span": {
-        "start_offset": 3211,
-        "end_offset": 3213
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "外傳"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5634,8 +5399,10 @@
         "end_offset": 3691
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天一閣"
+        "status": "matched",
+        "entity_id": "hixie4r8p1xc",
+        "canonical_name": "天一閣",
+        "href": "book-index://Entity/hixie4r8p1xc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5654,24 +5421,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "宋楊萬里"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00297",
-      "type": "work",
-      "text": "易傳",
-      "anchor": {
-        "start": "23:9:11",
-        "end": "23:9:12"
-      },
-      "span": {
-        "start_offset": 3701,
-        "end_offset": 3703
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "易傳"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5782,8 +5531,10 @@
         "end_offset": 3732
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "誠齋集"
+        "status": "matched",
+        "entity_id": "d59f2hpyl4ox",
+        "canonical_name": "誠齋集",
+        "href": "book-index://Work/d59f2hpyl4ox"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5804,24 +5555,6 @@
         "entity_id": "d59f2pwqoem8",
         "canonical_name": "辨證",
         "href": "book-index://Work/d59f2pwqoem8"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00305",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "24:3:6",
-        "end": "24:3:7"
-      },
-      "span": {
-        "start_offset": 3753,
-        "end_offset": 3755
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5880,24 +5613,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "天對"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00309",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "24:5:19",
-        "end": "24:5:20"
-      },
-      "span": {
-        "start_offset": 3804,
-        "end_offset": 3806
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6394,8 +6109,10 @@
         "end_offset": 4116
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天一閣"
+        "status": "matched",
+        "entity_id": "hixie4r8p1xc",
+        "canonical_name": "天一閣",
+        "href": "book-index://Entity/hixie4r8p1xc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6474,24 +6191,6 @@
         "entity_id": "d59f2hszu6te",
         "canonical_name": "離騷草木疏補",
         "href": "book-index://Work/d59f2hszu6te"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00340",
-      "type": "work",
-      "text": "香草",
-      "anchor": {
-        "start": "26:6:18",
-        "end": "26:6:19"
-      },
-      "span": {
-        "start_offset": 4152,
-        "end_offset": 4154
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "香草"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6684,8 +6383,10 @@
         "end_offset": 4271
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南越志"
+        "status": "matched",
+        "entity_id": "d59f285n7htv",
+        "canonical_name": "南越志",
+        "href": "book-index://Work/d59f285n7htv"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6796,8 +6497,10 @@
         "end_offset": 4324
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天一閣"
+        "status": "matched",
+        "entity_id": "hixie4r8p1xc",
+        "canonical_name": "天一閣",
+        "href": "book-index://Entity/hixie4r8p1xc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6872,8 +6575,10 @@
         "end_offset": 4355
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楚辭集註"
+        "status": "matched",
+        "entity_id": "d59f2hpjai2q",
+        "canonical_name": "楚辭集注",
+        "href": "book-index://Work/d59f2hpjai2q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6994,24 +6699,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00367",
-      "type": "work",
-      "text": "合論",
-      "anchor": {
-        "start": "29:3:7",
-        "end": "29:3:8"
-      },
-      "span": {
-        "start_offset": 4596,
-        "end_offset": 4598
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "合論"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00368",
       "type": "people",
       "text": "黃文煥",
@@ -7104,8 +6791,11 @@
         "end_offset": 4656
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "惜誦"
+        "status": "matched",
+        "entity_id": "d59f2ew4q58j",
+        "canonical_name": "九章",
+        "href": "book-index://Work/d59f2ew4q58j",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7186,24 +6876,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00377",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "29:8:18",
-        "end": "29:8:19"
-      },
-      "span": {
-        "start_offset": 4698,
-        "end_offset": 4700
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00378",
       "type": "work",
       "text": "九歌",
@@ -7236,8 +6908,10 @@
         "end_offset": 4706
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漁父"
+        "status": "matched",
+        "entity_id": "d59f2ew6aby8",
+        "canonical_name": "漁父",
+        "href": "book-index://Work/d59f2ew6aby8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7412,42 +7086,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00389",
-      "type": "work",
-      "text": "合論",
-      "anchor": {
-        "start": "30:3:5",
-        "end": "30:3:6"
-      },
-      "span": {
-        "start_offset": 4761,
-        "end_offset": 4763
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "合論"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00390",
-      "type": "work",
-      "text": "合論",
-      "anchor": {
-        "start": "30:3:18",
-        "end": "30:3:19"
-      },
-      "span": {
-        "start_offset": 4774,
-        "end_offset": 4776
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "合論"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00391",
       "type": "work",
       "text": "聽離騷聽遠遊聽天問聽九歌聽卜居漁父聽九章聽二招",
@@ -7462,24 +7100,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "聽離騷聽遠遊聽天問聽九歌聽卜居漁父聽九章聽二招"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00392",
-      "type": "work",
-      "text": "合論",
-      "anchor": {
-        "start": "30:5:13",
-        "end": "30:5:14"
-      },
-      "span": {
-        "start_offset": 4807,
-        "end_offset": 4809
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "合論"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7692,44 +7312,10 @@
         "end_offset": 4962
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楚辭集註"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00404",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "31:6:8",
-        "end": "31:6:9"
-      },
-      "span": {
-        "start_offset": 4963,
-        "end_offset": 4965
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00405",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "31:7:3",
-        "end": "31:7:4"
-      },
-      "span": {
-        "start_offset": 4977,
-        "end_offset": 4979
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
+        "status": "matched",
+        "entity_id": "d59f2hpjai2q",
+        "canonical_name": "楚辭集注",
+        "href": "book-index://Work/d59f2hpjai2q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7770,24 +7356,6 @@
         "entity_id": "d59f9uw5sf0j",
         "canonical_name": "補註",
         "href": "book-index://Work/d59f9uw5sf0j"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00408",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "31:9:12",
-        "end": "31:9:13"
-      },
-      "span": {
-        "start_offset": 5024,
-        "end_offset": 5026
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7922,8 +7490,10 @@
         "end_offset": 5104
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王晫"
+        "status": "matched",
+        "entity_id": "hixhd2h9bd84",
+        "canonical_name": "王晫",
+        "href": "book-index://Entity/hixhd2h9bd84"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8056,8 +7626,11 @@
         "end_offset": 5228
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "渉江"
+        "status": "matched",
+        "entity_id": "d59f2ew4q58j",
+        "canonical_name": "九章",
+        "href": "book-index://Work/d59f2ew4q58j",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8074,8 +7647,11 @@
         "end_offset": 5237
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "惜誦"
+        "status": "matched",
+        "entity_id": "d59f2ew4q58j",
+        "canonical_name": "九章",
+        "href": "book-index://Work/d59f2ew4q58j",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8128,8 +7704,11 @@
         "end_offset": 5250
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "渉江"
+        "status": "matched",
+        "entity_id": "d59f2ew4q58j",
+        "canonical_name": "九章",
+        "href": "book-index://Work/d59f2ew4q58j",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8200,8 +7779,10 @@
         "end_offset": 5268
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀郢"
+        "status": "matched",
+        "entity_id": "d59f2ew6wt1e",
+        "canonical_name": "九章哀郢",
+        "href": "book-index://Work/d59f2ew6wt1e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8356,8 +7937,11 @@
         "end_offset": 5317
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "惜誦"
+        "status": "matched",
+        "entity_id": "d59f2ew4q58j",
+        "canonical_name": "九章",
+        "href": "book-index://Work/d59f2ew4q58j",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8374,8 +7958,10 @@
         "end_offset": 5320
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懷王"
+        "status": "matched",
+        "entity_id": "hixiclqkirm1",
+        "canonical_name": "楚懷王",
+        "href": "book-index://Entity/hixiclqkirm1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8410,8 +7996,10 @@
         "end_offset": 5371
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懷王"
+        "status": "matched",
+        "entity_id": "hixiclqkirm1",
+        "canonical_name": "楚懷王",
+        "href": "book-index://Entity/hixiclqkirm1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8522,8 +8110,10 @@
         "end_offset": 5433
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張儀"
+        "status": "matched",
+        "entity_id": "hixhd2h9bno0",
+        "canonical_name": "張儀",
+        "href": "book-index://Entity/hixhd2h9bno0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8594,8 +8184,10 @@
         "end_offset": 5470
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀郢"
+        "status": "matched",
+        "entity_id": "d59f2ew6wt1e",
+        "canonical_name": "九章哀郢",
+        "href": "book-index://Work/d59f2ew6wt1e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8846,8 +8438,11 @@
         "end_offset": 5578
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "離騷經"
+        "status": "matched",
+        "entity_id": "d59f2evufbb8",
+        "canonical_name": "楚辭",
+        "href": "book-index://Work/d59f2evufbb8",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9530,8 +9125,10 @@
         "end_offset": 6148
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懷王"
+        "status": "matched",
+        "entity_id": "hixiclqkirm1",
+        "canonical_name": "楚懷王",
+        "href": "book-index://Entity/hixiclqkirm1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9776,8 +9373,10 @@
         "end_offset": 6251
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懷王"
+        "status": "matched",
+        "entity_id": "hixiclqkirm1",
+        "canonical_name": "楚懷王",
+        "href": "book-index://Entity/hixiclqkirm1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9868,8 +9467,10 @@
         "end_offset": 6297
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漁父"
+        "status": "matched",
+        "entity_id": "d59f2ew6aby8",
+        "canonical_name": "漁父",
+        "href": "book-index://Work/d59f2ew6aby8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9924,8 +9525,10 @@
         "end_offset": 6309
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "懷王"
+        "status": "matched",
+        "entity_id": "hixiclqkirm1",
+        "canonical_name": "楚懷王",
+        "href": "book-index://Entity/hixiclqkirm1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9960,8 +9563,10 @@
         "end_offset": 6332
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張儀"
+        "status": "matched",
+        "entity_id": "hixhd2h9bno0",
+        "canonical_name": "張儀",
+        "href": "book-index://Entity/hixhd2h9bno0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10566,24 +10171,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00555",
-      "type": "work",
-      "text": "天問",
-      "anchor": {
-        "start": "42:5:5",
-        "end": "42:5:6"
-      },
-      "span": {
-        "start_offset": 6713,
-        "end_offset": 6715
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天問"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00556",
       "type": "work",
       "text": "九歌",
@@ -10842,8 +10429,10 @@
         "end_offset": 6887
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀郢"
+        "status": "matched",
+        "entity_id": "d59f2ew6wt1e",
+        "canonical_name": "九章哀郢",
+        "href": "book-index://Work/d59f2ew6wt1e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10916,8 +10505,10 @@
         "end_offset": 6925
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漁父"
+        "status": "matched",
+        "entity_id": "d59f2ew6aby8",
+        "canonical_name": "漁父",
+        "href": "book-index://Work/d59f2ew6aby8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10972,8 +10563,10 @@
         "end_offset": 6978
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "荀况"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhzb",
+        "canonical_name": "荀況",
+        "href": "book-index://Entity/hixhd2h9bhzb"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11032,24 +10625,6 @@
         "entity_id": "hixhd2h9bno3",
         "canonical_name": "江淹",
         "href": "book-index://Entity/hixhd2h9bno3"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00580",
-      "type": "work",
-      "text": "前集",
-      "anchor": {
-        "start": "44:4:21",
-        "end": "44:5:4"
-      },
-      "span": {
-        "start_offset": 7006,
-        "end_offset": 7008
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "前集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11174,24 +10749,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00587",
-      "type": "work",
-      "text": "小集",
-      "anchor": {
-        "start": "44:6:9",
-        "end": "44:6:10"
-      },
-      "span": {
-        "start_offset": 7030,
-        "end_offset": 7032
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "小集"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00588",
       "type": "people",
       "text": "謝朓",
@@ -11204,8 +10761,10 @@
         "end_offset": 7034
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝朓"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhut",
+        "canonical_name": "謝朓",
+        "href": "book-index://Entity/hixhd2h9bhut"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11240,8 +10799,10 @@
         "end_offset": 7042
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王筠"
+        "status": "matched",
+        "entity_id": "hixhd2j3sw7d",
+        "canonical_name": "王筠",
+        "href": "book-index://Entity/hixhd2j3sw7d"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11318,24 +10879,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "宋"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00595",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "44:9:14",
-        "end": "44:9:15"
-      },
-      "span": {
-        "start_offset": 7089,
-        "end_offset": 7091
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12680,8 +12223,10 @@
         "end_offset": 8062
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "百三家集"
+        "status": "matched",
+        "entity_id": "d59f2nkzmxa9",
+        "canonical_name": "漢魏六朝一百三家集",
+        "href": "book-index://Work/d59f2nkzmxa9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13004,8 +12549,10 @@
         "end_offset": 8286
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "孔融"
+        "status": "matched",
+        "entity_id": "hixhd2h9bi0j",
+        "canonical_name": "孔融",
+        "href": "book-index://Entity/hixhd2h9bi0j"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13234,8 +12781,10 @@
         "end_offset": 8517
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "百三家集"
+        "status": "matched",
+        "entity_id": "d59f2nkzmxa9",
+        "canonical_name": "漢魏六朝一百三家集",
+        "href": "book-index://Work/d59f2nkzmxa9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13778,8 +13327,10 @@
         "end_offset": 9104
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋書"
+        "status": "matched",
+        "entity_id": "d59f287ki6f4",
+        "canonical_name": "宋書",
+        "href": "book-index://Work/d59f287ki6f4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13912,8 +13463,10 @@
         "end_offset": 9217
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王宋"
+        "status": "matched",
+        "entity_id": "hixie4sbpptz",
+        "canonical_name": "王宋",
+        "href": "book-index://Entity/hixie4sbpptz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14042,8 +13595,10 @@
         "end_offset": 9254
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王宋"
+        "status": "matched",
+        "entity_id": "hixie4sbpptz",
+        "canonical_name": "王宋",
+        "href": "book-index://Entity/hixie4sbpptz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14160,8 +13715,10 @@
         "end_offset": 9373
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14470,8 +14027,10 @@
         "end_offset": 9521
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "賀方回"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfcs",
+        "canonical_name": "賀鑄",
+        "href": "book-index://Entity/hixhd2h9bfcs"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15302,8 +14861,10 @@
         "end_offset": 10056
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩紀"
+        "status": "matched",
+        "entity_id": "d59f2nk0zl6p",
+        "canonical_name": "詩紀",
+        "href": "book-index://Work/d59f2nk0zl6p"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15398,8 +14959,10 @@
         "end_offset": 10106
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩紀"
+        "status": "matched",
+        "entity_id": "d59f2nk0zl6p",
+        "canonical_name": "詩紀",
+        "href": "book-index://Work/d59f2nk0zl6p"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15452,8 +15015,10 @@
         "end_offset": 10142
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩紀"
+        "status": "matched",
+        "entity_id": "d59f2nk0zl6p",
+        "canonical_name": "詩紀",
+        "href": "book-index://Work/d59f2nk0zl6p"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15510,8 +15075,10 @@
         "end_offset": 10193
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "北齊"
+        "status": "matched",
+        "entity_id": "hixi1ubkeej3",
+        "canonical_name": "北齊",
+        "href": "book-index://Entity/hixi1ubkeej3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15568,8 +15135,10 @@
         "end_offset": 10232
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蕭統"
+        "status": "matched",
+        "entity_id": "hixhd2h9bno2",
+        "canonical_name": "蕭統",
+        "href": "book-index://Entity/hixhd2h9bno2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15630,24 +15199,6 @@
         "entity_id": "hixhd2h9bi1y",
         "canonical_name": "徐陵",
         "href": "book-index://Entity/hixhd2h9bi1y"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00820",
-      "type": "work",
-      "text": "玉臺新詠序",
-      "anchor": {
-        "start": "64:2:12a",
-        "end": "64:2:16a"
-      },
-      "span": {
-        "start_offset": 10261,
-        "end_offset": 10266
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "玉臺新詠序"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15746,24 +15297,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00826",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "64:6:10",
-        "end": "64:6:11"
-      },
-      "span": {
-        "start_offset": 10357,
-        "end_offset": 10359
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00827",
       "type": "people",
       "text": "蕭統",
@@ -15776,8 +15309,10 @@
         "end_offset": 10370
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蕭統"
+        "status": "matched",
+        "entity_id": "hixhd2h9bno2",
+        "canonical_name": "蕭統",
+        "href": "book-index://Entity/hixhd2h9bno2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15834,8 +15369,10 @@
         "end_offset": 10426
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭明"
+        "status": "matched",
+        "entity_id": "hixhd2h9bno2",
+        "canonical_name": "蕭統",
+        "href": "book-index://Entity/hixhd2h9bno2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16118,8 +15655,10 @@
         "end_offset": 10665
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇蕙"
+        "status": "matched",
+        "entity_id": "hixhd2h9bt89",
+        "canonical_name": "蘇蕙",
+        "href": "book-index://Entity/hixhd2h9bt89"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16216,8 +15755,10 @@
         "end_offset": 10718
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16274,8 +15815,10 @@
         "end_offset": 10730
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "竇滔"
+        "status": "matched",
+        "entity_id": "hixie4sbpput",
+        "canonical_name": "竇滔",
+        "href": "book-index://Entity/hixie4sbpput"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16310,8 +15853,10 @@
         "end_offset": 10739
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇蕙"
+        "status": "matched",
+        "entity_id": "hixhd2h9bt89",
+        "canonical_name": "蘇蕙",
+        "href": "book-index://Entity/hixhd2h9bt89"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16386,8 +15931,10 @@
         "end_offset": 10763
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16554,8 +16101,10 @@
         "end_offset": 10823
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "竇滔"
+        "status": "matched",
+        "entity_id": "hixie4sbpput",
+        "canonical_name": "竇滔",
+        "href": "book-index://Entity/hixie4sbpput"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16572,8 +16121,10 @@
         "end_offset": 10846
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16590,8 +16141,10 @@
         "end_offset": 10874
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16632,24 +16185,6 @@
         "entity_id": "hixhd2h9bno3",
         "canonical_name": "江淹",
         "href": "book-index://Entity/hixhd2h9bno3"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00873",
-      "type": "work",
-      "text": "別賦",
-      "anchor": {
-        "start": "67:9:17",
-        "end": "67:9:18"
-      },
-      "span": {
-        "start_offset": 10907,
-        "end_offset": 10909
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "別賦"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16702,8 +16237,10 @@
         "end_offset": 10919
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "竇滔"
+        "status": "matched",
+        "entity_id": "hixie4sbpput",
+        "canonical_name": "竇滔",
+        "href": "book-index://Entity/hixie4sbpput"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16838,8 +16375,10 @@
         "end_offset": 10970
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書"
+        "status": "matched",
+        "entity_id": "d59f28npq1vl",
+        "canonical_name": "晉書",
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16938,24 +16477,6 @@
         "entity_id": "d59ezak9zc3k",
         "canonical_name": "詩經",
         "href": "book-index://Work/d59ezak9zc3k"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00889",
-      "type": "work",
-      "text": "章句",
-      "anchor": {
-        "start": "68:7:4",
-        "end": "68:7:5"
-      },
-      "span": {
-        "start_offset": 11027,
-        "end_offset": 11029
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "章句"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17358,8 +16879,10 @@
         "end_offset": 11277
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝朓"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhut",
+        "canonical_name": "謝朓",
+        "href": "book-index://Entity/hixhd2h9bhut"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17394,8 +16917,11 @@
         "end_offset": 11292
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "齊書"
+        "status": "matched",
+        "entity_id": "d59f2870u876",
+        "canonical_name": "南齊書",
+        "href": "book-index://Work/d59f2870u876",
+        "coarse": "part_of_work"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17606,8 +17132,10 @@
         "end_offset": 11386
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "樓炤"
+        "status": "matched",
+        "entity_id": "hixictitfrpu",
+        "canonical_name": "樓炤",
+        "href": "book-index://Entity/hixictitfrpu"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17624,8 +17152,10 @@
         "end_offset": 11389
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宣州"
+        "status": "matched",
+        "entity_id": "hixicm02mx3n",
+        "canonical_name": "宣州",
+        "href": "book-index://Entity/hixicm02mx3n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17702,8 +17232,10 @@
         "end_offset": 11435
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鍾嶸"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk3r",
+        "canonical_name": "鍾嶸",
+        "href": "book-index://Entity/hixhd2h9bk3r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17720,8 +17252,10 @@
         "end_offset": 11437
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩品"
+        "status": "matched",
+        "entity_id": "d59f286tnrpc",
+        "canonical_name": "詩品",
+        "href": "book-index://Work/d59f286tnrpc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17778,8 +17312,10 @@
         "end_offset": 11465
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "百三家集"
+        "status": "matched",
+        "entity_id": "d59f2nkzmxa9",
+        "canonical_name": "漢魏六朝一百三家集",
+        "href": "book-index://Work/d59f2nkzmxa9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17816,8 +17352,10 @@
         "end_offset": 11487
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "樓炤"
+        "status": "matched",
+        "entity_id": "hixictitfrpu",
+        "canonical_name": "樓炤",
+        "href": "book-index://Entity/hixictitfrpu"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17912,8 +17450,10 @@
         "end_offset": 11520
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鍾嶸"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk3r",
+        "canonical_name": "鍾嶸",
+        "href": "book-index://Entity/hixhd2h9bk3r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17930,8 +17470,10 @@
         "end_offset": 11522
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩品"
+        "status": "matched",
+        "entity_id": "d59f286tnrpc",
+        "canonical_name": "詩品",
+        "href": "book-index://Work/d59f286tnrpc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17968,8 +17510,10 @@
         "end_offset": 11565
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "趙紫芝"
+        "status": "matched",
+        "entity_id": "hixhd2h9bffs",
+        "canonical_name": "趙師秀",
+        "href": "book-index://Entity/hixhd2h9bffs"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18196,8 +17740,10 @@
         "end_offset": 11656
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "韋莊"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfb4",
+        "canonical_name": "韋莊",
+        "href": "book-index://Entity/hixhd2h9bfb4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18234,8 +17780,10 @@
         "end_offset": 11662
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張翰"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnoc",
+        "canonical_name": "張翰",
+        "href": "book-index://Entity/hixhd2h9bnoc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18384,8 +17932,10 @@
         "end_offset": 11711
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋書"
+        "status": "matched",
+        "entity_id": "d59f287ki6f4",
+        "canonical_name": "宋書",
+        "href": "book-index://Work/d59f287ki6f4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18602,24 +18152,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00976",
-      "type": "work",
-      "text": "行路難",
-      "anchor": {
-        "start": "73:7:4",
-        "end": "73:7:6"
-      },
-      "span": {
-        "start_offset": 11868,
-        "end_offset": 11871
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "行路難"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00977",
       "type": "work",
       "text": "詩",
@@ -18652,8 +18184,10 @@
         "end_offset": 11956
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鍾嶸"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk3r",
+        "canonical_name": "鍾嶸",
+        "href": "book-index://Entity/hixhd2h9bk3r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18670,8 +18204,10 @@
         "end_offset": 11958
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩品"
+        "status": "matched",
+        "entity_id": "d59f286tnrpc",
+        "canonical_name": "詩品",
+        "href": "book-index://Work/d59f286tnrpc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18688,8 +18224,10 @@
         "end_offset": 11962
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鮑照"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhmc",
+        "canonical_name": "鮑照",
+        "href": "book-index://Entity/hixhd2h9bhmc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18706,8 +18244,10 @@
         "end_offset": 11972
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝朓"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhut",
+        "canonical_name": "謝朓",
+        "href": "book-index://Entity/hixhd2h9bhut"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18964,24 +18504,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00995",
-      "type": "work",
-      "text": "擬古",
-      "anchor": {
-        "start": "75:2:6",
-        "end": "75:2:7"
-      },
-      "span": {
-        "start_offset": 12105,
-        "end_offset": 12107
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "擬古"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00996",
       "type": "work",
       "text": "林下作伎",
@@ -19218,8 +18740,10 @@
         "end_offset": 12229
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李綽"
+        "status": "matched",
+        "entity_id": "hixhd2h9beyh",
+        "canonical_name": "李綽",
+        "href": "book-index://Entity/hixhd2h9beyh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19276,8 +18800,10 @@
         "end_offset": 12265
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "百三家集"
+        "status": "matched",
+        "entity_id": "d59f2nkzmxa9",
+        "canonical_name": "漢魏六朝一百三家集",
+        "href": "book-index://Work/d59f2nkzmxa9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19556,24 +19082,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01027",
-      "type": "people",
-      "text": "蘇蔣曾瑩",
-      "anchor": {
-        "start": "77:1:8a",
-        "end": "77:1:7b"
-      },
-      "span": {
-        "start_offset": 12419,
-        "end_offset": 12423
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇蔣曾瑩"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01028",
       "type": "people",
       "text": "何遜",
@@ -19586,8 +19094,10 @@
         "end_offset": 12429
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "何遜"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmi5",
+        "canonical_name": "何遜",
+        "href": "book-index://Entity/hixhd2h9bmi5"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19914,24 +19424,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "范雲劉孝綽"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01046",
-      "type": "work",
-      "text": "擬古",
-      "anchor": {
-        "start": "78:2:7",
-        "end": "78:2:8"
-      },
-      "span": {
-        "start_offset": 12601,
-        "end_offset": 12603
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "擬古"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20504,8 +19996,10 @@
         "end_offset": 12958
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "湯斌"
+        "status": "matched",
+        "entity_id": "hixhd2h9bcn6",
+        "canonical_name": "湯斌",
+        "href": "book-index://Entity/hixhd2h9bcn6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21068,8 +20562,10 @@
         "end_offset": 13327
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "中說"
+        "status": "matched",
+        "entity_id": "d59f28k96d4z",
+        "canonical_name": "中說",
+        "href": "book-index://Work/d59f28k96d4z"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21302,8 +20798,10 @@
         "end_offset": 13543
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "倪瓚"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfk2",
+        "canonical_name": "倪瓚",
+        "href": "book-index://Entity/hixhd2h9bfk2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21440,24 +20938,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01126",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "84:5:13",
-        "end": "84:5:14"
-      },
-      "span": {
-        "start_offset": 13649,
-        "end_offset": 13651
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01127",
       "type": "people",
       "text": "張廷芳",
@@ -21568,8 +21048,10 @@
         "end_offset": 13742
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀江南賦"
+        "status": "matched",
+        "entity_id": "d59f286l8d1f",
+        "canonical_name": "哀江南賦",
+        "href": "book-index://Work/d59f286l8d1f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21642,8 +21124,10 @@
         "end_offset": 13779
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "倪璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bema",
+        "canonical_name": "倪璠",
+        "href": "book-index://Entity/hixhd2h9bema"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21738,8 +21222,10 @@
         "end_offset": 13886
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "倪璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bema",
+        "canonical_name": "倪璠",
+        "href": "book-index://Entity/hixhd2h9bema"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21852,8 +21338,10 @@
         "end_offset": 13998
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀江南賦"
+        "status": "matched",
+        "entity_id": "d59f286l8d1f",
+        "canonical_name": "哀江南賦",
+        "href": "book-index://Work/d59f286l8d1f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21894,24 +21382,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01150",
-      "type": "work",
-      "text": "安世房中歌",
-      "anchor": {
-        "start": "86:7:18",
-        "end": "86:8:3"
-      },
-      "span": {
-        "start_offset": 14012,
-        "end_offset": 14017
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "安世房中歌"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01151",
       "type": "work",
       "text": "黃帝雲門舞歌",
@@ -21942,8 +21412,10 @@
         "end_offset": 14089
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "哀江南賦"
+        "status": "matched",
+        "entity_id": "d59f286l8d1f",
+        "canonical_name": "哀江南賦",
+        "href": "book-index://Work/d59f286l8d1f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21998,8 +21470,10 @@
         "end_offset": 14139
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊炯"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9l",
+        "canonical_name": "楊炯",
+        "href": "book-index://Entity/hixhd2h9bf9l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22192,8 +21666,10 @@
         "end_offset": 14322
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "資治通鑑"
+        "status": "matched",
+        "entity_id": "d59f2pynclxd",
+        "canonical_name": "資治通鑑",
+        "href": "book-index://Work/d59f2pynclxd"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22248,8 +21724,10 @@
         "end_offset": 14335
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝挺"
+        "status": "matched",
+        "entity_id": "hixie4sbppw6",
+        "canonical_name": "謝挺",
+        "href": "book-index://Entity/hixie4sbppw6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22342,8 +21820,10 @@
         "end_offset": 14367
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝挺"
+        "status": "matched",
+        "entity_id": "hixie4sbppw6",
+        "canonical_name": "謝挺",
+        "href": "book-index://Entity/hixie4sbppw6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22436,8 +21916,10 @@
         "end_offset": 14428
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝挺"
+        "status": "matched",
+        "entity_id": "hixie4sbppw6",
+        "canonical_name": "謝挺",
+        "href": "book-index://Entity/hixie4sbppw6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22494,8 +21976,10 @@
         "end_offset": 14542
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "東臯子"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmi6",
+        "canonical_name": "王績",
+        "href": "book-index://Entity/hixhd2h9bmi6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22548,8 +22032,10 @@
         "end_offset": 14555
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王績"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmi6",
+        "canonical_name": "王績",
+        "href": "book-index://Entity/hixhd2h9bmi6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22658,8 +22144,10 @@
         "end_offset": 14590
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "東臯子"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmi6",
+        "canonical_name": "王績",
+        "href": "book-index://Entity/hixhd2h9bmi6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22790,24 +22278,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "醉鄕記五斗先生傳無心子傳"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01198",
-      "type": "work",
-      "text": "醉鄕記",
-      "anchor": {
-        "start": "92:3:13",
-        "end": "92:3:15"
-      },
-      "span": {
-        "start_offset": 14695,
-        "end_offset": 14698
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "醉鄕記"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23030,26 +22500,10 @@
         "end_offset": 14793
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吕才"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01211",
-      "type": "work",
-      "text": "文編",
-      "anchor": {
-        "start": "92:8:19",
-        "end": "92:8:20"
-      },
-      "span": {
-        "start_offset": 14796,
-        "end_offset": 14798
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "文編"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhhm",
+        "canonical_name": "呂才",
+        "href": "book-index://Entity/hixhd2h9bhhm"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23106,8 +22560,10 @@
         "end_offset": 14821
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吕才"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhhm",
+        "canonical_name": "呂才",
+        "href": "book-index://Entity/hixhd2h9bhhm"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23220,8 +22676,10 @@
         "end_offset": 14865
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吕才"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhhm",
+        "canonical_name": "呂才",
+        "href": "book-index://Entity/hixhd2h9bhhm"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23314,8 +22772,10 @@
         "end_offset": 14953
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崇禎"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwue",
+        "canonical_name": "崇禎",
+        "href": "book-index://Entity/hixi1ubqbwue"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23340,24 +22800,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01227",
-      "type": "people",
-      "text": "晁陳",
-      "anchor": {
-        "start": "93:8:17",
-        "end": "93:8:18"
-      },
-      "span": {
-        "start_offset": 14965,
-        "end_offset": 14967
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "晁陳"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01228",
       "type": "people",
       "text": "寒山子",
@@ -23374,24 +22816,6 @@
         "entity_id": "hixhd2h9bq38",
         "canonical_name": "寒山子",
         "href": "book-index://Entity/hixhd2h9bq38"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01229",
-      "type": "work",
-      "text": "詩集",
-      "anchor": {
-        "start": "94:1:4",
-        "end": "94:1:5"
-      },
-      "span": {
-        "start_offset": 14987,
-        "end_offset": 14989
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23664,8 +23088,10 @@
         "end_offset": 15143
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳熙"
+        "status": "matched",
+        "entity_id": "hixi1ubpe78n",
+        "canonical_name": "淳熙",
+        "href": "book-index://Entity/hixi1ubpe78n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23684,24 +23110,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "道南"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01246",
-      "type": "work",
-      "text": "唐書藝文",
-      "anchor": {
-        "start": "94:9:18",
-        "end": "94:9:21"
-      },
-      "span": {
-        "start_offset": 15154,
-        "end_offset": 15158
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐書藝文"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24084,8 +23492,10 @@
         "end_offset": 15401
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大厯"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "href": "book-index://Entity/hixi1ubo591i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24310,8 +23720,10 @@
         "end_offset": 15540
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王勃"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9k",
+        "canonical_name": "王勃",
+        "href": "book-index://Entity/hixhd2h9bf9k"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24346,26 +23758,10 @@
         "end_offset": 15556
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊炯"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01281",
-      "type": "work",
-      "text": "集序",
-      "anchor": {
-        "start": "97:4:3",
-        "end": "97:4:4"
-      },
-      "span": {
-        "start_offset": 15556,
-        "end_offset": 15558
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "集序"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9l",
+        "canonical_name": "楊炯",
+        "href": "book-index://Entity/hixhd2h9bf9l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24460,26 +23856,10 @@
         "end_offset": 15627
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊炯"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01287",
-      "type": "work",
-      "text": "集序",
-      "anchor": {
-        "start": "97:7:17",
-        "end": "97:7:18"
-      },
-      "span": {
-        "start_offset": 15627,
-        "end_offset": 15629
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "集序"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9l",
+        "canonical_name": "楊炯",
+        "href": "book-index://Entity/hixhd2h9bf9l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24496,8 +23876,10 @@
         "end_offset": 15645
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崇禎"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwue",
+        "canonical_name": "崇禎",
+        "href": "book-index://Entity/hixi1ubqbwue"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24532,8 +23914,10 @@
         "end_offset": 15650
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張燮"
+        "status": "matched",
+        "entity_id": "hixhd2h9bi54",
+        "canonical_name": "張燮",
+        "href": "book-index://Entity/hixhd2h9bi54"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24588,8 +23972,10 @@
         "end_offset": 15699
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "叚成式"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhfe",
+        "canonical_name": "段成式",
+        "href": "book-index://Entity/hixhd2h9bhfe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24662,8 +24048,10 @@
         "end_offset": 15745
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "一公"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhje",
+        "canonical_name": "釋一行",
+        "href": "book-index://Entity/hixhd2h9bhje"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24680,8 +24068,10 @@
         "end_offset": 15748
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "一公"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhje",
+        "canonical_name": "釋一行",
+        "href": "book-index://Entity/hixhd2h9bhje"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24716,8 +24106,10 @@
         "end_offset": 15755
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "一公"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhje",
+        "canonical_name": "釋一行",
+        "href": "book-index://Entity/hixhd2h9bhje"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24774,8 +24166,10 @@
         "end_offset": 15793
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王勃"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9k",
+        "canonical_name": "王勃",
+        "href": "book-index://Entity/hixhd2h9bf9k"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24792,26 +24186,10 @@
         "end_offset": 15828
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01305",
-      "type": "people",
-      "text": "王楊盧駱",
-      "anchor": {
-        "start": "98:9:6",
-        "end": "98:9:9"
-      },
-      "span": {
-        "start_offset": 15829,
-        "end_offset": 15833
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "王楊盧駱"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24910,24 +24288,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01311",
-      "type": "people",
-      "text": "三王",
-      "anchor": {
-        "start": "99:4:3",
-        "end": "99:4:4"
-      },
-      "span": {
-        "start_offset": 15902,
-        "end_offset": 15904
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "三王"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01312",
       "type": "people",
       "text": "王勃",
@@ -24940,26 +24300,10 @@
         "end_offset": 15917
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王勃"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01313",
-      "type": "people",
-      "text": "三王",
-      "anchor": {
-        "start": "99:5:18",
-        "end": "99:5:19"
-      },
-      "span": {
-        "start_offset": 15936,
-        "end_offset": 15938
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "三王"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9k",
+        "canonical_name": "王勃",
+        "href": "book-index://Entity/hixhd2h9bf9k"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24976,8 +24320,10 @@
         "end_offset": 15962
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "叚成式"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhfe",
+        "canonical_name": "段成式",
+        "href": "book-index://Entity/hixhd2h9bhfe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25066,8 +24412,10 @@
         "end_offset": 16056
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊炯"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9l",
+        "canonical_name": "楊炯",
+        "href": "book-index://Entity/hixhd2h9bf9l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25142,8 +24490,10 @@
         "end_offset": 16106
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬厯"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆",
+        "href": "book-index://Entity/hixi1ubqbwu9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25178,8 +24528,10 @@
         "end_offset": 16111
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "童佩"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfvx",
+        "canonical_name": "童佩",
+        "href": "book-index://Entity/hixhd2h9bfvx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25278,24 +24630,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01331",
-      "type": "people",
-      "text": "李氏",
-      "anchor": {
-        "start": "101:2:3",
-        "end": "101:2:4"
-      },
-      "span": {
-        "start_offset": 16186,
-        "end_offset": 16188
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01332",
       "type": "work",
       "text": "墓誌銘",
@@ -25330,24 +24664,6 @@
         "entity_id": "hixhd2h9bnro",
         "canonical_name": "庾信",
         "href": "book-index://Entity/hixhd2h9bnro"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01334",
-      "type": "people",
-      "text": "李氏",
-      "anchor": {
-        "start": "101:3:15",
-        "end": "101:3:16"
-      },
-      "span": {
-        "start_offset": 16217,
-        "end_offset": 16219
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李氏"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25498,8 +24814,10 @@
         "end_offset": 16369
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "童佩"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfvx",
+        "canonical_name": "童佩",
+        "href": "book-index://Entity/hixhd2h9bfvx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25962,24 +25280,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01368",
-      "type": "people",
-      "text": "王楊盧駱",
-      "anchor": {
-        "start": "104:1:7",
-        "end": "104:1:10"
-      },
-      "span": {
-        "start_offset": 16661,
-        "end_offset": 16665
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "王楊盧駱"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01369",
       "type": "people",
       "text": "楊炯",
@@ -25992,8 +25292,10 @@
         "end_offset": 16672
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊炯"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9l",
+        "canonical_name": "楊炯",
+        "href": "book-index://Entity/hixhd2h9bf9l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26068,8 +25370,10 @@
         "end_offset": 16776
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張鷟"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf4c",
+        "canonical_name": "張鷟",
+        "href": "book-index://Entity/hixhd2h9bf4c"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26090,24 +25394,6 @@
         "entity_id": "d59f28jhe8sj",
         "canonical_name": "朝野僉載",
         "href": "book-index://Work/d59f28jhe8sj"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01375",
-      "type": "people",
-      "text": "晁氏陳氏",
-      "anchor": {
-        "start": "104:9:12",
-        "end": "104:9:15"
-      },
-      "span": {
-        "start_offset": 16818,
-        "end_offset": 16822
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "晁氏陳氏"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26214,8 +25500,10 @@
         "end_offset": 16923
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "駱賔王"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9n",
+        "canonical_name": "駱賓王",
+        "href": "book-index://Entity/hixhd2h9bf9n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26364,8 +25652,10 @@
         "end_offset": 16977
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "孟棨"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhkg",
+        "canonical_name": "孟棨",
+        "href": "book-index://Entity/hixhd2h9bhkg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26382,8 +25672,10 @@
         "end_offset": 16980
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "本事詩"
+        "status": "matched",
+        "entity_id": "d59f28l69ipy",
+        "canonical_name": "本事詩",
+        "href": "book-index://Work/d59f28l69ipy"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26514,8 +25806,10 @@
         "end_offset": 17060
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26592,8 +25886,10 @@
         "end_offset": 17111
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正德"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obp",
+        "canonical_name": "正德",
+        "href": "book-index://Entity/hixi1ubq0obp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26646,8 +25942,10 @@
         "end_offset": 17137
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "駱賔王"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9n",
+        "canonical_name": "駱賓王",
+        "href": "book-index://Entity/hixhd2h9bf9n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26738,8 +26036,10 @@
         "end_offset": 17179
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "孟棨"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhkg",
+        "canonical_name": "孟棨",
+        "href": "book-index://Entity/hixhd2h9bhkg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26870,8 +26170,10 @@
         "end_offset": 17284
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳子昻"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9o",
+        "canonical_name": "陳子昂",
+        "href": "book-index://Entity/hixhd2h9bf9o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27756,24 +27058,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01464",
-      "type": "people",
-      "text": "燕許",
-      "anchor": {
-        "start": "110:8:21",
-        "end": "110:9:3"
-      },
-      "span": {
-        "start_offset": 17793,
-        "end_offset": 17795
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "燕許"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01465",
       "type": "work",
       "text": "唐書藝文志",
@@ -28082,8 +27366,10 @@
         "end_offset": 17953
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "永樂"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obh",
+        "canonical_name": "永樂",
+        "href": "book-index://Entity/hixi1ubq0obh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28118,8 +27404,10 @@
         "end_offset": 17976
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖",
+        "href": "book-index://Entity/hixi1ubq0obq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28192,8 +27480,10 @@
         "end_offset": 18127
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李邕"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9q",
+        "canonical_name": "李邕",
+        "href": "book-index://Entity/hixhd2h9bf9q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28398,8 +27688,10 @@
         "end_offset": 18294
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28546,8 +27838,10 @@
         "end_offset": 18357
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "劉克"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnx3",
+        "canonical_name": "劉克",
+        "href": "book-index://Entity/hixhd2h9bnx3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28848,8 +28142,10 @@
         "end_offset": 18558
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李邕"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9q",
+        "canonical_name": "李邕",
+        "href": "book-index://Entity/hixhd2h9bf9q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28866,8 +28162,10 @@
         "end_offset": 18562
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29088,8 +28386,10 @@
         "end_offset": 18682
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29124,8 +28424,10 @@
         "end_offset": 18691
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "徐浩"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhcm",
+        "canonical_name": "徐浩",
+        "href": "book-index://Entity/hixhd2h9bhcm"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29142,8 +28444,10 @@
         "end_offset": 18694
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29196,8 +28500,10 @@
         "end_offset": 18726
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29272,8 +28578,10 @@
         "end_offset": 18767
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "成化"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obn",
+        "canonical_name": "成化",
+        "href": "book-index://Entity/hixi1ubq0obn"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29290,8 +28598,10 @@
         "end_offset": 18770
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "邱濬"
+        "status": "matched",
+        "entity_id": "hixhd2h9be7k",
+        "canonical_name": "丘濬",
+        "href": "book-index://Entity/hixhd2h9be7k"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29334,24 +28644,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01549",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "116:9:4",
-        "end": "116:9:5"
-      },
-      "span": {
-        "start_offset": 18790,
-        "end_offset": 18792
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01550",
       "type": "people",
       "text": "九齡",
@@ -29364,8 +28656,10 @@
         "end_offset": 18805
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29382,26 +28676,10 @@
         "end_offset": 18816
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01552",
-      "type": "people",
-      "text": "燕許",
-      "anchor": {
-        "start": "117:1:21",
-        "end": "117:2:3"
-      },
-      "span": {
-        "start_offset": 18826,
-        "end_offset": 18828
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "燕許"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29446,24 +28724,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01555",
-      "type": "work",
-      "text": "感遇",
-      "anchor": {
-        "start": "117:3:18",
-        "end": "117:3:19"
-      },
-      "span": {
-        "start_offset": 18861,
-        "end_offset": 18863
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "感遇"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01556",
       "type": "people",
       "text": "陳子昻",
@@ -29476,8 +28736,10 @@
         "end_offset": 18874
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳子昻"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9o",
+        "canonical_name": "陳子昂",
+        "href": "book-index://Entity/hixhd2h9bf9o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29512,8 +28774,10 @@
         "end_offset": 18954
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29620,8 +28884,10 @@
         "end_offset": 19039
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29730,8 +28996,10 @@
         "end_offset": 19096
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29884,8 +29152,10 @@
         "end_offset": 19141
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30014,8 +29284,10 @@
         "end_offset": 19181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元稹"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfaj",
+        "canonical_name": "元稹",
+        "href": "book-index://Entity/hixhd2h9bfaj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30072,8 +29344,10 @@
         "end_offset": 19194
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30262,24 +29536,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01599",
-      "type": "people",
-      "text": "李氏",
-      "anchor": {
-        "start": "119:8:21",
-        "end": "119:9:3"
-      },
-      "span": {
-        "start_offset": 19282,
-        "end_offset": 19284
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01600",
       "type": "people",
       "text": "通",
@@ -30338,24 +29594,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01603",
-      "type": "people",
-      "text": "王氏",
-      "anchor": {
-        "start": "120:1:6",
-        "end": "120:1:7"
-      },
-      "span": {
-        "start_offset": 19305,
-        "end_offset": 19307
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "王氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01604",
       "type": "place",
       "text": "瑯邪臨沂",
@@ -30374,24 +29612,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01605",
-      "type": "people",
-      "text": "李氏",
-      "anchor": {
-        "start": "120:1:16",
-        "end": "120:1:17"
-      },
-      "span": {
-        "start_offset": 19315,
-        "end_offset": 19317
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01606",
       "type": "place",
       "text": "隴西成紀",
@@ -30406,24 +29626,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "隴西成紀"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01607",
-      "type": "place",
-      "text": "魏晉",
-      "anchor": {
-        "start": "120:3:7",
-        "end": "120:3:8"
-      },
-      "span": {
-        "start_offset": 19344,
-        "end_offset": 19346
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏晉"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30552,8 +29754,10 @@
         "end_offset": 19407
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "伯陽"
+        "status": "matched",
+        "entity_id": "hixhd2h9bkq2",
+        "canonical_name": "魏伯陽",
+        "href": "book-index://Entity/hixhd2h9bkq2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30628,24 +29832,6 @@
         "entity_id": "d59f2htqolj5",
         "canonical_name": "新唐書",
         "href": "book-index://Work/d59f2htqolj5"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01619",
-      "type": "work",
-      "text": "草堂集",
-      "anchor": {
-        "start": "120:9:15",
-        "end": "120:9:17"
-      },
-      "span": {
-        "start_offset": 19466,
-        "end_offset": 19469
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "草堂集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30756,26 +29942,10 @@
         "end_offset": 19490
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01626",
-      "type": "work",
-      "text": "草堂集",
-      "anchor": {
-        "start": "121:1:20",
-        "end": "121:2:3"
-      },
-      "span": {
-        "start_offset": 19490,
-        "end_offset": 19493
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "草堂集"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30834,60 +30004,6 @@
         "entity_id": "d59f28jau9dt",
         "canonical_name": "李翰林集",
         "href": "book-index://Work/d59f28jau9dt"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01630",
-      "type": "work",
-      "text": "草堂集",
-      "anchor": {
-        "start": "121:3:20",
-        "end": "121:4:3"
-      },
-      "span": {
-        "start_offset": 19528,
-        "end_offset": 19531
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "草堂集"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01631",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "121:4:8",
-        "end": "121:4:9"
-      },
-      "span": {
-        "start_offset": 19535,
-        "end_offset": 19537
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01632",
-      "type": "work",
-      "text": "草堂集",
-      "anchor": {
-        "start": "121:5:7",
-        "end": "121:5:9"
-      },
-      "span": {
-        "start_offset": 19553,
-        "end_offset": 19556
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "草堂集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31038,8 +30154,10 @@
         "end_offset": 19644
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31116,24 +30234,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "晏氏"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01645",
-      "type": "people",
-      "text": "陳氏",
-      "anchor": {
-        "start": "122:3:3",
-        "end": "122:3:4"
-      },
-      "span": {
-        "start_offset": 19679,
-        "end_offset": 19681
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳氏"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31246,8 +30346,10 @@
         "end_offset": 19725
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王𤦺"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdbe",
+        "canonical_name": "王琦",
+        "href": "book-index://Entity/hixhd2h9bdbe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31264,8 +30366,10 @@
         "end_offset": 19766
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王𤦺"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdbe",
+        "canonical_name": "王琦",
+        "href": "book-index://Entity/hixhd2h9bdbe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31380,8 +30484,10 @@
         "end_offset": 19821
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31398,8 +30504,10 @@
         "end_offset": 19840
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31474,8 +30582,10 @@
         "end_offset": 19966
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐覲"
+        "status": "matched",
+        "entity_id": "hixhd2h9bpoh",
+        "canonical_name": "唐覲",
+        "href": "book-index://Entity/hixhd2h9bpoh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31556,24 +30666,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01668",
-      "type": "people",
-      "text": "臨江王",
-      "anchor": {
-        "start": "124:3:15",
-        "end": "124:3:17"
-      },
-      "span": {
-        "start_offset": 20010,
-        "end_offset": 20013
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "臨江王"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01669",
       "type": "work",
       "text": "節士歌",
@@ -31628,24 +30720,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01672",
-      "type": "people",
-      "text": "臨江王",
-      "anchor": {
-        "start": "124:5:9",
-        "end": "124:5:11"
-      },
-      "span": {
-        "start_offset": 20042,
-        "end_offset": 20045
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "臨江王"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01673",
       "type": "work",
       "text": "愁思節士歌",
@@ -31676,8 +30750,10 @@
         "end_offset": 20059
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南齊"
+        "status": "matched",
+        "entity_id": "hixi1ubkeej7",
+        "canonical_name": "南朝齊",
+        "href": "book-index://Entity/hixi1ubkeej7"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31694,26 +30770,10 @@
         "end_offset": 20061
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陸厥"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01676",
-      "type": "people",
-      "text": "臨江王",
-      "anchor": {
-        "start": "124:6:12",
-        "end": "124:6:14"
-      },
-      "span": {
-        "start_offset": 20064,
-        "end_offset": 20067
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "臨江王"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhme",
+        "canonical_name": "陸厥",
+        "href": "book-index://Entity/hixhd2h9bhme"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31972,8 +31032,10 @@
         "end_offset": 20235
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王𤦺"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdbe",
+        "canonical_name": "王琦",
+        "href": "book-index://Entity/hixhd2h9bdbe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32012,24 +31074,6 @@
         "entity_id": "hixi5whkfuo0",
         "canonical_name": "錢塘縣",
         "href": "book-index://Entity/hixi5whkfuo0"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01693",
-      "type": "people",
-      "text": "李詩",
-      "anchor": {
-        "start": "125:7:15",
-        "end": "125:7:16"
-      },
-      "span": {
-        "start_offset": 20244,
-        "end_offset": 20246
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李詩"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32182,26 +31226,10 @@
         "end_offset": 20411
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01702",
-      "type": "people",
-      "text": "李詩",
-      "anchor": {
-        "start": "126:7:16",
-        "end": "126:7:17"
-      },
-      "span": {
-        "start_offset": 20416,
-        "end_offset": 20418
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "李詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32276,8 +31304,10 @@
         "end_offset": 20475
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳熙"
+        "status": "matched",
+        "entity_id": "hixi1ubpe78n",
+        "canonical_name": "淳熙",
+        "href": "book-index://Entity/hixi1ubpe78n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32542,8 +31572,10 @@
         "end_offset": 20566
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32560,8 +31592,10 @@
         "end_offset": 20570
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32846,8 +31880,10 @@
         "end_offset": 20853
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "誠齋集"
+        "status": "matched",
+        "entity_id": "d59f2hpyl4ox",
+        "canonical_name": "誠齋集",
+        "href": "book-index://Work/d59f2hpyl4ox"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32918,8 +31954,10 @@
         "end_offset": 20873
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32954,8 +31992,10 @@
         "end_offset": 20918
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉定"
+        "status": "matched",
+        "entity_id": "hixi1ubppfre",
+        "canonical_name": "嘉定",
+        "href": "book-index://Entity/hixi1ubppfre"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33356,8 +32396,10 @@
         "end_offset": 21206
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33392,8 +32434,10 @@
         "end_offset": 21213
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33812,8 +32856,10 @@
         "end_offset": 21357
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33868,8 +32914,10 @@
         "end_offset": 21372
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34458,8 +33506,10 @@
         "end_offset": 21709
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大德"
+        "status": "matched",
+        "entity_id": "hixi1ubq0oas",
+        "canonical_name": "大德",
+        "href": "book-index://Entity/hixi1ubq0oas"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34684,8 +33734,10 @@
         "end_offset": 21853
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬厯"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆",
+        "href": "book-index://Entity/hixi1ubqbwu9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34720,8 +33772,10 @@
         "end_offset": 21878
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34758,8 +33812,10 @@
         "end_offset": 21916
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34794,8 +33850,10 @@
         "end_offset": 21959
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杜詩"
+        "status": "matched",
+        "entity_id": "d59fxwuzsmps",
+        "canonical_name": "杜詩",
+        "href": "book-index://Work/d59fxwuzsmps"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35024,8 +34082,10 @@
         "end_offset": 22166
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35042,8 +34102,10 @@
         "end_offset": 22181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35150,8 +34212,10 @@
         "end_offset": 22299
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高士傳"
+        "status": "matched",
+        "entity_id": "d59f27x5xeki",
+        "canonical_name": "高士傳",
+        "href": "book-index://Work/d59f27x5xeki"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35186,8 +34250,10 @@
         "end_offset": 22307
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高士傳"
+        "status": "matched",
+        "entity_id": "d59f27x5xeki",
+        "canonical_name": "高士傳",
+        "href": "book-index://Work/d59f27x5xeki"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35244,8 +34310,10 @@
         "end_offset": 22322
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高士傳"
+        "status": "matched",
+        "entity_id": "d59f27x5xeki",
+        "canonical_name": "高士傳",
+        "href": "book-index://Work/d59f27x5xeki"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35358,8 +34426,10 @@
         "end_offset": 22381
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "徐增"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg8e",
+        "canonical_name": "徐增",
+        "href": "book-index://Entity/hixhd2h9bg8e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35396,8 +34466,10 @@
         "end_offset": 22396
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王維"
+        "status": "matched",
+        "entity_id": "hixhd2h9bewe",
+        "canonical_name": "王維",
+        "href": "book-index://Entity/hixhd2h9bewe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35414,8 +34486,10 @@
         "end_offset": 22401
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35506,8 +34580,10 @@
         "end_offset": 22512
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王維"
+        "status": "matched",
+        "entity_id": "hixhd2h9bewe",
+        "canonical_name": "王維",
+        "href": "book-index://Entity/hixhd2h9bewe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35582,8 +34658,10 @@
         "end_offset": 22529
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王維"
+        "status": "matched",
+        "entity_id": "hixhd2h9bewe",
+        "canonical_name": "王維",
+        "href": "book-index://Entity/hixhd2h9bewe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35988,8 +35066,10 @@
         "end_offset": 22847
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "支遁"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhv5",
+        "canonical_name": "支遁",
+        "href": "book-index://Entity/hixhd2h9bhv5"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36144,8 +35224,10 @@
         "end_offset": 22925
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王𤦺"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdbe",
+        "canonical_name": "王琦",
+        "href": "book-index://Entity/hixhd2h9bdbe"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36200,8 +35282,10 @@
         "end_offset": 22967
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高適"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9u",
+        "canonical_name": "高適",
+        "href": "book-index://Entity/hixhd2h9bf9u"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36256,24 +35340,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "渤海河間"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01920",
-      "type": "work",
-      "text": "府志",
-      "anchor": {
-        "start": "142:2:4",
-        "end": "142:2:5"
-      },
-      "span": {
-        "start_offset": 22984,
-        "end_offset": 22986
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "府志"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36462,24 +35528,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01931",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "142:8:8",
-        "end": "142:8:9"
-      },
-      "span": {
-        "start_offset": 23102,
-        "end_offset": 23104
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01932",
       "type": "work",
       "text": "通考",
@@ -36492,8 +35540,10 @@
         "end_offset": 23109
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "通考"
+        "status": "matched",
+        "entity_id": "d59f2gny4r9c",
+        "canonical_name": "文獻通考",
+        "href": "book-index://Work/d59f2gny4r9c"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36738,8 +35788,10 @@
         "end_offset": 23273
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河南道"
+        "status": "matched",
+        "entity_id": "hixi4udt505q",
+        "canonical_name": "河南道",
+        "href": "book-index://Entity/hixi4udt505q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36792,8 +35844,10 @@
         "end_offset": 23326
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "常建"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhl2",
+        "canonical_name": "常建",
+        "href": "book-index://Entity/hixhd2h9bhl2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36866,8 +35920,10 @@
         "end_offset": 23340
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "常建"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhl2",
+        "canonical_name": "常建",
+        "href": "book-index://Entity/hixhd2h9bhl2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36924,8 +35980,10 @@
         "end_offset": 23363
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36982,8 +36040,10 @@
         "end_offset": 23394
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "常建"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhl2",
+        "canonical_name": "常建",
+        "href": "book-index://Entity/hixhd2h9bhl2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37080,8 +36140,10 @@
         "end_offset": 23440
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "殷璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg60",
+        "canonical_name": "殷璠",
+        "href": "book-index://Entity/hixhd2h9bg60"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37154,8 +36216,10 @@
         "end_offset": 23494
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "左思"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhlr",
+        "canonical_name": "左思",
+        "href": "book-index://Entity/hixhd2h9bhlr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37172,8 +36236,10 @@
         "end_offset": 23500
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鮑照"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhmc",
+        "canonical_name": "鮑照",
+        "href": "book-index://Entity/hixhd2h9bhmc"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37190,8 +36256,10 @@
         "end_offset": 23506
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "常建"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhl2",
+        "canonical_name": "常建",
+        "href": "book-index://Entity/hixhd2h9bhl2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37302,8 +36370,10 @@
         "end_offset": 23639
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37338,8 +36408,10 @@
         "end_offset": 23696
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "殷璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg60",
+        "canonical_name": "殷璠",
+        "href": "book-index://Entity/hixhd2h9bg60"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37440,24 +36512,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01983",
-      "type": "people",
-      "text": "王孟",
-      "anchor": {
-        "start": "146:7:6",
-        "end": "146:7:7"
-      },
-      "span": {
-        "start_offset": 23774,
-        "end_offset": 23776
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "王孟"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e01984",
       "type": "people",
       "text": "洪邁",
@@ -37490,8 +36544,10 @@
         "end_offset": 23797
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬首絶句"
+        "status": "matched",
+        "entity_id": "d59f2qajxfcx",
+        "canonical_name": "唐人萬首絕句",
+        "href": "book-index://Work/d59f2qajxfcx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37640,8 +36696,10 @@
         "end_offset": 23865
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37696,8 +36754,10 @@
         "end_offset": 23881
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "亢倉子"
+        "status": "matched",
+        "entity_id": "d59f28kehedd",
+        "canonical_name": "亢倉子",
+        "href": "book-index://Work/d59f28kehedd"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37732,8 +36792,10 @@
         "end_offset": 23904
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37768,8 +36830,10 @@
         "end_offset": 23919
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37936,8 +37000,10 @@
         "end_offset": 24118
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐音"
+        "status": "matched",
+        "entity_id": "d59f2gpmdk3l",
+        "canonical_name": "唐音",
+        "href": "book-index://Work/d59f2gpmdk3l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38080,8 +37146,10 @@
         "end_offset": 24193
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "方囘"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfhs",
+        "canonical_name": "方回",
+        "href": "book-index://Entity/hixhd2h9bfhs"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38194,8 +37262,10 @@
         "end_offset": 24242
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "岳州"
+        "status": "matched",
+        "entity_id": "hixicl8f74up",
+        "canonical_name": "嶽州",
+        "href": "book-index://Entity/hixicl8f74up"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38230,8 +37300,10 @@
         "end_offset": 24264
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "九齡"
+        "status": "matched",
+        "entity_id": "hixhd2h9beqq",
+        "canonical_name": "張九齡",
+        "href": "book-index://Entity/hixhd2h9beqq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38496,8 +37568,10 @@
         "end_offset": 24361
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38554,8 +37628,10 @@
         "end_offset": 24377
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "政論"
+        "status": "matched",
+        "entity_id": "d59f24m7kq9s",
+        "canonical_name": "政論",
+        "href": "book-index://Work/d59f24m7kq9s"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38590,8 +37666,10 @@
         "end_offset": 24385
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38702,8 +37780,10 @@
         "end_offset": 24456
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "殷璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg60",
+        "canonical_name": "殷璠",
+        "href": "book-index://Entity/hixhd2h9bg60"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38720,26 +37800,10 @@
         "end_offset": 24464
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "丹陽集"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02052",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "150:9:10",
-        "end": "150:9:11"
-      },
-      "span": {
-        "start_offset": 24480,
-        "end_offset": 24482
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
+        "status": "matched",
+        "entity_id": "d59f2q1mf01s",
+        "canonical_name": "丹陽集",
+        "href": "book-index://Work/d59f2q1mf01s"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38756,8 +37820,10 @@
         "end_offset": 24494
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "顧况"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfa4",
+        "canonical_name": "顧況",
+        "href": "book-index://Entity/hixhd2h9bfa4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38832,8 +37898,10 @@
         "end_offset": 24530
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "政論"
+        "status": "matched",
+        "entity_id": "d59f24m7kq9s",
+        "canonical_name": "政論",
+        "href": "book-index://Work/d59f24m7kq9s"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38888,8 +37956,10 @@
         "end_offset": 24577
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "殷璠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg60",
+        "canonical_name": "殷璠",
+        "href": "book-index://Entity/hixhd2h9bg60"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39030,24 +38100,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02068",
-      "type": "work",
-      "text": "文編",
-      "anchor": {
-        "start": "151:9:11",
-        "end": "151:9:12"
-      },
-      "span": {
-        "start_offset": 24634,
-        "end_offset": 24636
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "文編"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02069",
       "type": "people",
       "text": "李紓",
@@ -39098,24 +38150,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "玕子"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02072",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "152:1:9",
-        "end": "152:1:10"
-      },
-      "span": {
-        "start_offset": 24651,
-        "end_offset": 24653
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39424,24 +38458,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02089",
-      "type": "work",
-      "text": "浯溪中興頌",
-      "anchor": {
-        "start": "153:5:9",
-        "end": "153:5:13"
-      },
-      "span": {
-        "start_offset": 24898,
-        "end_offset": 24903
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "浯溪中興頌"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02090",
       "type": "work",
       "text": "顔",
@@ -39474,24 +38490,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "魯"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02092",
-      "type": "work",
-      "text": "公集",
-      "anchor": {
-        "start": "153:9:3",
-        "end": "153:9:4"
-      },
-      "span": {
-        "start_offset": 24954,
-        "end_offset": 24956
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "公集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39734,8 +38732,10 @@
         "end_offset": 25056
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉祐"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoj",
+        "canonical_name": "嘉祐",
+        "href": "book-index://Entity/hixi1ubp2yoj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39812,26 +38812,10 @@
         "end_offset": 25078
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉祐"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02110",
-      "type": "work",
-      "text": "雜志",
-      "anchor": {
-        "start": "154:7:5",
-        "end": "154:7:6"
-      },
-      "span": {
-        "start_offset": 25078,
-        "end_offset": 25080
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "雜志"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoj",
+        "canonical_name": "嘉祐",
+        "href": "book-index://Entity/hixi1ubp2yoj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39848,8 +38832,10 @@
         "end_offset": 25099
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉定"
+        "status": "matched",
+        "entity_id": "hixi1ubppfre",
+        "canonical_name": "嘉定",
+        "href": "book-index://Entity/hixi1ubppfre"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39906,8 +38892,10 @@
         "end_offset": 25179
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬厯"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆",
+        "href": "book-index://Entity/hixi1ubqbwu9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39962,8 +38950,10 @@
         "end_offset": 25204
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安國"
+        "status": "matched",
+        "entity_id": "hixi5vzpexwk",
+        "canonical_name": "安國",
+        "href": "book-index://Entity/hixi5vzpexwk"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40146,42 +39136,6 @@
         "entity_id": "hixhd2h9be5o",
         "canonical_name": "顏元孫",
         "href": "book-index://Entity/hixhd2h9be5o"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02128",
-      "type": "work",
-      "text": "墓誌",
-      "anchor": {
-        "start": "156:4:19",
-        "end": "156:4:20"
-      },
-      "span": {
-        "start_offset": 25377,
-        "end_offset": 25379
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "墓誌"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02129",
-      "type": "people",
-      "text": "江氏",
-      "anchor": {
-        "start": "156:5:7",
-        "end": "156:5:8"
-      },
-      "span": {
-        "start_offset": 25384,
-        "end_offset": 25386
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "江氏"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40482,8 +39436,10 @@
         "end_offset": 25559
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内丹九章經"
+        "status": "matched",
+        "entity_id": "d59f28n7xix1",
+        "canonical_name": "內丹九章經",
+        "href": "book-index://Work/d59f28n7xix1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40518,8 +39474,10 @@
         "end_offset": 25571
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳筠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9x",
+        "canonical_name": "吳筠",
+        "href": "book-index://Entity/hixhd2h9bf9x"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40684,8 +39642,10 @@
         "end_offset": 25622
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大厯"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "href": "book-index://Entity/hixi1ubo591i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40760,8 +39720,10 @@
         "end_offset": 25653
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "知不足齋"
+        "status": "matched",
+        "entity_id": "hixie4r8p1xf",
+        "canonical_name": "知不足齋",
+        "href": "book-index://Entity/hixie4r8p1xf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40798,8 +39760,10 @@
         "end_offset": 25676
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳筠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9x",
+        "canonical_name": "吳筠",
+        "href": "book-index://Entity/hixhd2h9bf9x"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40842,24 +39806,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02165",
-      "type": "place",
-      "text": "戊申",
-      "anchor": {
-        "start": "158:5:9",
-        "end": "158:5:10"
-      },
-      "span": {
-        "start_offset": 25707,
-        "end_offset": 25709
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "戊申"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02166",
       "type": "work",
       "text": "通考",
@@ -40872,8 +39818,10 @@
         "end_offset": 25719
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "通考"
+        "status": "matched",
+        "entity_id": "d59f2gny4r9c",
+        "canonical_name": "文獻通考",
+        "href": "book-index://Work/d59f2gny4r9c"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41116,8 +40064,10 @@
         "end_offset": 25874
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李白"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9r",
+        "canonical_name": "李白",
+        "href": "book-index://Entity/hixhd2h9bf9r"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41134,8 +40084,10 @@
         "end_offset": 25878
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天寶"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "href": "book-index://Entity/hixi1ubnu0ik"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41172,8 +40124,10 @@
         "end_offset": 25888
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳筠"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf9x",
+        "canonical_name": "吳筠",
+        "href": "book-index://Entity/hixhd2h9bf9x"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41336,8 +40290,10 @@
         "end_offset": 25969
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大厯"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "href": "book-index://Entity/hixi1ubo591i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41354,8 +40310,10 @@
         "end_offset": 25987
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "貞元"
+        "status": "matched",
+        "entity_id": "hixi1ubo591o",
+        "canonical_name": "貞元",
+        "href": "book-index://Entity/hixi1ubo591o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41372,8 +40330,10 @@
         "end_offset": 25995
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "貞元"
+        "status": "matched",
+        "entity_id": "hixi1ubo591o",
+        "canonical_name": "貞元",
+        "href": "book-index://Entity/hixi1ubo591o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41524,8 +40484,10 @@
         "end_offset": 26102
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内丹九章經"
+        "status": "matched",
+        "entity_id": "d59f28n7xix1",
+        "canonical_name": "內丹九章經",
+        "href": "book-index://Work/d59f28n7xix1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41562,8 +40524,10 @@
         "end_offset": 26148
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内丹九章經"
+        "status": "matched",
+        "entity_id": "d59f28n7xix1",
+        "canonical_name": "內丹九章經",
+        "href": "book-index://Work/d59f28n7xix1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41634,8 +40598,10 @@
         "end_offset": 26185
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "皎然"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg93",
+        "canonical_name": "釋皎然",
+        "href": "book-index://Entity/hixhd2h9bg93"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41672,8 +40638,10 @@
         "end_offset": 26194
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "皎然"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg93",
+        "canonical_name": "釋皎然",
+        "href": "book-index://Entity/hixhd2h9bg93"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41804,8 +40772,10 @@
         "end_offset": 26229
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "貞元"
+        "status": "matched",
+        "entity_id": "hixi1ubo591o",
+        "canonical_name": "貞元",
+        "href": "book-index://Entity/hixi1ubo591o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41846,24 +40816,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02219",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "161:7:15",
-        "end": "161:7:16"
-      },
-      "span": {
-        "start_offset": 26250,
-        "end_offset": 26252
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02220",
       "type": "people",
       "text": "贊寧",
@@ -41876,8 +40828,10 @@
         "end_offset": 26265
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "贊寧"
+        "status": "matched",
+        "entity_id": "hixhd2h9bf8s",
+        "canonical_name": "釋贊寧",
+        "href": "book-index://Entity/hixhd2h9bf8s"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41894,8 +40848,10 @@
         "end_offset": 26273
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高僧傳"
+        "status": "matched",
+        "entity_id": "d59f2hs16uiq",
+        "canonical_name": "宋高僧傳",
+        "href": "book-index://Work/d59f2hs16uiq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41932,8 +40888,10 @@
         "end_offset": 26289
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "皎然"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg93",
+        "canonical_name": "釋皎然",
+        "href": "book-index://Entity/hixhd2h9bg93"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41968,8 +40926,10 @@
         "end_offset": 26306
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "齊□"
+        "status": "matched",
+        "entity_id": "hixhd2h9bu0v",
+        "canonical_name": "釋齊己",
+        "href": "book-index://Entity/hixhd2h9bu0v"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -41986,8 +40946,10 @@
         "end_offset": 26311
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "貫休"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfb3",
+        "canonical_name": "釋貫休",
+        "href": "book-index://Entity/hixhd2h9bfb3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42024,24 +40986,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "杼山詩式"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02229",
-      "type": "work",
-      "text": "唐志",
-      "anchor": {
-        "start": "162:3:21",
-        "end": "162:4:3"
-      },
-      "span": {
-        "start_offset": 26351,
-        "end_offset": 26353
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐志"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42206,8 +41150,10 @@
         "end_offset": 26407
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "姚合"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfan",
+        "canonical_name": "姚合",
+        "href": "book-index://Entity/hixhd2h9bfan"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42224,8 +41170,10 @@
         "end_offset": 26410
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "極元集"
+        "status": "matched",
+        "entity_id": "d59f28l27fnp",
+        "canonical_name": "極玄集",
+        "href": "book-index://Work/d59f28l27fnp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42262,8 +41210,10 @@
         "end_offset": 26420
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元",
+        "href": "book-index://Entity/hixi1ubnu0ij"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42280,8 +41230,10 @@
         "end_offset": 26432
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "隨州"
+        "status": "matched",
+        "entity_id": "hixicl8f74x3",
+        "canonical_name": "隨州",
+        "href": "book-index://Entity/hixicl8f74x3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42334,8 +41286,10 @@
         "end_offset": 26487
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋高宗"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhd3",
+        "canonical_name": "趙構",
+        "href": "book-index://Entity/hixhd2h9bhd3"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43170,8 +42124,10 @@
         "end_offset": 27070
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉祐"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoj",
+        "canonical_name": "嘉祐",
+        "href": "book-index://Entity/hixi1ubp2yoj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43284,8 +42240,10 @@
         "end_offset": 27139
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李觀"
+        "status": "matched",
+        "entity_id": "hixhd2h9bi64",
+        "canonical_name": "李觀",
+        "href": "book-index://Entity/hixhd2h9bi64"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43366,24 +42324,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02301",
-      "type": "people",
-      "text": "三謝",
-      "anchor": {
-        "start": "167:6:4",
-        "end": "167:6:5"
-      },
-      "span": {
-        "start_offset": 27220,
-        "end_offset": 27222
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "三謝"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02302",
       "type": "place",
       "text": "柴桑",
@@ -43432,8 +42372,10 @@
         "end_offset": 27265
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43452,24 +42394,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "項絪"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e02306",
-      "type": "people",
-      "text": "毛氏",
-      "anchor": {
-        "start": "168:3:21",
-        "end": "168:4:3"
-      },
-      "span": {
-        "start_offset": 27351,
-        "end_offset": 27353
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "毛氏"
       },
       "source": "ext:siku-qiefen-v2"
     }

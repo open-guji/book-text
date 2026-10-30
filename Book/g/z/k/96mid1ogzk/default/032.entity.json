@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "text_version": "0.3.0",
   "book_id": "96mid1ogzk",
   "volume": 32,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1064,
-    "matched": 870,
+    "total_entities": 1065,
+    "matched": 876,
     "ambiguous": 0,
-    "new_candidates": 194,
+    "new_candidates": 189,
     "works": 298,
     "people": 435,
-    "places": 331,
+    "places": 332,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -2543,8 +2543,10 @@
         "end_offset": 2264
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "秦中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7982,8 +7984,10 @@
         "end_offset": 6671
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泰山"
+        "status": "matched",
+        "entity_id": "hixif412e6fx",
+        "canonical_name": "泰山",
+        "href": "book-index://Entity/hixif412e6fx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8136,8 +8140,10 @@
         "end_offset": 6785
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "湘湖"
+        "status": "matched",
+        "entity_id": "hixif412e6h7",
+        "canonical_name": "湘湖",
+        "href": "book-index://Entity/hixif412e6h7"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9396,8 +9402,10 @@
         "end_offset": 7930
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泰山"
+        "status": "matched",
+        "entity_id": "hixif412e6fx",
+        "canonical_name": "泰山",
+        "href": "book-index://Entity/hixif412e6fx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18018,18 +18026,40 @@
     {
       "id": "e00972",
       "type": "place",
-      "text": "福建長樂",
+      "text": "福建",
       "anchor": {
         "start": "90:7:13",
-        "end": "90:7:16"
+        "end": "90:7:14"
       },
       "span": {
         "start_offset": 13647,
+        "end_offset": 13649
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "href": "book-index://Entity/hixi4u82hwjo"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01163",
+      "type": "place",
+      "text": "長樂",
+      "anchor": {
+        "start": "90:7:15",
+        "end": "90:7:16"
+      },
+      "span": {
+        "start_offset": 13649,
         "end_offset": 13651
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "福建長樂"
+        "status": "matched",
+        "entity_id": "hixi5whl2brb",
+        "canonical_name": "長樂縣",
+        "href": "book-index://Entity/hixi5whl2brb"
       },
       "source": "ext:siku-qiefen-v2"
     },

@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 71,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 906,
-    "matched": 720,
+    "total_entities": 907,
+    "matched": 722,
     "ambiguous": 0,
-    "new_candidates": 186,
+    "new_candidates": 185,
     "works": 290,
     "people": 480,
-    "places": 136,
+    "places": 137,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -5133,8 +5133,10 @@
         "end_offset": 4304
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "齊魯"
+        "status": "matched",
+        "entity_id": "hixif41h2c7k",
+        "canonical_name": "齊魯",
+        "href": "book-index://Entity/hixif41h2c7k"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6947,8 +6949,10 @@
         "end_offset": 5791
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "好水川"
+        "status": "matched",
+        "entity_id": "hixif412e6gy",
+        "canonical_name": "好水川",
+        "href": "book-index://Entity/hixif412e6gy"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9547,18 +9551,36 @@
     {
       "id": "e00591",
       "type": "place",
-      "text": "常州晉陵",
+      "text": "常州",
       "anchor": {
         "start": "49:9:11",
-        "end": "49:9:14"
+        "end": "49:9:12"
       },
       "span": {
         "start_offset": 7980,
+        "end_offset": 7982
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "常州"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01111",
+      "type": "place",
+      "text": "晉陵",
+      "anchor": {
+        "start": "49:9:13",
+        "end": "49:9:14"
+      },
+      "span": {
+        "start_offset": 7982,
         "end_offset": 7984
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "常州晉陵"
+        "canonical_name": "晉陵"
       },
       "source": "ext:siku-qiefen-v2"
     },

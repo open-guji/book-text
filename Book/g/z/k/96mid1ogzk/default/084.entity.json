@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 84,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1736,
-    "matched": 1353,
+    "total_entities": 1738,
+    "matched": 1365,
     "ambiguous": 0,
-    "new_candidates": 383,
+    "new_candidates": 373,
     "works": 470,
     "people": 902,
-    "places": 364,
+    "places": 366,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -1036,8 +1036,10 @@
         "end_offset": 884
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "浙東"
+        "status": "matched",
+        "entity_id": "hixif41h2c61",
+        "canonical_name": "浙東",
+        "href": "book-index://Entity/hixif41h2c61"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2038,8 +2040,10 @@
         "end_offset": 1466
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3328,8 +3332,10 @@
         "end_offset": 2209
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "遼東"
+        "status": "matched",
+        "entity_id": "hixif41h2c5j",
+        "canonical_name": "遼東",
+        "href": "book-index://Entity/hixif41h2c5j"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4086,8 +4092,10 @@
         "end_offset": 2683
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "浙東"
+        "status": "matched",
+        "entity_id": "hixif41h2c61",
+        "canonical_name": "浙東",
+        "href": "book-index://Entity/hixif41h2c61"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8069,8 +8077,10 @@
         "end_offset": 5144
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8224,8 +8234,10 @@
         "end_offset": 5259
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13572,18 +13584,40 @@
     {
       "id": "e00851",
       "type": "place",
-      "text": "福建長樂",
+      "text": "福建",
       "anchor": {
         "start": "55:6:18",
-        "end": "55:6:21"
+        "end": "55:6:19"
       },
       "span": {
         "start_offset": 8638,
+        "end_offset": 8640
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "href": "book-index://Entity/hixi4u82hwjo"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02233",
+      "type": "place",
+      "text": "長樂",
+      "anchor": {
+        "start": "55:6:20",
+        "end": "55:6:21"
+      },
+      "span": {
+        "start_offset": 8640,
         "end_offset": 8642
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "福建長樂"
+        "status": "matched",
+        "entity_id": "hixi5whl2brb",
+        "canonical_name": "長樂縣",
+        "href": "book-index://Entity/hixi5whl2brb"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17048,18 +17082,38 @@
     {
       "id": "e01078",
       "type": "place",
-      "text": "江西樂安",
+      "text": "江西",
       "anchor": {
         "start": "70:7:14",
-        "end": "70:7:17"
+        "end": "70:7:15"
       },
       "span": {
         "start_offset": 11038,
+        "end_offset": 11040
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi4ufdbpxn",
+        "canonical_name": "江西省",
+        "href": "book-index://Entity/hixi4ufdbpxn"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02234",
+      "type": "place",
+      "text": "樂安",
+      "anchor": {
+        "start": "70:7:16",
+        "end": "70:7:17"
+      },
+      "span": {
+        "start_offset": 11040,
         "end_offset": 11042
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "江西樂安"
+        "canonical_name": "樂安"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17892,8 +17946,10 @@
         "end_offset": 11702
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31680,8 +31736,10 @@
         "end_offset": 20964
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嶺南"
+        "status": "matched",
+        "entity_id": "hixif41h2c5l",
+        "canonical_name": "嶺南",
+        "href": "book-index://Entity/hixif41h2c5l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32556,8 +32614,10 @@
         "end_offset": 21654
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漕河"
+        "status": "matched",
+        "entity_id": "hixif412e6hh",
+        "canonical_name": "大運河",
+        "href": "book-index://Entity/hixif412e6hh"
       },
       "source": "ext:siku-qiefen-v2"
     },

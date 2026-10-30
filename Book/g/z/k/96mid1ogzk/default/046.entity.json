@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "text_version": "0.5.1",
   "book_id": "96mid1ogzk",
   "volume": 46,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2221,
-    "matched": 1923,
+    "total_entities": 2222,
+    "matched": 1930,
     "ambiguous": 0,
-    "new_candidates": 298,
+    "new_candidates": 292,
     "works": 943,
     "people": 937,
-    "places": 341,
+    "places": 342,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -1722,8 +1722,10 @@
         "end_offset": 1477
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "闗中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9031,8 +9033,10 @@
         "end_offset": 7404
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河洛"
+        "status": "matched",
+        "entity_id": "hixif41h2c6z",
+        "canonical_name": "河洛",
+        "href": "book-index://Entity/hixif41h2c6z"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10685,8 +10689,10 @@
         "end_offset": 8826
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河洛"
+        "status": "matched",
+        "entity_id": "hixif41h2c6z",
+        "canonical_name": "河洛",
+        "href": "book-index://Entity/hixif41h2c6z"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21920,8 +21926,10 @@
         "end_offset": 18079
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "遼東"
+        "status": "matched",
+        "entity_id": "hixif41h2c5j",
+        "canonical_name": "遼東",
+        "href": "book-index://Entity/hixif41h2c5j"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26434,8 +26442,10 @@
         "end_offset": 21463
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嵩山"
+        "status": "matched",
+        "entity_id": "hixif412e6fq",
+        "canonical_name": "嵩山",
+        "href": "book-index://Entity/hixif412e6fq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36269,8 +36279,10 @@
         "end_offset": 29375
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37543,18 +37555,38 @@
     {
       "id": "e02397",
       "type": "place",
-      "text": "江西新城",
+      "text": "江西",
       "anchor": {
         "start": "197:4:13",
-        "end": "197:4:16"
+        "end": "197:4:14"
       },
       "span": {
         "start_offset": 30327,
+        "end_offset": 30329
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi4ufdbpxn",
+        "canonical_name": "江西省",
+        "href": "book-index://Entity/hixi4ufdbpxn"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02825",
+      "type": "place",
+      "text": "新城",
+      "anchor": {
+        "start": "197:4:15",
+        "end": "197:4:16"
+      },
+      "span": {
+        "start_offset": 30329,
         "end_offset": 30331
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "江西新城"
+        "canonical_name": "新城"
       },
       "source": "ext:siku-qiefen-v2"
     },

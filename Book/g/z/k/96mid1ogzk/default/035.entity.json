@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.5.1",
   "book_id": "96mid1ogzk",
   "volume": 35,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2088,
+    "total_entities": 2137,
     "matched": 1223,
     "ambiguous": 0,
-    "new_candidates": 865,
+    "new_candidates": 914,
     "works": 513,
     "people": 651,
-    "places": 924,
+    "places": 973,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -243,18 +243,54 @@
     {
       "id": "e00013",
       "type": "place",
-      "text": "滹沱水涇水洛水",
+      "text": "滹沱水",
       "anchor": {
         "start": "1:9:11",
-        "end": "1:9:17"
+        "end": "1:9:13"
       },
       "span": {
         "start_offset": 116,
+        "end_offset": 119
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "滹沱水"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02256",
+      "type": "place",
+      "text": "涇水",
+      "anchor": {
+        "start": "1:9:14",
+        "end": "1:9:15"
+      },
+      "span": {
+        "start_offset": 119,
+        "end_offset": 121
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "涇水"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02257",
+      "type": "place",
+      "text": "洛水",
+      "anchor": {
+        "start": "1:9:16",
+        "end": "1:9:17"
+      },
+      "span": {
+        "start_offset": 121,
         "end_offset": 123
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "滹沱水涇水洛水"
+        "canonical_name": "洛水"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2504,18 +2540,72 @@
     {
       "id": "e00140",
       "type": "place",
-      "text": "淸漳水濁漳水大遼水小遼水",
+      "text": "淸漳水",
       "anchor": {
         "start": "11:6:15",
-        "end": "11:7:7"
+        "end": "11:6:17"
       },
       "span": {
         "start_offset": 1736,
+        "end_offset": 1739
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "淸漳水"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02258",
+      "type": "place",
+      "text": "濁漳水",
+      "anchor": {
+        "start": "11:6:18",
+        "end": "11:6:20"
+      },
+      "span": {
+        "start_offset": 1739,
+        "end_offset": 1742
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "濁漳水"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02259",
+      "type": "place",
+      "text": "大遼水",
+      "anchor": {
+        "start": "11:6:21",
+        "end": "11:7:4"
+      },
+      "span": {
+        "start_offset": 1742,
+        "end_offset": 1745
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "大遼水"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02260",
+      "type": "place",
+      "text": "小遼水",
+      "anchor": {
+        "start": "11:7:5",
+        "end": "11:7:7"
+      },
+      "span": {
+        "start_offset": 1745,
         "end_offset": 1748
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "淸漳水濁漳水大遼水小遼水"
+        "canonical_name": "小遼水"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5051,18 +5141,36 @@
     {
       "id": "e00285",
       "type": "place",
-      "text": "白茅堤金堤",
+      "text": "白茅堤",
       "anchor": {
         "start": "19:4:18",
-        "end": "19:5:3"
+        "end": "19:4:20"
       },
       "span": {
         "start_offset": 3092,
+        "end_offset": 3095
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "白茅堤"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02261",
+      "type": "place",
+      "text": "金堤",
+      "anchor": {
+        "start": "19:4:21",
+        "end": "19:5:3"
+      },
+      "span": {
+        "start_offset": 3095,
         "end_offset": 3097
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "白茅堤金堤"
+        "canonical_name": "金堤"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5161,36 +5269,72 @@
     {
       "id": "e00291",
       "type": "place",
-      "text": "崑崙星宿",
+      "text": "崑崙",
       "anchor": {
         "start": "20:1:5",
-        "end": "20:1:8"
+        "end": "20:1:6"
       },
       "span": {
         "start_offset": 3193,
+        "end_offset": 3195
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "崑崙"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02262",
+      "type": "place",
+      "text": "星宿",
+      "anchor": {
+        "start": "20:1:7",
+        "end": "20:1:8"
+      },
+      "span": {
+        "start_offset": 3195,
         "end_offset": 3197
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "崑崙星宿"
+        "canonical_name": "星宿"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e00292",
       "type": "place",
-      "text": "西陲葱嶺于闐",
+      "text": "西陲葱嶺",
       "anchor": {
         "start": "20:2:6",
-        "end": "20:2:11"
+        "end": "20:2:9"
       },
       "span": {
         "start_offset": 3207,
+        "end_offset": 3211
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "西陲葱嶺"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02263",
+      "type": "place",
+      "text": "于闐",
+      "anchor": {
+        "start": "20:2:10",
+        "end": "20:2:11"
+      },
+      "span": {
+        "start_offset": 3211,
         "end_offset": 3213
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "西陲葱嶺于闐"
+        "canonical_name": "于闐"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10867,18 +11011,36 @@
     {
       "id": "e00620",
       "type": "place",
-      "text": "葱嶺于闐",
+      "text": "葱嶺",
       "anchor": {
         "start": "42:4:12",
-        "end": "42:4:15"
+        "end": "42:4:13"
       },
       "span": {
         "start_offset": 6736,
+        "end_offset": 6738
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "葱嶺"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02264",
+      "type": "place",
+      "text": "于闐",
+      "anchor": {
+        "start": "42:4:14",
+        "end": "42:4:15"
+      },
+      "span": {
+        "start_offset": 6738,
         "end_offset": 6740
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "葱嶺于闐"
+        "canonical_name": "于闐"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11347,18 +11509,36 @@
     {
       "id": "e00646",
       "type": "place",
-      "text": "黃河運河",
+      "text": "黃河",
       "anchor": {
         "start": "44:1:10",
-        "end": "44:1:13"
+        "end": "44:1:11"
       },
       "span": {
         "start_offset": 6997,
+        "end_offset": 6999
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "黃河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02265",
+      "type": "place",
+      "text": "運河",
+      "anchor": {
+        "start": "44:1:12",
+        "end": "44:1:13"
+      },
+      "span": {
+        "start_offset": 6999,
         "end_offset": 7001
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "黃河運河"
+        "canonical_name": "運河"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13239,18 +13419,450 @@
     {
       "id": "e00760",
       "type": "place",
-      "text": "海河衛河白河淀河東淀永定河淸河會同河中亭河西淀趙北口子牙河千里長堤滹沱河滏陽河寧晉泊大陸澤鳳河牤牛河窩頭河鮑邱河薊河還鄕河塌河淀七里海",
+      "text": "海河",
       "anchor": {
         "start": "51:2:17",
-        "end": "51:6:7"
+        "end": "51:2:18"
       },
       "span": {
         "start_offset": 8192,
+        "end_offset": 8194
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "海河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02266",
+      "type": "place",
+      "text": "衛河",
+      "anchor": {
+        "start": "51:2:19",
+        "end": "51:2:20"
+      },
+      "span": {
+        "start_offset": 8194,
+        "end_offset": 8196
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "衛河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02267",
+      "type": "place",
+      "text": "白河",
+      "anchor": {
+        "start": "51:2:21",
+        "end": "51:3:3"
+      },
+      "span": {
+        "start_offset": 8196,
+        "end_offset": 8198
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "白河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02268",
+      "type": "place",
+      "text": "淀河",
+      "anchor": {
+        "start": "51:3:4",
+        "end": "51:3:5"
+      },
+      "span": {
+        "start_offset": 8198,
+        "end_offset": 8200
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "淀河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02269",
+      "type": "place",
+      "text": "東淀",
+      "anchor": {
+        "start": "51:3:6",
+        "end": "51:3:7"
+      },
+      "span": {
+        "start_offset": 8200,
+        "end_offset": 8202
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "東淀"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02270",
+      "type": "place",
+      "text": "永定河",
+      "anchor": {
+        "start": "51:3:8",
+        "end": "51:3:10"
+      },
+      "span": {
+        "start_offset": 8202,
+        "end_offset": 8205
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "永定河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02271",
+      "type": "place",
+      "text": "淸河",
+      "anchor": {
+        "start": "51:3:11",
+        "end": "51:3:12"
+      },
+      "span": {
+        "start_offset": 8205,
+        "end_offset": 8207
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "淸河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02272",
+      "type": "place",
+      "text": "會同河",
+      "anchor": {
+        "start": "51:3:13",
+        "end": "51:3:15"
+      },
+      "span": {
+        "start_offset": 8207,
+        "end_offset": 8210
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "會同河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02273",
+      "type": "place",
+      "text": "中亭河",
+      "anchor": {
+        "start": "51:3:16",
+        "end": "51:3:18"
+      },
+      "span": {
+        "start_offset": 8210,
+        "end_offset": 8213
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "中亭河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02274",
+      "type": "place",
+      "text": "西淀",
+      "anchor": {
+        "start": "51:3:19",
+        "end": "51:3:20"
+      },
+      "span": {
+        "start_offset": 8213,
+        "end_offset": 8215
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "西淀"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02275",
+      "type": "place",
+      "text": "趙北口",
+      "anchor": {
+        "start": "51:3:21",
+        "end": "51:4:4"
+      },
+      "span": {
+        "start_offset": 8215,
+        "end_offset": 8218
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "趙北口"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02276",
+      "type": "place",
+      "text": "子牙河",
+      "anchor": {
+        "start": "51:4:5",
+        "end": "51:4:7"
+      },
+      "span": {
+        "start_offset": 8218,
+        "end_offset": 8221
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "子牙河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02277",
+      "type": "place",
+      "text": "千里長堤",
+      "anchor": {
+        "start": "51:4:8",
+        "end": "51:4:11"
+      },
+      "span": {
+        "start_offset": 8221,
+        "end_offset": 8225
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "千里長堤"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02278",
+      "type": "place",
+      "text": "滹沱河",
+      "anchor": {
+        "start": "51:4:12",
+        "end": "51:4:14"
+      },
+      "span": {
+        "start_offset": 8225,
+        "end_offset": 8228
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "滹沱河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02279",
+      "type": "place",
+      "text": "滏陽河",
+      "anchor": {
+        "start": "51:4:15",
+        "end": "51:4:17"
+      },
+      "span": {
+        "start_offset": 8228,
+        "end_offset": 8231
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "滏陽河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02280",
+      "type": "place",
+      "text": "寧晉泊",
+      "anchor": {
+        "start": "51:4:18",
+        "end": "51:4:20"
+      },
+      "span": {
+        "start_offset": 8231,
+        "end_offset": 8234
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "寧晉泊"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02281",
+      "type": "place",
+      "text": "大陸澤",
+      "anchor": {
+        "start": "51:4:21",
+        "end": "51:5:4"
+      },
+      "span": {
+        "start_offset": 8234,
+        "end_offset": 8237
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "大陸澤"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02282",
+      "type": "place",
+      "text": "鳳河",
+      "anchor": {
+        "start": "51:5:5",
+        "end": "51:5:6"
+      },
+      "span": {
+        "start_offset": 8237,
+        "end_offset": 8239
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "鳳河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02283",
+      "type": "place",
+      "text": "牤牛河",
+      "anchor": {
+        "start": "51:5:7",
+        "end": "51:5:9"
+      },
+      "span": {
+        "start_offset": 8239,
+        "end_offset": 8242
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "牤牛河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02284",
+      "type": "place",
+      "text": "窩頭河",
+      "anchor": {
+        "start": "51:5:10",
+        "end": "51:5:12"
+      },
+      "span": {
+        "start_offset": 8242,
+        "end_offset": 8245
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "窩頭河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02285",
+      "type": "place",
+      "text": "鮑邱河",
+      "anchor": {
+        "start": "51:5:13",
+        "end": "51:5:15"
+      },
+      "span": {
+        "start_offset": 8245,
+        "end_offset": 8248
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "鮑邱河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02286",
+      "type": "place",
+      "text": "薊河",
+      "anchor": {
+        "start": "51:5:16",
+        "end": "51:5:17"
+      },
+      "span": {
+        "start_offset": 8248,
+        "end_offset": 8250
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "薊河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02287",
+      "type": "place",
+      "text": "還鄕河",
+      "anchor": {
+        "start": "51:5:18",
+        "end": "51:5:20"
+      },
+      "span": {
+        "start_offset": 8250,
+        "end_offset": 8253
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "還鄕河"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02288",
+      "type": "place",
+      "text": "塌河淀",
+      "anchor": {
+        "start": "51:5:21",
+        "end": "51:6:4"
+      },
+      "span": {
+        "start_offset": 8253,
+        "end_offset": 8256
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "塌河淀"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02289",
+      "type": "place",
+      "text": "七里海",
+      "anchor": {
+        "start": "51:6:5",
+        "end": "51:6:7"
+      },
+      "span": {
+        "start_offset": 8256,
         "end_offset": 8259
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "海河衛河白河淀河東淀永定河淸河會同河中亭河西淀趙北口子牙河千里長堤滹沱河滏陽河寧晉泊大陸澤鳳河牤牛河窩頭河鮑邱河薊河還鄕河塌河淀七里海"
+        "canonical_name": "七里海"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14265,18 +14877,36 @@
     {
       "id": "e00817",
       "type": "place",
-      "text": "浙江閩江",
+      "text": "浙江",
       "anchor": {
         "start": "57:1:19",
-        "end": "57:2:3"
+        "end": "57:1:20"
       },
       "span": {
         "start_offset": 9081,
+        "end_offset": 9083
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "浙江"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02290",
+      "type": "place",
+      "text": "閩江",
+      "anchor": {
+        "start": "57:1:21",
+        "end": "57:2:3"
+      },
+      "span": {
+        "start_offset": 9083,
         "end_offset": 9085
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "浙江閩江"
+        "canonical_name": "閩江"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14339,18 +14969,36 @@
     {
       "id": "e00821",
       "type": "place",
-      "text": "黑龍江松花",
+      "text": "黑龍江",
       "anchor": {
         "start": "57:3:6",
-        "end": "57:3:10"
+        "end": "57:3:8"
       },
       "span": {
         "start_offset": 9106,
+        "end_offset": 9109
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "黑龍江"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02291",
+      "type": "place",
+      "text": "松花",
+      "anchor": {
+        "start": "57:3:9",
+        "end": "57:3:10"
+      },
+      "span": {
+        "start_offset": 9109,
         "end_offset": 9111
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "黑龍江松花"
+        "canonical_name": "松花"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14375,18 +15023,36 @@
     {
       "id": "e00823",
       "type": "place",
-      "text": "東北海朝鮮",
+      "text": "東北海",
       "anchor": {
         "start": "57:3:14",
-        "end": "57:3:18"
+        "end": "57:3:16"
       },
       "span": {
         "start_offset": 9114,
+        "end_offset": 9117
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "東北海"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02292",
+      "type": "place",
+      "text": "朝鮮",
+      "anchor": {
+        "start": "57:3:17",
+        "end": "57:3:18"
+      },
+      "span": {
+        "start_offset": 9117,
         "end_offset": 9119
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "東北海朝鮮"
+        "canonical_name": "朝鮮"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15539,18 +16205,54 @@
     {
       "id": "e00889",
       "type": "place",
-      "text": "金塘淮揚□台温",
+      "text": "金塘",
       "anchor": {
         "start": "63:6:14",
-        "end": "63:6:20"
+        "end": "63:6:15"
       },
       "span": {
         "start_offset": 10070,
+        "end_offset": 10072
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "金塘"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02293",
+      "type": "place",
+      "text": "淮揚",
+      "anchor": {
+        "start": "63:6:16",
+        "end": "63:6:17"
+      },
+      "span": {
+        "start_offset": 10072,
+        "end_offset": 10074
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "淮揚"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02294",
+      "type": "place",
+      "text": "□台温",
+      "anchor": {
+        "start": "63:6:18",
+        "end": "63:6:20"
+      },
+      "span": {
+        "start_offset": 10074,
         "end_offset": 10077
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "金塘淮揚□台温"
+        "canonical_name": "□台温"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19021,18 +19723,90 @@
     {
       "id": "e01079",
       "type": "place",
-      "text": "□山南山北山吳山西溪",
+      "text": "□山",
       "anchor": {
         "start": "82:3:13",
-        "end": "82:4:3"
+        "end": "82:3:14"
       },
       "span": {
         "start_offset": 12845,
+        "end_offset": 12847
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "□山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02295",
+      "type": "place",
+      "text": "南山",
+      "anchor": {
+        "start": "82:3:15",
+        "end": "82:3:16"
+      },
+      "span": {
+        "start_offset": 12847,
+        "end_offset": 12849
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "南山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02296",
+      "type": "place",
+      "text": "北山",
+      "anchor": {
+        "start": "82:3:17",
+        "end": "82:3:18"
+      },
+      "span": {
+        "start_offset": 12849,
+        "end_offset": 12851
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "北山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02297",
+      "type": "place",
+      "text": "吳山",
+      "anchor": {
+        "start": "82:3:19",
+        "end": "82:3:20"
+      },
+      "span": {
+        "start_offset": 12851,
+        "end_offset": 12853
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "吳山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02298",
+      "type": "place",
+      "text": "西溪",
+      "anchor": {
+        "start": "82:3:21",
+        "end": "82:4:3"
+      },
+      "span": {
+        "start_offset": 12853,
         "end_offset": 12855
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "□山南山北山吳山西溪"
+        "canonical_name": "西溪"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23755,36 +24529,72 @@
     {
       "id": "e01334",
       "type": "place",
-      "text": "南山北山",
+      "text": "南山",
       "anchor": {
         "start": "102:8:3",
-        "end": "102:8:6"
+        "end": "102:8:4"
       },
       "span": {
         "start_offset": 16226,
+        "end_offset": 16228
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "南山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02299",
+      "type": "place",
+      "text": "北山",
+      "anchor": {
+        "start": "102:8:5",
+        "end": "102:8:6"
+      },
+      "span": {
+        "start_offset": 16228,
         "end_offset": 16230
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "南山北山"
+        "canonical_name": "北山"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e01335",
       "type": "place",
-      "text": "仙林崇先",
+      "text": "仙林",
       "anchor": {
         "start": "103:3:11",
-        "end": "103:3:14"
+        "end": "103:3:12"
       },
       "span": {
         "start_offset": 16310,
+        "end_offset": 16312
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "仙林"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02300",
+      "type": "place",
+      "text": "崇先",
+      "anchor": {
+        "start": "103:3:13",
+        "end": "103:3:14"
+      },
+      "span": {
+        "start_offset": 16312,
         "end_offset": 16314
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "仙林崇先"
+        "canonical_name": "崇先"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30818,18 +31628,36 @@
     {
       "id": "e01735",
       "type": "place",
-      "text": "大慶殿太廟",
+      "text": "大慶殿",
       "anchor": {
         "start": "130:9:3",
-        "end": "130:9:7"
+        "end": "130:9:5"
       },
       "span": {
         "start_offset": 20807,
+        "end_offset": 20810
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "大慶殿"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02301",
+      "type": "place",
+      "text": "太廟",
+      "anchor": {
+        "start": "130:9:6",
+        "end": "130:9:7"
+      },
+      "span": {
+        "start_offset": 20810,
         "end_offset": 20812
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "大慶殿太廟"
+        "canonical_name": "太廟"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39934,36 +40762,90 @@
     {
       "id": "e02247",
       "type": "place",
-      "text": "九宫貴神壇紅亭醋庫",
+      "text": "九宫貴神壇",
       "anchor": {
         "start": "171:5:17",
-        "end": "171:6:6"
+        "end": "171:5:21"
       },
       "span": {
         "start_offset": 27452,
+        "end_offset": 27457
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "九宫貴神壇"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02302",
+      "type": "place",
+      "text": "紅亭醋庫",
+      "anchor": {
+        "start": "171:6:3",
+        "end": "171:6:6"
+      },
+      "span": {
+        "start_offset": 27457,
         "end_offset": 27461
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "九宫貴神壇紅亭醋庫"
+        "canonical_name": "紅亭醋庫"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e02248",
       "type": "place",
-      "text": "高雲閣蘭菊草堂竹深亭",
+      "text": "高雲閣",
       "anchor": {
         "start": "171:6:17",
-        "end": "171:7:7"
+        "end": "171:6:19"
       },
       "span": {
         "start_offset": 27471,
+        "end_offset": 27474
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "高雲閣"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02303",
+      "type": "place",
+      "text": "蘭菊草堂",
+      "anchor": {
+        "start": "171:6:20",
+        "end": "171:7:4"
+      },
+      "span": {
+        "start_offset": 27474,
+        "end_offset": 27478
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "蘭菊草堂"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02304",
+      "type": "place",
+      "text": "竹深亭",
+      "anchor": {
+        "start": "171:7:5",
+        "end": "171:7:7"
+      },
+      "span": {
+        "start_offset": 27478,
         "end_offset": 27481
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "高雲閣蘭菊草堂竹深亭"
+        "canonical_name": "竹深亭"
       },
       "source": "ext:siku-qiefen-v2"
     },

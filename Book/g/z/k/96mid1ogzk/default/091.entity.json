@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 91,
@@ -11,11 +11,11 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 835,
+    "total_entities": 836,
     "matched": 715,
     "ambiguous": 0,
-    "new_candidates": 120,
-    "works": 296,
+    "new_candidates": 121,
+    "works": 297,
     "people": 436,
     "places": 103,
     "offices": 0,
@@ -11509,18 +11509,36 @@
     {
       "id": "e00721",
       "type": "work",
-      "text": "太平御覽冊府元龜",
+      "text": "太平御覽",
       "anchor": {
         "start": "60:1:7",
-        "end": "60:1:14"
+        "end": "60:1:10"
       },
       "span": {
         "start_offset": 9762,
+        "end_offset": 9766
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "太平御覽"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01014",
+      "type": "work",
+      "text": "冊府元龜",
+      "anchor": {
+        "start": "60:1:11",
+        "end": "60:1:14"
+      },
+      "span": {
+        "start_offset": 9766,
         "end_offset": 9770
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "太平御覽冊府元龜"
+        "canonical_name": "冊府元龜"
       },
       "source": "ext:siku-qiefen-v2"
     },

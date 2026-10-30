@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 96,
@@ -11,11 +11,11 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2787,
+    "total_entities": 2822,
     "matched": 1956,
     "ambiguous": 0,
-    "new_candidates": 831,
-    "works": 974,
+    "new_candidates": 866,
+    "works": 1009,
     "people": 1433,
     "places": 380,
     "offices": 0,
@@ -692,18 +692,36 @@
     {
       "id": "e00038",
       "type": "work",
-      "text": "陶庵雜記牘雋",
+      "text": "陶庵雜記",
       "anchor": {
         "start": "2:5:17",
-        "end": "2:6:3"
+        "end": "2:5:20"
       },
       "span": {
         "start_offset": 225,
+        "end_offset": 229
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "陶庵雜記"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03037",
+      "type": "work",
+      "text": "牘雋",
+      "anchor": {
+        "start": "2:5:21",
+        "end": "2:6:3"
+      },
+      "span": {
+        "start_offset": 229,
         "end_offset": 231
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "陶庵雜記牘雋"
+        "canonical_name": "牘雋"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5690,18 +5708,144 @@
     {
       "id": "e00321",
       "type": "work",
-      "text": "靑蓮館汗漫遊薊易寓言苕溪漫草兩都社草河梁編兩目紀遊偶□軒藁",
+      "text": "靑蓮館",
       "anchor": {
         "start": "19:7:16",
-        "end": "19:9:6"
+        "end": "19:7:18"
       },
       "span": {
         "start_offset": 2964,
+        "end_offset": 2967
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "靑蓮館"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03038",
+      "type": "work",
+      "text": "汗漫遊",
+      "anchor": {
+        "start": "19:7:19",
+        "end": "19:7:21"
+      },
+      "span": {
+        "start_offset": 2967,
+        "end_offset": 2970
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "汗漫遊"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03039",
+      "type": "work",
+      "text": "薊易寓言",
+      "anchor": {
+        "start": "19:8:3",
+        "end": "19:8:6"
+      },
+      "span": {
+        "start_offset": 2970,
+        "end_offset": 2974
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "薊易寓言"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03040",
+      "type": "work",
+      "text": "苕溪漫草",
+      "anchor": {
+        "start": "19:8:7",
+        "end": "19:8:10"
+      },
+      "span": {
+        "start_offset": 2974,
+        "end_offset": 2978
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "苕溪漫草"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03041",
+      "type": "work",
+      "text": "兩都社草",
+      "anchor": {
+        "start": "19:8:11",
+        "end": "19:8:14"
+      },
+      "span": {
+        "start_offset": 2978,
+        "end_offset": 2982
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "兩都社草"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03042",
+      "type": "work",
+      "text": "河梁編",
+      "anchor": {
+        "start": "19:8:15",
+        "end": "19:8:17"
+      },
+      "span": {
+        "start_offset": 2982,
+        "end_offset": 2985
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "河梁編"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03043",
+      "type": "work",
+      "text": "兩目紀遊",
+      "anchor": {
+        "start": "19:8:18",
+        "end": "19:8:21"
+      },
+      "span": {
+        "start_offset": 2985,
+        "end_offset": 2989
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "兩目紀遊"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03044",
+      "type": "work",
+      "text": "偶□軒藁",
+      "anchor": {
+        "start": "19:9:3",
+        "end": "19:9:6"
+      },
+      "span": {
+        "start_offset": 2989,
         "end_offset": 2993
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "靑蓮館汗漫遊薊易寓言苕溪漫草兩都社草河梁編兩目紀遊偶□軒藁"
+        "canonical_name": "偶□軒藁"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6530,18 +6674,36 @@
     {
       "id": "e00374",
       "type": "work",
-      "text": "才調集唐文粹",
+      "text": "才調集",
       "anchor": {
         "start": "24:1:20",
-        "end": "24:2:6"
+        "end": "24:2:3"
       },
       "span": {
         "start_offset": 3689,
+        "end_offset": 3692
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "才調集"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03045",
+      "type": "work",
+      "text": "唐文粹",
+      "anchor": {
+        "start": "24:2:4",
+        "end": "24:2:6"
+      },
+      "span": {
+        "start_offset": 3692,
         "end_offset": 3695
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "才調集唐文粹"
+        "canonical_name": "唐文粹"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11636,18 +11798,72 @@
     {
       "id": "e00660",
       "type": "work",
-      "text": "融春小編梅屋雜著梅屋第三稿第四稿",
+      "text": "融春小編",
       "anchor": {
         "start": "42:3:3",
-        "end": "42:3:18"
+        "end": "42:3:6"
       },
       "span": {
         "start_offset": 6507,
+        "end_offset": 6511
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "融春小編"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03046",
+      "type": "work",
+      "text": "梅屋雜著",
+      "anchor": {
+        "start": "42:3:7",
+        "end": "42:3:10"
+      },
+      "span": {
+        "start_offset": 6511,
+        "end_offset": 6515
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "梅屋雜著"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03047",
+      "type": "work",
+      "text": "梅屋第三稿",
+      "anchor": {
+        "start": "42:3:11",
+        "end": "42:3:15"
+      },
+      "span": {
+        "start_offset": 6515,
+        "end_offset": 6520
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "梅屋第三稿"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03048",
+      "type": "work",
+      "text": "第四稿",
+      "anchor": {
+        "start": "42:3:16",
+        "end": "42:3:18"
+      },
+      "span": {
+        "start_offset": 6520,
         "end_offset": 6523
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "融春小編梅屋雜著梅屋第三稿第四稿"
+        "canonical_name": "第四稿"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15454,18 +15670,36 @@
     {
       "id": "e00872",
       "type": "work",
-      "text": "文選文苑英華",
+      "text": "文選",
       "anchor": {
         "start": "55:1:11",
-        "end": "55:1:16"
+        "end": "55:1:12"
       },
       "span": {
         "start_offset": 8519,
+        "end_offset": 8521
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "文選"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03049",
+      "type": "work",
+      "text": "文苑英華",
+      "anchor": {
+        "start": "55:1:13",
+        "end": "55:1:16"
+      },
+      "span": {
+        "start_offset": 8521,
         "end_offset": 8525
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "文選文苑英華"
+        "canonical_name": "文苑英華"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16842,18 +17076,36 @@
     {
       "id": "e00948",
       "type": "work",
-      "text": "闕里檜賦竹賦",
+      "text": "闕里檜賦",
       "anchor": {
         "start": "58:8:2",
-        "end": "58:8:7"
+        "end": "58:8:5"
       },
       "span": {
         "start_offset": 9067,
+        "end_offset": 9071
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "闕里檜賦"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03050",
+      "type": "work",
+      "text": "竹賦",
+      "anchor": {
+        "start": "58:8:6",
+        "end": "58:8:7"
+      },
+      "span": {
+        "start_offset": 9071,
         "end_offset": 9073
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "闕里檜賦竹賦"
+        "canonical_name": "竹賦"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30979,18 +31231,36 @@
     {
       "id": "e01736",
       "type": "work",
-      "text": "子夜采蓮",
+      "text": "子夜",
       "anchor": {
         "start": "102:1:9",
-        "end": "102:1:12"
+        "end": "102:1:10"
       },
       "span": {
         "start_offset": 15773,
+        "end_offset": 15775
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "子夜"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03051",
+      "type": "work",
+      "text": "采蓮",
+      "anchor": {
+        "start": "102:1:11",
+        "end": "102:1:12"
+      },
+      "span": {
+        "start_offset": 15775,
         "end_offset": 15777
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "子夜采蓮"
+        "canonical_name": "采蓮"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34421,18 +34691,36 @@
     {
       "id": "e01926",
       "type": "work",
-      "text": "鷺于飛醉言歸",
+      "text": "鷺于飛",
       "anchor": {
         "start": "116:4:9",
-        "end": "116:4:14"
+        "end": "116:4:11"
       },
       "span": {
         "start_offset": 18002,
+        "end_offset": 18005
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "鷺于飛"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03052",
+      "type": "work",
+      "text": "醉言歸",
+      "anchor": {
+        "start": "116:4:12",
+        "end": "116:4:14"
+      },
+      "span": {
+        "start_offset": 18005,
         "end_offset": 18008
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "鷺于飛醉言歸"
+        "canonical_name": "醉言歸"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -34977,18 +35265,36 @@
     {
       "id": "e01957",
       "type": "work",
-      "text": "孟子莊子",
+      "text": "孟子",
       "anchor": {
         "start": "117:7:21",
-        "end": "117:8:5"
+        "end": "117:8:3"
       },
       "span": {
         "start_offset": 18232,
+        "end_offset": 18234
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "孟子"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03053",
+      "type": "work",
+      "text": "莊子",
+      "anchor": {
+        "start": "117:8:4",
+        "end": "117:8:5"
+      },
+      "span": {
+        "start_offset": 18234,
         "end_offset": 18236
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "孟子莊子"
+        "canonical_name": "莊子"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43815,18 +44121,36 @@
     {
       "id": "e02468",
       "type": "work",
-      "text": "極元集主客圖",
+      "text": "極元集",
       "anchor": {
         "start": "162:1:13",
-        "end": "162:1:18"
+        "end": "162:1:15"
       },
       "span": {
         "start_offset": 25474,
+        "end_offset": 25477
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "極元集"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03054",
+      "type": "work",
+      "text": "主客圖",
+      "anchor": {
+        "start": "162:1:16",
+        "end": "162:1:18"
+      },
+      "span": {
+        "start_offset": 25477,
         "end_offset": 25480
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "極元集主客圖"
+        "canonical_name": "主客圖"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -46097,18 +46421,108 @@
     {
       "id": "e02598",
       "type": "work",
-      "text": "三墳訓義易璇璣論語發微易禮圖說老子解環溪集",
+      "text": "三墳訓義",
       "anchor": {
         "start": "171:1:9",
-        "end": "171:2:10"
+        "end": "171:1:12"
       },
       "span": {
         "start_offset": 26952,
+        "end_offset": 26956
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "三墳訓義"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03055",
+      "type": "work",
+      "text": "易璇璣",
+      "anchor": {
+        "start": "171:1:13",
+        "end": "171:1:15"
+      },
+      "span": {
+        "start_offset": 26956,
+        "end_offset": 26959
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "易璇璣"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03056",
+      "type": "work",
+      "text": "論語發微",
+      "anchor": {
+        "start": "171:1:16",
+        "end": "171:1:19"
+      },
+      "span": {
+        "start_offset": 26959,
+        "end_offset": 26963
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "論語發微"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03057",
+      "type": "work",
+      "text": "易禮圖說",
+      "anchor": {
+        "start": "171:1:20",
+        "end": "171:2:4"
+      },
+      "span": {
+        "start_offset": 26963,
+        "end_offset": 26967
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "易禮圖說"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03058",
+      "type": "work",
+      "text": "老子解",
+      "anchor": {
+        "start": "171:2:5",
+        "end": "171:2:7"
+      },
+      "span": {
+        "start_offset": 26967,
+        "end_offset": 26970
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "老子解"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03059",
+      "type": "work",
+      "text": "環溪集",
+      "anchor": {
+        "start": "171:2:8",
+        "end": "171:2:10"
+      },
+      "span": {
+        "start_offset": 26970,
         "end_offset": 26973
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "三墳訓義易璇璣論語發微易禮圖說老子解環溪集"
+        "canonical_name": "環溪集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -49827,18 +50241,54 @@
     {
       "id": "e02799",
       "type": "work",
-      "text": "韓詩外傳西京雜記朝野僉載",
+      "text": "韓詩外傳",
       "anchor": {
         "start": "190:6:17",
-        "end": "190:7:9"
+        "end": "190:6:20"
       },
       "span": {
         "start_offset": 30221,
+        "end_offset": 30225
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "韓詩外傳"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03060",
+      "type": "work",
+      "text": "西京雜記",
+      "anchor": {
+        "start": "190:6:21",
+        "end": "190:7:5"
+      },
+      "span": {
+        "start_offset": 30225,
+        "end_offset": 30229
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "西京雜記"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03061",
+      "type": "work",
+      "text": "朝野僉載",
+      "anchor": {
+        "start": "190:7:6",
+        "end": "190:7:9"
+      },
+      "span": {
+        "start_offset": 30229,
         "end_offset": 30233
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "韓詩外傳西京雜記朝野僉載"
+        "canonical_name": "朝野僉載"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -49903,18 +50353,36 @@
     {
       "id": "e02805",
       "type": "work",
-      "text": "唐英歌詩香奩集",
+      "text": "唐英歌詩",
       "anchor": {
         "start": "191:2:18",
-        "end": "191:3:5"
+        "end": "191:2:21"
       },
       "span": {
         "start_offset": 30317,
+        "end_offset": 30321
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "唐英歌詩"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03062",
+      "type": "work",
+      "text": "香奩集",
+      "anchor": {
+        "start": "191:3:3",
+        "end": "191:3:5"
+      },
+      "span": {
+        "start_offset": 30321,
         "end_offset": 30324
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "唐英歌詩香奩集"
+        "canonical_name": "香奩集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -50566,18 +51034,36 @@
     {
       "id": "e02846",
       "type": "work",
-      "text": "□詩壽趙倅詩",
+      "text": "□詩",
       "anchor": {
         "start": "193:1:3",
-        "end": "193:1:8"
+        "end": "193:1:4"
       },
       "span": {
         "start_offset": 30609,
+        "end_offset": 30611
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "□詩"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03063",
+      "type": "work",
+      "text": "壽趙倅詩",
+      "anchor": {
+        "start": "193:1:5",
+        "end": "193:1:8"
+      },
+      "span": {
+        "start_offset": 30611,
         "end_offset": 30615
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "□詩壽趙倅詩"
+        "canonical_name": "壽趙倅詩"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -51470,18 +51956,54 @@
     {
       "id": "e02896",
       "type": "work",
-      "text": "徐道暉墓志王木叔詩序劉潛夫詩卷跋",
+      "text": "徐道暉墓志",
       "anchor": {
         "start": "196:1:18",
-        "end": "196:2:14"
+        "end": "196:2:3"
       },
       "span": {
         "start_offset": 31114,
+        "end_offset": 31119
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "徐道暉墓志"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03064",
+      "type": "work",
+      "text": "王木叔詩序",
+      "anchor": {
+        "start": "196:2:4",
+        "end": "196:2:8"
+      },
+      "span": {
+        "start_offset": 31119,
+        "end_offset": 31124
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "王木叔詩序"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03065",
+      "type": "work",
+      "text": "劉潛夫詩卷跋",
+      "anchor": {
+        "start": "196:2:9",
+        "end": "196:2:14"
+      },
+      "span": {
+        "start_offset": 31124,
         "end_offset": 31130
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "徐道暉墓志王木叔詩序劉潛夫詩卷跋"
+        "canonical_name": "劉潛夫詩卷跋"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -52234,18 +52756,108 @@
     {
       "id": "e02936",
       "type": "work",
-      "text": "五經詩事歐公餘話洪駒父詩話潘子眞詩話桐江詩話筆墨閒錄",
+      "text": "五經詩事",
       "anchor": {
         "start": "199:8:9",
-        "end": "199:9:15"
+        "end": "199:8:12"
       },
       "span": {
         "start_offset": 31741,
+        "end_offset": 31745
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "五經詩事"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03066",
+      "type": "work",
+      "text": "歐公餘話",
+      "anchor": {
+        "start": "199:8:13",
+        "end": "199:8:16"
+      },
+      "span": {
+        "start_offset": 31745,
+        "end_offset": 31749
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "歐公餘話"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03067",
+      "type": "work",
+      "text": "洪駒父詩話",
+      "anchor": {
+        "start": "199:8:17",
+        "end": "199:8:21"
+      },
+      "span": {
+        "start_offset": 31749,
+        "end_offset": 31754
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "洪駒父詩話"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03068",
+      "type": "work",
+      "text": "潘子眞詩話",
+      "anchor": {
+        "start": "199:9:3",
+        "end": "199:9:7"
+      },
+      "span": {
+        "start_offset": 31754,
+        "end_offset": 31759
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "潘子眞詩話"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03069",
+      "type": "work",
+      "text": "桐江詩話",
+      "anchor": {
+        "start": "199:9:8",
+        "end": "199:9:11"
+      },
+      "span": {
+        "start_offset": 31759,
+        "end_offset": 31763
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "桐江詩話"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03070",
+      "type": "work",
+      "text": "筆墨閒錄",
+      "anchor": {
+        "start": "199:9:12",
+        "end": "199:9:15"
+      },
+      "span": {
+        "start_offset": 31763,
         "end_offset": 31767
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "五經詩事歐公餘話洪駒父詩話潘子眞詩話桐江詩話筆墨閒錄"
+        "canonical_name": "筆墨閒錄"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -52760,18 +53372,36 @@
     {
       "id": "e02966",
       "type": "work",
-      "text": "癸辛雜識齊東野語",
+      "text": "癸辛雜識",
       "anchor": {
         "start": "202:8:15",
-        "end": "202:9:3"
+        "end": "202:8:18"
       },
       "span": {
         "start_offset": 32215,
+        "end_offset": 32219
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "癸辛雜識"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03071",
+      "type": "work",
+      "text": "齊東野語",
+      "anchor": {
+        "start": "202:8:19",
+        "end": "202:9:3"
+      },
+      "span": {
+        "start_offset": 32219,
         "end_offset": 32223
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "癸辛雜識齊東野語"
+        "canonical_name": "齊東野語"
       },
       "source": "ext:siku-qiefen-v2"
     },

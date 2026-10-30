@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.5.0",
   "book_id": "96mid1ogzk",
   "volume": 37,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1999,
+    "total_entities": 2008,
     "matched": 1299,
     "ambiguous": 0,
-    "new_candidates": 700,
+    "new_candidates": 709,
     "works": 346,
     "people": 631,
-    "places": 1022,
+    "places": 1031,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -10207,18 +10207,36 @@
     {
       "id": "e00581",
       "type": "place",
-      "text": "梅溪鴈山",
+      "text": "梅溪",
       "anchor": {
         "start": "51:3:10",
-        "end": "51:3:13"
+        "end": "51:3:11"
       },
       "span": {
         "start_offset": 7901,
+        "end_offset": 7903
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "梅溪"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02181",
+      "type": "place",
+      "text": "鴈山",
+      "anchor": {
+        "start": "51:3:12",
+        "end": "51:3:13"
+      },
+      "span": {
+        "start_offset": 7903,
         "end_offset": 7905
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "梅溪鴈山"
+        "canonical_name": "鴈山"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12397,18 +12415,36 @@
     {
       "id": "e00706",
       "type": "place",
-      "text": "武林山武林水",
+      "text": "武林山",
       "anchor": {
         "start": "59:5:3",
-        "end": "59:5:8"
+        "end": "59:5:5"
       },
       "span": {
         "start_offset": 9188,
+        "end_offset": 9191
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "武林山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02182",
+      "type": "place",
+      "text": "武林水",
+      "anchor": {
+        "start": "59:5:6",
+        "end": "59:5:8"
+      },
+      "span": {
+        "start_offset": 9191,
         "end_offset": 9194
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "武林山武林水"
+        "canonical_name": "武林水"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14930,18 +14966,144 @@
     {
       "id": "e00843",
       "type": "place",
-      "text": "南頭屯門雞棲佛堂門十字門冷水角老萬山零丁洋澳",
+      "text": "南頭",
       "anchor": {
         "start": "70:4:16",
-        "end": "70:5:18"
+        "end": "70:4:17"
       },
       "span": {
         "start_offset": 10807,
+        "end_offset": 10809
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "南頭"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02183",
+      "type": "place",
+      "text": "屯門",
+      "anchor": {
+        "start": "70:4:18",
+        "end": "70:4:19"
+      },
+      "span": {
+        "start_offset": 10809,
+        "end_offset": 10811
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "屯門"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02184",
+      "type": "place",
+      "text": "雞棲",
+      "anchor": {
+        "start": "70:4:20",
+        "end": "70:4:21"
+      },
+      "span": {
+        "start_offset": 10811,
+        "end_offset": 10813
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "雞棲"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02185",
+      "type": "place",
+      "text": "佛堂門",
+      "anchor": {
+        "start": "70:5:3",
+        "end": "70:5:5"
+      },
+      "span": {
+        "start_offset": 10813,
+        "end_offset": 10816
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "佛堂門"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02186",
+      "type": "place",
+      "text": "十字門",
+      "anchor": {
+        "start": "70:5:6",
+        "end": "70:5:8"
+      },
+      "span": {
+        "start_offset": 10816,
+        "end_offset": 10819
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "十字門"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02187",
+      "type": "place",
+      "text": "冷水角",
+      "anchor": {
+        "start": "70:5:9",
+        "end": "70:5:11"
+      },
+      "span": {
+        "start_offset": 10819,
+        "end_offset": 10822
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "冷水角"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02188",
+      "type": "place",
+      "text": "老萬山",
+      "anchor": {
+        "start": "70:5:12",
+        "end": "70:5:14"
+      },
+      "span": {
+        "start_offset": 10822,
+        "end_offset": 10825
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "老萬山"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02189",
+      "type": "place",
+      "text": "零丁洋澳",
+      "anchor": {
+        "start": "70:5:15",
+        "end": "70:5:18"
+      },
+      "span": {
+        "start_offset": 10825,
         "end_offset": 10829
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "南頭屯門雞棲佛堂門十字門冷水角老萬山零丁洋澳"
+        "canonical_name": "零丁洋澳"
       },
       "source": "ext:siku-qiefen-v2"
     },

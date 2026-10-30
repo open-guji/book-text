@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 69,
@@ -11,11 +11,11 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1908,
+    "total_entities": 1909,
     "matched": 1453,
     "ambiguous": 0,
-    "new_candidates": 455,
-    "works": 702,
+    "new_candidates": 456,
+    "works": 703,
     "people": 850,
     "places": 356,
     "offices": 0,
@@ -320,18 +320,36 @@
     {
       "id": "e00020",
       "type": "work",
-      "text": "文選玉臺新詠",
+      "text": "文選",
       "anchor": {
         "start": "2:7:19",
-        "end": "2:8:5"
+        "end": "2:7:20"
       },
       "span": {
         "start_offset": 285,
+        "end_offset": 287
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "文選"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02306",
+      "type": "work",
+      "text": "玉臺新詠",
+      "anchor": {
+        "start": "2:7:21",
+        "end": "2:8:5"
+      },
+      "span": {
+        "start_offset": 287,
         "end_offset": 291
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "文選玉臺新詠"
+        "canonical_name": "玉臺新詠"
       },
       "source": "ext:siku-qiefen-v2"
     },

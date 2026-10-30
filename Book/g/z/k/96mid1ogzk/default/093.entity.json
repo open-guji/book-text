@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 93,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1445,
+    "total_entities": 1449,
     "matched": 1151,
     "ambiguous": 0,
-    "new_candidates": 294,
-    "works": 441,
+    "new_candidates": 298,
+    "works": 442,
     "people": 738,
-    "places": 266,
+    "places": 269,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -16046,36 +16046,72 @@
     {
       "id": "e00979",
       "type": "place",
-      "text": "北地信陽",
+      "text": "北地",
       "anchor": {
         "start": "95:8:10",
-        "end": "95:8:13"
+        "end": "95:8:11"
       },
       "span": {
         "start_offset": 15374,
+        "end_offset": 15376
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "北地"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01796",
+      "type": "place",
+      "text": "信陽",
+      "anchor": {
+        "start": "95:8:12",
+        "end": "95:8:13"
+      },
+      "span": {
+        "start_offset": 15376,
         "end_offset": 15378
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "北地信陽"
+        "canonical_name": "信陽"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e00980",
       "type": "place",
-      "text": "太倉厯下",
+      "text": "太倉",
       "anchor": {
         "start": "95:8:20",
-        "end": "95:9:4"
+        "end": "95:8:21"
       },
       "span": {
         "start_offset": 15384,
+        "end_offset": 15386
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "太倉"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01797",
+      "type": "place",
+      "text": "厯下",
+      "anchor": {
+        "start": "95:9:3",
+        "end": "95:9:4"
+      },
+      "span": {
+        "start_offset": 15386,
         "end_offset": 15388
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "太倉厯下"
+        "canonical_name": "厯下"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17933,18 +17969,36 @@
     {
       "id": "e01097",
       "type": "place",
-      "text": "公安竟陵",
+      "text": "公安",
       "anchor": {
         "start": "106:1:21",
-        "end": "106:2:5"
+        "end": "106:2:3"
       },
       "span": {
         "start_offset": 17075,
+        "end_offset": 17077
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "公安"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01798",
+      "type": "place",
+      "text": "竟陵",
+      "anchor": {
+        "start": "106:2:4",
+        "end": "106:2:5"
+      },
+      "span": {
+        "start_offset": 17077,
         "end_offset": 17079
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "公安竟陵"
+        "canonical_name": "竟陵"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22747,18 +22801,36 @@
     {
       "id": "e01418",
       "type": "work",
-      "text": "𨽾釋𨽾續",
+      "text": "𨽾釋",
       "anchor": {
         "start": "135:5:5",
-        "end": "135:5:8"
+        "end": "135:5:6"
       },
       "span": {
         "start_offset": 21933,
+        "end_offset": 21935
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "𨽾釋"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01799",
+      "type": "work",
+      "text": "𨽾續",
+      "anchor": {
+        "start": "135:5:7",
+        "end": "135:5:8"
+      },
+      "span": {
+        "start_offset": 21935,
         "end_offset": 21937
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "𨽾釋𨽾續"
+        "canonical_name": "𨽾續"
       },
       "source": "ext:siku-qiefen-v2"
     },

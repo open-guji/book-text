@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.4.0",
   "book_id": "96mid1ogzk",
   "volume": 38,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2430,
+    "total_entities": 2431,
     "matched": 1596,
     "ambiguous": 0,
-    "new_candidates": 834,
+    "new_candidates": 835,
     "works": 538,
     "people": 773,
-    "places": 1119,
+    "places": 1120,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -12937,18 +12937,36 @@
     {
       "id": "e00729",
       "type": "place",
-      "text": "公安竟陵",
+      "text": "公安",
       "anchor": {
         "start": "62:1:6",
-        "end": "62:1:9"
+        "end": "62:1:7"
       },
       "span": {
         "start_offset": 9347,
+        "end_offset": 9349
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "公安"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02678",
+      "type": "place",
+      "text": "竟陵",
+      "anchor": {
+        "start": "62:1:8",
+        "end": "62:1:9"
+      },
+      "span": {
+        "start_offset": 9349,
         "end_offset": 9351
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "公安竟陵"
+        "canonical_name": "竟陵"
       },
       "source": "ext:siku-qiefen-v2"
     },

@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 85,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1185,
+    "total_entities": 1186,
     "matched": 987,
     "ambiguous": 0,
-    "new_candidates": 198,
+    "new_candidates": 199,
     "works": 408,
     "people": 383,
-    "places": 394,
+    "places": 395,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -19474,18 +19474,36 @@
     {
       "id": "e01134",
       "type": "place",
-      "text": "太倉厯下",
+      "text": "太倉",
       "anchor": {
         "start": "112:7:18",
-        "end": "112:7:21"
+        "end": "112:7:19"
       },
       "span": {
         "start_offset": 17301,
+        "end_offset": 17303
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "太倉"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e01353",
+      "type": "place",
+      "text": "厯下",
+      "anchor": {
+        "start": "112:7:20",
+        "end": "112:7:21"
+      },
+      "span": {
+        "start_offset": 17303,
         "end_offset": 17305
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "太倉厯下"
+        "canonical_name": "厯下"
       },
       "source": "ext:siku-qiefen-v2"
     },

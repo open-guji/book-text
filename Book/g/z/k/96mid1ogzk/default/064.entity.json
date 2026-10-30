@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "text_version": "0.2.0",
   "book_id": "96mid1ogzk",
   "volume": 64,
@@ -11,11 +11,11 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2020,
+    "total_entities": 2022,
     "matched": 1774,
     "ambiguous": 0,
-    "new_candidates": 246,
-    "works": 955,
+    "new_candidates": 248,
+    "works": 957,
     "people": 741,
     "places": 324,
     "offices": 0,
@@ -3966,18 +3966,36 @@
     {
       "id": "e00225",
       "type": "work",
-      "text": "玉篇廣韻",
+      "text": "玉篇",
       "anchor": {
         "start": "22:2:7",
-        "end": "22:2:10"
+        "end": "22:2:8"
       },
       "span": {
         "start_offset": 3438,
+        "end_offset": 3440
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "玉篇"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02175",
+      "type": "work",
+      "text": "廣韻",
+      "anchor": {
+        "start": "22:2:9",
+        "end": "22:2:10"
+      },
+      "span": {
+        "start_offset": 3440,
         "end_offset": 3442
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "玉篇廣韻"
+        "canonical_name": "廣韻"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13328,18 +13346,36 @@
     {
       "id": "e00743",
       "type": "work",
-      "text": "文選玉臺新詠",
+      "text": "文選",
       "anchor": {
         "start": "77:5:20",
-        "end": "77:6:6"
+        "end": "77:5:21"
       },
       "span": {
         "start_offset": 12219,
+        "end_offset": 12221
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "文選"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02176",
+      "type": "work",
+      "text": "玉臺新詠",
+      "anchor": {
+        "start": "77:6:3",
+        "end": "77:6:6"
+      },
+      "span": {
+        "start_offset": 12221,
         "end_offset": 12225
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "文選玉臺新詠"
+        "canonical_name": "玉臺新詠"
       },
       "source": "ext:siku-qiefen-v2"
     },

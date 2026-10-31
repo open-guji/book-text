@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.3",
+  "version": "0.4.11",
   "text_version": "0.5.1",
   "book_id": "96mid1ogzk",
   "volume": 35,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2136,
-    "matched": 1223,
+    "total_entities": 2133,
+    "matched": 1387,
     "ambiguous": 0,
-    "new_candidates": 913,
-    "works": 513,
+    "new_candidates": 746,
+    "works": 512,
     "people": 651,
-    "places": 972,
+    "places": 970,
     "offices": 0,
     "dynasties": 0,
     "reigns": 0
@@ -1145,24 +1145,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00060",
-      "type": "place",
-      "text": "東南",
-      "anchor": {
-        "start": "6:3:4",
-        "end": "6:3:5"
-      },
-      "span": {
-        "start_offset": 828,
-        "end_offset": 830
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00061",
       "type": "place",
       "text": "南宫城",
@@ -1231,8 +1213,10 @@
         "end_offset": 859
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "滹沱"
+        "status": "matched",
+        "entity_id": "hixif412e6hr",
+        "canonical_name": "滹沱河",
+        "href": "book-index://Entity/hixif412e6hr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1249,8 +1233,10 @@
         "end_offset": 865
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "滹沱"
+        "status": "matched",
+        "entity_id": "hixif412e6hr",
+        "canonical_name": "滹沱河",
+        "href": "book-index://Entity/hixif412e6hr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1441,8 +1427,10 @@
         "end_offset": 944
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河東"
+        "status": "matched",
+        "entity_id": "hixif41h2c5i",
+        "canonical_name": "河東",
+        "href": "book-index://Entity/hixif41h2c5i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1459,8 +1447,10 @@
         "end_offset": 947
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "猗氏"
+        "status": "matched",
+        "entity_id": "hixi636h5b7o",
+        "canonical_name": "猗氏縣",
+        "href": "book-index://Entity/hixi636h5b7o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1519,24 +1509,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00082",
-      "type": "place",
-      "text": "縣",
-      "anchor": {
-        "start": "6:9:16",
-        "end": "6:9:16"
-      },
-      "span": {
-        "start_offset": 954,
-        "end_offset": 955
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "縣"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00083",
       "type": "place",
       "text": "河",
@@ -1567,8 +1539,10 @@
         "end_offset": 965
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漯水"
+        "status": "matched",
+        "entity_id": "hixif412e6hb",
+        "canonical_name": "漯水",
+        "href": "book-index://Entity/hixif412e6hb"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1585,8 +1559,10 @@
         "end_offset": 976
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漯水"
+        "status": "matched",
+        "entity_id": "hixif412e6hb",
+        "canonical_name": "漯水",
+        "href": "book-index://Entity/hixif412e6hb"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1623,8 +1599,10 @@
         "end_offset": 983
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漯水"
+        "status": "matched",
+        "entity_id": "hixif412e6hb",
+        "canonical_name": "漯水",
+        "href": "book-index://Entity/hixif412e6hb"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1667,18 +1645,38 @@
     {
       "id": "e00091",
       "type": "place",
-      "text": "武陽新城",
+      "text": "武陽",
       "anchor": {
         "start": "7:2:20",
-        "end": "7:3:4"
+        "end": "7:2:21"
       },
       "span": {
         "start_offset": 996,
-        "end_offset": 1000
+        "end_offset": 998
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "武陽新城"
+        "canonical_name": "武陽"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02305",
+      "type": "place",
+      "text": "新城",
+      "anchor": {
+        "start": "7:3:3",
+        "end": "7:3:4"
+      },
+      "span": {
+        "start_offset": 998,
+        "end_offset": 1000
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5x9i6gw4",
+        "canonical_name": "新城縣",
+        "href": "book-index://Entity/hixi5x9i6gw4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1705,18 +1703,38 @@
     {
       "id": "e00093",
       "type": "place",
-      "text": "武陽新城",
+      "text": "武陽",
       "anchor": {
         "start": "7:5:5",
-        "end": "7:5:8"
+        "end": "7:5:6"
       },
       "span": {
         "start_offset": 1038,
-        "end_offset": 1042
+        "end_offset": 1040
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "武陽新城"
+        "canonical_name": "武陽"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02306",
+      "type": "place",
+      "text": "新城",
+      "anchor": {
+        "start": "7:5:7",
+        "end": "7:5:8"
+      },
+      "span": {
+        "start_offset": 1040,
+        "end_offset": 1042
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5x9i6gw4",
+        "canonical_name": "新城縣",
+        "href": "book-index://Entity/hixi5x9i6gw4"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3048,8 +3066,10 @@
         "end_offset": 2003
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3380,8 +3400,10 @@
         "end_offset": 2136
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3454,8 +3476,10 @@
         "end_offset": 2162
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3480,24 +3504,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00191",
-      "type": "place",
-      "text": "東南",
-      "anchor": {
-        "start": "13:9:3",
-        "end": "13:9:4"
-      },
-      "span": {
-        "start_offset": 2172,
-        "end_offset": 2174
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00192",
       "type": "place",
       "text": "太湖",
@@ -3510,8 +3516,10 @@
         "end_offset": 2197
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3624,8 +3632,10 @@
         "end_offset": 2362
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "它山"
+        "status": "matched",
+        "entity_id": "hixif412e6fi",
+        "canonical_name": "它山",
+        "href": "book-index://Entity/hixif412e6fi"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -3742,8 +3752,10 @@
         "end_offset": 2400
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "它山"
+        "status": "matched",
+        "entity_id": "hixif412e6fi",
+        "canonical_name": "它山",
+        "href": "book-index://Entity/hixif412e6fi"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4099,8 +4111,10 @@
         "end_offset": 2553
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gr",
+        "canonical_name": "西湖",
+        "href": "book-index://Entity/hixif412e6gr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4157,8 +4171,10 @@
         "end_offset": 2575
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "它山"
+        "status": "matched",
+        "entity_id": "hixif412e6fi",
+        "canonical_name": "它山",
+        "href": "book-index://Entity/hixif412e6fi"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4201,18 +4217,36 @@
     {
       "id": "e00232",
       "type": "place",
-      "text": "小江湖月湖",
+      "text": "小江湖",
       "anchor": {
         "start": "16:4:4",
-        "end": "16:4:8"
+        "end": "16:4:6"
       },
       "span": {
         "start_offset": 2590,
+        "end_offset": 2593
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "小江湖"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02307",
+      "type": "place",
+      "text": "月湖",
+      "anchor": {
+        "start": "16:4:7",
+        "end": "16:4:8"
+      },
+      "span": {
+        "start_offset": 2593,
         "end_offset": 2595
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "小江湖月湖"
+        "canonical_name": "月湖"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4229,8 +4263,10 @@
         "end_offset": 2598
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gr",
+        "canonical_name": "西湖",
+        "href": "book-index://Entity/hixif412e6gr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4773,8 +4809,10 @@
         "end_offset": 2838
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5243,8 +5281,10 @@
         "end_offset": 3147
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河東"
+        "status": "matched",
+        "entity_id": "hixif41h2c5i",
+        "canonical_name": "河東",
+        "href": "book-index://Entity/hixif41h2c5i"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5279,8 +5319,10 @@
         "end_offset": 3195
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崑崙"
+        "status": "matched",
+        "entity_id": "hixif412e6fp",
+        "canonical_name": "崑崙山",
+        "href": "book-index://Entity/hixif412e6fp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5315,8 +5357,10 @@
         "end_offset": 3213
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "于闐"
+        "status": "matched",
+        "entity_id": "hixif42cwjky",
+        "canonical_name": "于闐",
+        "href": "book-index://Entity/hixif42cwjky"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5528,8 +5572,10 @@
         "end_offset": 3325
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "兩淮"
+        "status": "matched",
+        "entity_id": "hixif41h2c5c",
+        "canonical_name": "兩淮",
+        "href": "book-index://Entity/hixif41h2c5c"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5714,20 +5760,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00314",
+      "id": "e02308",
       "type": "place",
-      "text": "東南南直隸",
+      "text": "南直隸",
       "anchor": {
-        "start": "21:3:21",
+        "start": "21:4:4",
         "end": "21:4:6"
       },
       "span": {
-        "start_offset": 3405,
+        "start_offset": 3407,
         "end_offset": 3410
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南南直隸"
+        "status": "matched",
+        "entity_id": "hixi4ufdmygw",
+        "canonical_name": "南直隸",
+        "href": "book-index://Entity/hixi4ufdmygw"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5744,8 +5792,10 @@
         "end_offset": 3414
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇松常"
+        "status": "matched",
+        "entity_id": "hixif41h2c6l",
+        "canonical_name": "蘇松常",
+        "href": "book-index://Entity/hixif41h2c6l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5782,8 +5832,10 @@
         "end_offset": 3422
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杭嘉湖"
+        "status": "matched",
+        "entity_id": "hixif41h2c7h",
+        "canonical_name": "杭嘉湖",
+        "href": "book-index://Entity/hixif41h2c7h"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5800,8 +5852,10 @@
         "end_offset": 3428
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5818,8 +5872,10 @@
         "end_offset": 3436
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5908,8 +5964,10 @@
         "end_offset": 3474
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃浦"
+        "status": "matched",
+        "entity_id": "hixif412e6hj",
+        "canonical_name": "黃浦江",
+        "href": "book-index://Entity/hixif412e6hj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6316,24 +6374,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00350",
-      "type": "place",
-      "text": "東南",
-      "anchor": {
-        "start": "23:5:19",
-        "end": "23:5:20"
-      },
-      "span": {
-        "start_offset": 3772,
-        "end_offset": 3774
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00351",
       "type": "place",
       "text": "京師",
@@ -6384,8 +6424,10 @@
         "end_offset": 3789
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淮泗"
+        "status": "matched",
+        "entity_id": "hixif41h2c7b",
+        "canonical_name": "淮泗",
+        "href": "book-index://Entity/hixif41h2c7b"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6564,8 +6606,10 @@
         "end_offset": 3898
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河淮"
+        "status": "matched",
+        "entity_id": "hixif41h2c7e",
+        "canonical_name": "河淮",
+        "href": "book-index://Entity/hixif41h2c7e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6582,8 +6626,10 @@
         "end_offset": 3907
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河淮"
+        "status": "matched",
+        "entity_id": "hixif41h2c7e",
+        "canonical_name": "河淮",
+        "href": "book-index://Entity/hixif41h2c7e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6922,8 +6968,10 @@
         "end_offset": 4073
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河淮"
+        "status": "matched",
+        "entity_id": "hixif41h2c7e",
+        "canonical_name": "河淮",
+        "href": "book-index://Entity/hixif41h2c7e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7170,26 +7218,50 @@
         "end_offset": 4207
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e00396",
       "type": "place",
-      "text": "松江松江",
+      "text": "松江",
       "anchor": {
         "start": "26:2:13",
-        "end": "26:2:16"
+        "end": "26:2:14"
       },
       "span": {
         "start_offset": 4213,
+        "end_offset": 4215
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5watwglk",
+        "canonical_name": "松江府",
+        "href": "book-index://Entity/hixi5watwglk"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02309",
+      "type": "place",
+      "text": "松江",
+      "anchor": {
+        "start": "26:2:15",
+        "end": "26:2:16"
+      },
+      "span": {
+        "start_offset": 4215,
         "end_offset": 4217
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "松江松江"
+        "status": "matched",
+        "entity_id": "hixi5watwglk",
+        "canonical_name": "松江府",
+        "href": "book-index://Entity/hixi5watwglk"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7206,8 +7278,10 @@
         "end_offset": 4222
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7396,8 +7470,10 @@
         "end_offset": 4350
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃浦"
+        "status": "matched",
+        "entity_id": "hixif412e6hj",
+        "canonical_name": "黃浦江",
+        "href": "book-index://Entity/hixif412e6hj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7432,8 +7508,10 @@
         "end_offset": 4370
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃浦"
+        "status": "matched",
+        "entity_id": "hixif412e6hj",
+        "canonical_name": "黃浦江",
+        "href": "book-index://Entity/hixif412e6hj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7542,8 +7620,10 @@
         "end_offset": 4458
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘇松"
+        "status": "matched",
+        "entity_id": "hixif41h2c7g",
+        "canonical_name": "蘇松",
+        "href": "book-index://Entity/hixif41h2c7g"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8978,24 +9058,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00505",
-      "type": "place",
-      "text": "東南",
-      "anchor": {
-        "start": "33:6:6",
-        "end": "33:6:7"
-      },
-      "span": {
-        "start_offset": 5410,
-        "end_offset": 5412
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00506",
       "type": "work",
       "text": "明史",
@@ -9122,8 +9184,10 @@
         "end_offset": 5476
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "江隂"
+        "status": "matched",
+        "entity_id": "hixi5whkr37v",
+        "canonical_name": "江陰縣",
+        "href": "book-index://Entity/hixi5whkr37v"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9292,8 +9356,10 @@
         "end_offset": 5604
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "中州"
+        "status": "matched",
+        "entity_id": "hixif41h2c6q",
+        "canonical_name": "中州",
+        "href": "book-index://Entity/hixif41h2c6q"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9384,8 +9450,10 @@
         "end_offset": 5635
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "星宿海"
+        "status": "matched",
+        "entity_id": "hixif412e6hl",
+        "canonical_name": "星宿海",
+        "href": "book-index://Entity/hixif412e6hl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9456,8 +9524,10 @@
         "end_offset": 5676
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9743,8 +9813,10 @@
         "end_offset": 6034
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9761,8 +9833,10 @@
         "end_offset": 6040
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吐蕃"
+        "status": "matched",
+        "entity_id": "hixif42cwjk0",
+        "canonical_name": "吐蕃",
+        "href": "book-index://Entity/hixif42cwjk0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9943,8 +10017,10 @@
         "end_offset": 6156
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10039,8 +10115,10 @@
         "end_offset": 6190
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "星宿海"
+        "status": "matched",
+        "entity_id": "hixif412e6hl",
+        "canonical_name": "星宿海",
+        "href": "book-index://Entity/hixif412e6hl"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10075,8 +10153,10 @@
         "end_offset": 6209
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鹽澤"
+        "status": "matched",
+        "entity_id": "hixif412e6hq",
+        "canonical_name": "羅布泊",
+        "href": "book-index://Entity/hixif412e6hq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10113,8 +10193,10 @@
         "end_offset": 6263
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西藏"
+        "status": "matched",
+        "entity_id": "hixif41h2c7p",
+        "canonical_name": "西藏",
+        "href": "book-index://Entity/hixif41h2c7p"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10539,8 +10621,10 @@
         "end_offset": 6545
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鹽澤"
+        "status": "matched",
+        "entity_id": "hixif412e6hq",
+        "canonical_name": "羅布泊",
+        "href": "book-index://Entity/hixif412e6hq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10595,8 +10679,10 @@
         "end_offset": 6555
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "于闐"
+        "status": "matched",
+        "entity_id": "hixif42cwjky",
+        "canonical_name": "于闐",
+        "href": "book-index://Entity/hixif42cwjky"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10631,8 +10717,10 @@
         "end_offset": 6569
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崑崙"
+        "status": "matched",
+        "entity_id": "hixif412e6fp",
+        "canonical_name": "崑崙山",
+        "href": "book-index://Entity/hixif412e6fp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10687,8 +10775,10 @@
         "end_offset": 6591
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "積石山"
+        "status": "matched",
+        "entity_id": "hixif412e6g2",
+        "canonical_name": "積石山",
+        "href": "book-index://Entity/hixif412e6g2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10853,8 +10943,10 @@
         "end_offset": 6664
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "積石山"
+        "status": "matched",
+        "entity_id": "hixif412e6g2",
+        "canonical_name": "積石山",
+        "href": "book-index://Entity/hixif412e6g2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10871,8 +10963,10 @@
         "end_offset": 6669
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崑崙"
+        "status": "matched",
+        "entity_id": "hixif412e6fp",
+        "canonical_name": "崑崙山",
+        "href": "book-index://Entity/hixif412e6fp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11003,8 +11097,10 @@
         "end_offset": 6738
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "葱嶺"
+        "status": "matched",
+        "entity_id": "hixif412e6g7",
+        "canonical_name": "葱嶺",
+        "href": "book-index://Entity/hixif412e6g7"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11021,8 +11117,10 @@
         "end_offset": 6740
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "于闐"
+        "status": "matched",
+        "entity_id": "hixif42cwjky",
+        "canonical_name": "于闐",
+        "href": "book-index://Entity/hixif42cwjky"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11039,8 +11137,10 @@
         "end_offset": 6743
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鹽澤"
+        "status": "matched",
+        "entity_id": "hixif412e6hq",
+        "canonical_name": "羅布泊",
+        "href": "book-index://Entity/hixif412e6hq"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11173,8 +11273,10 @@
         "end_offset": 6801
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11385,8 +11487,10 @@
         "end_offset": 6943
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西洋"
+        "status": "matched",
+        "entity_id": "hixif41h2c5o",
+        "canonical_name": "西洋",
+        "href": "book-index://Entity/hixif41h2c5o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11501,8 +11605,10 @@
         "end_offset": 6999
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11519,8 +11625,10 @@
         "end_offset": 7001
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運河"
+        "status": "matched",
+        "entity_id": "hixif412e6hh",
+        "canonical_name": "大運河",
+        "href": "book-index://Entity/hixif412e6hh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11537,8 +11645,10 @@
         "end_offset": 7011
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運河"
+        "status": "matched",
+        "entity_id": "hixif412e6hh",
+        "canonical_name": "大運河",
+        "href": "book-index://Entity/hixif412e6hh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11575,8 +11685,10 @@
         "end_offset": 7046
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12465,8 +12577,10 @@
         "end_offset": 7556
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12501,8 +12615,10 @@
         "end_offset": 7564
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淮徐"
+        "status": "matched",
+        "entity_id": "hixif41h2c7d",
+        "canonical_name": "淮徐",
+        "href": "book-index://Entity/hixif41h2c7d"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13008,8 +13124,10 @@
         "end_offset": 7988
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13082,8 +13200,10 @@
         "end_offset": 8066
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃河"
+        "status": "matched",
+        "entity_id": "hixif412e6gz",
+        "canonical_name": "黃河",
+        "href": "book-index://Entity/hixif412e6gz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13429,8 +13549,10 @@
         "end_offset": 8196
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "衛河"
+        "status": "matched",
+        "entity_id": "hixif412e6hf",
+        "canonical_name": "衛河",
+        "href": "book-index://Entity/hixif412e6hf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13645,8 +13767,10 @@
         "end_offset": 8228
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "滹沱河"
+        "status": "matched",
+        "entity_id": "hixif412e6hr",
+        "canonical_name": "滹沱河",
+        "href": "book-index://Entity/hixif412e6hr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13993,8 +14117,10 @@
         "end_offset": 8410
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淮揚道"
+        "status": "matched",
+        "entity_id": "hixif48udwg1",
+        "canonical_name": "淮揚道",
+        "href": "book-index://Entity/hixif48udwg1"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14261,8 +14387,10 @@
         "end_offset": 8628
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運河"
+        "status": "matched",
+        "entity_id": "hixif412e6hh",
+        "canonical_name": "大運河",
+        "href": "book-index://Entity/hixif412e6hh"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14851,8 +14979,10 @@
         "end_offset": 9077
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gx",
+        "canonical_name": "太湖",
+        "href": "book-index://Entity/hixif412e6gx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14869,8 +14999,10 @@
         "end_offset": 9083
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "浙江"
+        "status": "matched",
+        "entity_id": "hixi4ufdmygy",
+        "canonical_name": "浙江省",
+        "href": "book-index://Entity/hixi4ufdmygy"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14925,8 +15057,10 @@
         "end_offset": 9094
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西藏"
+        "status": "matched",
+        "entity_id": "hixif41h2c7p",
+        "canonical_name": "西藏",
+        "href": "book-index://Entity/hixif41h2c7p"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15033,8 +15167,10 @@
         "end_offset": 9119
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "朝鮮"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfz",
+        "canonical_name": "朝鮮",
+        "href": "book-index://Entity/hixi1ubjrxfz"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15069,8 +15205,10 @@
         "end_offset": 9133
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -15221,8 +15359,10 @@
         "end_offset": 9379
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "海寧州"
+        "status": "matched",
+        "entity_id": "hixicl8aikt2",
+        "canonical_name": "海寧州",
+        "href": "book-index://Entity/hixicl8aikt2"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16143,8 +16283,10 @@
         "end_offset": 10054
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "仙居"
+        "status": "matched",
+        "entity_id": "hixicl899mgw",
+        "canonical_name": "仙居縣",
+        "href": "book-index://Entity/hixicl899mgw"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16215,8 +16357,10 @@
         "end_offset": 10074
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淮揚"
+        "status": "matched",
+        "entity_id": "hixif41h2c7c",
+        "canonical_name": "淮揚",
+        "href": "book-index://Entity/hixif41h2c7c"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16293,24 +16437,6 @@
         "entity_id": "d59f2mc8bta8",
         "canonical_name": "明史",
         "href": "book-index://Work/d59f2mc8bta8"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00893",
-      "type": "place",
-      "text": "東南",
-      "anchor": {
-        "start": "63:8:13",
-        "end": "63:8:14"
-      },
-      "span": {
-        "start_offset": 10107,
-        "end_offset": 10109
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "東南"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17005,8 +17131,10 @@
         "end_offset": 10683
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -17509,8 +17637,10 @@
         "end_offset": 10954
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "山陰縣"
+        "status": "matched",
+        "entity_id": "hixicl857jid",
+        "canonical_name": "山陰縣",
+        "href": "book-index://Entity/hixicl857jid"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18559,8 +18689,10 @@
         "end_offset": 11751
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gr",
+        "canonical_name": "西湖",
+        "href": "book-index://Entity/hixif412e6gr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19175,8 +19307,10 @@
         "end_offset": 12289
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "盤山"
+        "status": "matched",
+        "entity_id": "hixif412e6g0",
+        "canonical_name": "盤山",
+        "href": "book-index://Entity/hixif412e6g0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19233,8 +19367,10 @@
         "end_offset": 12307
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "盤山"
+        "status": "matched",
+        "entity_id": "hixif412e6g0",
+        "canonical_name": "盤山",
+        "href": "book-index://Entity/hixif412e6g0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19697,8 +19833,10 @@
         "end_offset": 12842
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西湖"
+        "status": "matched",
+        "entity_id": "hixif412e6gr",
+        "canonical_name": "西湖",
+        "href": "book-index://Entity/hixif412e6gr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19769,8 +19907,10 @@
         "end_offset": 12853
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳山"
+        "status": "matched",
+        "entity_id": "hixif412e6fa",
+        "canonical_name": "吳山",
+        "href": "book-index://Entity/hixif412e6fa"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20551,8 +20691,10 @@
         "end_offset": 13396
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20741,8 +20883,10 @@
         "end_offset": 13467
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "僖宗"
+        "status": "matched",
+        "entity_id": "hixi4w9wfcwn",
+        "canonical_name": "李儇",
+        "href": "book-index://Entity/hixi4w9wfcwn"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20797,8 +20941,10 @@
         "end_offset": 13493
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20915,8 +21061,10 @@
         "end_offset": 13574
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20953,8 +21101,10 @@
         "end_offset": 13585
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21031,8 +21181,10 @@
         "end_offset": 13618
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21205,8 +21357,10 @@
         "end_offset": 13805
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21243,8 +21397,10 @@
         "end_offset": 13851
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21279,8 +21435,10 @@
         "end_offset": 13870
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22113,8 +22271,10 @@
         "end_offset": 14480
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "華州"
+        "status": "matched",
+        "entity_id": "hixi5wauixp0",
+        "canonical_name": "華州",
+        "href": "book-index://Entity/hixi5wauixp0"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22405,8 +22565,10 @@
         "end_offset": 14610
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "關中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22787,8 +22949,10 @@
         "end_offset": 14917
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "關中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23261,8 +23425,10 @@
         "end_offset": 15253
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23417,8 +23583,10 @@
         "end_offset": 15331
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23495,8 +23663,10 @@
         "end_offset": 15497
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "東明"
+        "status": "matched",
+        "entity_id": "hixi6kf0aqky",
+        "canonical_name": "東明縣",
+        "href": "book-index://Entity/hixi6kf0aqky"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23817,8 +23987,10 @@
         "end_offset": 15684
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "三輔"
+        "status": "matched",
+        "entity_id": "hixif41h2c77",
+        "canonical_name": "三輔",
+        "href": "book-index://Entity/hixif41h2c77"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23835,8 +24007,10 @@
         "end_offset": 15688
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "奉元"
+        "status": "matched",
+        "entity_id": "hixicl86rqay",
+        "canonical_name": "奉元路",
+        "href": "book-index://Entity/hixicl86rqay"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24385,8 +24559,10 @@
         "end_offset": 16171
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24689,8 +24865,10 @@
         "end_offset": 16351
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張敦禮"
+        "status": "matched",
+        "entity_id": "hixierl8wrgy",
+        "canonical_name": "張敦禮",
+        "href": "book-index://Entity/hixierl8wrgy"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25067,8 +25245,10 @@
         "end_offset": 16517
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉州"
+        "status": "matched",
+        "entity_id": "hixicl89kv6e",
+        "canonical_name": "晉州",
+        "href": "book-index://Entity/hixicl89kv6e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25105,8 +25285,10 @@
         "end_offset": 16534
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉州"
+        "status": "matched",
+        "entity_id": "hixicl89kv6e",
+        "canonical_name": "晉州",
+        "href": "book-index://Entity/hixicl89kv6e"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25465,8 +25647,10 @@
         "end_offset": 16814
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "平州"
+        "status": "matched",
+        "entity_id": "hixi5wauu680",
+        "canonical_name": "永平府",
+        "href": "book-index://Entity/hixi5wauu680"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25575,8 +25759,10 @@
         "end_offset": 16840
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25649,8 +25835,10 @@
         "end_offset": 16855
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "平州"
+        "status": "matched",
+        "entity_id": "hixi5wauu680",
+        "canonical_name": "永平府",
+        "href": "book-index://Entity/hixi5wauu680"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25667,8 +25855,10 @@
         "end_offset": 16860
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "平州"
+        "status": "matched",
+        "entity_id": "hixi5wauu680",
+        "canonical_name": "永平府",
+        "href": "book-index://Entity/hixi5wauu680"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26089,8 +26279,10 @@
         "end_offset": 17399
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "杼山"
+        "status": "matched",
+        "entity_id": "hixif412e6fw",
+        "canonical_name": "杼山",
+        "href": "book-index://Entity/hixif412e6fw"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26357,8 +26549,10 @@
         "end_offset": 17618
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "關中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26491,8 +26685,10 @@
         "end_offset": 17663
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "關中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5m",
+        "canonical_name": "關中",
+        "href": "book-index://Entity/hixif41h2c5m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26783,8 +26979,10 @@
         "end_offset": 17840
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "華岳"
+        "status": "matched",
+        "entity_id": "hixif412e6g6",
+        "canonical_name": "華山",
+        "href": "book-index://Entity/hixif412e6g6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26877,8 +27075,10 @@
         "end_offset": 18040
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27109,8 +27309,10 @@
         "end_offset": 18113
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27415,8 +27617,10 @@
         "end_offset": 18361
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣州"
+        "status": "matched",
+        "entity_id": "hixi5watwglo",
+        "canonical_name": "廣州府",
+        "href": "book-index://Entity/hixi5watwglo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27473,8 +27677,10 @@
         "end_offset": 18380
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嶺表"
+        "status": "matched",
+        "entity_id": "hixif41h2c5l",
+        "canonical_name": "嶺南",
+        "href": "book-index://Entity/hixif41h2c5l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27603,8 +27809,10 @@
         "end_offset": 18474
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27857,8 +28065,10 @@
         "end_offset": 18535
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "建鄴"
+        "status": "matched",
+        "entity_id": "hixicm9q21rr",
+        "canonical_name": "建鄴縣",
+        "href": "book-index://Entity/hixicm9q21rr"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27929,8 +28139,10 @@
         "end_offset": 18560
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejg",
+        "canonical_name": "春秋晉",
+        "href": "book-index://Entity/hixi1ubkeejg"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28697,8 +28909,10 @@
         "end_offset": 18904
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣州"
+        "status": "matched",
+        "entity_id": "hixi5watwglo",
+        "canonical_name": "廣州府",
+        "href": "book-index://Entity/hixi5watwglo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28715,8 +28929,10 @@
         "end_offset": 18909
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嶺南"
+        "status": "matched",
+        "entity_id": "hixif41h2c5l",
+        "canonical_name": "嶺南",
+        "href": "book-index://Entity/hixif41h2c5l"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28773,8 +28989,10 @@
         "end_offset": 18986
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣州"
+        "status": "matched",
+        "entity_id": "hixi5watwglo",
+        "canonical_name": "廣州府",
+        "href": "book-index://Entity/hixi5watwglo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28870,8 +29088,10 @@
         "end_offset": 19070
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐書"
+        "status": "matched",
+        "entity_id": "d59f2hq4in0g",
+        "canonical_name": "唐書",
+        "href": "book-index://Work/d59f2hq4in0g"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29026,8 +29246,10 @@
         "end_offset": 19164
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29436,8 +29658,10 @@
         "end_offset": 19428
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29454,8 +29678,10 @@
         "end_offset": 19433
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣州"
+        "status": "matched",
+        "entity_id": "hixi5watwglo",
+        "canonical_name": "廣州府",
+        "href": "book-index://Entity/hixi5watwglo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29552,8 +29778,10 @@
         "end_offset": 19460
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29626,8 +29854,10 @@
         "end_offset": 19477
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29662,8 +29892,10 @@
         "end_offset": 19497
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "昭宗"
+        "status": "matched",
+        "entity_id": "hixi5v86ch6o",
+        "canonical_name": "李曄",
+        "href": "book-index://Entity/hixi5v86ch6o"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29680,8 +29912,10 @@
         "end_offset": 19515
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "粤東"
+        "status": "matched",
+        "entity_id": "hixif41h2c6t",
+        "canonical_name": "粤東",
+        "href": "book-index://Entity/hixif41h2c6t"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30412,8 +30646,10 @@
         "end_offset": 20037
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "劍南"
+        "status": "matched",
+        "entity_id": "hixif41h2c60",
+        "canonical_name": "劍南",
+        "href": "book-index://Entity/hixif41h2c60"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30710,8 +30946,10 @@
         "end_offset": 20377
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "洞庭"
+        "status": "matched",
+        "entity_id": "hixif412e6ha",
+        "canonical_name": "洞庭湖",
+        "href": "book-index://Entity/hixif412e6ha"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30728,8 +30966,10 @@
         "end_offset": 20383
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "洞庭"
+        "status": "matched",
+        "entity_id": "hixif412e6ha",
+        "canonical_name": "洞庭湖",
+        "href": "book-index://Entity/hixif412e6ha"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -30746,8 +30986,10 @@
         "end_offset": 20390
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "洞庭"
+        "status": "matched",
+        "entity_id": "hixif412e6ha",
+        "canonical_name": "洞庭湖",
+        "href": "book-index://Entity/hixif412e6ha"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31068,8 +31310,10 @@
         "end_offset": 20497
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31390,8 +31634,10 @@
         "end_offset": 20621
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "澧水"
+        "status": "matched",
+        "entity_id": "hixif412e6h9",
+        "canonical_name": "澧水",
+        "href": "book-index://Entity/hixif412e6h9"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -31676,24 +31922,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "大慶"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01738",
-      "type": "place",
-      "text": "殿",
-      "anchor": {
-        "start": "131:1:3",
-        "end": "131:1:3"
-      },
-      "span": {
-        "start_offset": 20826,
-        "end_offset": 20827
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "殿"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32076,8 +32304,10 @@
         "end_offset": 21206
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳"
+        "status": "matched",
+        "entity_id": "hixi1ubkeejf",
+        "canonical_name": "春秋吳",
+        "href": "book-index://Entity/hixi1ubkeejf"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32314,8 +32544,10 @@
         "end_offset": 21342
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "㑹稽"
+        "status": "matched",
+        "entity_id": "hixi4ui5u4uj",
+        "canonical_name": "會稽縣",
+        "href": "book-index://Entity/hixi4ui5u4uj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32522,8 +32754,10 @@
         "end_offset": 21437
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "㑹稽"
+        "status": "matched",
+        "entity_id": "hixi4ui5u4uj",
+        "canonical_name": "會稽縣",
+        "href": "book-index://Entity/hixi4ui5u4uj"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32760,8 +32994,10 @@
         "end_offset": 21615
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高州"
+        "status": "matched",
+        "entity_id": "hixicl8f74vo",
+        "canonical_name": "高州",
+        "href": "book-index://Entity/hixicl8f74vo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32798,8 +33034,10 @@
         "end_offset": 21636
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳中"
+        "status": "matched",
+        "entity_id": "hixif41h2c5n",
+        "canonical_name": "吳中",
+        "href": "book-index://Entity/hixif41h2c5n"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33494,8 +33732,10 @@
         "end_offset": 22012
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "海南"
+        "status": "matched",
+        "entity_id": "hixif41h2c6v",
+        "canonical_name": "海南",
+        "href": "book-index://Entity/hixif41h2c6v"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33512,8 +33752,10 @@
         "end_offset": 22017
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二廣"
+        "status": "matched",
+        "entity_id": "hixif41h2c6m",
+        "canonical_name": "兩廣",
+        "href": "book-index://Entity/hixif41h2c6m"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33742,8 +33984,10 @@
         "end_offset": 22137
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐書"
+        "status": "matched",
+        "entity_id": "d59f2hq4in0g",
+        "canonical_name": "唐書",
+        "href": "book-index://Work/d59f2hq4in0g"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -33834,8 +34078,10 @@
         "end_offset": 22173
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "廣州"
+        "status": "matched",
+        "entity_id": "hixi5watwglo",
+        "canonical_name": "廣州府",
+        "href": "book-index://Entity/hixi5watwglo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35047,8 +35293,10 @@
         "end_offset": 23403
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "弁山"
+        "status": "matched",
+        "entity_id": "hixif412e6ft",
+        "canonical_name": "弁山",
+        "href": "book-index://Entity/hixif412e6ft"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35397,8 +35645,10 @@
         "end_offset": 23737
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "華陽"
+        "status": "matched",
+        "entity_id": "hixicl85u0kw",
+        "canonical_name": "華陽縣",
+        "href": "book-index://Entity/hixicl85u0kw"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36307,8 +36557,10 @@
         "end_offset": 24276
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "建德路"
+        "status": "matched",
+        "entity_id": "hixicl87e789",
+        "canonical_name": "建德路",
+        "href": "book-index://Entity/hixicl87e789"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -36405,8 +36657,10 @@
         "end_offset": 24333
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞山"
+        "status": "matched",
+        "entity_id": "hixif412e6g8",
+        "canonical_name": "虞山",
+        "href": "book-index://Entity/hixif412e6g8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37499,8 +37753,10 @@
         "end_offset": 25263
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高州"
+        "status": "matched",
+        "entity_id": "hixicl8f74vo",
+        "canonical_name": "高州",
+        "href": "book-index://Entity/hixicl8f74vo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -37615,8 +37871,10 @@
         "end_offset": 25299
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "高州"
+        "status": "matched",
+        "entity_id": "hixicl8f74vo",
+        "canonical_name": "高州",
+        "href": "book-index://Entity/hixicl8f74vo"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -38161,24 +38419,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02104",
-      "type": "work",
-      "text": "藝文志",
-      "anchor": {
-        "start": "159:6:18",
-        "end": "159:6:20"
-      },
-      "span": {
-        "start_offset": 25527,
-        "end_offset": 25530
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "藝文志"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e02105",
       "type": "work",
       "text": "益部談資",
@@ -38251,8 +38491,10 @@
         "end_offset": 25571
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蘷州府"
+        "status": "matched",
+        "entity_id": "hixicl88n5gn",
+        "canonical_name": "夔州府",
+        "href": "book-index://Entity/hixicl88n5gn"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39281,8 +39523,10 @@
         "end_offset": 26296
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "均州"
+        "status": "matched",
+        "entity_id": "hixicl8f74tx",
+        "canonical_name": "均州",
+        "href": "book-index://Entity/hixicl8f74tx"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39742,8 +39986,10 @@
         "end_offset": 26699
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "西域"
+        "status": "matched",
+        "entity_id": "hixif41h2c5f",
+        "canonical_name": "西域",
+        "href": "book-index://Entity/hixif41h2c5f"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39800,8 +40046,10 @@
         "end_offset": 26711
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鄯善國"
+        "status": "matched",
+        "entity_id": "hixif42cwjkw",
+        "canonical_name": "鄯善",
+        "href": "book-index://Entity/hixif42cwjkw"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40054,8 +40302,10 @@
         "end_offset": 26888
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "渤海"
+        "status": "matched",
+        "entity_id": "hixif412e6hk",
+        "canonical_name": "渤海",
+        "href": "book-index://Entity/hixif412e6hk"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40090,8 +40340,10 @@
         "end_offset": 26972
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "混同江"
+        "status": "matched",
+        "entity_id": "hixif412e6hp",
+        "canonical_name": "松花江",
+        "href": "book-index://Entity/hixif412e6hp"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40108,26 +40360,46 @@
         "end_offset": 26977
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "長白山"
+        "status": "matched",
+        "entity_id": "hixif412e6gb",
+        "canonical_name": "長白山",
+        "href": "book-index://Entity/hixif412e6gb"
       },
       "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e02214",
       "type": "place",
-      "text": "松阿里江松阿里江",
+      "text": "松阿里江",
       "anchor": {
         "start": "168:6:4",
-        "end": "168:6:11"
+        "end": "168:6:7"
       },
       "span": {
         "start_offset": 26981,
+        "end_offset": 26985
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "松阿里江"
+      },
+      "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02310",
+      "type": "place",
+      "text": "松阿里江",
+      "anchor": {
+        "start": "168:6:8",
+        "end": "168:6:11"
+      },
+      "span": {
+        "start_offset": 26985,
         "end_offset": 26989
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "松阿里江松阿里江"
+        "canonical_name": "松阿里江"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40254,8 +40526,10 @@
         "end_offset": 27076
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "混同江"
+        "status": "matched",
+        "entity_id": "hixif412e6hp",
+        "canonical_name": "松花江",
+        "href": "book-index://Entity/hixif412e6hp"
       },
       "source": "ext:siku-qiefen-v2"
     },

@@ -19,6 +19,7 @@
 from __future__ import annotations
 
 import argparse
+import glob
 import datetime as dt
 import json
 import os
@@ -75,6 +76,36 @@ def fill_tbd(files: list[str], base: str, n: int) -> int:
                 k += 1
         open(p, "w", encoding="utf-8").write("\n".join(lines))
     return k
+
+
+STALE_DAYS = 3
+
+
+def _age_days(path):
+    """清单存在了几天：取 git 里最早加入这个文件的提交时间；没进 git 就返回 None。"""
+    r = subprocess.run(["git", "log", "--diff-filter=A", "--format=%ct", "--", path],
+                       capture_output=True, text=True)
+    ts = [int(x) for x in r.stdout.split() if x.isdigit()]
+    return (time.time() - min(ts)) / 86400 if ts else None
+
+
+def char_edits_report() -> str:
+    """各册未清的改字清单（NNN.char-edits.json，docs/design/2026-10-改字清单.md）：每日合并 PR 里报条数。"""
+    rows = []
+    for path in sorted(glob.glob("Book/**/*.char-edits.json", recursive=True) + glob.glob("Work/**/*.char-edits.json", recursive=True)):
+        try:
+            with open(path, encoding="utf-8") as f:
+                n = len(json.load(f).get("edits") or [])
+        except Exception:  # noqa: BLE001 坏文件由 local_check 报
+            n = -1
+        row = f"`{path}`：{n if n >= 0 else '解析失败'} 格待同步"
+        days = _age_days(path)
+        if days is not None and days > STALE_DAYS:
+            row = f"**{row}，已挂 {days:.0f} 天未清（超过 {STALE_DAYS} 天），请 A33 尽快 sync**"
+        rows.append("- " + row)
+    if not rows:
+        return "改字清单：无未清条目。\n"
+    return f"改字清单：{len(rows)} 册有未清条目（标点／实体待 A33 用 `char_edits.py sync` 同步）\n" + "\n".join(rows) + "\n"
 
 
 def main() -> int:
@@ -134,7 +165,7 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=-7))).strftime("%Y-%m-%d")
     log = sh("git", "log", "--oneline", "--no-merges", "origin/main..HEAD").stdout.strip()
     body = (f"每日 dev→main 合并（{today}，`scripts/daily_merge.py`）。\n\n提交：\n```\n{log[:6000]}\n```\n\n"
-            f"`python3 scripts/local_check.py --all`：\n```\n{chk.stdout.strip()[-3000:]}\n```\n")
+            f"`python3 scripts/local_check.py --all`：\n```\n{chk.stdout.strip()[-3000:]}\n```\n\n{char_edits_report()}")
     prs = gh(f"repos/{REPO}/pulls?state=open&base=main&head=open-guji:dev")
     if prs:
         n = prs[0]["number"]

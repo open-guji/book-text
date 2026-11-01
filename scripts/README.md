@@ -10,7 +10,7 @@
 | `check_license.py` | 授权串校验，CI V3 |
 | `original_version.py` | `original` 三线版本号规则（F-OV-01～04） |
 | `zi_convert.py` | 组字候选转正字 |
-| `book-text/` | 原 overview 根 `scripts/book-text/`：`bump_original.py`（升版本，写 CHANGES.md）、`build_texts_index.py`（重建 `index/texts`）、`add_text.py`（入库）、`entity_*.py`、`t543_*.py`、`punct_compare.py`、`punct_redo.py`（文本改字后只重标受影响的句子：plan 出工作稿，apply 写回 punct／entity）等 |
+| `book-text/` | 原 overview 根 `scripts/book-text/`：`bump_original.py`（升版本，写 CHANGES.md）、`build_texts_index.py`（重建 `index/texts`）、`add_text.py`（入库）、`entity_*.py`、`t543_*.py`、`punct_compare.py`、`auto_remap.py`（新文本进来后一键对齐标点、实体：分档、修标题符位置、升版、出复核单）、`punct_redo.py`（文本改字后只重标受影响的句子：plan 出工作稿，apply 写回 punct／entity）等 |
 | `entity/` | 原 `古籍文本/scripts/t_entity_*.py`（含测试）与 `check_draft.py`：专名候选、复合、拆分、命中统计 |
 | `tools/` | 一次性／维护脚本：`table_convert.py`、`verify_md.py`、`recut_songshi_md.py`、`fill_missing_keys.py`、`fix_level_d59f2hr9pypt.py`、`tilda_missed_names.py` |
 | `muse_qc/` | muse 质检驱动、提示词、schema。**jsonl 结果没有迁**（约 10.9M）：在 overview 提交 `af1f3f6f3` 的 `项目进展/古籍文本/scripts/muse_qc/*.jsonl` 可取 |

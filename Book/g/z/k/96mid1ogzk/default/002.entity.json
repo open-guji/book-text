@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.15.4",
+  "version": "1.15.5",
   "text_version": "1.1.1",
   "book_id": "96mid1ogzk",
   "volume": 2,
@@ -10,16 +10,16 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 3027,
-    "matched": 2950,
-    "ambiguous": 5,
-    "new_candidates": 61,
+    "total_entities": 3058,
+    "matched": 2973,
+    "ambiguous": 4,
+    "new_candidates": 81,
     "works": 1059,
-    "people": 1379,
-    "places": 171,
-    "offices": 144,
-    "dynasties": 174,
-    "reigns": 97
+    "people": 1404,
+    "places": 170,
+    "offices": 140,
+    "dynasties": 184,
+    "reigns": 98
   },
   "entities": [
     {
@@ -717,14 +717,14 @@
         "start_offset": 616,
         "end_offset": 617
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2f8wair",
         "canonical_name": "京房",
         "href": "book-index://Entity/hixhd2f8wair",
         "note": "GUJI-240复核：合稱「京焦」之京房"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03161",
@@ -738,34 +738,54 @@
         "start_offset": 617,
         "end_offset": 618
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bjs3",
         "canonical_name": "焦延壽",
         "href": "book-index://Entity/hixhd2h9bjs3",
         "note": "GUJI-240复核：合稱「京焦」之焦延壽"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01396",
+      "id": "e03204",
       "type": "people",
-      "text": "陳邵",
+      "text": "陳",
       "anchor": {
         "start": "4:8:20",
-        "end": "4:8:21"
+        "end": "4:8:20"
       },
       "span": {
         "start_offset": 626,
+        "end_offset": 627
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "陳",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03205",
+      "type": "people",
+      "text": "邵",
+      "anchor": {
+        "start": "4:8:21",
+        "end": "4:8:21"
+      },
+      "span": {
+        "start_offset": 627,
         "end_offset": 628
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bnpv",
-        "canonical_name": "陳邵",
-        "href": "book-index://Entity/hixhd2h9bnpv"
+        "entity_id": "hixhd2h9bnqc",
+        "canonical_name": "邵雍",
+        "href": "book-index://Entity/hixhd2h9bnqc",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：邵雍；「則與邵異」承上「邵子」）"
       },
-      "source": "补标:N8"
+      "source": "claude:A33"
     },
     {
       "id": "e01397",
@@ -1070,6 +1090,27 @@
         "href": "book-index://Work/d59f1iqd854w"
       },
       "source": "claude:GUJI-240复核"
+    },
+    {
+      "id": "e03206",
+      "type": "people",
+      "text": "子夏",
+      "anchor": {
+        "start": "6:6:19",
+        "end": "6:6:20"
+      },
+      "span": {
+        "start_offset": 902,
+        "end_offset": 904
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bkcn",
+        "canonical_name": "卜商",
+        "href": "book-index://Entity/hixhd2h9bkcn",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01888",
@@ -1803,12 +1844,7 @@
         "note": "GUJI-240 补挂：唐末張弧「大理寺評事」之官署；未定朝代，挂概念条（concept）",
         "level": "concept"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge00035",
-        "text": "大理寺評事",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e01355",
@@ -1830,12 +1866,7 @@
         "note": "未定朝代，挂概念条",
         "level": "concept"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge00035",
-        "text": "大理寺評事",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e00036",
@@ -5862,6 +5893,48 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03207",
+      "type": "people",
+      "text": "王",
+      "anchor": {
+        "start": "18:2:19",
+        "end": "18:2:19"
+      },
+      "span": {
+        "start_offset": 2714,
+        "end_offset": 2715
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bne6",
+        "canonical_name": "王弼",
+        "href": "book-index://Entity/hixhd2h9bne6",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：合稱「王韓」之王弼）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03208",
+      "type": "people",
+      "text": "韓",
+      "anchor": {
+        "start": "18:2:20",
+        "end": "18:2:20"
+      },
+      "span": {
+        "start_offset": 2715,
+        "end_offset": 2716
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bhvn",
+        "canonical_name": "韓康伯",
+        "href": "book-index://Entity/hixhd2h9bhvn",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：合稱「王韓」之韓康伯）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00149",
       "type": "work",
       "text": "易注",
@@ -6110,6 +6183,48 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03209",
+      "type": "people",
+      "text": "王",
+      "anchor": {
+        "start": "18:7:7",
+        "end": "18:7:7"
+      },
+      "span": {
+        "start_offset": 2805,
+        "end_offset": 2806
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bne6",
+        "canonical_name": "王弼",
+        "href": "book-index://Entity/hixhd2h9bne6",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：合稱「王韓」之王弼）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03210",
+      "type": "people",
+      "text": "韓",
+      "anchor": {
+        "start": "18:7:8",
+        "end": "18:7:8"
+      },
+      "span": {
+        "start_offset": 2806,
+        "end_offset": 2807
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bhvn",
+        "canonical_name": "韓康伯",
+        "href": "book-index://Entity/hixhd2h9bhvn",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：合稱「王韓」之韓康伯）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00159",
       "type": "people",
       "text": "鄭元",
@@ -6171,6 +6286,27 @@
         "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03211",
+      "type": "people",
+      "text": "鄭氏",
+      "anchor": {
+        "start": "18:9:21",
+        "end": "19:1:3"
+      },
+      "span": {
+        "start_offset": 2857,
+        "end_offset": 2859
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2f8wajv",
+        "canonical_name": "鄭玄",
+        "href": "book-index://Entity/hixhd2f8wajv",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：改挂（鄭氏易注／注書之鄭氏即鄭玄；原挂同名異人））"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00164",
@@ -6388,6 +6524,25 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03212",
+      "type": "work",
+      "text": "乾坤",
+      "anchor": {
+        "start": "19:3:18",
+        "end": "19:3:19"
+      },
+      "span": {
+        "start_offset": 2911,
+        "end_offset": 2913
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "乾坤",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00174",
       "type": "work",
       "text": "文言",
@@ -6408,6 +6563,27 @@
         "coarse": "part_of_work"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03213",
+      "type": "people",
+      "text": "鄭氏",
+      "anchor": {
+        "start": "19:4:16",
+        "end": "19:4:17"
+      },
+      "span": {
+        "start_offset": 2928,
+        "end_offset": 2930
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2f8wajv",
+        "canonical_name": "鄭玄",
+        "href": "book-index://Entity/hixhd2f8wajv",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：改挂（鄭氏易注／注書之鄭氏即鄭玄；原挂同名異人））"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00175",
@@ -6949,14 +7125,14 @@
         "start_offset": 3310,
         "end_offset": 3311
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bk46",
         "canonical_name": "老子",
         "href": "book-index://Entity/hixhd2h9bk46",
         "note": "GUJI-240复核：合稱「老莊」之老子"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03165",
@@ -6970,14 +7146,14 @@
         "start_offset": 3311,
         "end_offset": 3312
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bk4g",
         "canonical_name": "莊周",
         "href": "book-index://Entity/hixhd2h9bk4g",
         "note": "GUJI-240复核：合稱「老莊」之莊子"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e01418",
@@ -7019,6 +7195,27 @@
         "href": "book-index://Work/d59f28kra4n7"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03214",
+      "type": "dynasty",
+      "text": "魏",
+      "anchor": {
+        "start": "22:1:3",
+        "end": "22:1:3"
+      },
+      "span": {
+        "start_offset": 3354,
+        "end_offset": 3355
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubk35za",
+        "canonical_name": "三國魏",
+        "href": "book-index://Entity/hixi1ubk35za",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01809",
@@ -7182,6 +7379,27 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03215",
+      "type": "dynasty",
+      "text": "晉",
+      "anchor": {
+        "start": "22:3:18",
+        "end": "22:3:18"
+      },
+      "span": {
+        "start_offset": 3407,
+        "end_offset": 3408
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfy",
+        "canonical_name": "晉",
+        "href": "book-index://Entity/hixi1ubjrxfy",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00198",
       "type": "place",
       "text": "揚州",
@@ -7199,12 +7417,7 @@
         "canonical_name": "揚州府",
         "href": "book-index://Entity/hixi4ugtgcn6"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge00198",
-        "text": "揚州刺史",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e01357",
@@ -7226,12 +7439,7 @@
         "note": "未定朝代，挂概念条",
         "level": "concept"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge00198",
-        "text": "揚州刺史",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e01423",
@@ -11847,14 +12055,14 @@
         "start_offset": 5441,
         "end_offset": 5442
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bne6",
         "canonical_name": "王弼",
         "href": "book-index://Entity/hixhd2h9bne6",
         "note": "GUJI-240复核：合稱「王韓」之王弼"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03169",
@@ -11868,14 +12076,14 @@
         "start_offset": 5442,
         "end_offset": 5443
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhvn",
         "canonical_name": "韓康伯",
         "href": "book-index://Entity/hixhd2h9bhvn",
         "note": "GUJI-240复核：合稱「王韓」之韓康伯"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e00312",
@@ -11909,14 +12117,14 @@
         "start_offset": 5455,
         "end_offset": 5456
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bne6",
         "canonical_name": "王弼",
         "href": "book-index://Entity/hixhd2h9bne6",
         "note": "GUJI-240复核：合稱「王韓」之王弼"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03171",
@@ -11930,14 +12138,14 @@
         "start_offset": 5456,
         "end_offset": 5457
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhvn",
         "canonical_name": "韓康伯",
         "href": "book-index://Entity/hixhd2h9bhvn",
         "note": "GUJI-240复核：合稱「王韓」之韓康伯"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e00313",
@@ -12219,14 +12427,14 @@
         "start_offset": 5581,
         "end_offset": 5582
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bne6",
         "canonical_name": "王弼",
         "href": "book-index://Entity/hixhd2h9bne6",
         "note": "GUJI-240复核：合稱「王韓」之王弼"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03173",
@@ -12240,14 +12448,14 @@
         "start_offset": 5582,
         "end_offset": 5583
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhvn",
         "canonical_name": "韓康伯",
         "href": "book-index://Entity/hixhd2h9bhvn",
         "note": "GUJI-240复核：合稱「王韓」之韓康伯"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e02078",
@@ -15590,6 +15798,27 @@
       "source": "claude:GUJI-240复核"
     },
     {
+      "id": "e03216",
+      "type": "dynasty",
+      "text": "宋",
+      "anchor": {
+        "start": "44:6:19",
+        "end": "44:6:19"
+      },
+      "span": {
+        "start_offset": 7024,
+        "end_offset": 7025
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋",
+        "href": "book-index://Entity/hixi1ubjrxgo",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02142",
       "type": "people",
       "text": "朱𢑱尊",
@@ -15750,25 +15979,42 @@
       "source": "补标:N8"
     },
     {
-      "id": "e02143",
+      "id": "e03217",
       "type": "work",
-      "text": "集傳精義",
+      "text": "集傳",
       "anchor": {
         "start": "45:3:11",
-        "end": "45:3:14"
+        "end": "45:3:12"
       },
       "span": {
         "start_offset": 7130,
+        "end_offset": 7132
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "集傳",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03218",
+      "type": "work",
+      "text": "精義",
+      "anchor": {
+        "start": "45:3:13",
+        "end": "45:3:14"
+      },
+      "span": {
+        "start_offset": 7132,
         "end_offset": 7134
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f2hdo9uyp",
-        "canonical_name": "大易集傳精義",
-        "href": "book-index://Work/d59f2hdo9uyp",
-        "note": "GUJI-240复核：大易集傳精義（陳友文）；提要「陳友文集傳精義」"
+        "status": "new_candidate",
+        "canonical_name": "精義",
+        "note": "重标后待匹配"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01497",
@@ -21959,40 +22205,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e00531",
-      "type": "work",
-      "text": "河圖",
-      "anchor": {
-        "start": "65:2:9",
-        "end": "65:2:10"
-      },
-      "span": {
-        "start_offset": 10384,
-        "end_offset": 10386
-      },
-      "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "d59f2moxb8jk",
-            "canonical_name": "河圖",
-            "author": "殷元正"
-          },
-          {
-            "entity_id": "d59fycsk1n9e",
-            "canonical_name": "河圖",
-            "author": "黃奭"
-          },
-          {
-            "entity_id": "d59fxx8joni9",
-            "canonical_name": "河圖"
-          }
-        ],
-        "note": "A33 書名細配 2026-10-25：庫有同名5 部同名，上下文未能定"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00532",
       "type": "people",
       "text": "朱子",
@@ -22500,6 +22712,27 @@
         "note": "GUJI-240 补挂：周宣王「會諸侯於東都」，東都＝洛邑，挂洛陽縣（别名東都）"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03219",
+      "type": "reign",
+      "text": "紹興",
+      "anchor": {
+        "start": "67:3:13",
+        "end": "67:3:14"
+      },
+      "span": {
+        "start_offset": 10726,
+        "end_offset": 10728
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubpe784",
+        "canonical_name": "紹興",
+        "href": "book-index://Entity/hixi1ubpe784",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02271",
@@ -24586,6 +24819,27 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03220",
+      "type": "dynasty",
+      "text": "宋",
+      "anchor": {
+        "start": "74:3:5",
+        "end": "74:3:5"
+      },
+      "span": {
+        "start_offset": 11890,
+        "end_offset": 11891
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋",
+        "href": "book-index://Entity/hixi1ubjrxgo",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01565",
       "type": "people",
       "text": "劉牧",
@@ -25146,6 +25400,27 @@
         "href": "book-index://Entity/hixhd2h9btvr"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03221",
+      "type": "people",
+      "text": "剛中",
+      "anchor": {
+        "start": "76:1:17",
+        "end": "76:1:18"
+      },
+      "span": {
+        "start_offset": 12129,
+        "end_offset": 12131
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bdqz",
+        "canonical_name": "鄭剛中",
+        "href": "book-index://Entity/hixhd2h9bdqz",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240 补挂：本条鄭剛中撰周易窺餘，「剛中」名简称）"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02316",
@@ -27563,14 +27838,14 @@
         "start_offset": 13614,
         "end_offset": 13615
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bk46",
         "canonical_name": "老子",
         "href": "book-index://Entity/hixhd2h9bk46",
         "note": "GUJI-240复核：合稱「老莊」之老子"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03181",
@@ -27584,14 +27859,14 @@
         "start_offset": 13615,
         "end_offset": 13616
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bk4g",
         "canonical_name": "莊周",
         "href": "book-index://Entity/hixhd2h9bk4g",
         "note": "GUJI-240复核：合稱「老莊」之莊子"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03182",
@@ -27605,14 +27880,14 @@
         "start_offset": 13620,
         "end_offset": 13621
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bjh7",
         "canonical_name": "周文王",
         "href": "book-index://Entity/hixhd2h9bjh7",
         "note": "GUJI-240复核：合稱「文周」之周文王"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03183",
@@ -27626,14 +27901,14 @@
         "start_offset": 13621,
         "end_offset": 13622
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixho47gs64g",
         "canonical_name": "周公",
         "href": "book-index://Entity/hixho47gs64g",
         "note": "GUJI-240复核：合稱「文周」之周公"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e01577",
@@ -29668,6 +29943,25 @@
       "source": "补标:N8"
     },
     {
+      "id": "e03222",
+      "type": "people",
+      "text": "大昌",
+      "anchor": {
+        "start": "91:3:8",
+        "end": "91:3:9"
+      },
+      "span": {
+        "start_offset": 14641,
+        "end_offset": 14643
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "大昌",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02394",
       "type": "people",
       "text": "泰之",
@@ -29852,6 +30146,25 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03223",
+      "type": "people",
+      "text": "大昌",
+      "anchor": {
+        "start": "91:5:20",
+        "end": "91:5:21"
+      },
+      "span": {
+        "start_offset": 14691,
+        "end_offset": 14693
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "大昌",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00700",
       "type": "work",
       "text": "易",
@@ -29966,14 +30279,14 @@
         "start_offset": 14790,
         "end_offset": 14791
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2f8wair",
         "canonical_name": "京房",
         "href": "book-index://Entity/hixhd2f8wair",
         "note": "GUJI-240复核：合稱「京焦」之京房"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03185",
@@ -29987,14 +30300,14 @@
         "start_offset": 14791,
         "end_offset": 14792
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bjs3",
         "canonical_name": "焦延壽",
         "href": "book-index://Entity/hixhd2h9bjs3",
         "note": "GUJI-240复核：合稱「京焦」之焦延壽"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e01611",
@@ -31357,14 +31670,14 @@
         "start_offset": 15488,
         "end_offset": 15489
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhc1",
         "canonical_name": "程頤",
         "href": "book-index://Entity/hixhd2h9bhc1",
         "note": "GUJI-240复核：合稱「程朱」之程頤"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03187",
@@ -31378,14 +31691,14 @@
         "start_offset": 15489,
         "end_offset": 15490
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bgah",
         "canonical_name": "朱熹",
         "href": "book-index://Entity/hixhd2h9bgah",
         "note": "GUJI-240复核：合稱「程朱」之朱熹"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e02419",
@@ -32278,14 +32591,14 @@
         "start_offset": 16117,
         "end_offset": 16118
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bne6",
         "canonical_name": "王弼",
         "href": "book-index://Entity/hixhd2h9bne6",
         "note": "GUJI-240复核：合稱「王韓」之王弼"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03189",
@@ -32299,14 +32612,14 @@
         "start_offset": 16118,
         "end_offset": 16119
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhvn",
         "canonical_name": "韓康伯",
         "href": "book-index://Entity/hixhd2h9bhvn",
         "note": "GUJI-240复核：合稱「王韓」之韓康伯"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e00743",
@@ -35520,6 +35833,44 @@
       "source": "补标:N8"
     },
     {
+      "id": "e03224",
+      "type": "people",
+      "text": "汝愚",
+      "anchor": {
+        "start": "108:3:10",
+        "end": "108:3:11"
+      },
+      "span": {
+        "start_offset": 17439,
+        "end_offset": 17441
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "汝愚",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03225",
+      "type": "people",
+      "text": "彦肅",
+      "anchor": {
+        "start": "108:3:13",
+        "end": "108:3:14"
+      },
+      "span": {
+        "start_offset": 17442,
+        "end_offset": 17444
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "彦肅",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00813",
       "type": "work",
       "text": "廣雜學辨",
@@ -35666,6 +36017,44 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03226",
+      "type": "people",
+      "text": "彦肅",
+      "anchor": {
+        "start": "108:6:9",
+        "end": "108:6:10"
+      },
+      "span": {
+        "start_offset": 17495,
+        "end_offset": 17497
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "彦肅",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03227",
+      "type": "people",
+      "text": "彦肅",
+      "anchor": {
+        "start": "108:9:10",
+        "end": "108:9:11"
+      },
+      "span": {
+        "start_offset": 17553,
+        "end_offset": 17555
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "彦肅",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00818",
       "type": "work",
       "text": "楊氏易傳",
@@ -35766,6 +36155,25 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03228",
+      "type": "people",
+      "text": "敬仲",
+      "anchor": {
+        "start": "109:4:9",
+        "end": "109:4:10"
+      },
+      "span": {
+        "start_offset": 17607,
+        "end_offset": 17609
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "敬仲",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00820",
       "type": "place",
       "text": "慈谿",
@@ -35846,6 +36254,27 @@
         "href": "book-index://Work/d59f2j4yy8ea"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03229",
+      "type": "dynasty",
+      "text": "明",
+      "anchor": {
+        "start": "109:6:4",
+        "end": "109:6:4"
+      },
+      "span": {
+        "start_offset": 17640,
+        "end_offset": 17641
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01833",
@@ -35969,6 +36398,27 @@
       "source": "glm:glm-4.5-flash"
     },
     {
+      "id": "e03230",
+      "type": "dynasty",
+      "text": "明",
+      "anchor": {
+        "start": "109:9:10",
+        "end": "109:9:10"
+      },
+      "span": {
+        "start_offset": 17703,
+        "end_offset": 17704
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02519",
       "type": "reign",
       "text": "萬歴",
@@ -36072,6 +36522,27 @@
       "source": "补标:N8"
     },
     {
+      "id": "e03231",
+      "type": "dynasty",
+      "text": "明",
+      "anchor": {
+        "start": "110:7:3",
+        "end": "110:7:3"
+      },
+      "span": {
+        "start_offset": 17829,
+        "end_offset": 17830
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明",
+        "href": "book-index://Entity/hixi1ubjrxfw",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01834",
       "type": "people",
       "text": "楊時喬",
@@ -36110,6 +36581,27 @@
         "href": "book-index://Work/d59fu304uex6"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03232",
+      "type": "dynasty",
+      "text": "元",
+      "anchor": {
+        "start": "110:7:17",
+        "end": "110:7:17"
+      },
+      "span": {
+        "start_offset": 17843,
+        "end_offset": 17844
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01835",
@@ -36212,6 +36704,27 @@
         "href": "book-index://Entity/hixi1ubjgow9"
       },
       "source": "claude:GUJI-240复核"
+    },
+    {
+      "id": "e03233",
+      "type": "dynasty",
+      "text": "魏",
+      "anchor": {
+        "start": "111:1:8",
+        "end": "111:1:8"
+      },
+      "span": {
+        "start_offset": 17891,
+        "end_offset": 17892
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubk35za",
+        "canonical_name": "三國魏",
+        "href": "book-index://Entity/hixi1ubk35za",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01836",
@@ -36436,44 +36949,23 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e02528",
+      "id": "e03234",
       "type": "people",
-      "text": "紫溪",
+      "text": "紫溪蘇濬",
       "anchor": {
         "start": "111:6:12",
-        "end": "111:6:13"
-      },
-      "span": {
-        "start_offset": 17990,
-        "end_offset": 17992
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bhts",
-        "canonical_name": "蘇濬",
-        "href": "book-index://Entity/hixhd2h9bhts"
-      },
-      "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e00842",
-      "type": "people",
-      "text": "蘇濬",
-      "anchor": {
-        "start": "111:6:14",
         "end": "111:6:15"
       },
       "span": {
-        "start_offset": 17992,
+        "start_offset": 17990,
         "end_offset": 17994
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bhts",
-        "canonical_name": "蘇濬",
-        "href": "book-index://Entity/hixhd2h9bhts"
+        "status": "new_candidate",
+        "canonical_name": "紫溪蘇濬",
+        "note": "重标后待匹配"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e02529",
@@ -36655,6 +37147,27 @@
         "href": "book-index://Entity/hixhd2h9bdra"
       },
       "source": "补标:N8"
+    },
+    {
+      "id": "e03235",
+      "type": "people",
+      "text": "安世",
+      "anchor": {
+        "start": "112:6:8",
+        "end": "112:6:9"
+      },
+      "span": {
+        "start_offset": 18135,
+        "end_offset": 18137
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02534",
@@ -36922,6 +37435,48 @@
       "source": "claude:GUJI-240复核"
     },
     {
+      "id": "e03236",
+      "type": "people",
+      "text": "振孫",
+      "anchor": {
+        "start": "112:9:17",
+        "end": "112:9:18"
+      },
+      "span": {
+        "start_offset": 18201,
+        "end_offset": 18203
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beoe",
+        "canonical_name": "陳振孫",
+        "href": "book-index://Entity/hixhd2h9beoe",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：陳振孫；回指）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03237",
+      "type": "people",
+      "text": "安世",
+      "anchor": {
+        "start": "112:9:21",
+        "end": "113:1:3"
+      },
+      "span": {
+        "start_offset": 18205,
+        "end_offset": 18207
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02545",
       "type": "reign",
       "text": "慶元",
@@ -36983,35 +37538,36 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e02548",
+      "id": "e03238",
       "type": "people",
-      "text": "伊川",
+      "text": "安世",
       "anchor": {
-        "start": "113:6:6",
-        "end": "113:6:7"
+        "start": "113:5:19",
+        "end": "113:5:20"
       },
       "span": {
-        "start_offset": 18304,
-        "end_offset": 18306
+        "start_offset": 18298,
+        "end_offset": 18300
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bhc1",
-        "canonical_name": "程頤",
-        "href": "book-index://Entity/hixhd2h9bhc1"
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
-      "id": "e00847",
+      "id": "e03239",
       "type": "people",
-      "text": "程子",
+      "text": "伊川程子",
       "anchor": {
-        "start": "113:6:8",
+        "start": "113:6:6",
         "end": "113:6:9"
       },
       "span": {
-        "start_offset": 18306,
+        "start_offset": 18304,
         "end_offset": 18308
       },
       "target": {
@@ -37019,9 +37575,9 @@
         "entity_id": "hixhd2h9bhc1",
         "canonical_name": "程頤",
         "href": "book-index://Entity/hixhd2h9bhc1",
-        "note": "GUJI-240 补挂：「伊川程子之書」，程頤"
+        "note": "重标沿用全册同字挂法，待核"
       },
-      "source": "glm:glm-4.5-flash"
+      "source": "claude:A33"
     },
     {
       "id": "e02549",
@@ -37105,6 +37661,27 @@
         "note": "GUJI-240复核：伊川易傳；程頤撰"
       },
       "source": "claude:GUJI-240复核"
+    },
+    {
+      "id": "e03240",
+      "type": "people",
+      "text": "安世",
+      "anchor": {
+        "start": "113:8:14",
+        "end": "113:8:15"
+      },
+      "span": {
+        "start_offset": 18350,
+        "end_offset": 18352
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02553",
@@ -37248,6 +37825,27 @@
       "source": "claude:GUJI-240复核"
     },
     {
+      "id": "e03241",
+      "type": "people",
+      "text": "安世",
+      "anchor": {
+        "start": "114:4:7",
+        "end": "114:4:8"
+      },
+      "span": {
+        "start_offset": 18438,
+        "end_offset": 18440
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00849",
       "type": "work",
       "text": "項氏家說",
@@ -37327,6 +37925,27 @@
         "href": "book-index://Work/d59f2njjiayq"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03242",
+      "type": "people",
+      "text": "安世",
+      "anchor": {
+        "start": "114:6:15",
+        "end": "114:6:16"
+      },
+      "span": {
+        "start_offset": 18484,
+        "end_offset": 18486
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9beb0",
+        "canonical_name": "劉安世",
+        "href": "book-index://Entity/hixhd2h9beb0",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00852",
@@ -37409,6 +38028,25 @@
         "note": "GUJI-240复核：趙善譽；回指"
       },
       "source": "claude:GUJI-240复核"
+    },
+    {
+      "id": "e03243",
+      "type": "people",
+      "text": "靜之",
+      "anchor": {
+        "start": "114:9:11",
+        "end": "114:9:12"
+      },
+      "span": {
+        "start_offset": 18513,
+        "end_offset": 18515
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "靜之",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02585",
@@ -42949,28 +43587,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e02688",
-      "type": "work",
-      "text": "彖",
-      "anchor": {
-        "start": "131:1:19",
-        "end": "131:1:19"
-      },
-      "span": {
-        "start_offset": 21184,
-        "end_offset": 21185
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59ezakdey2o",
-        "canonical_name": "周易",
-        "href": "book-index://Work/d59ezakdey2o",
-        "note": "GUJI-240复核：彖（彖傳） 篇，挂《周易》",
-        "coarse": "part_of_work"
-      },
-      "source": "claude:GUJI-240复核"
-    },
-    {
       "id": "e00988",
       "type": "work",
       "text": "隋經籍志",
@@ -44791,35 +45407,42 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01034",
+      "id": "e03244",
       "type": "people",
-      "text": "胡程",
+      "text": "胡",
       "anchor": {
         "start": "135:5:6",
-        "end": "135:5:7"
+        "end": "135:5:6"
       },
       "span": {
         "start_offset": 21920,
+        "end_offset": 21921
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "胡",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03245",
+      "type": "people",
+      "text": "程",
+      "anchor": {
+        "start": "135:5:7",
+        "end": "135:5:7"
+      },
+      "span": {
+        "start_offset": 21921,
         "end_offset": 21922
       },
       "target": {
-        "status": "matched_multi",
-        "canonical_name": "胡瑗＋程頤",
-        "targets": [
-          {
-            "part": "胡",
-            "entity_id": "hixhd2h9bdwz",
-            "canonical_name": "胡瑗",
-            "href": "book-index://Entity/hixhd2h9bdwz"
-          },
-          {
-            "part": "程",
-            "entity_id": "hixhd2h9bhc1",
-            "canonical_name": "程頤",
-            "href": "book-index://Entity/hixhd2h9bhc1"
-          }
-        ],
-        "note": "胡（安定）程（伊川）并称，祖其義理；可拆为「胡」「程」两 span"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhc1",
+        "canonical_name": "程頤",
+        "href": "book-index://Entity/hixhd2h9bhc1",
+        "note": "重标沿用全册同字挂法，待核（原注：程子（程頤））"
       },
       "source": "claude:A33"
     },
@@ -45629,6 +46252,25 @@
         "href": "book-index://Entity/hixi4ugtrl6u"
       },
       "source": "glm:glm-4.5-flash"
+    },
+    {
+      "id": "e03246",
+      "type": "people",
+      "text": "師旦",
+      "anchor": {
+        "start": "137:1:14",
+        "end": "137:1:15"
+      },
+      "span": {
+        "start_offset": 22175,
+        "end_offset": 22177
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "師旦",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02718",
@@ -49358,6 +50000,27 @@
       "source": "补标:N8"
     },
     {
+      "id": "e03247",
+      "type": "dynasty",
+      "text": "宋",
+      "anchor": {
+        "start": "148:4:3",
+        "end": "148:4:3"
+      },
+      "span": {
+        "start_offset": 24032,
+        "end_offset": 24033
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋",
+        "href": "book-index://Entity/hixi1ubjrxgo",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01712",
       "type": "people",
       "text": "蔡淵",
@@ -51164,58 +51827,23 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e01146",
+      "id": "e03248",
       "type": "office",
-      "text": "吏部",
+      "text": "吏部侍郞",
       "anchor": {
         "start": "153:3:10",
-        "end": "153:3:11"
-      },
-      "span": {
-        "start_offset": 24841,
-        "end_offset": 24843
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi5dv6r4e9",
-        "canonical_name": "吏部",
-        "href": "book-index://Entity/hixi5dv6r4e9",
-        "note": "GUJI-240 补挂：宋鄭汝諧「吏部侍郞」之官署；未定朝代，挂概念条（concept）",
-        "level": "concept"
-      },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01146",
-        "text": "吏部侍郞",
-        "kind": "compound"
-      }
-    },
-    {
-      "id": "e01368",
-      "type": "office",
-      "text": "侍郞",
-      "anchor": {
-        "start": "153:3:12",
         "end": "153:3:13"
       },
       "span": {
-        "start_offset": 24843,
+        "start_offset": 24841,
         "end_offset": 24845
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixi4u82hwjm",
-        "canonical_name": "侍郎",
-        "href": "book-index://Entity/hixi4u82hwjm",
-        "note": "未定朝代，挂概念条",
-        "level": "concept"
+        "status": "new_candidate",
+        "canonical_name": "吏部侍郞",
+        "note": "重标后待匹配"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01146",
-        "text": "吏部侍郞",
-        "kind": "compound"
-      }
+      "source": "claude:A33"
     },
     {
       "id": "e01147",
@@ -51954,44 +52582,23 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e02838",
-      "type": "place",
-      "text": "湖廣",
+      "id": "e03249",
+      "type": "office",
+      "text": "湖廣總領",
       "anchor": {
         "start": "155:5:6",
-        "end": "155:5:7"
-      },
-      "span": {
-        "start_offset": 25214,
-        "end_offset": 25216
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi4ufd0hdz",
-        "canonical_name": "湖廣省",
-        "href": "book-index://Entity/hixi4ufd0hdz"
-      },
-      "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e02839",
-      "type": "office",
-      "text": "總領",
-      "anchor": {
-        "start": "155:5:8",
         "end": "155:5:9"
       },
       "span": {
-        "start_offset": 25216,
+        "start_offset": 25214,
         "end_offset": 25218
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixia8ohx88w",
-        "canonical_name": "總領使",
-        "href": "book-index://Entity/hixia8ohx88w"
+        "status": "new_candidate",
+        "canonical_name": "湖廣總領",
+        "note": "重标后待匹配"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e01727",
@@ -53421,58 +54028,23 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01178",
+      "id": "e03250",
       "type": "office",
-      "text": "戸部",
+      "text": "戸部侍郞",
       "anchor": {
         "start": "159:8:13",
-        "end": "159:8:14"
-      },
-      "span": {
-        "start_offset": 25946,
-        "end_offset": 25948
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi5dv72cxs",
-        "canonical_name": "戶部",
-        "href": "book-index://Entity/hixi5dv72cxs",
-        "note": "GUJI-240 补挂：宋趙汝楳「戸部侍郞」，异体戸＝戶；未定朝代，挂概念条（concept）",
-        "level": "concept"
-      },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01178",
-        "text": "戸部侍郞",
-        "kind": "compound"
-      }
-    },
-    {
-      "id": "e01369",
-      "type": "office",
-      "text": "侍郞",
-      "anchor": {
-        "start": "159:8:15",
         "end": "159:8:16"
       },
       "span": {
-        "start_offset": 25948,
+        "start_offset": 25946,
         "end_offset": 25950
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixi4u82hwjm",
-        "canonical_name": "侍郎",
-        "href": "book-index://Entity/hixi4u82hwjm",
-        "note": "未定朝代，挂概念条",
-        "level": "concept"
+        "status": "new_candidate",
+        "canonical_name": "戸部侍郞",
+        "note": "重标后待匹配"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01178",
-        "text": "戸部侍郞",
-        "kind": "compound"
-      }
+      "source": "claude:A33"
     },
     {
       "id": "e01179",
@@ -55195,35 +55767,42 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01216",
+      "id": "e03251",
       "type": "people",
-      "text": "莊列",
+      "text": "莊",
       "anchor": {
         "start": "166:4:4",
-        "end": "166:4:5"
+        "end": "166:4:4"
       },
       "span": {
         "start_offset": 27033,
+        "end_offset": 27034
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9bk4g",
+        "canonical_name": "莊周",
+        "href": "book-index://Entity/hixhd2h9bk4g",
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：合稱「老莊」之莊子）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03252",
+      "type": "people",
+      "text": "列",
+      "anchor": {
+        "start": "166:4:5",
+        "end": "166:4:5"
+      },
+      "span": {
+        "start_offset": 27034,
         "end_offset": 27035
       },
       "target": {
-        "status": "matched_multi",
-        "canonical_name": "莊周＋列御寇",
-        "targets": [
-          {
-            "part": "莊",
-            "entity_id": "hixhd2h9bk4g",
-            "canonical_name": "莊周",
-            "href": "book-index://Entity/hixhd2h9bk4g"
-          },
-          {
-            "part": "列",
-            "entity_id": "hixhd2h9bjxx",
-            "canonical_name": "列御寇",
-            "href": "book-index://Entity/hixhd2h9bjxx"
-          }
-        ],
-        "note": "合称"
+        "status": "new_candidate",
+        "canonical_name": "列",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -56247,12 +56826,7 @@
         "canonical_name": "台州",
         "href": "book-index://Entity/hixi4ugtgcnd"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01229",
-        "text": "台州臨海",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e01370",
@@ -56272,12 +56846,7 @@
         "canonical_name": "臨海縣",
         "href": "book-index://Entity/hixi4ui5u4uf"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01229",
-        "text": "台州臨海",
-        "kind": "compound"
-      }
+      "source": "glm:glm-4.5-flash"
     },
     {
       "id": "e02928",
@@ -56300,42 +56869,15 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01230",
+      "id": "e03253",
       "type": "office",
-      "text": "吏部",
+      "text": "吏部郞中",
       "anchor": {
         "start": "169:4:5",
-        "end": "169:4:6"
-      },
-      "span": {
-        "start_offset": 27538,
-        "end_offset": 27540
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi5dv6r4e9",
-        "canonical_name": "吏部",
-        "href": "book-index://Entity/hixi5dv6r4e9",
-        "note": "GUJI-240 补挂：宋董楷「吏部郞中」之官署；未定朝代，挂概念条（concept）",
-        "level": "concept"
-      },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01230",
-        "text": "吏部郞中",
-        "kind": "compound"
-      }
-    },
-    {
-      "id": "e01371",
-      "type": "office",
-      "text": "郞中",
-      "anchor": {
-        "start": "169:4:7",
         "end": "169:4:8"
       },
       "span": {
-        "start_offset": 27540,
+        "start_offset": 27538,
         "end_offset": 27542
       },
       "target": {
@@ -56343,15 +56885,9 @@
         "entity_id": "hixi4udsij2f",
         "canonical_name": "郎中",
         "href": "book-index://Entity/hixi4udsij2f",
-        "note": "未定朝代，挂概念条",
-        "level": "concept"
+        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：郎中（概念条）；吏部郎中，循「南京禮部侍郞→侍郎」例挂概念）"
       },
-      "source": "glm:glm-4.5-flash",
-      "group": {
-        "id": "ge01230",
-        "text": "吏部郞中",
-        "kind": "compound"
-      }
+      "source": "claude:A33"
     },
     {
       "id": "e01231",
@@ -56510,14 +57046,14 @@
         "start_offset": 27603,
         "end_offset": 27604
       },
-      "source": "claude:A33",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhc1",
         "canonical_name": "程頤",
         "href": "book-index://Entity/hixhd2h9bhc1",
         "note": "程子（程頤）"
-      }
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e03195",
@@ -56531,14 +57067,14 @@
         "start_offset": 27604,
         "end_offset": 27605
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bgah",
         "canonical_name": "朱熹",
         "href": "book-index://Entity/hixhd2h9bgah",
         "note": "GUJI-240复核：合稱「程朱」之朱熹"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e03196",
@@ -56552,14 +57088,14 @@
         "start_offset": 27610,
         "end_offset": 27611
       },
-      "source": "claude:A33",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bhc1",
         "canonical_name": "程頤",
         "href": "book-index://Entity/hixhd2h9bhc1",
         "note": "程子（程頤）"
-      }
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e03197",
@@ -56573,14 +57109,14 @@
         "start_offset": 27611,
         "end_offset": 27612
       },
-      "source": "claude:GUJI-240复核",
       "target": {
         "status": "matched",
         "entity_id": "hixhd2h9bgah",
         "canonical_name": "朱熹",
         "href": "book-index://Entity/hixhd2h9bgah",
         "note": "GUJI-240复核：合稱「程朱」之朱熹"
-      }
+      },
+      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e01236",
@@ -60932,45 +61468,23 @@
       "source": "claude:GUJI-240复核"
     },
     {
-      "id": "e01863",
+      "id": "e03254",
       "type": "office",
-      "text": "樞密院",
+      "text": "樞密院編修官",
       "anchor": {
         "start": "181:6:8",
-        "end": "181:6:10"
-      },
-      "span": {
-        "start_offset": 29560,
-        "end_offset": 29563
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubqbwv3",
-        "canonical_name": "樞密院",
-        "href": "book-index://Entity/hixi1ubqbwv3"
-      },
-      "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e01864",
-      "type": "office",
-      "text": "編修官",
-      "anchor": {
-        "start": "181:6:11",
         "end": "181:6:13"
       },
       "span": {
-        "start_offset": 29563,
+        "start_offset": 29560,
         "end_offset": 29566
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixia8n08etf",
+        "status": "new_candidate",
         "canonical_name": "樞密院編修官",
-        "href": "book-index://Entity/hixia8n08etf",
-        "note": "GUJI-240复核：樞密院編修官（趙宋）：原文「樞密院編修官」"
+        "note": "重标后待匹配"
       },
-      "source": "claude:GUJI-240复核"
+      "source": "claude:A33"
     },
     {
       "id": "e02993",

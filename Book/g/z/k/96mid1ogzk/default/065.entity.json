@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "text_version": "0.4.0",
   "book_id": "96mid1ogzk",
   "volume": 65,
@@ -11,13 +11,13 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2665,
+    "total_entities": 2667,
     "matched": 1376,
     "ambiguous": 0,
-    "new_candidates": 1289,
-    "works": 634,
+    "new_candidates": 1291,
+    "works": 635,
     "people": 1258,
-    "places": 234,
+    "places": 235,
     "offices": 159,
     "dynasties": 251,
     "reigns": 129
@@ -1849,6 +1849,25 @@
         "canonical_name": "百家姓"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e03169",
+      "type": "place",
+      "text": "宋",
+      "anchor": {
+        "start": "8:2:16",
+        "end": "8:2:16"
+      },
+      "span": {
+        "start_offset": 1083,
+        "end_offset": 1084
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "宋",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00059",
@@ -11381,25 +11400,44 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00380",
+      "id": "e03170",
       "type": "work",
-      "text": "新書保傅",
+      "text": "新書",
       "anchor": {
         "start": "41:9:18",
-        "end": "41:9:21"
+        "end": "41:9:19"
       },
       "span": {
         "start_offset": 6097,
-        "end_offset": 6101
+        "end_offset": 6099
       },
       "target": {
         "status": "matched",
         "entity_id": "d59fy3r139c0",
         "canonical_name": "新書",
         "href": "book-index://Work/d59fy3r139c0",
-        "coarse": "part_of_work"
+        "note": "重标沿用全册同字挂法，待核"
       },
-      "source": "ext:siku-qiefen-v2"
+      "source": "claude:A33"
+    },
+    {
+      "id": "e03171",
+      "type": "work",
+      "text": "保傅",
+      "anchor": {
+        "start": "41:9:20",
+        "end": "41:9:21"
+      },
+      "span": {
+        "start_offset": 6099,
+        "end_offset": 6101
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "保傅",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00382",

@@ -229,11 +229,49 @@ def char_slots(char):
             for c in col.get("cells") or []]
 
 
-def anchor_mismatches(char, line, data):
+CHAR_EDITS_SCHEMA = "guji-char-edits/0.1"
+
+
+def char_edits_path(odir, stem):
+    """改字清单（0.x 精校期专用旁路文件，见 docs/design/2026-10-改字清单.md）。"""
+    return os.path.join(odir, f"{stem}.char-edits.json")
+
+
+def load_char_edits(odir, stem):
+    p = char_edits_path(odir, stem)
+    return load_json(p) if os.path.isfile(p) else None
+
+
+def edits_by_anchor(edits):
+    """改字清单 → {anchor: 条目}；清单不合形状时返回空（形状问题由 char_edits_problems 报）。"""
+    if not isinstance(edits, dict) or not isinstance(edits.get("edits"), list):
+        return {}
+    return {e["anchor"]: e for e in edits["edits"]
+            if isinstance(e, dict) and isinstance(e.get("anchor"), str) and isinstance(e.get("old"), str)
+            and isinstance(e.get("new"), str)}
+
+
+def _edits_active(char, edits):
+    """改字清单只在文本线 0.x（精校中）起放行作用；1.x 起伴生层不一致一律硬拦。"""
+    tv = parse_version((char or {}).get("version"))
+    return bool(edits) and tv is not None and tv[0] == 0
+
+
+def anchor_mismatches(char, line, data, edits=None, soft=None):
     """伴生层（punct／entity）锚点校验字与当前文本（char.json 的内容）逐个核对，返回对不上的 [(序号, 说明)]。
-    没有锚点的条目（流水线对账失败、坐标留空的）不核。"""
+    没有锚点的条目（流水线对账失败、坐标留空的）不核。
+
+    edits：该册的改字清单（NNN.char-edits.json 的内容）。文本线 0.x 时，对不上的格若登记在清单里
+    （文本现为 new、校验字仍为 old），不算硬错，改放进 soft（列表，调用方给）；不给 soft 时这些条目直接略过。
+    锚点不存在（删字）、未登记的格（插字后位移、漏登）仍是硬错。"""
     slots = char_slots(char)
     pos = {a: i for i, (a, _c) in enumerate(slots)}
+    em = edits_by_anchor(edits) if _edits_active(char, edits) else {}
+
+    def listed(a, was, now):
+        e = em.get(a)
+        return e is not None and e["old"] == was and e["new"] == now
+
     bad = []
     if line == "punct":
         for i, p in enumerate(data.get("punctuations") or []):
@@ -243,7 +281,12 @@ def anchor_mismatches(char, line, data):
             if a not in pos:
                 bad.append((i, f"标点 #{i} 锚点 {a} 在文本里已不存在"))
             elif "pre_char" in p and slots[pos[a]][1] != p["pre_char"]:
-                bad.append((i, f"标点 #{i} 锚点 {a} 校验字应为 {p['pre_char']!r}，文本现为 {slots[pos[a]][1]!r}"))
+                note = f"标点 #{i} 锚点 {a} 校验字应为 {p['pre_char']!r}，文本现为 {slots[pos[a]][1]!r}"
+                if listed(a, p["pre_char"], slots[pos[a]][1]):
+                    if soft is not None:
+                        soft.append((i, note + "（已登记改字清单，待同步）"))
+                else:
+                    bad.append((i, note))
     elif line == "entity":
         for i, e in enumerate(data.get("entities") or []):
             anc = e.get("anchor") or {}
@@ -253,10 +296,94 @@ def anchor_mismatches(char, line, data):
             if s not in pos or t not in pos or pos[t] < pos[s]:
                 bad.append((i, f"实体 #{i} 锚点 {s}–{t} 在文本里已不存在"))
                 continue
-            got = "".join(c for _a, c in slots[pos[s]:pos[t] + 1])
+            seg = slots[pos[s]:pos[t] + 1]
+            got = "".join(c for _a, c in seg)
             if "text" in e and got != e["text"]:
-                bad.append((i, f"实体 #{i} {s}–{t} 校验字应为 {e['text']!r}，文本现为 {got!r}"))
+                note = f"实体 #{i} {s}–{t} 校验字应为 {e['text']!r}，文本现为 {got!r}"
+                ok = len(e["text"]) == len(seg) and all(
+                    want == now or listed(a, want, now) for (a, now), want in zip(seg, e["text"]))
+                if ok:
+                    if soft is not None:
+                        soft.append((i, note + "（已登记改字清单，待同步）"))
+                else:
+                    bad.append((i, note))
     return bad
+
+
+def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
+    """改字清单本身的检查，返回 (硬错 [(说明, sub)], 软提示 [(说明, sub)])。
+    layers：{"punct": (data, text_version), "entity": (...)}，用来查「可清」与清单是否过期。"""
+    hard, soft = [], []
+    if not isinstance(edits, dict):
+        return [("不是 JSON 对象", "shape")], soft
+    if edits.get("schema") != CHAR_EDITS_SCHEMA:
+        hard.append((f"schema 应为 {CHAR_EDITS_SCHEMA!r}，现为 {edits.get('schema')!r}", "schema"))
+    if book_id is not None and edits.get("book_id") != book_id:
+        hard.append((f"book_id={edits.get('book_id')!r} 与所在条目 {book_id} 不一致", "ident"))
+    if stem is not None and str(stem).isdigit() and edits.get("volume") != int(stem):
+        hard.append((f"volume={edits.get('volume')!r} 与册号 {stem} 不一致", "ident"))
+    tv = parse_version((char or {}).get("version"))
+    if tv is None or tv[0] != 0:
+        hard.append((f"文本线 {char.get('version')!r} 已不是 0.x：改字清单只许在精校期存在，1.x 起改字走修订流程、伴生层就地跟进", "major"))
+    btv = parse_version(edits.get("base_text_version"))
+    if btv is None:
+        hard.append((f"base_text_version={edits.get('base_text_version')!r} 不合格式", "base"))
+    elif tv is not None and btv > tv:
+        hard.append((f"base_text_version={edits['base_text_version']} 超前于文本 {char.get('version')}", "base"))
+    items = edits.get("edits")
+    if not isinstance(items, list) or not items:
+        hard.append(("edits 须是非空列表（清空了就删掉文件）", "edits"))
+        return hard, soft
+    slots = char_slots(char)
+    pos = {a: i for i, (a, _c) in enumerate(slots)}
+    seen = set()
+    for k, e in enumerate(items):
+        if not isinstance(e, dict):
+            hard.append((f"edits[{k}] 不是对象", f"e{k}"))
+            continue
+        a, old, new = e.get("anchor"), e.get("old"), e.get("new")
+        if not (isinstance(a, str) and isinstance(old, str) and isinstance(new, str)) or not old or not new:
+            hard.append((f"edits[{k}] 须有 anchor／old／new（非空字符串）", f"e{k}"))
+            continue
+        if len(old) != 1 or len(new) != 1:
+            hard.append((f"edits[{k}] {a} 的 old={old!r}／new={new!r} 须各是单个字（一格一字；"
+                         "sync 写出的 pre_char 是多字或空串时，阅读器会丢掉整条标点）", f"e{k}:len"))
+            continue
+        if a in seen:
+            hard.append((f"edits[{k}] 锚点 {a} 重复登记（同格多次改字合并成一条：old 取最早、new 取最新）", f"dup:{a}"))
+        seen.add(a)
+        if old == new:
+            hard.append((f"edits[{k}] {a} 的 old 与 new 相同", f"e{k}"))
+        if not isinstance(e.get("base_commit"), str) or not e.get("base_commit"):
+            hard.append((f"edits[{k}] {a} 缺 base_commit（改字前的提交，供复核）", f"e{k}:commit"))
+        if a not in pos:
+            hard.append((f"edits[{k}] 锚点 {a} 在文本里不存在（清单只收单格替换；增删字走分支重标）", f"e{k}:anchor"))
+        elif slots[pos[a]][1] != new:
+            hard.append((f"edits[{k}] {a} 文本现为 {slots[pos[a]][1]!r}，不是清单的 new={new!r}（清单过期）", f"e{k}:stale"))
+    for line, (data, ltv) in (layers or {}).items():
+        lt = parse_version(ltv)
+        if btv is not None and lt is not None and lt < btv:
+            hard.append((f"{line} 层 text_version={ltv} 落后于清单 base_text_version={edits.get('base_text_version')}"
+                         "：清单之前还有没登记的改字", f"{line}:base"))
+    # 「可清」：清单登记的格，各伴生层都已对上（或没有条目落在这格）
+    em = edits_by_anchor(edits)
+    pending = set()
+    for line, (data, _ltv) in (layers or {}).items():
+        sl = []
+        anchor_mismatches(char, line, data, edits, soft=sl)
+        if line == "punct":
+            pts = data.get("punctuations") or []
+            pending |= {pts[i].get("anchor") for i, _n in sl}
+        else:
+            ents = data.get("entities") or []
+            for i, _n in sl:
+                anc = ents[i].get("anchor") or {}
+                if anc.get("start") in pos and anc.get("end") in pos:
+                    pending |= {a for a, _c in slots[pos[anc["start"]]:pos[anc["end"]] + 1]}
+    for a in em:
+        if a in pos and a not in pending:
+            soft.append((f"{a}（{em[a]['old']}→{em[a]['new']}）各伴生层都已对上，可从清单清掉", f"clear:{a}"))
+    return hard, soft
 
 
 # ── 标题符（guji-format spec/04 v0.2 §4.2，GUJI-240）──────────────────────────

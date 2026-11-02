@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "text_version": "0.5.0",
   "book_id": "96mid1ogzk",
   "volume": 27,
@@ -11,16 +11,16 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 1910,
-    "matched": 1358,
+    "total_entities": 1975,
+    "matched": 1406,
     "ambiguous": 0,
-    "new_candidates": 552,
+    "new_candidates": 569,
     "works": 287,
-    "people": 878,
+    "people": 881,
     "places": 421,
-    "offices": 43,
+    "offices": 103,
     "dynasties": 57,
-    "reigns": 224
+    "reigns": 226
   },
   "entities": [
     {
@@ -1753,6 +1753,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02284",
+      "type": "office",
+      "text": "右布政使",
+      "anchor": {
+        "start": "6:6:20",
+        "end": "6:7:4"
+      },
+      "span": {
+        "start_offset": 875,
+        "end_offset": 879
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "右布政使",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00071",
       "type": "place",
       "text": "廣西",
@@ -2010,6 +2029,27 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02286",
+      "type": "office",
+      "text": "右都御史",
+      "anchor": {
+        "start": "7:6:8",
+        "end": "7:6:11"
+      },
+      "span": {
+        "start_offset": 1024,
+        "end_offset": 1028
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5kwirnd4",
+        "canonical_name": "都御史",
+        "href": "book-index://Entity/hixi5kwirnd4",
+        "note": "庫無整名「右都御史」，挂「都御史」（明代官制條（按上下文朝代））"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00083",
       "type": "work",
       "text": "明史",
@@ -2087,6 +2127,25 @@
         "href": "book-index://Entity/hixicxqo2y2t"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02266",
+      "type": "office",
+      "text": "禮部右侍郞",
+      "anchor": {
+        "start": "7:8:18",
+        "end": "7:9:3"
+      },
+      "span": {
+        "start_offset": 1072,
+        "end_offset": 1077
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "禮部右侍郞",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00086",
@@ -2734,6 +2793,25 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02319",
+      "type": "office",
+      "text": "少師",
+      "anchor": {
+        "start": "10:6:10",
+        "end": "10:6:11"
+      },
+      "span": {
+        "start_offset": 1520,
+        "end_offset": 1522
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "少師",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00114",
       "type": "work",
       "text": "明史",
@@ -3197,6 +3275,27 @@
         "href": "book-index://Entity/hixi4ufdmygy"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02303",
+      "type": "office",
+      "text": "按察使",
+      "anchor": {
+        "start": "12:2:5",
+        "end": "12:2:7"
+      },
+      "span": {
+        "start_offset": 1743,
+        "end_offset": 1746
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5w0xfg95",
+        "canonical_name": "按察使",
+        "href": "book-index://Entity/hixi5w0xfg95",
+        "note": "未定朝代，挂概念條"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00137",
@@ -3929,6 +4028,46 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02320",
+      "type": "office",
+      "text": "都督",
+      "anchor": {
+        "start": "13:8:18",
+        "end": "13:8:19"
+      },
+      "span": {
+        "start_offset": 2009,
+        "end_offset": 2011
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8mlk9a8",
+        "canonical_name": "都督",
+        "href": "book-index://Entity/hixia8mlk9a8"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02321",
+      "type": "office",
+      "text": "都督",
+      "anchor": {
+        "start": "13:9:6",
+        "end": "13:9:7"
+      },
+      "span": {
+        "start_offset": 2016,
+        "end_offset": 2018
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8mlk9a8",
+        "canonical_name": "都督",
+        "href": "book-index://Entity/hixia8mlk9a8"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00167",
       "type": "work",
       "text": "明史",
@@ -4363,6 +4502,25 @@
         "canonical_name": "紫荆關"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02302",
+      "type": "office",
+      "text": "都御史",
+      "anchor": {
+        "start": "15:2:14",
+        "end": "15:2:16"
+      },
+      "span": {
+        "start_offset": 2233,
+        "end_offset": 2236
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "都御史",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00184",
@@ -5698,6 +5856,25 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02325",
+      "type": "people",
+      "text": "原博",
+      "anchor": {
+        "start": "19:8:11",
+        "end": "19:8:12"
+      },
+      "span": {
+        "start_offset": 2996,
+        "end_offset": 2998
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "原博",
+        "note": "字号补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00243",
       "type": "people",
       "text": "匏庵",
@@ -6068,6 +6245,26 @@
         "href": "book-index://Work/d59f2psxygao"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02288",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "20:8:5a",
+        "end": "20:8:8a"
+      },
+      "span": {
+        "start_offset": 3154,
+        "end_offset": 3158
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01788",
@@ -6736,6 +6933,25 @@
         "canonical_name": "諒"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02326",
+      "type": "people",
+      "text": "克貞",
+      "anchor": {
+        "start": "22:5:16",
+        "end": "22:5:17"
+      },
+      "span": {
+        "start_offset": 3434,
+        "end_offset": 3436
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "克貞",
+        "note": "字号补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01803",
@@ -8937,6 +9153,27 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02318",
+      "type": "office",
+      "text": "檢閱",
+      "anchor": {
+        "start": "29:9:17",
+        "end": "29:9:18"
+      },
+      "span": {
+        "start_offset": 4624,
+        "end_offset": 4626
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8m77caq",
+        "canonical_name": "文淵閣檢閱",
+        "href": "book-index://Entity/hixia8m77caq",
+        "note": "前文「文淵閣」，清文淵閣檢閱"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01831",
       "type": "reign",
       "text": "嘉靖",
@@ -9423,6 +9660,26 @@
         "href": "book-index://Work/d59fybb31534"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02298",
+      "type": "office",
+      "text": "兩江總督",
+      "anchor": {
+        "start": "31:3:12a",
+        "end": "31:3:15a"
+      },
+      "span": {
+        "start_offset": 4834,
+        "end_offset": 4838
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00398",
@@ -11350,6 +11607,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02289",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "36:2:6a",
+        "end": "36:2:9a"
+      },
+      "span": {
+        "start_offset": 5630,
+        "end_offset": 5634
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00478",
       "type": "people",
       "text": "許相卿",
@@ -11775,6 +12052,26 @@
         "status": "new_candidate",
         "canonical_name": "太僕寺卿",
         "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02324",
+      "type": "reign",
+      "text": "宏治",
+      "anchor": {
+        "start": "37:8:15",
+        "end": "37:8:16"
+      },
+      "span": {
+        "start_offset": 5907,
+        "end_offset": 5909
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubq0obo",
+        "canonical_name": "弘治",
+        "href": "book-index://Entity/hixi1ubq0obo"
       },
       "source": "claude:A33"
     },
@@ -12322,6 +12619,26 @@
         "status": "new_candidate",
         "canonical_name": "正德",
         "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02310",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "39:4:3",
+        "end": "39:4:4"
+      },
+      "span": {
+        "start_offset": 6134,
+        "end_offset": 6136
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
       },
       "source": "claude:A33"
     },
@@ -13594,6 +13911,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02306",
+      "type": "office",
+      "text": "經畧",
+      "anchor": {
+        "start": "44:2:10",
+        "end": "44:2:11"
+      },
+      "span": {
+        "start_offset": 6939,
+        "end_offset": 6941
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "經畧",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00577",
       "type": "people",
       "text": "彭澤",
@@ -13632,6 +13968,25 @@
         "href": "book-index://Entity/hixhd2h9bebn"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02307",
+      "type": "office",
+      "text": "經畧",
+      "anchor": {
+        "start": "44:3:4",
+        "end": "44:3:5"
+      },
+      "span": {
+        "start_offset": 6952,
+        "end_offset": 6954
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "經畧",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00579",
@@ -13890,6 +14245,26 @@
         "href": "book-index://Work/d59fxv35562p"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02299",
+      "type": "office",
+      "text": "兩江總督",
+      "anchor": {
+        "start": "45:1:5a",
+        "end": "45:1:8a"
+      },
+      "span": {
+        "start_offset": 7089,
+        "end_offset": 7093
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00591",
@@ -18436,6 +18811,27 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02309",
+      "type": "office",
+      "text": "中書",
+      "anchor": {
+        "start": "58:1:21",
+        "end": "58:2:3"
+      },
+      "span": {
+        "start_offset": 9140,
+        "end_offset": 9142
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8oaqrr4",
+        "canonical_name": "內閣中書",
+        "href": "book-index://Entity/hixia8oaqrr4",
+        "note": "前文「内閣」，即清內閣中書"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00783",
       "type": "people",
       "text": "徐妙錦",
@@ -19970,6 +20366,25 @@
         "href": "book-index://Entity/hixhd2h9bfuv"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02308",
+      "type": "office",
+      "text": "經畧",
+      "anchor": {
+        "start": "62:6:17",
+        "end": "62:6:18"
+      },
+      "span": {
+        "start_offset": 9867,
+        "end_offset": 9869
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "經畧",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00846",
@@ -22523,6 +22938,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02287",
+      "type": "office",
+      "text": "兵備副使",
+      "anchor": {
+        "start": "71:1:7",
+        "end": "71:1:10"
+      },
+      "span": {
+        "start_offset": 11190,
+        "end_offset": 11194
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "兵備副使",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00956",
       "type": "place",
       "text": "四川",
@@ -22598,6 +23032,26 @@
         "status": "new_candidate",
         "canonical_name": "嘉靖倭亂備抄",
         "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02290",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "71:4:9a",
+        "end": "71:4:12a"
+      },
+      "span": {
+        "start_offset": 11236,
+        "end_offset": 11240
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
       },
       "source": "claude:A33"
     },
@@ -25693,6 +26147,26 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02291",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "82:7:7a",
+        "end": "82:7:10a"
+      },
+      "span": {
+        "start_offset": 12774,
+        "end_offset": 12778
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02111",
       "type": "dynasty",
       "text": "明",
@@ -26399,6 +26873,26 @@
         "entity_id": "hixi1ubqbwu8",
         "canonical_name": "隆慶",
         "href": "book-index://Entity/hixi1ubqbwu8"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02311",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "84:7:13",
+        "end": "84:7:14"
+      },
+      "span": {
+        "start_offset": 13090,
+        "end_offset": 13092
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
       },
       "source": "claude:A33"
     },
@@ -27267,6 +27761,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02267",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "87:2:6a",
+        "end": "87:2:9a"
+      },
+      "span": {
+        "start_offset": 13482,
+        "end_offset": 13486
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01147",
       "type": "people",
       "text": "王士騏",
@@ -27343,6 +27857,25 @@
         "entity_id": "hixi1ubqbwu9",
         "canonical_name": "萬曆",
         "href": "book-index://Entity/hixi1ubqbwu9"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02265",
+      "type": "office",
+      "text": "吏部員外郞",
+      "anchor": {
+        "start": "87:4:10",
+        "end": "87:4:14"
+      },
+      "span": {
+        "start_offset": 13515,
+        "end_offset": 13520
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "吏部員外郞",
+        "note": "官名词表补标，待匹配"
       },
       "source": "claude:A33"
     },
@@ -27541,6 +28074,26 @@
         "href": "book-index://Entity/hixi1ubq0obg"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02296",
+      "type": "office",
+      "text": "江蘇巡撫",
+      "anchor": {
+        "start": "88:4:8a",
+        "end": "88:4:11a"
+      },
+      "span": {
+        "start_offset": 13669,
+        "end_offset": 13673
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01162",
@@ -27819,6 +28372,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02268",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "90:1:8a",
+        "end": "90:1:11a"
+      },
+      "span": {
+        "start_offset": 13933,
+        "end_offset": 13937
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02158",
       "type": "people",
       "text": "吳瑞登",
@@ -28075,6 +28648,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02269",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "91:4:7a",
+        "end": "91:4:10a"
+      },
+      "span": {
+        "start_offset": 14155,
+        "end_offset": 14159
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01189",
       "type": "work",
       "text": "明史神宗本紀",
@@ -28274,6 +28867,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02322",
+      "type": "office",
+      "text": "都督",
+      "anchor": {
+        "start": "92:5:20",
+        "end": "92:5:21"
+      },
+      "span": {
+        "start_offset": 14350,
+        "end_offset": 14352
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8mlk9a8",
+        "canonical_name": "都督",
+        "href": "book-index://Entity/hixia8mlk9a8"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01201",
       "type": "people",
       "text": "李如松",
@@ -28448,6 +29061,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02297",
+      "type": "office",
+      "text": "江蘇巡撫",
+      "anchor": {
+        "start": "93:4:7a",
+        "end": "93:4:10a"
+      },
+      "span": {
+        "start_offset": 14487,
+        "end_offset": 14491
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02167",
       "type": "reign",
       "text": "萬厯",
@@ -28488,6 +29121,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02283",
+      "type": "office",
+      "text": "禮部郞中",
+      "anchor": {
+        "start": "93:5:10",
+        "end": "93:5:13"
+      },
+      "span": {
+        "start_offset": 14501,
+        "end_offset": 14505
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "禮部郞中",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01213",
       "type": "people",
       "text": "陳治本",
@@ -28506,6 +29158,25 @@
         "href": "book-index://Entity/hixhd2h9bnu7"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02285",
+      "type": "office",
+      "text": "工部郞中",
+      "anchor": {
+        "start": "93:5:17",
+        "end": "93:5:20"
+      },
+      "span": {
+        "start_offset": 14508,
+        "end_offset": 14512
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "工部郞中",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01214",
@@ -29085,6 +29756,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02270",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "95:2:10a",
+        "end": "95:2:13a"
+      },
+      "span": {
+        "start_offset": 14786,
+        "end_offset": 14790
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01243",
       "type": "people",
       "text": "張鼐",
@@ -29163,6 +29854,25 @@
         "href": "book-index://Entity/hixi5wavrvv1"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02263",
+      "type": "office",
+      "text": "詹事府詹事",
+      "anchor": {
+        "start": "95:4:11",
+        "end": "95:4:15"
+      },
+      "span": {
+        "start_offset": 14820,
+        "end_offset": 14825
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "詹事府詹事",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01247",
@@ -29357,6 +30067,26 @@
         "canonical_name": "王眞"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02271",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "96:9:8a",
+        "end": "96:9:11a"
+      },
+      "span": {
+        "start_offset": 15081,
+        "end_offset": 15085
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01258",
@@ -30187,6 +30917,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02264",
+      "type": "office",
+      "text": "刑部員外郞",
+      "anchor": {
+        "start": "99:3:21",
+        "end": "99:4:6"
+      },
+      "span": {
+        "start_offset": 15463,
+        "end_offset": 15468
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "刑部員外郞",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01306",
       "type": "people",
       "text": "張差",
@@ -30245,6 +30994,26 @@
         "href": "book-index://Entity/hixhd2h9bdvx"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02292",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "99:7:13a",
+        "end": "99:7:16a"
+      },
+      "span": {
+        "start_offset": 15528,
+        "end_offset": 15532
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01309",
@@ -30537,6 +31306,26 @@
         "href": "book-index://Entity/hixi4w9wfcy4"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02293",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "100:9:16a",
+        "end": "100:9:19a"
+      },
+      "span": {
+        "start_offset": 15740,
+        "end_offset": 15744
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e02208",
@@ -30879,6 +31668,26 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02294",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "103:1:7a",
+        "end": "103:1:10a"
+      },
+      "span": {
+        "start_offset": 16085,
+        "end_offset": 16089
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e02216",
       "type": "reign",
       "text": "崇禎",
@@ -31214,6 +32023,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02272",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "104:5:7a",
+        "end": "104:5:10a"
+      },
+      "span": {
+        "start_offset": 16297,
+        "end_offset": 16301
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01361",
       "type": "people",
       "text": "高斗樞",
@@ -31292,6 +32121,27 @@
         "href": "book-index://Entity/hixi4ufd0hdz"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02304",
+      "type": "office",
+      "text": "按察使",
+      "anchor": {
+        "start": "104:7:12",
+        "end": "104:7:14"
+      },
+      "span": {
+        "start_offset": 16332,
+        "end_offset": 16335
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5w0xfg95",
+        "canonical_name": "按察使",
+        "href": "book-index://Entity/hixi5w0xfg95",
+        "note": "未定朝代，挂概念條"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01365",
@@ -31630,6 +32480,26 @@
         "href": "book-index://Entity/hixi1ubq0obg"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02273",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "106:6:9a",
+        "end": "106:6:6b"
+      },
+      "span": {
+        "start_offset": 16630,
+        "end_offset": 16634
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01383",
@@ -32641,6 +33511,26 @@
       "source": "claude:A33"
     },
     {
+      "id": "e02300",
+      "type": "office",
+      "text": "兩江總督",
+      "anchor": {
+        "start": "111:2:8a",
+        "end": "111:2:11a"
+      },
+      "span": {
+        "start_offset": 17369,
+        "end_offset": 17373
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01428",
       "type": "people",
       "text": "茅元儀",
@@ -32990,6 +33880,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02305",
+      "type": "office",
+      "text": "節度使",
+      "anchor": {
+        "start": "112:3:19",
+        "end": "112:3:21"
+      },
+      "span": {
+        "start_offset": 17563,
+        "end_offset": 17566
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "節度使",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01442",
       "type": "people",
       "text": "王處存",
@@ -33264,6 +34173,26 @@
         "href": "book-index://Work/d59ezajq05c0"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02274",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "113:7:8a",
+        "end": "113:7:11a"
+      },
+      "span": {
+        "start_offset": 17771,
+        "end_offset": 17775
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01456",
@@ -33594,6 +34523,26 @@
         "href": "book-index://Work/d59f2nlb6ps2"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02275",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "114:7:7a",
+        "end": "114:7:10a"
+      },
+      "span": {
+        "start_offset": 17923,
+        "end_offset": 17927
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01468",
@@ -34865,6 +35814,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02276",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "121:6:6a",
+        "end": "121:6:9a"
+      },
+      "span": {
+        "start_offset": 19020,
+        "end_offset": 19024
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01541",
       "type": "people",
       "text": "毛霦",
@@ -35083,6 +36052,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02277",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "122:8:7a",
+        "end": "122:8:10a"
+      },
+      "span": {
+        "start_offset": 19222,
+        "end_offset": 19226
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01554",
       "type": "people",
       "text": "管葛山人",
@@ -35175,6 +36164,25 @@
         "href": "book-index://Entity/hixhd2h9bo5q"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02327",
+      "type": "people",
+      "text": "因仲",
+      "anchor": {
+        "start": "123:2:12",
+        "end": "123:2:13"
+      },
+      "span": {
+        "start_offset": 19276,
+        "end_offset": 19278
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "因仲",
+        "note": "字号补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01560",
@@ -35513,6 +36521,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02323",
+      "type": "reign",
+      "text": "康熙",
+      "anchor": {
+        "start": "125:2:13",
+        "end": "125:2:14"
+      },
+      "span": {
+        "start_offset": 19602,
+        "end_offset": 19604
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙",
+        "href": "book-index://Entity/hixi1ubqbwun"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01580",
       "type": "people",
       "text": "谷應泰",
@@ -35549,6 +36577,26 @@
         "canonical_name": "明紀事本末"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02278",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "125:9:7a",
+        "end": "125:9:10a"
+      },
+      "span": {
+        "start_offset": 19704,
+        "end_offset": 19708
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01582",
@@ -35631,6 +36679,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02317",
+      "type": "office",
+      "text": "總裁",
+      "anchor": {
+        "start": "126:5:14",
+        "end": "126:5:15"
+      },
+      "span": {
+        "start_offset": 19799,
+        "end_offset": 19801
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixibvtyjzsw",
+        "canonical_name": "四庫全書館總裁",
+        "href": "book-index://Entity/hixibvtyjzsw"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01588",
       "type": "people",
       "text": "葉方藹",
@@ -35707,6 +36775,26 @@
         "canonical_name": "安南"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02295",
+      "type": "office",
+      "text": "兩淮鹽政",
+      "anchor": {
+        "start": "127:1:8a",
+        "end": "127:1:11a"
+      },
+      "span": {
+        "start_offset": 19873,
+        "end_offset": 19877
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgh",
+        "canonical_name": "兩淮巡鹽御史",
+        "href": "book-index://Entity/hixidggaijgh"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01593",
@@ -36145,6 +37233,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02312",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "129:1:5",
+        "end": "129:1:6"
+      },
+      "span": {
+        "start_offset": 20170,
+        "end_offset": 20172
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01615",
       "type": "people",
       "text": "康熙",
@@ -36281,6 +37389,26 @@
         "href": "book-index://Entity/hixi4u82hwjo"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02313",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "129:6:20",
+        "end": "129:6:21"
+      },
+      "span": {
+        "start_offset": 20268,
+        "end_offset": 20270
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01623",
@@ -36455,6 +37583,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02314",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "130:2:4",
+        "end": "130:2:5"
+      },
+      "span": {
+        "start_offset": 20347,
+        "end_offset": 20349
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01632",
       "type": "people",
       "text": "施琅",
@@ -36473,6 +37621,46 @@
         "href": "book-index://Entity/hixhd2h9bns0"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02315",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "130:2:10",
+        "end": "130:2:11"
+      },
+      "span": {
+        "start_offset": 20353,
+        "end_offset": 20355
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e02279",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "130:5:7a",
+        "end": "130:5:10a"
+      },
+      "span": {
+        "start_offset": 20396,
+        "end_offset": 20400
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01633",
@@ -36593,6 +37781,26 @@
         "href": "book-index://Work/d59f2mcwzk75"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02280",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "131:8:6a",
+        "end": "131:8:9a"
+      },
+      "span": {
+        "start_offset": 20608,
+        "end_offset": 20612
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01640",
@@ -36903,6 +38111,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02281",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "133:9:7a",
+        "end": "133:9:10a"
+      },
+      "span": {
+        "start_offset": 20959,
+        "end_offset": 20963
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01658",
       "type": "people",
       "text": "俞益謨",
@@ -36977,6 +38205,26 @@
         "href": "book-index://Entity/hixi4ufd0hdz"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02316",
+      "type": "office",
+      "text": "提督",
+      "anchor": {
+        "start": "134:2:4",
+        "end": "134:2:5"
+      },
+      "span": {
+        "start_offset": 20987,
+        "end_offset": 20989
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixic8mb3aww",
+        "canonical_name": "提督",
+        "href": "book-index://Entity/hixic8mb3aww"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01662",
@@ -37229,6 +38477,26 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02282",
+      "type": "office",
+      "text": "浙江巡撫",
+      "anchor": {
+        "start": "136:1:7a",
+        "end": "136:1:10a"
+      },
+      "span": {
+        "start_offset": 21299,
+        "end_offset": 21303
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01676",
       "type": "people",
       "text": "孫之騄",
@@ -37346,6 +38614,26 @@
         "href": "book-index://Entity/hixif41h2c6g"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02301",
+      "type": "office",
+      "text": "兩江總督",
+      "anchor": {
+        "start": "136:6:7a",
+        "end": "136:6:10a"
+      },
+      "span": {
+        "start_offset": 21387,
+        "end_offset": 21391
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidggaijgg",
+        "canonical_name": "兩江總督",
+        "href": "book-index://Entity/hixidggaijgg"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01682",

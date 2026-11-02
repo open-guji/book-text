@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "text_version": "0.5.0",
   "book_id": "96mid1ogzk",
   "volume": 30,
@@ -11,15 +11,15 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 2205,
-    "matched": 1335,
+    "total_entities": 2204,
+    "matched": 1334,
     "ambiguous": 0,
     "new_candidates": 870,
     "works": 344,
     "people": 1010,
     "places": 443,
     "offices": 143,
-    "dynasties": 111,
+    "dynasties": 110,
     "reigns": 154
   },
   "entities": [
@@ -25999,41 +25999,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e02599",
-      "type": "dynasty",
-      "text": "唐",
-      "anchor": {
-        "start": "79:5:7",
-        "end": "79:5:7"
-      },
-      "span": {
-        "start_offset": 12107,
-        "end_offset": 12108
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01171",
       "type": "work",
-      "text": "書",
+      "text": "唐書",
       "anchor": {
-        "start": "79:5:8",
+        "start": "79:5:7",
         "end": "79:5:8"
       },
       "span": {
-        "start_offset": 12108,
+        "start_offset": 12107,
         "end_offset": 12109
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "唐書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },

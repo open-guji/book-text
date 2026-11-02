@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "text_version": "0.6.0",
   "book_id": "96mid1ogzk",
   "volume": 31,
@@ -11,15 +11,15 @@
     "description": "外部模型专名范围直接转入，未匹配 ID（均为待匹配）。"
   },
   "stats": {
-    "total_entities": 3673,
-    "matched": 2002,
+    "total_entities": 3623,
+    "matched": 1986,
     "ambiguous": 0,
-    "new_candidates": 1671,
-    "works": 564,
+    "new_candidates": 1637,
+    "works": 559,
     "people": 1713,
     "places": 476,
     "offices": 179,
-    "dynasties": 523,
+    "dynasties": 478,
     "reigns": 218
   },
   "entities": [
@@ -176,26 +176,6 @@
         "note": "重标后待匹配"
       },
       "source": "claude:A33"
-    },
-    {
-      "id": "e00009",
-      "type": "work",
-      "text": "志",
-      "anchor": {
-        "start": "1:9:19",
-        "end": "1:9:19"
-      },
-      "span": {
-        "start_offset": 128,
-        "end_offset": 129
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59f9s1oin0g",
-        "canonical_name": "志",
-        "href": "book-index://Work/d59f9s1oin0g"
-      },
-      "source": "ext:siku-qiefen-v2"
     },
     {
       "id": "e00010",
@@ -765,42 +745,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03289",
-      "type": "dynasty",
-      "text": "晉",
-      "anchor": {
-        "start": "3:8:18",
-        "end": "3:8:18"
-      },
-      "span": {
-        "start_offset": 445,
-        "end_offset": 446
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubkeejg",
-        "canonical_name": "春秋晉",
-        "href": "book-index://Entity/hixi1ubkeejg"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00039",
       "type": "work",
-      "text": "書",
+      "text": "晉書",
       "anchor": {
-        "start": "3:8:19",
+        "start": "3:8:18",
         "end": "3:8:19"
       },
       "span": {
-        "start_offset": 446,
+        "start_offset": 445,
         "end_offset": 447
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "晉書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1151,59 +1110,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00054",
-      "type": "work",
-      "text": "齊",
-      "anchor": {
-        "start": "4:3:19",
-        "end": "4:3:19"
-      },
-      "span": {
-        "start_offset": 522,
-        "end_offset": 523
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "齊"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e03298",
-      "type": "dynasty",
-      "text": "梁",
-      "anchor": {
-        "start": "4:3:20",
-        "end": "4:3:20"
-      },
-      "span": {
-        "start_offset": 523,
-        "end_offset": 524
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "梁",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00056",
       "type": "work",
-      "text": "書",
+      "text": "梁書",
       "anchor": {
-        "start": "4:3:21",
+        "start": "4:3:20",
         "end": "4:3:21"
       },
       "span": {
-        "start_offset": 524,
+        "start_offset": 523,
         "end_offset": 525
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "梁書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1228,42 +1149,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03299",
-      "type": "dynasty",
-      "text": "晉",
-      "anchor": {
-        "start": "4:4:10",
-        "end": "4:4:10"
-      },
-      "span": {
-        "start_offset": 532,
-        "end_offset": 533
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixi1ubkeejg",
-        "canonical_name": "春秋晉",
-        "href": "book-index://Entity/hixi1ubkeejg"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00059",
       "type": "work",
-      "text": "書",
+      "text": "晉書",
       "anchor": {
-        "start": "4:4:11",
+        "start": "4:4:10",
         "end": "4:4:11"
       },
       "span": {
-        "start_offset": 533,
+        "start_offset": 532,
         "end_offset": 534
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "晉書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -2917,26 +2817,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00122",
-      "type": "work",
-      "text": "志",
-      "anchor": {
-        "start": "8:3:10",
-        "end": "8:3:10"
-      },
-      "span": {
-        "start_offset": 1163,
-        "end_offset": 1164
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59f9s1oin0g",
-        "canonical_name": "志",
-        "href": "book-index://Work/d59f9s1oin0g"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e03370",
       "type": "people",
       "text": "陳振孫",
@@ -3496,41 +3376,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03391",
-      "type": "dynasty",
-      "text": "宋",
-      "anchor": {
-        "start": "9:4:17",
-        "end": "9:4:17"
-      },
-      "span": {
-        "start_offset": 1339,
-        "end_offset": 1340
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00142",
       "type": "work",
-      "text": "史",
+      "text": "宋史",
       "anchor": {
-        "start": "9:4:18",
+        "start": "9:4:17",
         "end": "9:4:18"
       },
       "span": {
-        "start_offset": 1340,
+        "start_offset": 1339,
         "end_offset": 1341
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "status": "new_candidate",
+        "canonical_name": "宋史",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6350,41 +6210,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03467",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "16:8:14",
-        "end": "16:8:14"
-      },
-      "span": {
-        "start_offset": 2453,
-        "end_offset": 2454
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00283",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "16:8:15",
+        "start": "16:8:14",
         "end": "16:8:15"
       },
       "span": {
-        "start_offset": 2454,
+        "start_offset": 2453,
         "end_offset": 2455
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7574,41 +7415,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03496",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "20:6:15",
-        "end": "20:6:15"
-      },
-      "span": {
-        "start_offset": 3069,
-        "end_offset": 3070
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00344",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "20:6:16",
+        "start": "20:6:15",
         "end": "20:6:16"
       },
       "span": {
-        "start_offset": 3070,
+        "start_offset": 3069,
         "end_offset": 3071
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7848,41 +7670,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03503",
-      "type": "dynasty",
-      "text": "宋",
-      "anchor": {
-        "start": "21:2:10",
-        "end": "21:2:10"
-      },
-      "span": {
-        "start_offset": 3151,
-        "end_offset": 3152
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00360",
       "type": "work",
-      "text": "史",
+      "text": "宋史",
       "anchor": {
-        "start": "21:2:11",
+        "start": "21:2:10",
         "end": "21:2:11"
       },
       "span": {
-        "start_offset": 3152,
+        "start_offset": 3151,
         "end_offset": 3153
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "status": "new_candidate",
+        "canonical_name": "宋史",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -7946,41 +7748,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03505",
-      "type": "dynasty",
-      "text": "宋",
-      "anchor": {
-        "start": "21:5:16",
-        "end": "21:5:16"
-      },
-      "span": {
-        "start_offset": 3214,
-        "end_offset": 3215
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00366",
       "type": "work",
-      "text": "史",
+      "text": "宋史",
       "anchor": {
-        "start": "21:5:17",
+        "start": "21:5:16",
         "end": "21:5:17"
       },
       "span": {
-        "start_offset": 3215,
+        "start_offset": 3214,
         "end_offset": 3216
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "status": "new_candidate",
+        "canonical_name": "宋史",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8565,41 +8347,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03519",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "22:8:7",
-        "end": "22:8:7"
-      },
-      "span": {
-        "start_offset": 3418,
-        "end_offset": 3419
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00392",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "22:8:8",
+        "start": "22:8:7",
         "end": "22:8:8"
       },
       "span": {
-        "start_offset": 3419,
+        "start_offset": 3418,
         "end_offset": 3420
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9755,41 +9518,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03551",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "25:7:19",
-        "end": "25:7:19"
-      },
-      "span": {
-        "start_offset": 3892,
-        "end_offset": 3893
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00456",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "25:7:20",
+        "start": "25:7:19",
         "end": "25:7:20"
       },
       "span": {
-        "start_offset": 3893,
+        "start_offset": 3892,
         "end_offset": 3894
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10619,26 +10363,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00503",
-      "type": "work",
-      "text": "續",
-      "anchor": {
-        "start": "28:5:8",
-        "end": "28:5:8"
-      },
-      "span": {
-        "start_offset": 4342,
-        "end_offset": 4343
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59f9s1mn7r6",
-        "canonical_name": "續",
-        "href": "book-index://Work/d59f9s1mn7r6"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00505",
       "type": "work",
       "text": "往哲記",
@@ -10655,26 +10379,6 @@
         "entity_id": "d59f2nktpf5s",
         "canonical_name": "吳中往哲記",
         "href": "book-index://Work/d59f2nktpf5s"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e00506",
-      "type": "work",
-      "text": "續",
-      "anchor": {
-        "start": "28:5:16",
-        "end": "28:5:16"
-      },
-      "span": {
-        "start_offset": 4350,
-        "end_offset": 4351
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59f9s1mn7r6",
-        "canonical_name": "續",
-        "href": "book-index://Work/d59f9s1mn7r6"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11614,42 +11318,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03594",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "31:6:10",
-        "end": "31:6:10"
-      },
-      "span": {
-        "start_offset": 4834,
-        "end_offset": 4835
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03595",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "31:6:11",
+        "start": "31:6:10",
         "end": "31:6:11"
       },
       "span": {
-        "start_offset": 4835,
+        "start_offset": 4834,
         "end_offset": 4836
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -12108,41 +11792,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03605",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "32:9:13",
-        "end": "32:9:13"
-      },
-      "span": {
-        "start_offset": 5058,
-        "end_offset": 5059
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00592",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "32:9:14",
+        "start": "32:9:13",
         "end": "32:9:14"
       },
       "span": {
-        "start_offset": 5059,
+        "start_offset": 5058,
         "end_offset": 5060
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13062,42 +12727,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03636",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "35:1:10",
-        "end": "35:1:10"
-      },
-      "span": {
-        "start_offset": 5399,
-        "end_offset": 5400
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03637",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "35:1:11",
+        "start": "35:1:10",
         "end": "35:1:11"
       },
       "span": {
-        "start_offset": 5400,
+        "start_offset": 5399,
         "end_offset": 5401
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -13747,41 +13392,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03656",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "36:4:11",
-        "end": "36:4:11"
-      },
-      "span": {
-        "start_offset": 5601,
-        "end_offset": 5602
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00669",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "36:4:12",
+        "start": "36:4:11",
         "end": "36:4:12"
       },
       "span": {
-        "start_offset": 5602,
+        "start_offset": 5601,
         "end_offset": 5603
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13865,41 +13491,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03659",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "36:6:3",
-        "end": "36:6:3"
-      },
-      "span": {
-        "start_offset": 5631,
-        "end_offset": 5632
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00675",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "36:6:4",
+        "start": "36:6:3",
         "end": "36:6:4"
       },
       "span": {
-        "start_offset": 5632,
+        "start_offset": 5631,
         "end_offset": 5633
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14141,42 +13748,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03667",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "37:4:12",
-        "end": "37:4:12"
-      },
-      "span": {
-        "start_offset": 5773,
-        "end_offset": 5774
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03668",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "37:4:13",
+        "start": "37:4:12",
         "end": "37:4:13"
       },
       "span": {
-        "start_offset": 5774,
+        "start_offset": 5773,
         "end_offset": 5775
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -17098,42 +16685,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03723",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "45:8:11",
-        "end": "45:8:11"
-      },
-      "span": {
-        "start_offset": 7085,
-        "end_offset": 7086
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03724",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "45:8:12",
+        "start": "45:8:11",
         "end": "45:8:12"
       },
       "span": {
-        "start_offset": 7086,
+        "start_offset": 7085,
         "end_offset": 7087
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -20917,41 +20484,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03838",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "55:2:14",
-        "end": "55:2:14"
-      },
-      "span": {
-        "start_offset": 8575,
-        "end_offset": 8576
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01024",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "55:2:15",
+        "start": "55:2:14",
         "end": "55:2:15"
       },
       "span": {
-        "start_offset": 8576,
+        "start_offset": 8575,
         "end_offset": 8577
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21721,41 +21269,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03859",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "57:6:15",
-        "end": "57:6:15"
-      },
-      "span": {
-        "start_offset": 8959,
-        "end_offset": 8960
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01068",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "57:6:16",
+        "start": "57:6:15",
         "end": "57:6:16"
       },
       "span": {
-        "start_offset": 8960,
+        "start_offset": 8959,
         "end_offset": 8961
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22055,42 +21584,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03868",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "58:4:13",
-        "end": "58:4:13"
-      },
-      "span": {
-        "start_offset": 9075,
-        "end_offset": 9076
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03869",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "58:4:14",
+        "start": "58:4:13",
         "end": "58:4:14"
       },
       "span": {
-        "start_offset": 9076,
+        "start_offset": 9075,
         "end_offset": 9077
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -22229,41 +21738,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03875",
-      "type": "dynasty",
-      "text": "唐",
-      "anchor": {
-        "start": "58:8:9",
-        "end": "58:8:9"
-      },
-      "span": {
-        "start_offset": 9147,
-        "end_offset": 9148
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01093",
       "type": "work",
-      "text": "書",
+      "text": "唐書",
       "anchor": {
-        "start": "58:8:10",
+        "start": "58:8:9",
         "end": "58:8:10"
       },
       "span": {
-        "start_offset": 9148,
+        "start_offset": 9147,
         "end_offset": 9149
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "唐書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23452,41 +22941,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03905",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "62:5:19",
-        "end": "62:5:19"
-      },
-      "span": {
-        "start_offset": 9714,
-        "end_offset": 9715
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01150",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "62:5:20",
+        "start": "62:5:19",
         "end": "62:5:20"
       },
       "span": {
-        "start_offset": 9715,
+        "start_offset": 9714,
         "end_offset": 9716
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24291,41 +23761,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e03929",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "64:9:4",
-        "end": "64:9:4"
-      },
-      "span": {
-        "start_offset": 10095,
-        "end_offset": 10096
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01192",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "64:9:5",
+        "start": "64:9:4",
         "end": "64:9:5"
       },
       "span": {
-        "start_offset": 10096,
+        "start_offset": 10095,
         "end_offset": 10097
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -25031,41 +24482,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03954",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "66:3:11",
-        "end": "66:3:11"
-      },
-      "span": {
-        "start_offset": 10306,
-        "end_offset": 10307
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01212",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "66:3:12",
+        "start": "66:3:11",
         "end": "66:3:12"
       },
       "span": {
-        "start_offset": 10307,
+        "start_offset": 10306,
         "end_offset": 10308
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -26066,42 +25498,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03980",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "69:1:16",
-        "end": "69:1:16"
-      },
-      "span": {
-        "start_offset": 10729,
-        "end_offset": 10730
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03981",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "69:1:17",
+        "start": "69:1:16",
         "end": "69:1:17"
       },
       "span": {
-        "start_offset": 10730,
+        "start_offset": 10729,
         "end_offset": 10731
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -26322,42 +25734,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03987",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "69:4:21",
-        "end": "69:4:21"
-      },
-      "span": {
-        "start_offset": 10791,
-        "end_offset": 10792
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e03988",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "69:5:3",
+        "start": "69:4:21",
         "end": "69:5:3"
       },
       "span": {
-        "start_offset": 10792,
+        "start_offset": 10791,
         "end_offset": 10793
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -26833,41 +26225,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e03999",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "70:6:15",
-        "end": "70:6:15"
-      },
-      "span": {
-        "start_offset": 10981,
-        "end_offset": 10982
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01295",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "70:6:16",
+        "start": "70:6:15",
         "end": "70:6:16"
       },
       "span": {
-        "start_offset": 10982,
+        "start_offset": 10981,
         "end_offset": 10983
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28277,41 +27650,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04042",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "74:2:19",
-        "end": "74:2:19"
-      },
-      "span": {
-        "start_offset": 11561,
-        "end_offset": 11562
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01365",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "74:2:20",
+        "start": "74:2:19",
         "end": "74:2:20"
       },
       "span": {
-        "start_offset": 11562,
+        "start_offset": 11561,
         "end_offset": 11563
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -32169,42 +31523,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04139",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "85:6:5",
-        "end": "85:6:5"
-      },
-      "span": {
-        "start_offset": 13020,
-        "end_offset": 13021
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e04140",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "85:6:6",
+        "start": "85:6:5",
         "end": "85:6:6"
       },
       "span": {
-        "start_offset": 13021,
+        "start_offset": 13020,
         "end_offset": 13022
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -32841,42 +32175,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04172",
-      "type": "dynasty",
-      "text": "元",
-      "anchor": {
-        "start": "87:2:14",
-        "end": "87:2:14"
-      },
-      "span": {
-        "start_offset": 13295,
-        "end_offset": 13296
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e04173",
       "type": "work",
-      "text": "史",
+      "text": "元史",
       "anchor": {
-        "start": "87:2:15",
+        "start": "87:2:14",
         "end": "87:2:15"
       },
       "span": {
-        "start_offset": 13296,
+        "start_offset": 13295,
         "end_offset": 13297
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "status": "new_candidate",
+        "canonical_name": "元史",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "claude:A33"
     },
@@ -33425,41 +32738,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e04187",
-      "type": "dynasty",
-      "text": "元",
-      "anchor": {
-        "start": "88:6:21",
-        "end": "88:6:21"
-      },
-      "span": {
-        "start_offset": 13521,
-        "end_offset": 13522
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01590",
       "type": "work",
-      "text": "史",
+      "text": "元史",
       "anchor": {
-        "start": "88:7:3",
+        "start": "88:6:21",
         "end": "88:7:3"
       },
       "span": {
-        "start_offset": 13522,
+        "start_offset": 13521,
         "end_offset": 13523
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "status": "new_candidate",
+        "canonical_name": "元史",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -35774,41 +35067,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04239",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "95:3:10",
-        "end": "95:3:10"
-      },
-      "span": {
-        "start_offset": 14564,
-        "end_offset": 14565
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01721",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "95:3:11",
+        "start": "95:3:10",
         "end": "95:3:11"
       },
       "span": {
-        "start_offset": 14565,
+        "start_offset": 14564,
         "end_offset": 14566
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -39472,41 +38746,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04329",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "104:6:20",
-        "end": "104:6:20"
-      },
-      "span": {
-        "start_offset": 16029,
-        "end_offset": 16030
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01915",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "104:6:21",
+        "start": "104:6:20",
         "end": "104:6:21"
       },
       "span": {
-        "start_offset": 16030,
+        "start_offset": 16029,
         "end_offset": 16031
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -40253,42 +39508,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e04351",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "106:8:9",
-        "end": "106:8:9"
-      },
-      "span": {
-        "start_offset": 16354,
-        "end_offset": 16355
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e04352",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "106:8:10",
+        "start": "106:8:9",
         "end": "106:8:10"
       },
       "span": {
-        "start_offset": 16355,
+        "start_offset": 16354,
         "end_offset": 16356
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -41182,41 +40417,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04373",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "109:4:13",
-        "end": "109:4:13"
-      },
-      "span": {
-        "start_offset": 16757,
-        "end_offset": 16758
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01994",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "109:4:14",
+        "start": "109:4:13",
         "end": "109:4:14"
       },
       "span": {
-        "start_offset": 16758,
+        "start_offset": 16757,
         "end_offset": 16759
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -42595,41 +41811,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04415",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "114:6:7",
-        "end": "114:6:7"
-      },
-      "span": {
-        "start_offset": 17604,
-        "end_offset": 17605
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02074",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "114:6:8",
+        "start": "114:6:7",
         "end": "114:6:8"
       },
       "span": {
-        "start_offset": 17605,
+        "start_offset": 17604,
         "end_offset": 17606
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -43499,42 +42696,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e04430",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "117:3:20",
-        "end": "117:3:20"
-      },
-      "span": {
-        "start_offset": 18002,
-        "end_offset": 18003
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e04431",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "117:3:21",
+        "start": "117:3:20",
         "end": "117:3:21"
       },
       "span": {
-        "start_offset": 18003,
+        "start_offset": 18002,
         "end_offset": 18004
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -44013,41 +43190,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04444",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "119:1:15",
-        "end": "119:1:15"
-      },
-      "span": {
-        "start_offset": 18259,
-        "end_offset": 18260
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02150",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "119:1:16",
+        "start": "119:1:15",
         "end": "119:1:16"
       },
       "span": {
-        "start_offset": 18260,
+        "start_offset": 18259,
         "end_offset": 18261
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -45245,41 +44403,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04478",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "123:1:7",
-        "end": "123:1:7"
-      },
-      "span": {
-        "start_offset": 18869,
-        "end_offset": 18870
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02208",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "123:1:8",
+        "start": "123:1:7",
         "end": "123:1:8"
       },
       "span": {
-        "start_offset": 18870,
+        "start_offset": 18869,
         "end_offset": 18871
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -45987,41 +45126,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04501",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "125:2:19",
-        "end": "125:2:19"
-      },
-      "span": {
-        "start_offset": 19225,
-        "end_offset": 19226
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02243",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "125:2:20",
+        "start": "125:2:19",
         "end": "125:2:20"
       },
       "span": {
-        "start_offset": 19226,
+        "start_offset": 19225,
         "end_offset": 19227
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -46850,41 +45970,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04525",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "127:1:19",
-        "end": "127:1:19"
-      },
-      "span": {
-        "start_offset": 19515,
-        "end_offset": 19516
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02286",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "127:1:20",
+        "start": "127:1:19",
         "end": "127:1:20"
       },
       "span": {
-        "start_offset": 19516,
+        "start_offset": 19515,
         "end_offset": 19517
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -48293,42 +47394,22 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e04555",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "131:4:21",
-        "end": "131:4:21"
-      },
-      "span": {
-        "start_offset": 20198,
-        "end_offset": 20199
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e04556",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "131:5:3",
+        "start": "131:4:21",
         "end": "131:5:3"
       },
       "span": {
-        "start_offset": 20199,
+        "start_offset": 20198,
         "end_offset": 20200
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c",
-        "note": "重标沿用全册同字挂法，待核"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "claude:A33"
     },
@@ -48864,41 +47945,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04568",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "133:5:19",
-        "end": "133:5:19"
-      },
-      "span": {
-        "start_offset": 20520,
-        "end_offset": 20521
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02396",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "133:5:20",
+        "start": "133:5:19",
         "end": "133:5:20"
       },
       "span": {
-        "start_offset": 20521,
+        "start_offset": 20520,
         "end_offset": 20522
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -50920,41 +49982,22 @@
       "source": "claude:A33"
     },
     {
-      "id": "e04607",
-      "type": "dynasty",
-      "text": "明",
-      "anchor": {
-        "start": "140:9:18",
-        "end": "140:9:18"
-      },
-      "span": {
-        "start_offset": 21675,
-        "end_offset": 21676
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02510",
       "type": "work",
-      "text": "史",
+      "text": "明史",
       "anchor": {
-        "start": "140:9:19",
+        "start": "140:9:18",
         "end": "140:9:19"
       },
       "span": {
-        "start_offset": 21676,
+        "start_offset": 21675,
         "end_offset": 21677
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f20aowb9c",
-        "canonical_name": "史記",
-        "href": "book-index://Work/d59f20aowb9c"
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "href": "book-index://Work/d59f2mc8bta8"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -52372,41 +51415,21 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e04635",
-      "type": "dynasty",
-      "text": "漢",
-      "anchor": {
-        "start": "145:1:13",
-        "end": "145:1:13"
-      },
-      "span": {
-        "start_offset": 22343,
-        "end_offset": 22344
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e02586",
       "type": "work",
-      "text": "書",
+      "text": "漢書",
       "anchor": {
-        "start": "145:1:14",
+        "start": "145:1:13",
         "end": "145:1:14"
       },
       "span": {
-        "start_offset": 22344,
+        "start_offset": 22343,
         "end_offset": 22345
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59ezajmkjcw",
-        "canonical_name": "尚書",
-        "href": "book-index://Work/d59ezajmkjcw"
+        "status": "new_candidate",
+        "canonical_name": "漢書",
+        "note": "单字书名并入朝代前字后待匹配"
       },
       "source": "ext:siku-qiefen-v2"
     },

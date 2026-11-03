@@ -14,13 +14,9 @@ STAT = (('works', 'work'), ('people', 'people'), ('places', 'place'), ('offices'
 
 
 def names(bi):
-    pn, wt = {}, {}
-    for f in glob.glob(str(Path(bi) / 'index/entities/*.json')):
-        for k, v in json.load(open(f, encoding='utf-8')).items():
-            pn[k] = v.get('primary_name', '')
-    for f in glob.glob(str(Path(bi) / 'index/works/*.json')):
-        for k, v in json.load(open(f, encoding='utf-8')).items():
-            wt[k] = v.get('title', '')
+    import bi_source  # 读 Entity/、Work/ 源档（index/ 缓存将删除）
+    pn = {k: v['primary_name'] for k, v in bi_source.entities(bi).items()}
+    wt = {k: v['title'] for k, v in bi_source.works(bi).items()}
     return pn, wt
 
 

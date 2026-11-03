@@ -20,14 +20,13 @@ fold = lambda s: s.translate(FOLD)
 
 def load_index(bi):
     people, works = collections.defaultdict(list), collections.defaultdict(list)
-    for f in glob.glob(str(Path(bi) / 'index/entities/*.json')):
-        for k, v in json.load(open(f)).items():
-            if v.get('subtype') == 'people' and len(v.get('primary_name', '')) >= 2:
-                people[fold(v['primary_name'])].append(k)
-    for f in glob.glob(str(Path(bi) / 'index/works/*.json')):
-        for k, v in json.load(open(f)).items():
-            if len(v.get('title', '')) >= 3:
-                works[fold(v['title'])].append(k)
+    import bi_source  # 读 Entity/、Work/ 源档（index/ 缓存将删除）
+    for k, v in bi_source.entities(bi).items():
+        if v.get('subtype') == 'people' and len(v.get('primary_name', '')) >= 2:
+            people[fold(v['primary_name'])].append(k)
+    for k, v in bi_source.works(bi).items():
+        if len(v.get('title', '')) >= 3:
+            works[fold(v['title'])].append(k)
     return people, works
 
 

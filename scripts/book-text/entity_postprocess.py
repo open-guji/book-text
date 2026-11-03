@@ -329,8 +329,8 @@ def rule_n4(ents, text, log, ids, ctx):
 
 
 def load_name_index(book_index_root):
-    """book-index 名索引 → {(type, 异体归一名): [(id, 原名)]}。people 取 index/entities 里 subtype＝people 的
-    primary_name（≥2 字），work 取 index/works 的 title（≥3 字），长度门槛同 entity_missing.load_index。
+    """book-index 名索引 → {(type, 异体归一名): [(id, 原名)]}。people 取 Entity/ 源档里 subtype＝people 的
+    primary_name（≥2 字），work 取 Work/ 源档的 title（≥3 字），长度门槛同 entity_missing.load_index。
     别名（alt_names）不在索引里，本规则不用。无根目录返回空表（N4 不动作）。"""
     idx = {}
     if not book_index_root:
@@ -344,18 +344,15 @@ def load_name_index(book_index_root):
                 if (t == 'people' and len(n) >= 2) or (t == 'work' and len(n) >= 3):
                     idx.setdefault((t, norm_variant(n)), []).append((eid, n))
         return idx
-    for f in sorted(root.glob('index/entities/*.json')):
-        with open(f, encoding='utf-8') as fh:
-            for k, v in json.load(fh).items():
-                n = v.get('primary_name', '')
-                if v.get('subtype') == 'people' and len(n) >= 2:
-                    idx.setdefault(('people', norm_variant(n)), []).append((k, n))
-    for f in sorted(root.glob('index/works/*.json')):
-        with open(f, encoding='utf-8') as fh:
-            for k, v in json.load(fh).items():
-                n = v.get('title', '')
-                if len(n) >= 3:
-                    idx.setdefault(('work', norm_variant(n)), []).append((k, n))
+    import bi_source  # 读 Entity/、Work/ 源档（index/ 缓存将删除）
+    for k, v in sorted(bi_source.entities(root).items()):
+        n = v.get('primary_name', '')
+        if v.get('subtype') == 'people' and len(n) >= 2:
+            idx.setdefault(('people', norm_variant(n)), []).append((k, n))
+    for k, v in sorted(bi_source.works(root).items()):
+        n = v.get('title', '')
+        if len(n) >= 3:
+            idx.setdefault(('work', norm_variant(n)), []).append((k, n))
     return idx
 
 

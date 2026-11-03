@@ -15,22 +15,21 @@ def entity_files(root, bid):
 
 def cand_info(bi, cid, typ):
     """候选的一句话：朝代；Work 另加撰人、是否著录于欽定四庫全書總目；people 加 cbdb。需 --book-index。"""
-    for f in glob.glob(str(Path(bi) / ('index/works/*.json' if typ == 'work' else 'index/entities/*.json'))):
-        d = json.load(open(f))
-        if cid in d:
-            v = d[cid]; break
-    else:
+    sub = 'Work' if typ == 'work' else 'Entity'   # 读源档（index/ 缓存将删除）；分片目录 = id 末三字符
+    hits = glob.glob(str(Path(bi) / sub / cid[-3] / cid[-2] / cid[-1] / f'{cid}-*.json')) if len(cid) >= 3 else []
+    if not hits:
         return '?'
     try:
-        rec = json.load(open(Path(bi) / v['path']))
+        rec = json.load(open(hits[0], encoding='utf-8'))
     except Exception:
-        rec = {}
+        return '?'
     if typ == 'work':
         au = rec.get('authors')
         au = '/'.join(a.get('name', '?') for a in au) if isinstance(au, list) else ''
         zm = '總目' if '欽定四庫全書總目' in str(rec.get('description', '')) else ''
-        return f"{rec.get('dynasty') or v.get('dynasty') or '-'}:{au or '-'}:{zm}"
-    return f"{v.get('dynasty') or '-'}:cbdb{v.get('cbdb_id') or '-'}"
+        return f"{rec.get('dynasty') or '-'}:{au or '-'}:{zm}"
+    cb = (rec.get('external_ids') or {}).get('cbdb_id') or rec.get('cbdb_id')
+    return f"{rec.get('dynasty') or '-'}:cbdb{cb or '-'}"
 
 
 def do_list(root, bid, bi=None):

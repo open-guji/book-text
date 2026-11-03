@@ -78,6 +78,14 @@ class TestParseRender(unittest.TestCase):
         self.assertEqual(b["cells"], [_cell("4:2:3", "經"), _cell("4:2:4a", "□", lacuna=True),
                                       _cell("4:2:5a", "乙"), _cell("4:2:4b", "丙")])
 
+    def test_pending_cells_render_same(self):
+        """char v0.4：待审格去 lacuna 改带 pending_reason，分行稿逐字节不变（guji-format 02 §4.8）。"""
+        for _p, _col, c in C.iter_cells(self.char):
+            if c.pop("lacuna", None):
+                c["pending_reason"] = "ref_lacuna"
+        self.char["pages"][1]["columns"][0]["cells"][0]["pending_reason"] = "hard_pair"   # 给了字的待审格照写字
+        self.assertEqual(C.render_lines(self.char), LINES)
+
     def test_explicit_lanes_render_same(self):
         for _p, _col, c in C.iter_cells(self.char):
             c["lane"] = C.cell_lane(c)

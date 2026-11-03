@@ -345,7 +345,8 @@ def _glyph(cell, in_solo=False, alts=None):
     """一格在分行稿／rich 里的写法（同 cv `guji_char_cord._tok`）。"""
     if cell.get("fig") is not None:
         return cell["c"] if alts is None else _tu(cell["fig"], alts)
-    if cell.get("lacuna"):
+    # char v0.4：机器没给字的待审格（pending_reason 且 c 为 □）与阙文同写（guji-format 02 §4.8、03 §三）
+    if cell.get("lacuna") or (cell.get("pending_reason") is not None and cell.get("c") == BOX):
         return BOX if in_solo else LACUNA
     if cell.get("zi") is not None:
         return f":zi[{cell['zi']}]"

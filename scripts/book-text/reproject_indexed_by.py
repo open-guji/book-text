@@ -186,14 +186,13 @@ MIN_GAIN_REL = 0.10    # 補回之比例下限
 
 # ── 元資料：id → 檔路徑 ─────────────────────────────────────────────
 W_PATH = {}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bi_source   # 讀 Work/ 源檔（index/ 緩存將刪除）
 for m in METAS:
-    for s in '0123456789abcdef':
-        p = os.path.join(m, 'index', 'works', f'{s}.json')
-        if os.path.exists(p):
-            for i, e in json.load(open(p, encoding='utf-8')).items():
-                W_PATH.setdefault(i, os.path.join(m, e['path']))
+    for i, rel in bi_source.work_paths(m).items():
+        W_PATH.setdefault(i, os.path.join(m, rel))
 if not W_PATH:
-    sys.exit('✗ index/works 為空，元資料倉路徑有誤——掃 0 條與全過輸出一樣，故此處硬停')
+    sys.exit('✗ Work/ 為空，元資料倉路徑有誤——掃 0 條與全過輸出一樣，故此處硬停')
 print(f'元資料：work 索引 {len(W_PATH)} 條（{", ".join(METAS)}）')
 
 D2P = {}

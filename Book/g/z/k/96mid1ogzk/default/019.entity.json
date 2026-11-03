@@ -1,7 +1,7 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.3",
-  "text_version": "0.4.0",
+  "version": "0.2.9",
+  "text_version": "0.5.0",
   "book_id": "96mid1ogzk",
   "volume": 19,
   "metadata": {
@@ -10,15 +10,15 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 1489,
-    "matched": 1239,
-    "ambiguous": 28,
-    "new_candidates": 222,
-    "works": 569,
-    "people": 554,
-    "places": 100,
-    "offices": 80,
-    "dynasties": 144,
+    "total_entities": 1492,
+    "matched": 1237,
+    "ambiguous": 29,
+    "new_candidates": 227,
+    "works": 561,
+    "people": 556,
+    "places": 102,
+    "offices": 85,
+    "dynasties": 146,
     "reigns": 42
   },
   "entities": [
@@ -391,24 +391,6 @@
         "canonical_name": "周禮",
         "href": "book-index://Work/d59f1ioc6m0w",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00015",
-      "type": "work",
-      "text": "樂",
-      "anchor": {
-        "start": "1:7:5b",
-        "end": "1:7:5b"
-      },
-      "span": {
-        "start_offset": 93,
-        "end_offset": 94
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "樂"
       },
       "source": "claude:A33"
     },
@@ -850,7 +832,7 @@
     },
     {
       "id": "e00037",
-      "type": "place",
+      "type": "office",
       "text": "文淵閣",
       "anchor": {
         "start": "3:6:4",
@@ -1626,6 +1608,25 @@
       "source": "claude:A33"
     },
     {
+      "id": "e01500",
+      "type": "people",
+      "text": "晉叔",
+      "anchor": {
+        "start": "6:7:9",
+        "end": "6:7:10"
+      },
+      "span": {
+        "start_offset": 919,
+        "end_offset": 921
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "晉叔",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00075",
       "type": "place",
       "text": "閩淸",
@@ -1845,10 +1846,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f24mgbdhr",
+        "entity_id": "d59ezajq05c0",
         "canonical_name": "春秋",
-        "href": "book-index://Work/d59f24mgbdhr",
-        "note": "按撰人「陳暘」核对"
+        "href": "book-index://Work/d59ezajq05c0"
       },
       "source": "claude:A33"
     },
@@ -2726,6 +2726,27 @@
       "source": "claude:A33"
     },
     {
+      "id": "e01501",
+      "type": "people",
+      "text": "季通",
+      "anchor": {
+        "start": "12:4:11",
+        "end": "12:4:12"
+      },
+      "span": {
+        "start_offset": 1873,
+        "end_offset": 1875
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixhd2h9be55",
+        "canonical_name": "蔡元定",
+        "href": "book-index://Entity/hixhd2h9be55",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00127",
       "type": "place",
       "text": "建陽",
@@ -3059,6 +3080,27 @@
         "entity_id": "hixhd2f8wam9",
         "canonical_name": "蔡邕",
         "href": "book-index://Entity/hixhd2f8wam9"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01502",
+      "type": "dynasty",
+      "text": "國朝",
+      "anchor": {
+        "start": "13:4:16",
+        "end": "13:4:17"
+      },
+      "span": {
+        "start_offset": 2049,
+        "end_offset": 2051
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清",
+        "href": "book-index://Entity/hixi1ubjrxga",
+        "note": "重标沿用全册同字挂法，待核（原注：「國朝」指清）"
       },
       "source": "claude:A33"
     },
@@ -4867,27 +4909,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00237",
-      "type": "work",
-      "text": "抑",
-      "anchor": {
-        "start": "19:2:18",
-        "end": "19:2:18"
-      },
-      "span": {
-        "start_offset": 3024,
-        "end_offset": 3025
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59ezak9zc3k",
-        "canonical_name": "詩經",
-        "href": "book-index://Work/d59ezak9zc3k",
-        "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00238",
       "type": "work",
       "text": "崧高",
@@ -4920,27 +4941,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "烝民"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00240",
-      "type": "work",
-      "text": "駉",
-      "anchor": {
-        "start": "19:3:4",
-        "end": "19:3:4"
-      },
-      "span": {
-        "start_offset": 3029,
-        "end_offset": 3030
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59ezak9zc3k",
-        "canonical_name": "詩經",
-        "href": "book-index://Work/d59ezak9zc3k",
-        "coarse": "part_of_work"
       },
       "source": "claude:A33"
     },
@@ -6489,42 +6489,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00318",
-      "type": "work",
-      "text": "河",
-      "anchor": {
-        "start": "25:7:21",
-        "end": "25:7:21"
-      },
-      "span": {
-        "start_offset": 4145,
-        "end_offset": 4146
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "河"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00319",
-      "type": "work",
-      "text": "洛",
-      "anchor": {
-        "start": "25:8:3",
-        "end": "25:8:3"
-      },
-      "span": {
-        "start_offset": 4146,
-        "end_offset": 4147
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "洛"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00320",
       "type": "work",
       "text": "易",
@@ -7926,24 +7890,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00391",
-      "type": "work",
-      "text": "夏",
-      "anchor": {
-        "start": "31:1:3",
-        "end": "31:1:3"
-      },
-      "span": {
-        "start_offset": 5008,
-        "end_offset": 5009
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00392",
       "type": "work",
       "text": "大夏",
@@ -9080,42 +9026,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00449",
+      "id": "e01503",
       "type": "people",
-      "text": "鄭恭王",
+      "text": "鄭恭王厚焥",
       "anchor": {
         "start": "39:2:10",
-        "end": "39:2:12"
-      },
-      "span": {
-        "start_offset": 6382,
-        "end_offset": 6385
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixidhvso60f",
-        "canonical_name": "朱厚烷",
-        "href": "book-index://Entity/hixidhvso60f"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00450",
-      "type": "people",
-      "text": "厚焥",
-      "anchor": {
-        "start": "39:2:13",
         "end": "39:2:14"
       },
       "span": {
-        "start_offset": 6385,
+        "start_offset": 6382,
         "end_offset": 6387
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixidhvso60f",
-        "canonical_name": "朱厚烷",
-        "href": "book-index://Entity/hixidhvso60f"
+        "status": "new_candidate",
+        "canonical_name": "鄭恭王厚焥",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -10162,26 +10087,6 @@
         "entity_id": "d59ezahspgqo",
         "canonical_name": "管子",
         "href": "book-index://Work/d59ezahspgqo"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00503",
-      "type": "work",
-      "text": "語",
-      "anchor": {
-        "start": "49:5:19",
-        "end": "49:5:19"
-      },
-      "span": {
-        "start_offset": 8112,
-        "end_offset": 8113
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "d59fajc00vsy",
-        "canonical_name": "語",
-        "href": "book-index://Work/d59fajc00vsy"
       },
       "source": "claude:A33"
     },
@@ -12014,6 +11919,25 @@
       "source": "claude:A33"
     },
     {
+      "id": "e01504",
+      "type": "people",
+      "text": "嗣寅",
+      "anchor": {
+        "start": "61:5:11",
+        "end": "61:5:12"
+      },
+      "span": {
+        "start_offset": 9918,
+        "end_offset": 9920
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "嗣寅",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00592",
       "type": "place",
       "text": "仁和",
@@ -12437,6 +12361,48 @@
         "entity_id": "d59f2mbo1dz4",
         "canonical_name": "聖諭樂本解說",
         "href": "book-index://Work/d59f2mbo1dz4"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01505",
+      "type": "place",
+      "text": "浙江",
+      "anchor": {
+        "start": "65:5:8a",
+        "end": "65:5:9a"
+      },
+      "span": {
+        "start_offset": 10602,
+        "end_offset": 10604
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi4ufdmygy",
+        "canonical_name": "浙江省",
+        "href": "book-index://Entity/hixi4ufdmygy",
+        "note": "重标沿用全册同字挂法，待核"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01506",
+      "type": "office",
+      "text": "巡撫",
+      "anchor": {
+        "start": "65:5:10a",
+        "end": "65:5:11a"
+      },
+      "span": {
+        "start_offset": 10604,
+        "end_offset": 10606
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "href": "book-index://Entity/hixi5v2mknbc",
+        "note": "重标沿用全册同字挂法，待核（原注：清代官制條（按上下文朝代））"
       },
       "source": "claude:A33"
     },
@@ -12913,42 +12879,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00636",
+      "id": "e01507",
       "type": "people",
-      "text": "寧王",
+      "text": "寧王權",
       "anchor": {
         "start": "68:8:12",
-        "end": "68:8:13"
-      },
-      "span": {
-        "start_offset": 11069,
-        "end_offset": 11071
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bgm4",
-        "canonical_name": "朱權",
-        "href": "book-index://Entity/hixhd2h9bgm4"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00637",
-      "type": "people",
-      "text": "權",
-      "anchor": {
-        "start": "68:8:14",
         "end": "68:8:14"
       },
       "span": {
-        "start_offset": 11071,
+        "start_offset": 11069,
         "end_offset": 11072
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bgm4",
-        "canonical_name": "朱權",
-        "href": "book-index://Entity/hixhd2h9bgm4"
+        "status": "new_candidate",
+        "canonical_name": "寧王權",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -12967,6 +12912,46 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "唐樂笛色譜"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01508",
+      "type": "dynasty",
+      "text": "金",
+      "anchor": {
+        "start": "69:4:18",
+        "end": "69:4:18"
+      },
+      "span": {
+        "start_offset": 11170,
+        "end_offset": 11171
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "金",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01509",
+      "type": "dynasty",
+      "text": "元",
+      "anchor": {
+        "start": "69:4:19",
+        "end": "69:4:19"
+      },
+      "span": {
+        "start_offset": 11171,
+        "end_offset": 11172
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元",
+        "href": "book-index://Entity/hixi1ubjgow7",
+        "note": "重标沿用全册同字挂法，待核"
       },
       "source": "claude:A33"
     },
@@ -13247,6 +13232,25 @@
         "entity_id": "hixi1ubjgowi",
         "canonical_name": "唐",
         "href": "book-index://Entity/hixi1ubjgowi"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01510",
+      "type": "dynasty",
+      "text": "金",
+      "anchor": {
+        "start": "70:5:15",
+        "end": "70:5:15"
+      },
+      "span": {
+        "start_offset": 11357,
+        "end_offset": 11358
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "金",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -14090,6 +14094,25 @@
         "canonical_name": "胡彥昇",
         "href": "book-index://Entity/hixhd2h9be57",
         "note": "省稱，指胡彥昇"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01511",
+      "type": "people",
+      "text": "竹軒",
+      "anchor": {
+        "start": "72:9:11",
+        "end": "72:9:12"
+      },
+      "span": {
+        "start_offset": 11732,
+        "end_offset": 11734
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "竹軒",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -15120,42 +15143,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00745",
+      "id": "e01512",
       "type": "people",
-      "text": "鄭世子",
+      "text": "鄭世子載堉",
       "anchor": {
         "start": "79:4:20",
-        "end": "79:5:3"
-      },
-      "span": {
-        "start_offset": 12799,
-        "end_offset": 12802
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9be56",
-        "canonical_name": "朱載堉",
-        "href": "book-index://Entity/hixhd2h9be56"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00746",
-      "type": "people",
-      "text": "載堉",
-      "anchor": {
-        "start": "79:5:4",
         "end": "79:5:5"
       },
       "span": {
-        "start_offset": 12802,
+        "start_offset": 12799,
         "end_offset": 12804
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9be56",
-        "canonical_name": "朱載堉",
-        "href": "book-index://Entity/hixhd2h9be56"
+        "status": "new_candidate",
+        "canonical_name": "鄭世子載堉",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -15221,8 +15223,8 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00750",
-      "type": "people",
+      "id": "e01513",
+      "type": "office",
       "text": "㮚氏",
       "anchor": {
         "start": "80:4:12",
@@ -15235,7 +15237,7 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "㮚氏",
-        "note": "庫無此人"
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -15401,6 +15403,25 @@
         "canonical_name": "王坦",
         "href": "book-index://Entity/hixhd2h9bmf9",
         "note": "省稱，指王坦"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01514",
+      "type": "people",
+      "text": "吉途",
+      "anchor": {
+        "start": "84:3:9",
+        "end": "84:3:10"
+      },
+      "span": {
+        "start_offset": 13598,
+        "end_offset": 13600
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "吉途",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -15850,24 +15871,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00778",
-      "type": "work",
-      "text": "樂",
-      "anchor": {
-        "start": "88:5:3",
-        "end": "88:5:3"
-      },
-      "span": {
-        "start_offset": 14315,
-        "end_offset": 14316
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "樂"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00779",
       "type": "dynasty",
       "text": "宋",
@@ -16238,9 +16241,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixiby3db317",
-        "canonical_name": "按察使僉事",
-        "href": "book-index://Entity/hixiby3db317",
+        "entity_id": "hixia8pep5ab",
+        "canonical_name": "按察僉事",
+        "href": "book-index://Entity/hixia8pep5ab",
         "note": "明代官制條（按上下文朝代）"
       },
       "source": "claude:A33"
@@ -16848,6 +16851,25 @@
         "canonical_name": "李文利",
         "href": "book-index://Entity/hixhd2h9be58",
         "note": "省稱，指李文利"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01515",
+      "type": "people",
+      "text": "乾遂",
+      "anchor": {
+        "start": "93:5:11",
+        "end": "93:5:12"
+      },
+      "span": {
+        "start_offset": 14911,
+        "end_offset": 14913
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "乾遂",
+        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -19593,6 +19615,26 @@
       "source": "claude:A33"
     },
     {
+      "id": "e01518",
+      "type": "office",
+      "text": "大司樂",
+      "anchor": {
+        "start": "106:6:13",
+        "end": "106:6:15"
+      },
+      "span": {
+        "start_offset": 17055,
+        "end_offset": 17058
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidhu1xe00",
+        "canonical_name": "大司樂",
+        "href": "book-index://Entity/hixidhu1xe00"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00962",
       "type": "work",
       "text": "吕氏春秋",
@@ -19788,6 +19830,26 @@
         "canonical_name": "黃佐",
         "href": "book-index://Entity/hixhd2h9be0e",
         "note": "省稱，指黃佐"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01519",
+      "type": "office",
+      "text": "大司樂",
+      "anchor": {
+        "start": "108:1:12",
+        "end": "108:1:14"
+      },
+      "span": {
+        "start_offset": 17301,
+        "end_offset": 17304
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixidhu1xe00",
+        "canonical_name": "大司樂",
+        "href": "book-index://Entity/hixidhu1xe00"
       },
       "source": "claude:A33"
     },
@@ -20409,26 +20471,6 @@
         "entity_id": "hixhd2h9bdtw",
         "canonical_name": "葉良佩",
         "href": "book-index://Entity/hixhd2h9bdtw"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01000",
-      "type": "office",
-      "text": "太學",
-      "anchor": {
-        "start": "110:8:12",
-        "end": "110:8:13"
-      },
-      "span": {
-        "start_offset": 17714,
-        "end_offset": 17716
-      },
-      "target": {
-        "status": "matched",
-        "entity_id": "hixidhwa3304",
-        "canonical_name": "太學",
-        "href": "book-index://Entity/hixidhwa3304"
       },
       "source": "claude:A33"
     },
@@ -23484,8 +23526,8 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01149",
-      "type": "dynasty",
+      "id": "e01516",
+      "type": "place",
       "text": "衞",
       "anchor": {
         "start": "126:3:12",
@@ -23504,8 +23546,8 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01150",
-      "type": "dynasty",
+      "id": "e01517",
+      "type": "place",
       "text": "魯",
       "anchor": {
         "start": "126:3:14",
@@ -30061,6 +30103,28 @@
         "canonical_name": "黃鐘通韻",
         "href": "book-index://Work/d59f2mbs3h1d",
         "note": "按撰人「都四德」核对"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e01520",
+      "type": "office",
+      "text": "筆帖式",
+      "anchor": {
+        "start": "154:8:10a",
+        "end": "154:8:12a"
+      },
+      "span": {
+        "start_offset": 24819,
+        "end_offset": 24822
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "hixia8nuifib",
+        "canonical_name": "筆帖式",
+        "href": "book-index://Entity/hixia8nuifib",
+        "note": "清代官制条（上下文为乾隆朝）",
+        "level": "concrete"
       },
       "source": "claude:A33"
     },

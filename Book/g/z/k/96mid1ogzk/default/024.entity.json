@@ -1,7 +1,7 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.10",
-  "text_version": "0.5.0",
+  "version": "0.2.17",
+  "text_version": "0.6.0",
   "book_id": "96mid1ogzk",
   "volume": 24,
   "metadata": {
@@ -10,14 +10,14 @@
     "base_edition": "original"
   },
   "stats": {
-    "total_entities": 878,
-    "matched": 760,
+    "total_entities": 882,
+    "matched": 757,
     "ambiguous": 27,
-    "new_candidates": 91,
+    "new_candidates": 98,
     "works": 136,
     "people": 374,
-    "places": 182,
-    "offices": 57,
+    "places": 184,
+    "offices": 59,
     "dynasties": 72,
     "reigns": 57
   },
@@ -1905,10 +1905,9 @@
         "end_offset": 1034
       },
       "target": {
-        "status": "matched",
-        "entity_id": "d59f2n6dz6kh",
-        "canonical_name": "江南通志",
-        "href": "book-index://Work/d59f2n6dz6kh"
+        "status": "new_candidate",
+        "canonical_name": "儒林傳",
+        "note": "泛称（卷次／部类名），原错挂《江南通志》，A33 2026-11-02 解除"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3254,10 +3253,9 @@
         "end_offset": 1797
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bds7",
-        "canonical_name": "蕭漢中",
-        "href": "book-index://Entity/hixhd2h9bds7"
+        "status": "new_candidate",
+        "canonical_name": "漢中",
+        "note": "跨册挂法复核：原挂人名不符，應為地名"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3438,7 +3436,8 @@
         "status": "matched",
         "entity_id": "d59f282rkphc",
         "canonical_name": "三國志",
-        "href": "book-index://Work/d59f282rkphc"
+        "href": "book-index://Work/d59f282rkphc",
+        "coarse": "part_of_work"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3612,9 +3611,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixidxah25sk",
-        "canonical_name": "羅尙",
-        "href": "book-index://Entity/hixidxah25sk"
+        "entity_id": "hixictsljf2z",
+        "canonical_name": "羅尚",
+        "href": "book-index://Entity/hixictsljf2z"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3690,9 +3689,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f28mxbgg0",
+        "entity_id": "d59f28npq1vl",
         "canonical_name": "晉書",
-        "href": "book-index://Work/d59f28mxbgg0"
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3895,6 +3894,25 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
+      "id": "e00911",
+      "type": "place",
+      "text": "莊",
+      "anchor": {
+        "start": "13:5:19",
+        "end": "13:5:19"
+      },
+      "span": {
+        "start_offset": 2055,
+        "end_offset": 2056
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "莊",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00198",
       "type": "place",
       "text": "琰",
@@ -3907,12 +3925,49 @@
         "end_offset": 2057
       },
       "target": {
-        "status": "matched",
-        "entity_id": "hixhd2h9bhum",
-        "canonical_name": "俞琰",
-        "href": "book-index://Entity/hixhd2h9bhum"
+        "status": "new_candidate",
+        "canonical_name": "琰",
+        "note": "跨册挂法复核：原挂人名不符，應為地名"
       },
       "source": "ext:gemini-3.8-flash-high"
+    },
+    {
+      "id": "e00912",
+      "type": "place",
+      "text": "播",
+      "anchor": {
+        "start": "13:5:21",
+        "end": "13:5:21"
+      },
+      "span": {
+        "start_offset": 2057,
+        "end_offset": 2058
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "播",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e00913",
+      "type": "place",
+      "text": "郞",
+      "anchor": {
+        "start": "13:6:3",
+        "end": "13:6:3"
+      },
+      "span": {
+        "start_offset": 2058,
+        "end_offset": 2059
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "郞",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00201",
@@ -4160,9 +4215,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：同条省称随正名改挂（原误挂貢汝成）"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -4180,9 +4236,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：田汝成字叔禾"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -4672,9 +4729,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：同条省称随正名改挂（原误挂貢汝成）"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -4790,9 +4848,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：同条省称随正名改挂（原误挂貢汝成）"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -5000,9 +5059,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：同条省称随正名改挂（原误挂貢汝成）"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -5080,9 +5140,10 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9be1a",
-        "canonical_name": "貢汝成",
-        "href": "book-index://Entity/hixhd2h9be1a"
+        "entity_id": "hixhd2h9be80",
+        "canonical_name": "田汝成",
+        "href": "book-index://Entity/hixhd2h9be80",
+        "note": "跨册挂法复核：同条省称随正名改挂（原误挂貢汝成）"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -11215,22 +11276,23 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00563",
+      "id": "e00914",
       "type": "place",
-      "text": "魯番",
+      "text": "吐魯番",
       "anchor": {
-        "start": "44:5:4",
+        "start": "44:5:3",
         "end": "44:5:5"
       },
       "span": {
-        "start_offset": 6418,
+        "start_offset": 6417,
         "end_offset": 6420
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "魯番"
+        "canonical_name": "吐魯番",
+        "note": "重标后待匹配"
       },
-      "source": "ext:gemini-3.8-flash-high"
+      "source": "claude:A33"
     },
     {
       "id": "e00564",
@@ -14318,9 +14380,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f28mxbgg0",
+        "entity_id": "d59f28npq1vl",
         "canonical_name": "晉書",
-        "href": "book-index://Work/d59f28mxbgg0"
+        "href": "book-index://Work/d59f28npq1vl"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -14858,7 +14920,8 @@
         "status": "matched",
         "entity_id": "d59f1iofm800",
         "canonical_name": "禮記",
-        "href": "book-index://Work/d59f1iofm800"
+        "href": "book-index://Work/d59f1iofm800",
+        "coarse": "part_of_work"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -14974,7 +15037,8 @@
         "status": "matched",
         "entity_id": "d59f1ioc6m0w",
         "canonical_name": "周禮",
-        "href": "book-index://Work/d59f1ioc6m0w"
+        "href": "book-index://Work/d59f1ioc6m0w",
+        "coarse": "part_of_work"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -16334,7 +16398,7 @@
     },
     {
       "id": "e00832",
-      "type": "place",
+      "type": "office",
       "text": "文淵閣",
       "anchor": {
         "start": "67:9:19",
@@ -16731,6 +16795,25 @@
         "href": "book-index://Entity/hixi5whkr37t"
       },
       "source": "ext:gemini-3.8-flash-high"
+    },
+    {
+      "id": "e00915",
+      "type": "office",
+      "text": "經畧",
+      "anchor": {
+        "start": "69:5:17",
+        "end": "69:5:18"
+      },
+      "span": {
+        "start_offset": 10180,
+        "end_offset": 10182
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "經畧",
+        "note": "官名词表补标，待匹配"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00852",

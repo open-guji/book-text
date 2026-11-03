@@ -350,6 +350,7 @@ def decision_problems(dd, char):
 # ---- F-OV-13 图片格与插图块（guji-format 09 guji-fig v0.1、02 §4.7、01 §3.6；GUJI-737／739）----
 FIG_SCHEMA_URL = "https://open-guji.org/schema/fig/v0.1.json"
 CHAR_SCHEMA_URL_V03 = "https://open-guji.org/schema/char/v0.3.json"
+CHAR_SCHEMA_URL_V04 = "https://open-guji.org/schema/char/v0.4.json"
 CORD_SCHEMA_URL_V02 = "https://open-guji.org/schema/cord/v0.2.json"
 FIG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 FIG_MIME_EXT = {"image/png": ".png", "image/webp": ".webp", "image/svg+xml": ".svg"}
@@ -405,6 +406,42 @@ def _outer_box(boxes):
     return [x0, y0, x1 - x0, y1 - y0]
 
 
+# ---- F-OV-16 待审格（guji-format 02 §4.8，char v0.4；sheldon 2026-11-03 定）----
+PENDING_REASON_RE = re.compile(r"^[a-z][a-z0-9_]*$")
+PENDING_REASONS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pending_reasons.json")
+PENDING_CELL_FORBIDDEN = ("lacuna", "guess_c", "fig")
+
+
+def pending_reasons():
+    """码表副本里的原因英文名（真源 open-guji-cv review/pending_reasons.yaml）。"""
+    with open(PENDING_REASONS_FILE, encoding="utf-8") as fh:
+        return set(json.load(fh)["reasons"])
+
+
+def pending_reason_problems(char, known=None):
+    """F-OV-16：char 里带 pending_reason 的格，返回 [(说明, 子类)]。
+    取值须在码表里（推不出写 unknown）、不与 lacuna／guess_c／fig 同在；用了它的 char $schema 须为 v0.4。"""
+    known = pending_reasons() if known is None else known
+    out, n = [], 0
+    for pg in char.get("pages") or []:
+        for col in pg.get("columns") or []:
+            for c in (col.get("cells") or []) if isinstance(col, dict) else []:
+                if not isinstance(c, dict) or "pending_reason" not in c:
+                    continue
+                n += 1
+                a, v = c.get("a"), c.get("pending_reason")
+                if not isinstance(v, str) or not PENDING_REASON_RE.match(v):
+                    out.append((f"格 {a} pending_reason={v!r} 不合 ^[a-z][a-z0-9_]*$", f"cell:{a}:shape"))
+                elif v not in known:
+                    out.append((f"格 {a} pending_reason={v!r} 不在码表里（scripts/pending_reasons.json；推不出写 unknown）", f"cell:{a}:unknown_value"))
+                bad = [k for k in PENDING_CELL_FORBIDDEN if k in c]
+                if bad:
+                    out.append((f"格 {a} 是待审格，不许带 {'、'.join(bad)}（lacuna 只给审定的阙文）", f"cell:{a}:mixed"))
+    if n and char.get("$schema") != CHAR_SCHEMA_URL_V04:
+        out.append((f"char 有 {n} 个待审格（pending_reason），$schema 应为 {CHAR_SCHEMA_URL_V04!r}，现为 {char.get('$schema')!r}", "char_schema"))
+    return out
+
+
 def entity_multi_problems(ed):
     """F-OV-14：entity.json 里 target.status=matched_multi 的形状，返回 [(说明, 子类)]。
     targets ≥2；每项有非空 entity_id／canonical_name／href，href 尾段＝entity_id；part 若有须是 span 文本里的非空片段；
@@ -444,8 +481,8 @@ def fig_problems(fd, char, cord=None, norm=None, vdir=None, stem=None):
     cord、norm 为 None 时跳过对应核对。"""
     cells, cols, out = char_fig_refs(char)
     used = set(cells) | set(cols)
-    if used and char.get("$schema") != CHAR_SCHEMA_URL_V03:
-        out.append((f"char 用了图片格／图列，$schema 应为 {CHAR_SCHEMA_URL_V03!r}，现为 {char.get('$schema')!r}", "char_schema"))
+    if used and char.get("$schema") not in (CHAR_SCHEMA_URL_V03, CHAR_SCHEMA_URL_V04):
+        out.append((f"char 用了图片格／图列，$schema 应为 {CHAR_SCHEMA_URL_V03!r} 或更高，现为 {char.get('$schema')!r}", "char_schema"))
     if fd is None:
         if used:
             out.append((f"char 里有图（{len(used)} 张：{'、'.join(sorted(used)[:5])}），章条目须声明 fig_file", "nofig"))
@@ -1101,6 +1138,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     #         每条 anchor／old／new／base_commit，锚点在文本里、文本现为 new；伴生层 text_version 不得落后于 base_text_version。
     #         F-OV-02s：已登记的改字格放行为软提示；F-OV-15s：清单里各伴生层都已对上的格（可清）。
     r_ov15 = rule("F-OV-15", "HARD")
+    # F-OV-16 待审格（guji-format 02 §4.8，char v0.4）：pending_reason 在码表里、不与 lacuna／guess_c／fig 同在，char $schema 为 v0.4。
+    r_ov16 = rule("F-OV-16", "HARD")
+    _known_reasons = pending_reasons()
     r_ov02s = rule("F-OV-02s", "SOFT")
     r_ov15s = rule("F-OV-15s", "SOFT")
     r_ov09w = rule("F-OV-09w", "SOFT")  # 下载 assets.json 失败：只警告不阻塞（Maren 定，GUJI-557）
@@ -1231,6 +1271,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                              else fig_problems(fd, char, _side("cord_file"), _side("norm_file"), od, stem))
                     for msg, sub in probs:
                         add(r_ov13, fpath or f, f"{fpath or f}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
+            r_ov16["n_scanned"] += 1
+            for msg, sub in pending_reason_problems(char, _known_reasons):
+                add(r_ov16, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
             r_ov12["n_scanned"] += 1
             want_heads = []
             ce_path = OV.char_edits_path(od, stem)

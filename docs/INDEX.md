@@ -9,6 +9,7 @@
 | `2026-09-book-text格式规范.md` | 格式规范 v1，由 `scripts/validate_text_format.py` 执行 |
 | `2026-10-文本版本号与仓库流程.md` | v2：main 受保护走 PR；`original` 的文本／标点／实体三线 semver；`bump_original.py`；F-OV-01～04 |
 | `2026-10-已发1x文本修订流程.md` | 1.x 之后一律「意见→人裁事件→revise 落地」，每步留记录，撤销靠追加事件 |
+| `2026-10-改字清单.md` | 文本 0.x 精校期改字清单 NNN.char-edits.json：单格替换登记后 F-OV-02 降软提示，`char_edits.py record/sync` 同步标点、实体校验字（草案，待 A34/A42 定稿） |
 | `2026-10-修订流程自动化设计.md` | 修订流程的自动化：调和器、对象存放与状态、schema（意见、发布批、格谱系、算法重跑、策略、度量）、落地顺序 |
 | `2026-10-每字坐标格式-v0.1.md`、`2026-09-自校文本格式草案.md`、`自校格式样例/` | 每字带坐标的自校文本格式 |
 | `2026-10-decision.json规范草案.md` | decision.json 草案 |

@@ -65,8 +65,9 @@ def test_academy_name_not_split():
 
 def test_matched_whole_untouched_and_stats():
     e = ent(1, "禮部尚書", "office", 0)
-    e["target"] = {"status": "matched", "entity_id": "x", "canonical_name": "禮部尚書", "href": "h"}
+    e["target"] = {"status": "matched", "entity_id": "x", "canonical_name": "禮部尚書"}
     j, rep = run([e, ent(2, "泰州如臯", "place", 4)])
     assert j["entities"][0]["text"] == "禮部尚書" and len(rep) == 1
-    assert j["stats"]["total_entities"] == 3 and j["stats"]["places"] == 2
+    assert len(j["entities"]) == 3 and sum(x["type"] == "place" for x in j["entities"]) == 2
+    assert "stats" not in j  # 统计不写进文件（guji-format 第 11 组）
     assert [x["id"] for x in j["entities"]] == ["e00001", "e00002", "e00003"]

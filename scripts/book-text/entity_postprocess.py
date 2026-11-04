@@ -321,7 +321,6 @@ def rule_n4(ents, text, log, ids, ctx):
                 before = fmt(e) + ':new_candidate'
                 e = copy.deepcopy(e)
                 e['target'] = {'status': 'matched', 'entity_id': eid, 'canonical_name': canon,
-                               'href': 'book-index://%s/%s' % ('Work' if e['type'] == 'work' else 'Entity', eid),
                                'note': 'N4 异体归一「%s」→「%s」后对上现库' % (e['text'], key)}
                 log.add('N4', e['id'], 'rebind', before, '%s:matched:%s' % (fmt(e), eid))
         out.append(e)

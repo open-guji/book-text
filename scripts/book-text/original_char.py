@@ -308,6 +308,23 @@ def iter_cells(char):
 
 from original_version import char_slots  # noqa: E402,F401  char → [(格位, 字)]，按读序
 
+_ID_TYPE_SEG = {0: "Book", 2: "Collection", 3: "Work", 4: "Entity"}
+
+
+def entity_href(e):
+    """专名的站内链接 `book-index://<类>/<id>`（guji-format 05 §十一）：由 entity_id 拼，类段取 id 的类型位
+    （base36 解出的 64 位整数第 59–61 位）；旧文件只有 target.href 时照用。与网站 guji-md.ts 的 entityHref 同规则。"""
+    t = e.get("target") or {}
+    eid = t.get("entity_id")
+    if isinstance(eid, str) and eid:
+        try:
+            seg = _ID_TYPE_SEG.get((int(eid, 36) >> 59) & 7)
+        except ValueError:
+            seg = None
+        if seg:
+            return f"book-index://{seg}/{eid}"
+    return t.get("href") or None
+
 
 def _runs(cells):
     """一列的格 → [(kind, [cell…])]，kind 为 main／solo／jz；jz 一段 = 连续的 a 再连续的 b。"""
@@ -496,7 +513,7 @@ def render_rich(char, punct=None, entity=None, fig=None):
 
     def linked(e):
         t = e.get("target") or {}
-        return t.get("status") == "matched" and t.get("href")
+        return t.get("status") == "matched" and entity_href(e)
 
     # 相邻专名（spec/03 §四第 6 条）：两个以上非 work 专名紧挨、中间无字无标点，
     # 这一串里每个都写指令 `:zm[甲]`，带链接写 `[:zm[甲]](href)`；只看紧挨，不看 group
@@ -558,11 +575,11 @@ def render_rich(char, punct=None, entity=None, fig=None):
         if pi in ent_ends:
             e = ent_ends[pi]
             if e["type"] == "work":
-                out.append((f"]({e['target']['href']})" if linked(e) else "") + "》")
+                out.append((f"]({entity_href(e)})" if linked(e) else "") + "》")
             elif id(e) in adjacent:
-                out.append(f"]](" + e['target']['href'] + ")" if linked(e) else "]")
+                out.append(f"]](" + entity_href(e) + ")" if linked(e) else "]")
             else:
-                out.append(f"/]({e['target']['href']})" if linked(e) else "/")
+                out.append(f"/]({entity_href(e)})" if linked(e) else "/")
         for p in punct_map.get(pi, ()):
             if p["pos"] == "after":
                 (pending_breaks if p["kind"] == "break" else out).append(p["mark"])

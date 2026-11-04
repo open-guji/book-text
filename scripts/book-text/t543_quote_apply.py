@@ -39,7 +39,7 @@ for c in ops:
         log.append((c['block'], s, e, c['text'][:30], '', '「」'))
 if apply and new:
     ps.extend(new); ps.sort(key=lambda x: (x['char_offset'], 0 if x['pos'] == 'before' else 1))
-    P['stats']['total_annotations'] = len(ps); P['stats']['points'] = P['stats'].get('points', 0) + len(new)
+    P.pop('stats', None)  # 不再写统计（第 11 组）
 for r in log: print(*r)
 print(mode, len(log), '处', '（已写）' if apply else '（干跑）')
 if apply: json.dump(P, open(pf, 'w', encoding='utf-8'), ensure_ascii=False, indent=2); open(pf, 'a').write('\n')

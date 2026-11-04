@@ -21,7 +21,7 @@ for ef in sorted(glob.glob(os.path.join(d, "*.entity.json"))):
         out.append(e)
     print(os.path.basename(ef), dict(cnt))
     if write and cnt:
-        D["entities"] = out; st = D.get("stats", {})
+        D["entities"] = out; st = {}; D.pop("stats", None)
         c = collections.Counter(e["type"] for e in out)
         st["total_entities"] = len(out)
         for t, k in PLUR.items():

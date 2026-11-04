@@ -14,7 +14,7 @@ CANON = {v: k for k, v in ids.items()}; CANON['周易章句外編'] = '古周易
 CANON.update({'d59f2htm01du': '直齋書錄解題', 'd59f2hqd9a81': '東坡易傳', 'd59f2hute0w0': '兼山易解'})
 def tgt(i, name, note=None):
     kind = 'Work' if i.startswith('d59') else 'Entity'
-    t = {'status': 'matched', 'entity_id': i, 'canonical_name': name, 'href': f'book-index://{kind}/{i}'}
+    t = {'status': 'matched', 'entity_id': i, 'canonical_name': name}
     if note: t['note'] = note
     return t
 log = collections.Counter()
@@ -44,7 +44,7 @@ for vol in ('002', '003'):
         elif t == '陳振孫書錄解題':
             setspan(e, a, a + 2, '陳振孫'); e['type'] = 'people'; e['target'] = tgt('hixhd2h9beoe', '陳振孫')
             nid += 1; E.append({'id': f'e{nid:05d}', 'type': 'work', 'text': '書錄解題', 'anchor': {'start': sl[a + 3][0], 'end': sl[b][0]}, 'span': {'start_offset': a + 3, 'end_offset': b + 1}, 'target': tgt('d59f2htm01du', '直齋書錄解題', note='别名「書錄解題」'), 'source': 'claude:T-manual'}); log[(vol, '拆分', t)] += 1
-    st = en['stats']
+    st = {}
     for key, ty in (('works', 'work'), ('people', 'people'), ('places', 'place'), ('offices', 'office'), ('dynasties', 'dynasty'), ('reigns', 'reign')): st[key] = sum(1 for x in E if x['type'] == ty)
     st['total_entities'] = len(E)
     for key, sv in (('matched', 'matched'), ('ambiguous', 'ambiguous'), ('new_candidates', 'new_candidate')): st[key] = sum(1 for x in E if x['target'].get('status') == sv)

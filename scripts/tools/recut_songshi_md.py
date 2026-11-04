@@ -59,6 +59,13 @@ WHITELIST_REMOVE_WORK_IDS = {
 }
 
 
+
+def _wid(s):
+    """section 链到的第一个 Work（2026-11 起只写 work_ids 列表；旧写法 work_id 兜底）。"""
+    if "work_ids" in s:
+        return (s.get("work_ids") or [None])[0]
+    return s.get("work_id")
+
 def _removable_work_id(work_id):
     """work_id 是 None，或在裁决四逐个核过、放行整节删的白名单内。"""
     return work_id is None or work_id in WHITELIST_REMOVE_WORK_IDS
@@ -159,7 +166,7 @@ def dedup_overlap_json(sections):
                 tail_deletes.append((i, L, deleted))
                 out[i] = out[i][:-L]
             changed = True
-    removed = {i for i, s in enumerate(sections) if _removable_work_id(s.get("work_id")) and out[i] == ""}
+    removed = {i for i, s in enumerate(sections) if _removable_work_id(_wid(s)) and out[i] == ""}
 
     # 补一种相邻重叠抓不到的形状：宿主注文**中间**提到一本书（后面还有
     # "，即此書也""）"一类收尾字样），误建节的内容是这段中间文字的**原样
@@ -173,7 +180,7 @@ def dedup_overlap_json(sections):
     # 已经空了——要跳过已删的，找最近一个**没被删**的前条才是真宿主。
     containment_removed = {}
     for i in range(1, len(out)):
-        if i in removed or out[i] == "" or not _removable_work_id(sections[i].get("work_id")):
+        if i in removed or out[i] == "" or not _removable_work_id(_wid(sections[i])):
             continue
         c = _canon_for_gate(out[i])
         j = i - 1
@@ -247,10 +254,10 @@ def recut_one_juan(work_dir, jf, juan_title):
         if i in removed:
             continue
         s = sections[i]
-        is_none = s.get("work_id") is None
+        is_none = _wid(s) is None
         is_empty = json_contents[i] == ""
         if is_empty and not is_none:
-            suspicious.append({"idx": i, "work_id": s.get("work_id"), "title": s.get("title"),
+            suspicious.append({"idx": i, "work_id": _wid(s), "title": s.get("title"),
                                 "剩余content": "", "原因": "content去重叠后变空但work_id不是None，结构像误建节但不敢自动删"})
         elif is_none and not is_empty:
             suspicious.append({"idx": i, "work_id": None, "title": s.get("title"),
@@ -258,7 +265,7 @@ def recut_one_juan(work_dir, jf, juan_title):
 
     # 同理：整段包含于前条、但 work_id 不是 None 的，不自动删，只报
     for i in range(1, len(json_contents)):
-        if i in removed or json_contents[i] == "" or sections[i].get("work_id") is None:
+        if i in removed or json_contents[i] == "" or _wid(sections[i]) is None:
             continue
         j = i - 1
         while j >= 0 and j in removed:
@@ -267,7 +274,7 @@ def recut_one_juan(work_dir, jf, juan_title):
             continue
         c = _canon_for_gate(json_contents[i])
         if len(c) >= 4 and c in _canon_for_gate(json_contents[j]):
-            suspicious.append({"idx": i, "work_id": sections[i].get("work_id"), "title": sections[i].get("title"),
+            suspicious.append({"idx": i, "work_id": _wid(sections[i]), "title": sections[i].get("title"),
                                 "剩余content": json_contents[i],
                                 "原因": f"整段包含于第{j}条但work_id不是None，结构像误建节但不敢自动删"})
 
@@ -277,7 +284,7 @@ def recut_one_juan(work_dir, jf, juan_title):
 
     def _fmt(i, l, txt, tag):
         s = sections[i]
-        return {"work_id": s.get("work_id"), "title": s.get("title"), "删几字": l, "删的原文": txt, "类型": tag}
+        return {"work_id": _wid(s), "title": s.get("title"), "删几字": l, "删的原文": txt, "类型": tag}
 
     result = {
         "juan_file": jf, "juan_title": juan_title,
@@ -288,10 +295,10 @@ def recut_one_juan(work_dir, jf, juan_title):
         "json将删": (
             [_fmt(i, l, txt, "删上一条尾") for i, l, txt in tail_deletes]
             + [_fmt(i, l, txt, "删下一条头") for i, l, txt in head_deletes]
-            + [{"work_id": sections[i].get("work_id"), "title": sections[i].get("title"),
+            + [{"work_id": _wid(sections[i]), "title": sections[i].get("title"),
                 "类型": "整节删（误建节·相邻重叠清空）"}
                for i in sorted(removed) if i not in containment_removed]
-            + [{"work_id": sections[i].get("work_id"), "title": sections[i].get("title"),
+            + [{"work_id": _wid(sections[i]), "title": sections[i].get("title"),
                 "类型": "整节删（误建节·整段包含于前条）", "原内容": txt}
                for i, txt in sorted(containment_removed.items())]
         ),

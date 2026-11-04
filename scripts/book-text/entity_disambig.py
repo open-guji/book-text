@@ -83,7 +83,6 @@ def do_apply(root, bid, tsv, dry):
                 c = cands[picked]
                 x['target'] = {'status': 'matched', 'entity_id': picked,
                                'canonical_name': c['canonical_name'],
-                               'href': f"book-index://Work/{picked}",
                                'note': r[6]}
                 counts['pick'] += 1
                 changed = True

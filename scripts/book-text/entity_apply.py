@@ -26,7 +26,7 @@ def tsv(p):
 
 
 def recount(en):
-    E = en['entities']; st = en['stats']
+    E = en['entities']; st = {}  # 统计只在本地算，不写回文件（guji-format 第 11 组删 stats）
     for key, ty in STAT:
         st[key] = sum(1 for x in E if x['type'] == ty)
     st['total_entities'] = len(E)
@@ -84,7 +84,7 @@ def rematch(a):
             elif len(ids) == 1:   # 恰好一条才回挂；0 条留 new_candidate，多条留给 P3
                 tid = ids[0]; canon = (wt if e['type'] == 'work' else pn).get(tid) or e['text']
                 kind = 'EXACT' if canon == e['text'] else 'VARIANT'
-                tg = {'status': 'matched', 'entity_id': tid, 'canonical_name': canon, 'href': f"book-index://{'Work' if e['type'] == 'work' else 'Entity'}/{tid}"}
+                tg = {'status': 'matched', 'entity_id': tid, 'canonical_name': canon}
                 if kind == 'VARIANT':
                     tg['note'] = f"异体归一：原文「{e['text']}」＝库名「{canon}」"
                 log.append((vol, e['id'], e['type'], e['text'], kind, tid, canon))
@@ -147,8 +147,7 @@ def main():
                 canon = (wt if ty == 'work' else pn).get(tid)
                 if not canon:
                     print('✗ target_id 不在库里', c['cand_id'], tid); bad += 1; continue
-                tg = {'status': 'matched', 'entity_id': tid, 'canonical_name': canon,
-                      'href': f"book-index://{'Work' if ty == 'work' else 'Entity'}/{tid}"}
+                tg = {'status': 'matched', 'entity_id': tid, 'canonical_name': canon}
                 if canon != c['text']:
                     tg['note'] = f"补标：原文「{c['text']}」＝库名「{canon}」"
             elif c['match_id'].startswith('ambig:'):   # 同名多条：写 ambiguous，交 P3 消歧

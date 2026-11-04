@@ -31,8 +31,7 @@ def base():
 
     es = [
         ent("e1", "work", "甲乙", 0, ("1:1:1", "1:1:2"),
-            {"status": "matched", "entity_id": "abc", "canonical_name": "甲乙",
-             "href": "book-index://Work/abc"}),
+            {"status": "matched", "entity_id": "abc", "canonical_name": "甲乙"}),
         ent("e2", "people", "丙", 2, ("1:1:3", "1:1:3"), {"status": "new_candidate", "canonical_name": "丙"}),
         ent("e3", "people", "丁", 3, ("1:1:4", "1:1:4"), {"status": "new_candidate", "canonical_name": "丁"}, grp),
         ent("e4", "people", "戊", 4, ("1:1:5", "1:1:5"), {"status": "new_candidate", "canonical_name": "戊"}, grp),
@@ -100,8 +99,8 @@ def test_matched_fields_has_candidates():
     only("matched_fields", lambda e, c, p, i: by_id(e, "e1")["target"].update({"candidates": []}))
 
 
-def test_href_tail():
-    only("href_tail", lambda e, c, p, i: by_id(e, "e1")["target"].update({"href": "book-index://Work/zzz"}))
+def test_site_href():
+    only("site_href", lambda e, c, p, i: by_id(e, "e1")["target"].update({"href": "book-index://Work/abc"}))
 
 
 def test_ambiguous_lt2():

@@ -11,7 +11,7 @@ spec.loader.exec_module(vtf)
 
 
 def tg(i, n, part=None):
-    return ({"part": part} if part else {}) | {"entity_id": i, "canonical_name": n, "href": "book-index://Entity/" + i}
+    return ({"part": part} if part else {}) | {"entity_id": i, "canonical_name": n}
 
 
 def doc(target, text="正嘉"):
@@ -34,10 +34,21 @@ def test_part_optional():
 def test_bad_shapes():
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德")])))  # <2
     assert vtf.entity_multi_problems(doc(dict(OK, entity_id="a1")))  # 顶层带 id
-    bad = tg("a1", "正德"); bad["href"] = "book-index://Entity/zzz"
-    assert vtf.entity_multi_problems(doc(dict(OK, targets=[bad, tg("b2", "嘉靖")])))  # href 尾段
+    bad = tg("a1", "正德"); bad["href"] = "book-index://Entity/a1"
+    assert vtf.entity_multi_problems(doc(dict(OK, targets=[bad, tg("b2", "嘉靖")])))  # 站内 href 不写（05 §十一）
     bad2 = tg("a1", "正德"); del bad2["canonical_name"]
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[bad2, tg("b2", "嘉靖")])))
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "隆"), tg("b2", "嘉靖")])))  # part 不在 text
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "嘉"), tg("b2", "嘉靖", "正")])))  # 全写 part 但拼不回 text
     assert vtf.entity_multi_problems(doc(dict(OK, targets=[tg("a1", "正德", "正"), tg("b2", "嘉靖", "嘉")]), text="正嘉以")) # 少一字
+
+
+def test_legacy_layer_problems():
+    """F-OV-17：stats 与站内 href 停用；external 的 href 照留。"""
+    ok = {"entities": [{"id": "e1", "text": "甲", "target": {"status": "matched", "entity_id": "a", "canonical_name": "甲"}},
+                       {"id": "e2", "text": "乙", "target": {"status": "external", "href": "https://x.org/1"}}]}
+    assert vtf.legacy_layer_problems(ok, "entity") == []
+    bad = {"stats": {"n": 1}, "entities": [{"id": "e1", "text": "甲", "target": {
+        "status": "matched", "entity_id": "a", "canonical_name": "甲", "href": "book-index://Entity/a"}}]}
+    assert [s for _m, s in vtf.legacy_layer_problems(bad, "entity")] == ["stats", "0:href"]
+    assert [s for _m, s in vtf.legacy_layer_problems({"stats": {}}, "punct")] == ["stats"]

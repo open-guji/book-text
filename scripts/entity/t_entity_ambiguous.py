@@ -92,8 +92,7 @@ def main(argv):
             if "--write" in argv:
                 e["target"] = new
         if "--write" in argv:
-            d["stats"]["ambiguous"] = sum(1 for e in d["entities"] if e["target"]["status"] == "ambiguous")
-            d["stats"]["new_candidates"] = sum(1 for e in d["entities"] if e["target"]["status"] == "new_candidate")
+            d.pop("stats", None)  # 不再写统计（第 11 组）
             with open(f, "w", encoding="utf-8") as fh:
                 json.dump(d, fh, ensure_ascii=False, indent=2)
                 fh.write("\n")

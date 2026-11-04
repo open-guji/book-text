@@ -16,5 +16,5 @@ for a in ANCH.get(vol, []):
     print(vol, a, slots[i][1], '→ 补 。', ''.join(c for _, c in slots[i - 7:i + 1]))
 if apply and new:
     ps.extend(new); ps.sort(key=lambda x: (x['char_offset'], 0 if x['pos'] == 'before' else 1))
-    P['stats']['total_annotations'] = len(ps); P['stats']['points'] = sum(1 for x in ps if x['kind'] == 'point'); P['stats']['periods'] = sum(1 for x in ps if x['mark'] == '。')
+    P.pop('stats', None)  # 不再写统计（第 11 组）
     json.dump(P, open(pf, 'w', encoding='utf-8'), ensure_ascii=False, indent=2); open(pf, 'a').write('\n')

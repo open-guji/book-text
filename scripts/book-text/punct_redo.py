@@ -372,18 +372,7 @@ def cmd_apply(a):
     E.sort(key=lambda x: (x["span"]["start_offset"], -x["span"]["end_offset"]))
     pj["punctuations"], ej["entities"] = P, E
     pts = [p for p in P if p["kind"] == "point"]
-    if "stats" in pj:
-        pj["stats"].update({"total_annotations": len(P), "points": len(pts),
-                            "paragraph_breaks": sum(p["kind"] == "break" for p in P),
-                            "periods": sum(p["mark"] == "。" for p in pts), "commas": sum(p["mark"] == "，" for p in pts),
-                            "headings": sum(p["kind"] == "heading" for p in P)})
-    if "stats" in ej:
-        st = collections.Counter(x["target"].get("status") for x in E)
-        tc = collections.Counter(x["type"] for x in E)
-        ej["stats"].update({"total_entities": len(E), "matched": st["matched"] + st["matched_multi"], "ambiguous": st["ambiguous"],
-                            "new_candidates": st["new_candidate"], "works": tc["work"], "people": tc["people"],
-                            "places": tc["place"], "offices": tc["office"], "dynasties": tc["dynasty"],
-                            "reigns": tc["reign"]})
+    pj.pop("stats", None); ej.pop("stats", None)  # 不再写统计（guji-format 第 11 组）
     print(f"重标 {len(spans)} 句：点号去 {dropped_p} 出 {new_p}；专名新增 {new_e}，"
           f"共 {len(P)} 条标点、{len(E)} 个专名")
     if a.dry_run:

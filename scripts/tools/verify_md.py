@@ -43,6 +43,13 @@ _WRAP_PAIRS = ["⟨⟩", "〔〕", "<>", "「」", "“”", "‘’", "『』"]
 _DOUBLE_WRAP_PAIRS = ["（（））"]  # 宋史 md 独有的双层圆括号夹注
 
 
+
+def _wid(s):
+    """section 链到的第一个 Work（2026-11 起只写 work_ids 列表；旧写法 work_id 兜底）。"""
+    if "work_ids" in s:
+        return (s.get("work_ids") or [None])[0]
+    return s.get("work_id")
+
 def normalize(s):
     """去记号包裹符号＋折叠空白，只留下要比较的文字本身。"""
     if not s:
@@ -120,7 +127,7 @@ def mode_line(work_dir):
         json_orig = {}
         for s in sections:
             json_orig.setdefault(normalize(s["content"]), []).append(
-                {"work_id": s.get("work_id"), "title": s.get("title"), "content": s.get("content")})
+                {"work_id": _wid(s), "title": s.get("title"), "content": s.get("content")})
 
         md_only = md_bag - json_bag
         json_only = json_bag - md_bag
@@ -216,7 +223,7 @@ def mode_heading(work_dir):
             t = s["title"].strip()
             md_titles_seen.add(t)
             if t not in book_blocks:
-                diffs.append({"tag": "json_only_title", "work_id": s.get("work_id"), "title": t})
+                diffs.append({"tag": "json_only_title", "work_id": _wid(s), "title": t})
                 continue
             _lvl, _txt, start, end = book_blocks[t]
             body = [raw_lines[i - 1] for i in range(start + 1, end)]
@@ -227,7 +234,7 @@ def mode_heading(work_dir):
             if md_paras != json_paras or (md_note or None) != (json_note or None):
                 diffs.append({
                     "tag": "content_mismatch",
-                    "work_id": s.get("work_id"),
+                    "work_id": _wid(s),
                     "title": t,
                     "md_paragraphs": md_paras,
                     "json_paragraphs": json_paras,

@@ -91,7 +91,7 @@ def apply(char_json, ent_json, tables, write=False):
         report.append((e["id"], e["text"], [(p["type"], p["text"], p["target"]["status"]) for p in parts]))
     if write:
         ent_json["entities"] = out
-        st = ent_json["stats"]
+        st = {}; ent_json.pop("stats", None)
         st["total_entities"] = len(out)
         for key, ty in (("works", "work"), ("people", "people"), ("places", "place"),
                         ("offices", "office"), ("dynasties", "dynasty"), ("reigns", "reign")):

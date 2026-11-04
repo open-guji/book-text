@@ -262,7 +262,7 @@ TQ_GRADE_KNOWN = {"rough", "fine", "ocr", "source", "placeholder", "none"}
 # 原表按旧 Book 全文写死 book_id／scraped_at／scraped_from，Work 层（full_text/<key>/）按 E-11 用 work_id、fetched_at。
 FT_REQUIRED_FIELDS = ["chapters", "revision", "source", "total_chapters", "version_label"]
 FT_OWNER_KEY = {"Book": "book_id", "Work": "work_id"}
-FT_TIME_KEYS = ("fetched_at", "scraped_at")
+FT_TIME_KEYS = ("fetched_at",)  # scraped_at 2026-11 并入 fetched_at（guji-format 07）
 FT_CHAPTER_NAME_RE = re.compile(r"^\d+\.(md|json)$")  # 章文件 NNN.md，可另有同名 NNN.json
 # T30（Kanripo 方案 B，line_is_column）新增旁档：叶码精确到列，另存 pages.tsv，
 # 不是章节 md，不该被「章节文件名不符 N.md」误判。任务书原话「不要改数据迁就规则」，
@@ -444,7 +444,7 @@ def pending_reason_problems(char, known=None):
 
 def entity_multi_problems(ed):
     """F-OV-14：entity.json 里 target.status=matched_multi 的形状，返回 [(说明, 子类)]。
-    targets ≥2；每项有非空 entity_id／canonical_name／href，href 尾段＝entity_id；part 若有须是 span 文本里的非空片段；
+    targets ≥2；每项有非空 entity_id／canonical_name、不写站内 href（guji-format 05 §十一）；part 若有须是 span 文本里的非空片段；
     顶层不得同时带 entity_id／href；每项都写 part 时按序拼起来须等于 span 文本。"""
     out = []
     for i, e in enumerate(ed.get("entities") or []):
@@ -463,15 +463,30 @@ def entity_multi_problems(ed):
             if not isinstance(x, dict):
                 out.append((f"{tag} targets[{j}] 须是对象", f"{i}:{j}:shape"))
                 continue
-            miss = [k for k in ("entity_id", "canonical_name", "href") if not (isinstance(x.get(k), str) and x[k])]
+            miss = [k for k in ("entity_id", "canonical_name") if not (isinstance(x.get(k), str) and x[k])]
             if miss:
                 out.append((f"{tag} targets[{j}] 缺 {'／'.join(miss)}", f"{i}:{j}:field"))
-            elif x["href"].rsplit("/", 1)[-1] != x["entity_id"]:
-                out.append((f"{tag} targets[{j}] 的 href 尾段 {x['href'].rsplit('/', 1)[-1]!r} 不等于 entity_id {x['entity_id']!r}", f"{i}:{j}:href"))
+            if "href" in x:
+                out.append((f"{tag} targets[{j}] 带了 href：站内链接由 entity_id 推，不写 href（guji-format 05 §十一）", f"{i}:{j}:href"))
             if "part" in x and not (isinstance(x["part"], str) and x["part"] and x["part"] in (e.get("text") or "")):
                 out.append((f"{tag} targets[{j}].part={x['part']!r} 须是 span 文本里的非空片段", f"{i}:{j}:part"))
         if ts and all(isinstance(x, dict) and isinstance(x.get("part"), str) for x in ts) and "".join(x["part"] for x in ts) != (e.get("text") or ""):
             out.append((f"{tag} 各项 part 按序拼起来 {''.join(x['part'] for x in ts)!r} 不等于 span 文本 {e.get('text')!r}", f"{i}:parts"))
+    return out
+
+
+def legacy_layer_problems(cd, line):
+    """F-OV-17（guji-format 04／05 §十一，2026-11）：punct／entity 不写顶层 stats；entity 的站内链接不写 href
+    （matched 由 entity_id 推出，href 只给 external 外链）。返回 [(说明, 子类)]。"""
+    out = []
+    if "stats" in cd:
+        out.append(("顶层带 stats：统计不写进文件（已停用）", "stats"))
+    if line == "entity":
+        for i, e in enumerate(cd.get("entities") or []):
+            t = e.get("target") or {}
+            h = t.get("href")
+            if h is not None and t.get("status") != "external":
+                out.append((f"实体 {e.get('id', '#%d' % i)}（{e.get('text')}）带站内 href {h!r}：由 entity_id 推，不写 href", f"{i}:href"))
     return out
 
 
@@ -976,8 +991,12 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 add(r_ce06, f, f"{f}#sections[{idx}]: 缺 content（非登记的存量例外 Work）", sub=idx)
             if s.get("type") == "book" and "work_id" not in s:
                 add(r_ce06, f, f"{f}#sections[{idx}]: type=book 但缺 work_id 键", sub=idx)
-            # 下划线过程字段（_author、_title_only、_dead_work_id 等）不再计为违规：
-            # 用户 09-27 定，它们是整理未收尾的待办记录，随整理做完自然删，校验器忽略。
+            # 下划线证据字段 2026-11 收进 section 的 evidence（guji-format 07 §4.2），顶层不再写
+            us = sorted(k for k in s if k.startswith("_"))
+            if us:
+                add(r_ce06, f, f"{f}#sections[{idx}]: 下划线证据字段 {us} 应收进 evidence", sub=f"{idx}:underscore")
+            if "evidence" in s and not isinstance(s["evidence"], dict):
+                add(r_ce06, f, f"{f}#sections[{idx}]: evidence 须是对象", sub=f"{idx}:evidence")
     scanned["整理本章 NNN.json"] = len(juan_files)
 
     # ---- 整理本章 NNN.md：括注同行闭合（F-MD-03）＋ 记法分布（F-MD-01，报告用）
@@ -1061,7 +1080,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
         if layer and FT_OWNER_KEY[layer] not in d:
             missing.append(FT_OWNER_KEY[layer])
         if not any(k in d for k in FT_TIME_KEYS):
-            missing.append("fetched_at|scraped_at")
+            missing.append("fetched_at")
+        if "scraped_at" in d:
+            add(r_ft01, f, f"{f}: 带 scraped_at：已并入 fetched_at", sub="scraped_at")
         # 09-27 网站总管建议：全文页按 source.name/license 显示署名（CC BY-SA 要求），缺了就是许可缺口
         src = d.get("source")
         if isinstance(src, dict):
@@ -1131,9 +1152,11 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-13 图片格与插图块（guji-format 09、02 §4.7，GUJI-737）：char 有图就须声明 fig_file；fig.json 与 char／cord／norm／
     #         图片文件对得上（引用、kind、页与框、文件存在、sha256、≤1 MB、SVG 无脚本外链）；norm 不许有图片格。
     r_ov13 = rule("F-OV-13", "HARD")
-    # F-OV-14 专名多链接（target.status=matched_multi）形状：targets ≥2，每项带 entity_id／canonical_name／href 且 href 尾段＝entity_id，
+    # F-OV-14 专名多链接（target.status=matched_multi）形状：targets ≥2，每项带 entity_id／canonical_name、不写 href，
     #         顶层不带 entity_id／href，part 若有须是 span 文本里的片段。
     r_ov14 = rule("F-OV-14", "HARD")
+    # F-OV-17 停用字段（guji-format 04／05 §十一，2026-11）：punct／entity 不写顶层 stats；entity 站内链接不写 href。
+    r_ov17 = rule("F-OV-17", "HARD")
     # F-OV-15 改字清单 NNN.char-edits.json（docs/design/2026-10-改字清单.md）：只许文本线 0.x；schema／book_id／volume；
     #         每条 anchor／old／new／base_commit，锚点在文本里、文本现为 new；伴生层 text_version 不得落后于 base_text_version。
     #         F-OV-02s：已登记的改字格放行为软提示；F-OV-15s：清单里各伴生层都已对上的格（可清）。
@@ -1298,6 +1321,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                     r_ov14["n_scanned"] += 1
                     for msg, sub in entity_multi_problems(cd):
                         add(r_ov14, cf, f"{cf}: {msg}", sub=sub)
+                r_ov17["n_scanned"] += 1
+                for msg, sub in legacy_layer_problems(cd, line):
+                    add(r_ov17, cf, f"{cf}: {msg}", sub=sub)
                 if line == "punct":
                     for msg, sub in OV.heading_problems(char, cd):
                         add(r_ov12, cf, f"{cf}: {msg}", sub=sub)

@@ -59,10 +59,10 @@ def check(ent, char, punct, index, ch):
         if "".join(x["c"] for x in seq[s:t]) != e["text"]:
             bad("text", eid, e["text"])
         if st == "matched":
-            if not all(k in tg for k in ("entity_id", "canonical_name", "href")) or "candidates" in tg:
+            if not all(k in tg for k in ("entity_id", "canonical_name")) or "candidates" in tg:
                 bad("matched_fields", eid)
-            elif tg["href"].rsplit("/", 1)[-1] != tg["entity_id"]:
-                bad("href_tail", eid, tg["href"])
+            elif "href" in tg:  # 站内链接不写 href，由 entity_id 推（guji-format 05 §十一）
+                bad("site_href", eid, tg["href"])
         elif st == "ambiguous":
             if len(tg.get("candidates", [])) < 2:
                 bad("ambiguous_lt2", eid, e["text"])

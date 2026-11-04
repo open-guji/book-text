@@ -30,8 +30,8 @@ for v in('002','003'):
         if ''.join(x['c'] for x in seq[s:t])!=e['text']: bad('text',e['id'])
         tg=e['target'];st=tg['status']
         if st=='matched':
-            if not all(k in tg for k in('entity_id','canonical_name','href')) or 'candidates' in tg: bad('matched_fields',e['id'])
-            elif tg['href'].rsplit('/',1)[1]!=tg['entity_id']: bad('href_tail',e['id'])
+            if not all(k in tg for k in('entity_id','canonical_name')) or 'candidates' in tg: bad('matched_fields',e['id'])
+            elif 'href' in tg: bad('site_href',e['id'])  # 站内链接不写 href（guji-format 05 §十一）
         elif st=='ambiguous':
             if len(tg.get('candidates',[]))<2: bad('ambiguous_lt2',e['id']+' '+e['text'])
             if 'entity_id' in tg or 'href' in tg: bad('ambiguous_extra',e['id'])

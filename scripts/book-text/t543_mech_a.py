@@ -68,7 +68,7 @@ for o in ops: print(*o)
 print(dict(cnt), '共', len(ops))
 if apply:
     out = keep + adds
-    en['entities'] = out; st = en['stats']
+    en['entities'] = out; st = {}
     st['total_entities'] = len(out)
     for key, ty in (('works', 'work'), ('people', 'people'), ('places', 'place'), ('offices', 'office'), ('dynasties', 'dynasty'), ('reigns', 'reign')):
         st[key] = sum(1 for x in out if x['type'] == ty)

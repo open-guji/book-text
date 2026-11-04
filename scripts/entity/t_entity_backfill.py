@@ -3,7 +3,7 @@
 
 只改 target 与（订正用）type，不动 anchor／span／text。默认干跑；--write 才落盘。
 规则（契约草稿 §二）：
-  - 唯一候选 -> matched（entity_id、canonical_name、href=book-index://Entity/<id>）
+  - 唯一候选 -> matched（entity_id、canonical_name；站内链接不写 href，由 entity_id 推）
   - 地名多候选且恰一个 default -> matched，note 记「default」
   - 朝代／年号多候选（<=6）-> ambiguous + candidates
   - 官职多候选且恰一条概念条（无 ambiguous）-> matched，level=concept
@@ -49,7 +49,7 @@ def decide(e, tables):
         return {"status": "ambiguous", "canonical_name": e["text"], "candidates": [cand(ok[0])]}, None
     if len(ok) == 1:
         c = ok[0]
-        tg = {"status": "matched", **cand(c), "href": "book-index://Entity/" + c["id"]}
+        tg = {"status": "matched", **cand(c)}
         if c.get("level") == "concept":
             tg["level"] = "concept"
         return tg, None
@@ -57,12 +57,12 @@ def decide(e, tables):
         d = [c for c in ok if c.get("default")]
         if t == "place" and len(d) == 1:
             c = d[0]
-            return {"status": "matched", **cand(c), "href": "book-index://Entity/" + c["id"], "note": "default"}, None
+            return {"status": "matched", **cand(c), "note": "default"}, None
         if t == "office" and not any(c.get("ambiguous") for c in ok):
             con = [c for c in ok if c.get("level") == "concept" and c.get("subtype") == "office"]
             if len(con) == 1:
                 c = con[0]
-                return {"status": "matched", **cand(c), "href": "book-index://Entity/" + c["id"],
+                return {"status": "matched", **cand(c),
                         "level": "concept", "note": "未定朝代，挂概念条"}, None
         if len(ok) <= 6 and t != "office":
             return {"status": "ambiguous", "canonical_name": e["text"], "candidates": [cand(c) for c in ok]}, None
@@ -91,8 +91,7 @@ def main(argv):
                 e["target"] = tg
     if write:
         m = sum(1 for e in d["entities"] if e["target"].get("status") == "matched")
-        d["stats"]["matched"] = m
-        d["stats"]["new_candidates"] = sum(1 for e in d["entities"] if e["target"].get("status") == "new_candidate")
+        d.pop("stats", None)  # 不再写统计（第 11 组）
         json.dump(d, open(args[3], "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         open(args[3], "a", encoding="utf-8").write("\n")
     print(json.dumps({"stat": stat, "reclass": reclass}, ensure_ascii=False))

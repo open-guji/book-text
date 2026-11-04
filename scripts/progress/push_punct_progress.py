@@ -35,8 +35,13 @@ def vol_fields(vdir, ch, wip):
         status = "进行中，未入库" if n in wip else "未开始"
         return {"punct_status": status, "extra": {"a33": {"punct_version": pv, "entity_version": ev}}}
     f = vdir / ch["file"]
-    ps = json.loads(f.with_suffix(".punct.json").read_text("utf-8")).get("stats", {})
-    es = json.loads(f.with_suffix(".entity.json").read_text("utf-8")).get("stats", {})
+    # 文件里不再存 stats（guji-format 第 11 组），这里现数
+    pj = json.loads(f.with_suffix(".punct.json").read_text("utf-8"))
+    ej = json.loads(f.with_suffix(".entity.json").read_text("utf-8"))
+    ps = {"total_annotations": len(pj.get("punctuations", []))}
+    st = [(e.get("target") or {}).get("status") for e in ej.get("entities", [])]
+    es = {"total_entities": len(st), "matched": sum(x in ("matched", "matched_multi") for x in st),
+          "ambiguous": st.count("ambiguous"), "new_candidates": st.count("new_candidate")}
     total, matched = es.get("total_entities", 0), es.get("matched", 0)
     pct = round(100 * matched / total) if total else 0
     status = (f"标点 {pv}、专名 {ev} 已入库：标点 {ps.get('total_annotations', 0)} 处，"

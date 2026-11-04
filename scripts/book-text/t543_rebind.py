@@ -13,10 +13,10 @@ for vol, xs in by.items():
         e = idx[x['entity']]
         assert e['text'] == x['text'] and e['anchor']['start'] == x['anchor'] and e['target']['status'] == 'new_candidate', (vol, x['entity'])
         kind = 'Work' if x['type'] == 'work' else 'Entity'
-        tg = {'status': 'matched', 'entity_id': x['target_id'], 'canonical_name': x['target_name'], 'href': f"book-index://{kind}/{x['target_id']}"}
+        tg = {'status': 'matched', 'entity_id': x['target_id'], 'canonical_name': x['target_name']}
         if x['kind'] == 'VARIANT': tg['note'] = f"异体归一：原文「{x['text']}」＝库名「{x['target_name']}」"
         e['target'] = tg; n += 1; print(vol, x['entity'], x['text'], '→', x['target_name'], x['target_id'])
-    st = en['stats']
+    st = {}
     st['matched'] = sum(1 for e in en['entities'] if e['target'].get('status') == 'matched')
     st['new_candidates'] = sum(1 for e in en['entities'] if e['target'].get('status') == 'new_candidate')
     print(vol, '改', n, 'matched', st['matched'], 'new_candidates', st['new_candidates'])

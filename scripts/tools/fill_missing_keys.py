@@ -51,8 +51,8 @@ def process_file(path: str, apply: bool, exclude_work_ids: set[str]):
     added_work_id = 0
     added_content = 0
     for sec in data.get("sections", []):
-        if sec.get("type") == "book" and "work_id" not in sec:
-            sec["work_id"] = None
+        if sec.get("type") == "book" and "work_ids" not in sec and "work_id" not in sec:
+            sec["work_ids"] = []  # 明确未链（2026-11 起只写 work_ids）
             added_work_id += 1
         if not exempt_content and "content" not in sec:
             sec["content"] = ""

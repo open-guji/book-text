@@ -70,9 +70,10 @@ out['#12 has_json 缺'] = hj_missing; out['#10 juan_groups 旧路径'] = jg_old
 st_bad, nc_dup = 0, 0
 for ep in root.glob('Book/*/*/*/96mid1ogzk/default/*.entity.json'):
     e = json.loads(ep.read_text()); s = e.get('stats', {})
-    if 'ambiguous' not in s: st_bad += 1
     amb = sum(1 for x in e['entities'] if x.get('target', {}).get('status') == 'ambiguous')
-    if s.get('ambiguous') != amb: st_bad += 1
+    if s:  # stats 已于 2026-11 停用（F-OV-17），有才核
+        if 'ambiguous' not in s: st_bad += 1
+        if s.get('ambiguous') != amb: st_bad += 1
     nc_dup += sum(1 for x in e['entities'] if x.get('target', {}).get('status') == 'new_candidate'
                   and '待消歧' in json.dumps(x.get('target'), ensure_ascii=False))
     if '/v0.2' not in e.get('$schema', '') and 'v0.2' not in e.get('$schema', ''): st_bad += 1

@@ -245,9 +245,8 @@ class Cli(unittest.TestCase):
             self.assertEqual(ep.main([p, '-o', out, '--log', log]), 0)
             with open(out) as f:
                 o = json.load(f)
-            self.assertEqual(o['stats']['total_entities'], 2)
-            self.assertEqual(o['stats']['people'], 1)
-            self.assertEqual(o['stats']['dynasties'], 1)
+            self.assertNotIn('stats', o)  # F-OV-17：不写统计
+            self.assertEqual(len(o['entities']), 2)
             with open(log) as f:
                 rows = f.read().splitlines()
             self.assertEqual(rows[0], 'rule\tentity_id\taction\tbefore\tafter')

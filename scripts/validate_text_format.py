@@ -815,6 +815,7 @@ ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file", "fig_file",
                         "pending_file", "lines_file", "rich_file")
+CE_CHAPTER_TOP_KEYS = ("title", "sections", "meta")
 FR_REQUIRED_FIELDS = [
     "ai_note", "based_on", "collectors", "coverage", "fragments", "loss_status",
     "provenance", "provenance_note", "schema_ref", "schema_version", "statement",
@@ -977,6 +978,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
         if err:
             add(r_ce06, f, f"{f}: JSON 解析失败：{err}", sub="parse")
             continue
+        for m, sub in collated_chapter_problems(d):
+            add(r_ce06, f, f"{f}{m}", sub=sub)
         for idx, s in enumerate(d.get("sections", []) if isinstance(d, dict) else []):
             if not isinstance(s, dict):
                 add(r_ce06, f, f"{f}#sections[{idx}]: 不是 dict", sub=idx)
@@ -989,8 +992,6 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 add(r_ce06, f, f"{f}#sections[{idx}]: 缺 level", sub=idx)
             if wid not in SEC_CONTENT_EXCEPTION_WORKS and "content" not in s:
                 add(r_ce06, f, f"{f}#sections[{idx}]: 缺 content（非登记的存量例外 Work）", sub=idx)
-            if s.get("type") == "book" and "work_id" not in s:
-                add(r_ce06, f, f"{f}#sections[{idx}]: type=book 但缺 work_id 键", sub=idx)
             # 下划线证据字段 2026-11 收进 section 的 evidence（guji-format 07 §4.2），顶层不再写
             us = sorted(k for k in s if k.startswith("_"))
             if us:
@@ -1548,6 +1549,32 @@ def init_baseline(baseline_path, current_keys):
 # 让 --path 指到任意子树都能直接复用同一套规则）
 # ---------------------------------------------------------------------------
 
+
+def collated_chapter_problems(d):
+    """整理本章 json 的 2026-11 新写法（guji-format 07；schema 审查第 11 组）。返回 [(说明, sub)]，说明以 ': ' 或 '#sections[i]: ' 开头。
+    - 章顶层只留 title、sections、meta，其余一次性键收进 meta；
+    - section 链到的 Work 只写 work_ids 列表（[]＝明确未链），不再写 work_id；type=book 必须有 work_ids 键。"""
+    out = []
+    if not isinstance(d, dict) or not isinstance(d.get("sections"), list):
+        return out
+    extra = sorted(k for k in d if k not in CE_CHAPTER_TOP_KEYS)
+    if extra:
+        out.append((f": 章顶层只留 title／sections／meta，{extra} 应收进 meta", "top"))
+    if "meta" in d and not isinstance(d["meta"], dict):
+        out.append((": meta 须是对象", "meta"))
+    for idx, s in enumerate(d["sections"]):
+        if not isinstance(s, dict):
+            continue
+        if "work_id" in s:
+            out.append((f"#sections[{idx}]: work_id 应改写为 work_ids 列表", f"{idx}:work_id"))
+        if "work_ids" in s:
+            w = s["work_ids"]
+            if not isinstance(w, list) or not all(isinstance(x, str) and x for x in w):
+                out.append((f"#sections[{idx}]: work_ids 须是 id 字符串列表", f"{idx}:work_ids"))
+        elif s.get("type") == "book" and "work_id" not in s:
+            out.append((f"#sections[{idx}]: type=book 但缺 work_ids 键", idx))
+    return out
+
 def _work_id_from_path(path):
     """从 .../Work/<c1>/<c2>/<c3>/<work_id>/<key>/... 里取 work_id。"""
     parts = os.path.normpath(path).split(os.sep)
@@ -1695,7 +1722,7 @@ def _build_bad_sample(root):
     _write_json(os.path.join(bad_dir, "001.json"), {
         "title": "卷一",
         "sections": [
-            {"level": 2, "type": "book"},                     # 缺 title/content/work_id
+            {"level": 2, "type": "book"},                     # 缺 title/content/work_ids
             {"title": "x", "level": 2, "type": "category", "content": "y", "_tmp": 1},  # 下划线字段
         ],
     })
@@ -1785,7 +1812,7 @@ def selftest():
             "F-CE-03": 1,  # badtype type 不在枚举内
             "F-CE-04": 1,  # badwork text_quality 非 dict
             "F-CE-04b": 1,  # badplaceholder type=placeholder 但 grade!=placeholder
-            "F-CE-06": 3,  # badwork juan：section0 缺 title/content/work_id 三项（section1 的下划线字段不计，09-27 定）
+            "F-CE-06": 3,  # badwork juan：section0 缺 title/content/work_ids 三项（section1 的下划线字段不计，09-27 定）
             "F-MD-03": 1,  # badwork 〔 未闭合（跨行，按行计每行各算一次，此处两行各差 1）
             "F-MD-07": 1,  # badwork 标题从 # 跳到 ###
             "F-FT-01": 2,  # 缺字段 1 处 + 章节命名不合规 1 处
@@ -1853,7 +1880,7 @@ def selftest():
         _write_json(os.path.join(root, "Work", "b", "a", "d", "badwork", "default", "001.json"), {
             "title": "卷一",
             "sections": [
-                {"title": "y", "level": 2, "type": "book", "content": "z", "work_id": None},
+                {"title": "y", "level": 2, "type": "book", "content": "z", "work_ids": []},
                 {"title": "x", "level": 2, "type": "category", "content": "y"},
             ],
         })

@@ -60,7 +60,7 @@ index/                          本倉之索引分片
 
 | 方向 | 欄位 |
 |---|---|
-| 文本 → 元資料 | 整理本 `section.work_id` / `work_ids` / `book_id` / `collection_id` / `target_bid`；輯佚 `work_id`、`collectors[].work_id`、`based_on[].source_bid` |
+| 文本 → 元資料 | 整理本 `section.work_ids`（2026-11 起不再寫 `work_id`） / `book_id` / `collection_id` / `target_bid`；輯佚 `work_id`、`collectors[].work_id`、`based_on[].source_bid` |
 | 元資料 → 文本 | `Work._has_collated`（**唯一真指本地目錄之派生欄**） |
 
 > **`_has_text` 與 `_has_image` 不指本倉。** 二欄由 `resources[].types` 推得，

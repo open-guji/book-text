@@ -96,6 +96,8 @@
    〔原文：新入库禁止，存量允许，随整理自然清。〕**现存下划线字段经 T6 逐一核实均为证据／存查字段，非过程噪音**
    （见下方 T6 定性小节）；整理改版时可迁为正式字段（如 `parse_evidence`），**不得直接删**。
 
+> **2026-11 更新**（schema 审查第 11 组，guji-format 07）：第 2 条改为 `type=book` 必有 `work_ids` 键（列表，`[]`＝明确未链），不再写 `work_id`（存量 1,775 份章 json 已由 `scripts/tools/migrate_format_g11.py --part 2` 迁完：`work_id: null` → `[]`，两者都有取并集、`work_id` 排第一）；第 3 条的下划线字段已收进 section 的 `evidence`（键名去掉前导下划线），顶层不再许写；另加一条：章顶层只留 `title`／`sections`／`meta`，其余一次性键（`page_title`、`source_url`、`source_juan`、`ai_note`、`updated_at`……）收进 `meta`。校验见 `validate_text_format.collated_chapter_problems`（`scripts/tests/test_collated_g11.py`）。
+
 **理由**：`title`／`type` 两键现状已 100% 覆盖，收口零成本；`level`／`content`／`work_id`
 键缺失会让下游按统一 schema 读取时缺键报错或需要额外判空；下划线字段是过程注记，
 留在最终产物里容易被误当成正式字段读取。

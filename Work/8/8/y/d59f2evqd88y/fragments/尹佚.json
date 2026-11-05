@@ -20,6 +20,11 @@
       "source": "本庫著錄之描述",
       "source_bid": null,
       "field": "description"
+    },
+    {
+      "source": "玉函山房輯佚書",
+      "source_bid": "d59f2mua7w8y",
+      "field": "collated_edition"
     }
   ],
   "collectors": [
@@ -30,13 +35,23 @@
       "count_unit": null,
       "statement": null,
       "basis": "本庫著錄之描述",
-      "note": "輯家之名見於本庫 work 之描述，考證未及輯本序，條數未詳。",
-      "work_id": "d59f2mua7w8y"
+      "note": "輯家之名見於本庫 work 之描述，考證未及輯本序，條數未詳。　目錄層另據《玉函山房輯佚書》目錄：玉函山房輯佚書目錄（光緒九年長沙嫏嬛館補校刊本）著錄本書；所輯條數、佚文出處目錄不載。",
+      "work_id": "d59f2mua7w8y",
+      "sections": [
+        {
+          "file": "子編·墨家類.json",
+          "index": 0,
+          "title": "史佚書一卷",
+          "part": "main",
+          "juan_no": 72,
+          "lei": "墨家類"
+        }
+      ]
     }
   ],
   "cited_in_summary": [],
   "cited_in_summary_note": "resolved 為假者，謂該處之佚文尚未析出為 fragments 之條目；得文本後逐條析出，乃改為真。",
   "fragments": [],
-  "ai_note": "本檔自本庫 work 之描述生成。前批之生成閘門只讀考證，故凡輯本之據只見於描述者一部未立，今補之。collectors 之 basis 一律為「本庫著錄之描述」，statement 留空——描述述其有輯本而不錄其序。　loss_status 由中文值「全佚」遷為枚舉 lost（見 SCHEMA「loss_status 枚舉」）。",
+  "ai_note": "本檔自本庫 work 之描述生成。前批之生成閘門只讀考證，故凡輯本之據只見於描述者一部未立，今補之。collectors 之 basis 一律為「本庫著錄之描述」，statement 留空——描述述其有輯本而不錄其序。　loss_status 由中文值「全佚」遷為枚舉 lost（見 SCHEMA「loss_status 枚舉」）。　並檔（2026-11-05）：原另有目錄型輯佚檔「史佚書」（據《玉函山房輯佚書》目錄補立，與本檔同繫本書、同輯家馬國翰，內容為同一事實的兩種著錄），已併入本檔 collectors[].sections，原檔刪去；其 _dead_owner_note（舊 Work id 已並）隨之作廢。",
   "schema_ref": "SCHEMA.md#輯佚檔fragments"
 }

@@ -8,7 +8,7 @@
     python3 scripts/progress/push_punct_progress.py            # 只打印，不写库
     python3 scripts/progress/push_punct_progress.py --apply    # 写库
 
-连库：NEON_DATABASE_URL（正式库 main）或 GUJI_DATA_PG_DSN，经 open_guji_cv 的 connect（云会话自动起 443 桥）；
+连库：NEON_DATABASE_URL（正式库 main）或 GUJI_DATA_PG_DSN，经 guji_manager 的 connect（云会话自动起 443 桥）；
 用 /opt/guji-venv/bin/python 跑。凭据只从环境变量取，不进仓。
 """
 import argparse
@@ -68,7 +68,7 @@ def main():
     if not a.apply:
         print("（未写库；加 --apply）")
         return
-    from open_guji_cv.datastore.connect import connect
+    from guji_manager.datastore.connect import connect
     with connect() as conn:
         for vol, fields in rows:
             conn.execute("SELECT progress.put_volume(%s, %s, %s::jsonb, %s)",

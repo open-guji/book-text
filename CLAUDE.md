@@ -3,7 +3,7 @@
 古籍全文数据仓。数据的格式规范、判准、脚本和任务卡现分布如下（2026-10-15 起 overview 拆空）：
 - 任务：Jira（项目 GUJI），标签 `项目-X`；
 - 规划：`open-guji-core/ai-team` 的 `team/文本/`（目标、队列、台账）；
-- 格式与判准：本仓 `docs/`（索引见 `docs/INDEX.md`：`docs/design/` 规范与设计、`docs/专名/` 专名判准与建档记录、`docs/reports/` 报告）；
+- 格式与判准：本仓 `docs/`（索引见 `docs/INDEX.md`：`docs/design/` 规范与设计、`docs/专名/` 专名判准与规则、`docs/reports/` 长期报告与换图源迁移清单）；
 - 脚本：本仓 `scripts/`（见 `scripts/README.md`）；抓取脚本 `scripts/fetch-book-fulltext/` 仍在 overview 根，待迁。
 
 仓根 `scripts/`、`.claude-inbox/` 不属数据，不要当数据目录处理。

@@ -179,7 +179,7 @@ def main():
         "book_id": BOOK,
         "chapters": out_chapters,
         "source": {"name": "殆知阁・文淵閣四庫全書", "url": "https://sikuquanshu.daizhige.org/",
-                   "license": "公有領域（底本）；電子版轉錄之授權站方未標示，待核",
+                   "license": "来自网络，版权未知",
                    "base_edition": "文淵閣四庫全書", "files": "data/0001-0005.jsonl"},
         "total_chapters": len(out_chapters),
         "text_quality": {"grade": "source"},

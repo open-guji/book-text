@@ -12,6 +12,7 @@
   V1  validate-collated（全仓，2 秒；只允许存量 d59f1iqd854w/default/108.md）
   V3  check_license（全仓，1 秒）
   索引  重建 index/texts 后工作区不应多出未提交的改动（有就先 git add／提交）
+  锚点  check_anchor_drift.py：char 改动后，rule:* 断点／标题仍留在旧格号上则失败
   出处  格变动出处（check_cell_provenance.py，只告警）：char 里有格变了，CHANGES 新增行要有意见 id／事件 id／r 号／GUJI 卡号
 没做：manifest／index 的 schema 校验（需要 guji-format 副本）、pin-drift、单元测试；这几项仍可手动跑，或随夜间全量 CI 兜底。
 退出码 0 = 全过，1 = 有不通过项。
@@ -89,6 +90,13 @@ def main():
 
     r = sh(PY, "scripts/check_license.py", ".")
     report("V3 授权串", r.returncode == 0, "" if r.returncode == 0 else r.stdout[-500:])
+
+    # 锚点漂移（2026-11-07，第31册补字后断点错位事件）：char 增删字后，旧锚点上的断点／标题没跟着挪就失败
+    if not args.all:
+        r = sh(PY, "scripts/check_anchor_drift.py", "--base", args.base)
+        print(r.stdout.rstrip())
+        report("锚点漂移（断点／标题随改字挪位）", r.returncode == 0,
+               "" if r.returncode == 0 else "见上；确认是误报（如旧列尾重复字）时在提交说明里写明")
 
     if args.dev:
         print("跳过  索引 index/texts（dev 上不提交，每日合并时重建）")

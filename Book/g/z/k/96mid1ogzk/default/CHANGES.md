@@ -4353,3 +4353,4 @@
 | 2026-11-08 | 96mid1ogzk/008 | 文本 | 0.4.2→0.5.0 | vol08 待审单 008-r5 换新图（Commons rev4，★main 包 cv0.6.20-c20-g10-v0119i）：char／cord／norm 整册替换，含增删格，标点专名锚点待 A33 平移 | #TBD |
 | 2026-11-08 | 96mid1ogzk/009 | 文本 | 0.4.4→0.5.0 | vol09 待审单 009-r6 换新图（Commons rev4，★main 包 cv0.6.20-c20-g11-v0119j）：char／cord／norm 整册替换，含增删格，标点专名锚点待 A33 平移 | #TBD |
 | 2026-11-08 | 96mid1ogzk/010 | 文本 | 0.4.2→0.5.0 | vol10 待审单 010-r5 换新图（Commons rev4，★main 包 cv0.6.20-c20-g10-v0119i）：char／cord／norm 整册替换，含增删格，标点专名锚点待 A33 平移 | #TBD |
+| 2026-11-08 | 96mid1ogzk/011 | 文本 | 0.9.1→0.10.0 | vol11 待审单 011-r8 换新图（Commons rev4，★main 包 cv0.6.20-c24-g19-v0119i）：char／cord／norm 整册替换，含增删格，标点专名锚点待 A33 平移 | #TBD |

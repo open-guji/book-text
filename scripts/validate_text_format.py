@@ -267,7 +267,7 @@ FT_CHAPTER_NAME_RE = re.compile(r"^\d+\.(md|json)$")  # 章文件 NNN.md，可�
 # T30（Kanripo 方案 B，line_is_column）新增旁档：叶码精确到列，另存 pages.tsv，
 # 不是章节 md，不该被「章节文件名不符 N.md」误判。任务书原话「不要改数据迁就规则」，
 # 但此处不是改数据、是给规则本身补一个此前没设计到的合法文件名，故直接放行。
-FT_SIDECAR_FILES = {"index.json", "pages.tsv"}
+FT_SIDECAR_FILES = {"index.json", "pages.tsv", "subst.tsv"}  # subst.tsv：光盤本私用碼/以圖代字換字清單（96mid1ogzk/wyg-cd）
 # original（本项目从书影自做的文本）一册一组（book-text docs/ORIGINAL.md，10-06 用户定）：
 # 真源 NNN.char／cord／punct／entity／norm／decision.json，生成分支上另有 lines.md、rich.md；
 # 以及版本日志 CHANGES.md。

@@ -269,82 +269,9 @@ FT_CHAPTER_NAME_RE = re.compile(r"^\d+\.(md|json)$")  # 章文件 NNN.md，可�
 # 但此处不是改数据、是给规则本身补一个此前没设计到的合法文件名，故直接放行。
 FT_SIDECAR_FILES = {"index.json", "pages.tsv", "subst.tsv"}  # subst.tsv：光盤本私用碼/以圖代字換字清單（96mid1ogzk/wyg-cd）
 # original（本项目从书影自做的文本）一册一组（book-text docs/ORIGINAL.md，10-06 用户定）：
-# 真源 NNN.char／cord／punct／entity／norm／decision.json，生成分支上另有 lines.md、rich.md；
+# 真源 NNN.char／cord／punct／entity／norm.json，生成分支上另有 lines.md、rich.md；
 # 以及版本日志 CHANGES.md。
-DECISION_SCHEMA_URL = "https://open-guji.org/schema/decision/v0.1.json"
-DECISION_SCHEMA_URL_V02 = "https://open-guji.org/schema/decision/v0.2.json"
-DECISION_V02_KEYS = ("reason", "route", "route_ref")
-DECISION_REASONS = ("unclear", "seg_bad", "seg_recut", "seg_missing_page")
-DECISION_ROUTES = ("recut", "list", "add_page")
-
-
-def decision_problems(dd, char):
-    """F-OV-05：decision.json 对照同章 char，返回 [(说明, 子类)]。"""
-    out = []
-    schema = dd.get("$schema")
-    if schema not in (DECISION_SCHEMA_URL, DECISION_SCHEMA_URL_V02):
-        out.append((f"$schema={schema!r}，应为 {DECISION_SCHEMA_URL!r} 或 {DECISION_SCHEMA_URL_V02!r}", "schema"))
-    if dd.get("book_id") != char.get("book_id"):
-        out.append((f"book_id={dd.get('book_id')!r} 与 char 的 {char.get('book_id')!r} 不一致", "book_id"))
-    if dd.get("volume") != char.get("volume") or isinstance(dd.get("volume"), bool):
-        out.append((f"volume={dd.get('volume')!r} 与 char 的 {char.get('volume')!r} 不一致", "volume"))
-    items = dd.get("items")
-    if not isinstance(items, list):
-        return out + [("items 不是数组", "items")]
-    cells = dict(OV.char_slots(char))
-    seen = set()
-    for i, it in enumerate(items):
-        if not isinstance(it, dict):
-            out.append((f"items[{i}] 不是对象", f"{i}:type"))
-            continue
-        cell, cur = it.get("cell"), it.get("current")
-        tag = f"items[{i}]({cell})"
-        if cell not in cells:
-            out.append((f"{tag} 格位在 char 里不存在", f"{i}:cell"))
-        elif cur != cells[cell]:
-            out.append((f"{tag} current={cur!r} 与 char 该格的 {cells[cell]!r} 不一致", f"{i}:current"))
-        if cell in seen:
-            out.append((f"{tag} 同一格位出现多条", f"{i}:dup"))
-        seen.add(cell)
-        if it.get("kind") not in ("uncertain", "variant"):
-            out.append((f"{tag} kind={it.get('kind')!r} 不合法", f"{i}:kind"))
-        st = it.get("status")
-        if st not in ("open", "resolved", "rejected"):
-            out.append((f"{tag} status={st!r} 不合法", f"{i}:status"))
-        cands = it.get("cands")
-        if not isinstance(cands, list) or not cands or len(cands) > 5:
-            out.append((f"{tag} cands 须为 1–5 项的数组", f"{i}:cands"))
-            cands = []
-        for j, c in enumerate(cands):
-            if not isinstance(c, dict) or not c.get("text") or not c.get("src"):
-                out.append((f"{tag} cands[{j}] 缺 text／src", f"{i}:cand{j}"))
-            elif c["text"] == cur:
-                out.append((f"{tag} cands[{j}].text 等于 current", f"{i}:cand{j}:same"))
-        if st == "resolved" and any(isinstance(c, dict) and c.get("text") == cur for c in cands):
-            out.append((f"{tag} 已裁（resolved）但 current 仍在 cands 里", f"{i}:resolved"))
-        if st in ("resolved", "rejected") and it.get("by") not in ("human", "rule"):
-            out.append((f"{tag} {st} 须写 by（human／rule），现为 {it.get('by')!r}", f"{i}:by"))
-        # v0.2：reason／route／route_ref（guji-format 08 §3.4）
-        if schema == DECISION_SCHEMA_URL:
-            for k in DECISION_V02_KEYS:
-                if k in it:
-                    out.append((f"{tag} 带 {k}，这是 v0.2 才有的键，$schema 应写 {DECISION_SCHEMA_URL_V02!r}", f"{i}:{k}:v01"))
-            continue
-        reason, route, ref = it.get("reason"), it.get("route"), it.get("route_ref")
-        if "reason" in it and reason not in DECISION_REASONS:
-            out.append((f"{tag} reason={reason!r} 不合法（unclear／seg_bad／seg_recut／seg_missing_page）", f"{i}:reason"))
-        if "route" in it and route not in DECISION_ROUTES:
-            out.append((f"{tag} route={route!r} 不合法（recut／list／add_page）", f"{i}:route"))
-        if "route_ref" in it and (not isinstance(ref, str) or not ref):
-            out.append((f"{tag} route_ref={ref!r} 应为非空字符串", f"{i}:route_ref"))
-        if isinstance(reason, str) and reason.startswith("seg_") and "route" not in it:
-            out.append((f"{tag} reason={reason} 是切分问题，须带 route", f"{i}:route:missing"))
-        if "route" in it and reason in (None, "unclear"):
-            out.append((f"{tag} reason 缺省或 unclear 时不得带 route", f"{i}:route:unexpected"))
-        if "route_ref" in it and "route" not in it:
-            out.append((f"{tag} route_ref 须与 route 同在", f"{i}:route_ref:alone"))
-    return out
-
+# decision.json（候选字层）2026-11-09 sheldon 定废弃：候选、待审信息只在中心库待审单／网站 KV，见 F-OV-05。
 
 
 # ---- F-OV-13 图片格与插图块（guji-format 09 guji-fig v0.1、02 §4.7、01 §3.6；GUJI-737／739）----
@@ -406,39 +333,32 @@ def _outer_box(boxes):
     return [x0, y0, x1 - x0, y1 - y0]
 
 
-# ---- F-OV-16 待审格（guji-format 02 §4.8，char v0.4；sheldon 2026-11-03 定）----
-PENDING_REASON_RE = re.compile(r"^[a-z][a-z0-9_]*$")
+# ---- F-OV-16 char 只录首选字（sheldon 2026-11-09 定，取代 11-03 的 char v0.4 pending_reason）----
+# 待审格与其他格看起来一样：c 就是首选字；待审原因、候选、人裁只在中心库待审单／网站 KV。□ 只给真阙文。
 PENDING_REASONS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pending_reasons.json")
-PENDING_CELL_FORBIDDEN = ("lacuna", "guess_c", "fig")
 
 
 def pending_reasons():
-    """码表副本里的原因英文名（真源 open-guji-cv review/pending_reasons.yaml）。"""
+    """码表副本里的原因英文名（真源 guji-manager review/pending_reasons.yaml）；book-text 自己不再用，留给别的脚本。"""
     with open(PENDING_REASONS_FILE, encoding="utf-8") as fh:
         return set(json.load(fh)["reasons"])
 
 
 def pending_reason_problems(char, known=None):
-    """F-OV-16：char 里带 pending_reason 的格，返回 [(说明, 子类)]。
-    取值须在码表里（推不出写 unknown）、不与 lacuna／guess_c／fig 同在；用了它的 char $schema 须为 v0.4。"""
-    known = pending_reasons() if known is None else known
+    """F-OV-16：char 里不许有 pending_reason，`$schema` 不许是 v0.4，返回 [(说明, 子类)]。"""
     out, n = [], 0
     for pg in char.get("pages") or []:
         for col in pg.get("columns") or []:
             for c in (col.get("cells") or []) if isinstance(col, dict) else []:
-                if not isinstance(c, dict) or "pending_reason" not in c:
-                    continue
-                n += 1
-                a, v = c.get("a"), c.get("pending_reason")
-                if not isinstance(v, str) or not PENDING_REASON_RE.match(v):
-                    out.append((f"格 {a} pending_reason={v!r} 不合 ^[a-z][a-z0-9_]*$", f"cell:{a}:shape"))
-                elif v not in known:
-                    out.append((f"格 {a} pending_reason={v!r} 不在码表里（scripts/pending_reasons.json；推不出写 unknown）", f"cell:{a}:unknown_value"))
-                bad = [k for k in PENDING_CELL_FORBIDDEN if k in c]
-                if bad:
-                    out.append((f"格 {a} 是待审格，不许带 {'、'.join(bad)}（lacuna 只给审定的阙文）", f"cell:{a}:mixed"))
-    if n and char.get("$schema") != CHAR_SCHEMA_URL_V04:
-        out.append((f"char 有 {n} 个待审格（pending_reason），$schema 应为 {CHAR_SCHEMA_URL_V04!r}，现为 {char.get('$schema')!r}", "char_schema"))
+                if isinstance(c, dict) and "pending_reason" in c:
+                    n += 1
+                    if n <= 5:
+                        out.append((f"格 {c.get('a')} 带 pending_reason：book-text 只录首选字，待审信息放中心库待审单"
+                                    f"（sheldon 11-09；导出用 guji-manager ≥ apply_pending 新版）", f"cell:{c.get('a')}"))
+    if n > 5:
+        out.append((f"另有 {n - 5} 格带 pending_reason", "more"))
+    if char.get("$schema") == CHAR_SCHEMA_URL_V04:
+        out.append((f"$schema 不再用 v0.4（{CHAR_SCHEMA_URL_V04}），按实际写法取 v0.1／v0.2／v0.3", "char_schema"))
     return out
 
 
@@ -810,7 +730,7 @@ def pointer_assets(ptr, pd, fetch, book=None, stem=None):
 
 
 ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig"}  # fig/：图片目录（F-OV-13）
-ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|decision|fig|pending|char-edits)\.json$|^\d+\.(lines|rich)\.md$")
+ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|fig|pending|char-edits)\.json$|^\d+\.(lines|rich)\.md$")
 # NNN.char-edits.json（改字清单）是旁路文件：不在 index.json 声明，见 F-OV-15
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）
 ORIGINAL_FILE_FIELDS = ("char_file", "cord_file", "punct_file", "entity_file", "norm_file", "decision_file", "fig_file",
@@ -1120,10 +1040,7 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     r_ov02 = rule("F-OV-02", "HARD")
     r_ov03 = rule("F-OV-03", "HARD")
     r_ov04 = rule("F-OV-04", "HARD")
-    # F-OV-05 decision 候选字层（guji-format 08 §七）：$schema、book_id／volume 与 char 一致；
-    #         每条 cell 在 char 里存在且只出现一次，current 等于 char 该格的字；kind／status 取值合法；
-    #         cands 非空（≤5）、每项有 text／src、text 不等于 current；resolved 时 current 不在 cands 里；
-    #         resolved／rejected 必带 by（human／rule）。
+    # F-OV-05 decision.json 已废弃（sheldon 2026-11-09）：章条目不许再声明 decision_file，文件也不许出现（F-OV-04 报未知文件）。
     r_ov05 = rule("F-OV-05", "HARD")
     # F-OV-06 校对状态开关（GUJI-543）：章条目的 proofing 只能是布尔；文本线 major＝0（粗校完、
     #         精校未完）时必须 proofing: true；major≥1 时可写 true（补走精校）或不写／false。
@@ -1265,15 +1182,10 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                 add(r_ov01, f, f"{f}: 册 {stem} text_version={ch.get('text_version')!r} 与 {os.path.basename(char_path)} 的 version={tv!r} 不一致",
                     sub=f"{stem}:text:mirror")
             dec_name = ch.get("decision_file")
-            if dec_name and os.path.isfile(os.path.join(od, dec_name)):
-                r_ov05["n_scanned"] += 1
-                dpath = os.path.join(od, dec_name)
-                dd, derr = jload(dpath)
-                if derr or not isinstance(dd, dict):
-                    add(r_ov05, dpath, f"{dpath}: JSON 解析失败：{derr}", sub="parse")
-                else:
-                    for msg, sub in decision_problems(dd, char):
-                        add(r_ov05, dpath, f"{dpath}: {msg}", sub=sub)
+            r_ov05["n_scanned"] += 1
+            if dec_name:
+                add(r_ov05, f, f"{f}: 册 {stem} 声明了 decision_file={dec_name!r}：decision.json 已废弃（sheldon 11-09），删掉文件和这一项",
+                    sub=f"{stem}:decision")
             r_ov13["n_scanned"] += 1
             fig_name = ch.get("fig_file")
             fpath = os.path.join(od, fig_name) if fig_name else None

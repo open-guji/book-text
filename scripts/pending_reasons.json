@@ -1,5 +1,5 @@
 {
- "_note": "待审原因码表副本（只取英文名与名称）。真源 open-guji-cv open_guji_cv/review/pending_reasons.yaml；导出 python -m open_guji_cv.review.pending_reason --json。改码表请改 cv，再照此重新生成。",
+ "_note": "待审原因码表副本（只取英文名与名称）。真源 guji-manager guji_manager/review/pending_reasons.yaml；导出 python -m guji_manager.review.pending_reason --json。改码表请改 cv，再照此重新生成。",
  "version": 1,
  "reasons": {
   "seg_page_unaligned": "整页对不上",
@@ -31,6 +31,9 @@
   "vision_flagged": "看图觉得不对",
   "machine_changed": "机器改了字",
   "recheck": "复审",
+  "anchor_miss": "标点专名要重挂",
+  "add_del": "增删格处重挂",
+  "anchor_drift": "标点位置存疑",
   "unknown": "原因不明",
   "ref_ocr_diff": "识别字与参校本不同",
   "ref_final_diff": "定字与参校本不同",

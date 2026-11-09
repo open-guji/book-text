@@ -4517,3 +4517,4 @@
 | 2026-11-09 | 96mid1ogzk/019 | 实体 | 0.2.12→0.2.13 | 按 book-index merged_into 改挂实体 id（沈𡹘→沈啟／許珍并入／顧斌質夫→hixiklzfge80），逐处核过 | #TBD |
 | 2026-11-09 | 96mid1ogzk/037 | 实体 | 0.4.21→0.4.22 | 按 book-index merged_into 改挂实体 id（沈𡹘→沈啟／許珍并入／顧斌質夫→hixiklzfge80），逐处核过 | #TBD |
 | 2026-11-09 | 96mid1ogzk/047 | 实体 | 0.4.24→0.4.25 | 按 book-index merged_into 改挂实体 id（沈𡹘→沈啟／許珍并入／顧斌質夫→hixiklzfge80），逐处核过 | #TBD |
+| 2026-11-09 | 96mid1ogzk/002 | 文本 | 1.3.0→1.4.0 | vol02 换 r9c 新包（cv0.6.29 g21）；181:1:4/5 复审 | #TBD |

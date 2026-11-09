@@ -31,6 +31,7 @@ sys.path.insert(0, os.path.join(HERE, ".."))
 import original_version as OV  # noqa: E402
 
 KEEP = ("同格", "改号")
+IOU_MIN = 0.5  # 同格改字放行的 IoU 下限（低于它的同格仍按旧规矩校验）
 
 
 def _strip(a):
@@ -72,9 +73,27 @@ def build_map(rows):
     return m, {"mapped": len(m), "recovered": rec, "deleted": len(dele) - rec, "added": len(add)}
 
 
-def remap(vdir, chapter, rows, dry_run=False, out=None):
+def same_cells(rows, thr=IOU_MIN):
+    """同格（格号不变）且框 IoU≥thr 的旧格集合。只有这些格上的字变才允许放行。"""
+    ok = set()
+    for r in rows:
+        if r.get("类别") != "同格":
+            continue
+        try:
+            iou = float(r.get("IoU") or 0)
+        except ValueError:
+            iou = 0.0
+        if iou >= thr:
+            ok.add(_strip(r.get("旧格", "")))
+    return ok
+
+
+def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IOU_MIN):
+    """refresh=True：同格（IoU≥iou_min）改字时放行——标点刷新 pre_char，专名刷新 text 并记入复核；
+    改号、IoU 低的格仍严格校验。原因码：ADD_DEL 删除格／ANCHOR_MISS 其余。"""
     out = out or sys.stdout
     m, st = build_map(rows)
+    same_ok = same_cells(rows, iou_min) if refresh else set()
     char = OV.load_json(os.path.join(vdir, f"{chapter}.char.json"))
     slots = OV.char_slots(char)
     pos = {a: i for i, (a, _c) in enumerate(slots)}
@@ -94,10 +113,15 @@ def remap(vdir, chapter, rows, dry_run=False, out=None):
             elif n not in pos:
                 why = f"新格 {n} 不在新文本里"
             elif "pre_char" in p and slots[pos[n]][1] != p["pre_char"]:
-                why = f"校验字变了：{p['pre_char']}→{slots[pos[n]][1]}"
+                if a in same_ok and n == a:
+                    p["pre_char"] = slots[pos[n]][1]  # 同格改字：锚点不动，只刷新校验字
+                    res["refreshed"] = res.get("refreshed", 0) + 1
+                else:
+                    why = f"校验字变了：{p['pre_char']}→{slots[pos[n]][1]}"
             if why:
                 res["punct"][1] += 1
-                report.append(("punct", f"#{i}", a, n or "", repr(p.get("mark", ""))[1:-1], why))
+                code = "ADD_DEL" if "删除格" in why else "ANCHOR_MISS"
+                report.append(("punct", f"#{i}", a, n or "", repr(p.get("mark", ""))[1:-1], f"{code}｜{why}"))
                 continue
             p["anchor"], p["char_offset"] = n, pos[n]
             res["punct"][0] += 1
@@ -123,10 +147,17 @@ def remap(vdir, chapter, rows, dry_run=False, out=None):
                 if j < i or j - i + 1 != len(x.get("text", "")):
                     why = f"新格不连续或长度变了（{seg[:20]}）"
                 elif seg != x.get("text"):
-                    why = f"文字变了：{x.get('text')}→{seg}"
+                    if refresh and ns == s and nt == t and s in same_ok and t in same_ok:
+                        # 同格改字落在专名 span 内：放行，刷新 text，但必须进复核单
+                        report.append(("entity-复核", x.get("id", ""), f"{s}～{t}", f"{ns}～{nt}", x.get("text", ""),
+                                       f"SPAN_REWORD｜同格改字已放行，文字 {x.get('text')}→{seg}，请复核专名是否仍成立"))
+                        x["text"] = seg
+                    else:
+                        why = f"文字变了：{x.get('text')}→{seg}"
             if why:
                 res["entity"][1] += 1
-                report.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns or ''}～{nt or ''}", x.get("text", ""), why))
+                code = "ADD_DEL" if "删除格" in why else "ANCHOR_MISS"
+                report.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns or ''}～{nt or ''}", x.get("text", ""), f"{code}｜{why}"))
                 continue
             x["anchor"] = {"start": ns, "end": nt}
             if "span" in x:
@@ -135,7 +166,8 @@ def remap(vdir, chapter, rows, dry_run=False, out=None):
         if not dry_run:
             OV.dump_json(ef, data)
     print(f"{chapter}：对照表 对上 {st['mapped']} 格（其中删／新增配对补回 {st['recovered']}），删 {st['deleted']}、新增 {st['added']}；"
-          f"标点 改 {res['punct'][0]}、留待重标 {res['punct'][1]}；实体 改 {res['entity'][0]}、留待重标 {res['entity'][1]}", file=out)
+          f"标点 改 {res['punct'][0]}（其中同格改字刷新校验字 {res.get('refreshed', 0)}）、留待重标 {res['punct'][1]}；"
+          f"实体 改 {res['entity'][0]}、留待重标 {res['entity'][1]}、同格改字放行待复核 {sum(1 for r in report if r[0] == 'entity-复核')}", file=out)
     return res, report
 
 
@@ -143,11 +175,12 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("vdir")
     ap.add_argument("--chapter", required=True)
-    ap.add_argument("--cells", required=True, help="格级对照表 tsv（可 .gz）")
+    ap.add_argument("--cells", "--cell-map", dest="cells", required=True, help="格级对照表 tsv（可 .gz）")
+    ap.add_argument("--strict", action="store_true", help="不放行同格改字（校验字／文字变一律留待重标，旧行为）")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--report", help="留待重标的条目写到这个 tsv")
     a = ap.parse_args(argv)
-    _res, report = remap(a.vdir, a.chapter, load_cells(a.cells), a.dry_run)
+    _res, report = remap(a.vdir, a.chapter, load_cells(a.cells), a.dry_run, refresh=not a.strict)
     if a.report:
         with open(a.report, "w", encoding="utf-8") as f:
             f.write("层\t条目\t旧锚点\t新锚点\t内容\t原因\n")

@@ -48,3 +48,26 @@ def test_remap(tmp_path, capsys):
     assert E[0]["target"] == {"status": "matched", "entity_id": "x"} and E[0]["source"] == "human"
     assert E[1]["anchor"]["start"] == "3:1:3"
     assert {r[0] for r in report} == {"punct", "entity"} and any("校验字变了" in r[5] for r in report)
+
+
+def test_refresh_same_cell(tmp_path):
+    """同格（IoU≥0.5）改字：标点刷新 pre_char、专名刷新 text 并进复核；改号改字仍留待重标。"""
+    d = str(tmp_path)
+    dump(os.path.join(d, "001.char.json"), char([("1:1:1", "宋"), ("1:1:2", "濂"), ("1:1:3", "乙")]))
+    dump(os.path.join(d, "001.punct.json"), {"punctuations": [
+        {"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:2", "pre_char": "濓", "char_offset": 1},
+        {"mark": "。", "kind": "point", "pos": "after", "anchor": "9:1:3", "pre_char": "丙", "char_offset": 2}]})
+    dump(os.path.join(d, "001.entity.json"), {"entities": [
+        {"id": "e1", "type": "people", "text": "宋濓", "anchor": {"start": "1:1:1", "end": "1:1:2"},
+         "span": {"start_offset": 0, "end_offset": 2}, "target": {"status": "new_candidate"}}]})
+    mk = lambda o, n, oc, nc, k, iou: dict(row(o, n, oc, nc, k), IoU=iou)  # noqa: E731
+    rows = [mk("1:1:1", "1:1:1", "宋", "宋", "同格", "0.95"), mk("1:1:2", "1:1:2", "濓", "濂", "同格", "0.90"),
+            mk("9:1:3", "1:1:3", "丙", "乙", "改号", "0.90")]
+    res, report = RA.remap(d, "001", rows)
+    P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
+    assert P[0]["pre_char"] == "濂" and res["refreshed"] == 1
+    assert P[1]["anchor"] == "9:1:3"  # 改号改字仍严格
+    E = json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8"))["entities"]
+    assert E[0]["text"] == "宋濂"
+    assert any(r[0] == "entity-复核" and "SPAN_REWORD" in r[5] for r in report)
+    assert any(r[0] == "punct" and r[5].startswith("ANCHOR_MISS") for r in report)

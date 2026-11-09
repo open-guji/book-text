@@ -33,6 +33,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(HERE, ".."))
+sys.path.insert(0, HERE)
 
 
 def run(cmd, **kw):
@@ -127,6 +128,15 @@ def review_items(vdir, v, old, new):
     return out
 
 
+def find_cell_map(d, v):
+    n = int(v)
+    for nm in (f"old_new_cells_vol{n:02d}.tsv.gz", f"old_new_cells_vol{n:02d}.tsv", f"old_new_cells_vol{n}.tsv.gz", f"old_new_cells_vol{n}.tsv"):
+        f = os.path.join(d, nm)
+        if os.path.isfile(f):
+            return f
+    return None
+
+
 def vols(spec):
     a = []
     for part in spec.split(","):
@@ -147,9 +157,12 @@ def main():
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--review", help="复核单 tsv 输出路径")
     ap.add_argument("--source", default="claude:A33")
+    ap.add_argument("--cell-map", help="格级对照表目录（含 old_new_cells_volNN.tsv[.gz]）；有表的册先按表挪锚点（remap_anchors，"
+                    "同格改字放行并刷新校验字，改字落专名 span 的进复核单），挪不了的只报原因码、不改；无表的册走原流程")
+    ap.add_argument("--leftover", help="--cell-map 挪不了的条目 tsv 输出路径（层 条目 旧锚 新锚 内容 原因码｜说明）")
     a = ap.parse_args()
     vdir = os.path.abspath(a.vdir)
-    review, done = [], []
+    review, done, left = [], [], []
     for v in vols(a.vols):
         oc = old_char(a.base, vdir, v)
         nc = json.load(open(os.path.join(vdir, f"{v}.char.json")))
@@ -162,6 +175,17 @@ def main():
             continue
         review += review_items(vdir, v, oc, nc)
         if not a.write:
+            continue
+        cm = find_cell_map(a.cell_map, v) if a.cell_map else None
+        if cm:
+            import remap_anchors as RA
+            res, rep = RA.remap(vdir, v, RA.load_cells(cm))
+            left += [(v,) + r for r in rep if r[0] in ("punct", "entity")]
+            review += [("改字入专名（同格放行）", f"{v} {r[2]} {r[4]} {r[5]}") for r in rep if r[0] == "entity-复核"]
+            fx = fix_heading_breaks(vdir, v)
+            if fx:
+                print(f"   标题符／分段符位置修正 {fx} 处")
+            done.append(v)
             continue
         pr = os.path.join(HERE, "punct_redo.py")
         r = run([sys.executable, pr, "plan", vdir, "--chapter", v, "--old-char", f"git:{a.base}"])
@@ -191,6 +215,10 @@ def main():
         open(ch, "w").write(s)
         run([sys.executable, os.path.join(HERE, "build_texts_index.py"), "--root", ROOT])
         run(["git", "checkout", "origin/dev", "--", "index/texts"])
+    if a.leftover:
+        with open(a.leftover, "w") as f:
+            f.write("册\t层\t条目\t旧锚\t新锚\t内容\t原因码｜说明\n" + "".join("\t".join(x) + "\n" for x in left))
+        print(f"--cell-map 挪不了 {len(left)} 条 → {a.leftover}")
     if a.review:
         with open(a.review, "w") as f:
             f.write("类别\t说明\n" + "".join(f"{k}\t{d}\n" for k, d in review))

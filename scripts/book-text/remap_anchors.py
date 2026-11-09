@@ -130,29 +130,54 @@ def _reword_kind(slots, i, want, oldch):
     return None
 
 
+def remap_data(chapter, char, punct, entity, rows, refresh=True, iou_min=IOU_MIN):
+    """库函数：不读写文件。入参 char／punct／entity 是已读入的 json 对象（会被就地修改，调用方要保原件请先 deepcopy），
+    rows 是 load_cells() 的结果。返回 (res, report, moves)：
+    res＝计数；report＝分流条目 (层, 条目, 旧锚, 新锚, 内容, "原因码｜说明")，另含 层＝entity-复核 的放行待复核条；
+    moves＝实际改动清单 (层, 条目, 旧锚, 新锚, 动作)，动作 ∈ 挪格／同格刷新校验字／平移挪／专名刷新文字。
+    punct／entity 传 None 表示该线不处理。分流条目原样不动。"""
+    moves = []
+    res, report = _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves)
+    return res, report, moves
+
+
 def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IOU_MIN):
+    """文件版：读 vdir 里的 NNN.char/punct/entity.json，改完写回（dry_run 不写）。返回 (res, report)。"""
+    char = OV.load_json(os.path.join(vdir, f"{chapter}.char.json"))
+    pf, ef = OV.companion_path(vdir, chapter, "punct"), OV.companion_path(vdir, chapter, "entity")
+    punct = OV.load_json(pf) if os.path.isfile(pf) else None
+    entity = OV.load_json(ef) if os.path.isfile(ef) else None
+    res, report, _moves = remap_data(chapter, char, punct, entity, rows, refresh, iou_min)
+    if not dry_run:
+        if punct is not None:
+            OV.dump_json(pf, punct)
+        if entity is not None:
+            OV.dump_json(ef, entity)
+    print(_summary(chapter, res, report, rows), file=out or sys.stdout)
+    return res, report
+
+
+def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
     """refresh=True：同格（IoU≥iou_min）改字时放行——标点刷新 pre_char，专名刷新 text 并记入复核；
     改号、IoU 低的格仍严格校验。原因码：ADD_DEL 删除格／ANCHOR_MISS 其余。"""
-    out = out or sys.stdout
     m, st = build_map(rows)
     same_ok = same_cells(rows, iou_min) if refresh else set()
     # 新格 → 旧字（供平移检验：判断是单字替换还是列内文字整体平移）
     oldch = {_strip(r.get("新格", "")): r.get("旧字", "") for r in rows
              if r.get("新格") and r.get("旧字") and r.get("类别") in KEEP + ("删",)}
-    char = OV.load_json(os.path.join(vdir, f"{chapter}.char.json"))
     slots = OV.char_slots(char)
     pos = {a: i for i, (a, _c) in enumerate(slots)}
     report = []
     res = {"punct": [0, 0], "entity": [0, 0]}
-    pf = OV.companion_path(vdir, chapter, "punct")
-    if os.path.isfile(pf):
-        data = OV.load_json(pf)
+    if punct is not None:
+        data = punct
         for i, p in enumerate(data.get("punctuations") or []):
             a = p.get("anchor")
             if not a:
                 continue
             n = m.get(a)
             why = None
+            _refreshed = _shifted = False
             if n is None:
                 why = "旧格无对应（删除格）"
             elif n not in pos:
@@ -165,9 +190,11 @@ def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IO
                     if kind == "single":
                         p["pre_char"] = slots[pos[n]][1]  # 单字替换：锚点不动，只刷新校验字
                         res["refreshed"] = res.get("refreshed", 0) + 1
+                        _refreshed = True
                     elif isinstance(kind, int):  # 列内文字整体平移：按文字对齐挪到相邻格
                         n = slots[kind][0]
                         res["shifted"] = res.get("shifted", 0) + 1
+                        _shifted = True
                     else:
                         why = f"校验字变了（非单字替换，也找不到平移位置）：{p['pre_char']}→{slots[pos[n]][1]}"
                 else:
@@ -177,13 +204,12 @@ def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IO
                 code = "ADD_DEL" if "删除格" in why else "ANCHOR_MISS"
                 report.append(("punct", f"#{i}", a, n or "", repr(p.get("mark", ""))[1:-1], f"{code}｜{why}"))
                 continue
+            if n != a or _refreshed:
+                moves.append(("punct", f"#{i}", a, n, "平移挪" if _shifted else ("挪格" if n != a else "同格刷新校验字")))
             p["anchor"], p["char_offset"] = n, pos[n]
             res["punct"][0] += 1
-        if not dry_run:
-            OV.dump_json(pf, data)
-    ef = OV.companion_path(vdir, chapter, "entity")
-    if os.path.isfile(ef):
-        data = OV.load_json(ef)
+    if entity is not None:
+        data = entity
         for x in data.get("entities") or []:
             anc = x.get("anchor") or {}
             s, t = anc.get("start"), anc.get("end")
@@ -210,6 +236,7 @@ def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IO
                         report.append(("entity-复核", x.get("id", ""), f"{s}～{t}", f"{ns}～{nt}", x.get("text", ""),
                                        f"SPAN_REWORD｜同格改字已放行，文字 {x.get('text')}→{seg}，请复核专名是否仍成立"))
                         x["text"] = seg
+                        moves.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns}～{nt}", "专名刷新文字"))
                     else:
                         why = f"文字变了：{x.get('text')}→{seg}"
             if why:
@@ -217,16 +244,20 @@ def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IO
                 code = "ADD_DEL" if "删除格" in why else "ANCHOR_MISS"
                 report.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns or ''}～{nt or ''}", x.get("text", ""), f"{code}｜{why}"))
                 continue
+            if (ns, nt) != (s, t):
+                moves.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns}～{nt}", "挪格"))
             x["anchor"] = {"start": ns, "end": nt}
             if "span" in x:
                 x["span"] = {"start_offset": pos[ns], "end_offset": pos[nt] + 1}
             res["entity"][0] += 1
-        if not dry_run:
-            OV.dump_json(ef, data)
-    print(f"{chapter}：对照表 对上 {st['mapped']} 格（其中删／新增配对补回 {st['recovered']}），删 {st['deleted']}、新增 {st['added']}；"
-          f"标点 改 {res['punct'][0]}（其中同格改字刷新校验字 {res.get('refreshed', 0)}）、留待重标 {res['punct'][1]}；"
-          f"实体 改 {res['entity'][0]}、留待重标 {res['entity'][1]}、同格改字放行待复核 {sum(1 for r in report if r[0] == 'entity-复核')}", file=out)
     return res, report
+
+
+def _summary(chapter, res, report, rows):
+    st = build_map(rows)[1]
+    return (f"{chapter}：对照表 对上 {st['mapped']} 格（其中删／新增配对补回 {st['recovered']}），删 {st['deleted']}、新增 {st['added']}；"
+          f"标点 改 {res['punct'][0]}（其中同格改字刷新校验字 {res.get('refreshed', 0)}）、留待重标 {res['punct'][1]}；"
+          f"实体 改 {res['entity'][0]}、留待重标 {res['entity'][1]}、同格改字放行待复核 {sum(1 for r in report if r[0] == 'entity-复核')}")
 
 
 def main(argv=None):

@@ -91,3 +91,16 @@ def test_shift_and_illegal_cell(tmp_path):
     assert P[0]["anchor"] == "1:1:6" and P[0]["pre_char"] == "粲" and res["shifted"] == 1
     assert P[1]["anchor"] == "1:2:1"  # 非法格号：不动、分流
     assert any("非法格号" in r[5] and r[5].startswith("ANCHOR_MISS") for r in report)
+
+
+def test_remap_data_library():
+    """库函数 remap_data：不读写文件，返回计数、分流项和挪动清单。"""
+    import copy
+    ch = char([("1:1:%d" % (i + 1), c) for i, c in enumerate("舊本題魏王粲撰")])
+    pu = {"punctuations": [{"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:5", "pre_char": "粲", "char_offset": 4}]}
+    mk = lambda o, n, oc, nc, k: dict(row(o, n, oc, nc, k), IoU="0.90")  # noqa: E731
+    rows = [mk(f"1:1:{i + 1}", f"1:1:{i + 1}", oc, nc, "同格") for i, (oc, nc) in enumerate(zip("本題魏王粲撰", "舊本題魏王粲撰"))]
+    keep = copy.deepcopy(pu)
+    res, report, moves = RA.remap_data("001", ch, pu, None, rows)
+    assert res["shifted"] == 1 and moves == [("punct", "#0", "1:1:5", "1:1:6", "平移挪")] and not report
+    assert pu != keep and pu["punctuations"][0]["anchor"] == "1:1:6"

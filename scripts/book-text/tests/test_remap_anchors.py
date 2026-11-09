@@ -62,7 +62,7 @@ def test_refresh_same_cell(tmp_path):
          "span": {"start_offset": 0, "end_offset": 2}, "target": {"status": "new_candidate"}}]})
     mk = lambda o, n, oc, nc, k, iou: dict(row(o, n, oc, nc, k), IoU=iou)  # noqa: E731
     rows = [mk("1:1:1", "1:1:1", "宋", "宋", "同格", "0.95"), mk("1:1:2", "1:1:2", "濓", "濂", "同格", "0.90"),
-            mk("9:1:3", "1:1:3", "丙", "乙", "改号", "0.90")]
+            mk("9:1:3", "1:1:3", "乙", "乙", "改号", "0.90")]
     res, report = RA.remap(d, "001", rows)
     P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
     assert P[0]["pre_char"] == "濂" and res["refreshed"] == 1
@@ -71,3 +71,23 @@ def test_refresh_same_cell(tmp_path):
     assert E[0]["text"] == "宋濂"
     assert any(r[0] == "entity-复核" and "SPAN_REWORD" in r[5] for r in report)
     assert any(r[0] == "punct" and r[5].startswith("ANCHOR_MISS") for r in report)
+
+
+def test_shift_and_illegal_cell(tmp_path):
+    """列内文字整体平移：按文字对齐挪到相邻格，而不是原位刷新；映射到 -1 格的列首标记分流。"""
+    d = str(tmp_path)
+    # 旧列：本 題 魏 王 粲 撰（1..6）；新列在列首多一字「舊」：舊 本 題 魏 王 粲（框同号，字整体后移一格）
+    dump(os.path.join(d, "001.char.json"), char([("1:1:%d" % (i + 1), c) for i, c in enumerate("舊本題魏王粲")] + [("1:2:-1", "撰")]))
+    dump(os.path.join(d, "001.punct.json"), {"punctuations": [
+        {"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:5", "pre_char": "粲", "char_offset": 4},
+        {"mark": "《", "kind": "point", "pos": "before", "anchor": "1:2:1", "pre_char": "撰", "char_offset": 6}]})
+    dump(os.path.join(d, "001.entity.json"), {"entities": []})
+    mk = lambda o, n, oc, nc, k: dict(row(o, n, oc, nc, k), IoU="0.90")  # noqa: E731
+    old = "本題魏王粲撰"
+    rows = [mk(f"1:1:{i + 1}", f"1:1:{i + 1}", oc, nc, "同格") for i, (oc, nc) in enumerate(zip(old, "舊本題魏王粲"))]
+    rows.append(mk("1:2:1", "1:2:-1", "撰", "撰", "改号"))
+    res, report = RA.remap(d, "001", rows)
+    P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
+    assert P[0]["anchor"] == "1:1:6" and P[0]["pre_char"] == "粲" and res["shifted"] == 1
+    assert P[1]["anchor"] == "1:2:1"  # 非法格号：不动、分流
+    assert any("非法格号" in r[5] and r[5].startswith("ANCHOR_MISS") for r in report)

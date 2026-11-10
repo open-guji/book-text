@@ -27,9 +27,9 @@ def test_flag_changed_not_just_lacuna_key():
 
 
 def test_has_provenance_requires_entry_vol_and_token():
-    ok = ["| 2026-10-23 | 96mid1ogzk/002 | 文本 | 1.0.2→1.0.3 | 读者意见 op_span_29a02d06d6 | #218 |"]
+    ok = ["版本记录: 96mid1ogzk/002 | 文本 | 1.0.2→1.0.3 | 读者意见 op_span_29a02d06d6 | #218"]
     assert ccp.has_provenance(ok, "96mid1ogzk", "002")
     assert not ccp.has_provenance(ok, "96mid1ogzk", "003")                     # 别的章
-    assert not ccp.has_provenance(["| x | 96mid1ogzk/002 | 文本 | 1→2 | 改了 3 格 | #1 |"], "96mid1ogzk", "002")
+    assert not ccp.has_provenance(["版本记录: 96mid1ogzk/002 | 文本 | 1→2 | 改了 3 格 | #1"], "96mid1ogzk", "002")
     for tok in ("evt_b1_000001", "vol05-r8", "004-r6", "GUJI-697"):
-        assert ccp.has_provenance([f"| x | 96mid1ogzk/005 | 文本 | 1→2 | 说明 {tok} | #1 |"], "96mid1ogzk", "005")
+        assert ccp.has_provenance([f"版本记录: 96mid1ogzk/005 | 文本 | 1→2 | 说明 {tok} | #1"], "96mid1ogzk", "005")

@@ -14,7 +14,7 @@
          读改好的工作稿，逐句核对字与新文本一致，生成这几句的点号和专名；句外的条目原样保留，
          只按新文本重算 char_offset／span 下标；改字落在格上的，校验字 pre_char／text 跟着新字走。
          写回 NNN.punct.json、NNN.entity.json。版本号不在这里改，之后照常用 bump_original.py
-         升 patch（或 minor）并写 CHANGES。
+         升 patch（或 minor）并打印版本记录行。
 
 工作稿记法（与 A33 逐句标注稿相同）：点号 `，。、；：？！「」『』` 直接写在字间；`《…》` 是书名，
 自动出 work 专名；`[p…]` 人名、`[l…]` 地名、`[o…]` 官名、`[d…]` 朝代、`[r…]` 年号。

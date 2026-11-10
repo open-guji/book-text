@@ -10,7 +10,6 @@ validate_text_format.py（规则 F-OV-*）和 scripts/book-text/bump_original.py
     original/NNN.char.json     文本线（guji-format 02）：顶层 "version"；major ≥2 时顶层另带 "review": {验收记录}
     original/NNN.punct.json    顶层 "version"（标点线）＋ "text_version"（对着哪一版文本做的）
     original/NNN.entity.json   同上（实体线）；major ≥2 时顶层另带 "review": {验收记录}
-    original/CHANGES.md        每次升版本一行
 （10-06 以前文本线跟踪 NNN.lines.md、验收记录在 index.json 的 text_review；T68 #417 起改读 char，
 lines.md 只在生成分支上，由 char 生成。）
 

@@ -13,7 +13,7 @@
   V3  check_license（全仓，1 秒）
   索引  重建 index/texts 后工作区不应多出未提交的改动（有就先 git add／提交）
   锚点  check_anchor_drift.py：char 改动后，rule:* 断点／标题仍留在旧格号上则失败
-  出处  格变动出处（check_cell_provenance.py，只告警）：char 里有格变了，CHANGES 新增行要有意见 id／事件 id／r 号／GUJI 卡号
+  出处  格变动出处（check_cell_provenance.py，只告警）：char 里有格变了，提交信息的「版本记录」行要有意见 id／事件 id／r 号／GUJI 卡号
 没做：manifest／index 的 schema 校验（需要 guji-format 副本）、pin-drift、单元测试；这几项仍可手动跑，或随夜间全量 CI 兜底。
 退出码 0 = 全过，1 = 有不通过项。
 """

@@ -9,7 +9,8 @@
     text    original/NNN.char.json 顶层 version（index.json 的 text_version 同步）
     punct   original/NNN.punct.json 顶层 version（index.json 的 punct_version 同步）
     entity  original/NNN.entity.json 顶层 version（index.json 的 entity_version 同步）
-每升一次，在 original/CHANGES.md 追加一行：日期｜册｜线｜旧→新｜说明｜PR。
+每升一次，向标准输出打印版本记录行（`版本记录: <书>/<册> | <线> | <旧→新> | <说明>`），
+调用方把这些行原样写进提交信息（2026-11-10 用户定：不再维护 CHANGES.md，历史查 git log）。
 
 升哪一级（以一次 PR 为单位）：一册改动 ≤50 处、且逐处改的算 patch；超过，或按规则
 成批改的（整批字符转换、整册重跑、新增类型……）算 minor。拿不准选 minor。
@@ -41,12 +42,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
 import original_version as OV  # noqa: E402
 
-CHANGES_HEADER = (
-    "# original 版本日志\n\n"
-    "规范见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`。\n\n"
-    "| 日期 | 册 | 线 | 旧→新 | 说明 | PR |\n"
-    "|---|---|---|---|---|---|\n"
-)
+RECORD_PREFIX = "版本记录: "
 LINE_NAME = {"text": "文本", "punct": "标点", "entity": "实体"}
 
 
@@ -82,13 +78,10 @@ def select_chapters(index, chapters):
 
 
 def append_changes(od, rows):
-    p = os.path.join(od, "CHANGES.md")
-    new = not os.path.exists(p)
-    with open(p, "a", encoding="utf-8") as f:
-        if new:
-            f.write(CHANGES_HEADER)
-        for r in rows:
-            f.write("| " + " | ".join(x.replace("|", "\\|") for x in r) + " |\n")
+    """不再写 CHANGES.md：把每行 (日期, 册, 线, 旧→新, 说明, PR) 打印成「版本记录」行，由调用方放进提交信息。"""
+    for r in rows:
+        _date, vol, line, chg, note, pr = r
+        print(RECORD_PREFIX + " | ".join(x.replace("\n", " ") for x in (vol, line, chg, note)) + (f" | {pr}" if pr else ""))
 
 
 def _book_id(od):
@@ -101,7 +94,7 @@ def _dump(path, obj):
 
 
 def _pr(pr):
-    return f"#{pr}" if pr else ""
+    return f"#{pr}" if pr and str(pr).upper() != "TBD" else ""
 
 
 def do_init(od, chapters, note, pr, today, version="1.0.0"):
@@ -273,8 +266,8 @@ def main(argv=None):
     ap.add_argument("--line", choices=OV.LINES)
     ap.add_argument("--level", choices=("patch", "minor", "major"))
     ap.add_argument("--chapter", action="append", help="只动这一册（NNN），可重复；不给就是全部")
-    ap.add_argument("--note", default="", help="一句话说明，写进 CHANGES.md")
-    ap.add_argument("--pr", required=True, help="PR 号（必填，写进 CHANGES.md；未开 PR 时先开草稿 PR 再升版本）")
+    ap.add_argument("--note", default="", help="一句话说明，打印进版本记录行")
+    ap.add_argument("--pr", default="", help="PR 号（可选，写进版本记录行；dev 流程不用给）")
     ap.add_argument("--date", help=argparse.SUPPRESS)  # 自测用
     a = ap.parse_args(argv)
     today = a.date or datetime.date.today().isoformat()

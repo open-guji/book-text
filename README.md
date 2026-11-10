@@ -52,7 +52,7 @@ index/                          本倉之索引分片
 
 **不跟蹤**：維基文庫、Kanripo、識典等轉錄；`wip/` 分支上反覆改動時亦不編號（可暫寫 `0.x`；`wip/` 上跑 `--strict` 會因 `0.x` 報 F-OV-01，乃有意為之，併 main 前先 `--init`）。第一次併入 main 定為 `1.0.0`，夠不上第 1 級者不併。
 
-**CHANGES.md**：每升一次，在 `<版本目錄>/CHANGES.md` 記一行 `| 日期 | 冊 | 線 | 舊→新 | 說明 | PR |`，「冊」欄寫 `<條目 id>/<章 NNN>`（如 `96mid1ogzk/002`）。升版一律用 `python3 <overview>/scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、寫 CHANGES.md；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
+**版本記錄**（2026-11-10 起不再有 CHANGES.md，歷史查 `git log`）：每升一次，`bump_original.py` 印出 `版本記錄: <條目 id>/<章 NNN> | 線 | 舊→新 | 說明`（如 `96mid1ogzk/002`），調用方原樣寫進提交信息。升版一律用 `python3 <overview>/scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、印版本記錄行；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
 
 一章有哪些層（`*_file` 字段）、頁碼如何對到 IIIF，見 [docs/ORIGINAL.md](docs/ORIGINAL.md)。詳見 [docs/VERSIONING.md](docs/VERSIONING.md)；規範全文在 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
 

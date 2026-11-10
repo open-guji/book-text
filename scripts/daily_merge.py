@@ -12,7 +12,7 @@
   3. dev 与 main 内容一样 → 什么都不做
   4. 重建 index/texts，有变化就提交到 dev
   5. `local_check.py --all` 必须全过，否则推 dev、开 PR，但不合，退出码 1
-  6. 推 dev；找已开的 dev→main PR，没有就开；CHANGES.md 里本次新增的 `#TBD` 换成 PR 号，提交、推
+  6. 推 dev；找已开的 dev→main PR，没有就开
   7. 用 merge commit 合并（不 squash：squash 会让 dev 与 main 分叉，明天的 PR 又带上今天合过的改动），再把 dev 快进到 main
 退出码：0＝合了或无事可做；1＝检查没过或冲突（PR 留着）；2＝用法／环境问题。
 """
@@ -46,36 +46,6 @@ def gh(*args):
         raise RuntimeError(r.stderr.strip()[-800:] or r.stdout.strip()[-800:])
     return json.loads(r.stdout) if r.stdout.strip() else None
 
-
-def tbd_files(base: str) -> list[str]:
-    """dev 比 base 多出来的 `#TBD`（只看本次新增的行）所在的 CHANGES.md。"""
-    out = sh("git", "diff", "-U0", f"{base}...HEAD", "--", "*CHANGES.md").stdout
-    files, cur = set(), None
-    for ln in out.splitlines():
-        if ln.startswith("+++ b/"):
-            cur = ln[6:]
-        elif ln.startswith("+") and not ln.startswith("+++") and "#TBD" in ln and cur:
-            files.add(cur)
-    return sorted(files)
-
-
-def fill_tbd(files: list[str], base: str, n: int) -> int:
-    """只换本次新增行里的 #TBD（旧行若遗留 #TBD 不动，免得错填别天的 PR 号）。"""
-    added = set()
-    for f in files:
-        for ln in sh("git", "diff", "-U0", f"{base}...HEAD", "--", f).stdout.splitlines():
-            if ln.startswith("+") and not ln.startswith("+++") and "#TBD" in ln:
-                added.add(ln[1:])
-    k = 0
-    for f in files:
-        p = os.path.join(ROOT, f)
-        lines = open(p, encoding="utf-8").read().split("\n")
-        for i, ln in enumerate(lines):
-            if ln in added:
-                lines[i] = ln.replace("#TBD", f"#{n}")
-                k += 1
-        open(p, "w", encoding="utf-8").write("\n".join(lines))
-    return k
 
 
 STALE_DAYS = 3
@@ -175,14 +145,6 @@ def main() -> int:
         n = gh(f"repos/{REPO}/pulls", "-X", "POST", "-f", "base=main", "-f", "head=dev",
                "-f", f"title=每日合并 dev→main（{today}）", "-f", f"body={body}")["number"]
         print(f"已开 PR #{n}")
-
-    tf = tbd_files("origin/main")
-    if tf:
-        k = fill_tbd(tf, "origin/main", n)
-        sh("git", "add", *tf, check=True)
-        sh("git", "commit", "-q", "-m", f"CHANGES：PR 号 #{n}（每日合并）", check=True)
-        sh("git", "push", "-q", "origin", "dev", check=True)
-        print(f"CHANGES：{k} 行 #TBD → #{n}")
 
     if not ok:
         print(f"✗ 全仓检查没过：PR #{n} 留着不合，修好后重跑本脚本")

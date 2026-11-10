@@ -16,7 +16,7 @@
      行首格与标题同列 → 标题符前移到行首；不同列 → 上一个分段符后移到标题符前。
   5. 档 3：改字落在专名 span 内、标点边界上或标题、分段附近的，列进复核单（--review），
      由 A33／A34 过一眼；其余不用人看。
-  6. 标点、实体两线 patch 升版（bump_original），CHANGES 补出处（--prov），重建 headings，
+  6. 标点、实体两线 patch 升版（bump_original），版本记录写出处（--prov），重建 headings，
      最后跑 local_check --dev。
 
 不加 --write 只做 plan 和分档，不改任何文件。
@@ -153,7 +153,7 @@ def main():
     ap.add_argument("vdir")
     ap.add_argument("--base", required=True, help="旧 char.json 所在提交（通常是新文本分支与 dev 的 merge-base）")
     ap.add_argument("--vols", required=True, help="如 062-067 或 20,22")
-    ap.add_argument("--prov", default="vol{n}-r1", help="CHANGES 出处标记模板，{n} 为册号")
+    ap.add_argument("--prov", default="vol{n}-r1", help="版本记录出处标记模板，{n} 为册号")
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--review", help="复核单 tsv 输出路径")
     ap.add_argument("--source", default="claude:A33")
@@ -201,18 +201,14 @@ def main():
         done.append(v)
     if a.write and done:
         for v in done:
+            tag = a.prov.format(n=int(v))
             for line in ("punct", "entity"):
                 r = run([sys.executable, os.path.join(HERE, "bump_original.py"), vdir, "--line", line, "--level", "patch",
-                         "--chapter", v, "--note", "新文本改字后按 auto_remap 重映射锚点（只重标改字所在句）", "--pr", "TBD"])
+                         "--chapter", v, "--note", f"{tag} 新文本改字后按 auto_remap 重映射锚点（只重标改字所在句）"])
                 if r.returncode:
                     print("  bump 失败", v, line, r.stderr[-200:])
-        ch = os.path.join(vdir, "CHANGES.md")
-        s = open(ch).read()
-        for v in done:
-            n = int(v)
-            tag = a.prov.format(n=n)
-            s = re.sub(rf"(vol{n} [^|]*?)（待 A33 重映射标点／实体锚点）", rf"\1（{tag}；标点、实体锚点已重映射）", s)
-        open(ch, "w").write(s)
+                else:      # 版本记录行要原样写进提交信息
+                    print("".join(ln + "\n" for ln in r.stdout.splitlines() if ln.startswith("版本记录:")), end="")
         run([sys.executable, os.path.join(HERE, "build_texts_index.py"), "--root", ROOT])
         run(["git", "checkout", "origin/dev", "--", "index/texts"])
     if a.leftover:

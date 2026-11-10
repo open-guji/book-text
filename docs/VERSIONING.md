@@ -13,7 +13,7 @@
    - `scripts/validate_text_format.py <本仓> --strict --baseline scripts/format_baseline.json` 退出码 0（脚本与基线是 overview 的副本，来源 commit 以脚本头为准；overview 改规则后要同步）；
    - `scripts/validate-collated.py --root <本仓>`（不带 `--strict`）退出码 0，且报告里没有本 PR 新增的问题（main 上已知存量：`d59f1iqd854w/default` 多一个 `108.md`）；
    - 重建索引后没有未提交的 diff。
-4. **流程化小改走 `dev`**（2026-10-24 用户定）：精校落票、网站意见修订这类机器产出的 0.x 升版直接提交到 `dev`（推前 `local_check.py --dev`，不提交 `index/texts/`，CHANGES 的 PR 列写 `#TBD`），每天洛杉矶 03:30 由 `scripts/daily_merge.py` 开一个 dev→main 的 PR、换上 PR 号、以 merge commit 合并。上面第 1 条的「一律走 PR」只管其余改动。
+4. **流程化小改走 `dev`**（2026-10-24 用户定）：精校落票、网站意见修订这类机器产出的 0.x 升版直接提交到 `dev`（推前 `local_check.py --dev`，不提交 `index/texts/`），每天洛杉矶 03:30 由 `scripts/daily_merge.py` 开一个 dev→main 的 PR、以 merge commit 合并。上面第 1 条的「一律走 PR」只管其余改动。
 5. PR 和推到 main 都跑 `.github/workflows/check.yml`（V1 validate-collated、V2 validate_text_format `--strict --baseline`、V3 check_license），仍靠审 PR 把关。
 
 ## 二、跟踪范围
@@ -53,7 +53,7 @@
 - `index.json` 的 `text_version`／`punct_version`／`entity_version` 都是镜像，必须和 char、punct、entity 各自顶层的 `version` 一致；网站从 `index.json` 读三线版本。
 - **过渡已完成**（T68 #417 起）：文本线跟踪 `NNN.char.json`，验收记录放 char 顶层 `review`，`index.json` 的 `text_review` 不再用。`bump_original.py` 和校验器 F-OV-* 已读 char.json。
 - 验收记录（`review`）至少含 `date`、`signed_by`、`sample`（抽检数据）。
-- 每次升版本，在 `<版本目录>/CHANGES.md`（`<版本目录>` 同上：manifest 里 `is_original` 为 true 的版本目录，常为 `default/`，旧条目仍可能是 `original/`） 记一行：`| 日期 | 册 | 线 | 旧→新 | 说明 | PR |`。「册」一栏写 `<条目 id>/<章 NNN>`（如 `96mid1ogzk/002`），一次动几册就记几行，章级历史可按这一栏追。
+- 每次升版本，`bump_original.py` 打印一行 `版本记录: <条目 id>/<章 NNN> | 线 | 旧→新 | 说明`（如 `96mid1ogzk/002`，一次动几册就几行），调用方原样写进提交信息；2026-11-10 起不再维护 `CHANGES.md`，历史查 `git log --grep '^版本记录:'`（更早的行在 2026-11-10 之前的提交里的 CHANGES.md）。
 
 ### 三条线之间
 - 标点、实体靠坐标锚在文本上，每个锚点带校验字：标点 `anchor`＋`pre_char`，实体 `anchor.start..end`＋`text`。
@@ -97,7 +97,7 @@
 - **第一次并 main**（2026-10-16 起，GUJI-543）：
   - **粗校完**够得上 0.1.0 门槛的，以 **`0.1.0`** 并 main：`bump_original.py <目录> --init --version 0.1.0`，章条目写 `proofing: true`；同时有标点、实体稿的一并定 0.1.0。文本已在 main、后来才加标点或实体的，用 `--init --line punct|entity` 开那条线（文本 0.x 时定 0.1.0，≥1 时定 1.0.0）。
   - **精校完**够得上第 1 级的，升 **`1.0.0`**（major，手工改版本号并附验收记录），`--proofing off`；此时才开工的标点、实体线从 `1.0.0` 起（`--init` 默认或 `--init --line`）。
-  - 已按旧定义以 1.0.0 并 main 的册（四庫 vol02、vol03）保留 1.0.0，CHANGES 记一句「按旧定义定的 1.0.0」，补走精校时 `--proofing on`，精校合入算文本 minor。
+  - 已按旧定义以 1.0.0 并 main 的册（四庫 vol02、vol03）保留 1.0.0，版本记录写一句「按旧定义定的 1.0.0」，补走精校时 `--proofing on`，精校合入算文本 minor。
   - 够不上 0.1.0 不并 main。
 - 之后每次 squash merge，动到的线按本规范升，PR 描述列「册 · 线 · 旧 → 新 · 理由」表，提 PR 的会话自己对着 diff 核。
 
@@ -111,7 +111,7 @@
   python3 scripts/book-text/bump_original.py <目录> --proofing on|off --note "…" --pr N                  # 只改校对状态开关
   python3 scripts/book-text/bump_original.py <目录> --line text|punct|entity --level patch|minor --note "…" [--pr N] [--chapter NNN]
   ```
-  改版本号、同步 `index.json` 镜像、写 `CHANGES.md`；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
+  改版本号、同步 `index.json` 镜像、打印版本记录行；升文本线后自动核伴生层锚点（对得上的跟 `text_version`，对不上的列出来）；锚点没修好的伴生层拒绝升；`--level major` 报错。
 - **校验器**：本仓 `scripts/validate_text_format.py` 规则（只扫 key=`original` 的版本）：
   - **F-OV-01** 三线版本号格式、三线都 ≥0.1.0、镜像一致、`text_version` 不超前、伴生层 major 不高于文本（所以文本线 0.x 时伴生层也是 0.x）；
   - **F-OV-02** 伴生层（标点、实体两线）的锚点校验字必须仍对得上 char——`text_version` 落后或与文本同版本都核（GUJI-561，book-text#149）；

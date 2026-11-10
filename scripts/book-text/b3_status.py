@@ -80,16 +80,6 @@ for ep in root.glob('Book/*/*/*/96mid1ogzk/default/*.entity.json'):
 out['#5/#6 stats 或 $schema 不符'] = st_bad
 out['#6 new_candidate 带「待消歧」'] = nc_dup
 
-# #9 CHANGES.md PR 栏空
-empty = total = 0
-for cp in root.rglob('CHANGES.md'):
-    for ln in cp.read_text().splitlines():
-        if re.match(r'\|\s*20\d\d-', ln):
-            total += 1
-            cells = [c.strip() for c in ln.strip().strip('|').split('|')]
-            if not cells[-1] or cells[-1] in ('-',): empty += 1
-out['#9 CHANGES 行数/PR 栏空'] = (total, empty)
-
 # #7 ⟨⟩ 与旧读法
 g = subprocess.run(['git', 'grep', '-c', '⟨\\|⟩', '--', 'Work', 'Book'], cwd=root, capture_output=True, text=True)
 out['⟨⟩ 命中文件数'] = len([l for l in g.stdout.splitlines() if l])

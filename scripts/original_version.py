@@ -539,7 +539,9 @@ def sync_headings(odir):
         cpath = companion_path(odir, stem, "text") if stem else None
         ppath = companion_path(odir, stem, "punct") if stem else None
         heads = []
-        if cpath and ppath and os.path.isfile(cpath) and os.path.isfile(ppath):
+        if cpath and ppath and not (os.path.isfile(cpath) and os.path.isfile(ppath)):
+            continue    # 稀疏克隆缺这一章的文本／标点文件：现算不了，不动已有 headings（11-10 殿本 #437 误删 98 章）
+        if cpath and ppath:
             try:
                 punct = load_json(ppath)
                 if any(_pkind(p) == "heading" for p in punct.get("punctuations") or []):

@@ -190,8 +190,15 @@ def main():
         pr = os.path.join(HERE, "punct_redo.py")
         r = run([sys.executable, pr, "plan", vdir, "--chapter", v, "--old-char", f"git:{a.base}"])
         if os.path.exists(os.path.join(vdir, f"redo-{v}.txt")):
-            r = run([sys.executable, pr, "apply", vdir, "--chapter", v, "--source", a.source])
+            r = run([sys.executable, pr, "apply", vdir, "--chapter", v, "--source", a.source, "--check-keep"])
             print("  ", (r.stdout.strip().splitlines() or ["?"])[0])
+            review += [("专名改字待复核", f"{v} {ln.strip()[1:].strip()}") for ln in r.stdout.splitlines() if ln.strip().startswith("ℹ")]
+            if r.returncode == 3:
+                # 重标后专名丢条目／改 target、group／被切短：punct_redo 没写文件。留着工作稿，列入复核，整册跳过
+                probs = [ln.strip()[2:].strip() for ln in r.stdout.splitlines() if ln.strip().startswith("⚠")]
+                print(f"   {v} 专名对账未过，拒写（{len(probs)} 处），工作稿 redo-{v}.txt 保留，请人工重标")
+                review += [("专名对账未过（拒写）", f"{v} {d}") for d in probs]
+                continue
             os.remove(os.path.join(vdir, f"redo-{v}.txt"))
             if os.path.exists(os.path.join(vdir, f"redo-{v}.json")):
                 os.remove(os.path.join(vdir, f"redo-{v}.json"))

@@ -362,6 +362,40 @@ def pending_reason_problems(char, known=None):
     return out
 
 
+# ---- F-OV-18 char 里不许出现「非本书码位」（sheldon 2026-11-10 定；ai-team domain/CV/质检/字的等价与归一-全流程审视）----
+# 同一个字有两种码位时，本书只留一种（归一表 `{另一码位: 本书码位}`），char 里出现键＝漏归一（如 别→別）。
+# 表在 scripts/codepoints.json：`default` 对所有书生效（真归一，用户已定），`books.<book_id>` 是本册另加的（暂归一，
+# 真源是 open-guji-cv 工作区的 config/codepoints.yaml 与册 yaml，这里是副本，由 cv／manager 同步）。
+CODEPOINTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "codepoints.json")
+
+
+def load_codepoints(path=None):
+    with open(path or CODEPOINTS_FILE, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def codepoint_map_for(cp, book_id):
+    """本册归一表：default < books[book_id]。"""
+    m = dict(cp.get("default") or {})
+    m.update((cp.get("books") or {}).get(book_id) or {})
+    return m
+
+
+def noncanon_problems(char, norm):
+    """F-OV-18：char 单字格 c 是归一表的键（非本书码位）就报，每个字合并计数并列前几格号，返回 [(说明, 子类)]。"""
+    seen = {}
+    for pg in char.get("pages") or []:
+        for col in pg.get("columns") or []:
+            for c in (col.get("cells") or []) if isinstance(col, dict) else []:
+                if isinstance(c, dict) and c.get("c") in norm:
+                    seen.setdefault(c["c"], []).append(c.get("a"))
+    out = []
+    for ch, cells in sorted(seen.items()):
+        head = "、".join(str(a) for a in cells[:5]) + (f" 等 {len(cells)} 格" if len(cells) > 5 else "")
+        out.append((f"「{ch}」是非本书码位，应写「{norm[ch]}」：{head}", f"{ch}→{norm[ch]}"))
+    return out
+
+
 def entity_multi_problems(ed):
     """F-OV-14：entity.json 里 target.status=matched_multi 的形状，返回 [(说明, 子类)]。
     targets ≥2；每项有非空 entity_id／canonical_name、不写站内 href（guji-format 05 §十一）；part 若有须是 span 文本里的非空片段；
@@ -1081,6 +1115,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     r_ov15 = rule("F-OV-15", "HARD")
     # F-OV-16 待审格（guji-format 02 §4.8，char v0.4）：pending_reason 在码表里、不与 lacuna／guess_c／fig 同在，char $schema 为 v0.4。
     r_ov16 = rule("F-OV-16", "HARD")
+    # F-OV-18 非本书码位（见 noncanon_problems）
+    r_ov18 = rule("F-OV-18", "HARD")
+    _codepoints = load_codepoints()
     _known_reasons = pending_reasons()
     r_ov02s = rule("F-OV-02s", "SOFT")
     r_ov15s = rule("F-OV-15s", "SOFT")
@@ -1210,6 +1247,9 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
             r_ov16["n_scanned"] += 1
             for msg, sub in pending_reason_problems(char, _known_reasons):
                 add(r_ov16, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
+            r_ov18["n_scanned"] += 1
+            for msg, sub in noncanon_problems(char, codepoint_map_for(_codepoints, char.get("book_id") or "")):
+                add(r_ov18, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
             r_ov12["n_scanned"] += 1
             want_heads = []
             ce_path = OV.char_edits_path(od, stem)

@@ -18,8 +18,8 @@
   - 先 `git pull --rebase origin dev` 再推；推前跑 `python3 scripts/local_check.py --dev`（对比 origin/dev，只查自己的改动，不查索引）。
   - **新书首次入库、新入库批次也走 dev**（2026-10-31 用户定）：照上面 dev 规矩直接提交，随每日合并上 main，不再单开 PR。
   - **dev 上不提交 `index/texts/`**（多个会话同时推，最容易在这个生成目录上冲突），每日合并时统一重建。
-  - `bump_original.py --pr TBD`：CHANGES 的 PR 列先写 `#TBD`，每日合并时换成当天合并 PR 的号。
-- **每天一个 dev→main 的 PR**：定时任务在洛杉矶 03:30 跑 `python3 scripts/daily_merge.py`（合入 main 的新提交 → 重建索引 → `local_check.py --all` → 开或更新 PR → `#TBD` 换成 PR 号 → **merge commit** 合并，不 squash，好让 dev 与 main 保持同一条历史）。检查不过就不合，留 PR 报原因。
+  - 不再有 CHANGES.md（2026-11-10 用户定）：版本变更记在提交信息里。`bump_original.py` 升版时打印「版本记录: <书>/<章> | <线> | <旧→新> | <说明>」行，调用方把这些行原样放进提交信息；`--pr` 可不给。
+- **每天一个 dev→main 的 PR**：定时任务在洛杉矶 03:30 跑 `python3 scripts/daily_merge.py`（合入 main 的新提交 → 重建索引 → `local_check.py --all` → 开或更新 PR → **merge commit** 合并，不 squash，好让 dev 与 main 保持同一条历史）。检查不过就不合，留 PR 报原因。
 - **仍单独开 PR 投 main 的**：major 升版、撤除超过 50 部、改全仓结构或规范、人手改动；规矩照下面。这些 PR 合并后，下一次每日合并会把 main 合回 dev。
 
 - **不直接推 main。** 一批活开一个分支，命名 `<道名>-<主题>`，比如 `t65-wiki-match`；`wip/` 前缀是反复改动中的工作分支，用户点头前不并 main。
@@ -30,7 +30,7 @@
   3. 重建索引后分支上没有未提交的 diff。
 - **PR 不再跑云端 CI**（2026-10-20 用户定，仓库大、PR 频繁）：开 PR 前在本地跑 `python3 scripts/local_check.py`（只查改动条目，几秒；`--all` 全仓），结果贴进 PR 描述。云端 `check.yml` 只留每夜全量（洛杉矶 04:00）和手动触发兜底，出问题再修。
 - `index/texts/` 不要手改；分支里可以先不管它，开 PR 前对齐 main 后再重建。
-- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`，摘要见 `docs/VERSIONING.md`。升版本一律用本仓 `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它同时写 `<版本目录>/CHANGES.md`），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
+- **版本号只管 `original`**（本项目自己从书影做的文本），文本、标点、实体三条线各自独立 semver；维基、Kanripo 不跟踪版本。major 是质量等级（1 可用／2 出版级／3 定本），从严、要用户点头；规则见本仓 `docs/design/2026-10-文本版本号与仓库流程.md`，摘要见 `docs/VERSIONING.md`。升版本一律用本仓 `scripts/book-text/bump_original.py`（首次并 main 用 `--init` 定 1.0.0；它打印「版本记录」行，要写进提交信息（不再有 CHANGES.md）），不手改版本号（major 除外：手工改并附验收记录）；校验器规则 F-OV-01～03 把关。
 - 合并：日常批次自审过就合（见上）；与原设计有偏离、撤除超过 50 部、改全仓结构或规范、`original` 升 major 的，先问用户。
 - PR 描述和评论不写 Claude Code 署名。
 - **组字式一律保留原样**：`[口*恒]`、`[薛/女]`、`{宀兒}`、`[B18D]` 这类 CBETA／维基组字式记的是字形，不得批量换成 `□`（10-01 T56 误换 4,467 处后已撤回，`3f8cbb0586`）。要转正字用本仓 `scripts/zi_convert.py`，查不到正字就保留组字式。

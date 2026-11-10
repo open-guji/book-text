@@ -1,6 +1,5 @@
-"""F-OV-16：待审格 pending_reason（guji-format 02 §4.8，char v0.4；sheldon 2026-11-03 定）。"""
+"""F-OV-16：book-text 只录首选字，char 不许带 pending_reason、不许用 v0.4（sheldon 2026-11-09 定）。"""
 import importlib.util
-import json
 import os
 import sys
 
@@ -10,10 +9,11 @@ spec = importlib.util.spec_from_file_location('vtf', os.path.join(HERE, '..', 'v
 vtf = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(vtf)
 
+V01 = "https://open-guji.org/schema/char/v0.1.json"
 V04 = "https://open-guji.org/schema/char/v0.4.json"
 
 
-def char(cells, schema=V04):
+def char(cells, schema=V01):
     return {"$schema": schema, "version": "0.5.4", "book_id": "96mid1ogzk", "volume": 20,
             "pages": [{"page": 3, "columns": [{"col": 4, "cells": cells}]}]}
 
@@ -22,26 +22,19 @@ def subs(ch):
     return [s for _m, s in vtf.pending_reason_problems(ch)]
 
 
-def test_ok_cells():
-    assert subs(char([{"a": "3:4:1", "c": "□", "pending_reason": "ref_lacuna"},
-                      {"a": "3:4:2", "c": "已", "pending_reason": "hard_pair"},
-                      {"a": "3:4:3", "c": "□", "lacuna": True, "guess_c": "一"},
-                      {"a": "3:4:4", "c": "定", "pending_reason": "unknown"}])) == []
+def test_plain_cells_ok():
+    assert subs(char([{"a": "3:4:1", "c": "已"}, {"a": "3:4:2", "c": "□", "lacuna": True}])) == []
 
 
-def test_bad_value_and_mixed():
-    assert subs(char([{"a": "3:4:1", "c": "□", "pending_reason": "Hard Pair"}])) == ["cell:3:4:1:shape"]
-    assert subs(char([{"a": "3:4:1", "c": "□", "pending_reason": "no_such_reason"}])) == ["cell:3:4:1:unknown_value"]
-    assert subs(char([{"a": "3:4:1", "c": "□", "lacuna": True, "pending_reason": "ref_lacuna"}])) == ["cell:3:4:1:mixed"]
+def test_pending_reason_forbidden():
+    assert subs(char([{"a": "3:4:1", "c": "已", "pending_reason": "hard_pair"}])) == ["cell:3:4:1"]
+    many = char([{"a": f"3:4:{i}", "c": "已", "pending_reason": "unknown"} for i in range(1, 8)])
+    assert subs(many)[-1] == "more" and len(subs(many)) == 6
 
 
-def test_schema_must_be_v04():
-    assert subs(char([{"a": "3:4:1", "c": "□", "pending_reason": "ref_lacuna"}],
-                     schema="https://open-guji.org/schema/char/v0.3.json")) == ["char_schema"]
-    assert subs(char([{"a": "3:4:1", "c": "□", "lacuna": True}], schema="https://open-guji.org/schema/char/v0.3.json")) == []
+def test_v04_schema_forbidden():
+    assert subs(char([{"a": "3:4:1", "c": "已"}], schema=V04)) == ["char_schema"]
 
 
-def test_reason_table_copy():
-    d = json.load(open(vtf.PENDING_REASONS_FILE, encoding="utf-8"))
-    assert "unknown" in d["reasons"] and len(d["reasons"]) >= 29
-    assert all(vtf.PENDING_REASON_RE.match(k) for k in d["reasons"])
+def test_reason_table_copy_still_readable():
+    assert "unknown" in vtf.pending_reasons()

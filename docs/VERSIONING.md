@@ -28,7 +28,7 @@
 
 | 线 | 文件 | 跟踪什么 | 不管什么 |
 |---|---|---|---|
-| 文本 | `NNN.char.json` | 每一格定下的字：哪格是哪个字、分列、夹注、抬头、阙文（guji-format 02） | 像素框（`cord.json`，CV 产物）、候选字（`decision.json`） |
+| 文本 | `NNN.char.json` | 每一格定下的字：哪格是哪个字、分列、夹注、抬头、阙文（guji-format 02） | 像素框（`cord.json`，CV 产物）；待审信息、候选字不进 book-text（只录首选字，2026-11-09） |
 | 标点 | `NNN.punct.json` | 句读、点号、书名号、引号、分段 | 字 |
 | 实体 | `NNN.entity.json` | 专名区间、类型（人、地、书、官、朝代）、链到 book-index 的 id | 字、标点 |
 
@@ -117,7 +117,8 @@
   - **F-OV-02** 伴生层（标点、实体两线）的锚点校验字必须仍对得上 char——`text_version` 落后或与文本同版本都核（GUJI-561，book-text#149）；
   - **F-OV-03** major ≥2 必须带验收记录。
   - **F-OV-04** 章条目的 `*_file` 声明与文件存在（`char_file` 必填；文本线 0.x 的册 `cord_file` 也必填）。
-  - **F-OV-05** decision.json 对照同章 char：`$schema`、`book_id`／`volume` 一致，候选字层合法；`$schema` 接受 v0.1、v0.2，v0.2 的 `reason`／`route`／`route_ref` 规则见 guji-format 08 §3.4（已落地，含 `scripts/tests/test_decision.py`）。
+  - **F-OV-05** decision.json 已废弃（2026-11-09）：章条目不许声明 `decision_file`。
+  - **F-OV-16** char 只录首选字：不许带 `pending_reason`，`$schema` 不许是 v0.4。
   - **F-OV-06** 章条目的 `proofing`（校对中）只能是布尔；文本线 0.x 时必须为 `true`，≥1 时可写 `true`（补走精校）或不写。网站据此挂「欢迎帮助校对」banner，**不从版本号推**。
   - **F-OV-07** 章条目的 `pending_file`（册级待审清单）只在 `proofing: true` 时存在；文件顶层 `rev`＝`<册>-r<n>`、`cv_commit` 必填、`cv_version` 为字符串或 null，`cells` 每项有 `cell` 与 `review`。
   - **F-OV-08** `pending.json` 每格的 guji-proof/0.2 新键（`why`／`cls`／`conf`／`margin`／`lib_top`／`lib`／`ctx`／`ref`／`ocr`／`stale`／`occ`／`img`／`ctximg`／`ex`）只做类型检查，0.1 的键与未知键放过。字段表见 ai-team `team/CV/guji-proof-0.2-字段表-GUJI-557.md`。

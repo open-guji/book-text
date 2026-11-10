@@ -2,7 +2,7 @@
 
 > 条目布局以 guji-format spec/07-book-text-条目布局.md（§2.3、§3.3）为准；manifest 一侧（kind／is_original／source／license）见 spec 07 §二。
 
-> 只管 `original`（本项目从书影做出来的文本）。格式见 guji-format 规范：01 cord、02 char、03 markdown、04 punct、05 entity、06 norm、07 条目布局、08 decision。版本号见 [VERSIONING.md](VERSIONING.md)。
+> 只管 `original`（本项目从书影做出来的文本）。格式见 guji-format 规范：01 cord、02 char、03 markdown、04 punct、05 entity、06 norm、07 条目布局。（08 decision 已于 2026-11-09 废弃，见 design/2026-11-book-text只录首选字.md）版本号见 [VERSIONING.md](VERSIONING.md)。
 
 ## 一、文件和代号
 
@@ -15,7 +15,6 @@
 | **punct** | `NNN.punct.json` | 标点、分段、书名号、分卷与各级标题（v0.2 标题符） | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
 | **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
-| **decision** | `NNN.decision.json` | 不确定的字的其他候选 | 真源 | 规范见 guji-format 08（v0.1 正式；v0.2 增可选 reason／route／route_ref，v0.1 文件仍合法）；校验 F-OV-05 已落地（`scripts/validate_text_format.py`，含 `scripts/tests/test_decision.py`） |
 | **fig** | `NNN.fig.json`＋`fig/NNN/*` | 图片格（占一格的图形）与插图块的图：来源、说明、文件；**只有用到图的章才有** | 真源 | 规范见 guji-format 09（v0.1）、02 §4.7；校验 F-OV-13（`scripts/tests/test_fig.py`）；设计见 `docs/design/2026-10-图片格与插图设计.md` |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
@@ -23,7 +22,7 @@
 - **真源**：仓里别的文件算不出来，改动要靠人或模型做。main 只存真源。
 - **生成**：脚本从 main 的真源算出来，不手改；放在单独的生成分支上，main 不存。reflow（无标点的自然段稿）不再单独生成，直接出 rich。
 - **两种坐标**：**cell** 是格位 key `页:列:格[子列]`（如 `3:5:12a`），char、punct、entity、norm 都用它；**box** 是像素框 `[x, y, w, h]`，只在 cord 里。
-- 原来说的 Level 1／2／3、像素坐标层、文本层都不再用：Level 1 → cord（＋decision，规范见 guji-format 08），Level 2 → char，Level 3a → lines。
+- 原来说的 Level 1／2／3、像素坐标层、文本层都不再用：Level 1 → cord，Level 2 → char，Level 3a → lines。
 - 书影、cv 的中间产物、人裁事件、字形库不在 book-text，留在 IA 和 guji-workspace。
 - 抽检表、运行报告、新实体候选表、模型对照稿这些工作文件只放 `wip/` 分支，不进 main。
 
@@ -38,7 +37,6 @@
 | `punct_file` | `NNN.punct.json` | 否 |
 | `entity_file` | `NNN.entity.json` | 否 |
 | `norm_file` | `NNN.norm.json` | 否 |
-| `decision_file` | `NNN.decision.json` | 否（规范见 08；校验 F-OV-05 已落地） |
 | `fig_file` | `NNN.fig.json` | char 里有图片格或图列时必填（规范见 09；F-OV-13） |
 | `pending_file` | `NNN.pending.json` | 否（旧：册级待审清单。2026-10-20 起待审单只放中心库、每日发布到 COS，本仓不再放；已有的仍照 F-OV-07 校验） |
 
@@ -78,4 +76,4 @@
 
 ## 五、现状（10-11）
 
-四庫總目 vol02、vol03 已并 main，在 `Book/g/z/k/96mid1ogzk/default/` 下，五层齐全（char／cord／punct／entity／norm）；vol03 另有 `003.decision.json`。
+四庫總目 vol02、vol03 已并 main，在 `Book/g/z/k/96mid1ogzk/default/` 下，五层齐全（char／cord／punct／entity／norm）。

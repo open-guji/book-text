@@ -121,6 +121,20 @@ def test_sync_headings(tmp_path):
     assert OV.sync_headings(str(od)) is False         # 再跑一次不动盘
 
 
+def test_sync_headings_keeps_when_files_missing(tmp_path):
+    """稀疏克隆缺某章 char／punct：不能把该章已有 headings 当成没有标题而删掉。"""
+    od = tmp_path / 'original'
+    od.mkdir()
+    (od / '002.char.json').write_text(json.dumps(CHAR, ensure_ascii=False), encoding='utf-8')
+    (od / '002.punct.json').write_text(json.dumps(GOOD, ensure_ascii=False), encoding='utf-8')
+    keep = [{'level': 1, 'label': 'x', 'anchor': '39:1:1'}]
+    idx = {'chapters': [{'n': 2, 'file': '002'}, {'n': 3, 'file': '003', 'headings': keep}]}
+    (od / 'index.json').write_text(json.dumps(idx), encoding='utf-8')
+    OV.sync_headings(str(od))
+    got = json.loads((od / 'index.json').read_text(encoding='utf-8'))
+    assert got['chapters'][1]['headings'] == keep
+
+
 def test_heading_label_book_entry():
     from original_version import heading_label
     assert heading_label('《子夏易傳》十一卷内府藏本') == '子夏易傳'

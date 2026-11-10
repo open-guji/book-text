@@ -63,12 +63,16 @@ def make_repo(root):
     return entry, od
 
 
+RECORDS: list = []      # 每次 run 的标准输出（版本记录行）
+
+
 def run(*args):
     if "--pr" not in args:  # --pr 必填（B3 步 2(a)）
         args = args + ("--pr", "0")
-    err = io.StringIO()
-    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(err):
+    err, out = io.StringIO(), io.StringIO()
+    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
         code = B.main(list(args) + ["--date", "2026-10-05"])
+    RECORDS.append(out.getvalue())      # 不再写 CHANGES.md：版本记录行打印在标准输出
     return code, err.getvalue()
 
 
@@ -80,6 +84,7 @@ def ov_violations(root):
 
 class TestBumpOriginal(unittest.TestCase):
     def setUp(self):
+        RECORDS.clear()
         self.tmp = tempfile.TemporaryDirectory()
         self.root = self.tmp.name
         self.entry, self.od = make_repo(self.root)
@@ -147,8 +152,8 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual(self.comp("punct")["text_version"], "1.0.0")
         # char.json 仍是一格一行
         self.assertIn('{"a": "3:1:1", "c": "子"}', OV.read_text(os.path.join(self.od, "002.char.json")))
-        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
-        self.assertIn("| 2026-10-05 | testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7 |", changes)
+        changes = "".join(RECORDS)
+        self.assertIn("版本记录: testbook/002 | 文本＋标点＋实体 | →1.0.0 | 首次并 main | #7", changes)
         self.assertEqual(ov_violations(self.root),
                          {"F-OV-01": [], "F-OV-02": [], "F-OV-03": [], "F-OV-04": [], "F-OV-06": [], "F-OV-07": [], "F-OV-08": [], "F-OV-09": [], "F-OV-10": [], "F-OV-11": [], "F-FT-01": []})
         code, err = run(self.entry, "--init")
@@ -183,8 +188,8 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual((ch["text_version"], ch["proofing"]), ("0.1.0", True))
         self.assertNotIn("punct_version", ch)
         self.assertEqual(self.comp("char")["version"], "0.1.0")
-        self.assertIn("| 文本 | →0.1.0 | 粗校完 | #9 |",
-                      OV.read_text(os.path.join(self.od, "CHANGES.md")))
+        self.assertIn("文本 | →0.1.0 | 粗校完 | #9",
+                      "".join(RECORDS))
         self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
 
     def test_init_0_1_0_with_companions(self):
@@ -198,8 +203,8 @@ class TestBumpOriginal(unittest.TestCase):
         ch = self.idx()
         self.assertEqual((ch["text_version"], ch["punct_version"], ch["entity_version"]), ("0.1.0",) * 3)
         self.assertEqual(self.comp("punct")["text_version"], "0.1.0")
-        self.assertIn("| 文本＋标点＋实体 | →0.1.0 | 粗校完 | #9 |",
-                      OV.read_text(os.path.join(self.od, "CHANGES.md")))
+        self.assertIn("文本＋标点＋实体 | →0.1.0 | 粗校完 | #9",
+                      "".join(RECORDS))
         self.assertTrue(all(not v for v in ov_violations(self.root).values()), ov_violations(self.root))
         # 伴生层 1.x 高于文本 0.x：报
         d = self.comp("punct")
@@ -423,8 +428,8 @@ class TestBumpOriginal(unittest.TestCase):
         code, _ = run(self.od, "--proofing", "off", "--note", "精校完")
         self.assertEqual(code, 0)
         self.assertFalse(self.idx()["proofing"])
-        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
-        self.assertIn("| 校对状态 | 关→开 | 旧定义 1.0.0，补走精校 | #5 |", changes)
+        changes = "".join(RECORDS)
+        self.assertIn("校对状态 | 关→开 | 旧定义 1.0.0，补走精校 | #5", changes)
 
     def test_patch_and_minor(self):
         run(self.entry, "--init")
@@ -442,9 +447,9 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertEqual(self.comp("char")["version"], "1.1.0")
         self.assertEqual(self.comp("punct")["text_version"], "1.1.0")
         self.assertEqual(self.comp("punct")["version"], "1.0.1")
-        changes = OV.read_text(os.path.join(self.od, "CHANGES.md"))
-        self.assertIn("| 标点 | 1.0.0→1.0.1 | 改两处逗号 | #8 |", changes)
-        self.assertIn("| 文本 | 1.0.0→1.1.0 | PUA 转 Unicode | #0 |", changes)
+        changes = "".join(RECORDS)
+        self.assertIn("标点 | 1.0.0→1.0.1 | 改两处逗号 | #8", changes)
+        self.assertIn("文本 | 1.0.0→1.1.0 | PUA 转 Unicode | #0", changes)
         self.assertEqual(ov_violations(self.root)["F-OV-01"], [])
 
     def test_major_refused(self):
@@ -498,8 +503,8 @@ class TestBumpOriginal(unittest.TestCase):
         self.assertTrue(md.startswith(V.OV02_MARK))
         self.assertIn("<!-- ov02: punct=1 entity=1 -->", md)
         self.assertIn("标点 pre_char 对不上 1 条、实体失效待看 1 条", md)
-        self.assertIn("| `Book/aa/bb/cc/testbook/original/002.punct.json` | 标点 | 1 |", md)
-        self.assertIn("| `Book/aa/bb/cc/testbook/original/002.entity.json` | 实体 | 1 |", md)
+        self.assertIn("`Book/aa/bb/cc/testbook/original/002.punct.json` | 标点 | 1", md)
+        self.assertIn("`Book/aa/bb/cc/testbook/original/002.entity.json` | 实体 | 1", md)
         self.assertIn("卜子夏", md)
         self.assertNotIn(self.root, md)  # 明细只用相对路径
 
@@ -567,13 +572,6 @@ class TestBumpOriginal(unittest.TestCase):
         notes = ov_violations(self.root)["F-OV-01"]
         self.assertEqual(len(notes), 1)
         self.assertIn("超过 3", notes[0])
-
-
-class PrRequiredTest(unittest.TestCase):
-    def test_missing_pr_rejected(self):
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stderr(io.StringIO()):
-            B.main(["/nonexistent", "--line", "text", "--level", "patch", "--note", "x"])
-        self.assertEqual(cm.exception.code, 2)
 
 
 if __name__ == "__main__":

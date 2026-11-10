@@ -105,7 +105,7 @@ def cmd_record(a):
         return 2
     if not a.ref:
         print("警告：没给 --ref（出处：意见 id／待审单 r 号／GUJI 卡号）。建议必填，"
-              "便于和 CHANGES 的格变动出处（check_cell_provenance）对照", file=sys.stderr)
+              "便于和提交信息里的格变动出处（check_cell_provenance）对照", file=sys.stderr)
     if a.old_char.startswith("git:"):
         base = a.base_commit or _resolve(a.old_char[4:], a.vdir)
     elif a.base_commit:

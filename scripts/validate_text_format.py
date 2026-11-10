@@ -729,7 +729,7 @@ def pointer_assets(ptr, pd, fetch, book=None, stem=None):
     return ad, []
 
 
-ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig"}  # fig/：图片目录（F-OV-13）
+ORIGINAL_SIDECAR_FILES = {"index.json", "CHANGES.md", "assets.json", "fig", "lineage"}  # fig/：图片目录（F-OV-13）；lineage/：格号对照表 revisions/*.tsv（swap book-text 落，A31 11-10）
 ORIGINAL_FILE_RE = re.compile(r"^\d+\.(char|cord|punct|entity|norm|fig|pending|char-edits)\.json$|^\d+\.(lines|rich)\.md$")
 # NNN.char-edits.json（改字清单）是旁路文件：不在 index.json 声明，见 F-OV-15
 # index.json 章条目用 *_file 声明一册有哪些文件：有字段＝有文件，char_file 必填（ORIGINAL.md §二）

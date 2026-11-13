@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.27",
+  "version": "0.4.53",
   "text_version": "0.12.1",
   "book_id": "96mid1ogzk",
   "volume": 42,
@@ -99,9 +99,9 @@
         "end_offset": 52
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "永樂",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obh",
+        "canonical_name": "永樂"
       },
       "source": "claude:A34"
     },
@@ -137,9 +137,9 @@
         "end_offset": 75
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖"
       },
       "source": "claude:A33"
     },
@@ -290,9 +290,9 @@
         "end_offset": 161
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖"
       },
       "source": "claude:A33"
     },
@@ -336,21 +336,21 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01469",
+      "id": "e02008",
       "type": "work",
-      "text": "諸王世表",
+      "text": "秘閣書目",
       "anchor": {
-        "start": "2:3:13",
-        "end": "2:3:16"
+        "start": "2:4:1",
+        "end": "2:4:4"
       },
       "span": {
-        "start_offset": 181,
-        "end_offset": 185
+        "start_offset": 185,
+        "end_offset": 189
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "諸王世表",
-        "note": "重标后待匹配"
+        "canonical_name": "秘閣書目",
+        "note": "维基文库对比补标（题名＋N卷）"
       },
       "source": "claude:A33"
     },
@@ -405,9 +405,9 @@
         "end_offset": 200
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -462,7 +462,8 @@
         "end_offset": 232
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxdkh5wj",
         "canonical_name": "東閣"
       },
       "source": "ext:siku-qiefen-v2"
@@ -535,9 +536,9 @@
         "end_offset": 302
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正統",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obk",
+        "canonical_name": "正統"
       },
       "source": "claude:A33"
     },
@@ -668,9 +669,9 @@
         "end_offset": 353
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "虞稷",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdor",
+        "canonical_name": "黃虞稷"
       },
       "source": "claude:A33"
     },
@@ -744,9 +745,9 @@
         "end_offset": 372
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -801,28 +802,9 @@
         "end_offset": 435
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "成化",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01477",
-      "type": "people",
-      "text": "葉氏",
-      "anchor": {
-        "start": "4:1:4",
-        "end": "4:1:5"
-      },
-      "span": {
-        "start_offset": 448,
-        "end_offset": 450
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "葉氏",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obn",
+        "canonical_name": "成化"
       },
       "source": "claude:A33"
     },
@@ -865,6 +847,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02009",
+      "type": "work",
+      "text": "新書目",
+      "anchor": {
+        "start": "4:6:7",
+        "end": "4:6:9"
+      },
+      "span": {
+        "start_offset": 546,
+        "end_offset": 549
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "新書目",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01478",
       "type": "people",
       "text": "夏言",
@@ -877,9 +878,9 @@
         "end_offset": 558
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏言",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bebb",
+        "canonical_name": "夏言"
       },
       "source": "claude:A33"
     },
@@ -896,9 +897,9 @@
         "end_offset": 561
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王守仁",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9benx",
+        "canonical_name": "王守仁"
       },
       "source": "claude:A33"
     },
@@ -953,9 +954,9 @@
         "end_offset": 594
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -1029,9 +1030,9 @@
         "end_offset": 641
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢"
       },
       "source": "claude:A33"
     },
@@ -1067,9 +1068,9 @@
         "end_offset": 650
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -1091,6 +1092,25 @@
         "canonical_name": "文苑春秋"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02010",
+      "type": "work",
+      "text": "敘錄",
+      "anchor": {
+        "start": "5:3:15",
+        "end": "5:3:16"
+      },
+      "span": {
+        "start_offset": 662,
+        "end_offset": 664
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "敘錄",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00042",
@@ -1201,9 +1221,9 @@
         "end_offset": 771
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -1239,9 +1259,9 @@
         "end_offset": 775
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "瑮",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bn18",
+        "canonical_name": "晁瑮"
       },
       "source": "claude:A33"
     },
@@ -1258,9 +1278,9 @@
         "end_offset": 778
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "君石",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bn18",
+        "canonical_name": "晁瑮"
       },
       "source": "claude:A33"
     },
@@ -1315,9 +1335,9 @@
         "end_offset": 785
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -1372,9 +1392,9 @@
         "end_offset": 794
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖"
       },
       "source": "claude:A33"
     },
@@ -1469,9 +1489,9 @@
         "end_offset": 814
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖"
       },
       "source": "claude:A33"
     },
@@ -1527,9 +1547,9 @@
         "end_offset": 956
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -1584,9 +1604,9 @@
         "end_offset": 1006
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -1679,9 +1699,9 @@
         "end_offset": 1058
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -1985,9 +2005,9 @@
         "end_offset": 1158
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬厯",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwu9",
+        "canonical_name": "萬曆"
       },
       "source": "claude:A33"
     },
@@ -2099,9 +2119,9 @@
         "end_offset": 1266
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -2192,9 +2212,9 @@
         "end_offset": 1296
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -2267,9 +2287,9 @@
         "end_offset": 1403
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -2343,9 +2363,9 @@
         "end_offset": 1427
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周勃",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixict1lif4k",
+        "canonical_name": "周勃"
       },
       "source": "claude:A33"
     },
@@ -2362,9 +2382,9 @@
         "end_offset": 1429
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張飛",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicu7xq7t6",
+        "canonical_name": "張飛"
       },
       "source": "claude:A33"
     },
@@ -2400,9 +2420,9 @@
         "end_offset": 1444
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -2513,9 +2533,9 @@
         "end_offset": 1505
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -2707,25 +2727,6 @@
         "entity_id": "d59f2hpajuv6",
         "canonical_name": "書儀",
         "note": "按撰人「司馬光」核对"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01520",
-      "type": "people",
-      "text": "韓氏",
-      "anchor": {
-        "start": "12:5:3",
-        "end": "12:5:4"
-      },
-      "span": {
-        "start_offset": 1827,
-        "end_offset": 1829
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "韓氏",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -3215,9 +3216,9 @@
         "end_offset": 2073
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "趙戒",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bo2a",
+        "canonical_name": "張戒"
       },
       "source": "claude:A33"
     },
@@ -3234,9 +3235,9 @@
         "end_offset": 2075
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏校",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9be0p",
+        "canonical_name": "魏校"
       },
       "source": "claude:A33"
     },
@@ -3538,9 +3539,9 @@
         "end_offset": 2175
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -3576,9 +3577,9 @@
         "end_offset": 2192
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "屈原",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhuu",
+        "canonical_name": "屈原"
       },
       "source": "claude:A33"
     },
@@ -3595,9 +3596,9 @@
         "end_offset": 2195
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋玉",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhx6",
+        "canonical_name": "宋玉"
       },
       "source": "claude:A33"
     },
@@ -3614,28 +3615,9 @@
         "end_offset": 2197
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01529",
-      "type": "work",
-      "text": "藝文志",
-      "anchor": {
-        "start": "14:6:12",
-        "end": "14:6:14"
-      },
-      "span": {
-        "start_offset": 2197,
-        "end_offset": 2200
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "藝文志",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢"
       },
       "source": "claude:A33"
     },
@@ -3766,9 +3748,9 @@
         "end_offset": 2297
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -4812,9 +4794,9 @@
         "end_offset": 2791
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -5075,9 +5057,9 @@
         "end_offset": 2907
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -5245,9 +5227,9 @@
         "end_offset": 2947
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "延壽",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bq9l",
+        "canonical_name": "延壽"
       },
       "source": "claude:A33"
     },
@@ -5567,9 +5549,9 @@
         "end_offset": 3088
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -5758,9 +5740,9 @@
         "end_offset": 3121
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙"
       },
       "source": "claude:A33"
     },
@@ -5988,9 +5970,9 @@
         "end_offset": 3444
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "季宣",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdxo",
+        "canonical_name": "薛季宣"
       },
       "source": "claude:A33"
     },
@@ -6367,9 +6349,9 @@
         "end_offset": 3522
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳植",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgxa",
+        "canonical_name": "陳植"
       },
       "source": "claude:A33"
     },
@@ -6443,9 +6425,9 @@
         "end_offset": 3535
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -6787,9 +6769,9 @@
         "end_offset": 3598
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -7112,9 +7094,9 @@
         "end_offset": 3667
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "潘昻",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bekj",
+        "canonical_name": "潘昂霄"
       },
       "source": "claude:A33"
     },
@@ -7131,9 +7113,9 @@
         "end_offset": 3669
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王禎",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh0r",
+        "canonical_name": "王禎"
       },
       "source": "claude:A33"
     },
@@ -7359,9 +7341,9 @@
         "end_offset": 3708
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周伯琦",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9be5y",
+        "canonical_name": "周伯琦"
       },
       "source": "claude:A33"
     },
@@ -7378,9 +7360,9 @@
         "end_offset": 3711
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "楊允孚",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmin",
+        "canonical_name": "楊允孚"
       },
       "source": "claude:A33"
     },
@@ -7397,9 +7379,9 @@
         "end_offset": 3713
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "李存",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfjf",
+        "canonical_name": "李存"
       },
       "source": "claude:A33"
     },
@@ -7416,9 +7398,9 @@
         "end_offset": 3715
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳海",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfjw",
+        "canonical_name": "吳海"
       },
       "source": "claude:A33"
     },
@@ -7435,9 +7417,9 @@
         "end_offset": 3717
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳基",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgoq",
+        "canonical_name": "陳基"
       },
       "source": "claude:A33"
     },
@@ -7454,9 +7436,9 @@
         "end_offset": 3723
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -7511,9 +7493,9 @@
         "end_offset": 3734
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南齊",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubkeej7",
+        "canonical_name": "南朝齊"
       },
       "source": "claude:A33"
     },
@@ -7872,9 +7854,9 @@
         "end_offset": 3871
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國朝",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxga",
+        "canonical_name": "清"
       },
       "source": "claude:A33"
     },
@@ -7967,9 +7949,9 @@
         "end_offset": 3885
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "乾隆",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwur",
+        "canonical_name": "乾隆"
       },
       "source": "claude:A33"
     },
@@ -7986,9 +7968,10 @@
         "end_offset": 3896
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内閣中書舍人",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8oaqrr4",
+        "canonical_name": "內閣中書",
+        "note": "官名重挂：unique，tier A，語境朝代 國朝（entry）→ 清"
       },
       "source": "claude:A33"
     },
@@ -8005,9 +7988,9 @@
         "end_offset": 3901
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢"
       },
       "source": "claude:A33"
     },
@@ -8024,9 +8007,9 @@
         "end_offset": 3903
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -8192,9 +8175,9 @@
         "end_offset": 3949
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋咸",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bo0r",
+        "canonical_name": "宋咸"
       },
       "source": "claude:A33"
     },
@@ -8306,9 +8289,9 @@
         "end_offset": 4026
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -8496,9 +8479,9 @@
         "end_offset": 4111
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -8553,9 +8536,9 @@
         "end_offset": 4125
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -8629,7 +8612,8 @@
         "end_offset": 4223
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximyabgegc",
         "canonical_name": "覆釡山"
       },
       "source": "ext:siku-qiefen-v2"
@@ -8685,7 +8669,8 @@
         "end_offset": 4280
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximym6s9kb",
         "canonical_name": "司馬遷廟"
       },
       "source": "ext:siku-qiefen-v2"
@@ -8794,7 +8779,8 @@
         "end_offset": 4321
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixicnvlbv7e",
         "canonical_name": "涼城縣"
       },
       "source": "ext:siku-qiefen-v2"
@@ -8945,9 +8931,9 @@
         "end_offset": 4424
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -8964,9 +8950,9 @@
         "end_offset": 4453
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉靖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obq",
+        "canonical_name": "嘉靖"
       },
       "source": "claude:A33"
     },
@@ -9117,9 +9103,9 @@
         "end_offset": 4496
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -10464,9 +10450,9 @@
         "end_offset": 5403
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "米芾",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bevy",
+        "canonical_name": "米芾"
       },
       "source": "claude:A33"
     },
@@ -10635,9 +10621,9 @@
         "end_offset": 5485
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "來聘",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhgyrw4x5y",
+        "canonical_name": "胡來聘"
       },
       "source": "claude:A33"
     },
@@ -10654,9 +10640,9 @@
         "end_offset": 5488
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "來儼然",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bn5f",
+        "canonical_name": "來儼然"
       },
       "source": "claude:A33"
     },
@@ -10748,9 +10734,9 @@
         "end_offset": 5533
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "趙孟堅",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfgm",
+        "canonical_name": "趙孟堅"
       },
       "source": "claude:A33"
     },
@@ -10767,9 +10753,9 @@
         "end_offset": 5536
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "柯九思",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh4a",
+        "canonical_name": "柯九思"
       },
       "source": "claude:A33"
     },
@@ -11091,8 +11077,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kydy4n7",
-        "canonical_name": "西安縣"
+        "entity_id": "hixi4ugtrl6o",
+        "canonical_name": "西安府",
+        "note": "A12改挂账后重扫：逐处读上下文改挂（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11186,8 +11173,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kydy4n7",
-        "canonical_name": "西安縣"
+        "entity_id": "hixi4ugtrl6o",
+        "canonical_name": "西安府",
+        "note": "A12改挂账后重扫：逐处读上下文改挂（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11374,9 +11362,9 @@
         "end_offset": 5881
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嶽麓寺",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hiximym6s9hj",
+        "canonical_name": "嶽麓寺"
       },
       "source": "claude:A33"
     },
@@ -11713,7 +11701,8 @@
         "end_offset": 6149
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin15w23ar",
         "canonical_name": "周少魯"
       },
       "source": "ext:siku-qiefen-v2"
@@ -11978,7 +11967,8 @@
         "end_offset": 6556
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcvfqghlr",
         "canonical_name": "間者軒帖考"
       },
       "source": "ext:siku-qiefen-v2"
@@ -12261,7 +12251,8 @@
         "end_offset": 6688
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximym6s9kc",
         "canonical_name": "天禧寺"
       },
       "source": "ext:siku-qiefen-v2"
@@ -12979,7 +12970,8 @@
         "end_offset": 7168
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixigi3g732c",
         "canonical_name": "太宗"
       },
       "source": "ext:siku-qiefen-v2"
@@ -13137,6 +13129,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02011",
+      "type": "work",
+      "text": "瘞鶴銘辨",
+      "anchor": {
+        "start": "45:7:1",
+        "end": "45:7:4"
+      },
+      "span": {
+        "start_offset": 7251,
+        "end_offset": 7255
+      },
+      "target": {
+        "status": "matched",
+        "entity_id": "d59f2mepwx6o",
+        "canonical_name": "瘞鶴銘辨"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00651",
       "type": "place",
       "text": "兩江",
@@ -13187,7 +13198,8 @@
         "end_offset": 7274
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39jz",
         "canonical_name": "焦山"
       },
       "source": "ext:siku-qiefen-v2"
@@ -13205,9 +13217,9 @@
         "end_offset": 7282
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃長睿",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beog",
+        "canonical_name": "黃伯思"
       },
       "source": "claude:A33"
     },
@@ -13249,6 +13261,25 @@
         "canonical_name": "顧起元"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02012",
+      "type": "work",
+      "text": "瘞鶴銘考",
+      "anchor": {
+        "start": "46:1:1",
+        "end": "46:1:4"
+      },
+      "span": {
+        "start_offset": 7302,
+        "end_offset": 7306
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "瘞鶴銘考",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00657",
@@ -13377,9 +13408,9 @@
         "end_offset": 7353
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "焦山",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hiximy3x39jz",
+        "canonical_name": "焦山"
       },
       "source": "claude:A33"
     },
@@ -13496,25 +13527,6 @@
         "canonical_name": "海寧縣"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01622",
-      "type": "people",
-      "text": "陳氏",
-      "anchor": {
-        "start": "46:7:17",
-        "end": "46:7:18"
-      },
-      "span": {
-        "start_offset": 7426,
-        "end_offset": 7428
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳氏",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00670",
@@ -13678,7 +13690,8 @@
         "end_offset": 7589
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximym6s9kd",
         "canonical_name": "焦山寺"
       },
       "source": "ext:siku-qiefen-v2"
@@ -13906,9 +13919,9 @@
         "end_offset": 7742
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "米元章",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bevy",
+        "canonical_name": "米芾"
       },
       "source": "claude:A33"
     },
@@ -14001,8 +14014,9 @@
         "end_offset": 7980
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "千祿字書"
+        "status": "matched",
+        "entity_id": "d59f28jxml1i",
+        "canonical_name": "干祿字書"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14019,9 +14033,9 @@
         "end_offset": 7987
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "浯溪",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hiximy3x39ml",
+        "canonical_name": "浯溪"
       },
       "source": "claude:A33"
     },
@@ -14095,7 +14109,8 @@
         "end_offset": 8039
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcuptg5xv",
         "canonical_name": "鳳墅帖"
       },
       "source": "ext:siku-qiefen-v2"
@@ -14132,9 +14147,9 @@
         "end_offset": 8061
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "傅山",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bd3y",
+        "canonical_name": "傅山"
       },
       "source": "claude:A33"
     },
@@ -14151,9 +14166,9 @@
         "end_offset": 8063
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鄭簠",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixiemd3m8p8",
+        "canonical_name": "鄭簠"
       },
       "source": "claude:A33"
     },
@@ -14265,9 +14280,9 @@
         "end_offset": 8181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "何焯",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bd6k",
+        "canonical_name": "何焯"
       },
       "source": "claude:A33"
     },
@@ -14284,9 +14299,9 @@
         "end_offset": 8184
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "顧有典",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin15w23as",
+        "canonical_name": "顧有典"
       },
       "source": "claude:A33"
     },
@@ -14398,7 +14413,8 @@
         "end_offset": 8272
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcuptg5yc",
         "canonical_name": "戲鴻堂帖"
       },
       "source": "ext:siku-qiefen-v2"
@@ -14473,7 +14489,8 @@
         "end_offset": 8305
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcuptg5xv",
         "canonical_name": "鳳墅帖"
       },
       "source": "ext:siku-qiefen-v2"
@@ -14514,25 +14531,6 @@
         "canonical_name": "先秦古器記"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01632",
-      "type": "work",
-      "text": "先秦奇器錄",
-      "anchor": {
-        "start": "52:5:3",
-        "end": "52:5:7"
-      },
-      "span": {
-        "start_offset": 8390,
-        "end_offset": 8395
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "先秦奇器錄",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00721",
@@ -15092,9 +15090,9 @@
         "end_offset": 8909
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汝帖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2q5t6mf4",
+        "canonical_name": "汝帖"
       },
       "source": "claude:A33"
     },
@@ -15223,9 +15221,9 @@
         "end_offset": 8988
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運震",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2f8wal5",
+        "canonical_name": "牛運震"
       },
       "source": "claude:A33"
     },
@@ -15242,9 +15240,9 @@
         "end_offset": 8994
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運震",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2f8wal5",
+        "canonical_name": "牛運震"
       },
       "source": "claude:A33"
     },
@@ -15261,9 +15259,9 @@
         "end_offset": 8998
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "副使",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8opq5tu",
+        "canonical_name": "按察副使"
       },
       "source": "claude:A33"
     },
@@ -15337,9 +15335,9 @@
         "end_offset": 9102
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "運震",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2f8wal5",
+        "canonical_name": "牛運震"
       },
       "source": "claude:A33"
     },
@@ -15356,9 +15354,9 @@
         "end_offset": 9120
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "吳",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubk35z8",
+        "canonical_name": "三國吳"
       },
       "source": "claude:A33"
     },
@@ -15394,28 +15392,9 @@
         "end_offset": 9126
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01643",
-      "type": "work",
-      "text": "受禪碑",
-      "anchor": {
-        "start": "57:1:16",
-        "end": "57:1:18"
-      },
-      "span": {
-        "start_offset": 9126,
-        "end_offset": 9129
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "受禪碑",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubk35za",
+        "canonical_name": "三國魏"
       },
       "source": "claude:A33"
     },
@@ -15432,9 +15411,9 @@
         "end_offset": 9134
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -15490,9 +15469,9 @@
         "end_offset": 9181
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢"
       },
       "source": "claude:A33"
     },
@@ -15624,9 +15603,9 @@
         "end_offset": 9366
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "倪思",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9be75",
+        "canonical_name": "倪思"
       },
       "source": "claude:A33"
     },
@@ -15680,9 +15659,9 @@
         "end_offset": 9444
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfy",
+        "canonical_name": "晉"
       },
       "source": "claude:A33"
     },
@@ -15775,9 +15754,9 @@
         "end_offset": 9545
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -15794,9 +15773,9 @@
         "end_offset": 9548
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "劉子元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixictkcoqoi",
+        "canonical_name": "劉子元"
       },
       "source": "claude:A33"
     },
@@ -15832,9 +15811,9 @@
         "end_offset": 9555
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "知幾",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhdp",
+        "canonical_name": "劉知幾"
       },
       "source": "claude:A33"
     },
@@ -15909,9 +15888,10 @@
         "end_offset": 9581
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鳳閣舍人",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5vx2iuj8",
+        "canonical_name": "中書舍人",
+        "note": "官名重挂：unique，tier A，語境朝代 唐（shi）→ 唐"
       },
       "source": "claude:A33"
     },
@@ -15986,9 +15966,10 @@
         "end_offset": 9604
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxcec54y",
         "canonical_name": "太子左庶子",
-        "note": "重标后待匹配"
+        "note": "官名重挂：unique，tier A，語境朝代 唐（shi）→ 唐"
       },
       "source": "claude:A33"
     },
@@ -16025,9 +16006,9 @@
         "end_offset": 9611
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "開元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ij",
+        "canonical_name": "開元"
       },
       "source": "claude:A33"
     },
@@ -16159,9 +16140,9 @@
         "end_offset": 9672
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蕭至忠",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixictdqiosz",
+        "canonical_name": "蕭至忠"
       },
       "source": "claude:A33"
     },
@@ -16178,9 +16159,9 @@
         "end_offset": 9675
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宗楚客",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicug8rkzu",
+        "canonical_name": "宗楚客"
       },
       "source": "claude:A33"
     },
@@ -16467,9 +16448,9 @@
         "end_offset": 9925
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "散宜生",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixica61ks96",
+        "canonical_name": "散宜生"
       },
       "source": "claude:A33"
     },
@@ -16505,9 +16486,9 @@
         "end_offset": 9932
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "由余",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9biq6",
+        "canonical_name": "由余"
       },
       "source": "claude:A33"
     },
@@ -16524,9 +16505,9 @@
         "end_offset": 9935
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "百里奚",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicnyf35mt",
+        "canonical_name": "百里奚"
       },
       "source": "claude:A33"
     },
@@ -16543,9 +16524,9 @@
         "end_offset": 9937
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "范蠡",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk68",
+        "canonical_name": "范蠡"
       },
       "source": "claude:A33"
     },
@@ -16562,9 +16543,9 @@
         "end_offset": 9939
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "文種",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk66",
+        "canonical_name": "文種"
       },
       "source": "claude:A33"
     },
@@ -16581,9 +16562,9 @@
         "end_offset": 9941
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "曹沬",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicnyf35l8",
+        "canonical_name": "曹劌"
       },
       "source": "claude:A33"
     },
@@ -16600,9 +16581,9 @@
         "end_offset": 9944
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "公儀休",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixiclfzp8wr",
+        "canonical_name": "公儀休"
       },
       "source": "claude:A33"
     },
@@ -16638,9 +16619,9 @@
         "end_offset": 9948
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "穰苴",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bkb5",
+        "canonical_name": "司馬穰苴"
       },
       "source": "claude:A33"
     },
@@ -16657,9 +16638,10 @@
         "end_offset": 9981
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "稱謂篇",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f28jau9du",
+        "canonical_name": "史通",
+        "coarse": "part_of_work"
       },
       "source": "claude:A33"
     },
@@ -16676,9 +16658,9 @@
         "end_offset": 9983
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfy",
+        "canonical_name": "晉"
       },
       "source": "claude:A33"
     },
@@ -17152,9 +17134,9 @@
         "end_offset": 10239
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubkeej2",
+        "canonical_name": "北魏"
       },
       "source": "claude:A33"
     },
@@ -17171,9 +17153,9 @@
         "end_offset": 10244
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "濟陰王暉業",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhjhtnphj6",
+        "canonical_name": "濟陰王暉業"
       },
       "source": "claude:A33"
     },
@@ -17248,9 +17230,9 @@
         "end_offset": 10283
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "馬遷",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhma",
+        "canonical_name": "司馬遷"
       },
       "source": "claude:A33"
     },
@@ -17287,9 +17269,9 @@
         "end_offset": 10307
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -17382,9 +17364,9 @@
         "end_offset": 10391
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "起龍",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beov",
+        "canonical_name": "浦起龍"
       },
       "source": "claude:A33"
     },
@@ -17401,9 +17383,9 @@
         "end_offset": 10394
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "二田",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beov",
+        "canonical_name": "浦起龍"
       },
       "source": "claude:A33"
     },
@@ -17439,9 +17421,9 @@
         "end_offset": 10399
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "雍正",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwuq",
+        "canonical_name": "雍正"
       },
       "source": "claude:A33"
     },
@@ -17516,9 +17498,9 @@
         "end_offset": 10418
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "郭延年",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin15w23at",
+        "canonical_name": "郭延年"
       },
       "source": "claude:A33"
     },
@@ -17535,9 +17517,9 @@
         "end_offset": 10421
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王維儉",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bi5j",
+        "canonical_name": "王維儉"
       },
       "source": "claude:A33"
     },
@@ -17612,7 +17594,8 @@
         "end_offset": 10478
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j7",
         "canonical_name": "秦"
       },
       "source": "ext:siku-qiefen-v2"
@@ -17725,7 +17708,8 @@
         "end_offset": 10527
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j7",
         "canonical_name": "秦"
       },
       "source": "ext:siku-qiefen-v2"
@@ -17956,9 +17940,9 @@
         "end_offset": 10753
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -18013,9 +17997,9 @@
         "end_offset": 10763
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18032,9 +18016,9 @@
         "end_offset": 10766
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳父",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18070,9 +18054,9 @@
         "end_offset": 10771
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉祐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoj",
+        "canonical_name": "嘉祐"
       },
       "source": "claude:A33"
     },
@@ -18147,9 +18131,9 @@
         "end_offset": 10794
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "范鎭",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9biev",
+        "canonical_name": "范鎮"
       },
       "source": "claude:A33"
     },
@@ -18166,9 +18150,9 @@
         "end_offset": 10797
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖謙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdrf",
+        "canonical_name": "呂祖謙"
       },
       "source": "claude:A33"
     },
@@ -18261,9 +18245,9 @@
         "end_offset": 10818
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18299,9 +18283,9 @@
         "end_offset": 10858
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元祐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yov",
+        "canonical_name": "元祐"
       },
       "source": "claude:A33"
     },
@@ -18338,9 +18322,9 @@
         "end_offset": 10881
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖謙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdrf",
+        "canonical_name": "呂祖謙"
       },
       "source": "claude:A33"
     },
@@ -18395,9 +18379,9 @@
         "end_offset": 10901
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18433,7 +18417,8 @@
         "end_offset": 10908
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximym6s9ke",
         "canonical_name": "大相國寺"
       },
       "source": "ext:siku-qiefen-v2"
@@ -18470,9 +18455,9 @@
         "end_offset": 10927
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18735,9 +18720,9 @@
         "end_offset": 11013
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -18989,25 +18974,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01737",
-      "type": "work",
-      "text": "社倉記",
-      "anchor": {
-        "start": "70:4:16",
-        "end": "70:4:18"
-      },
-      "span": {
-        "start_offset": 11107,
-        "end_offset": 11110
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "社倉記",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00902",
       "type": "people",
       "text": "朱子",
@@ -19058,9 +19024,9 @@
         "end_offset": 11189
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -19096,9 +19062,9 @@
         "end_offset": 11196
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "之翰",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beox",
+        "canonical_name": "孫甫"
       },
       "source": "claude:A33"
     },
@@ -19328,9 +19294,9 @@
         "end_offset": 11261
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康定",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yob",
+        "canonical_name": "康定"
       },
       "source": "claude:A33"
     },
@@ -19347,9 +19313,9 @@
         "end_offset": 11268
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉祐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoj",
+        "canonical_name": "嘉祐"
       },
       "source": "claude:A33"
     },
@@ -19421,9 +19387,9 @@
         "end_offset": 11331
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "紹興",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubpe784",
+        "canonical_name": "紹興"
       },
       "source": "claude:A33"
     },
@@ -19440,8 +19406,9 @@
         "end_offset": 11341
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "劒州"
+        "status": "matched",
+        "entity_id": "hixicl8f74vd",
+        "canonical_name": "劍州"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -19458,9 +19425,9 @@
         "end_offset": 11348
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "端平",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubppfru",
+        "canonical_name": "端平"
       },
       "source": "claude:A33"
     },
@@ -19784,9 +19751,9 @@
         "end_offset": 11470
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -19822,9 +19789,9 @@
         "end_offset": 11476
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏卿",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoy",
+        "canonical_name": "呂夏卿"
       },
       "source": "claude:A33"
     },
@@ -19841,9 +19808,9 @@
         "end_offset": 11479
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "縉叔",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoy",
+        "canonical_name": "呂夏卿"
       },
       "source": "claude:A33"
     },
@@ -19860,9 +19827,9 @@
         "end_offset": 11481
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泉州",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4ugstvk8",
+        "canonical_name": "泉州"
       },
       "source": "claude:A33"
     },
@@ -20091,9 +20058,9 @@
         "end_offset": 11548
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏卿",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoy",
+        "canonical_name": "呂夏卿"
       },
       "source": "claude:A33"
     },
@@ -20148,9 +20115,9 @@
         "end_offset": 11606
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋祁",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beiu",
+        "canonical_name": "宋祁"
       },
       "source": "claude:A33"
     },
@@ -20300,9 +20267,9 @@
         "end_offset": 11702
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏卿",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoy",
+        "canonical_name": "呂夏卿"
       },
       "source": "claude:A33"
     },
@@ -20338,9 +20305,9 @@
         "end_offset": 11763
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "夏卿",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoy",
+        "canonical_name": "呂夏卿"
       },
       "source": "claude:A33"
     },
@@ -20376,9 +20343,9 @@
         "end_offset": 11774
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "字文虛中",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmso",
+        "canonical_name": "宇文虛中"
       },
       "source": "claude:A33"
     },
@@ -20548,9 +20515,9 @@
         "end_offset": 11915
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -20586,9 +20553,9 @@
         "end_offset": 11921
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "羲仲",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoz",
+        "canonical_name": "劉羲仲"
       },
       "source": "claude:A33"
     },
@@ -20739,9 +20706,9 @@
         "end_offset": 11957
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "羲仲",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoz",
+        "canonical_name": "劉羲仲"
       },
       "source": "claude:A33"
     },
@@ -20796,9 +20763,10 @@
         "end_offset": 11986
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "郊社齋郞",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hiximxfukl5h",
+        "canonical_name": "郊社齋郎",
+        "note": "官名重挂：unique，tier A，語境朝代 宋（entry）→ 趙宋"
       },
       "source": "claude:A33"
     },
@@ -20910,9 +20878,9 @@
         "end_offset": 12062
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "魏",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubk35za",
+        "canonical_name": "三國魏"
       },
       "source": "claude:A33"
     },
@@ -20929,9 +20897,9 @@
         "end_offset": 12063
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfy",
+        "canonical_name": "晉"
       },
       "source": "claude:A33"
     },
@@ -20948,9 +20916,9 @@
         "end_offset": 12076
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "羲仲",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoz",
+        "canonical_name": "劉羲仲"
       },
       "source": "claude:A33"
     },
@@ -21234,9 +21202,9 @@
         "end_offset": 12188
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -21367,9 +21335,9 @@
         "end_offset": 12272
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "習鑿齒",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgbr",
+        "canonical_name": "習鑿齒"
       },
       "source": "claude:A33"
     },
@@ -21425,9 +21393,9 @@
         "end_offset": 12296
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "羲仲",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoz",
+        "canonical_name": "劉羲仲"
       },
       "source": "claude:A33"
     },
@@ -21481,9 +21449,9 @@
         "end_offset": 12333
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "羲仲",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beoz",
+        "canonical_name": "劉羲仲"
       },
       "source": "claude:A33"
     },
@@ -21556,9 +21524,9 @@
         "end_offset": 12378
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖禹",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beow",
+        "canonical_name": "范祖禹"
       },
       "source": "claude:A33"
     },
@@ -21575,7 +21543,8 @@
         "end_offset": 12441
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39ma",
         "canonical_name": "涑水"
       },
       "source": "ext:siku-qiefen-v2"
@@ -21631,9 +21600,9 @@
         "end_offset": 12470
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -21669,9 +21638,9 @@
         "end_offset": 12477
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "子西",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep0",
+        "canonical_name": "唐庚"
       },
       "source": "claude:A33"
     },
@@ -21688,9 +21657,9 @@
         "end_offset": 12479
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "眉州",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wau7p5c",
+        "canonical_name": "眉州"
       },
       "source": "claude:A33"
     },
@@ -21726,9 +21695,9 @@
         "end_offset": 12484
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "紹聖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoz",
+        "canonical_name": "紹聖"
       },
       "source": "claude:A33"
     },
@@ -21840,9 +21809,10 @@
         "end_offset": 12512
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxap5mo2",
         "canonical_name": "提舉",
-        "note": "官名词表补标，待匹配"
+        "note": "官名重挂：unique，tier A，語境朝代 宋（shi）→ 趙宋"
       },
       "source": "claude:A33"
     },
@@ -21878,9 +21848,9 @@
         "end_offset": 12521
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "商英",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhi9",
+        "canonical_name": "張商英"
       },
       "source": "claude:A33"
     },
@@ -21916,9 +21886,9 @@
         "end_offset": 12531
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大觀",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubpe77o",
+        "canonical_name": "大觀"
       },
       "source": "claude:A33"
     },
@@ -21992,9 +21962,9 @@
         "end_offset": 12573
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -22015,25 +21985,6 @@
         "entity_id": "hixhd2h9bns1",
         "canonical_name": "晁公武",
         "note": "重标沿用全册同字挂法，待核"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01815",
-      "type": "people",
-      "text": "陳氏",
-      "anchor": {
-        "start": "79:4:15",
-        "end": "79:4:16"
-      },
-      "span": {
-        "start_offset": 12595,
-        "end_offset": 12597
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳氏",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -22220,9 +22171,9 @@
         "end_offset": 12750
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "商",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubk35zw",
+        "canonical_name": "商"
       },
       "source": "claude:A33"
     },
@@ -22277,9 +22228,9 @@
         "end_offset": 12772
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "神農",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk6o",
+        "canonical_name": "神農"
       },
       "source": "claude:A33"
     },
@@ -22334,9 +22285,9 @@
         "end_offset": 12819
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -22372,9 +22323,9 @@
         "end_offset": 12825
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彥約",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep1",
+        "canonical_name": "曹彥約"
       },
       "source": "claude:A33"
     },
@@ -22391,9 +22342,9 @@
         "end_offset": 12828
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "簡甫",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep1",
+        "canonical_name": "曹彥約"
       },
       "source": "claude:A33"
     },
@@ -22429,9 +22380,9 @@
         "end_offset": 12833
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳熙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubpe78n",
+        "canonical_name": "淳熙"
       },
       "source": "claude:A33"
     },
@@ -22525,9 +22476,9 @@
         "end_offset": 12865
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "寶慶",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubppfrp",
+        "canonical_name": "寶慶"
       },
       "source": "claude:A33"
     },
@@ -22592,25 +22543,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01828",
-      "type": "people",
-      "text": "文簡",
-      "anchor": {
-        "start": "81:3:4",
-        "end": "81:3:5"
-      },
-      "span": {
-        "start_offset": 12895,
-        "end_offset": 12897
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "文簡",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01053",
       "type": "work",
       "text": "宋史",
@@ -22642,9 +22574,9 @@
         "end_offset": 12909
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彥約",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep1",
+        "canonical_name": "曹彥約"
       },
       "source": "claude:A33"
     },
@@ -22737,9 +22669,9 @@
         "end_offset": 12949
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天聖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yo0",
+        "canonical_name": "天聖"
       },
       "source": "claude:A33"
     },
@@ -22794,9 +22726,9 @@
         "end_offset": 12961
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太祖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyg6",
+        "canonical_name": "趙匡胤"
       },
       "source": "claude:A33"
     },
@@ -22813,9 +22745,9 @@
         "end_offset": 12963
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太宗",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyg7",
+        "canonical_name": "趙炅"
       },
       "source": "claude:A33"
     },
@@ -22890,9 +22822,9 @@
         "end_offset": 12987
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "寶元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubp2yoa",
+        "canonical_name": "寶元"
       },
       "source": "claude:A33"
     },
@@ -22909,9 +22841,9 @@
         "end_offset": 13008
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彥約",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep1",
+        "canonical_name": "曹彥約"
       },
       "source": "claude:A33"
     },
@@ -22985,9 +22917,9 @@
         "end_offset": 13115
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -23024,9 +22956,9 @@
         "end_offset": 13122
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "容甫",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bep2",
+        "canonical_name": "葛洪"
       },
       "source": "claude:A33"
     },
@@ -23100,9 +23032,9 @@
         "end_offset": 13135
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳熙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubpe78n",
+        "canonical_name": "淳熙"
       },
       "source": "claude:A33"
     },
@@ -23119,9 +23051,9 @@
         "end_offset": 13142
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉定",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubppfre",
+        "canonical_name": "嘉定"
       },
       "source": "claude:A33"
     },
@@ -23162,25 +23094,6 @@
         "entity_id": "hixia8okqd4y",
         "canonical_name": "觀文殿學士",
         "note": "官名重挂：unique，tier A，語境朝代 宋（shi）→ 趙宋"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01845",
-      "type": "people",
-      "text": "端簡",
-      "anchor": {
-        "start": "82:8:7",
-        "end": "82:8:8"
-      },
-      "span": {
-        "start_offset": 13156,
-        "end_offset": 13158
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "端簡",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -23310,9 +23223,9 @@
         "end_offset": 13373
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -23329,9 +23242,9 @@
         "end_offset": 13388
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow9",
+        "canonical_name": "兩漢"
       },
       "source": "claude:A33"
     },
@@ -23348,9 +23261,9 @@
         "end_offset": 13389
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -23386,9 +23299,9 @@
         "end_offset": 13402
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蔡京",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9boe8",
+        "canonical_name": "蔡京"
       },
       "source": "claude:A33"
     },
@@ -23405,9 +23318,9 @@
         "end_offset": 13404
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "章惇",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9boce",
+        "canonical_name": "章惇"
       },
       "source": "claude:A33"
     },
@@ -23424,9 +23337,9 @@
         "end_offset": 13407
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "秦檜",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhg0",
+        "canonical_name": "秦檜"
       },
       "source": "claude:A33"
     },
@@ -23443,9 +23356,9 @@
         "end_offset": 13410
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "韓𠈁冑",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi48p2fkeg",
+        "canonical_name": "韓侂胄"
       },
       "source": "claude:A33"
     },
@@ -23462,9 +23375,9 @@
         "end_offset": 13413
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "史彌遠",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixiby7kdy4z",
+        "canonical_name": "史彌遠"
       },
       "source": "claude:A33"
     },
@@ -23520,9 +23433,9 @@
         "end_offset": 13504
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -23688,9 +23601,9 @@
         "end_offset": 13742
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "韓𠈁冑",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi48p2fkeg",
+        "canonical_name": "韓侂胄"
       },
       "source": "claude:A33"
     },
@@ -23745,9 +23658,9 @@
         "end_offset": 13791
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -23783,9 +23696,9 @@
         "end_offset": 13800
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泉州",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4ugstvk8",
+        "canonical_name": "泉州"
       },
       "source": "claude:A33"
     },
@@ -23821,9 +23734,9 @@
         "end_offset": 13805
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淳祐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubppfrw",
+        "canonical_name": "淳祐"
       },
       "source": "claude:A33"
     },
@@ -23919,9 +23832,9 @@
         "end_offset": 13835
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -23938,8 +23851,9 @@
         "end_offset": 13837
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太祖"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyg6",
+        "canonical_name": "趙匡胤"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23956,8 +23870,9 @@
         "end_offset": 13846
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太宗"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyg7",
+        "canonical_name": "趙炅"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24031,8 +23946,9 @@
         "end_offset": 13882
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "神宗"
+        "status": "matched",
+        "entity_id": "hixhd2h9btm1",
+        "canonical_name": "趙頊"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24125,9 +24041,9 @@
         "end_offset": 13953
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -24373,9 +24289,9 @@
         "end_offset": 14104
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -24562,9 +24478,9 @@
         "end_offset": 14196
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "秦",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgf",
+        "canonical_name": "秦"
       },
       "source": "claude:A33"
     },
@@ -24676,9 +24592,9 @@
         "end_offset": 14227
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "曹參",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixict1lif4j",
+        "canonical_name": "曹參"
       },
       "source": "claude:A33"
     },
@@ -24943,9 +24859,9 @@
         "end_offset": 14426
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -25115,9 +25031,9 @@
         "end_offset": 14586
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -25134,9 +25050,9 @@
         "end_offset": 14599
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -25153,9 +25069,9 @@
         "end_offset": 14608
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "薛應旂",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9be4h",
+        "canonical_name": "薛應旂"
       },
       "source": "claude:A33"
     },
@@ -25172,9 +25088,9 @@
         "end_offset": 14611
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王宗沐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beo1",
+        "canonical_name": "王宗沐"
       },
       "source": "claude:A33"
     },
@@ -25324,9 +25240,9 @@
         "end_offset": 14765
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -25400,9 +25316,9 @@
         "end_offset": 14798
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -25438,9 +25354,9 @@
         "end_offset": 14804
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubkeeiw",
+        "canonical_name": "西漢"
       },
       "source": "claude:A33"
     },
@@ -25723,7 +25639,8 @@
         "end_offset": 14915
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j9",
         "canonical_name": "魯"
       },
       "source": "ext:siku-qiefen-v2"
@@ -25741,9 +25658,9 @@
         "end_offset": 14918
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "孔子",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk4b",
+        "canonical_name": "孔子"
       },
       "source": "claude:A33"
     },
@@ -25760,9 +25677,9 @@
         "end_offset": 14926
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubkeeiw",
+        "canonical_name": "西漢"
       },
       "source": "claude:A33"
     },
@@ -25817,9 +25734,9 @@
         "end_offset": 14994
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "王厚孫",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3v",
+        "canonical_name": "王厚孫"
       },
       "source": "claude:A33"
     },
@@ -25893,9 +25810,9 @@
         "end_offset": 15059
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -25931,9 +25848,9 @@
         "end_offset": 15065
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -25950,9 +25867,9 @@
         "end_offset": 15066
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -26102,9 +26019,9 @@
         "end_offset": 15206
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -26159,9 +26076,9 @@
         "end_offset": 15221
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -26254,9 +26171,9 @@
         "end_offset": 15331
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -26273,9 +26190,9 @@
         "end_offset": 15342
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -26330,9 +26247,9 @@
         "end_offset": 15357
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "盧藏用",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgt3",
+        "canonical_name": "盧藏用"
       },
       "source": "claude:A33"
     },
@@ -26349,9 +26266,9 @@
         "end_offset": 15362
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "張謂",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhh4",
+        "canonical_name": "張謂"
       },
       "source": "claude:A33"
     },
@@ -26406,9 +26323,9 @@
         "end_offset": 15380
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -26501,9 +26418,9 @@
         "end_offset": 15446
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -26730,9 +26647,9 @@
         "end_offset": 15561
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "金",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgr",
+        "canonical_name": "金"
       },
       "source": "claude:A33"
     },
@@ -26767,9 +26684,9 @@
         "end_offset": 15605
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "至大",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0oat",
+        "canonical_name": "至大"
       },
       "source": "claude:A33"
     },
@@ -26786,9 +26703,9 @@
         "end_offset": 15608
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -26805,9 +26722,9 @@
         "end_offset": 15610
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "正統",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obk",
+        "canonical_name": "正統"
       },
       "source": "claude:A33"
     },
@@ -26958,9 +26875,9 @@
         "end_offset": 15694
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -27015,9 +26932,9 @@
         "end_offset": 15719
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -27034,9 +26951,9 @@
         "end_offset": 15721
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -27091,9 +27008,9 @@
         "end_offset": 15789
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -27224,9 +27141,9 @@
         "end_offset": 15849
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -27243,9 +27160,9 @@
         "end_offset": 15882
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -27526,9 +27443,9 @@
         "end_offset": 16044
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -27641,9 +27558,10 @@
         "end_offset": 16129
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi4udt505e",
         "canonical_name": "巡撫",
-        "note": "重标后待匹配"
+        "note": "官名重挂：概念条（朝代未明或库无分朝条）"
       },
       "source": "claude:A33"
     },
@@ -27679,9 +27597,9 @@
         "end_offset": 16141
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -27926,9 +27844,9 @@
         "end_offset": 16291
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -27945,9 +27863,9 @@
         "end_offset": 16294
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明鎬",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmgf",
+        "canonical_name": "朱明鎬"
       },
       "source": "claude:A33"
     },
@@ -27964,9 +27882,9 @@
         "end_offset": 16297
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明鎬",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmgf",
+        "canonical_name": "朱明鎬"
       },
       "source": "claude:A33"
     },
@@ -27983,9 +27901,9 @@
         "end_offset": 16300
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "豐苞",
-        "note": "字号补标，待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmgf",
+        "canonical_name": "朱明鎬"
       },
       "source": "claude:A33"
     },
@@ -28135,9 +28053,9 @@
         "end_offset": 16360
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "晉書",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f28mxbgg0",
+        "canonical_name": "晉書"
       },
       "source": "claude:A34"
     },
@@ -28156,25 +28074,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "五代史",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01937",
-      "type": "work",
-      "text": "書史異同",
-      "anchor": {
-        "start": "102:7:4",
-        "end": "102:7:7"
-      },
-      "span": {
-        "start_offset": 16386,
-        "end_offset": 16390
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "書史異同",
         "note": "重标后待匹配"
       },
       "source": "claude:A33"
@@ -28210,9 +28109,9 @@
         "end_offset": 16422
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -28229,9 +28128,9 @@
         "end_offset": 16445
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明鎬",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmgf",
+        "canonical_name": "朱明鎬"
       },
       "source": "claude:A33"
     },
@@ -28628,9 +28527,9 @@
         "end_offset": 16652
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明鎬",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmgf",
+        "canonical_name": "朱明鎬"
       },
       "source": "claude:A33"
     },
@@ -28711,6 +28610,25 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
+      "id": "e02013",
+      "type": "work",
+      "text": "舉要",
+      "anchor": {
+        "start": "104:7:1",
+        "end": "104:7:2"
+      },
+      "span": {
+        "start_offset": 16724,
+        "end_offset": 16726
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "舉要",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e01361",
       "type": "work",
       "text": "通鑑綱目續編",
@@ -28742,9 +28660,9 @@
         "end_offset": 16740
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "康熙",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubqbwun",
+        "canonical_name": "康熙"
       },
       "source": "claude:A33"
     },
@@ -28781,9 +28699,9 @@
         "end_offset": 16750
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋犖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bco8",
+        "canonical_name": "宋犖"
       },
       "source": "claude:A33"
     },
@@ -28881,6 +28799,25 @@
         "canonical_name": "資治通鑑綱目"
       },
       "source": "ext:siku-qiefen-v2"
+    },
+    {
+      "id": "e02014",
+      "type": "work",
+      "text": "凡例",
+      "anchor": {
+        "start": "105:1:4",
+        "end": "105:1:5"
+      },
+      "span": {
+        "start_offset": 16776,
+        "end_offset": 16778
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "凡例",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e01369",
@@ -29293,9 +29230,9 @@
         "end_offset": 16885
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -29312,9 +29249,9 @@
         "end_offset": 16887
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宏治",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubq0obo",
+        "canonical_name": "弘治"
       },
       "source": "claude:A33"
     },
@@ -29388,9 +29325,9 @@
         "end_offset": 16927
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -29540,9 +29477,9 @@
         "end_offset": 17023
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "金履祥",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bg6u",
+        "canonical_name": "金履祥"
       },
       "source": "claude:A33"
     },
@@ -29616,9 +29553,9 @@
         "end_offset": 17048
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -29825,9 +29762,9 @@
         "end_offset": 17137
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -29844,9 +29781,9 @@
         "end_offset": 17138
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -29882,9 +29819,9 @@
         "end_offset": 17153
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -29901,8 +29838,9 @@
         "end_offset": 17155
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太祖"
+        "status": "matched",
+        "entity_id": "hixhd2h9bgd5",
+        "canonical_name": "朱元璋"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29919,9 +29857,9 @@
         "end_offset": 17168
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周禮",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bn5o",
+        "canonical_name": "周禮"
       },
       "source": "claude:A33"
     },
@@ -30149,9 +30087,9 @@
         "end_offset": 17577
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "賈充",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bmjw",
+        "canonical_name": "賈充"
       },
       "source": "claude:A33"
     },
@@ -30168,9 +30106,9 @@
         "end_offset": 17579
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "褚淵",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhiify65tt",
+        "canonical_name": "褚淵"
       },
       "source": "claude:A33"
     },
@@ -30206,9 +30144,9 @@
         "end_offset": 17589
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -30225,9 +30163,9 @@
         "end_offset": 17600
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "遼",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgp",
+        "canonical_name": "遼"
       },
       "source": "claude:A33"
     },
@@ -30244,9 +30182,9 @@
         "end_offset": 17601
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "金",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgr",
+        "canonical_name": "金"
       },
       "source": "claude:A33"
     },
@@ -30263,9 +30201,9 @@
         "end_offset": 17602
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgow7",
+        "canonical_name": "元"
       },
       "source": "claude:A33"
     },
@@ -30282,9 +30220,9 @@
         "end_offset": 17678
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjgowi",
+        "canonical_name": "唐"
       },
       "source": "claude:A33"
     },
@@ -30301,9 +30239,9 @@
         "end_offset": 17679
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -30379,9 +30317,9 @@
         "end_offset": 17776
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "周",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixibw36ohs0",
+        "canonical_name": "周"
       },
       "source": "claude:A33"
     },
@@ -30436,9 +30374,9 @@
         "end_offset": 17843
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋"
       },
       "source": "claude:A33"
     },
@@ -30455,9 +30393,9 @@
         "end_offset": 17847
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxfw",
+        "canonical_name": "明"
       },
       "source": "claude:A33"
     },
@@ -30530,9 +30468,10 @@
         "end_offset": 17970
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi5dv7ou14",
         "canonical_name": "詹事府",
-        "note": "重标后待匹配"
+        "note": "官名重挂：dyn_match，tier A，語境朝代 明（entry）→ 明"
       },
       "source": "claude:A33"
     },

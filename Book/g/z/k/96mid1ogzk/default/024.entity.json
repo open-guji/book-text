@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.23",
+  "version": "0.2.35",
   "text_version": "0.14.1",
   "book_id": "96mid1ogzk",
   "volume": 24,
@@ -1809,9 +1809,10 @@
         "end_offset": 1034
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "儒林傳",
-        "note": "泛称（卷次／部类名），原错挂《江南通志》，A33 2026-11-02 解除"
+        "status": "matched",
+        "entity_id": "d59f2gonq7sy",
+        "canonical_name": "宋史",
+        "coarse": "part_of_work"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -2022,6 +2023,25 @@
         "canonical_name": "靖康"
       },
       "source": "ext:gemini-3.8-flash-high"
+    },
+    {
+      "id": "e00962",
+      "type": "work",
+      "text": "諸錄雜記",
+      "anchor": {
+        "start": "8:8:14",
+        "end": "8:8:17"
+      },
+      "span": {
+        "start_offset": 1258,
+        "end_offset": 1262
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "諸錄雜記",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
     },
     {
       "id": "e00107",
@@ -2910,9 +2930,9 @@
         "end_offset": 1722
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "直齋書錄解題",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2htm01du",
+        "canonical_name": "直齋書錄解題"
       },
       "source": "claude:A34"
     },
@@ -3717,25 +3737,6 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00911",
-      "type": "place",
-      "text": "莊",
-      "anchor": {
-        "start": "13:5:19",
-        "end": "13:5:19"
-      },
-      "span": {
-        "start_offset": 2055,
-        "end_offset": 2056
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "莊",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00198",
       "type": "place",
       "text": "琰",
@@ -3753,44 +3754,6 @@
         "note": "跨册挂法复核：原挂人名不符，應為地名"
       },
       "source": "ext:gemini-3.8-flash-high"
-    },
-    {
-      "id": "e00912",
-      "type": "place",
-      "text": "播",
-      "anchor": {
-        "start": "13:5:21",
-        "end": "13:5:21"
-      },
-      "span": {
-        "start_offset": 2057,
-        "end_offset": 2058
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "播",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00913",
-      "type": "place",
-      "text": "郞",
-      "anchor": {
-        "start": "13:6:3",
-        "end": "13:6:3"
-      },
-      "span": {
-        "start_offset": 2058,
-        "end_offset": 2059
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "郞",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00201",
@@ -3862,7 +3825,8 @@
         "end_offset": 2121
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j7",
         "canonical_name": "秦"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -3898,7 +3862,8 @@
         "end_offset": 2127
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j5",
         "canonical_name": "巴"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -4560,7 +4525,8 @@
         "end_offset": 2371
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixicl8f74w7",
         "canonical_name": "田州"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -4655,7 +4621,8 @@
         "end_offset": 2414
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximyab55wi",
         "canonical_name": "右江"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -4710,7 +4677,8 @@
         "end_offset": 2424
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximyun4oht",
         "canonical_name": "憑祥州"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -4803,9 +4771,9 @@
         "end_offset": 2449
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "侯公丁",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin15vqur5",
+        "canonical_name": "侯公丁"
       },
       "source": "claude:A33"
     },
@@ -8731,6 +8699,44 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
+      "id": "e00963",
+      "type": "work",
+      "text": "御製詩文",
+      "anchor": {
+        "start": "28:6:-1",
+        "end": "28:6:3"
+      },
+      "span": {
+        "start_offset": 4330,
+        "end_offset": 4334
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "御製詩文",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e00964",
+      "type": "work",
+      "text": "諸臣紀功詩文",
+      "anchor": {
+        "start": "28:6:9",
+        "end": "28:7:2"
+      },
+      "span": {
+        "start_offset": 4339,
+        "end_offset": 4345
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "諸臣紀功詩文",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00449",
       "type": "place",
       "text": "金川",
@@ -10034,6 +10040,44 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
+      "id": "e00965",
+      "type": "work",
+      "text": "天章",
+      "anchor": {
+        "start": "37:3:1",
+        "end": "37:3:2"
+      },
+      "span": {
+        "start_offset": 5429,
+        "end_offset": 5431
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "天章",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e00966",
+      "type": "work",
+      "text": "臣工詩文",
+      "anchor": {
+        "start": "37:3:8",
+        "end": "37:3:11"
+      },
+      "span": {
+        "start_offset": 5436,
+        "end_offset": 5440
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "臣工詩文",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00518",
       "type": "place",
       "text": "兩金川",
@@ -11061,7 +11105,8 @@
         "end_offset": 6586
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximyab560b",
         "canonical_name": "龍尾山"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -11305,7 +11350,8 @@
         "end_offset": 6896
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximyab560c",
         "canonical_name": "小山"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -11663,7 +11709,8 @@
         "end_offset": 7191
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximy3x39j7",
         "canonical_name": "秦"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -12095,9 +12142,9 @@
         "end_offset": 7954
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "綏寇紀畧",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2mcbrf9c",
+        "canonical_name": "綏寇紀略"
       },
       "source": "claude:A33"
     },
@@ -12730,9 +12777,9 @@
         "end_offset": 8127
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "綏寇紀畧",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2mcbrf9c",
+        "canonical_name": "綏寇紀略"
       },
       "source": "claude:A33"
     },
@@ -13747,25 +13794,6 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00931",
-      "type": "work",
-      "text": "從亡",
-      "anchor": {
-        "start": "60:3:9",
-        "end": "60:3:10"
-      },
-      "span": {
-        "start_offset": 8723,
-        "end_offset": 8725
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "從亡",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00727",
       "type": "work",
       "text": "致身",
@@ -14258,6 +14286,63 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
+      "id": "e00967",
+      "type": "work",
+      "text": "太古",
+      "anchor": {
+        "start": "61:9:20",
+        "end": "61:9:21"
+      },
+      "span": {
+        "start_offset": 8993,
+        "end_offset": 8995
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "太古",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e00968",
+      "type": "work",
+      "text": "春秋",
+      "anchor": {
+        "start": "62:1:12",
+        "end": "62:1:13"
+      },
+      "span": {
+        "start_offset": 9004,
+        "end_offset": 9006
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "春秋",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
+      "id": "e00969",
+      "type": "work",
+      "text": "戰國",
+      "anchor": {
+        "start": "62:1:18",
+        "end": "62:1:19"
+      },
+      "span": {
+        "start_offset": 9010,
+        "end_offset": 9012
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "戰國",
+        "note": "维基文库对比补标（题名＋N卷）"
+      },
+      "source": "claude:A33"
+    },
+    {
       "id": "e00754",
       "type": "people",
       "text": "袁樞",
@@ -14365,9 +14450,9 @@
         "end_offset": 9120
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "日下舊聞",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2ndn8t8i",
+        "canonical_name": "日下舊聞"
       },
       "source": "claude:A33"
     },
@@ -14849,9 +14934,9 @@
         "end_offset": 9336
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "左傳事類始末",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2hq89hj5",
+        "canonical_name": "春秋左氏傳事類始末"
       },
       "source": "claude:A34"
     },
@@ -16157,9 +16242,9 @@
         "end_offset": 10167
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "經畧",
-        "note": "官名词表补标，待匹配"
+        "status": "matched",
+        "entity_id": "hixidx4p62vj",
+        "canonical_name": "經略"
       },
       "source": "claude:A33"
     },
@@ -16366,7 +16451,8 @@
         "end_offset": 10305
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximym6s9hp",
         "canonical_name": "孝陵"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -16498,8 +16584,10 @@
         "end_offset": 10374
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "副元帥"
+        "status": "matched",
+        "entity_id": "hiximyvpixvx",
+        "canonical_name": "副元帥",
+        "note": "官名重挂：unique，tier A，語境朝代 -（none）→ 唐"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -17115,7 +17203,8 @@
         "end_offset": 10535
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin15vqur6",
         "canonical_name": "李延齡"
       },
       "source": "ext:gemini-3.8-flash-high"

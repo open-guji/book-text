@@ -278,6 +278,7 @@ FT_SIDECAR_FILES = {"index.json", "pages.tsv", "subst.tsv"}  # subst.tsv：光�
 FIG_SCHEMA_URL = "https://open-guji.org/schema/fig/v0.1.json"
 CHAR_SCHEMA_URL_V03 = "https://open-guji.org/schema/char/v0.3.json"
 CHAR_SCHEMA_URL_V04 = "https://open-guji.org/schema/char/v0.4.json"
+CHAR_SCHEMA_URL_V05 = "https://open-guji.org/schema/char/v0.5.json"   # 有无法识别字 unk（guji-format 02 §4.9）
 CORD_SCHEMA_URL_V02 = "https://open-guji.org/schema/cord/v0.2.json"
 FIG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 FIG_MIME_EXT = {"image/png": ".png", "image/webp": ".webp", "image/svg+xml": ".svg"}
@@ -313,6 +314,8 @@ def char_fig_refs(char):
                 if not isinstance(fid, str) or not FIG_ID_RE.match(fid):
                     out.append((f"格 {a} fig={fid!r} 不合 [a-z0-9][a-z0-9-]*", f"cell:{a}:id"))
                     continue
+                if "unk" in c:
+                    out.append((f"格 {a} 是图片格，不许同时带 unk", f"cell:{a}:mixed"))
                 if c.get("c") != "□":
                     out.append((f"格 {a} 是图片格，c 应为 □，现为 {c.get('c')!r}", f"cell:{a}:c"))
                 bad = [k for k in FIG_CELL_FORBIDDEN if k in c]
@@ -416,7 +419,7 @@ def fig_problems(fd, char, cord=None, norm=None, vdir=None, stem=None):
     cord、norm 为 None 时跳过对应核对。"""
     cells, cols, out = char_fig_refs(char)
     used = set(cells) | set(cols)
-    if used and char.get("$schema") not in (CHAR_SCHEMA_URL_V03, CHAR_SCHEMA_URL_V04):
+    if used and char.get("$schema") not in (CHAR_SCHEMA_URL_V03, CHAR_SCHEMA_URL_V04, CHAR_SCHEMA_URL_V05):
         out.append((f"char 用了图片格／图列，$schema 应为 {CHAR_SCHEMA_URL_V03!r} 或更高，现为 {char.get('$schema')!r}", "char_schema"))
     if fd is None:
         if used:

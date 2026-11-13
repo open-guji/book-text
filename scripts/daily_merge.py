@@ -116,9 +116,29 @@ def main() -> int:
         r = sh("git", "merge", "--no-ff", "-q", "origin/main", "-m", "每日合并：先合入 main 的新提交")
         if r.returncode:
             conflicted = sh("git", "diff", "--name-only", "--diff-filter=U").stdout.split()
-            sh("git", "merge", "--abort")
-            print(f"✗ 合入 main 冲突（{len(conflicted)} 个文件）：" + "、".join(conflicted[:20]))
-            return 1
+            # char.json 逐格重放（2026-11-10 ZM 提议：以 main 为底，不用 dev 覆盖 main；真冲突取 main 并列清单）
+            sys.path.insert(0, os.path.join(ROOT, "scripts", "book-text"))
+            from char_replay import replay
+            cell_conf = []
+            for f in [x for x in conflicted if x.endswith(".char.json")]:
+                st = [sh("git", "show", f":{i}:{f}").stdout for i in (1, 3, 2)]  # 1=base 3=main(theirs) 2=dev(ours)
+                out, conf = replay(*st)
+                if out is None:
+                    continue
+                with open(os.path.join(ROOT, f), "w", encoding="utf-8") as fh:
+                    fh.write(out)
+                sh("git", "add", f, check=True)
+                cell_conf += [(f, *c) for c in conf]
+                conflicted.remove(f)
+            if cell_conf:
+                print(f"ⓘ char.json 逐格重放：{len(cell_conf)} 格两边都改了字且不同，已取 main，请书项目复核：")
+                for c in cell_conf[:50]:
+                    print("   ", "\t".join(str(x) for x in c))
+            if conflicted:
+                sh("git", "merge", "--abort")
+                print(f"✗ 合入 main 冲突（{len(conflicted)} 个文件，char.json 已能自动合的不计）：" + "、".join(conflicted[:20]))
+                return 1
+            sh("git", "commit", "-q", "--no-edit", check=True)
         print("已合入 main 的新提交")
 
     sh(PY, "scripts/book-text/build_texts_index.py", "--root", ".", check=True)

@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.4.44",
+  "version": "0.4.67",
   "text_version": "0.10.1",
   "book_id": "96mid1ogzk",
   "volume": 78,
@@ -138,9 +138,10 @@
         "end_offset": 45
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "玉田",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi6kyevu9y",
+        "canonical_name": "玉田縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -157,9 +158,10 @@
         "end_offset": 49
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubpe78d",
         "canonical_name": "天德",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -317,24 +319,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e00012",
-      "type": "place",
-      "text": "白霫",
-      "anchor": {
-        "start": "2:1:7",
-        "end": "2:1:8"
-      },
-      "span": {
-        "start_offset": 132,
-        "end_offset": 134
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "白霫"
-      },
-      "source": "ext:siku-qiefen-v2"
-    },
-    {
       "id": "e00013",
       "type": "place",
       "text": "眞定",
@@ -424,8 +408,10 @@
         "end_offset": 165
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "通州"
+        "status": "matched",
+        "entity_id": "hixi616ptbmd",
+        "canonical_name": "通州",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1530,7 +1516,8 @@
         "end_offset": 875
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcwlxzq3w",
         "canonical_name": "閒閒外集"
       },
       "source": "ext:siku-qiefen-v2"
@@ -1586,8 +1573,9 @@
         "end_offset": 898
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "隆水集"
+        "status": "matched",
+        "entity_id": "d59f2goljk02",
+        "canonical_name": "滏水集"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -1832,9 +1820,10 @@
         "end_offset": 1122
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfr9",
         "canonical_name": "承安",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -1948,9 +1937,10 @@
         "end_offset": 1158
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "滹南遺老",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfhn",
+        "canonical_name": "王若虛",
+        "note": "字号/省称，同条600字内已挂「滹南」(A33)"
       },
       "source": "claude:A33"
     },
@@ -3351,9 +3341,10 @@
         "end_offset": 1887
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfr9",
         "canonical_name": "承安",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -3655,9 +3646,10 @@
         "end_offset": 2124
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "江蘇",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4udt505l",
+        "canonical_name": "江蘇省",
+        "note": "省名异体/待匹配回挂"
       },
       "source": "claude:A33"
     },
@@ -3788,9 +3780,10 @@
         "end_offset": 2155
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfrs",
         "canonical_name": "天興",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -3979,8 +3972,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bd9t",
-        "canonical_name": "李冶",
+        "entity_id": "hixhd2h9bh0q",
+        "canonical_name": "李治",
         "note": "重标沿用全册同字挂法，待核"
       },
       "source": "claude:A33"
@@ -4170,7 +4163,8 @@
         "end_offset": 2352
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvboo",
         "canonical_name": "野史亭"
       },
       "source": "ext:siku-qiefen-v2"
@@ -4454,8 +4448,10 @@
         "end_offset": 2459
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太祖"
+        "status": "matched",
+        "entity_id": "hixicxiex0xs",
+        "canonical_name": "鐵木真",
+        "note": "庙号/帝号：逐处读上下文判定（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -4472,8 +4468,10 @@
         "end_offset": 2465
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太宗"
+        "status": "matched",
+        "entity_id": "hixicxiex0xt",
+        "canonical_name": "窩闊台",
+        "note": "庙号/帝号：逐处读上下文判定（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5138,9 +5136,10 @@
         "end_offset": 3144
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "定興",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi636giu51",
+        "canonical_name": "定興縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -5157,8 +5156,10 @@
         "end_offset": 3151
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "柔"
+        "status": "matched",
+        "entity_id": "hixicttlfod0",
+        "canonical_name": "張柔",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5213,8 +5214,10 @@
         "end_offset": 3174
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "閩"
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5424,8 +5427,10 @@
         "end_offset": 3254
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "珪"
+        "status": "matched",
+        "entity_id": "hixincvu3die",
+        "canonical_name": "鄧珪",
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -5994,8 +5999,10 @@
         "end_offset": 3647
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鳳臺"
+        "status": "matched",
+        "entity_id": "hixicabv13kb",
+        "canonical_name": "鳳臺縣",
+        "note": "地名按附近地名/时代判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -6335,9 +6342,10 @@
         "end_offset": 3883
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
         "canonical_name": "雲莊集",
-        "note": "维基文库对比补标（题名＋N卷）"
+        "note": "A11存疑书名按上下文挂靠(A33子代理)",
+        "entity_id": "d59f2geegh6p"
       },
       "source": "claude:A33"
     },
@@ -7021,9 +7029,10 @@
         "end_offset": 4487
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
         "canonical_name": "潛山集",
-        "note": "重标后待匹配"
+        "note": "A11存疑书名按上下文挂靠(A33子代理)",
+        "entity_id": "d59f2hpfjnk1"
       },
       "source": "claude:A33"
     },
@@ -7933,7 +7942,8 @@
         "end_offset": 5185
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbop",
         "canonical_name": "滄浪山房"
       },
       "source": "ext:siku-qiefen-v2"
@@ -8312,8 +8322,10 @@
         "end_offset": 5706
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "瀚"
+        "status": "matched",
+        "entity_id": "hixincvu3dig",
+        "canonical_name": "汪瀚",
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -8596,9 +8608,9 @@
         "end_offset": 6002
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "越中",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixindny2nf3",
+        "canonical_name": "越中"
       },
       "source": "claude:A33"
     },
@@ -8767,9 +8779,10 @@
         "end_offset": 6243
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "慶元",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4ugstvk3",
+        "canonical_name": "明州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -8825,8 +8838,10 @@
         "end_offset": 6258
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "建康"
+        "status": "matched",
+        "entity_id": "hixi5wavrvv1",
+        "canonical_name": "江寧府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9410,8 +9425,10 @@
         "end_offset": 6617
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9559,8 +9576,10 @@
         "end_offset": 6649
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9577,9 +9596,10 @@
         "end_offset": 6652
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天謂",
-        "note": "字号补标，待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "字号/省称，同条600字内已挂「艾性夫」(A33)"
       },
       "source": "claude:A33"
     },
@@ -9596,8 +9616,10 @@
         "end_offset": 6657
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9746,8 +9768,10 @@
         "end_offset": 6705
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9840,8 +9864,10 @@
         "end_offset": 6740
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9877,8 +9903,10 @@
         "end_offset": 6764
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -9970,9 +9998,10 @@
         "end_offset": 6802
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxap5mo2",
         "canonical_name": "提舉",
-        "note": "官名词表补标，待匹配"
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -10046,9 +10075,10 @@
         "end_offset": 6820
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxap5mo2",
         "canonical_name": "提舉",
-        "note": "官名词表补标，待匹配"
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -10065,8 +10095,10 @@
         "end_offset": 6829
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "性"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh3e",
+        "canonical_name": "艾性夫",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -10196,9 +10228,10 @@
         "end_offset": 6991
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嘉興",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wau7p5j",
+        "canonical_name": "嘉興府",
+        "note": "地名按附近地名/时代判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -10215,9 +10248,10 @@
         "end_offset": 6993
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "崇德",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi61e92jnq",
+        "canonical_name": "崇德縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -10368,9 +10402,10 @@
         "end_offset": 7121
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河東宣慰副使",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8o4t9fo",
+        "canonical_name": "宣慰副使",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -11030,8 +11065,10 @@
         "end_offset": 7669
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "中山"
+        "status": "matched",
+        "entity_id": "hixi5wavgnb8",
+        "canonical_name": "定州",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11162,8 +11199,10 @@
         "end_offset": 7809
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "閩"
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11218,7 +11257,8 @@
         "end_offset": 7833
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvboq",
         "canonical_name": "東湖書院"
       },
       "source": "ext:siku-qiefen-v2"
@@ -11599,8 +11639,10 @@
         "end_offset": 8090
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "靑山藁"
+        "status": "matched",
+        "canonical_name": "靑山稿",
+        "entity_id": "d59f2hhwafi9",
+        "note": "A11存疑书名按上下文挂靠(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -11731,9 +11773,10 @@
         "end_offset": 8201
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxap5mo0",
         "canonical_name": "館職",
-        "note": "官名词表补标，待匹配"
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -12225,8 +12268,10 @@
         "end_offset": 8713
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "瑛"
+        "status": "matched",
+        "entity_id": "hixincvu3dii",
+        "canonical_name": "劉瑛",
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12262,8 +12307,10 @@
         "end_offset": 8747
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "凝"
+        "status": "matched",
+        "entity_id": "hixhd2h9bm8x",
+        "canonical_name": "劉凝",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -12928,9 +12975,9 @@
         "end_offset": 9645
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "越中",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixindny2nf3",
+        "canonical_name": "越中"
       },
       "source": "claude:A33"
     },
@@ -13004,8 +13051,10 @@
         "end_offset": 9742
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武林"
+        "status": "matched",
+        "entity_id": "hixi5gue58n4",
+        "canonical_name": "杭州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -13478,7 +13527,8 @@
         "end_offset": 10213
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbor",
         "canonical_name": "報恩寺"
       },
       "source": "ext:siku-qiefen-v2"
@@ -13727,8 +13777,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bhz0",
-        "canonical_name": "吾邱衍"
+        "entity_id": "hixhd2h9bez7",
+        "canonical_name": "吾衍"
       },
       "source": "claude:A33"
     },
@@ -14083,9 +14133,10 @@
         "end_offset": 10739
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武安",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicl8e9f8b",
+        "canonical_name": "武安縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -14313,8 +14364,10 @@
         "end_offset": 10844
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "持"
+        "status": "matched",
+        "entity_id": "hixhd2h9bh6h",
+        "canonical_name": "胡持",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14504,8 +14557,10 @@
         "end_offset": 11057
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "太原路"
+        "status": "matched",
+        "entity_id": "hixi5waw34eg",
+        "canonical_name": "太原府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -14522,9 +14577,10 @@
         "end_offset": 11061
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hiximxap5mo2",
         "canonical_name": "提舉",
-        "note": "官名词表补标，待匹配"
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -14959,7 +15015,8 @@
         "end_offset": 11396
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbjp",
         "canonical_name": "安定書院"
       },
       "source": "ext:siku-qiefen-v2"
@@ -15042,63 +15099,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01634",
-      "type": "work",
-      "text": "自然道士傳",
-      "anchor": {
-        "start": "70:3:4",
-        "end": "70:3:8"
-      },
-      "span": {
-        "start_offset": 11447,
-        "end_offset": 11452
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "自然道士傳",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01635",
-      "type": "work",
-      "text": "正一先生傳",
-      "anchor": {
-        "start": "70:3:9",
-        "end": "70:3:13"
-      },
-      "span": {
-        "start_offset": 11452,
-        "end_offset": 11457
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "正一先生傳",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01636",
-      "type": "work",
-      "text": "壽光先生傳",
-      "anchor": {
-        "start": "70:3:14",
-        "end": "70:3:18"
-      },
-      "span": {
-        "start_offset": 11457,
-        "end_offset": 11462
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "壽光先生傳",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01638",
       "type": "dynasty",
       "text": "南宋",
@@ -15171,44 +15171,6 @@
         "status": "matched",
         "entity_id": "hixhd2h9bfog",
         "canonical_name": "杜本"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01641",
-      "type": "work",
-      "text": "謝翺傳",
-      "anchor": {
-        "start": "71:1:7",
-        "end": "71:1:9"
-      },
-      "span": {
-        "start_offset": 11583,
-        "end_offset": 11586
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "謝翺傳",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01642",
-      "type": "work",
-      "text": "胡烈婦傳",
-      "anchor": {
-        "start": "71:1:10",
-        "end": "71:1:13"
-      },
-      "span": {
-        "start_offset": 11586,
-        "end_offset": 11590
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "胡烈婦傳",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -16007,8 +15969,10 @@
         "end_offset": 12031
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "爟"
+        "status": "matched",
+        "entity_id": "hixincvu3dhr",
+        "canonical_name": "吳爟",
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16025,8 +15989,10 @@
         "end_offset": 12037
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "爟"
+        "status": "matched",
+        "entity_id": "hixincvu3dhr",
+        "canonical_name": "吳爟",
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16084,44 +16050,6 @@
         "status": "matched",
         "entity_id": "hixi1ubq0obh",
         "canonical_name": "永樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01660",
-      "type": "work",
-      "text": "徐君順詩序",
-      "anchor": {
-        "start": "74:6:17",
-        "end": "74:6:21"
-      },
-      "span": {
-        "start_offset": 12187,
-        "end_offset": 12192
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "徐君順詩序",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01661",
-      "type": "work",
-      "text": "題趙天放桃源卷後",
-      "anchor": {
-        "start": "74:7:9",
-        "end": "74:7:16"
-      },
-      "span": {
-        "start_offset": 12198,
-        "end_offset": 12206
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "題趙天放桃源卷後",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -16366,9 +16294,10 @@
         "end_offset": 12513
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "仁父",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfi6",
+        "canonical_name": "仇遠",
+        "note": "字号/省称，同条600字内已挂「仇遠」(A33)"
       },
       "source": "claude:A33"
     },
@@ -16442,9 +16371,10 @@
         "end_offset": 12531
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "山村民",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfi6",
+        "canonical_name": "仇遠",
+        "note": "字号/省称，同条600字内已挂「仇遠」(A33)"
       },
       "source": "claude:A33"
     },
@@ -16518,9 +16448,10 @@
         "end_offset": 12558
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -16635,9 +16566,10 @@
         "end_offset": 12596
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "京口",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5watwglt",
+        "canonical_name": "鎮江府",
+        "note": "地名按附近地名/时代判定(A33子代理)"
       },
       "source": "claude:A34"
     },
@@ -16675,8 +16607,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bhz0",
-        "canonical_name": "吾邱衍"
+        "entity_id": "hixhd2h9bez7",
+        "canonical_name": "吾衍"
       },
       "source": "claude:A33"
     },
@@ -16712,8 +16644,10 @@
         "end_offset": 12620
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "建康"
+        "status": "matched",
+        "entity_id": "hixi5wavrvv1",
+        "canonical_name": "江寧府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -16793,25 +16727,6 @@
         "canonical_name": "顧應祥"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01680",
-      "type": "work",
-      "text": "贈士瞻上人卷",
-      "anchor": {
-        "start": "77:4:14",
-        "end": "77:4:19"
-      },
-      "span": {
-        "start_offset": 12645,
-        "end_offset": 12651
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "贈士瞻上人卷",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00784",
@@ -17153,8 +17068,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bhz0",
-        "canonical_name": "吾邱衍"
+        "entity_id": "hixhd2h9bez7",
+        "canonical_name": "吾衍"
       },
       "source": "claude:A33"
     },
@@ -17249,9 +17164,10 @@
         "end_offset": 12869
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋",
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -17846,25 +17762,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01706",
-      "type": "work",
-      "text": "有湛淵靜語",
-      "anchor": {
-        "start": "81:3:8",
-        "end": "81:3:12"
-      },
-      "span": {
-        "start_offset": 13265,
-        "end_offset": 13270
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "□□淵靜語",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01707",
       "type": "reign",
       "text": "成化",
@@ -18264,25 +18161,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01713",
-      "type": "work",
-      "text": "三月八日過西馬塍",
-      "anchor": {
-        "start": "83:1:6",
-        "end": "83:1:13"
-      },
-      "span": {
-        "start_offset": 13539,
-        "end_offset": 13547
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "三月八日過西馬塍",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00847",
       "type": "work",
       "text": "月泉吟社",
@@ -18485,9 +18363,10 @@
         "end_offset": 13656
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -18561,8 +18440,10 @@
         "end_offset": 13710
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "武林"
+        "status": "matched",
+        "entity_id": "hixi5gue58n4",
+        "canonical_name": "杭州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -18737,25 +18618,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01720",
-      "type": "work",
-      "text": "修隆禪師塔記",
-      "anchor": {
-        "start": "84:6:5",
-        "end": "84:6:10"
-      },
-      "span": {
-        "start_offset": 13792,
-        "end_offset": 13798
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "修隆禪師塔記",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00869",
       "type": "people",
       "text": "都穆",
@@ -18792,63 +18654,6 @@
         "canonical_name": "南濠詩話"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01721",
-      "type": "work",
-      "text": "寒食西湖",
-      "anchor": {
-        "start": "85:1:10",
-        "end": "85:1:13"
-      },
-      "span": {
-        "start_offset": 13873,
-        "end_offset": 13877
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "寒食西湖",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01722",
-      "type": "work",
-      "text": "送人再徃湖南",
-      "anchor": {
-        "start": "85:1:14",
-        "end": "85:1:19"
-      },
-      "span": {
-        "start_offset": 13877,
-        "end_offset": 13883
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "送人再徃湖南",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01723",
-      "type": "work",
-      "text": "凃居士見訪",
-      "anchor": {
-        "start": "85:1:20",
-        "end": "85:2:5"
-      },
-      "span": {
-        "start_offset": 13883,
-        "end_offset": 13888
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "凃居士見訪",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00874",
@@ -19110,9 +18915,10 @@
         "end_offset": 13998
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfrl",
         "canonical_name": "興定",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -19205,9 +19011,10 @@
         "end_offset": 14019
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfro",
         "canonical_name": "正大",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -19342,25 +19149,6 @@
         "status": "matched",
         "entity_id": "hixi1ubppfrr",
         "canonical_name": "紹定"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01736",
-      "type": "work",
-      "text": "贈仲經詩序",
-      "anchor": {
-        "start": "86:3:20",
-        "end": "86:4:5"
-      },
-      "span": {
-        "start_offset": 14073,
-        "end_offset": 14078
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "贈仲經詩序",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -19907,8 +19695,10 @@
         "end_offset": 14292
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "北平"
+        "status": "matched",
+        "entity_id": "hixi5wavrvut",
+        "canonical_name": "順天府",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20059,9 +19849,10 @@
         "end_offset": 14380
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "秉文",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfhm",
+        "canonical_name": "趙秉文",
+        "note": "同条前文全名「趙秉文」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -20249,9 +20040,10 @@
         "end_offset": 14518
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "煥然",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bfi8",
+        "canonical_name": "楊奐",
+        "note": "字号/省称，同条600字内已挂「楊奐」(A33)"
       },
       "source": "claude:A33"
     },
@@ -20287,9 +20079,10 @@
         "end_offset": 14522
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "奉天",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicl8d0h51",
+        "canonical_name": "奉天縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -20755,8 +20548,10 @@
         "end_offset": 14808
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汴"
+        "status": "matched",
+        "entity_id": "hixicog54amr",
+        "canonical_name": "汴州",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -20849,9 +20644,10 @@
         "end_offset": 14843
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汴京",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4ugtrl6p",
+        "canonical_name": "開封府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -20982,8 +20778,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hiximy3x39j4",
-        "canonical_name": "蜀"
+        "entity_id": "hixi1ubk35z9",
+        "canonical_name": "三國蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21038,9 +20835,10 @@
         "end_offset": 14932
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi1ubjrxgo",
+        "canonical_name": "趙宋",
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -21363,8 +21161,10 @@
         "end_offset": 15037
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汴"
+        "status": "matched",
+        "entity_id": "hixicog54amr",
+        "canonical_name": "汴州",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21381,8 +21181,10 @@
         "end_offset": 15064
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汴"
+        "status": "matched",
+        "entity_id": "hixicog54amr",
+        "canonical_name": "汴州",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -21605,7 +21407,8 @@
         "end_offset": 15399
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcwlxzq3y",
         "canonical_name": "丁亥詩集"
       },
       "source": "ext:siku-qiefen-v2"
@@ -21623,7 +21426,8 @@
         "end_offset": 15422
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcwlxzq3z",
         "canonical_name": "樵菴詞集"
       },
       "source": "ext:siku-qiefen-v2"
@@ -21775,44 +21579,6 @@
         "status": "matched",
         "entity_id": "hixin15wokja",
         "canonical_name": "劉夢吉"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01775",
-      "type": "work",
-      "text": "田孝子碑",
-      "anchor": {
-        "start": "95:2:15",
-        "end": "95:2:18"
-      },
-      "span": {
-        "start_offset": 15569,
-        "end_offset": 15573
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "田孝子碑",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01776",
-      "type": "work",
-      "text": "輞川圖記",
-      "anchor": {
-        "start": "95:2:19",
-        "end": "95:3:3"
-      },
-      "span": {
-        "start_offset": 15573,
-        "end_offset": 15577
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "輞川圖記",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -22000,9 +21766,10 @@
         "end_offset": 15760
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "順聖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicabv13in",
+        "canonical_name": "順聖縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -22115,9 +21882,10 @@
         "end_offset": 15819
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國史院編修",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4udstrm3",
+        "canonical_name": "國史院編修官",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -22154,9 +21922,10 @@
         "end_offset": 15833
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南臺御史中丞",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8newkcj",
+        "canonical_name": "御史中丞",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -22496,7 +22265,8 @@
         "end_offset": 16098
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbos",
         "canonical_name": "孟子廟"
       },
       "source": "ext:siku-qiefen-v2"
@@ -22628,8 +22398,10 @@
         "end_offset": 16171
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "□陵"
+        "status": "matched",
+        "entity_id": "hixi5wncydj4",
+        "canonical_name": "廬陵縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -22972,8 +22744,10 @@
         "end_offset": 16542
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "歐"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdye",
+        "canonical_name": "歐陽修",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23509,8 +23283,10 @@
         "end_offset": 16781
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "存悔齋詩稿"
+        "status": "matched",
+        "canonical_name": "存悔齋詩",
+        "entity_id": "d59f2gp9w2dc",
+        "note": "A11存疑书名按上下文挂靠(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -23870,9 +23646,9 @@
         "end_offset": 16950
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "中書左丞相",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8ou3hfm",
+        "canonical_name": "左丞相"
       },
       "source": "claude:A33"
     },
@@ -24005,8 +23781,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixhd2h9bd9t",
-        "canonical_name": "李冶"
+        "entity_id": "hixhd2h9bh0q",
+        "canonical_name": "李治"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24118,7 +23894,8 @@
         "end_offset": 17093
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcwlxzq40",
         "canonical_name": "耶律丞相雙溪集"
       },
       "source": "ext:siku-qiefen-v2"
@@ -24439,7 +24216,8 @@
         "end_offset": 17401
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbir",
         "canonical_name": "醫無閭"
       },
       "source": "ext:siku-qiefen-v2"
@@ -24607,8 +24385,10 @@
         "end_offset": 17473
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "中山府"
+        "status": "matched",
+        "entity_id": "hiximz3igfsw",
+        "canonical_name": "中山府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -24645,9 +24425,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5wud64gd",
+        "entity_id": "hixia8nsn08y",
         "canonical_name": "國子博士",
-        "note": "未定朝代，挂概念條"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -25147,25 +24927,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01827",
-      "type": "work",
-      "text": "與王申伯",
-      "anchor": {
-        "start": "109:6:15",
-        "end": "109:6:18"
-      },
-      "span": {
-        "start_offset": 17926,
-        "end_offset": 17930
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "與王申伯",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01152",
       "type": "place",
       "text": "婺州路",
@@ -25621,25 +25382,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01828",
-      "type": "work",
-      "text": "送牟景陽序",
-      "anchor": {
-        "start": "112:6:8",
-        "end": "112:6:12"
-      },
-      "span": {
-        "start_offset": 18407,
-        "end_offset": 18412
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "送牟景陽序",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01184",
       "type": "place",
       "text": "蜀",
@@ -25962,25 +25704,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01829",
-      "type": "work",
-      "text": "壽李翁八十",
-      "anchor": {
-        "start": "114:6:8",
-        "end": "114:6:12"
-      },
-      "span": {
-        "start_offset": 18741,
-        "end_offset": 18746
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "壽李翁八十",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01206",
       "type": "people",
       "text": "墍",
@@ -26130,25 +25853,6 @@
         "canonical_name": "朱熹"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01830",
-      "type": "work",
-      "text": "答陳櫟書",
-      "anchor": {
-        "start": "115:8:18",
-        "end": "115:8:21"
-      },
-      "span": {
-        "start_offset": 18945,
-        "end_offset": 18949
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "答陳櫟書",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e01218",
@@ -27262,8 +26966,10 @@
         "end_offset": 20054
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "建昌"
+        "status": "matched",
+        "entity_id": "hixi5x9i6gw3",
+        "canonical_name": "建昌府",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27298,7 +27004,8 @@
         "end_offset": 20064
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbot",
         "canonical_name": "白雪樓"
       },
       "source": "ext:siku-qiefen-v2"
@@ -27353,8 +27060,10 @@
         "end_offset": 20100
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "世祖"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyfd",
+        "canonical_name": "忽必烈",
+        "note": "庙号/帝号：逐处读上下文判定（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27941,8 +27650,10 @@
         "end_offset": 20710
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -27979,9 +27690,10 @@
         "end_offset": 20717
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "湖廣",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4ufd0hdz",
+        "canonical_name": "湖廣省",
+        "note": "地名按附近地名/时代判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -28552,9 +28264,10 @@
         "end_offset": 21065
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -28571,8 +28284,10 @@
         "end_offset": 21079
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "江浙行省"
+        "status": "matched",
+        "entity_id": "hixi4ufcp8uf",
+        "canonical_name": "江浙行中書省",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28666,9 +28381,10 @@
         "end_offset": 21103
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -28685,8 +28401,10 @@
         "end_offset": 21109
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "世祖"
+        "status": "matched",
+        "entity_id": "hixi4wwpzyfd",
+        "canonical_name": "忽必烈",
+        "note": "庙号/帝号：逐处读上下文判定（A33）"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28742,8 +28460,10 @@
         "end_offset": 21121
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28839,8 +28559,10 @@
         "end_offset": 21160
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -28877,9 +28599,10 @@
         "end_offset": 21173
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "國史院編修",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi4udstrm3",
+        "canonical_name": "國史院編修官",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -28915,9 +28638,10 @@
         "end_offset": 21203
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -28972,9 +28696,9 @@
         "end_offset": 21284
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "上都",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixinayopxdx",
+        "canonical_name": "上都路"
       },
       "source": "claude:A33"
     },
@@ -28991,8 +28715,10 @@
         "end_offset": 21315
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29009,9 +28735,10 @@
         "end_offset": 21318
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "claude:A33"
     },
@@ -29028,9 +28755,10 @@
         "end_offset": 21326
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "安南",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin9dquark",
+        "canonical_name": "安南國",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "claude:A33"
     },
@@ -29490,25 +29218,6 @@
       "source": "ext:siku-qiefen-v2"
     },
     {
-      "id": "e01863",
-      "type": "work",
-      "text": "接劉介臣書",
-      "anchor": {
-        "start": "132:4:16",
-        "end": "132:4:20"
-      },
-      "span": {
-        "start_offset": 21680,
-        "end_offset": 21685
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "接劉介臣書",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01388",
       "type": "place",
       "text": "閩海",
@@ -29558,8 +29267,10 @@
         "end_offset": 21719
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "閩"
+        "status": "matched",
+        "entity_id": "hixi4u82hwjo",
+        "canonical_name": "福建省",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "ext:siku-qiefen-v2"
     },
@@ -29576,9 +29287,10 @@
         "end_offset": 21736
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -29766,9 +29478,10 @@
         "end_offset": 21821
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内史",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixia8of43cz",
+        "canonical_name": "王國內史",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -29842,9 +29555,10 @@
         "end_offset": 21865
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixi1ubppfs1",
         "canonical_name": "至元",
-        "note": "重标后待匹配"
+        "note": "朝代/年号按上下文判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -29880,9 +29594,10 @@
         "end_offset": 21906
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
         "canonical_name": "盧摯",
-        "note": "重标后待匹配"
+        "note": "同名多条按上下文朝代判定(A33子代理)",
+        "entity_id": "hixhd2h9bnha"
       },
       "source": "claude:A33"
     },
@@ -30187,9 +29902,10 @@
         "end_offset": 22073
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "棟",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixinbzy0jl4",
+        "canonical_name": "尹棟",
+        "note": "单字省称还原全名(A12 b52)"
       },
       "source": "claude:A33"
     },
@@ -30512,25 +30228,6 @@
         "canonical_name": "遂昌志"
       },
       "source": "ext:siku-qiefen-v2"
-    },
-    {
-      "id": "e01888",
-      "type": "work",
-      "text": "題虞集邵陶二菴詩",
-      "anchor": {
-        "start": "135:7:10",
-        "end": "135:7:17"
-      },
-      "span": {
-        "start_offset": 22235,
-        "end_offset": 22243
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "題虞集邵陶二菴詩",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     }
   ]
 }

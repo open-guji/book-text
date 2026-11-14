@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.1.15",
+  "version": "0.1.25",
   "book_id": "995ejelvk0",
   "volume": 15,
   "entities": [
@@ -562,7 +562,9 @@
         "end_offset": 286
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goca",
+        "canonical_name": "張自勉"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -632,7 +634,9 @@
         "end_offset": 432
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goe7",
+        "canonical_name": "齊王倓"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -649,7 +653,10 @@
         "end_offset": 524
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl83ncvg",
+        "canonical_name": "五原",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -702,23 +709,6 @@
       "span": {
         "start_offset": 649,
         "end_offset": 653
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00043",
-      "type": "people",
-      "text": "恭順皇后",
-      "anchor": {
-        "start": "7:2:16",
-        "end": "7:2:19"
-      },
-      "span": {
-        "start_offset": 663,
-        "end_offset": 667
       },
       "target": {
         "status": "new_candidate"
@@ -923,7 +913,9 @@
         "end_offset": 1008
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goe8",
+        "canonical_name": "李椅"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -1212,17 +1204,20 @@
     {
       "id": "e00071",
       "type": "office",
-      "text": "令",
+      "text": "縣令",
       "anchor": {
-        "start": "11:9:17",
+        "start": "11:9:16",
         "end": "11:9:17"
       },
       "span": {
-        "start_offset": 1508,
+        "start_offset": 1507,
         "end_offset": 1509
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixia8pjoxz6",
+        "canonical_name": "縣令",
+        "note": "A12 b49：令/尉混合单字，按上下文改标縣令/縣尉(唐)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -1461,7 +1456,10 @@
         "end_offset": 1934
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl84waxg",
+        "canonical_name": "長安",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -1497,24 +1495,9 @@
         "end_offset": 1940
       },
       "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00088",
-      "type": "office",
-      "text": "尉",
-      "anchor": {
-        "start": "14:3:20",
-        "end": "14:3:20"
-      },
-      "span": {
-        "start_offset": 1942,
-        "end_offset": 1943
-      },
-      "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi5vx2iuj2",
+        "canonical_name": "縣丞"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -1569,7 +1552,10 @@
         "end_offset": 2079
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -1863,7 +1849,10 @@
         "end_offset": 2706
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicm9qzrbb",
+        "canonical_name": "漢中郡",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -2368,7 +2357,10 @@
         "end_offset": 3576
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hiximxkt4c9c",
+        "canonical_name": "劍南東川",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -2445,23 +2437,6 @@
         "canonical_name": "嶺南",
         "entity_id": "hixif41h2c5l",
         "status": "matched"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00141",
-      "type": "place",
-      "text": "江南",
-      "anchor": {
-        "start": "24:2:10",
-        "end": "24:2:11"
-      },
-      "span": {
-        "start_offset": 3601,
-        "end_offset": 3603
-      },
-      "target": {
-        "status": "new_candidate"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -2879,7 +2854,10 @@
         "end_offset": 3990
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hiximxkt4c9p",
+        "canonical_name": "宣武",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -3256,7 +3234,10 @@
         "end_offset": 4520
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bshm",
+        "canonical_name": "盧光啟",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -3781,24 +3762,10 @@
         "end_offset": 5023
       },
       "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00216",
-      "type": "people",
-      "text": "忠臣",
-      "anchor": {
-        "start": "31:8:1",
-        "end": "31:8:2"
-      },
-      "span": {
-        "start_offset": 5045,
-        "end_offset": 5047
-      },
-      "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnnl",
+        "canonical_name": "李端",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -3976,7 +3943,10 @@
         "end_offset": 5548
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bnnl",
+        "canonical_name": "李端",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -4086,7 +4056,9 @@
         "end_offset": 5915
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhzc",
+        "canonical_name": "陸賈"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -4122,7 +4094,9 @@
         "end_offset": 5929
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixictilmskc",
+        "canonical_name": "竇融"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -4569,7 +4543,10 @@
         "end_offset": 6784
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixictofpi5d",
+        "canonical_name": "臧洪",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5098,7 +5075,9 @@
         "end_offset": 7813
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goca",
+        "canonical_name": "張自勉"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5115,7 +5094,10 @@
         "end_offset": 8059
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8c2rhi",
+        "canonical_name": "巴",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5132,7 +5114,10 @@
         "end_offset": 8060
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8c2rjo",
+        "canonical_name": "蓬",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5149,7 +5134,10 @@
         "end_offset": 8061
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8cp8hm",
+        "canonical_name": "渠",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5166,7 +5154,10 @@
         "end_offset": 8062
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8c2ref",
+        "canonical_name": "集",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5217,7 +5208,10 @@
         "end_offset": 8065
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8cdzyb",
+        "canonical_name": "通",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5234,7 +5228,10 @@
         "end_offset": 8066
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8ce01e",
+        "canonical_name": "開",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5365,7 +5362,10 @@
         "end_offset": 8813
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8aikt4",
+        "canonical_name": "澧陽",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5399,7 +5399,10 @@
         "end_offset": 8849
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixiclqm30le",
+        "canonical_name": "淮陽",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5689,23 +5692,6 @@
       "source": "claude:A33-dianjiao"
     },
     {
-      "id": "e00326",
-      "type": "office",
-      "text": "冢宰",
-      "anchor": {
-        "start": "58:8:6",
-        "end": "58:8:7"
-      },
-      "span": {
-        "start_offset": 9337,
-        "end_offset": 9339
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
       "id": "e00327",
       "type": "place",
       "text": "浙江東西",
@@ -5735,7 +5721,10 @@
         "end_offset": 9765
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi5gue58n4",
+        "canonical_name": "杭州",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5752,7 +5741,10 @@
         "end_offset": 9766
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl83ncpf",
+        "canonical_name": "越",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5788,7 +5780,10 @@
         "end_offset": 10122
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8d0h1o",
+        "canonical_name": "霍山",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5805,7 +5800,10 @@
         "end_offset": 10149
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicabu3e21",
+        "canonical_name": "霍邑",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -5842,7 +5840,9 @@
         "end_offset": 10267
       },
       "target": {
-        "status": "new_candidate"
+        "canonical_name": "禮儀使",
+        "entity_id": "hixin16vn8ck",
+        "status": "matched"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6106,7 +6106,9 @@
         "end_offset": 10761
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixikfedch26",
+        "canonical_name": "尚書右僕射"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6689,7 +6691,10 @@
         "end_offset": 11087
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl83ncvg",
+        "canonical_name": "五原",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6797,7 +6802,9 @@
         "end_offset": 11245
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2gocb",
+        "canonical_name": "周元幹"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6814,7 +6821,9 @@
         "end_offset": 11276
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2gocb",
+        "canonical_name": "周元幹"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6945,7 +6954,9 @@
         "end_offset": 11361
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goe9",
+        "canonical_name": "周封"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6962,7 +6973,9 @@
         "end_offset": 11363
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goea",
+        "canonical_name": "崔勸"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -6979,7 +6992,10 @@
         "end_offset": 11384
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goeb",
+        "canonical_name": "周元淸",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7032,7 +7048,9 @@
         "end_offset": 11495
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goec",
+        "canonical_name": "黃鳳"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7049,7 +7067,10 @@
         "end_offset": 11600
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicm5v5d8d",
+        "canonical_name": "仲山甫",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7138,7 +7159,9 @@
         "end_offset": 11853
       },
       "target": {
-        "status": "new_candidate"
+        "canonical_name": "度支使",
+        "entity_id": "hixin16vn8cm",
+        "status": "matched"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7288,7 +7311,10 @@
         "end_offset": 12156
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7609,7 +7635,9 @@
         "end_offset": 12763
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goed",
+        "canonical_name": "韋頌"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7759,7 +7787,10 @@
         "end_offset": 13213
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk6o",
+        "canonical_name": "神農",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7814,7 +7845,10 @@
         "end_offset": 13217
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi8nb5bhul",
+        "canonical_name": "舜",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7831,7 +7865,9 @@
         "end_offset": 13218
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bps9",
+        "canonical_name": "大禹"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7848,7 +7884,9 @@
         "end_offset": 13219
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bpsd",
+        "canonical_name": "商湯"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7918,7 +7956,10 @@
         "end_offset": 13508
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi6kezd0y1",
+        "canonical_name": "邠州",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -7991,7 +8032,10 @@
         "end_offset": 13648
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl83ncvg",
+        "canonical_name": "五原",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8008,7 +8052,10 @@
         "end_offset": 13665
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicmgydyut",
+        "canonical_name": "栒邑縣",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8059,7 +8106,10 @@
         "end_offset": 13680
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicabuemgi",
+        "canonical_name": "上黨",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8136,23 +8186,6 @@
       "source": "claude:A33-dianjiao"
     },
     {
-      "id": "e00467",
-      "type": "people",
-      "text": "忠臣",
-      "anchor": {
-        "start": "83:7:5",
-        "end": "83:7:6"
-      },
-      "span": {
-        "start_offset": 13733,
-        "end_offset": 13735
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
       "id": "e00468",
       "type": "place",
       "text": "盧龍",
@@ -8184,7 +8217,10 @@
         "end_offset": 13740
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl8a7c9b",
+        "canonical_name": "柳城",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8235,7 +8271,10 @@
         "end_offset": 13785
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi6kqhw6bo",
+        "canonical_name": "鳳翔府",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8512,7 +8551,9 @@
         "end_offset": 14443
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goax",
+        "canonical_name": "獨孤穎"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8548,7 +8589,10 @@
         "end_offset": 14509
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8565,7 +8609,10 @@
         "end_offset": 14513
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8582,7 +8629,10 @@
         "end_offset": 14522
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8694,7 +8744,9 @@
         "end_offset": 14755
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhjtddmdqb",
+        "canonical_name": "山濤"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8711,7 +8763,10 @@
         "end_offset": 14799
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8747,7 +8802,10 @@
         "end_offset": 14933
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8783,7 +8841,9 @@
         "end_offset": 14987
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goee",
+        "canonical_name": "金乾運"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8819,7 +8879,9 @@
         "end_offset": 15102
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goax",
+        "canonical_name": "獨孤穎"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8836,7 +8898,10 @@
         "end_offset": 15111
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8872,7 +8937,9 @@
         "end_offset": 15169
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5l2goax",
+        "canonical_name": "獨孤穎"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8889,7 +8956,10 @@
         "end_offset": 15401
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8906,7 +8976,10 @@
         "end_offset": 15543
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -8999,7 +9072,10 @@
         "end_offset": 15791
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9035,7 +9111,10 @@
         "end_offset": 16062
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9128,7 +9207,9 @@
         "end_offset": 16205
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixictjhs9hz",
+        "canonical_name": "王縉"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9145,7 +9226,10 @@
         "end_offset": 16247
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9255,7 +9339,9 @@
         "end_offset": 16923
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4w9wfcwt",
+        "canonical_name": "史朝義"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9410,7 +9496,10 @@
         "end_offset": 17204
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4w9wfcwr",
+        "canonical_name": "安祿山",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9484,7 +9573,10 @@
         "end_offset": 17734
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4w9wfcwr",
+        "canonical_name": "安祿山",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9501,7 +9593,9 @@
         "end_offset": 17737
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4w9wfcwt",
+        "canonical_name": "史朝義"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9537,7 +9631,9 @@
         "end_offset": 17918
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixif41h2c6r",
+        "canonical_name": "河北"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9628,7 +9724,9 @@
         "end_offset": 18103
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixif41h2c6r",
+        "canonical_name": "河北"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -9665,23 +9763,6 @@
         "canonical_name": "太保",
         "entity_id": "hixia8ph71mo",
         "status": "matched"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00554",
-      "type": "place",
-      "text": "河南",
-      "anchor": {
-        "start": "113:1:3",
-        "end": "113:1:4"
-      },
-      "span": {
-        "start_offset": 18133,
-        "end_offset": 18135
-      },
-      "target": {
-        "status": "new_candidate"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10038,7 +10119,9 @@
         "end_offset": 18277
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixineklxouh",
+        "canonical_name": "僕固瑒"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10074,7 +10157,9 @@
         "end_offset": 18283
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixineklxoui",
+        "canonical_name": "渾日進"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10408,41 +10493,9 @@
         "end_offset": 18517
       },
       "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00594",
-      "type": "place",
-      "text": "河南",
-      "anchor": {
-        "start": "114:9:13",
-        "end": "114:9:14"
-      },
-      "span": {
-        "start_offset": 18517,
-        "end_offset": 18519
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00595",
-      "type": "place",
-      "text": "河南",
-      "anchor": {
-        "start": "115:6:22",
-        "end": "115:7:1"
-      },
-      "span": {
-        "start_offset": 18658,
-        "end_offset": 18660
-      },
-      "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixif41h2c6r",
+        "canonical_name": "河北"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10459,7 +10512,9 @@
         "end_offset": 18662
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixif41h2c6r",
+        "canonical_name": "河北"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10685,7 +10740,9 @@
         "end_offset": 19751
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5m4uxhe",
+        "canonical_name": "置頓使"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10702,7 +10759,9 @@
         "end_offset": 19769
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5m4uxhe",
+        "canonical_name": "置頓使"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -10966,7 +11025,10 @@
         "end_offset": 20355
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591h",
+        "canonical_name": "永泰",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11002,7 +11064,10 @@
         "end_offset": 20631
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591h",
+        "canonical_name": "永泰",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11019,7 +11084,10 @@
         "end_offset": 20636
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591h",
+        "canonical_name": "永泰",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11112,7 +11180,10 @@
         "end_offset": 21071
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11129,7 +11200,10 @@
         "end_offset": 21306
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591h",
+        "canonical_name": "永泰",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11146,7 +11220,10 @@
         "end_offset": 21313
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11163,7 +11240,10 @@
         "end_offset": 21318
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11290,7 +11370,10 @@
         "end_offset": 21727
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11307,7 +11390,10 @@
         "end_offset": 21984
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11324,7 +11410,10 @@
         "end_offset": 22087
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11341,7 +11430,10 @@
         "end_offset": 22234
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11584,7 +11676,10 @@
         "end_offset": 23486
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bra6",
+        "canonical_name": "李適（唐德宗）",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11867,7 +11962,10 @@
         "end_offset": 23702
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixikflqo1xt",
+        "canonical_name": "李元忠",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -11999,7 +12097,9 @@
         "end_offset": 23754
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4watiioe",
+        "canonical_name": "李希烈"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12035,7 +12135,10 @@
         "end_offset": 23773
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bra6",
+        "canonical_name": "李適（唐德宗）",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12052,7 +12155,10 @@
         "end_offset": 23784
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12069,7 +12175,9 @@
         "end_offset": 23789
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0im",
+        "canonical_name": "至德"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12143,7 +12251,10 @@
         "end_offset": 23827
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12218,7 +12329,10 @@
         "end_offset": 23920
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bk5o",
+        "canonical_name": "伊尹",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12480,7 +12594,9 @@
         "end_offset": 24304
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5m4uxhg",
+        "canonical_name": "黜陟使"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -12535,7 +12651,10 @@
         "end_offset": 24360
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13211,7 +13330,10 @@
         "end_offset": 25206
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixica5wkzz0",
+        "canonical_name": "魏絳",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13228,7 +13350,10 @@
         "end_offset": 25213
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdp9",
+        "canonical_name": "晁錯",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13376,23 +13501,6 @@
       "span": {
         "start_offset": 25532,
         "end_offset": 25534
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00761",
-      "type": "people",
-      "text": "臧文",
-      "anchor": {
-        "start": "157:1:14",
-        "end": "157:1:15"
-      },
-      "span": {
-        "start_offset": 25541,
-        "end_offset": 25543
       },
       "target": {
         "status": "new_candidate"
@@ -13613,7 +13721,10 @@
         "end_offset": 25966
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi8nb5bhul",
+        "canonical_name": "舜",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13649,7 +13760,9 @@
         "end_offset": 25969
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixhd2h9bps9",
+        "canonical_name": "大禹"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13666,7 +13779,10 @@
         "end_offset": 25971
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi8nb5bhul",
+        "canonical_name": "舜",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13702,7 +13818,9 @@
         "end_offset": 26160
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0im",
+        "canonical_name": "至德"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13791,7 +13909,10 @@
         "end_offset": 26585
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubo591i",
+        "canonical_name": "大曆",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13808,7 +13929,9 @@
         "end_offset": 26616
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5m4uxhg",
+        "canonical_name": "黜陟使"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -13977,7 +14100,9 @@
         "end_offset": 26883
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixin5m4uxhg",
+        "canonical_name": "黜陟使"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14070,7 +14195,10 @@
         "end_offset": 27227
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi8nb5bhub",
+        "canonical_name": "帝乙",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14106,7 +14234,9 @@
         "end_offset": 27318
       },
       "target": {
-        "status": "new_candidate"
+        "canonical_name": "禮儀使",
+        "entity_id": "hixin16vn8ck",
+        "status": "matched"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14448,7 +14578,10 @@
         "end_offset": 27665
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi1ubnu0ik",
+        "canonical_name": "天寶",
+        "note": "唐代年号(全唐文,A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14558,7 +14691,10 @@
         "end_offset": 27730
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl89w3k5",
+        "canonical_name": "涇陽",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14613,7 +14749,10 @@
         "end_offset": 27950
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixikflqo1xt",
+        "canonical_name": "李元忠",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14649,7 +14788,10 @@
         "end_offset": 28027
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixikflqo1xt",
+        "canonical_name": "李元忠",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14861,40 +15003,6 @@
       "source": "claude:A33-dianjiao"
     },
     {
-      "id": "e00843",
-      "type": "people",
-      "text": "惟岳",
-      "anchor": {
-        "start": "173:7:1",
-        "end": "173:7:2"
-      },
-      "span": {
-        "start_offset": 28283,
-        "end_offset": 28285
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
-      "id": "e00844",
-      "type": "people",
-      "text": "惟岳",
-      "anchor": {
-        "start": "174:2:6",
-        "end": "174:2:7"
-      },
-      "span": {
-        "start_offset": 28376,
-        "end_offset": 28378
-      },
-      "target": {
-        "status": "new_candidate"
-      },
-      "source": "claude:A33-dianjiao"
-    },
-    {
       "id": "e00845",
       "type": "people",
       "text": "馬燧",
@@ -14926,7 +15034,10 @@
         "end_offset": 28459
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixict1lif51",
+        "canonical_name": "竇嬰",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -14943,7 +15054,10 @@
         "end_offset": 28466
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixiclqrdzii",
+        "canonical_name": "趙奢",
+        "note": "全唐文复判(A33子agent)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -15281,7 +15395,10 @@
         "end_offset": 29214
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hiximznv2fl5",
+        "canonical_name": "張銑",
+        "note": "全唐文:库内唯一唐/五代/隋同名(A33)"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -15391,7 +15508,9 @@
         "end_offset": 29345
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4watiioe",
+        "canonical_name": "李希烈"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -15427,7 +15546,9 @@
         "end_offset": 29355
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixi4watiioe",
+        "canonical_name": "李希烈"
       },
       "source": "claude:A33-dianjiao"
     },
@@ -15501,7 +15622,10 @@
         "end_offset": 29410
       },
       "target": {
-        "status": "new_candidate"
+        "status": "matched",
+        "entity_id": "hixicl857jk6",
+        "canonical_name": "尉氏",
+        "note": "A12 b56 唐代州县简称"
       },
       "source": "claude:A33-dianjiao"
     },

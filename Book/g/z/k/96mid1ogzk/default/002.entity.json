@@ -1,7 +1,7 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "1.15.36",
-  "text_version": "1.2.11",
+  "version": "1.15.53",
+  "text_version": "1.2.13",
   "book_id": "96mid1ogzk",
   "volume": 2,
   "metadata": {
@@ -712,9 +712,10 @@
         "end_offset": 628
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陳",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9beve",
+        "canonical_name": "陳摶",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判)"
       },
       "source": "claude:A33"
     },
@@ -906,9 +907,10 @@
         "end_offset": 828
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内府",
-        "note": "不建档：官名未收｜内府藏本，採進來源，庫無「内府」條"
+        "status": "matched",
+        "entity_id": "hixhd2h9bozn",
+        "canonical_name": "內務府",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -1760,9 +1762,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm2",
-        "canonical_name": "評事",
-        "note": "未定朝代，挂概念条",
+        "entity_id": "hixia8mhi680",
+        "canonical_name": "大理評事",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -2692,9 +2694,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm6",
+        "entity_id": "hixi5uk9g0sp",
         "canonical_name": "尚書",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -2713,9 +2715,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrlx",
+        "entity_id": "hixi5kwirncz",
         "canonical_name": "給事中",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -3884,8 +3886,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
-        "canonical_name": "巡撫"
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -4687,8 +4690,11 @@
         "end_offset": 2359
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐書志"
+        "status": "matched",
+        "entity_id": "d59f2hq4in0g",
+        "canonical_name": "唐書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -5191,9 +5197,9 @@
         "end_offset": 2612
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鬰林",
-        "note": "不建档：地名未收｜鬱林郡，庫無此地條"
+        "status": "matched",
+        "entity_id": "hixicm5lh3a3",
+        "canonical_name": "郁林郡"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -5405,8 +5411,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
-        "canonical_name": "巡撫"
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -6330,25 +6337,6 @@
       "source": "glm:glm-4.5-flash"
     },
     {
-      "id": "e01977",
-      "type": "work",
-      "text": "開成石經",
-      "anchor": {
-        "start": "19:9:21",
-        "end": "20:1:5"
-      },
-      "span": {
-        "start_offset": 3029,
-        "end_offset": 3033
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "開成石經",
-        "note": "不建档：书未收｜唐開成石經，庫無此條"
-      },
-      "source": "claude:GUJI-240复核"
-    },
-    {
       "id": "e01978",
       "type": "people",
       "text": "陸氏",
@@ -6437,8 +6425,11 @@
         "end_offset": 3097
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "唐書王鉷傳"
+        "status": "matched",
+        "entity_id": "d59f2hq4in0g",
+        "canonical_name": "唐書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -6456,8 +6447,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2c",
-        "canonical_name": "少卿"
+        "entity_id": "hixi5v2m9es2",
+        "canonical_name": "少卿",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -6514,9 +6506,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2c",
+        "entity_id": "hixi5v2m9es2",
         "canonical_name": "少卿",
-        "note": "GUJI-240 补挂：唐邢璹「鴻臚少卿」，库无整名，挂核心官名「少卿」概念条（concept）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -7060,9 +7052,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrlt",
+        "entity_id": "hixia8oth0ch",
         "canonical_name": "刺史",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -7820,9 +7812,10 @@
         "end_offset": 3942
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内府",
-        "note": "不建档：官名未收｜内府藏本，採進來源，庫無「内府」條"
+        "status": "matched",
+        "entity_id": "hixhd2h9bozn",
+        "canonical_name": "內務府",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -7957,9 +7950,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm4",
+        "entity_id": "hixi5uk9r9cb",
         "canonical_name": "著作郎",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash",
@@ -8226,8 +8219,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -9687,8 +9680,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -9771,25 +9764,6 @@
         "note": "别名「書錄解題」"
       },
       "source": "glm:glm-4.5-flash"
-    },
-    {
-      "id": "e02031",
-      "type": "work",
-      "text": "五朝史志",
-      "anchor": {
-        "start": "29:9:7",
-        "end": "29:9:10"
-      },
-      "span": {
-        "start_offset": 4698,
-        "end_offset": 4702
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "五朝史志",
-        "note": "不建档：书未收｜宋《五朝國史藝文志》，庫無"
-      },
-      "source": "claude:GUJI-240复核"
     },
     {
       "id": "e02032",
@@ -10036,8 +10010,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "GUJI-240 补挂：「晁氏讀書志」＝晁公武《郡齋讀書志》，挂正式庫晁公武《讀書志》條"
       },
       "source": "glm:glm-4.5-flash"
@@ -11006,8 +10980,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
-        "canonical_name": "巡撫"
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -11106,9 +11081,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505h",
-        "canonical_name": "司戶參軍",
-        "note": "未定朝代，挂概念条",
+        "entity_id": "hixia8okf4ld",
+        "canonical_name": "司戶參軍事",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash",
@@ -11961,9 +11936,11 @@
         "end_offset": 5643
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "坤象傳",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59ezakdey2o",
+        "canonical_name": "周易",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -11980,9 +11957,11 @@
         "end_offset": 5651
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "賁象傳",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59ezakdey2o",
+        "canonical_name": "周易",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -11999,9 +11978,11 @@
         "end_offset": 5659
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "震彖傳",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59ezakdey2o",
+        "canonical_name": "周易",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -12038,8 +12019,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -12345,9 +12326,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505g",
+        "entity_id": "hixi5uk9g0sl",
         "canonical_name": "太常博士",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -12375,13 +12356,13 @@
     {
       "id": "e00336",
       "type": "work",
-      "text": "周易",
+      "text": "新注周易",
       "anchor": {
-        "start": "37:7:4",
+        "start": "37:6:21",
         "end": "37:7:5"
       },
       "span": {
-        "start_offset": 5867,
+        "start_offset": 5865,
         "end_offset": 5869
       },
       "target": {
@@ -12425,8 +12406,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -13194,9 +13175,10 @@
         "end_offset": 6167
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "浙右",
-        "note": "不建档：地名未收：浙右（浙西），庫無"
+        "status": "matched",
+        "entity_id": "hixif41h2c62",
+        "canonical_name": "浙西",
+        "note": "地名按附近地名/时代判定(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -13366,9 +13348,10 @@
         "end_offset": 6323
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "鈎隠圖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "canonical_name": "易數鉤隱圖",
+        "note": "A11存疑书名按上下文挂靠(A33子代理)",
+        "entity_id": "d59f2htvzmrk"
       },
       "source": "claude:A33"
     },
@@ -13579,9 +13562,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505g",
+        "entity_id": "hixi5uk9g0sl",
         "canonical_name": "太常博士",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -13620,9 +13603,10 @@
         "end_offset": 6394
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "天隠",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi8nb5bhtt",
+        "canonical_name": "倪天隱",
+        "note": "同条前文全名「倪天隠」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -14599,8 +14583,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志"
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -14778,24 +14762,6 @@
       "source": "补标:N8"
     },
     {
-      "id": "e00388",
-      "type": "work",
-      "text": "光行狀",
-      "anchor": {
-        "start": "44:1:12",
-        "end": "44:1:14"
-      },
-      "span": {
-        "start_offset": 6923,
-        "end_offset": 6926
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "光行狀"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e00389",
       "type": "work",
       "text": "易說",
@@ -14927,8 +14893,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -15188,38 +15154,19 @@
     {
       "id": "e03217",
       "type": "work",
-      "text": "集傳",
+      "text": "集傳精義",
       "anchor": {
         "start": "45:3:11",
-        "end": "45:3:12"
-      },
-      "span": {
-        "start_offset": 7131,
-        "end_offset": 7133
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "集傳",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e03218",
-      "type": "work",
-      "text": "精義",
-      "anchor": {
-        "start": "45:3:13",
         "end": "45:3:14"
       },
       "span": {
-        "start_offset": 7133,
+        "start_offset": 7131,
         "end_offset": 7135
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "精義",
-        "note": "重标后待匹配"
+        "canonical_name": "集傳精義",
+        "note": "重标后待匹配；11-14 ZM 按维基对校并「集傳」「精義」为一书（陳友文《集傳精義》）"
       },
       "source": "claude:A33"
     },
@@ -15489,9 +15436,10 @@
         "end_offset": 7471
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "内府",
-        "note": "不建档：官名未收：内府（内府藏本），庫無「内府」條"
+        "status": "matched",
+        "entity_id": "hixhd2h9bozn",
+        "canonical_name": "內務府",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -16897,9 +16845,10 @@
         "end_offset": 8306
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "直𨽻",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wavrvuw",
+        "canonical_name": "直隸省",
+        "note": "省名异体/待匹配回挂"
       },
       "source": "claude:A33"
     },
@@ -16917,8 +16866,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm0",
-        "canonical_name": "總督"
+        "entity_id": "hixi5v2mknbb",
+        "canonical_name": "總督",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -18003,9 +17953,10 @@
         "end_offset": 8736
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "揚庭",
-        "note": "字号补标，待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bttp",
+        "canonical_name": "鄭夬",
+        "note": "字号/省称，同条600字内已挂「鄭夬」(A33)"
       },
       "source": "claude:A33"
     },
@@ -18049,9 +18000,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505j",
+        "entity_id": "hixi5uk9g0sj",
         "canonical_name": "員外郎",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash",
@@ -19209,9 +19160,10 @@
         "end_offset": 9260
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "合浦",
-        "note": "不建档：地名未收：合浦，庫無"
+        "status": "matched",
+        "entity_id": "hixicl8e9f6c",
+        "canonical_name": "合浦縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -19711,8 +19663,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志"
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志"
       },
       "source": "claude:manual"
     },
@@ -19769,8 +19721,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
-        "canonical_name": "巡撫"
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -20099,8 +20052,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -20432,8 +20385,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
-        "canonical_name": "巡撫"
+        "entity_id": "hixi5v2mknbc",
+        "canonical_name": "巡撫",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -21408,9 +21362,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm1",
+        "entity_id": "hixi5uk9g0si",
         "canonical_name": "參知政事",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -22070,9 +22024,10 @@
         "end_offset": 11189
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "直𨽻",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wavrvuw",
+        "canonical_name": "直隸省",
+        "note": "省名异体/待匹配回挂"
       },
       "source": "claude:A33"
     },
@@ -22090,8 +22045,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm0",
-        "canonical_name": "總督"
+        "entity_id": "hixi5v2mknbb",
+        "canonical_name": "總督",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -22812,9 +22768,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2i",
+        "entity_id": "hixia8nm30ub",
         "canonical_name": "祠部員外郎",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -22833,9 +22789,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrlz",
+        "entity_id": "hixi5uk9r9ca",
         "canonical_name": "翰林學士",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -23128,8 +23084,8 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "d59f2hl2uiv6",
-        "canonical_name": "讀書志",
+        "entity_id": "d59f2hpm3myp",
+        "canonical_name": "郡齋讀書志",
         "note": "按撰人「晁公武」核对（同名 2 条）"
       },
       "source": "glm:glm-4.5-flash"
@@ -23866,9 +23822,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4u82hwjm",
+        "entity_id": "hixi5uk9g0sh",
         "canonical_name": "侍郎",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -25208,9 +25164,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2h",
+        "entity_id": "hixia8pgkkjl",
         "canonical_name": "太學博士",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -25333,44 +25289,6 @@
         "coarse": "part_of_work"
       },
       "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e03283",
-      "type": "work",
-      "text": "天地變卦",
-      "anchor": {
-        "start": "80:3:14",
-        "end": "80:3:17"
-      },
-      "span": {
-        "start_offset": 12825,
-        "end_offset": 12829
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "天地變卦",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e03284",
-      "type": "work",
-      "text": "論變有四",
-      "anchor": {
-        "start": "80:3:19",
-        "end": "80:4:3"
-      },
-      "span": {
-        "start_offset": 12830,
-        "end_offset": 12834
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "論變有四",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e02565",
@@ -26076,9 +25994,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2f",
+        "entity_id": "hixi5uk9r9ce",
         "canonical_name": "郎中",
-        "note": "GUJI-240复核：郎中（概念条）；吏部郎中，循「南京禮部侍郞→侍郎」例挂概念"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -27069,9 +26987,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4u82hwjm",
+        "entity_id": "hixi5uk9g0sh",
         "canonical_name": "侍郎",
-        "note": "GUJI-240复核：侍郎（概念条）；兵部侍郎，循已挂例"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -27147,8 +27065,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505g",
-        "canonical_name": "太常博士"
+        "entity_id": "hixi5uk9g0sl",
+        "canonical_name": "太常博士",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -27830,9 +27749,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2f",
+        "entity_id": "hixi5uk9r9ce",
         "canonical_name": "郎中",
-        "note": "GUJI-240复核：郎中（概念条）；兵部郎中"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -27850,9 +27769,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4u82hwjm",
+        "entity_id": "hixi5uk9g0sh",
         "canonical_name": "侍郎",
-        "note": "GUJI-240复核：侍郎（概念条）；兵部侍郎"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -28601,9 +28520,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm6",
+        "entity_id": "hixi5uk9g0sp",
         "canonical_name": "尚書",
-        "note": "GUJI-240 补挂：宋程大昌「權吏部尚書」：库无整名（吏部尚書条为他朝具体条），挂核心官名「尚書」概念条（concept）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -29476,9 +29395,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5vx2u32p",
+        "entity_id": "hixia8pl94oz",
         "canonical_name": "縣丞",
-        "note": "GUJI-240 补挂：宋「德興丞」即德興縣丞，库无整名，挂核心官名「縣丞」概念条（concept）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -32507,9 +32426,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505f",
+        "entity_id": "hixia8mpmcch",
         "canonical_name": "起居郎",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -32822,9 +32741,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm7",
+        "entity_id": "hixi5uk9r9c4",
         "canonical_name": "教授",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash",
@@ -33471,9 +33390,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2e",
+        "entity_id": "hixi5uql00sl",
         "canonical_name": "學正",
-        "note": "GUJI-240 补挂：元「贛州路儒學學正」，库无整名，挂核心官名「學正」概念条（concept）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -33551,8 +33470,11 @@
         "end_offset": 17214
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "繫辭上"
+        "status": "matched",
+        "entity_id": "d59ezakdey2o",
+        "canonical_name": "周易",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -34158,9 +34080,10 @@
         "end_offset": 17444
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "汝愚",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bebi",
+        "canonical_name": "趙汝愚",
+        "note": "同条前文全名「趙汝愚」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -34177,9 +34100,10 @@
         "end_offset": 17447
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彦肅",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdr8",
+        "canonical_name": "趙彥肅",
+        "note": "同条前文全名「趙彦肅」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -34335,9 +34259,10 @@
         "end_offset": 17500
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彦肅",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdr8",
+        "canonical_name": "趙彥肅",
+        "note": "同条前文全名「趙彦肅」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -34354,9 +34279,10 @@
         "end_offset": 17558
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "彦肅",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdr8",
+        "canonical_name": "趙彥肅",
+        "note": "同条前文全名「趙彦肅」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -36331,9 +36257,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505d",
+        "entity_id": "hixi5uk9r9cf",
         "canonical_name": "大理寺丞",
-        "note": "GUJI-240复核：大理寺丞；大理丞即大理寺丞，三册已挂此"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -38944,8 +38870,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm4",
-        "canonical_name": "著作郎"
+        "entity_id": "hixi5uk9r9cc",
+        "canonical_name": "著作郎",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -42776,9 +42703,10 @@
         "end_offset": 21748
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "直□",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wavrvuw",
+        "canonical_name": "直隸省",
+        "note": "省名异体/待匹配回挂"
       },
       "source": "claude:A33"
     },
@@ -42796,8 +42724,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm0",
-        "canonical_name": "總督"
+        "entity_id": "hixi5v2mknbb",
+        "canonical_name": "總督",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -42955,9 +42884,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm7",
+        "entity_id": "hixi5uk9r9c4",
         "canonical_name": "教授",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash",
@@ -43312,9 +43241,10 @@
         "end_offset": 21928
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "胡",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bdwz",
+        "canonical_name": "胡瑗",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判)"
       },
       "source": "claude:A33"
     },
@@ -43914,9 +43844,10 @@
         "end_offset": 22133
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "寧鄕",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi616ptbm6",
+        "canonical_name": "寧鄉縣",
+        "note": "高频地名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -43972,9 +43903,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm4",
+        "entity_id": "hixi5uk9r9cc",
         "canonical_name": "著作郎",
-        "note": "重标沿用全册同字挂法，待核（原注：未定朝代，挂概念条）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "claude:A33"
@@ -44070,9 +44001,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2j",
+        "entity_id": "hixia8o2xu6c",
         "canonical_name": "司業",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -44109,9 +44040,10 @@
         "end_offset": 22184
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "師旦",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi48p2fkef",
+        "canonical_name": "蘇師旦",
+        "note": "同条前文全名「蘇師旦」之省称(A33)"
       },
       "source": "claude:A33"
     },
@@ -48371,9 +48303,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrm1",
+        "entity_id": "hixi5uk9g0si",
         "canonical_name": "參知政事",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -49502,9 +49434,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixia8mpb3t0",
+        "entity_id": "hixia8pq8xds",
         "canonical_name": "考功郎中",
-        "note": "GUJI-240 补挂：宋鄭汝諧「考功郞」即吏部考功郎中，挂考功郎中概念条（concept，草稿库）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -50355,9 +50287,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5vx35bm1",
+        "entity_id": "hixi5vx27lzc",
         "canonical_name": "侍中",
-        "note": "GUJI-240复核：侍中；魏侍中鄭小同"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -51519,9 +51451,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hiximzhp4pl3",
+        "entity_id": "hiximaqdxpu1",
         "canonical_name": "戶部侍郎",
-        "note": "官名重挂：概念条（朝代未明或库无分朝条）"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -52330,9 +52262,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505d",
+        "entity_id": "hixi5uk9r9cf",
         "canonical_name": "大理寺丞",
-        "note": "未定朝代，挂概念条",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -53196,9 +53128,10 @@
         "end_offset": 27042
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "列",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bjxx",
+        "canonical_name": "列禦寇",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判)"
       },
       "source": "claude:A33"
     },
@@ -53351,9 +53284,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udt505e",
+        "entity_id": "hixi5v2mknbc",
         "canonical_name": "巡撫",
-        "note": "GUJI-240复核：巡撫；山東巡撫採進本"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -53848,24 +53781,6 @@
       "source": "补标:N8"
     },
     {
-      "id": "e01226",
-      "type": "work",
-      "text": "易卦𠮓合圖",
-      "anchor": {
-        "start": "167:9:16",
-        "end": "167:9:20"
-      },
-      "span": {
-        "start_offset": 27312,
-        "end_offset": 27317
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "易卦𠮓合圖"
-      },
-      "source": "glm:glm-4.5-flash"
-    },
-    {
       "id": "e01227",
       "type": "work",
       "text": "易學啟𫎇",
@@ -54267,9 +54182,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udsij2f",
+        "entity_id": "hixi5uk9r9ce",
         "canonical_name": "郎中",
-        "note": "重标沿用全册同字挂法，待核（原注：GUJI-240复核：郎中（概念条）；吏部郎中，循「南京禮部侍郞→侍郎」例挂概念）"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -55378,9 +55293,10 @@
         "end_offset": 27961
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixincvu3dko",
         "canonical_name": "劉涇",
-        "note": "不建档：无从确定（元人刊書作跋者；库中劉涇為明人，原挂有誤）"
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -55649,8 +55565,11 @@
         "end_offset": 28036
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "朱子易學啟家序"
+        "status": "matched",
+        "entity_id": "d59f2heqct8g",
+        "canonical_name": "易學啟蒙",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -56304,8 +56223,11 @@
         "end_offset": 28385
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "易學啟𫎇通釋序"
+        "status": "matched",
+        "entity_id": "d59f2hs3oqv4",
+        "canonical_name": "易學啟蒙通釋",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "glm:glm-4.5-flash"
     },
@@ -57372,9 +57294,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixia8pnfshs",
+        "entity_id": "hixia8p7iosj",
         "canonical_name": "學錄",
-        "note": "GUJI-240 补挂：元俞琰「徵授温州學錄」，库无整名，挂核心官名「學錄」概念条（concept，草稿库）",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)",
         "level": "concept"
       },
       "source": "glm:glm-4.5-flash"
@@ -58242,9 +58164,10 @@
         "end_offset": 29308
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
         "canonical_name": "史璿",
-        "note": "不建档：無从确定：史璿库无、CBDB 无，生平不詳"
+        "note": "同名多条按上下文朝代判定(A33子代理)",
+        "entity_id": "hixin15vqupv"
       },
       "source": "claude:GUJI-240复核"
     },
@@ -59788,44 +59711,6 @@
         "canonical_name": "易裨傳"
       },
       "source": "claude:GUJI-240复核"
-    },
-    {
-      "id": "e03308",
-      "type": "work",
-      "text": "其易筮通",
-      "anchor": {
-        "start": "186:5:7",
-        "end": "186:5:10"
-      },
-      "span": {
-        "start_offset": 30395,
-        "end_offset": 30399
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "其易筮通",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e03309",
-      "type": "work",
-      "text": "曰卜筮",
-      "anchor": {
-        "start": "186:5:16",
-        "end": "186:5:18"
-      },
-      "span": {
-        "start_offset": 30404,
-        "end_offset": 30407
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "□卜筮",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e03310",

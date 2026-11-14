@@ -1,7 +1,7 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.31",
-  "text_version": "0.6.2",
+  "version": "0.2.45",
+  "text_version": "0.6.3",
   "book_id": "96mid1ogzk",
   "volume": 19,
   "metadata": {
@@ -42,24 +42,10 @@
         "end_offset": 24
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "d59fyfkc8miq",
-            "canonical_name": "樂經",
-            "dynasty": "漢"
-          },
-          {
-            "entity_id": "d59f2evnk3d0",
-            "canonical_name": "樂經"
-          },
-          {
-            "entity_id": "d59fxx7tryf5",
-            "canonical_name": "樂經",
-            "dynasty": "清"
-          }
-        ],
-        "note": "待确认：庫中同名 3 條"
+        "status": "matched",
+        "entity_id": "d59f2evnk3d0",
+        "canonical_name": "樂經",
+        "note": "同名多候选按上下文/撰者复判(A33)"
       },
       "source": "claude:A33"
     },
@@ -220,24 +206,10 @@
         "end_offset": 67
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "d59fyfkc8miq",
-            "canonical_name": "樂經",
-            "dynasty": "漢"
-          },
-          {
-            "entity_id": "d59f2evnk3d0",
-            "canonical_name": "樂經"
-          },
-          {
-            "entity_id": "d59fxx7tryf5",
-            "canonical_name": "樂經",
-            "dynasty": "清"
-          }
-        ],
-        "note": "待确认：庫中同名 3 條"
+        "status": "matched",
+        "entity_id": "d59f2evnk3d0",
+        "canonical_name": "樂經",
+        "note": "同名多候选按上下文/撰者复判(A33)"
       },
       "source": "claude:A33"
     },
@@ -274,24 +246,10 @@
         "end_offset": 71
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "d59fyfkc8miq",
-            "canonical_name": "樂經",
-            "dynasty": "漢"
-          },
-          {
-            "entity_id": "d59f2evnk3d0",
-            "canonical_name": "樂經"
-          },
-          {
-            "entity_id": "d59fxx7tryf5",
-            "canonical_name": "樂經",
-            "dynasty": "清"
-          }
-        ],
-        "note": "待确认：庫中同名 3 條"
+        "status": "matched",
+        "entity_id": "d59f2evnk3d0",
+        "canonical_name": "樂經",
+        "note": "同名多候选按上下文/撰者复判(A33)"
       },
       "source": "claude:A33"
     },
@@ -405,24 +363,10 @@
         "end_offset": 103
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "d59fyfkc8miq",
-            "canonical_name": "樂經",
-            "dynasty": "漢"
-          },
-          {
-            "entity_id": "d59f2evnk3d0",
-            "canonical_name": "樂經"
-          },
-          {
-            "entity_id": "d59fxx7tryf5",
-            "canonical_name": "樂經",
-            "dynasty": "清"
-          }
-        ],
-        "note": "待确认：庫中同名 3 條"
+        "status": "matched",
+        "entity_id": "d59f2evnk3d0",
+        "canonical_name": "樂經",
+        "note": "同名多候选按上下文/撰者复判(A33)"
       },
       "source": "claude:A33"
     },
@@ -1604,9 +1548,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4u82hwjm",
+        "entity_id": "hixi5uk9g0sh",
         "canonical_name": "侍郎",
-        "note": "庫無整名「禮部侍郞」，挂「侍郎」（未定朝代，挂概念條）"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -1702,9 +1646,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixia8nwdurl",
+        "entity_id": "hixia8mqk1z7",
         "canonical_name": "正字",
-        "note": "庫無整名「秘書省正字」，挂「正字」（未定朝代，挂概念條）"
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -1857,8 +1801,11 @@
         "end_offset": 1023
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "樂圖論"
+        "status": "matched",
+        "entity_id": "d59f2hsqsb29",
+        "canonical_name": "樂書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -2814,24 +2761,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00137",
-      "type": "work",
-      "text": "小司馬",
-      "anchor": {
-        "start": "12:9:8",
-        "end": "12:9:10"
-      },
-      "span": {
-        "start_offset": 1965,
-        "end_offset": 1968
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "小司馬"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00138",
       "type": "people",
       "text": "杜氏",
@@ -3076,8 +3005,11 @@
         "end_offset": 2092
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "律吕本原"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3130,8 +3062,11 @@
         "end_offset": 2112
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃鐘生十一律"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3148,8 +3083,11 @@
         "end_offset": 2119
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "十二律之實"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3184,8 +3122,11 @@
         "end_offset": 2130
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "律生五聲圖"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3220,8 +3161,11 @@
         "end_offset": 2141
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "八十四聲圖"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3274,8 +3218,11 @@
         "end_offset": 2166
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "謹權衡"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3292,8 +3239,11 @@
         "end_offset": 2177
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "律吕證辨"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3328,8 +3278,11 @@
         "end_offset": 2191
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "律長短圍徑之數"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3364,8 +3317,11 @@
         "end_offset": 2207
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "三分損益上下相生"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3382,8 +3338,11 @@
         "end_offset": 2220
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "五聲大小之次第"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3400,9 +3359,11 @@
         "end_offset": 2225
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "𠮓官𠮓徴",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A34"
     },
@@ -3419,8 +3380,11 @@
         "end_offset": 2230
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "六十調"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -3455,8 +3419,11 @@
         "end_offset": 2240
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "度量權衡"
+        "status": "matched",
+        "entity_id": "d59f2hr5z476",
+        "canonical_name": "律呂新書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -4060,42 +4027,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00205",
-      "type": "work",
-      "text": "旋宫六十調圖",
-      "anchor": {
-        "start": "18:6:10",
-        "end": "18:6:15"
-      },
-      "span": {
-        "start_offset": 2921,
-        "end_offset": 2927
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "旋宫六十調圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00206",
-      "type": "work",
-      "text": "雅律通俗譜例",
-      "anchor": {
-        "start": "18:6:18",
-        "end": "18:7:4"
-      },
-      "span": {
-        "start_offset": 2929,
-        "end_offset": 2935
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "雅律通俗譜例"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00207",
       "type": "work",
       "text": "指法",
@@ -4111,24 +4042,6 @@
         "status": "matched",
         "entity_id": "d59fxr1g4poi",
         "canonical_name": "指法"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00208",
-      "type": "work",
-      "text": "詩舊譜",
-      "anchor": {
-        "start": "18:7:11",
-        "end": "18:7:13"
-      },
-      "span": {
-        "start_offset": 2941,
-        "end_offset": 2944
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩舊譜"
       },
       "source": "claude:A33"
     },
@@ -4185,8 +4098,11 @@
         "end_offset": 2953
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "皇皇者華"
+        "status": "matched",
+        "entity_id": "d59ezak9zc3k",
+        "canonical_name": "詩經",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -4241,8 +4157,11 @@
         "end_offset": 2963
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南山有臺"
+        "status": "matched",
+        "entity_id": "d59ezak9zc3k",
+        "canonical_name": "詩經",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -4400,24 +4319,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "開元十二詩譜"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00223",
-      "type": "work",
-      "text": "詩新譜",
-      "anchor": {
-        "start": "19:1:5",
-        "end": "19:1:7"
-      },
-      "span": {
-        "start_offset": 2992,
-        "end_offset": 2995
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "詩新譜"
       },
       "source": "claude:A33"
     },
@@ -4782,24 +4683,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00243",
-      "type": "work",
-      "text": "瑟譜後錄",
-      "anchor": {
-        "start": "19:4:8",
-        "end": "19:4:11"
-      },
-      "span": {
-        "start_offset": 3052,
-        "end_offset": 3056
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "瑟譜後錄"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00244",
       "type": "work",
       "text": "瑟絃律圖",
@@ -4949,24 +4832,6 @@
         "status": "matched",
         "entity_id": "hixhd2h9bgxy",
         "canonical_name": "姜氏"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00252",
-      "type": "work",
-      "text": "旋宫圖",
-      "anchor": {
-        "start": "20:1:8",
-        "end": "20:1:10"
-      },
-      "span": {
-        "start_offset": 3166,
-        "end_offset": 3169
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "旋宫圖"
       },
       "source": "claude:A33"
     },
@@ -5680,78 +5545,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00290",
-      "type": "work",
-      "text": "九德之歌音圖",
-      "anchor": {
-        "start": "24:4:8",
-        "end": "24:4:13"
-      },
-      "span": {
-        "start_offset": 3894,
-        "end_offset": 3900
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九德之歌音圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00291",
-      "type": "work",
-      "text": "九德之歌義圖",
-      "anchor": {
-        "start": "24:4:16",
-        "end": "24:4:21"
-      },
-      "span": {
-        "start_offset": 3902,
-        "end_offset": 3908
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九德之歌義圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00292",
-      "type": "work",
-      "text": "九磬之舞綴兆圖",
-      "anchor": {
-        "start": "24:5:5",
-        "end": "24:5:11"
-      },
-      "span": {
-        "start_offset": 3910,
-        "end_offset": 3917
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九磬之舞綴兆圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00293",
-      "type": "work",
-      "text": "九磬之舞采章圖",
-      "anchor": {
-        "start": "24:5:14",
-        "end": "24:5:20"
-      },
-      "span": {
-        "start_offset": 3919,
-        "end_offset": 3926
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "九磬之舞采章圖"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00294",
       "type": "people",
       "text": "沈約",
@@ -6136,24 +5929,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00313",
-      "type": "work",
-      "text": "太乙行九宫法",
-      "anchor": {
-        "start": "25:6:6",
-        "end": "25:6:11"
-      },
-      "span": {
-        "start_offset": 4111,
-        "end_offset": 4117
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "太乙行九宫法"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00315",
       "type": "people",
       "text": "陳摶",
@@ -6341,42 +6116,6 @@
       "target": {
         "status": "new_candidate",
         "canonical_name": "義圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00327",
-      "type": "work",
-      "text": "綴兆始成圖",
-      "anchor": {
-        "start": "26:6:6",
-        "end": "26:6:10"
-      },
-      "span": {
-        "start_offset": 4282,
-        "end_offset": 4287
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "綴兆始成圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00328",
-      "type": "work",
-      "text": "采章圖",
-      "anchor": {
-        "start": "26:8:18",
-        "end": "26:8:20"
-      },
-      "span": {
-        "start_offset": 4332,
-        "end_offset": 4335
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "采章圖"
       },
       "source": "claude:A33"
     },
@@ -6607,9 +6346,11 @@
         "end_offset": 4474
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "地圓篇",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59ezahspgqo",
+        "canonical_name": "管子",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -6645,8 +6386,11 @@
         "end_offset": 4491
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "古樂篇"
+        "status": "matched",
+        "entity_id": "d59ezkwuylts",
+        "canonical_name": "呂氏春秋",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -7668,8 +7412,11 @@
         "end_offset": 5291
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "前漢書禮樂志"
+        "status": "matched",
+        "entity_id": "d59f1iqd854w",
+        "canonical_name": "漢書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -7982,42 +7729,6 @@
         "entity_id": "d59f2nhc80zn",
         "canonical_name": "詩傳纂義",
         "note": "按撰人「倪復」核对"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00416",
-      "type": "work",
-      "text": "黃鐘本原",
-      "anchor": {
-        "start": "36:7:6",
-        "end": "36:7:9"
-      },
-      "span": {
-        "start_offset": 5969,
-        "end_offset": 5973
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃鐘本原"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00417",
-      "type": "work",
-      "text": "風雅十二詩圖譜",
-      "anchor": {
-        "start": "36:7:12",
-        "end": "36:7:18"
-      },
-      "span": {
-        "start_offset": 5975,
-        "end_offset": 5982
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "風雅十二詩圖譜"
       },
       "source": "claude:A33"
     },
@@ -8618,21 +8329,40 @@
     {
       "id": "e01503",
       "type": "people",
-      "text": "鄭恭王厚焥",
+      "text": "鄭恭王",
       "anchor": {
         "start": "39:2:10",
-        "end": "39:2:14"
+        "end": "39:2:12"
       },
       "span": {
         "start_offset": 6382,
+        "end_offset": 6385
+      },
+      "target": {
+        "status": "new_candidate",
+        "canonical_name": "鄭恭王",
+        "note": "重标后待匹配"
+      },
+      "source": "claude:ZM"
+    },
+    {
+      "id": "e01550",
+      "type": "people",
+      "text": "厚焥",
+      "anchor": {
+        "start": "39:2:13",
+        "end": "39:2:14"
+      },
+      "span": {
+        "start_offset": 6385,
         "end_offset": 6387
       },
       "target": {
         "status": "new_candidate",
-        "canonical_name": "鄭恭王厚焥",
+        "canonical_name": "厚焥",
         "note": "重标后待匹配"
       },
-      "source": "claude:A33"
+      "source": "claude:ZM"
     },
     {
       "id": "e00451",
@@ -9656,7 +9386,7 @@
     {
       "id": "e00506",
       "type": "work",
-      "text": "協均度曲",
+      "text": "協均度詞",
       "anchor": {
         "start": "50:7:19",
         "end": "50:8:3"
@@ -9730,114 +9460,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00510",
-      "type": "work",
-      "text": "祭祀樂",
-      "anchor": {
-        "start": "52:8:15",
-        "end": "52:8:17"
-      },
-      "span": {
-        "start_offset": 8601,
-        "end_offset": 8604
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "祭祀樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00511",
-      "type": "work",
-      "text": "朝會樂",
-      "anchor": {
-        "start": "52:8:19",
-        "end": "52:8:21"
-      },
-      "span": {
-        "start_offset": 8605,
-        "end_offset": 8608
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "朝會樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00512",
-      "type": "work",
-      "text": "宴饗樂",
-      "anchor": {
-        "start": "52:9:4",
-        "end": "52:9:6"
-      },
-      "span": {
-        "start_offset": 8609,
-        "end_offset": 8612
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宴饗樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00513",
-      "type": "work",
-      "text": "導引樂",
-      "anchor": {
-        "start": "52:9:8",
-        "end": "52:9:10"
-      },
-      "span": {
-        "start_offset": 8613,
-        "end_offset": 8616
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "導引樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00514",
-      "type": "work",
-      "text": "行幸樂",
-      "anchor": {
-        "start": "52:9:12",
-        "end": "52:9:14"
-      },
-      "span": {
-        "start_offset": 8617,
-        "end_offset": 8620
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "行幸樂"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00515",
-      "type": "work",
-      "text": "樂制考",
-      "anchor": {
-        "start": "53:3:10",
-        "end": "53:3:12"
-      },
-      "span": {
-        "start_offset": 8673,
-        "end_offset": 8676
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "樂制考"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00516",
       "type": "work",
       "text": "雲門",
@@ -9893,24 +9515,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00519",
-      "type": "work",
-      "text": "樂章考",
-      "anchor": {
-        "start": "53:5:18",
-        "end": "53:5:20"
-      },
-      "span": {
-        "start_offset": 8719,
-        "end_offset": 8722
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "樂章考"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00520",
       "type": "dynasty",
       "text": "明",
@@ -9926,24 +9530,6 @@
         "status": "matched",
         "entity_id": "hixi1ubjrxfw",
         "canonical_name": "明"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00521",
-      "type": "work",
-      "text": "度量權衡考",
-      "anchor": {
-        "start": "53:6:14",
-        "end": "53:6:18"
-      },
-      "span": {
-        "start_offset": 8734,
-        "end_offset": 8739
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "度量權衡考"
       },
       "source": "claude:A33"
     },
@@ -10494,24 +10080,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00548",
-      "type": "work",
-      "text": "鄕飮樂",
-      "anchor": {
-        "start": "57:3:7",
-        "end": "57:3:9"
-      },
-      "span": {
-        "start_offset": 9230,
-        "end_offset": 9233
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "鄕飮樂"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00549",
       "type": "people",
       "text": "朱子",
@@ -10765,24 +10333,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00562",
-      "type": "work",
-      "text": "御製補笙詩",
-      "anchor": {
-        "start": "58:8:1",
-        "end": "58:8:5"
-      },
-      "span": {
-        "start_offset": 9480,
-        "end_offset": 9485
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "御製補笙詩"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00563",
       "type": "work",
       "text": "古樂經傳",
@@ -10959,42 +10509,6 @@
         "canonical_name": "禮記",
         "note": "篇名，暫挂上位書《禮記》（A33）；《樂記》為《禮記》篇",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00572",
-      "type": "work",
-      "text": "附樂經",
-      "anchor": {
-        "start": "59:4:3",
-        "end": "59:4:5"
-      },
-      "span": {
-        "start_offset": 9564,
-        "end_offset": 9567
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "附樂經"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00573",
-      "type": "work",
-      "text": "附樂記",
-      "anchor": {
-        "start": "59:4:6",
-        "end": "59:4:8"
-      },
-      "span": {
-        "start_offset": 9567,
-        "end_offset": 9570
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "附樂記"
       },
       "source": "claude:A33"
     },
@@ -11548,24 +11062,6 @@
         "entity_id": "d59f2nkvkuma",
         "canonical_name": "頖宮禮樂疏",
         "note": "按撰人「李之藻」核对"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00600",
-      "type": "work",
-      "text": "六十聲圖",
-      "anchor": {
-        "start": "61:9:13",
-        "end": "61:9:16"
-      },
-      "span": {
-        "start_offset": 9996,
-        "end_offset": 10000
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "六十聲圖"
       },
       "source": "claude:A33"
     },
@@ -12766,8 +12262,11 @@
         "end_offset": 11415
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "采衣堂論學淺說"
+        "status": "matched",
+        "entity_id": "d59f2mbocmio",
+        "canonical_name": "竟山樂錄",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -13023,132 +12522,6 @@
         "status": "matched",
         "entity_id": "hixhd2f8wajy",
         "canonical_name": "毛奇齡"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00672",
-      "type": "work",
-      "text": "宫調圖",
-      "anchor": {
-        "start": "71:4:19",
-        "end": "71:4:21"
-      },
-      "span": {
-        "start_offset": 11497,
-        "end_offset": 11500
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宫調圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00673",
-      "type": "work",
-      "text": "七調全圖",
-      "anchor": {
-        "start": "71:5:3",
-        "end": "71:5:6"
-      },
-      "span": {
-        "start_offset": 11500,
-        "end_offset": 11504
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "七調全圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00674",
-      "type": "work",
-      "text": "十二律旋相爲宫隔八相生合圖",
-      "anchor": {
-        "start": "71:5:8",
-        "end": "71:5:20"
-      },
-      "span": {
-        "start_offset": 11505,
-        "end_offset": 11518
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "十二律旋相爲宫隔八相生合圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00675",
-      "type": "work",
-      "text": "器色七聲還相爲宫隔八相生圖",
-      "anchor": {
-        "start": "71:5:21",
-        "end": "71:6:14"
-      },
-      "span": {
-        "start_offset": 11518,
-        "end_offset": 11531
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "器色七聲還相爲宫隔八相生圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00676",
-      "type": "work",
-      "text": "籥色下生上生圖",
-      "anchor": {
-        "start": "71:6:15",
-        "end": "71:6:21"
-      },
-      "span": {
-        "start_offset": 11531,
-        "end_offset": 11538
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "籥色下生上生圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00677",
-      "type": "work",
-      "text": "五音七聲十二律器色七字爲七調還相爲宫隔八相生全圖",
-      "anchor": {
-        "start": "71:7:3",
-        "end": "71:8:7"
-      },
-      "span": {
-        "start_offset": 11538,
-        "end_offset": 11562
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "五音七聲十二律器色七字爲七調還相爲宫隔八相生全圖"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00678",
-      "type": "work",
-      "text": "六律正五音圖",
-      "anchor": {
-        "start": "71:8:8",
-        "end": "71:8:13"
-      },
-      "span": {
-        "start_offset": 11562,
-        "end_offset": 11568
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "六律正五音圖"
       },
       "source": "claude:A33"
     },
@@ -13764,8 +13137,11 @@
         "end_offset": 12210
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "地形訓"
+        "status": "matched",
+        "entity_id": "d59fy0zwmdxe",
+        "canonical_name": "淮南子",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -14002,24 +13378,6 @@
         "entity_id": "d59f20aowb9c",
         "canonical_name": "史記",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00723",
-      "type": "work",
-      "text": "律吕餘論",
-      "anchor": {
-        "start": "77:5:21",
-        "end": "77:6:5"
-      },
-      "span": {
-        "start_offset": 12515,
-        "end_offset": 12519
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "律吕餘論"
       },
       "source": "claude:A33"
     },
@@ -14328,8 +13686,11 @@
         "end_offset": 12752
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "皇言定聲"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -14369,24 +13730,6 @@
         "entity_id": "hixhd2f8walk",
         "canonical_name": "江永",
         "note": "省稱，指江永"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00743",
-      "type": "place",
-      "text": "西人",
-      "anchor": {
-        "start": "79:3:15",
-        "end": "79:3:16"
-      },
-      "span": {
-        "start_offset": 12775,
-        "end_offset": 12777
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "西人"
       },
       "source": "claude:A33"
     },
@@ -14483,25 +13826,6 @@
         "entity_id": "d59f1ioc6m0w",
         "canonical_name": "周禮",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01513",
-      "type": "office",
-      "text": "㮚氏",
-      "anchor": {
-        "start": "80:4:12",
-        "end": "80:4:13"
-      },
-      "span": {
-        "start_offset": 12962,
-        "end_offset": 12964
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "㮚氏",
-        "note": "重标后待匹配"
       },
       "source": "claude:A33"
     },
@@ -14694,8 +14018,9 @@
         "end_offset": 13606
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "南通州"
+        "status": "matched",
+        "entity_id": "hixi616ptbmc",
+        "canonical_name": "通州"
       },
       "source": "claude:A33"
     },
@@ -14848,8 +14173,11 @@
         "end_offset": 13786
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "五聲數論琴說"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -14906,9 +14234,11 @@
         "end_offset": 13902
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "管音絃音全半應聲不同",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2n9n169t",
+        "canonical_name": "律呂正義",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -14925,8 +14255,11 @@
         "end_offset": 13919
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "黃鐘均以仲吕爲角之疑"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -14983,8 +14316,11 @@
         "end_offset": 13994
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "三絃獨下一徽"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -15001,9 +14337,11 @@
         "end_offset": 14089
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "五絃獨上半徽",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -15060,8 +14398,11 @@
         "end_offset": 14184
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "泛音四準"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -15078,8 +14419,11 @@
         "end_offset": 14251
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "旋宫轉調"
+        "status": "matched",
+        "entity_id": "d59f2mbpac5c",
+        "canonical_name": "律呂闡微",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -15673,8 +15017,11 @@
         "end_offset": 14653
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "陸粲傳"
+        "status": "matched",
+        "entity_id": "d59f2mc8bta8",
+        "canonical_name": "明史",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -16364,8 +15711,11 @@
         "end_offset": 14995
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "適音篇"
+        "status": "matched",
+        "entity_id": "d59ezkwuylts",
+        "canonical_name": "呂氏春秋",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -16506,8 +15856,11 @@
         "end_offset": 15096
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "季夏六月紀"
+        "status": "matched",
+        "entity_id": "d59ezkwuylts",
+        "canonical_name": "呂氏春秋",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -16759,24 +16112,6 @@
         "entity_id": "d59f1ioc6m0w",
         "canonical_name": "周禮",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00862",
-      "type": "work",
-      "text": "雙宫對調圖",
-      "anchor": {
-        "start": "97:8:17",
-        "end": "97:8:21"
-      },
-      "span": {
-        "start_offset": 15663,
-        "end_offset": 15668
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "雙宫對調圖"
       },
       "source": "claude:A33"
     },
@@ -17258,24 +16593,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e00888",
-      "type": "work",
-      "text": "古樂正傳",
-      "anchor": {
-        "start": "100:3:11",
-        "end": "100:3:14"
-      },
-      "span": {
-        "start_offset": 16045,
-        "end_offset": 16049
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "古樂正傳"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01530",
       "type": "people",
       "text": "吕懷",
@@ -17292,24 +16609,6 @@
         "entity_id": "hixhd2h9bdu0",
         "canonical_name": "呂懷",
         "note": "重标沿用全册同字挂法，待核"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00890",
-      "type": "work",
-      "text": "古樂本傳",
-      "anchor": {
-        "start": "100:4:7",
-        "end": "100:4:10"
-      },
-      "span": {
-        "start_offset": 16060,
-        "end_offset": 16064
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "古樂本傳"
       },
       "source": "claude:A33"
     },
@@ -17654,24 +16953,6 @@
         "status": "matched",
         "entity_id": "hixhd2h9bdwz",
         "canonical_name": "胡瑗"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e00907",
-      "type": "work",
-      "text": "鐘律解",
-      "anchor": {
-        "start": "101:9:4",
-        "end": "101:9:6"
-      },
-      "span": {
-        "start_offset": 16304,
-        "end_offset": 16307
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "鐘律解"
       },
       "source": "claude:A33"
     },
@@ -18330,9 +17611,10 @@
         "end_offset": 16833
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "直𨽻",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixi5wavrvuw",
+        "canonical_name": "直隸省",
+        "note": "省名异体/待匹配回挂"
       },
       "source": "claude:A33"
     },
@@ -18407,9 +17689,10 @@
         "end_offset": 16843
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "濂",
-        "note": "庫無此人"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhr8",
+        "canonical_name": "劉濂",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "claude:A33"
     },
@@ -18446,8 +17729,11 @@
         "end_offset": 16859
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "律吕篇"
+        "status": "matched",
+        "entity_id": "d59f2nlb6ps3",
+        "canonical_name": "樂經元義",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -18464,8 +17750,11 @@
         "end_offset": 16865
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "八音篇"
+        "status": "matched",
+        "entity_id": "d59f2nlb6ps3",
+        "canonical_name": "樂經元義",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -18482,8 +17771,11 @@
         "end_offset": 16871
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "萬舞篇"
+        "status": "matched",
+        "entity_id": "d59f2nlb6ps3",
+        "canonical_name": "樂經元義",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -18500,8 +17792,11 @@
         "end_offset": 16882
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "古詩音調篇"
+        "status": "matched",
+        "entity_id": "d59f2nlb6ps3",
+        "canonical_name": "樂經元義",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -19652,24 +18947,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01010",
-      "type": "work",
-      "text": "三註集鑒",
-      "anchor": {
-        "start": "111:3:14",
-        "end": "111:3:17"
-      },
-      "span": {
-        "start_offset": 17797,
-        "end_offset": 17801
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "三註集鑒"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01011",
       "type": "work",
       "text": "補註",
@@ -20401,9 +19678,10 @@
         "end_offset": 18465
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixhd2h9bdsn",
         "canonical_name": "張敉",
-        "note": "省稱，指張敉；庫無此人"
+        "note": "单字省称还原全名(A12 b53)"
       },
       "source": "claude:A33"
     },
@@ -22031,8 +21309,10 @@
         "end_offset": 20060
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "明世宗實錄"
+        "status": "matched",
+        "canonical_name": "世宗實錄",
+        "entity_id": "d59fyt75nw8w",
+        "note": "A11存疑书名按上下文挂靠(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -22319,9 +21599,10 @@
         "end_offset": 20216
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "翰林",
-        "note": "官名未收"
+        "status": "matched",
+        "entity_id": "hixi5dv7ou0x",
+        "canonical_name": "翰林院",
+        "note": "高频官名按上下文复判(A33子agent)"
       },
       "source": "claude:A33"
     },
@@ -23049,8 +22330,11 @@
         "end_offset": 20761
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "前漢志"
+        "status": "matched",
+        "entity_id": "d59f1iqd854w",
+        "canonical_name": "漢書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -23679,9 +22963,10 @@
         "end_offset": 21516
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蔡",
-        "note": "庫無此人"
+        "status": "matched",
+        "entity_id": "hixhd2h9be55",
+        "canonical_name": "蔡元定",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "claude:A33"
     },
@@ -23718,9 +23003,10 @@
         "end_offset": 21543
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "蔡",
-        "note": "庫無此人"
+        "status": "matched",
+        "entity_id": "hixhd2h9be55",
+        "canonical_name": "蔡元定",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判,全名见于同条目)"
       },
       "source": "claude:A33"
     },
@@ -24954,7 +24240,8 @@
         "end_offset": 22370
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixindny2nev",
         "canonical_name": "闕里"
       },
       "source": "claude:A33"
@@ -25128,58 +24415,10 @@
         "end_offset": 22451
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixicl8att9t",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicm9pfkpt",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicnvjgfwt",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicnvlyc9t",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicwsq0xdz",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicl857jij",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixictwjkmv3",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicnvjgfxz",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicnvln3pu",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicm5lh357",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicnvln3pn",
-            "canonical_name": "新昌縣"
-          },
-          {
-            "entity_id": "hixicmgx50km",
-            "canonical_name": "新昌縣"
-          }
-        ],
-        "note": "待确认：待传记｜國朝新昌人:清条仅江西瑞州府一支,浙江新昌清条库缺;采进省不作线索"
+        "status": "matched",
+        "entity_id": "hixi5xctqcxw",
+        "canonical_name": "新昌縣",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:ZM"
     },
@@ -26261,8 +25500,11 @@
         "end_offset": 23270
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "隋書律志"
+        "status": "matched",
+        "entity_id": "d59f28npetc3",
+        "canonical_name": "隋書",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -27999,24 +27241,6 @@
       "source": "claude:A33"
     },
     {
-      "id": "e01435",
-      "type": "work",
-      "text": "八十四聲圖箋",
-      "anchor": {
-        "start": "152:1:13",
-        "end": "152:1:18"
-      },
-      "span": {
-        "start_offset": 24381,
-        "end_offset": 24387
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "八十四聲圖箋"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e01436",
       "type": "work",
       "text": "宋志",
@@ -28033,24 +27257,6 @@
         "entity_id": "d59f2gonq7sy",
         "canonical_name": "宋史",
         "coarse": "part_of_work"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01437",
-      "type": "work",
-      "text": "六十調圖箋",
-      "anchor": {
-        "start": "152:3:12",
-        "end": "152:3:16"
-      },
-      "span": {
-        "start_offset": 24418,
-        "end_offset": 24423
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "六十調圖箋"
       },
       "source": "claude:A33"
     },
@@ -28342,24 +27548,6 @@
         "status": "matched",
         "entity_id": "hixhd2h9bgah",
         "canonical_name": "朱熹"
-      },
-      "source": "claude:A33"
-    },
-    {
-      "id": "e01453",
-      "type": "work",
-      "text": "鐘律篇",
-      "anchor": {
-        "start": "153:6:7",
-        "end": "153:6:9"
-      },
-      "span": {
-        "start_offset": 24636,
-        "end_offset": 24639
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "鐘律篇"
       },
       "source": "claude:A33"
     },

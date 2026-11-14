@@ -1,6 +1,6 @@
 {
   "$schema": "https://open-guji.org/schema/entity/v0.2.json",
-  "version": "0.2.35",
+  "version": "0.2.51",
   "text_version": "0.14.1",
   "book_id": "96mid1ogzk",
   "volume": 24,
@@ -556,8 +556,10 @@
         "end_offset": 453
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "淮南"
+        "status": "matched",
+        "entity_id": "hixin9dquarn",
+        "canonical_name": "淮南",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -689,8 +691,10 @@
         "end_offset": 525
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "嚴州"
+        "status": "matched",
+        "entity_id": "hixifx69t1qa",
+        "canonical_name": "嚴州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -1677,8 +1681,10 @@
         "end_offset": 993
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臨江"
+        "status": "matched",
+        "entity_id": "hixi4ugtgcnh",
+        "canonical_name": "臨江府",
+        "note": "A12 b51 高频地名默认挂法"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -2025,25 +2031,6 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00962",
-      "type": "work",
-      "text": "諸錄雜記",
-      "anchor": {
-        "start": "8:8:14",
-        "end": "8:8:17"
-      },
-      "span": {
-        "start_offset": 1258,
-        "end_offset": 1262
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "諸錄雜記",
-        "note": "维基文库对比补标（题名＋N卷）"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00107",
       "type": "place",
       "text": "汴都",
@@ -2170,15 +2157,10 @@
         "end_offset": 1449
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixhd2h9bib8",
-            "canonical_name": "王三聘",
-            "dynasty": "明"
-          }
-        ],
-        "note": "別名命中，待確認：王三聘"
+        "status": "matched",
+        "entity_id": "hixhd2h9be7z",
+        "canonical_name": "徐夢莘",
+        "note": "同条前文全名「徐夢莘」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -2385,8 +2367,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kqi7eve",
-        "canonical_name": "蜀州"
+        "entity_id": "hiximy3x39j4",
+        "canonical_name": "蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -2480,8 +2463,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kqi7eve",
-        "canonical_name": "蜀州"
+        "entity_id": "hiximy3x39j4",
+        "canonical_name": "蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3101,8 +3085,10 @@
         "end_offset": 1795
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "興元"
+        "status": "matched",
+        "entity_id": "hixicl8f74tz",
+        "canonical_name": "興元府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3119,9 +3105,10 @@
         "end_offset": 1797
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "漢中",
-        "note": "跨册挂法复核：原挂人名不符，應為地名"
+        "status": "matched",
+        "entity_id": "hixicl8f74tz",
+        "canonical_name": "興元府",
+        "note": "A12 b51 例外语境改挂"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3139,8 +3126,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixidhu1xdz8",
-        "canonical_name": "春秋楚"
+        "entity_id": "hiximy3x39j6",
+        "canonical_name": "楚",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3158,8 +3146,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kqi7eve",
-        "canonical_name": "蜀州"
+        "entity_id": "hiximy3x39j4",
+        "canonical_name": "蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3176,15 +3165,10 @@
         "end_offset": 1811
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixicu2okdu9",
-            "canonical_name": "完顏永蹈",
-            "dynasty": "金"
-          }
-        ],
-        "note": "別名命中，待確認：完顏永蹈"
+        "status": "matched",
+        "entity_id": "hixhd2h9btpr",
+        "canonical_name": "郭允蹈",
+        "note": "同条前文全名「郭允蹈」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3201,8 +3185,9 @@
         "end_offset": 1866
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "荆門"
+        "status": "matched",
+        "entity_id": "hixicl8dbpph",
+        "canonical_name": "荊門縣"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -3580,8 +3565,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kqi7eve",
-        "canonical_name": "蜀州"
+        "entity_id": "hiximy3x39j4",
+        "canonical_name": "蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -4091,8 +4077,10 @@
         "end_offset": 2189
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "布政司右㕘議"
+        "status": "matched",
+        "entity_id": "hixia8mpb3sw",
+        "canonical_name": "布政司參議",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -5229,8 +5217,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi5kwirncx",
-        "canonical_name": "監察御史"
+        "entity_id": "hixi5kwirncy",
+        "canonical_name": "監察御史",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -5631,25 +5620,6 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00919",
-      "type": "work",
-      "text": "宋遼金三史紀事",
-      "anchor": {
-        "start": "17:9:16",
-        "end": "18:1:3"
-      },
-      "span": {
-        "start_offset": 2791,
-        "end_offset": 2798
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "宋遼金三史紀事",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
-    },
-    {
       "id": "e00298",
       "type": "work",
       "text": "宋史",
@@ -5719,9 +5689,11 @@
         "end_offset": 2838
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "䝉古諸帝之立",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2njv22o1",
+        "canonical_name": "宋史紀事本末",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -5738,9 +5710,11 @@
         "end_offset": 2844
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "䝉古立國之制",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "d59f2njv22o1",
+        "canonical_name": "宋史紀事本末",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -6232,8 +6206,10 @@
         "end_offset": 3069
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "大都"
+        "status": "matched",
+        "entity_id": "hixi5wavrvut",
+        "canonical_name": "順天府",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -6459,8 +6435,9 @@
         "end_offset": 3151
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "𤓰歩"
+        "status": "matched",
+        "entity_id": "hiximyhe61ot",
+        "canonical_name": "瓜步山"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7066,15 +7043,10 @@
         "end_offset": 3414
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixictwe9c11",
-            "canonical_name": "完顏可喜",
-            "dynasty": "金"
-          }
-        ],
-        "note": "別名命中，待確認：完顏可喜"
+        "status": "matched",
+        "entity_id": "hixicwx7ec60",
+        "canonical_name": "尚可喜",
+        "note": "同条前文全名「尚可喜」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7091,70 +7063,10 @@
         "end_offset": 3420
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixicxx7fqbk",
-            "canonical_name": "趙顥",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicx1ww9w7",
-            "canonical_name": "蔚昭敏",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicwpqn2f6",
-            "canonical_name": "陸通",
-            "dynasty": "北周"
-          },
-          {
-            "entity_id": "hixictvzl6ax",
-            "canonical_name": "汪世顯",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixictvzl6ar",
-            "canonical_name": "賈居貞",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bhlc",
-            "canonical_name": "秦韜玉",
-            "dynasty": "唐"
-          },
-          {
-            "entity_id": "hixhd2h9bh7e",
-            "canonical_name": "張著",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfil",
-            "canonical_name": "尹廷高",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfxg",
-            "canonical_name": "葛曦",
-            "dynasty": "明"
-          },
-          {
-            "entity_id": "hixhd2h9bnjd",
-            "canonical_name": "李覺",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixictx9sc2b",
-            "canonical_name": "鄭紹叔",
-            "dynasty": "南朝梁"
-          },
-          {
-            "entity_id": "hixicudl8zdc",
-            "canonical_name": "王博文",
-            "dynasty": "北宋"
-          }
-        ],
-        "note": "別名命中，待確認：趙顥"
+        "status": "matched",
+        "entity_id": "hixicwx7ec5x",
+        "canonical_name": "耿仲明",
+        "note": "同条前文全名「耿仲明」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7285,70 +7197,10 @@
         "end_offset": 3469
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixicxx7fqbk",
-            "canonical_name": "趙顥",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicx1ww9w7",
-            "canonical_name": "蔚昭敏",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicwpqn2f6",
-            "canonical_name": "陸通",
-            "dynasty": "北周"
-          },
-          {
-            "entity_id": "hixictvzl6ax",
-            "canonical_name": "汪世顯",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixictvzl6ar",
-            "canonical_name": "賈居貞",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bhlc",
-            "canonical_name": "秦韜玉",
-            "dynasty": "唐"
-          },
-          {
-            "entity_id": "hixhd2h9bh7e",
-            "canonical_name": "張著",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfil",
-            "canonical_name": "尹廷高",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfxg",
-            "canonical_name": "葛曦",
-            "dynasty": "明"
-          },
-          {
-            "entity_id": "hixhd2h9bnjd",
-            "canonical_name": "李覺",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixictx9sc2b",
-            "canonical_name": "鄭紹叔",
-            "dynasty": "南朝梁"
-          },
-          {
-            "entity_id": "hixicudl8zdc",
-            "canonical_name": "王博文",
-            "dynasty": "北宋"
-          }
-        ],
-        "note": "別名命中，待確認：趙顥"
+        "status": "matched",
+        "entity_id": "hixicwx7ec5x",
+        "canonical_name": "耿仲明",
+        "note": "同条前文全名「耿仲明」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7384,15 +7236,10 @@
         "end_offset": 3476
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixictwe9c11",
-            "canonical_name": "完顏可喜",
-            "dynasty": "金"
-          }
-        ],
-        "note": "別名命中，待確認：完顏可喜"
+        "status": "matched",
+        "entity_id": "hixicwx7ec60",
+        "canonical_name": "尚可喜",
+        "note": "同条前文全名「尚可喜」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7466,70 +7313,10 @@
         "end_offset": 3503
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixicxx7fqbk",
-            "canonical_name": "趙顥",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicx1ww9w7",
-            "canonical_name": "蔚昭敏",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixicwpqn2f6",
-            "canonical_name": "陸通",
-            "dynasty": "北周"
-          },
-          {
-            "entity_id": "hixictvzl6ax",
-            "canonical_name": "汪世顯",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixictvzl6ar",
-            "canonical_name": "賈居貞",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bhlc",
-            "canonical_name": "秦韜玉",
-            "dynasty": "唐"
-          },
-          {
-            "entity_id": "hixhd2h9bh7e",
-            "canonical_name": "張著",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfil",
-            "canonical_name": "尹廷高",
-            "dynasty": "元"
-          },
-          {
-            "entity_id": "hixhd2h9bfxg",
-            "canonical_name": "葛曦",
-            "dynasty": "明"
-          },
-          {
-            "entity_id": "hixhd2h9bnjd",
-            "canonical_name": "李覺",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixictx9sc2b",
-            "canonical_name": "鄭紹叔",
-            "dynasty": "南朝梁"
-          },
-          {
-            "entity_id": "hixicudl8zdc",
-            "canonical_name": "王博文",
-            "dynasty": "北宋"
-          }
-        ],
-        "note": "別名命中，待確認：趙顥"
+        "status": "matched",
+        "entity_id": "hixicwx7ec5x",
+        "canonical_name": "耿仲明",
+        "note": "同条前文全名「耿仲明」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7565,15 +7352,10 @@
         "end_offset": 3514
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixictwe9c11",
-            "canonical_name": "完顏可喜",
-            "dynasty": "金"
-          }
-        ],
-        "note": "別名命中，待確認：完顏可喜"
+        "status": "matched",
+        "entity_id": "hixicwx7ec60",
+        "canonical_name": "尚可喜",
+        "note": "同条前文全名「尚可喜」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -7893,9 +7675,10 @@
         "end_offset": 3725
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "祖",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhwn",
+        "canonical_name": "玄燁",
+        "note": "单字省称/某氏按上下文还原全名(A33子agent判)"
       },
       "source": "claude:A33"
     },
@@ -8528,25 +8311,6 @@
       "source": "ext:gemini-3.8-flash-high"
     },
     {
-      "id": "e00957",
-      "type": "work",
-      "text": "鈔御製紀畧",
-      "anchor": {
-        "start": "27:7:-1",
-        "end": "27:7:4"
-      },
-      "span": {
-        "start_offset": 4212,
-        "end_offset": 4217
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "鈔御製紀畧",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A34"
-    },
-    {
       "id": "e00937",
       "type": "place",
       "text": "銘察罕七",
@@ -8730,9 +8494,11 @@
         "end_offset": 4345
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "諸臣紀功詩文",
-        "note": "维基文库对比补标（题名＋N卷）"
+        "status": "matched",
+        "entity_id": "d59f2ntpnjsw",
+        "canonical_name": "平定金川方略",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -8824,9 +8590,9 @@
         "end_offset": 4370
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "金川寺",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixin45lvbkc",
+        "canonical_name": "金川寺"
       },
       "source": "claude:A33"
     },
@@ -10071,9 +9837,11 @@
         "end_offset": 5440
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臣工詩文",
-        "note": "维基文库对比补标（题名＋N卷）"
+        "status": "matched",
+        "entity_id": "d59f2moi0lxd",
+        "canonical_name": "平定兩金川方略",
+        "coarse": "part_of_work",
+        "note": "篇名/子目挂上位书：逐处读上下文判（A33）"
       },
       "source": "claude:A33"
     },
@@ -10956,9 +10724,10 @@
         "end_offset": 6428
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "和闐",
-        "note": "重标后待匹配"
+        "status": "matched",
+        "entity_id": "hixicl8fidie",
+        "canonical_name": "和闐州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "claude:A33"
     },
@@ -11050,8 +10819,10 @@
         "end_offset": 6536
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "河州"
+        "status": "matched",
+        "entity_id": "hixicl8aikr8",
+        "canonical_name": "河州",
+        "note": "同名多条按上下文时代/隶属判定(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -11124,7 +10895,8 @@
         "end_offset": 6613
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "hixin45lvbkd",
         "canonical_name": "華林寺"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -11784,8 +11556,10 @@
         "end_offset": 7453
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臺灣"
+        "status": "matched",
+        "entity_id": "hixicl8fidgx",
+        "canonical_name": "臺灣府",
+        "note": "高频地名默认挂法(sheldon 11-13)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -12371,8 +12145,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi4udstrls",
-        "canonical_name": "國子監祭酒"
+        "entity_id": "hixia8pa0l4z",
+        "canonical_name": "國子監祭酒",
+        "note": "概念条按撰者/所述朝代改挂朝代条(A33子代理)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -13082,30 +12857,10 @@
         "end_offset": 8330
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixictv2tbfi",
-            "canonical_name": "賀瓌",
-            "dynasty": "後梁"
-          },
-          {
-            "entity_id": "hixhd2h9bmmn",
-            "canonical_name": "周顯",
-            "dynasty": "南朝齊"
-          },
-          {
-            "entity_id": "hixicwq0mom1",
-            "canonical_name": "陳世卿",
-            "dynasty": "北宋"
-          },
-          {
-            "entity_id": "hixhd2h9bdzq",
-            "canonical_name": "王昭禹",
-            "dynasty": "趙宋"
-          }
-        ],
-        "note": "別名命中，待確認：賀瓌"
+        "status": "matched",
+        "entity_id": "hixhd2h9bhib",
+        "canonical_name": "何光遠",
+        "note": "同条前文全名「何光遠」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -14014,7 +13769,8 @@
         "end_offset": 8862
       },
       "target": {
-        "status": "new_candidate",
+        "status": "matched",
+        "entity_id": "d59gcwlxzpyw",
         "canonical_name": "石匱藏書"
       },
       "source": "ext:gemini-3.8-flash-high"
@@ -14871,15 +14627,10 @@
         "end_offset": 9315
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixhd2h9bhfz",
-            "canonical_name": "林特",
-            "dynasty": "北宋"
-          }
-        ],
-        "note": "別名命中，待確認：林特"
+        "status": "matched",
+        "entity_id": "hixhd2h9bcty",
+        "canonical_name": "高士奇",
+        "note": "同条前文全名「高士竒」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -14939,44 +14690,6 @@
         "canonical_name": "春秋左氏傳事類始末"
       },
       "source": "claude:A34"
-    },
-    {
-      "id": "e00961",
-      "type": "people",
-      "text": "與言",
-      "anchor": {
-        "start": "64:2:19",
-        "end": "64:2:20"
-      },
-      "span": {
-        "start_offset": 9359,
-        "end_offset": 9361
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "與言",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A34"
-    },
-    {
-      "id": "e00952",
-      "type": "people",
-      "text": "與左",
-      "anchor": {
-        "start": "64:3:11",
-        "end": "64:3:12"
-      },
-      "span": {
-        "start_offset": 9368,
-        "end_offset": 9370
-      },
-      "target": {
-        "status": "new_candidate",
-        "canonical_name": "與左",
-        "note": "重标后待匹配"
-      },
-      "source": "claude:A33"
     },
     {
       "id": "e00953",
@@ -15067,15 +14780,10 @@
         "end_offset": 9508
       },
       "target": {
-        "status": "ambiguous",
-        "candidates": [
-          {
-            "entity_id": "hixhd2h9bhfz",
-            "canonical_name": "林特",
-            "dynasty": "北宋"
-          }
-        ],
-        "note": "別名命中，待確認：林特"
+        "status": "matched",
+        "entity_id": "hixhd2h9bcty",
+        "canonical_name": "高士奇",
+        "note": "同条前文全名「高士竒」之省称(A33)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -15374,8 +15082,10 @@
         "end_offset": 9597
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臺灣"
+        "status": "matched",
+        "entity_id": "hixicl8fidgx",
+        "canonical_name": "臺灣府",
+        "note": "高频地名默认挂法(sheldon 11-13)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -15573,8 +15283,10 @@
         "end_offset": 9703
       },
       "target": {
-        "status": "new_candidate",
-        "canonical_name": "臺灣"
+        "status": "matched",
+        "entity_id": "hixicl8fidgx",
+        "canonical_name": "臺灣府",
+        "note": "高频地名默认挂法(sheldon 11-13)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },
@@ -17261,8 +16973,9 @@
       },
       "target": {
         "status": "matched",
-        "entity_id": "hixi6kqi7eve",
-        "canonical_name": "蜀州"
+        "entity_id": "hiximy3x39j4",
+        "canonical_name": "蜀",
+        "note": "国名/地域复判(抽检回修)"
       },
       "source": "ext:gemini-3.8-flash-high"
     },

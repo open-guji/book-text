@@ -38,3 +38,19 @@ def test_v04_schema_forbidden():
 
 def test_reason_table_copy_still_readable():
     assert "unknown" in vtf.pending_reasons()
+
+
+def test_reason_table_copy_matches_manager():
+    """码表副本（scripts/pending_reasons.json）不能比 guji-manager 真源少码或名称不同。
+    只在装了 guji_manager 时跑（夜间 check 作业会检出 guji-manager main 并设 PYTHONPATH）；本地没装就跳过。
+    副本可以多出已改名的旧名（renamed 里的 ref_replaced 等，老单里还会见到），不能少新码。"""
+    import json
+    import pytest
+    pr = pytest.importorskip("guji_manager.review.pending_reason")
+    src = pr.export()
+    mgr = {k: v["label"] for k, v in src["reasons"].items()}
+    copy = json.load(open(os.path.join(HERE, "..", "pending_reasons.json"), encoding="utf-8"))["reasons"]
+    missing = sorted(set(mgr) - set(copy))
+    assert not missing, f"book-text 码表副本缺 {missing}：用 `python -m guji_manager.review.pending_reason --json` 重新导出"
+    wrong = sorted(k for k in mgr if copy[k] != mgr[k])
+    assert not wrong, f"名称与 guji-manager 不一致：{wrong}"

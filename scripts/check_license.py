@@ -2,7 +2,8 @@
 """检查 Book、Work 条目的授权字段：值必须是非空字符串，不得为 null、「未知」「unknown」。
 
 读 Book、Work 下 */*/*/*/manifest.json 的 versions[].license，以及 default/ 或 original/
-版本目录 index.json 里的 source.license（有则查）。CC0 1.0 只允许 is_original 为 true 的版本。
+版本目录 index.json 里的 source.license（有则查）。本项目自做文本（is_original 为 true 或
+kind 为 self_collated）一律 CC BY-SA 4.0（2026-11 全站改 CC BY-SA，web#575）；CC0 1.0 不再使用。
 逐值统计，有违规退出码 1。
 用法：python3 scripts/check_license.py [仓根目录]
 """
@@ -13,6 +14,12 @@ import sys
 from collections import Counter
 
 BAD = {'未知', 'unknown'}
+OWN = 'CC BY-SA 4.0'  # 本项目自做文本的许可
+
+
+def _own(version):
+    v = version or {}
+    return bool(v.get('is_original')) or v.get('kind') == 'self_collated'
 
 
 def check(root):
@@ -25,8 +32,10 @@ def check(root):
         counts[repr(value)] += 1
         if not isinstance(value, str) or not value.strip() or value.strip().lower() in BAD:
             bad.append((rel(path), f'license={value!r}'))
-        elif value == 'CC0 1.0' and not (version or {}).get('is_original'):
-            bad.append((rel(path), f"CC0 1.0 仅限 is_original 版本（key={(version or {}).get('key')}）"))
+        elif _own(version) and value != OWN:
+            bad.append((rel(path), f"自做文本须 {OWN}（key={(version or {}).get('key')}，现为 {value!r}）"))
+        elif value == 'CC0 1.0':
+            bad.append((rel(path), f"CC0 1.0 不再使用（key={(version or {}).get('key')}）"))
 
     manifests = sorted(p for top in ('Book', 'Work')
                        for p in glob.glob(os.path.join(root, top, '*', '*', '*', '*', 'manifest.json')))

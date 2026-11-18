@@ -52,7 +52,7 @@
 
 逐文本授权，以各条目 `manifest.json` 里每个版本的 `license` 为准，详见 README「授權」一节。
 
-CC0 1.0 只给 `is_original: true` 的版本；其余转录、整理本只能是上游明确的 CC 许可（如 BY-SA 4.0）或固定串 `来自网络，版权未知`；不许 `null`、`未知`、`unknown`。CI 的 V3（check_license）强制。（spec 07 §二）
+本项目自做的文本（`is_original: true` 或 `kind: self_collated`）一律 `CC BY-SA 4.0`，manifest 版本与该版本 `index.json` 的 `source.license` 同写（2026-11 全站改 CC BY-SA，web#575；原「自做 CC0 1.0」作废，CC0 1.0 不再使用）；其余转录、整理本只能是上游明确的 CC 许可（如 BY-SA 4.0）或固定串 `来自网络，版权未知`；不许 `null`、`未知`、`unknown`。CI 的 V3（check_license）强制。（spec 07 §二）
 
 ## 写域
 

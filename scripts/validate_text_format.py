@@ -1605,14 +1605,14 @@ def _vd(root, layer, shard, oid, key, kind):
     owner = os.path.join(root, layer, shard[0], shard[1], shard[2], oid)
     mp = os.path.join(owner, "manifest.json")
     mf = json.load(open(mp, encoding="utf-8")) if os.path.exists(mp) else {"id": oid, "versions": []}
-    mf["versions"].append({"key": key, "kind": kind, "source": "x", "license": "CC0 1.0"})
+    mf["versions"].append({"key": key, "kind": kind, "source": "x", "license": "CC BY-SA 4.0"})
     _write_json(mp, mf)
     return os.path.join(owner, key)
 
 
 def _ok_ft_index(layer_key="work_id", oid="x"):
     """合规的全文版本 index.json（样本用）。"""
-    return {"chapters": [], "revision": 1, "source": {"name": "n", "license": "CC0 1.0"},
+    return {"chapters": [], "revision": 1, "source": {"name": "n", "license": "CC BY-SA 4.0"},
             "total_chapters": 0, "version_label": "v", layer_key: oid, "fetched_at": "2026-10-02"}
 
 

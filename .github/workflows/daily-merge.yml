@@ -1,0 +1,87 @@
+name: daily-merge
+
+# 每日 dev→main 合并（原来由定时 Claude 会话跑 scripts/daily_merge.py，常被权限检查拦住，2026-11-19 改成 Action）。
+# 一次做完：合入 main 新提交 → 重建 index/texts → local_check --all 全检 → 推 dev、开／更新 PR → 全过就 merge commit 合并 → dev 快进到 main。
+# 冲突或检查不过：不合，PR 留着（冲突时没有 PR），本作业变红并开／更新一个 issue「每日合并失败」。
+# 手动触发：Actions → daily-merge → Run workflow（mode=merge 全套；no-merge 只开 PR；dry-run 只看 dev 比 main 多什么）。
+
+on:
+  schedule:
+    - cron: '30 11 * * *'   # 11:30 UTC = 洛杉矶冬令 03:30（夏令时为 04:30）
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'merge＝全套（默认）；no-merge＝只开／更新 PR；dry-run＝只报 dev 比 main 多了什么'
+        type: choice
+        default: merge
+        options: [merge, no-merge, dry-run]
+
+concurrency:
+  group: daily-merge
+  cancel-in-progress: false
+
+permissions:
+  contents: write         # 推 dev、合并 PR
+  pull-requests: write    # 开／更新／合并 PR
+  issues: write           # 失败时开 issue 提醒
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.DAILY_MERGE_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0        # daily_merge 要 main 与 dev 的共同祖先
+          token: ${{ secrets.DAILY_MERGE_TOKEN || github.token }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml jsonschema
+
+      - name: git 身份
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: daily_merge.py
+        id: merge
+        run: |
+          case "${{ inputs.mode }}" in
+            dry-run)  flag=--dry-run ;;
+            no-merge) flag=--no-merge ;;
+            *)        flag= ;;
+          esac
+          set -o pipefail
+          python3 scripts/daily_merge.py $flag 2>&1 | tee merge.log
+        # 退出码：0＝合了或无事可做；1＝冲突／检查没过／合并失败；2＝环境问题
+
+      - name: 摘要
+        if: ${{ !cancelled() }}
+        run: |
+          { echo '### daily_merge 输出'; echo '```'; tail -c 6000 merge.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 失败时开／更新 issue
+        if: ${{ failure() && inputs.mode != 'dry-run' }}
+        run: |
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          { echo "每日 dev→main 合并没完成（$(date -u +%F\ %H:%MZ)），运行记录：$run_url"; echo; echo '```'; tail -c 4000 merge.log 2>/dev/null; echo '```'; echo;
+            echo '处理：冲突就在 dev 上手工解（逐格重放规则：以 main 为底，同格两边都改取人裁时间较新者，拿不准的列清单交书项目）后重新触发本工作流；检查没过则修好 dev 再触发。'; } > issue.md
+          id=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search '每日合并失败 in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$id" ]; then
+            gh issue comment "$id" -R "$GITHUB_REPOSITORY" -F issue.md
+          else
+            gh issue create -R "$GITHUB_REPOSITORY" --title '每日合并失败' -F issue.md
+          fi
+
+      - name: 成功后关掉旧的失败 issue
+        if: ${{ success() && inputs.mode != 'dry-run' && inputs.mode != 'no-merge' }}
+        run: |
+          for id in $(gh issue list -R "$GITHUB_REPOSITORY" --state open --search '每日合并失败 in:title' --json number --jq '.[].number'); do
+            gh issue close "$id" -R "$GITHUB_REPOSITORY" -c "本次合并已成功（run ${{ github.run_id }}）。"
+          done

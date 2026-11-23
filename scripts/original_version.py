@@ -113,8 +113,35 @@ def read_text(path):
         return f.read()
 
 
+_LAYER_LISTS = ("punctuations", "entities")
+
+
+def dumps_layer(doc):
+    """punct／entity v0.3 的落盘写法（guji-format 00 §4.5）：顶层字段各一行、缩进 2；条目数组每条一行（缩进 4）；
+    分隔符 `", "`／`": "`。与 guji-manager `formats/guji_format.dump_json` 同一写法，两处要一起改。"""
+    def one(o):
+        return json.dumps(o, ensure_ascii=False, separators=(", ", ": "))
+    items = []
+    for k, v in doc.items():
+        if k in _LAYER_LISTS and isinstance(v, list) and v:
+            rows = ",\n".join("    " + one(x) for x in v)
+            items.append(f"  {json.dumps(k, ensure_ascii=False)}: [\n{rows}\n  ]")
+        else:
+            items.append(f"  {json.dumps(k, ensure_ascii=False)}: {one(v)}")
+    return "{\n" + ",\n".join(items) + "\n}\n"
+
+
+def is_layer_v03(obj):
+    sch = obj.get("$schema", "") if isinstance(obj, dict) else ""
+    return sch.endswith("/punct/v0.3.json") or sch.endswith("/entity/v0.3.json")
+
+
 def dump_json(path, obj):
-    with open(path, "w", encoding="utf-8") as f:
+    """通用 json 写法（indent=2）；punct／entity v0.3 自动改用每条一行。"""
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        if is_layer_v03(obj):
+            f.write(dumps_layer(obj))
+            return
         json.dump(obj, f, ensure_ascii=False, indent=2)
         f.write("\n")
 

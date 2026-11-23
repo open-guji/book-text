@@ -186,7 +186,7 @@ def sync(vdir, chapter, dry_run=False, out=None):
                     hit = True
             if hit:
                 touched_ents.append((x.get("id"), x["text"], "".join(txt), (x.get("target") or {}).get("status"),
-                                     (x.get("target") or {}).get("canonical_name"), x.get("source")))
+                                     (x.get("target") or {}).get("canonical_name"), OV.effective_source(x, files["entity"][1])))
                 x["text"] = "".join(txt)
                 changed["entity"] += 1
     # 清单里各层都已对上的格清掉
@@ -212,8 +212,9 @@ def sync(vdir, chapter, dry_run=False, out=None):
         print(f"  专名 {eid} {was}→{now}（{st} {cn or ''}，source={src}）：核挂法是否还对", file=out)
     seen = set()
     manual_sents = 0
-    pts = (files["punct"][1].get("punctuations") or []) if "punct" in files else []
-    ents = (files["entity"][1].get("entities") or []) if "entity" in files else []
+    pdoc = files["punct"][1] if "punct" in files else {}
+    edoc = files["entity"][1] if "entity" in files else {}
+    pts, ents = pdoc.get("punctuations") or [], edoc.get("entities") or []
     for e in edits["edits"]:
         if e["anchor"] not in pos:
             continue
@@ -225,14 +226,14 @@ def sync(vdir, chapter, dry_run=False, out=None):
         man = []
         for k, p in enumerate(pts):
             i = pos.get(p.get("anchor"))
-            if i is not None and s <= i < t and is_manual(p.get("source")):
-                man.append(f"标点 #{k} {p.get('anchor')} {p.get('mark') or p.get('kind')}（source={p.get('source')}）")
+            if i is not None and s <= i < t and is_manual(OV.effective_source(p, pdoc)):
+                man.append(f"标点 #{k} {p.get('anchor')} {p.get('mark') or p.get('kind')}（source={OV.effective_source(p, pdoc)}）")
         for x in ents:
             anc = x.get("anchor") or {}
             i, j = pos.get(anc.get("start")), pos.get(anc.get("end"))
-            if i is not None and j is not None and i < t and j >= s and is_manual(x.get("source")):
+            if i is not None and j is not None and i < t and j >= s and is_manual(OV.effective_source(x, edoc)):
                 man.append(f"专名 {x.get('id')} {anc.get('start')}～{anc.get('end')} {x.get('type')} {x.get('text')}"
-                           f"（source={x.get('source')}）")
+                           f"（source={OV.effective_source(x, edoc)}）")
         if man:
             manual_sents += 1
             print("    人裁条目（要重标须先交 A34）：", file=out)

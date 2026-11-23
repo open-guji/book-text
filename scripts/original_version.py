@@ -113,6 +113,16 @@ def read_text(path):
         return f.read()
 
 
+def effective_source(entry, doc=None):
+    """条目的产出方（guji-format 00 §4.6，punct／entity v0.3）：条目写了 `source` 就用它，没写就取文件顶层
+    `default_source`；v0.1／v0.2 文件没有 `default_source`，条目不写就是未知（返回 ""）。
+    读端判 `rule:`、人改等一律走这里，不直接读 `e["source"]`（与 guji-manager `formats/guji_format.py` 同口径）。"""
+    src = (entry or {}).get("source")
+    if src:
+        return str(src)
+    return str((doc or {}).get("default_source") or "")
+
+
 def dump_json(path, obj):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)

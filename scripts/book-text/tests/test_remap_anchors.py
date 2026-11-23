@@ -104,3 +104,24 @@ def test_remap_data_library():
     res, report, moves = RA.remap_data("001", ch, pu, None, rows)
     assert res["shifted"] == 1 and moves == [("punct", "#0", "1:1:5", "1:1:6", "平移挪")] and not report
     assert pu != keep and pu["punctuations"][0]["anchor"] == "1:1:6"
+
+
+def test_v03_no_offset_cache(tmp_path):
+    """punct／entity v0.3 不写 char_offset、span：挪锚后也不补（guji-format 00 §4.2）；v0.2 带的照旧重算。"""
+    d = str(tmp_path)
+    dump(os.path.join(d, "001.char.json"), char([("1:1:1", "甲"), ("1:1:2", "乙"), ("1:1:3", "丙")]))
+    dump(os.path.join(d, "001.punct.json"), {"default_source": "glm:x", "punctuations": [
+        {"mark": "，", "kind": "point", "pos": "after", "anchor": "3:1:2", "pre_char": "乙"},
+        {"mark": "。", "kind": "point", "pos": "after", "anchor": "3:1:3", "pre_char": "丙", "char_offset": 7}]})
+    dump(os.path.join(d, "001.entity.json"), {"default_source": "glm:x", "entities": [
+        {"id": "e1", "type": "people", "text": "甲乙", "anchor": {"start": "3:1:1", "end": "3:1:2"},
+         "target": {"status": "new_candidate"}}]})
+    rows = [row("3:1:1", "1:1:1", "甲", "甲", "改号"), row("3:1:2", "1:1:2", "乙", "乙", "改号"),
+            row("3:1:3", "1:1:3", "丙", "丙", "改号")]
+    res, _report = RA.remap(d, "001", rows)
+    assert res == {"punct": [2, 0], "entity": [1, 0]}
+    P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
+    assert P[0] == {"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:2", "pre_char": "乙"}
+    assert (P[1]["anchor"], P[1]["char_offset"]) == ("1:1:3", 2)
+    E = json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8"))["entities"]
+    assert E[0]["anchor"] == {"start": "1:1:1", "end": "1:1:2"} and "span" not in E[0]

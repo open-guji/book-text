@@ -23,6 +23,9 @@ import os
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from original_version import effective_source  # noqa: E402  v0.3 条目可省 source，取文件头 default_source
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
 
@@ -112,9 +115,10 @@ def check_file(base, char_path):
         mapped = map_cell(col_old, cn[(sa[0], sa[1])], a)
         if mapped is None or mapped == a:
             continue
-        msg = (f"{char_path.split('/')[-1]} {a}（{p['mark'].strip() or '断'} {p['kind']} {p.get('source','')}）："
+        src = effective_source(p, old_p)
+        msg = (f"{char_path.split('/')[-1]} {a}（{p['mark'].strip() or '断'} {p['kind']} {src}）："
                f"旧字「{old_cell.get(a)}」→现「{new_cell.get(a)}」，对齐后应在 {mapped}")
-        (hard if str(p.get("source", "")).startswith("rule:") else soft).append(msg)
+        (hard if src.startswith("rule:") else soft).append(msg)
     return hard, soft
 
 

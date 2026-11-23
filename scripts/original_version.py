@@ -418,6 +418,7 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
 # 在分段处插字时由改字工具判定归前段还是后段、挪不挪分段符。
 
 PUNCT_V02 = "https://open-guji.org/schema/punct/v0.2.json"
+PUNCT_V03 = "https://open-guji.org/schema/punct/v0.3.json"   # 11-23 格式瘦身；标题符同样可用
 PUNCT_KINDS = ("point", "break", "heading")
 _HEADING_MARK = re.compile(r"^#{1,6}$")
 # 书目条：「[前缀]《书名》N卷…」，卷数起是著录信息（卷数、版本来源），目录只留书名
@@ -533,8 +534,8 @@ def heading_problems(char, punct):
             seen_head.add(a)
             if a in pos:
                 heads.append((pos[a], len(p["mark"]), a, i))
-    if uses_v02 and (punct or {}).get("$schema") != PUNCT_V02:
-        probs.append((f"用了标题符，$schema 应为 {PUNCT_V02}", "schema"))
+    if uses_v02 and (punct or {}).get("$schema") not in (PUNCT_V02, PUNCT_V03):
+        probs.append((f"用了标题符，$schema 应为 {PUNCT_V02} 或 {PUNCT_V03}", "schema"))
     heads.sort()
     prev_level = None
     for n, (off, level, a, i) in enumerate(heads):

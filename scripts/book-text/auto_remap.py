@@ -97,8 +97,8 @@ def fix_heading_breaks(vdir, v):
         fixed += 1
     if fixed:
         pm.sort(key=lambda m: (m["char_offset"] + (0.4 if m["pos"] == "after" else -0.4), 0))
-        json.dump(P, open(fp, "w"), ensure_ascii=False, indent=2)
-        open(fp, "a").write("\n")
+        import original_version as OV
+        OV.dump_json(fp, P)
     return fixed
 
 

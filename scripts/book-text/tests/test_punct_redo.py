@@ -65,3 +65,30 @@ def test_no_change(tmp_path, capsys):
     assert punct_redo.main(["plan", d, "--chapter", "001", "--old-char", os.path.join(d, "old.json")]) == 0
     assert "没有改字" in capsys.readouterr().out
     assert not os.path.exists(os.path.join(d, "redo-001.txt"))
+
+
+def test_apply_keeps_group_and_checks(tmp_path):
+    """重标句里的专名保留 group 等附加字段；--check-keep 对不上时拒写。"""
+    old = char(["甲乙丙丁戊"])
+    new = char(["甲乙丙巳戊"])  # 改一字，整句重标
+    d = str(tmp_path)
+    ent = {"entities": [
+        {"id": "e00001", "type": "office", "text": "乙丙", "anchor": {"start": "1:1:2", "end": "1:1:3"},
+         "span": {"start_offset": 1, "end_offset": 3}, "target": {"status": "matched", "entity_id": "x1"},
+         "source": "s", "group": {"id": "ge1", "text": "乙丙丁", "kind": "compound"}}]}
+    dump(os.path.join(d, "001.char.json"), new)
+    dump(os.path.join(d, "old.json"), old)
+    dump(os.path.join(d, "001.punct.json"), {"punctuations": []})
+    dump(os.path.join(d, "001.entity.json"), ent)
+    assert punct_redo.main(["plan", d, "--chapter", "001", "--old-char", os.path.join(d, "old.json")]) == 0
+    assert punct_redo.main(["apply", d, "--chapter", "001", "--check-keep"]) == 0
+    E = json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8"))["entities"]
+    assert E[0]["id"] == "e00001" and E[0]["group"]["id"] == "ge1" and E[0]["target"]["entity_id"] == "x1"
+    # 工作稿里把专名标短 → 沿用 id 但文字被切短，--check-keep 拒写
+    dump(os.path.join(d, "001.entity.json"), ent)
+    assert punct_redo.main(["plan", d, "--chapter", "001", "--old-char", os.path.join(d, "old.json")]) == 0
+    w = os.path.join(d, "redo-001.txt")
+    t = open(w, encoding="utf-8").read().replace("[o乙丙]", "乙[o丙]")
+    open(w, "w", encoding="utf-8").write(t)
+    assert punct_redo.main(["apply", d, "--chapter", "001", "--check-keep"]) == 3
+    assert json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8")) == ent  # 没写

@@ -20,6 +20,10 @@
 自动出 work 专名；`[p…]` 人名、`[l…]` 地名、`[o…]` 官名、`[d…]` 朝代、`[r…]` 年号。
 分段符、标题符是结构，不在工作稿里改：句界本来就落在分段处，标题锚在段首字前，原样保留。
 
+专名附加字段：句内专名与旧条目（字面相同）配上时，沿用旧条目的全部字段（id、target、group、decomposition 等），
+只换文字与位置；apply 结尾对账旧、新专名（丢条目、改 target／group、被切短会报 ⚠）。auto_remap 用 `--check-keep`：
+有 ⚠ 就拒写（退出 3），并允许同类同长重叠的条目在字被改后沿用 id／target（文字变了报 ℹ 待复核）。
+
 专名挂库：新句里的专名，先找旧稿同一句里同类同字的条目，再找全册同类同字最常见的挂法，照抄
 target；都找不到记 new_candidate，note 写「重标后待匹配」，留给匹配流程再跑。
 """
@@ -265,6 +269,37 @@ def _order(p, off):
     return (off, p.get("kind") != "heading", p["pos"] != "before", p["kind"] == "break", inner)
 
 
+def check_entities(old_ents, new_ents, old, o2n, pos_old):
+    """重标前后的专名对账。逐个旧条目（按 id）看：还在不在、type／target／group 等附加字段有没有变、
+    文字有没有被缩短（缩短量超过被删的格数）。返回问题清单（空＝对得上）。"""
+    nb = {x["id"]: x for x in new_ents}
+    probs = []
+    for x in old_ents:
+        y = nb.get(x["id"])
+        if y is None:
+            # 旧条目在句外且字全删了的不算；只报仍有字落在新文本里的
+            an = x.get("anchor") or {}
+            i1, i2 = pos_old.get(an.get("start")), pos_old.get(an.get("end"))
+            if i1 is not None and i2 is not None and any(o2n[i] is not None for i in range(i1, i2 + 1)):
+                probs.append(f"{x['id']} {x['text']} 丢了")
+            continue
+        for k in sorted((set(x) | set(y)) - {"text", "anchor", "span"}):
+            if x.get(k) != y.get(k):
+                probs.append(f"{x['id']} {x['text']} 的 {k} 变了：{x.get(k)} → {y.get(k)}")
+        if y["text"] != x["text"]:
+            if len(y["text"]) == len(x["text"]):
+                probs.append(f"~{x['id']} 改字：{x['text']} → {y['text']}，请复核专名是否仍成立")
+                continue
+            an = x.get("anchor") or {}
+            i1, i2 = pos_old.get(an.get("start")), pos_old.get(an.get("end"))
+            dele = sum(1 for i in range(i1, i2 + 1) if o2n[i] is None) if i1 is not None and i2 is not None else 0
+            if len(y["text"]) < len(x["text"]) - dele:
+                probs.append(f"{x['id']} 被切短：{x['text']} → {y['text']}")
+    if len(new_ents) < len(old_ents):
+        probs.append(f"专名条数减少：{len(old_ents)} → {len(new_ents)}")
+    return probs
+
+
 def cmd_apply(a):
     vdir, ch = a.vdir, a.chapter
     base = a.out or vdir
@@ -321,7 +356,7 @@ def cmd_apply(a):
         hit = next(((s, e) for s, e in spans if j1 is not None and s <= j1 <= e or j2 is not None and s <= j2 <= e), None)
         if hit or j1 is None or j2 is None:
             if hit:
-                old_in[hit].append(x)
+                old_in[hit].append((x, j1, j2))
             continue
         E.append(dict(x, text="".join(chars[j1:j2 + 1]), span={"start_offset": j1, "end_offset": j2 + 1}))
 
@@ -346,29 +381,55 @@ def cmd_apply(a):
                           "anchor": new[j][0], "source": src})
                 new_p += 1
         local = collections.defaultdict(list)
-        for x in old_in[(s, e)]:
-            local[(x["type"], x["text"])].append(x)
+        for x, oj1, oj2 in old_in[(s, e)]:
+            local[(x["type"], x["text"])].append((x, oj1, oj2))
         for t, i1, i2 in sorted(ents, key=lambda z: (z[1], -z[2])):
             j1, j2 = s + i1, s + i2
             text = "".join(chars[j1:j2 + 1])
             prev = local.get((t, text))
+            x0 = None
             if prev:
-                x0 = prev.pop(0)
-                tgt, eid, xsrc = x0["target"], x0["id"], x0.get("source", src)
+                x0 = prev.pop(0)[0]
+            elif a.check_keep:
+                # 自动重映射（--check-keep）：专名里的字被改了、字面对不上时，找同类、同长、投影范围与它重叠的旧条目，
+                # 沿用 id、target 与附加字段（文字变了由对账列入复核）。人工重标（默认）不沿用，字变就是新条目。
+                for (kt, _kx), lst in local.items():
+                    if kt != t:
+                        continue
+                    for k, (xo, oj1, oj2) in enumerate(lst):
+                        a1 = oj1 if oj1 is not None else oj2
+                        a2 = oj2 if oj2 is not None else oj1
+                        if a1 is not None and a1 <= j2 and a2 >= j1 and len(xo["text"]) == len(text):
+                            x0 = lst.pop(k)[0]
+                            break
+                    if x0:
+                        break
+            if x0:
+                # 沿用旧条目的全部字段（id、target、group、decomposition 等），只换文字与位置
+                ent = dict(x0, text=text, anchor={"start": new[j1][0], "end": new[j2][0]},
+                           span={"start_offset": j1, "end_offset": j2 + 1})
+                E.append(ent)
+                continue
+            nid += 1
+            eid, xsrc = f"e{nid:05d}", src
+            c = vol_targets.get((t, text))
+            if c:
+                tgt = dict(tjson[c.most_common(1)[0][0]])
+                tgt["note"] = "重标沿用全册同字挂法，待核" + (f"（原注：{tgt['note']}）" if tgt.get("note") else "")
             else:
-                nid += 1
-                eid, xsrc = f"e{nid:05d}", src
-                c = vol_targets.get((t, text))
-                if c:
-                    tgt = dict(tjson[c.most_common(1)[0][0]])
-                    tgt["note"] = "重标沿用全册同字挂法，待核" + (f"（原注：{tgt['note']}）" if tgt.get("note") else "")
-                else:
-                    tgt = {"status": "new_candidate", "canonical_name": text, "note": "重标后待匹配"}
-                new_e += 1
+                tgt = {"status": "new_candidate", "canonical_name": text, "note": "重标后待匹配"}
+            new_e += 1
             E.append({"id": eid, "type": t, "text": text, "anchor": {"start": new[j1][0], "end": new[j2][0]},
                       "span": {"start_offset": j1, "end_offset": j2 + 1}, "target": tgt, "source": xsrc})
 
     P.sort(key=lambda p: _order(p, p["char_offset"]))
+    problems = check_entities(ej["entities"], E, old, o2n, pos_old)
+    for pr in problems:
+        print("  ⚠" if not pr.startswith("~") else "  ℹ", pr.lstrip("~"))
+    fatal = [pr for pr in problems if not pr.startswith("~")]
+    if fatal and a.check_keep:
+        print(f"校验未过：{len(fatal)} 处专名与原条目对不上，拒绝写回（--check-keep）")
+        return 3
     E.sort(key=lambda x: (x["span"]["start_offset"], -x["span"]["end_offset"]))
     pj["punctuations"], ej["entities"] = P, E
     pts = [p for p in P if p["kind"] == "point"]
@@ -398,6 +459,8 @@ def main(argv=None):
         else:
             s.add_argument("--source", default="claude:redo", help="新条目的 source")
             s.add_argument("--dry-run", action="store_true")
+            s.add_argument("--check-keep", action="store_true",
+                           help="专名与原条目对不上（丢条目、改 target／group、切短）时拒绝写回并以 3 退出")
     a = ap.parse_args(argv)
     return cmd_plan(a) if a.cmd == "plan" else cmd_apply(a)
 

@@ -13,6 +13,7 @@
   V3  check_license（全仓，1 秒）
   索引  重建 index/texts 后工作区不应多出未提交的改动（有就先 git add／提交）
   锚点  check_anchor_drift.py：char 改动后，rule:* 断点／标题仍留在旧格号上则失败
+  u     check_u_continuity.py：char 改动后，旧版的字格永久编号 u 要么还在、要么进了 u_retired
   出处  格变动出处（check_cell_provenance.py，只告警）：char 里有格变了，提交信息的「版本记录」行要有意见 id／事件 id／r 号／GUJI 卡号
 没做：manifest／index 的 schema 校验（需要 guji-format 副本）、pin-drift、单元测试；这几项仍可手动跑，或随夜间全量 CI 兜底。
 退出码 0 = 全过，1 = 有不通过项。
@@ -97,6 +98,13 @@ def main():
         print(r.stdout.rstrip())
         report("锚点漂移（断点／标题随改字挪位）", r.returncode == 0,
                "" if r.returncode == 0 else "见上；确认是误报（如旧列尾重复字）时在提交说明里写明")
+
+    # 字格永久编号 u（2026-11-24，char v0.6）：旧版有的 u 不许悄悄丢、u_max 不减、作废号不复活
+    if not args.all:
+        r = sh(PY, "scripts/check_u_continuity.py", "--base", args.base)
+        print(r.stdout.rstrip())
+        report("u 连续性（旧 u 还在或已登记作废）", r.returncode == 0,
+               "" if r.returncode == 0 else "见上；补字删字用 scripts/book-text/char_edits.py uid 发号、记作废")
 
     if args.dev:
         print("跳过  索引 index/texts（dev 上不提交，每日合并时重建）")

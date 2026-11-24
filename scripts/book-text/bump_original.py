@@ -17,9 +17,13 @@
 拿不准选 patch。
 major 是质量等级（1 可用／2 出版级／3 定本），要验收记录和用户点头，本脚本不升。
 
-文本线升级后，自动核标点、实体两层的锚点校验字：
+文本线升级后，自动核标点、实体两层的锚点校验字（2026-11-24 起还核字格永久编号 u，guji-format 02 §4.10）：
     全对得上 → 只把它们的 text_version 跟过去，不升它们的版本；
     有对不上 → 不动，列出来；修好以后对那条线再跑一次本脚本（会顺带把 text_version 跟上）。
+校验字只报不改（第31册补字事件的教训：把 pre_char／专名 text 同步成新字会把错位洗白）：本脚本从不改
+校验字；对不上的先用 char_edits.py（登记的改字、按 u 重挂）或 auto_remap／punct_redo 对齐。
+char 上了 u 的册，u 本身不合规（重复、超 u_max、新格没 u…）时文本线拒升；伴生层挂 u 不对（u 不在 char、
+与格位 key 不是同一格、该写没写）按锚点对不上处理。
 
 用法：
     bump_original.py <original 目录或其上层条目目录> --line text --level patch --note "改 3 字" --pr 12
@@ -42,6 +46,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
 import original_version as OV  # noqa: E402
+import cell_uid as CU  # noqa: E402
 
 RECORD_PREFIX = "版本记录: "
 LINE_NAME = {"text": "文本", "punct": "标点", "entity": "实体"}
@@ -197,6 +202,10 @@ def do_bump(od, line, level, chapters, note, pr, today):
             old = char.get("version")
             if not OV.parse_version(old) or OV.parse_version(old) < OV.MIN_TEXT_0X:
                 raise BumpError(f"{stem}.char.json version={old!r}，先 --init")
+            ubad = CU.u_problems(char)
+            if ubad:
+                raise BumpError(f"册 {stem} 的字格永久编号 u 有 {len(ubad)} 处不合规，先修好再升："
+                                + "；".join(m for m, _s in ubad[:5]))
             new = OV.bump(old, level)
             char["version"] = new
             pending.append((char_path, char))
@@ -207,7 +216,7 @@ def do_bump(od, line, level, chapters, note, pr, today):
                 if not os.path.isfile(cf):
                     continue
                 cd = OV.load_json(cf)
-                bad = OV.anchor_mismatches(char, comp, cd)
+                bad = OV.anchor_mismatches(char, comp, cd) + list(enumerate(m for m, _s in CU.layer_u_problems(char, comp, cd)))
                 if bad:
                     warnings.append(f"册 {stem} {LINE_NAME[comp]}层有 {len(bad)} 处锚点对不上，未跟进 text_version："
                                     + "；".join(n for _i, n in bad[:5]))
@@ -222,7 +231,7 @@ def do_bump(od, line, level, chapters, note, pr, today):
             old = cd.get("version")
             if not OV.parse_version(old) or OV.parse_version(old) < OV.MIN_TEXT_0X:
                 raise BumpError(f"{os.path.basename(cf)} version={old!r}，先 --init")
-            bad = OV.anchor_mismatches(char, line, cd)
+            bad = OV.anchor_mismatches(char, line, cd) + list(enumerate(m for m, _s in CU.layer_u_problems(char, line, cd)))
             if bad:
                 raise BumpError(f"{os.path.basename(cf)} 还有 {len(bad)} 处锚点和当前文本对不上，先修好再升："
                                 + "；".join(n for _i, n in bad[:5]))

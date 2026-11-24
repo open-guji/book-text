@@ -64,6 +64,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from zi_convert import classify as _zi_classify  # noqa: E402 — 复用 T26 组字分类，见 F-MD-11
 import original_version as OV  # noqa: E402 — original 三线版本号（T67 #400），见 F-OV-*
+import cell_uid as CU  # noqa: E402 — 字格永久编号 u（F-OV-18）
 
 sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
 
@@ -279,6 +280,7 @@ FIG_SCHEMA_URL = "https://open-guji.org/schema/fig/v0.1.json"
 CHAR_SCHEMA_URL_V03 = "https://open-guji.org/schema/char/v0.3.json"
 CHAR_SCHEMA_URL_V04 = "https://open-guji.org/schema/char/v0.4.json"
 CHAR_SCHEMA_URL_V05 = "https://open-guji.org/schema/char/v0.5.json"   # 有无法识别字 unk（guji-format 02 §4.9）
+CHAR_SCHEMA_URL_V06 = "https://open-guji.org/schema/char/v0.6.json"   # 有字格永久编号 u（guji-format 02 §4.10）
 CORD_SCHEMA_URL_V02 = "https://open-guji.org/schema/cord/v0.2.json"
 FIG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 FIG_MIME_EXT = {"image/png": ".png", "image/webp": ".webp", "image/svg+xml": ".svg"}
@@ -419,7 +421,8 @@ def fig_problems(fd, char, cord=None, norm=None, vdir=None, stem=None):
     cord、norm 为 None 时跳过对应核对。"""
     cells, cols, out = char_fig_refs(char)
     used = set(cells) | set(cols)
-    if used and char.get("$schema") not in (CHAR_SCHEMA_URL_V03, CHAR_SCHEMA_URL_V04, CHAR_SCHEMA_URL_V05):
+    if used and char.get("$schema") not in (CHAR_SCHEMA_URL_V03, CHAR_SCHEMA_URL_V04, CHAR_SCHEMA_URL_V05,
+                                                CHAR_SCHEMA_URL_V06):
         out.append((f"char 用了图片格／图列，$schema 应为 {CHAR_SCHEMA_URL_V03!r} 或更高，现为 {char.get('$schema')!r}", "char_schema"))
     if fd is None:
         if used:
@@ -1084,6 +1087,10 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     r_ov15 = rule("F-OV-15", "HARD")
     # F-OV-16 待审格（guji-format 02 §4.8，char v0.4）：pending_reason 在码表里、不与 lacuna／guess_c／fig 同在，char $schema 为 v0.4。
     r_ov16 = rule("F-OV-16", "HARD")
+    # F-OV-18 字格永久编号 u（guji-format 02 §4.10、04／05／06，char v0.6，2026-11-24）：char 里 u 不重、≤u_max、不在 u_retired，
+    #         写了 u_max 每格必带 u（新格无 u 拦），u_retired 形状与 into 指向；伴生层条目的 u 在 char 里有、与格位 key 指同一格，
+    #         char 上了 u 后伴生层条目必写 u。前后两版「旧 u 不丢」由 check_u_continuity.py（local_check 调）核。
+    r_ov18 = rule("F-OV-18", "HARD")
     _known_reasons = pending_reasons()
     r_ov02s = rule("F-OV-02s", "SOFT")
     r_ov15s = rule("F-OV-15s", "SOFT")
@@ -1213,6 +1220,14 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
             r_ov16["n_scanned"] += 1
             for msg, sub in pending_reason_problems(char, _known_reasons):
                 add(r_ov16, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
+            r_ov18["n_scanned"] += 1
+            for msg, sub in CU.u_problems(char):
+                add(r_ov18, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
+            if ch.get("norm_file") and os.path.isfile(os.path.join(od, ch["norm_file"])):
+                nd, nerr = jload(os.path.join(od, ch["norm_file"]))
+                if not nerr and isinstance(nd, dict):
+                    for msg, sub in CU.layer_u_problems(char, "norm", nd):
+                        add(r_ov18, os.path.join(od, ch["norm_file"]), f"{os.path.join(od, ch['norm_file'])}: {msg}", sub=sub)
             r_ov12["n_scanned"] += 1
             want_heads = []
             ce_path = OV.char_edits_path(od, stem)
@@ -1237,6 +1252,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
                     r_ov14["n_scanned"] += 1
                     for msg, sub in entity_multi_problems(cd):
                         add(r_ov14, cf, f"{cf}: {msg}", sub=sub)
+                for msg, sub in CU.layer_u_problems(char, line, cd):
+                    add(r_ov18, cf, f"{cf}: {msg}", sub=sub)
                 r_ov17["n_scanned"] += 1
                 for msg, sub in legacy_layer_problems(cd, line):
                     add(r_ov17, cf, f"{cf}: {msg}", sub=sub)

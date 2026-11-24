@@ -157,6 +157,19 @@ def dump_compact(path, obj):
         f.write(dumps_compact(obj) + "\n")
 
 
+def dump_like(path, obj):
+    """照文件原来的写法回写：原文件是一格一行（dumps_compact）就用它，否则 indent=2；文件不在时按 indent=2。"""
+    compact = False
+    if os.path.isfile(path):
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+        try:
+            compact = text == dumps_compact(json.loads(text)) + "\n"
+        except ValueError:
+            compact = False
+    (dump_compact if compact else dump_json)(path, obj)
+
+
 # ── lines.md → 坐标 → 字（与 cv parse_lines_md 同口径）──────────────────────
 
 _PAGE = re.compile(r"^<!--\s*p(\d+)\s*-->$")
@@ -345,6 +358,8 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
         return hard, soft
     slots = char_slots(char)
     pos = {a: i for i, (a, _c) in enumerate(slots)}
+    cells_u = {c["a"]: c.get("u") for p in char.get("pages") or [] for col in p.get("columns") or []
+               for c in col.get("cells") or []}
     seen = set()
     for k, e in enumerate(items):
         if not isinstance(e, dict):
@@ -369,6 +384,11 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
             hard.append((f"edits[{k}] 锚点 {a} 在文本里不存在（清单只收单格替换；增删字走分支重标）", f"e{k}:anchor"))
         elif slots[pos[a]][1] != new:
             hard.append((f"edits[{k}] {a} 文本现为 {slots[pos[a]][1]!r}，不是清单的 new={new!r}（清单过期）", f"e{k}:stale"))
+        if "u" in e and a in pos:
+            cu = (cells_u or {}).get(a)
+            if cu != e["u"]:
+                hard.append((f"edits[{k}] {a} 记的 u={e['u']!r}，文本里这格的 u 是 {cu!r}（格号移位后要跑 char_edits.py uid 重挂）",
+                             f"e{k}:u"))
     for line, (data, ltv) in (layers or {}).items():
         lt = parse_version(ltv)
         if btv is not None and lt is not None and lt < btv:
@@ -401,6 +421,7 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
 # 在分段处插字时由改字工具判定归前段还是后段、挪不挪分段符。
 
 PUNCT_V02 = "https://open-guji.org/schema/punct/v0.2.json"
+PUNCT_V02_UP = (PUNCT_V02, "https://open-guji.org/schema/punct/v0.3.json", "https://open-guji.org/schema/punct/v0.4.json")
 PUNCT_KINDS = ("point", "break", "heading")
 _HEADING_MARK = re.compile(r"^#{1,6}$")
 # 书目条：「[前缀]《书名》N卷…」，卷数起是著录信息（卷数、版本来源），目录只留书名
@@ -516,8 +537,8 @@ def heading_problems(char, punct):
             seen_head.add(a)
             if a in pos:
                 heads.append((pos[a], len(p["mark"]), a, i))
-    if uses_v02 and (punct or {}).get("$schema") != PUNCT_V02:
-        probs.append((f"用了标题符，$schema 应为 {PUNCT_V02}", "schema"))
+    if uses_v02 and (punct or {}).get("$schema") not in PUNCT_V02_UP:
+        probs.append((f"用了标题符，$schema 应为 {PUNCT_V02} 或更高（v0.3、v0.4）", "schema"))
     heads.sort()
     prev_level = None
     for n, (off, level, a, i) in enumerate(heads):

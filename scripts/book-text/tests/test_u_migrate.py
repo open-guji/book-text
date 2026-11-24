@@ -33,9 +33,17 @@ def test_ledger(tmp_path):
     entry, od = make_repo(str(tmp_path))
     led = os.path.join(str(tmp_path), "uid")
     os.makedirs(led)
+    rows = [
+        {"id": "a", "kind": "uid_ledger", "v": 1, "book": "vol02", "page": 0, "target": {"book": "vol02"},
+         "cells_sha": None, "map": {}, "lineage": [], "u_max": 90},
+        {"id": "b", "kind": "uid_ledger", "v": 1, "book": "vol02", "page": 3, "cells_sha": "s1",
+         "map": {"vol02:3:1:1": 50, "vol02:3:1:2": 51}, "lineage": [{"u": 50, "new": True}, {"u": 51, "new": True}]},
+        {"id": "c", "kind": "uid_ledger", "v": 1, "book": "vol02", "page": 3, "cells_sha": "s2",
+         "map": {"vol02:3:1:1": 100, "vol02:3:1:2": 101},
+         "lineage": [{"u": 100, "new": True}, {"u": 101, "split_from": 100}, {"u": 102, "into": 101}, {"u": 103, "gone": True}]},
+    ]
     with open(os.path.join(led, "vol02.jsonl"), "w", encoding="utf-8") as f:
-        f.write(json.dumps({"page": 3, "cells_sha": "x", "map": {"1:1": 100, "1:2": 101},
-                            "lineage": [{"u": 102, "merged_into": 101}, {"u": 103, "gone": True}]}) + "\n")
+        f.write("".join(json.dumps(r) + "\n" for r in rows))
     amap, umax, ret = u_migrate.load_ledger(led, 2)
     assert amap == {"3:1:1": 100, "3:1:2": 101} and umax == 103
     assert ret == [{"u": 102, "into": 101}, {"u": 103, "gone": True}]

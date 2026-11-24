@@ -11,9 +11,9 @@
          真写。动 book-text 正式数据，要先回主导线程（CV0「设计字格永久编号 u」）拿到点头，--approved-by 必填。
          写完照常 local_check.py、按仓规提交（不升版本号：只加 u，文本、标点、实体内容都没变）。
 
-身份账（guji-manager T1，`<feedback>/uid/<册>.jsonl`，一行一页一次切分：page、cells_sha、map 格号→u、lineage）：
-给了 --ledger 就按账发号（每页取最后一行的 map），账里没有的格接着 u_max 往后发；没给就按读序 1..N。
-账里 lineage 的并、删（{u, into}／{u, gone: true} 或 merged_into／gone）照抄进 u_retired。
+身份账（guji-manager `feedback/uid/<册>.jsonl`，格式见 guji-manager doc/参考/字格身份账.md，v=1）：
+给了 --ledger（该目录）就按账发号（每页取最后一行的 map，键「册:页:列:格」去掉册前缀），账里没有的格接着 u_max 往后发；
+没给就按读序 1..N。账里 lineage 的 {u, into}／{u, gone: true} 照抄进 u_retired。
 """
 from __future__ import annotations
 
@@ -50,7 +50,10 @@ def strip_u(obj):
 
 
 def load_ledger(ledger_dir, vol):
-    """身份账 → ({格位 key: u}, u_max, [u_retired 项])；找不到账返回 (None, None, None)。"""
+    """身份账（guji-manager doc/参考/字格身份账.md，v=1）→ ({格位 key: u}, u_max, [u_retired 项])；找不到账返回 (None, None, None)。
+    一行一页一次切分；一页现行状态取该页最后一行；map 键是完整格号「册:页:列:格[a|b]」，去掉册前缀即 book-text 的 a；
+    page=0 是册级记录（可带 u_max）；u_max 取全账各行 map、lineage 里的 u 与册级 u_max 的最大者；
+    作废号＝lineage 里的 {u, into: U}／{u, gone: true}（{u, new: true}、{u, split_from: U} 不是作废）。"""
     if not ledger_dir:
         return None, None, None
     cands = [os.path.join(ledger_dir, f"{n}.jsonl") for n in (f"vol{vol:02d}", f"vol{vol}", f"{vol:03d}", str(vol))]
@@ -64,8 +67,11 @@ def load_ledger(ledger_dir, vol):
             if not line:
                 continue
             row = json.loads(line)
+            if row.get("kind", "uid_ledger") != "uid_ledger":
+                continue
             pg = row.get("page")
-            pages[pg] = row
+            if isinstance(row.get("u_max"), int):
+                umax = max(umax, row["u_max"])
             for v in (row.get("map") or {}).values():
                 if isinstance(v, int):
                     umax = max(umax, v)
@@ -73,18 +79,17 @@ def load_ledger(ledger_dir, vol):
                 if not isinstance(lg, dict) or not isinstance(lg.get("u"), int):
                     continue
                 umax = max(umax, lg["u"])
-                into = lg.get("into", lg.get("merged_into"))
-                if isinstance(into, int):
-                    retired[lg["u"]] = {"u": lg["u"], "into": into}
+                if isinstance(lg.get("into"), int):
+                    retired[lg["u"]] = {"u": lg["u"], "into": lg["into"]}
                 elif lg.get("gone") is True:
                     retired[lg["u"]] = {"u": lg["u"], "gone": True}
-            if isinstance(row.get("u_max"), int):
-                umax = max(umax, row["u_max"])
+            if pg:
+                pages[pg] = row          # 同页后来的行覆盖前面的：现行＝最后一行
     amap = {}
-    for pg, row in pages.items():
+    for row in pages.values():
         for k, v in (row.get("map") or {}).items():
-            key = k if str(k).count(":") == 2 else f"{pg}:{k}"
-            amap[key] = v
+            parts = str(k).split(":")
+            amap[":".join(parts[-3:])] = v   # 册:页:列:格 → 页:列:格
     live = set(amap.values())
     return amap, umax, [r for u, r in sorted(retired.items()) if u not in live]
 

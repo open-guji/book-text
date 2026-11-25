@@ -2,7 +2,8 @@
 """字格永久编号 u（guji-format 02 §4.10，char v0.6；punct／entity v0.4、norm v0.3；Sheldon 2026-11-24 定）。
 
 格位 key `a` 是位置，补一个字后面整列都变；`u` 是身份，改字、补字、重切都不换。标点、专名、异体挂 u，
-双写期与格位 key 并存、须指同一格。本模块是 book-text 各脚本共用的 u 工具，不读写文件：
+格位 key 留着给人读，以 u 为准（2026-11-24 全库迁完，guji-format #36）；两者须指同一格，冲突时按 u 修 key。
+本模块是 book-text 各脚本共用的 u 工具，不读写文件：
 
   形状      u_problems(char)                 char 自身：u 不重、≤u_max、不在 u_retired、写了 u_max 每格必带 u …
   前后版    continuity_problems(old, new)    旧版有的 u 要么还在、要么进了 u_retired；u_max 不减
@@ -11,6 +12,9 @@
   作废      retire_missing(old, new)         旧版有、新版没有、也没登记的 u 记 {u, gone: true}
   重挂      relink(char, line, d)            按 u 把格位 key 改成新 char 里该 u 的格；并掉的跟 into；删掉的挪邻格
   初建      number_char(char, amap=None)     存量迁移：没有身份账按读序 1..N，有账按账（格位 key→u）
+  下标      hydrate(char, line, d)           在内存里补字下标（punct char_offset、entity span），给按下标干活的脚本用
+            finalize(char, line, d)          写盘前：有下标的按下标定格（anchor＋u），没下标的以 u 为准修 key；删掉下标
+                                             （v0.3 起不落盘，guji-format 00 §4.2）
 
 校验字（punct pre_char、entity text、norm c）一律只报不改：本模块任何函数都不改校验字。
 """
@@ -167,7 +171,7 @@ def _entries(line, data):
 
 def layer_u_problems(char, line, data):
     """伴生层（punct／entity／norm）挂 u 的检查（F-OV-18）。返回 [(说明, 子类)]。
-    - 条目写了 u：u 在 char 里有；与格位 key 指同一格（双写期）；entity 的 u_start、u_end 同在，读序不倒；
+    - 条目写了 u：u 在 char 里有；与格位 key 指同一格（以 u 为准）；entity 的 u_start、u_end 同在，读序不倒；
     - char 上了 u：有格位 key 的条目都要写 u（spec 04/05/06：char 有 u 时必写）；
     - 用了 u 的文件 $schema 要写对版本。"""
     out = []
@@ -399,7 +403,7 @@ def number_char(char, amap=None, umax=None, retired=None):
 
 
 def number_layer(char, line, data):
-    """存量迁移：按格位 key 给伴生层条目补 u（双写），升 $schema。不改校验字、不动已有 u。
+    """存量迁移：按格位 key 给伴生层条目补 u（格位 key 照留），升 $schema。不改校验字、不动已有 u。
     返回 (补了的条数, [(序号, 格位, 说明)] 格位在 char 里找不到的)。"""
     a2u = a_to_u(char)
     added, miss = 0, []
@@ -448,3 +452,95 @@ def _insert_after(obj, key, pairs):
             done = True
     if not done:
         obj.update(pairs)
+
+
+def _slots(char):
+    """读序 [(a, u)]（与字下标同口径：pages→columns→cells 的文件顺序）。"""
+    return [(c.get("a"), c.get("u")) for c in cells(char)]
+
+
+def hydrate(char, line, data):
+    """在内存里按格位补字下标：punct 的 char_offset、entity 的 span{start_offset, end_offset}。
+    给还按下标干活的脚本读；写盘前必须 finalize（下标不落盘）。格位在 char 里找不到的不补。返回补了的条数。"""
+    pos = {a: i for i, (a, _u) in enumerate(_slots(char))}
+    n = 0
+    for e in _entries(line, data):
+        if not isinstance(e, dict):
+            continue
+        if line == "punct" and e.get("anchor") in pos:
+            e["char_offset"] = pos[e["anchor"]]
+            n += 1
+        elif line == "entity":
+            anc = e.get("anchor") or {}
+            if anc.get("start") in pos and anc.get("end") in pos:
+                e["span"] = {"start_offset": pos[anc["start"]], "end_offset": pos[anc["end"]] + 1}
+                n += 1
+    return n
+
+
+def finalize(char, line, data):
+    """写盘前收口：条目带字下标的（脚本在下标上改过），按下标定格位 key 和 u；不带的以 u 为准修 key
+    （u 不在 char 里就按 key 补 u）；最后删掉下标缓存、$schema 升带 u 的版本。返回 [(序号, 说明)] 定不了格的条目。"""
+    sl = _slots(char)
+    a2u = {a: u for a, u in sl}
+    idx = {u: a for a, u in sl if u is not None}
+    bad = []
+
+    def put(e, key, a, ukeys, us):
+        e[key] = a
+        for k in ukeys:
+            e.pop(k, None)
+        if all(u is not None for u in us):
+            _insert_after(e, key, tuple(zip(ukeys, us)))
+
+    for i, e in enumerate(_entries(line, data)):
+        if not isinstance(e, dict):
+            continue
+        if line == "punct":
+            o = e.pop("char_offset", None)
+            if isinstance(o, int) and 0 <= o < len(sl):
+                put(e, "anchor", sl[o][0], ("u",), (sl[o][1],))
+            elif e.get("u") in idx:
+                put(e, "anchor", idx[e["u"]], ("u",), (e["u"],))
+            elif e.get("anchor") in a2u:
+                put(e, "anchor", e["anchor"], ("u",), (a2u[e["anchor"]],))
+            else:
+                bad.append((i, f"标点格位 {e.get('anchor')} 定不了"))
+        elif line == "entity":
+            sp = e.pop("span", None)
+            anc = dict(e.get("anchor") or {})
+            if isinstance(sp, dict) and isinstance(sp.get("start_offset"), int) and isinstance(sp.get("end_offset"), int) \
+                    and 0 <= sp["start_offset"] < sp["end_offset"] <= len(sl):
+                s, t = sl[sp["start_offset"]], sl[sp["end_offset"] - 1]
+            elif e.get("u_start") in idx and e.get("u_end") in idx:
+                s, t = (idx[e["u_start"]], e["u_start"]), (idx[e["u_end"]], e["u_end"])
+            elif anc.get("start") in a2u and anc.get("end") in a2u:
+                s, t = (anc["start"], a2u[anc["start"]]), (anc["end"], a2u[anc["end"]])
+            else:
+                bad.append((i, f"专名格位 {anc.get('start')}～{anc.get('end')} 定不了"))
+                continue
+            anc.update(start=s[0], end=t[0])
+            put(e, "anchor", anc, ("u_start", "u_end"), (s[1], t[1]))
+        else:  # norm
+            if e.get("u") in idx:
+                put(e, "a", idx[e["u"]], ("u",), (e["u"],))
+            elif e.get("a") in a2u:
+                put(e, "a", e["a"], ("u",), (a2u[e["a"]],))
+            else:
+                bad.append((i, f"异体格位 {e.get('a')} 定不了"))
+    if has_u(char):
+        if line == "norm" and "schema" in data:
+            items = [(k, v) for k, v in data.items() if k != "schema"]
+            data.clear()
+            data["$schema"] = NORM_V03
+            data.update(items)
+        else:
+            data["$schema"] = LAYER_SCHEMA[line]
+    return bad
+
+
+def seal(char, line, data, where=""):
+    """finalize，定不了格的条目直接退出（不写坏文件）。脚本写伴生层前调用。"""
+    bad = finalize(char, line, data)
+    if bad:
+        raise SystemExit(f"{where} {line} 有 {len(bad)} 条定不了格，未写：{bad[:5]}")

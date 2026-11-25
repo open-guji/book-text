@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """字格永久编号 u 存量迁移（guji-format 02 §4.10，char v0.6；punct／entity v0.4、norm v0.3；2026-11-24）。
 
-给 original 的 char 每格写 u（顶层 u_max），punct／entity／norm 按格位 key 补 u（双写：格位 key 照留，两者指同一格），
-各文件 $schema 升到带 u 的版本。只加字段，不改字、不改格位、不改校验字、不升版本号。
+给 original 的 char 每格写 u（顶层 u_max），punct／entity／norm 按格位 key 补 u（格位 key 照留给人读，以 u 为准），
+各文件 $schema 升到带 u 的版本。2026-11-24 全库 174 册已迁完，本脚本只留给新入库的书。只加字段，不改字、不改格位、不改校验字、不升版本号。
 
   plan   python3 u_migrate.py plan <original 目录…> [--chapter 031 …] [--ledger <身份账目录>] [--out 提案.tsv]
          只出提案，不写文件：每册格数、u_max、各层补 u 条数、格位在 char 里找不到的条目；并在内存里迁一遍，

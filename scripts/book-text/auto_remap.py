@@ -34,6 +34,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
+import cell_uid as CU  # noqa: E402
 
 
 def run(cmd, **kw):
@@ -67,7 +68,9 @@ def fix_heading_breaks(vdir, v):
     """新增格落在标题行头尾时，把标题符／分段符挪回行界。返回修了几处。"""
     fp = os.path.join(vdir, f"{v}.punct.json")
     P = json.load(open(fp))
-    C = cells(json.load(open(os.path.join(vdir, f"{v}.char.json"))))
+    ch = json.load(open(os.path.join(vdir, f"{v}.char.json")))
+    C = cells(ch)
+    CU.hydrate(ch, "punct", P)   # 下标只在内存里用，写盘前 seal 收口
     a2i = {a: i for i, (a, _) in enumerate(C)}
     pm = P["punctuations"]
     brk = {m["char_offset"] for m in pm if m["kind"] == "break" and m["pos"] == "after"}
@@ -98,6 +101,7 @@ def fix_heading_breaks(vdir, v):
     if fixed:
         pm.sort(key=lambda m: (m["char_offset"] + (0.4 if m["pos"] == "after" else -0.4), 0))
         import original_version as OV
+        CU.seal(ch, "punct", P, fp)
         OV.dump_json(fp, P)
     return fixed
 
@@ -114,8 +118,10 @@ def review_items(vdir, v, old, new):
         for tag, i1, i2, j1, j2 in sm.get_opcodes():
             if tag != "equal":
                 changed.update(range(j1, max(j2, j1 + 1)))
-    ent = json.load(open(os.path.join(vdir, f"{v}.entity.json")))["entities"]
-    pun = json.load(open(os.path.join(vdir, f"{v}.punct.json")))["punctuations"]
+    ed = json.load(open(os.path.join(vdir, f"{v}.entity.json")))
+    pd = json.load(open(os.path.join(vdir, f"{v}.punct.json")))
+    CU.hydrate(new, "entity", ed); CU.hydrate(new, "punct", pd)
+    ent, pun = ed["entities"], pd["punctuations"]
     pset = {m["char_offset"]: m["kind"] for m in pun if m["kind"] in ("heading", "break")}
     out = []
     for i in sorted(changed):

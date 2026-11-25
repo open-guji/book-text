@@ -402,11 +402,19 @@ def entity_multi_problems(ed):
 
 def legacy_layer_problems(cd, line):
     """F-OV-17（guji-format 04／05 §十一，2026-11）：punct／entity 不写顶层 stats；entity 的站内链接不写 href
-    （matched 由 entity_id 推出，href 只给 external 外链）。返回 [(说明, 子类)]。"""
+    （matched 由 entity_id 推出，href 只给 external 外链）；字下标缓存 punct char_offset、entity span 不落盘
+    （guji-format 00 §4.2，2026-11-25 全库已删，按 u／格位现算）。返回 [(说明, 子类)]。"""
     out = []
     if "stats" in cd:
         out.append(("顶层带 stats：统计不写进文件（已停用）", "stats"))
+    if line == "punct":
+        n = sum(1 for p in cd.get("punctuations") or [] if isinstance(p, dict) and "char_offset" in p)
+        if n:
+            out.append((f"{n} 条标点带字下标缓存 char_offset：不落盘（按 u／格位现算；脚本写盘前用 cell_uid.seal）", "char_offset"))
     if line == "entity":
+        n = sum(1 for e in cd.get("entities") or [] if isinstance(e, dict) and "span" in e)
+        if n:
+            out.append((f"{n} 条专名带字下标缓存 span：不落盘（按 u／格位现算；脚本写盘前用 cell_uid.seal）", "span"))
         for i, e in enumerate(cd.get("entities") or []):
             t = e.get("target") or {}
             h = t.get("href")
@@ -1079,7 +1087,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-14 专名多链接（target.status=matched_multi）形状：targets ≥2，每项带 entity_id／canonical_name、不写 href，
     #         顶层不带 entity_id／href，part 若有须是 span 文本里的片段。
     r_ov14 = rule("F-OV-14", "HARD")
-    # F-OV-17 停用字段（guji-format 04／05 §十一，2026-11）：punct／entity 不写顶层 stats；entity 站内链接不写 href。
+    # F-OV-17 停用字段（guji-format 04／05 §十一，2026-11）：punct／entity 不写顶层 stats；entity 站内链接不写 href；
+    #         字下标缓存（punct char_offset、entity span）不落盘（00 §4.2，2026-11-25 起）。
     r_ov17 = rule("F-OV-17", "HARD")
     # F-OV-15 改字清单 NNN.char-edits.json（docs/design/2026-10-改字清单.md）：只许文本线 0.x；schema／book_id／volume；
     #         每条 anchor／old／new／base_commit，锚点在文本里、文本现为 new；伴生层 text_version 不得落后于 base_text_version。

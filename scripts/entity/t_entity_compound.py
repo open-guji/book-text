@@ -13,7 +13,12 @@ span 偏移即序列下标，anchor＝格位 a。拆分后核：序列字＝part
 用法：t_entity_compound.py <dynasty_keys> <office_keys> <place_keys> <char.json> <entity.json> [--write]
 """
 import json
+import os
 import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import cell_uid as CU  # noqa: E402
+import original_version as OV  # noqa: E402
 
 from t_entity_backfill import decide, load
 from t_entity_split import normalize, split_office
@@ -104,12 +109,12 @@ def apply(char_json, ent_json, tables, write=False):
 def main(argv):
     a = [x for x in argv[1:] if not x.startswith("--")]
     tables = {"dynasty": load(a[0]), "office": load(a[1]), "place": load(a[2])}
-    ent = load(a[4])
-    rep = apply(load(a[3]), ent, tables, "--write" in argv)
+    ent, char = load(a[4]), load(a[3])
+    CU.hydrate(char, "entity", ent)   # span 只在内存里用，写盘前 seal 收口（不落盘）
+    rep = apply(char, ent, tables, "--write" in argv)
     if "--write" in argv:
-        with open(a[4], "w", encoding="utf-8") as f:
-            json.dump(ent, f, ensure_ascii=False, indent=2)
-            f.write("\n")
+        CU.seal(char, "entity", ent, a[4])
+        OV.dump_json(a[4], ent)
     print(json.dumps({"n": len(rep), "split": rep}, ensure_ascii=False))
 
 

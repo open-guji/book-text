@@ -9,7 +9,7 @@
 做法：
 1. 同格、改号 → 旧格→新格。
 2. 「删」与「新增」配对补救：旧页按多数格定出新页，同行同格、同字的「新增」格当作对上（IoU 低造成的漏配）。
-3. 标点：改 anchor，核 pre_char；旧文件（v0.2）带 char_offset 的按新 char 重算，v0.3 不写下标就不补。
+3. 标点：改 anchor，核 pre_char；字下标缓存（char_offset／span）一律删掉，不落盘。
 4. 实体：改 start／end，要求新格在读序里连续、长度不变、文字与 text 一致；带 span 的重算，不带的不补。
 5. 对不上的（落在删除格、校验字变了、实体被拆开）不改、不删，原样留着并列进报告，交 A33 重标。
    改完用 validate_text_format.py 查 F-OV-02，应只剩报告里那些。
@@ -205,6 +205,7 @@ def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
     if punct is not None:
         data = punct
         for i, p in enumerate(data.get("punctuations") or []):
+            p.pop("char_offset", None)      # 字下标缓存不落盘（guji-format 00 §4.2；2026-11-25 全库已删）
             a = p.get("anchor")
             if not a:
                 continue
@@ -240,12 +241,11 @@ def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
             if n != a or _refreshed:
                 moves.append(("punct", f"#{i}", a, n, "平移挪" if _shifted else ("挪格" if n != a else "同格刷新校验字")))
             p["anchor"] = n
-            if "char_offset" in p:          # v0.3 起不再写下标缓存：有才更新，不新增（guji-format 00 §4.2）
-                p["char_offset"] = pos[n]
             res["punct"][0] += 1
     if entity is not None:
         data = entity
         for x in data.get("entities") or []:
+            x.pop("span", None)             # 字下标缓存不落盘
             anc = x.get("anchor") or {}
             s, t = anc.get("start"), anc.get("end")
             if not s or not t:
@@ -282,8 +282,6 @@ def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
             if (ns, nt) != (s, t):
                 moves.append(("entity", x.get("id", ""), f"{s}～{t}", f"{ns}～{nt}", "挪格"))
             x["anchor"] = {"start": ns, "end": nt}
-            if "span" in x:
-                x["span"] = {"start_offset": pos[ns], "end_offset": pos[nt] + 1}
             res["entity"][0] += 1
     return res, report
 

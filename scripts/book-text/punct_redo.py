@@ -12,7 +12,7 @@
          `redo-NNN.json`（各句在新文本里的字下标范围）。没改字就什么也不写。
   apply  python3 punct_redo.py apply <版本目录> --chapter NNN [--source claude:XXX] [--dry-run]
          读改好的工作稿，逐句核对字与新文本一致，生成这几句的点号和专名；句外的条目原样保留，
-         只按新文本重算 char_offset／span 下标；改字落在格上的，校验字 pre_char／text 跟着新字走。
+         下标（char_offset／span）只在内存里算，写盘前按下标定格位 key 和 u、不落盘；改字落在格上的，校验字 pre_char／text 跟着新字走。
          写回 NNN.punct.json、NNN.entity.json。版本号不在这里改，之后照常用 bump_original.py
          升 patch（或 minor）并打印版本记录行。
 
@@ -37,6 +37,7 @@ from difflib import SequenceMatcher
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import original_version as OV  # noqa: E402
 from original_version import char_slots  # noqa: E402
+import cell_uid as CU  # noqa: E402
 
 ENDS = set("。？！")
 PUN = set("，。、；：？！《》「」『』")
@@ -271,7 +272,8 @@ def cmd_apply(a):
     base = a.out or vdir
     meta = load(os.path.join(base, f"redo-{ch}.json"))
     work = read_work(os.path.join(base, f"redo-{ch}.txt"))
-    new = char_slots(load(os.path.join(vdir, f"{ch}.char.json")))
+    new_char = load(os.path.join(vdir, f"{ch}.char.json"))
+    new = char_slots(new_char)
     old = char_slots(load_old_char(meta["old_char"], vdir, ch))
     pj_path, ej_path = os.path.join(vdir, f"{ch}.punct.json"), os.path.join(vdir, f"{ch}.entity.json")
     pj, ej = load(pj_path), load(ej_path)
@@ -376,10 +378,14 @@ def cmd_apply(a):
     pj.pop("stats", None); ej.pop("stats", None)  # 不再写统计（guji-format 第 11 组）
     print(f"重标 {len(spans)} 句：点号去 {dropped_p} 出 {new_p}；专名新增 {new_e}，"
           f"共 {len(P)} 条标点、{len(E)} 个专名")
+    # 下标只在内存里用：写盘前按下标定格位 key 和 u，删掉下标（guji-format 00 §4.2，以 u 为准）
+    bad = CU.finalize(new_char, "punct", pj) + CU.finalize(new_char, "entity", ej)
+    if bad:
+        raise SystemExit(f"有 {len(bad)} 条定不了格：{bad[:5]}")
     if a.dry_run:
         return 0
     for path, obj in ((pj_path, pj), (ej_path, ej)):
-        OV.dump_json(path, obj)
+        OV.dump_like(path, obj)
     print("已写回；接着用 bump_original.py 升 punct／entity 版本并重建索引")
     return 0
 

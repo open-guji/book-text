@@ -41,10 +41,10 @@ def test_remap(tmp_path, capsys):
     res, report = RA.remap(d, "001", rows)
     assert res == {"punct": [2, 2], "entity": [1, 1]}
     P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
-    assert (P[0]["anchor"], P[0]["char_offset"]) == ("1:1:2", 1) and (P[3]["anchor"], P[3]["char_offset"]) == ("1:1:3", 2)
+    assert P[0]["anchor"] == "1:1:2" and P[3]["anchor"] == "1:1:3" and not any("char_offset" in x for x in P)
     assert P[1]["anchor"] == "3:1:4" and P[2]["anchor"] == "3:1:5"  # 留待重标的原样不动
     E = json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8"))["entities"]
-    assert E[0]["anchor"] == {"start": "1:1:1", "end": "1:1:3"} and E[0]["span"] == {"start_offset": 0, "end_offset": 3}
+    assert E[0]["anchor"] == {"start": "1:1:1", "end": "1:1:3"} and "span" not in E[0]
     assert E[0]["target"] == {"status": "matched", "entity_id": "x"} and E[0]["source"] == "human"
     assert E[1]["anchor"]["start"] == "3:1:3"
     assert {r[0] for r in report} == {"punct", "entity"} and any("校验字变了" in r[5] for r in report)
@@ -107,7 +107,7 @@ def test_remap_data_library():
 
 
 def test_v03_no_offset_cache(tmp_path):
-    """punct／entity v0.3 不写 char_offset、span：挪锚后也不补（guji-format 00 §4.2）；v0.2 带的照旧重算。"""
+    """char_offset、span 不落盘（guji-format 00 §4.2）：挪锚后不补，旧文件带的也删掉。"""
     d = str(tmp_path)
     dump(os.path.join(d, "001.char.json"), char([("1:1:1", "甲"), ("1:1:2", "乙"), ("1:1:3", "丙")]))
     dump(os.path.join(d, "001.punct.json"), {"default_source": "glm:x", "punctuations": [
@@ -122,6 +122,6 @@ def test_v03_no_offset_cache(tmp_path):
     assert res == {"punct": [2, 0], "entity": [1, 0]}
     P = json.load(open(os.path.join(d, "001.punct.json"), encoding="utf-8"))["punctuations"]
     assert P[0] == {"mark": "，", "kind": "point", "pos": "after", "anchor": "1:1:2", "pre_char": "乙"}
-    assert (P[1]["anchor"], P[1]["char_offset"]) == ("1:1:3", 2)
+    assert P[1]["anchor"] == "1:1:3" and "char_offset" not in P[1]
     E = json.load(open(os.path.join(d, "001.entity.json"), encoding="utf-8"))["entities"]
     assert E[0]["anchor"] == {"start": "1:1:1", "end": "1:1:2"} and "span" not in E[0]

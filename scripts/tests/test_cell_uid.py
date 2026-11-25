@@ -143,7 +143,7 @@ def test_number_layer_and_consistency():
     assert list(n)[0] == "$schema" and "schema" not in n and n["items"][0]["u"] == 2
     for line, d in (("entity", e), ("norm", n)):
         assert CU.layer_u_problems(c, line, d) == []
-    # 双写不一致
+    # u 与格位 key 不一致
     p["punctuations"][0]["anchor"] = "1:1:3"
     assert "p0:anchor" in subs(CU.layer_u_problems(c, "punct", p))
     e["entities"][0]["u_end"] = 2
@@ -187,3 +187,38 @@ def test_relink_follows_merge_and_reports_whole_entity_gone():
     _m, review = CU.relink(c, "entity", e)
     assert review and review[0][2] is None
     assert e["entities"][0]["anchor"]["start"] == "1:1:9"          # 对不上的不动
+
+
+# ── 字下标只在内存里（hydrate／finalize／seal）──
+
+def test_hydrate_finalize_roundtrip_and_offset_edit():
+    c = _numbered()
+    p = {"$schema": CU.PUNCT_V04, "punctuations": [{"mark": "。", "pos": "after", "anchor": "1:1:4", "u": 4, "pre_char": "庫"}]}
+    e = {"$schema": CU.LAYER_SCHEMA["entity"],
+         "entities": [{"id": "e1", "type": "work", "text": "四庫", "anchor": {"start": "1:1:3", "end": "1:1:4"},
+                       "u_start": 3, "u_end": 4}]}
+    before = copy.deepcopy((p, e))
+    assert CU.hydrate(c, "punct", p) == 1 and p["punctuations"][0]["char_offset"] == 3
+    assert CU.hydrate(c, "entity", e) == 1 and e["entities"][0]["span"] == {"start_offset": 2, "end_offset": 4}
+    assert CU.finalize(c, "punct", p) == [] and CU.finalize(c, "entity", e) == []
+    assert (p, e) == before                      # 没改下标：原样回来，下标不落盘
+    # 脚本在下标上挪了：按下标重定格位和 u
+    CU.hydrate(c, "entity", e)
+    e["entities"][0]["span"] = {"start_offset": 1, "end_offset": 3}
+    assert CU.finalize(c, "entity", e) == []
+    x = e["entities"][0]
+    assert x["anchor"] == {"start": "1:1:2", "end": "1:1:3"} and (x["u_start"], x["u_end"]) == (2, 3) and "span" not in x
+
+
+def test_finalize_trusts_u_over_key_and_seal_refuses():
+    c = _numbered()
+    p = {"punctuations": [{"mark": "。", "pos": "after", "anchor": "1:1:1", "u": 4, "pre_char": "庫"}]}
+    assert CU.finalize(c, "punct", p) == []
+    assert p["punctuations"][0]["anchor"] == "1:1:4" and p["$schema"] == CU.PUNCT_V04
+    bad = {"punctuations": [{"mark": "，", "pos": "after", "anchor": "9:9:9", "pre_char": "無"}]}
+    try:
+        CU.seal(c, "punct", bad, "x")
+    except SystemExit as ex:
+        assert "定不了格" in str(ex)
+    else:
+        raise AssertionError("seal 应拒写")

@@ -8,6 +8,8 @@ N8：index/entities 里 people 的 primary_name，≥2 字。N9：index/works �
 偏移口径 = 该册 char.json 全部 cell 按序拼接后的下标（与 entity span.start_offset 同）。"""
 import argparse, collections, glob, json, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import cell_uid as CU  # noqa: E402
 
 GUIDE = '撰著作載云見據稱曰言引依按案'
 RAW = ['']
@@ -32,9 +34,10 @@ def load_index(bi):
 
 def load_vol(bt, book, vol):
     base = glob.glob(str(Path(bt) / f'*/*/*/*/{book}/default'))[0]
-    cells = [c for p in json.load(open(f'{base}/{vol}.char.json'))['pages'] for col in p['columns'] for c in col['cells']]
-    ents = json.load(open(f'{base}/{vol}.entity.json'))['entities']
-    return cells, ents
+    ch = json.load(open(f'{base}/{vol}.char.json'))
+    en = json.load(open(f'{base}/{vol}.entity.json'))
+    CU.hydrate(ch, 'entity', en)   # span 只在内存里算（v0.3 起不落盘）
+    return CU.cells(ch), en['entities']
 
 
 def scan(names, text, covered, stop, kind, cells):

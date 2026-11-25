@@ -52,3 +52,11 @@ def test_legacy_layer_problems():
         "status": "matched", "entity_id": "a", "canonical_name": "甲", "href": "book-index://Entity/a"}}]}
     assert [s for _m, s in vtf.legacy_layer_problems(bad, "entity")] == ["stats", "0:href"]
     assert [s for _m, s in vtf.legacy_layer_problems({"stats": {}}, "punct")] == ["stats"]
+
+
+def test_legacy_offset_cache():
+    """F-OV-17：字下标缓存 char_offset／span 不落盘。"""
+    assert [s for _m, s in vtf.legacy_layer_problems({"punctuations": [{"anchor": "1:1:1", "char_offset": 0}]}, "punct")] == ["char_offset"]
+    assert [s for _m, s in vtf.legacy_layer_problems({"entities": [{"id": "e1", "span": {"start_offset": 0, "end_offset": 1},
+                                                                    "target": {"status": "new_candidate"}}]}, "entity")] == ["span"]
+    assert vtf.legacy_layer_problems({"punctuations": [{"anchor": "1:1:1", "u": 1}]}, "punct") == []

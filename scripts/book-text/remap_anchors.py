@@ -9,13 +9,20 @@
 做法：
 1. 同格、改号 → 旧格→新格。
 2. 「删」与「新增」配对补救：旧页按多数格定出新页，同行同格、同字的「新增」格当作对上（IoU 低造成的漏配）。
-3. 标点：改 anchor，按新 char 重算 char_offset（＝格在读序里的下标），核 pre_char。
-4. 实体：改 start／end，要求新格在读序里连续、长度不变、文字与 text 一致；重算 span。
+3. 标点：改 anchor，核 pre_char；旧文件（v0.2）带 char_offset 的按新 char 重算，v0.3 不写下标就不补。
+4. 实体：改 start／end，要求新格在读序里连续、长度不变、文字与 text 一致；带 span 的重算，不带的不补。
 5. 对不上的（落在删除格、校验字变了、实体被拆开）不改、不删，原样留着并列进报告，交 A33 重标。
    改完用 validate_text_format.py 查 F-OV-02，应只剩报告里那些。
 
 只改锚点和位置，不动 mark、target、source；不改版本号（之后用 bump_original.py 升，换源属整册动作，
 标点、实体两线升 minor）。
+
+按 u 挂（2026-11-24，char v0.6 字格永久编号，guji-format 02 §4.10）：
+  python3 remap_anchors.py <版本目录> --chapter NNN --by-u [--old-char <旧 char | git:REF>] [--dry-run] [--report out.tsv]
+  char 上了 u 的册不再用格级对照表：标点、专名、异体按各自的 u 找到新 char 里的格，格位 key 跟过去；
+  u 并掉的顺着 u_retired 的 into 走；u 删掉的给了 --old-char 就挪邻格，否则不动。都进报告，校验字只报不改。
+  重切以后新 char 的 u 由 guji-manager 的字格身份账继承（对框 IoU），本脚本只负责把伴生层挂回去。
+  char 上了 u 还传 --cells 会被拒（对照表按格号，会和 u 打架）。
 """
 from __future__ import annotations
 
@@ -28,7 +35,9 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
+sys.path.insert(0, HERE)
 import original_version as OV  # noqa: E402
+import cell_uid as CU  # noqa: E402
 
 KEEP = ("同格", "改号")
 IOU_MIN = 0.5  # 同格改字放行的 IoU 下限（低于它的同格仍按旧规矩校验）
@@ -157,6 +166,30 @@ def remap(vdir, chapter, rows, dry_run=False, out=None, refresh=True, iou_min=IO
     return res, report
 
 
+def remap_by_u(vdir, chapter, dry_run=False, old_char=None, out=None):
+    """按 u 把 punct／entity／norm 挂回新 char（文件版）。返回报告 [(层, 序号, 旧锚, 新锚, 说明)]。"""
+    char = OV.load_json(os.path.join(vdir, f"{chapter}.char.json"))
+    if not CU.has_u(char):
+        raise SystemExit(f"{chapter}.char.json 还没上 u，按 u 挂不了（用 --cells 或先迁移）")
+    report, writes, moved_total = [], [], 0
+    for line in ("punct", "entity", "norm"):
+        cf = os.path.join(vdir, f"{chapter}.{line}.json")
+        if not os.path.isfile(cf):
+            continue
+        data = OV.load_json(cf)
+        moved, rv = CU.relink(char, line, data, old_char=old_char)
+        moved_total += moved
+        report += [(line, str(i), str(o or ""), str(n or ""), why) for i, o, n, why in rv]
+        report += [(line, "", "", "", f"F-OV-18 {m}") for m, _s in CU.layer_u_problems(char, line, data)]
+        if moved or rv:
+            writes.append((cf, data))
+    if not dry_run:
+        for cf, data in writes:
+            OV.dump_like(cf, data)
+    print(f"{chapter}：按 u 改格位 {moved_total} 条，待看／对不上 {len(report)} 条", file=out or sys.stdout)
+    return report
+
+
 def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
     """refresh=True：同格（IoU≥iou_min）改字时放行——标点刷新 pre_char，专名刷新 text 并记入复核；
     改号、IoU 低的格仍严格校验。原因码：ADD_DEL 删除格／ANCHOR_MISS 其余。"""
@@ -206,7 +239,9 @@ def _remap(chapter, char, punct, entity, rows, refresh, iou_min, moves):
                 continue
             if n != a or _refreshed:
                 moves.append(("punct", f"#{i}", a, n, "平移挪" if _shifted else ("挪格" if n != a else "同格刷新校验字")))
-            p["anchor"], p["char_offset"] = n, pos[n]
+            p["anchor"] = n
+            if "char_offset" in p:          # v0.3 起不再写下标缓存：有才更新，不新增（guji-format 00 §4.2）
+                p["char_offset"] = pos[n]
             res["punct"][0] += 1
     if entity is not None:
         data = entity
@@ -264,15 +299,30 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("vdir")
     ap.add_argument("--chapter", required=True)
-    ap.add_argument("--cells", "--cell-map", dest="cells", required=True, help="格级对照表 tsv（可 .gz）")
+    ap.add_argument("--cells", "--cell-map", dest="cells", help="格级对照表 tsv（可 .gz）；没上 u 的册用")
+    ap.add_argument("--by-u", action="store_true", help="char 上了 u：按 u 挂，不用对照表")
+    ap.add_argument("--old-char", help="--by-u 时：改前的 char（路径或 git:REF），用来把删掉的 u 上的标记挪邻格")
     ap.add_argument("--strict", action="store_true", help="不放行同格改字（校验字／文字变一律留待重标，旧行为）")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--report", help="留待重标的条目写到这个 tsv")
     a = ap.parse_args(argv)
-    _res, report = remap(a.vdir, a.chapter, load_cells(a.cells), a.dry_run, refresh=not a.strict)
+    if a.by_u:
+        old = None
+        if a.old_char:
+            from punct_redo import load_old_char
+            old = load_old_char(a.old_char, a.vdir, a.chapter)
+        report = remap_by_u(a.vdir, a.chapter, a.dry_run, old)
+        head = "层\t条目\t旧锚点\t新锚点\t说明\n"
+    else:
+        if not a.cells:
+            ap.error("没上 u 的册要给 --cells；上了 u 的用 --by-u")
+        if CU.has_u(OV.load_json(os.path.join(a.vdir, f"{a.chapter}.char.json"))):
+            ap.error(f"{a.chapter}.char.json 已上 u：用 --by-u（对照表按格号，会和 u 打架）")
+        _res, report = remap(a.vdir, a.chapter, load_cells(a.cells), a.dry_run, refresh=not a.strict)
+        head = "层\t条目\t旧锚点\t新锚点\t内容\t原因\n"
     if a.report:
         with open(a.report, "w", encoding="utf-8") as f:
-            f.write("层\t条目\t旧锚点\t新锚点\t内容\t原因\n")
+            f.write(head)
             for r in report:
                 f.write("\t".join(r) + "\n")
     else:

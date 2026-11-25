@@ -16,6 +16,18 @@
           要重标的用 punct_redo.py plan/apply）、这些句子里人裁／手改来源的标点与专名（单列，
           末尾汇总「涉及人裁 N 句」，要重标的先交 A34）。清单里同步完的格删掉，清空就删文件。
           末尾提示哪条线要升 patch；升版用 bump_original.py，必须在 sync 之后。
+  uid     python3 char_edits.py uid <版本目录> --chapter NNN --old-char <旧 char.json | git:REF>
+              [--merge 57:56 …] [--review 待看.tsv] [--dry-run]
+          字格永久编号 u（guji-format 02 §4.10，char v0.6）：人在 char 里补字、删字、并格以后跑一次：
+            补字：没有 u 的新格按读序取 u_max+1；
+            删字：旧版有、新版没有的 u 记进 u_retired（gone: true）；--merge 旧u:留下的u 记成并格（into）；
+            重挂：标点、专名、异体按 u 改格位 key（格号整列移位也跟着字走）；挂在删掉的 u 上的挪邻格
+                  （标点 after／异体挪前一格，标题 before 挪后一格；专名起格往后、止格往前），并在待看清单里列出。
+          校验字（pre_char、专名 text、异体 c）只报不改：挪了格的条目校验字多半对不上，F-OV-02 会报，
+          由人核过再改（或 punct_redo 重标）。之后照常 bump_original.py 升版。
+
+上了 u 的册（char 有 u_max），record 按 u 比对新旧（补删字不再拦，只登记原地改字，条目带 u）；
+sync 只在条目的 u 与清单的 u 相同时才同步——格号移位造成的「同格异字」不会被洗白。
 """
 from __future__ import annotations
 
@@ -29,6 +41,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 import original_version as OV  # noqa: E402
+import cell_uid as CU  # noqa: E402
 from punct_redo import load_old_char  # noqa: E402
 
 ENDS = set("。？！")
@@ -50,8 +63,22 @@ def _book_id(vdir):
     return os.path.basename(os.path.dirname(os.path.abspath(vdir)))
 
 
+def diff_slots_u(old_char, new_char):
+    """上了 u 的册：按 u 比新旧，原地改字的格 [(新格位, old, new, u)]；增删的格不在这里（用 uid 子命令）。"""
+    oi, ni = CU.u_index(old_char), CU.u_index(new_char)
+    out = [(ni[u][1], oi[u][2], ni[u][2], u) for u in sorted(ni, key=lambda x: ni[x][0])
+           if u in oi and oi[u][2] != ni[u][2]]
+    bad = [(a, o, n) for a, o, n, _u in out if len(o) != 1 or len(n) != 1]
+    if bad:
+        raise ValueError(f"格里不是单个字：{bad[:3]}（一格一字，清单只收单字替换）")
+    return out
+
+
 def diff_slots(old_char, new_char):
-    """单格替换的差异 [(anchor, old, new)]；格序不一致（增删字）时抛 ValueError。"""
+    """单格替换的差异 [(anchor, old, new)]；格序不一致（增删字）时抛 ValueError。
+    新旧都上了 u 时按 u 比（见 diff_slots_u），返回 [(anchor, old, new, u)]。"""
+    if CU.has_u(old_char) and CU.has_u(new_char):
+        return diff_slots_u(old_char, new_char)
     old, new = OV.char_slots(old_char), OV.char_slots(new_char)
     if [a for a, _c in old] != [a for a, _c in new]:
         raise ValueError("新旧文本的格序不一致（有增删字）：改字清单只收单格替换，请推分支请 A33 重标")
@@ -67,10 +94,12 @@ def merge(edits, changes, base_commit, ref=None, by=None):
     items = edits.setdefault("edits", [])
     idx = {e["anchor"]: e for e in items}
     n_add = n_upd = n_del = 0
-    for a, o, n in changes:
+    for a, o, n, *uu in changes:
         e = idx.get(a)
         if e is None:
             e = {"anchor": a, "old": o, "new": n, "base_commit": base_commit}
+            if uu:
+                e["u"] = uu[0]
             if ref:
                 e["ref"] = ref
             if by:
@@ -117,6 +146,7 @@ def cmd_record(a):
     edits = OV.load_char_edits(a.vdir, a.chapter) or {
         "schema": OV.CHAR_EDITS_SCHEMA, "book_id": _book_id(a.vdir), "volume": int(a.chapter),
         "base_text_version": old_char.get("version"), "edits": []}
+    _rekey_by_u(edits, new_char)
     n_add, n_upd, n_del = merge(edits, changes, base, a.ref, a.by)
     order = {an: i for i, (an, _c) in enumerate(OV.char_slots(new_char))}
     edits["edits"].sort(key=lambda e: order.get(e["anchor"], -1))
@@ -127,6 +157,83 @@ def cmd_record(a):
         OV.dump_json(path, edits)
     elif os.path.exists(path):
         os.remove(path)
+    return 0
+
+
+def _rekey_by_u(edits, char):
+    """清单里带 u 的条目，格位 key 改成 char 里该 u 现在的格（补删字后格号移位）。返回改了几条。"""
+    idx = CU.u_index(char)
+    n = 0
+    for e in (edits or {}).get("edits") or []:
+        if isinstance(e, dict) and e.get("u") in idx and e.get("anchor") != idx[e["u"]][1]:
+            e["anchor"] = idx[e["u"]][1]
+            n += 1
+    return n
+
+
+def _same_u(edit, u):
+    """清单条目带 u 时，伴生层条目的 u 必须相同才同步（没上 u 的册两边都没有，放行）。"""
+    return "u" not in edit or u is None or edit["u"] == u
+
+
+def cmd_uid(a):
+    """补字发号、删字记作废、按 u 重挂伴生层（见文件头 uid）。"""
+    char_path = os.path.join(a.vdir, f"{a.chapter}.char.json")
+    new_char = OV.load_json(char_path)
+    old_char = load_old_char(a.old_char, a.vdir, a.chapter)
+    if not CU.has_u(old_char):
+        print(f"{a.chapter}：旧版还没上 u（没有 u_max），先用 u_migrate.py 迁移", file=sys.stderr)
+        return 2
+    merges = {}
+    for m in a.merge or []:
+        try:
+            u, into = (int(x) for x in m.split(":"))
+        except ValueError:
+            print(f"--merge {m!r} 应写成 旧u:留下的u", file=sys.stderr)
+            return 2
+        merges[u] = into
+    if "u_max" not in new_char or ("u_retired" not in new_char and old_char.get("u_retired")):
+        # 改字时把顶层 u_max／u_retired 弄丢了：从旧版接上
+        CU.set_top(new_char, new_char.get("u_max", old_char.get("u_max") or 0),
+                   new_char.get("u_retired") or list(old_char.get("u_retired") or []))
+    new = CU.assign_new(new_char)
+    gone = CU.retire_missing(old_char, new_char, into=merges)
+    probs = CU.u_problems(new_char) + CU.continuity_problems(old_char, new_char)
+    if probs:
+        for msg, _s in probs[:20]:
+            print(f"  u 不合规：{msg}", file=sys.stderr)
+        return 2
+    print(f"{a.chapter}：新发 u {len(new)} 个"
+          + (f"（{new[0][1]}–{new[-1][1]}）" if new else "")
+          + f"，作废 {len(gone)} 个（并格 {sum(1 for _u, i in gone if i)}），u_max={new_char['u_max']}")
+    review, writes = [], [(char_path, new_char)]
+    for line in ("punct", "entity", "norm"):
+        cf = os.path.join(a.vdir, f"{a.chapter}.{line}.json")
+        if not os.path.isfile(cf):
+            continue
+        data = OV.load_json(cf)
+        moved, rv = CU.relink(new_char, line, data, old_char=old_char)
+        nou = sum(1 for _m, sub in CU.layer_u_problems(new_char, line, data) if sub.endswith(":nou"))
+        print(f"  {line}：按 u 改格位 {moved} 条，待看 {len(rv)} 条" + (f"；另有 {nou} 条没写 u（先迁移）" if nou else ""))
+        review += [(line, i, o, n, why) for i, o, n, why in rv]
+        if moved or rv:
+            writes.append((cf, data))
+    for line, i, o, n, why in review:
+        print(f"    待看 {line} #{i} {o} → {n or '（没挪）'}：{why}")
+    if review:
+        print("  校验字没改：挪了格的条目 F-OV-02 会报，人核过再改 pre_char／text（或 punct_redo 重标）")
+    if a.review:
+        with open(a.review, "w", encoding="utf-8") as f:
+            f.write("层\t序号\t旧格\t新格\t说明\n")
+            for line, i, o, n, why in review:
+                f.write(f"{line}\t{i}\t{o}\t{n or ''}\t{why}\n")
+    edits = OV.load_char_edits(a.vdir, a.chapter)
+    if edits and _rekey_by_u(edits, new_char):
+        writes.append((OV.char_edits_path(a.vdir, a.chapter), edits))
+    if a.dry_run:
+        return 0
+    for path, obj in writes:
+        OV.dump_like(path, obj)
     return 0
 
 
@@ -151,6 +258,7 @@ def sync(vdir, chapter, dry_run=False, out=None):
     em = OV.edits_by_anchor(edits)
     slots = OV.char_slots(char)
     pos = {a: i for i, (a, _c) in enumerate(slots)}
+    a2u = CU.a_to_u(char)
     changed = {"punct": 0, "entity": 0}
     touched_ents, ends = [], set()
     files = {}
@@ -163,7 +271,7 @@ def sync(vdir, chapter, dry_run=False, out=None):
             a = p.get("anchor")
             e = em.get(a)
             if (e and len(e["new"]) == 1 and p.get("pre_char") == e["old"] and a in pos
-                    and slots[pos[a]][1] == e["new"]):
+                    and slots[pos[a]][1] == e["new"] and _same_u(e, p.get("u"))):
                 p["pre_char"] = e["new"]
                 changed["punct"] += 1
             if p.get("mark") in ENDS and a in pos:
@@ -179,14 +287,17 @@ def sync(vdir, chapter, dry_run=False, out=None):
                 continue
             txt = list(x["text"])
             hit = False
+            useg = [a2u.get(a) for a, _c in seg]
+            if "u_start" in x and (useg[0] != x.get("u_start") or useg[-1] != x.get("u_end")):
+                continue  # 格位与 u 不一致（移位）：不同步，F-OV-18 会报
             for k, (a, now) in enumerate(seg):
                 e = em.get(a)
-                if e and len(now) == 1 and txt[k] == e["old"] and now == e["new"]:
+                if e and len(now) == 1 and txt[k] == e["old"] and now == e["new"] and _same_u(e, useg[k]):
                     txt[k] = now
                     hit = True
             if hit:
                 touched_ents.append((x.get("id"), x["text"], "".join(txt), (x.get("target") or {}).get("status"),
-                                     (x.get("target") or {}).get("canonical_name"), x.get("source")))
+                                     (x.get("target") or {}).get("canonical_name"), OV.effective_source(x, files["entity"][1])))
                 x["text"] = "".join(txt)
                 changed["entity"] += 1
     # 清单里各层都已对上的格清掉
@@ -212,8 +323,9 @@ def sync(vdir, chapter, dry_run=False, out=None):
         print(f"  专名 {eid} {was}→{now}（{st} {cn or ''}，source={src}）：核挂法是否还对", file=out)
     seen = set()
     manual_sents = 0
-    pts = (files["punct"][1].get("punctuations") or []) if "punct" in files else []
-    ents = (files["entity"][1].get("entities") or []) if "entity" in files else []
+    pdoc = files["punct"][1] if "punct" in files else {}
+    edoc = files["entity"][1] if "entity" in files else {}
+    pts, ents = pdoc.get("punctuations") or [], edoc.get("entities") or []
     for e in edits["edits"]:
         if e["anchor"] not in pos:
             continue
@@ -225,14 +337,14 @@ def sync(vdir, chapter, dry_run=False, out=None):
         man = []
         for k, p in enumerate(pts):
             i = pos.get(p.get("anchor"))
-            if i is not None and s <= i < t and is_manual(p.get("source")):
-                man.append(f"标点 #{k} {p.get('anchor')} {p.get('mark') or p.get('kind')}（source={p.get('source')}）")
+            if i is not None and s <= i < t and is_manual(OV.effective_source(p, pdoc)):
+                man.append(f"标点 #{k} {p.get('anchor')} {p.get('mark') or p.get('kind')}（source={OV.effective_source(p, pdoc)}）")
         for x in ents:
             anc = x.get("anchor") or {}
             i, j = pos.get(anc.get("start")), pos.get(anc.get("end"))
-            if i is not None and j is not None and i < t and j >= s and is_manual(x.get("source")):
+            if i is not None and j is not None and i < t and j >= s and is_manual(OV.effective_source(x, edoc)):
                 man.append(f"专名 {x.get('id')} {anc.get('start')}～{anc.get('end')} {x.get('type')} {x.get('text')}"
-                           f"（source={x.get('source')}）")
+                           f"（source={OV.effective_source(x, edoc)}）")
         if man:
             manual_sents += 1
             print("    人裁条目（要重标须先交 A34）：", file=out)
@@ -264,7 +376,8 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     r = sub.add_parser("record")
     s = sub.add_parser("sync")
-    for p in (r, s):
+    u = sub.add_parser("uid")
+    for p in (r, s, u):
         p.add_argument("vdir", help="original 版本目录（含 NNN.char.json）")
         p.add_argument("--chapter", required=True, help="册号，如 007")
         p.add_argument("--dry-run", action="store_true")
@@ -272,9 +385,14 @@ def main(argv=None):
     r.add_argument("--base-commit", help="改字前的提交号（--old-char 给文件时必填）")
     r.add_argument("--ref", help="出处：意见 id／事件 id／待审单 r 号／GUJI 卡号（建议必填，缺了会警告）")
     r.add_argument("--by", help="改字方，如 A32")
+    u.add_argument("--old-char", required=True, help="改字前的 char.json 路径，或 git:<提交>")
+    u.add_argument("--merge", action="append", metavar="U:INTO", help="并格：旧 u 并进留下的 u（可多次）")
+    u.add_argument("--review", help="待看清单写到这个 tsv")
     a = ap.parse_args(argv)
     if a.cmd == "record":
         return cmd_record(a)
+    if a.cmd == "uid":
+        return cmd_uid(a)
     sync(a.vdir, a.chapter, a.dry_run)
     return 0
 

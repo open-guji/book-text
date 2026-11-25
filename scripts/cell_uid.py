@@ -191,7 +191,7 @@ def layer_u_problems(char, line, data):
                     if not _is_uint(u) or u not in idx:
                         out.append((f"实体 #{i} {nm}={u!r} 在 char 里没有", f"e{i}:{nm}:missing"))
                     elif a is not None and idx[u][1] != a:
-                        out.append((f"实体 #{i} {nm}={u} 是格 {idx[u][1]}，与 anchor 的 {a} 不是同一格", f"e{i}:{nm}:anchor"))
+                        out.append((f"实体 #{i} {nm}={u} 是格 {idx[u][1]}，与 anchor 的 {a} 不是同一格（以 u 为准：remap_anchors.py --by-u 修格位）", f"e{i}:{nm}:anchor"))
                 if _is_uint(us) and _is_uint(ue) and us in idx and ue in idx and idx[ue][0] < idx[us][0]:
                     out.append((f"实体 #{i} u_end={ue} 的格在 u_start={us} 之前（读序倒了）", f"e{i}:order"))
             elif char_u and anc.get("start") and anc.get("end"):
@@ -204,7 +204,7 @@ def layer_u_problems(char, line, data):
             if not _is_uint(u) or u not in idx:
                 out.append((f"{'标点' if line == 'punct' else '异体'} #{i} u={u!r} 在 char 里没有", f"{line[0]}{i}:missing"))
             elif a is not None and idx[u][1] != a:
-                out.append((f"{'标点' if line == 'punct' else '异体'} #{i} u={u} 是格 {idx[u][1]}，与格位 {a} 不是同一格",
+                out.append((f"{'标点' if line == 'punct' else '异体'} #{i} u={u} 是格 {idx[u][1]}，与格位 {a} 不是同一格（以 u 为准：remap_anchors.py --by-u 修格位）",
                             f"{line[0]}{i}:anchor"))
         elif char_u and a:
             hint = f"（该格 u={a2u[a]}）" if a in a2u else ""

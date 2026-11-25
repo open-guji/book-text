@@ -626,10 +626,8 @@ def pages_to_cord(pages_json, book_id, volume):
         for oc in sorted(p["cells"], key=lambda c: c["o"] if isinstance(c["o"], int) else c["o"][0]):
             if not oc.get("a"):
                 raise FormatError(f"p{page_no} 字「{oc.get('c')}」没有锚点")
-            d = {"a": oc["a"], "box": oc["box"]}
-            if oc.get("id"):
-                d["id"] = oc["id"]
-            cells.append(d)
+            # 格的身份以 char 的 u 为准（guji-format #36）：cord 不再写 cells[].id
+            cells.append({"a": oc["a"], "box": oc["box"]})
         out["cells"] = cells
         if p.get("marks"):
             marks = []

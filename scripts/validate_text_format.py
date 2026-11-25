@@ -1090,6 +1090,8 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
     # F-OV-18 字格永久编号 u（guji-format 02 §4.10、04／05／06，char v0.6，2026-11-24）：char 里 u 不重、≤u_max、不在 u_retired，
     #         写了 u_max 每格必带 u（新格无 u 拦），u_retired 形状与 into 指向；伴生层条目的 u 在 char 里有、与格位 key 指同一格，
     #         char 上了 u 后伴生层条目必写 u。前后两版「旧 u 不丢」由 check_u_continuity.py（local_check 调）核。
+    #         2026-11-24 起以 u 为准（guji-format #36，全库已迁）：original 的 char 必须有 u_max（没上 u 即报），
+    #         伴生层条目因此都必写 u；格位 key 与 u 冲突时按 u 修 key（remap_anchors.py --by-u）；cord 的 cells 不许有 id。
     r_ov18 = rule("F-OV-18", "HARD")
     _known_reasons = pending_reasons()
     r_ov02s = rule("F-OV-02s", "SOFT")
@@ -1221,8 +1223,18 @@ def check(root: str, scan_root: str = None, fetch_assets: bool = False):
             for msg, sub in pending_reason_problems(char, _known_reasons):
                 add(r_ov16, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
             r_ov18["n_scanned"] += 1
+            if not CU.has_u(char):
+                add(r_ov18, char_path, f"{char_path}: 册 {stem} 没上 u（缺 u_max）：用 u_migrate.py 迁移", sub=f"{stem}:nou")
             for msg, sub in CU.u_problems(char):
                 add(r_ov18, char_path, f"{char_path}: 册 {stem} {msg}", sub=f"{stem}:{sub}")
+            if ch.get("cord_file") and os.path.isfile(os.path.join(od, ch["cord_file"])):
+                kd, kerr = jload(os.path.join(od, ch["cord_file"]))
+                if not kerr and isinstance(kd, dict):
+                    nid = sum(1 for pg in kd.get("pages") or [] for c in pg.get("cells") or [] if "id" in c)
+                    if nid:
+                        add(r_ov18, os.path.join(od, ch["cord_file"]),
+                            f"{os.path.join(od, ch['cord_file'])}: cord 有 {nid} 格还带 id：格身份以 char 的 u 为准，cells[].id 删掉（marks 的 id 保留）",
+                            sub=f"{stem}:cord_id")
             if ch.get("norm_file") and os.path.isfile(os.path.join(od, ch["norm_file"])):
                 nd, nerr = jload(os.path.join(od, ch["norm_file"]))
                 if not nerr and isinstance(nd, dict):

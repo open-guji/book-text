@@ -8,6 +8,8 @@
   写完重算 stats；实体按 span 起点排序但不改已有 id。"""
 import argparse, collections, csv, glob, json, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import original_version as OV  # noqa: E402
 
 TYPE = {'N8_person': 'people', 'N9_work': 'work'}
 STAT = (('works', 'work'), ('people', 'people'), ('places', 'place'), ('offices', 'office'), ('dynasties', 'dynasty'), ('reigns', 'reign'))
@@ -94,8 +96,7 @@ def rematch(a):
                 log.append((vol, e['id'], e['type'], e['text'], 'MULTI', '|'.join(ids), ''))
         if a.apply:
             recount(en)
-            with open(ef, 'w', encoding='utf-8') as f:
-                json.dump(en, f, ensure_ascii=False, indent=2); f.write('\n')
+            OV.dump_json(ef, en)
     c = collections.Counter((x[2], x[4]) for x in log)
     print('rematch', dict(c), '（已写）' if a.apply else '（干跑）')
     if a.log:
@@ -163,8 +164,7 @@ def main():
         print(vol, '补标', len(cands), '→ 新增', len(add), '其中 matched', sum(1 for x in add if x['target']['status'] == 'matched'))
         if a.apply and not bad:
             E.extend(add); E.sort(key=lambda e: e['span']['start_offset']); recount(en)
-            with open(ef, 'w', encoding='utf-8') as f:
-                json.dump(en, f, ensure_ascii=False, indent=2); f.write('\n')
+            OV.dump_json(ef, en)
     if bad:
         print('有', bad, '处错误，未写任何文件'); sys.exit(1)
     print('已写' if a.apply else '干跑完成（未写）')

@@ -113,6 +113,24 @@ def read_text(path):
         return f.read()
 
 
+_LAYER_LISTS = ("punctuations", "entities")
+
+
+def dumps_layer(doc):
+    """punct／entity v0.3 的落盘写法（guji-format 00 §4.5）：顶层字段各一行、缩进 2；条目数组每条一行（缩进 4）；
+    分隔符 `", "`／`": "`。与 guji-manager `formats/guji_format.dump_json` 同一写法，两处要一起改。"""
+    def one(o):
+        return json.dumps(o, ensure_ascii=False, separators=(", ", ": "))
+    items = []
+    for k, v in doc.items():
+        if k in _LAYER_LISTS and isinstance(v, list) and v:
+            rows = ",\n".join("    " + one(x) for x in v)
+            items.append(f"  {json.dumps(k, ensure_ascii=False)}: [\n{rows}\n  ]")
+        else:
+            items.append(f"  {json.dumps(k, ensure_ascii=False)}: {one(v)}")
+    return "{\n" + ",\n".join(items) + "\n}\n"
+
+
 def effective_source(entry, doc=None):
     """条目的产出方（guji-format 00 §4.6，punct／entity v0.3）：条目写了 `source` 就用它，没写就取文件顶层
     `default_source`；v0.1／v0.2 文件没有 `default_source`，条目不写就是未知（返回 ""）。
@@ -123,8 +141,17 @@ def effective_source(entry, doc=None):
     return str((doc or {}).get("default_source") or "")
 
 
+def is_layer_v03(obj):
+    sch = obj.get("$schema", "") if isinstance(obj, dict) else ""
+    return any(sch.endswith(f"/{k}/{v}.json") for k in ("punct", "entity") for v in ("v0.3", "v0.4"))  # v0.4＝v0.3＋u，同一写法
+
+
 def dump_json(path, obj):
-    with open(path, "w", encoding="utf-8") as f:
+    """通用 json 写法（indent=2）；punct／entity v0.3 自动改用每条一行。"""
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        if is_layer_v03(obj):
+            f.write(dumps_layer(obj))
+            return
         json.dump(obj, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
@@ -159,6 +186,10 @@ def dump_compact(path, obj):
 
 def dump_like(path, obj):
     """照文件原来的写法回写：原文件是一格一行（dumps_compact）就用它，否则 indent=2；文件不在时按 indent=2。"""
+    if is_layer_v03(obj) and isinstance(obj, dict) and any(k in obj for k in _LAYER_LISTS):
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(dumps_layer(obj))
+        return
     compact = False
     if os.path.isfile(path):
         with open(path, encoding="utf-8") as f:
@@ -421,7 +452,8 @@ def char_edits_problems(char, edits, stem=None, book_id=None, layers=None):
 # 在分段处插字时由改字工具判定归前段还是后段、挪不挪分段符。
 
 PUNCT_V02 = "https://open-guji.org/schema/punct/v0.2.json"
-PUNCT_V02_UP = (PUNCT_V02, "https://open-guji.org/schema/punct/v0.3.json", "https://open-guji.org/schema/punct/v0.4.json")
+PUNCT_V03 = "https://open-guji.org/schema/punct/v0.3.json"   # 11-23 格式瘦身；标题符同样可用
+PUNCT_V02_UP = (PUNCT_V02, PUNCT_V03, "https://open-guji.org/schema/punct/v0.4.json")   # v0.4：条目挂 u（2026-11-24）
 PUNCT_KINDS = ("point", "break", "heading")
 _HEADING_MARK = re.compile(r"^#{1,6}$")
 # 书目条：「[前缀]《书名》N卷…」，卷数起是著录信息（卷数、版本来源），目录只留书名

@@ -35,6 +35,7 @@ import sys
 from difflib import SequenceMatcher
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import original_version as OV  # noqa: E402
 from original_version import char_slots  # noqa: E402
 
 ENDS = set("。？！")
@@ -378,9 +379,7 @@ def cmd_apply(a):
     if a.dry_run:
         return 0
     for path, obj in ((pj_path, pj), (ej_path, ej)):
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(obj, f, ensure_ascii=False, indent=2)
-            f.write("\n")
+        OV.dump_json(path, obj)
     print("已写回；接着用 bump_original.py 升 punct／entity 版本并重建索引")
     return 0
 

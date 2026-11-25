@@ -203,7 +203,7 @@ class TestCord(unittest.TestCase):
         self.assertEqual(p3["regions"], [{"id": "r1", "kind": "body", "box": [0, 0, 9, 9], "rules": []}])
         self.assertEqual(p3["columns"][0], {"col": 1, "kind": "body", "box": [0, 0, 1, 1]})
         self.assertEqual(p3["marks"], [{"id": "m1", "kind": "blank", "col": 1, "slot": 1, "box": [0, 0, 1, 1]}])
-        self.assertEqual(p3["cells"][0], {"a": "3:1:3", "box": [0, 0, 10, 10], "id": "g0"})
+        self.assertEqual(p3["cells"][0], {"a": "3:1:3", "box": [0, 0, 10, 10]})   # 不再写 id（以 u 为准）
         self.assertFalse(any("c" in c for p in cord["pages"] for c in p["cells"]))
 
     def test_missing_anchor(self):

@@ -39,8 +39,26 @@ class TestU(unittest.TestCase):
             _write(self.p(line), d)
         return c
 
-    def test_plain_repo_clean(self):
+    def test_plain_repo_must_migrate(self):
+        # 11-24 起以 u 为准：original 的 char 没上 u 即报
+        self.assertEqual(len(f18(self.root)), 1)
+        self.assertIn("没上 u", f18(self.root)[0])
+
+    def test_cord_cell_id_flagged(self):
+        self.migrate()
+        c = _read(self.p("char"))
+        k = {"$schema": "https://open-guji.org/schema/cord/v0.1.json", "book_id": c["book_id"], "volume": c["volume"],
+             "pages": [{"page": pg["page"], "cells": [{"a": x["a"], "box": [0, 0, 1, 1]}
+                                                      for col in pg["columns"] for x in col["cells"]]} for pg in c["pages"]]}
+        _write(self.p("cord"), k)
+        ip = os.path.join(self.od, "index.json")
+        idx = _read(ip)
+        idx["chapters"][0]["cord_file"] = "002.cord.json"
+        _write(ip, idx)
         self.assertEqual(f18(self.root), [])
+        k["pages"][0]["cells"][0]["id"] = "g0"
+        _write(self.p("cord"), k)
+        self.assertTrue(any("cord 有 1 格还带 id" in m for m in f18(self.root)))
 
     def test_migrated_repo_clean_and_bumps(self):
         self.migrate()

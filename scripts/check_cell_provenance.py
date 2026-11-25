@@ -30,7 +30,8 @@ def cells(char: dict | None) -> dict[str, dict]:
     for p in (char or {}).get("pages") or []:
         for col in p.get("columns") or []:
             for c in col.get("cells") or []:
-                out[c["a"]] = {k: v for k, v in c.items() if k != "a"}
+                # u（字格永久编号）只是身份，补 u、u 迁移不算格变动；u 的连续性由 check_u_continuity 管
+                out[c["a"]] = {k: v for k, v in c.items() if k not in ("a", "u")}
     return out
 
 

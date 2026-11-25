@@ -20,6 +20,13 @@ def test_changed_cells_edit_add_remove():
     assert ccp.changed_cells(None, old) == ["3:1:1", "3:1:2", "3:1:3"]
 
 
+def test_adding_u_is_not_a_cell_change():
+    old = char(("3:1:1", "甲"), ("3:1:2", "乙"))
+    new = {"pages": [{"page": 3, "columns": [{"col": 1, "cells": [
+        {"a": "3:1:1", "u": 1, "c": "甲"}, {"a": "3:1:2", "u": 2, "c": "丁"}]}]}]}
+    assert ccp.changed_cells(old, new) == ["3:1:2"]   # 补 u 不算，改字照算
+
+
 def test_flag_changed_not_just_lacuna_key():
     a = char(("3:1:1", "□"))
     b = {"pages": [{"page": 3, "columns": [{"col": 1, "cells": [{"a": "3:1:1", "c": "□", "lacuna": True, "guess_c": "一"}]}]}]}

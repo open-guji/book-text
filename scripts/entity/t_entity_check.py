@@ -14,6 +14,9 @@ import json
 import os
 import sys
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import cell_uid as CU  # noqa: E402
+
 SCHEMA_URL = "https://open-guji.org/schema/entity/v0.2.json"
 TYPES = {"work", "people", "place", "office", "dynasty", "reign", "other"}
 LEGACY = ("coarse", "reclass", "route_to", "entity_type")
@@ -124,7 +127,10 @@ def main(argv=None):
         ch = os.path.basename(p)[: -len(".entity.json")]
         base = os.path.join(d, ch)
         ent = load(p)
-        problems += check(ent, load(base + ".char.json"), load(base + ".punct.json"), index, ch)
+        char = load(base + ".char.json")
+        work = json.loads(json.dumps(ent))
+        CU.hydrate(char, "entity", work)   # span 不落盘（v0.3 起），按格位现算给下面的检查用
+        problems += check(work, char, load(base + ".punct.json"), index, ch)
         if validator:
             problems += [("jsonschema", ch, f"{list(e.path)[:3]} {e.message[:120]}")
                          for e in validator.iter_errors(ent)]

@@ -10,6 +10,7 @@ import argparse, collections, csv, glob, json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import original_version as OV  # noqa: E402
+import cell_uid as CU  # noqa: E402
 
 TYPE = {'N8_person': 'people', 'N9_work': 'work'}
 STAT = (('works', 'work'), ('people', 'people'), ('places', 'place'), ('offices', 'office'), ('dynasties', 'dynasty'), ('reigns', 'reign'))
@@ -123,7 +124,8 @@ def main():
         cands = [c for c in tsv(Path(a.dir) / f'漏标候选-册{vol}.tsv') if dec.get(c['cand_id'], {}).get('decision') == '补标']
         ef = f'{base}/{vol}.entity.json'
         en = json.load(open(ef, encoding='utf-8')); E = en['entities']
-        cells = [c for p in json.load(open(f'{base}/{vol}.char.json'))['pages'] for col in p['columns'] for c in col['cells']]
+        ch = json.load(open(f'{base}/{vol}.char.json')); cells = CU.cells(ch)
+        CU.hydrate(ch, 'entity', en)   # span 只在内存里用，写盘前 seal 收口（不落盘）
         text = ''.join(c['c'] for c in cells)
         used = bytearray(len(text))
         for e in E:
@@ -164,6 +166,7 @@ def main():
         print(vol, '补标', len(cands), '→ 新增', len(add), '其中 matched', sum(1 for x in add if x['target']['status'] == 'matched'))
         if a.apply and not bad:
             E.extend(add); E.sort(key=lambda e: e['span']['start_offset']); recount(en)
+            CU.seal(ch, 'entity', en, ef)
             OV.dump_json(ef, en)
     if bad:
         print('有', bad, '处错误，未写任何文件'); sys.exit(1)

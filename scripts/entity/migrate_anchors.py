@@ -165,7 +165,7 @@ def migrate(old_char, new_char, rows, entity):
             results.append(res)
             continue
         e["anchor"] = {"start": a, "end": b}
-        e["span"] = {"start_offset": npos[a], "end_offset": npos[b] + 1}
+        e.pop("span", None)   # 字下标缓存不落盘（guji-format 00 §4.2）
         res.update(cls="自动跟上", new=f"{a}–{b}")
         results.append(res)
     # 复核：条数不丢、target 不动
@@ -215,6 +215,11 @@ def main():
     ap.add_argument("--report")
     a = ap.parse_args()
     load = lambda p: json.load(open(p, encoding="utf-8"))
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+    import cell_uid as CU
+    if CU.has_u(load(a.new_char)):
+        sys.exit("新 char 已上 u（2026-11-24 起全库都上了）：按格号对照表迁会和 u 打架，"
+                 "改用 scripts/book-text/remap_anchors.py --by-u")
     out, results, warns = migrate(load(a.old_char), load(a.new_char), read_table(a.table), load(a.entity))
     st = summarize(results)
     md = report_md(os.path.basename(a.entity), results, warns, st)

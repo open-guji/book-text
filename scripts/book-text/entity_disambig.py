@@ -5,6 +5,9 @@
 用法：python3 -I entity_disambig.py --list <book-text 根> > 消歧待办.tsv"""
 import json, sys, glob, argparse
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import cell_uid as CU  # noqa: E402
+import original_version as OV  # noqa: E402
 
 BID = '96mid1ogzk'
 
@@ -38,10 +41,12 @@ def do_list(root, bid, bi=None):
     for p in entity_files(root, bid):
         vol = Path(p).name.split('.')[0]
         T = ''
+        doc = json.load(open(p))
         if bi:
-            cp = p.replace('.entity.json', '.char.json')
-            T = ''.join(c['c'] for pg in json.load(open(cp))['pages'] for col in pg['columns'] for c in col['cells'])
-        for x in json.load(open(p))['entities']:
+            ch = json.load(open(p.replace('.entity.json', '.char.json')))
+            T = ''.join(c['c'] for c in CU.cells(ch))
+            CU.hydrate(ch, 'entity', doc)   # span 只在内存里算，取上下文用
+        for x in doc['entities']:
             t = x['target']
             if t['status'] != 'ambiguous':
                 continue
@@ -97,9 +102,7 @@ def do_apply(root, bid, tsv, dry):
         print(f"dry-run：将改 {len(touched)} 个文件，未写入")
         return
     for p, doc in touched.items():
-        with open(p, 'w', encoding='utf-8') as fh:
-            json.dump(doc, fh, ensure_ascii=False, indent=2)
-            fh.write('\n')
+        OV.dump_like(p, doc)
     print(f"已写回 {len(touched)} 个文件")
 
 

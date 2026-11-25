@@ -56,6 +56,8 @@ SURNAME_ONLY_WEAK = {'陳'}  # 弱旁证不拆的前缀（常作姓）；需 mat
 # N4 异体归一：用 entity_missing.py 的 FOLD（逐字映射，长度不变，只用于查键，原文字符不动），不另写一份
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I 不带脚本目录
 from entity_missing import fold as _fold  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import cell_uid as CU  # noqa: E402
 
 # 判准 N4 列了、但 entity_missing.FOLD 没收的三个生僻异体（SMP 字，试点里导致 work／人名落空）
 _EXTRA = str.maketrans('𫎇𠮓𠈁', '蒙變侂')
@@ -83,13 +85,15 @@ def load_text(char_path):
     return ''.join(c['c'] for p in d['pages'] for col in p['columns'] for c in col['cells'])
 
 
-def load_breaks(punct_path):
-    """段界：punct.json 里 kind＝break 的 char_offset（该字之后断段）。文件不存在返回空表（N6 把全册当一段，不建议）。"""
+def load_breaks(punct_path, char):
+    """段界：punct.json 里 kind＝break 的字下标（该字之后断段；下标按 char 现算，不读缓存）。
+    文件不存在返回空表（N6 把全册当一段，不建议）。"""
     if not punct_path or not Path(punct_path).exists():
         return []
     with open(punct_path, encoding='utf-8') as f:
         d = json.load(f)
-    return [x['char_offset'] for x in d.get('punctuations', []) if x.get('kind') == 'break']
+    CU.hydrate(char, 'punct', d)
+    return [x['char_offset'] for x in d.get('punctuations', []) if x.get('kind') == 'break' and 'char_offset' in x]
 
 
 def next_id(entities):
@@ -410,9 +414,12 @@ def main(argv=None):
     char = Path(a.text) if a.text else p.with_name(p.name.replace('.entity.json', '.char.json'))
     with open(p, encoding='utf-8') as f:
         doc = json.load(f)
-    text = load_text(char)
+    with open(char, encoding='utf-8') as f:
+        ch = json.load(f)
+    text = ''.join(c['c'] for c in CU.cells(ch))
+    CU.hydrate(ch, 'entity', doc)   # span 只在内存里用，写盘前 seal 收口（不落盘）
     punct = a.punct or str(p.with_name(p.name.replace('.entity.json', '.punct.json')))
-    out, log = run(doc, text, rules, load_breaks(punct), load_name_index(a.book_index))
+    out, log = run(doc, text, rules, load_breaks(punct, ch), load_name_index(a.book_index))
     ov = check_no_overlap(out['entities'])
     if ov:
         sys.exit('后处理后出现 span 重叠：%s，未写出' % ov)
@@ -424,8 +431,8 @@ def main(argv=None):
     if not a.dry_run:
         if not a.out:
             sys.exit('非 --dry-run 需要 -o')
-        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
         import original_version as OV
+        CU.seal(ch, 'entity', out, a.out)
         OV.dump_json(a.out, out)
     return 0
 

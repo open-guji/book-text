@@ -14,7 +14,7 @@
 | **cord** | `NNN.cord.json` | 每一格的像素框，**不存字**，按格位 key 对到 char | 真源 | main |
 | **punct** | `NNN.punct.json` | 标点、分段、书名号、分卷与各级标题（v0.2 标题符） | 真源 | main |
 | **entity** | `NNN.entity.json` | 专名，链 book-index | 真源 | main |
-| **norm** | `NNN.norm.json` | 异体→通行字，按格位 | 真源 | main |
+| **norm** | `NNN.norm.json` | 异体→通行字，挂 u | 真源 | main |
 | **fig** | `NNN.fig.json`＋`fig/NNN/*` | 图片格（占一格的图形）与插图块的图：来源、说明、文件；**只有用到图的章才有** | 真源 | 规范见 guji-format 09（v0.1）、02 §4.7；校验 F-OV-13（`scripts/tests/test_fig.py`）；设计见 `docs/design/2026-10-图片格与插图设计.md` |
 | **lines** | `NNN.lines.md` | 一列一行的分行稿，由 char 生成 | 生成 | 生成分支 |
 | **rich** | `NNN.rich.md` | 带标点、专名的阅读稿，由 char＋punct＋entity（＋norm）生成 | 生成 | 生成分支 |
@@ -22,6 +22,7 @@
 - **真源**：仓里别的文件算不出来，改动要靠人或模型做。main 只存真源。
 - **生成**：脚本从 main 的真源算出来，不手改；放在单独的生成分支上，main 不存。reflow（无标点的自然段稿）不再单独生成，直接出 rich。
 - **两种坐标**：**cell** 是格位 key `页:列:格[子列]`（如 `3:5:12a`），char、punct、entity、norm 都用它；**box** 是像素框 `[x, y, w, h]`，只在 cord 里。
+- **字格永久编号 `u`**（2026-11-25 起以 `u` 为准）：char 每格带 `u`（册内唯一、永不改、作废永不复用；顶层 `u_max`、`u_retired`）。punct、entity、norm 挂 `u`（`u`／`u_start`、`u_end`），格位 key 照写给人读，冲突以 `u` 为准；cord 的 `cells[].id` 已删；不存字下标。用法见 guji-format [00 §4.7](https://github.com/open-guji/guji-format/blob/main/spec/00-%E6%80%BB%E8%A7%88.md#47-%E5%AD%97%E6%A0%BC%E6%B0%B8%E4%B9%85%E7%BC%96%E5%8F%B7-u-%E6%80%8E%E4%B9%88%E7%94%A82026-11-26-%E6%B1%87%E6%80%BB)，本仓摘要见 README「字格永久編號 u」。
 - 原来说的 Level 1／2／3、像素坐标层、文本层都不再用：Level 1 → cord，Level 2 → char，Level 3a → lines。
 - 书影、cv 的中间产物、人裁事件、字形库不在 book-text，留在 IA 和 guji-workspace。
 - 抽检表、运行报告、新实体候选表、模型对照稿这些工作文件只放 `wip/` 分支，不进 main。

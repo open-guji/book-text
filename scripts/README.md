@@ -10,7 +10,8 @@
 | `check_license.py` | 授权串校验，CI V3 |
 | `original_version.py` | `original` 三线版本号规则（F-OV-01～04） |
 | `zi_convert.py` | 组字候选转正字 |
-| `book-text/` | 原 overview 根 `scripts/book-text/`：`bump_original.py`（升版本，打印版本记录行写进提交信息）、`build_texts_index.py`（重建 `index/texts`）、`add_text.py`（入库）、`entity_*.py`、`punct_compare.py`、`auto_remap.py`（新文本进来后一键对齐标点、实体：分档、修标题符位置、升版、出复核单；**格号变了（增删格、改号）一律带 `--cell-map` 或直接用 guji-manager `guji swap book-text`**，不带表会按文字猜对齐、切坏专名）、`punct_redo.py`（文本改字后只重标受影响的句子：plan 出工作稿，apply 写回 punct／entity）等 |
+| `cell_uid.py` | **字格永久编号 u 公用库**（所有按格干活的脚本都用它，别自己写）：查 u、按 u 重挂（`relink`）、改字发号与作废、F-OV-18 检查；`hydrate`（内存里现算字下标）＋`seal`（写盘前按 u 收口、删下标、定不了格拒写）。改字用 `book-text/char_edits.py uid`，key 与 u 不一致用 `book-text/remap_anchors.py --by-u`；新书上 u 用 `book-text/u_migrate.py`。用法见 guji-format 00 §4.7 |
+| `book-text/` | 原 overview 根 `scripts/book-text/`：`bump_original.py`（升版本，打印版本记录行写进提交信息）、`build_texts_index.py`（重建 `index/texts`）、`add_text.py`（入库）、`entity_*.py`、`punct_compare.py`、`auto_remap.py`（新文本进来后一键对齐标点、实体：分档、修标题符位置、升版、出复核单；**已上 u 的册（2026-11-24 起全库）改字后按 u 重挂：`char_edits.py uid` 或 `remap_anchors.py --by-u`**；没上 u 的旧册格号变了才带 `--cell-map`，不带表会按文字猜对齐、切坏专名）、`punct_redo.py`（文本改字后只重标受影响的句子：plan 出工作稿，apply 写回 punct／entity）等 |
 | `entity/` | 原 `古籍文本/scripts/t_entity_*.py`（含测试）：专名候选、复合、拆分、命中统计 |
 | `tools/` | 一次性／维护脚本：`table_convert.py`、`verify_md.py`、`recut_songshi_md.py`、`fill_missing_keys.py`、`fix_level_d59f2hr9pypt.py`、`tilda_missed_names.py` |
 | `muse_qc/` | muse 质检驱动、提示词、schema。**jsonl 结果没有迁**（约 10.9M）：在 overview 提交 `af1f3f6f3` 的 `项目进展/古籍文本/scripts/muse_qc/*.jsonl` 可取 |

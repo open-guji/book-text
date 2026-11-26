@@ -54,7 +54,19 @@ index/                          本倉之索引分片
 
 **版本記錄**（2026-11-10 起不再有 CHANGES.md，歷史查 `git log`）：每升一次，`bump_original.py` 印出 `版本記錄: <條目 id>/<章 NNN> | 線 | 舊→新 | 說明`（如 `96mid1ogzk/002`），調用方原樣寫進提交信息。升版一律用 `python3 <overview>/scripts/book-text/bump_original.py`（`--init` 首次定 1.0.0；`--line text|punct|entity --level patch|minor`），它同時改版本號、印版本記錄行；major 不給腳本升。PR 描述附「冊 · 線 · 舊 → 新 · 理由」表。校驗器 `validate_text_format.py` 之 F-OV-01～03 規則把關。
 
-一章有哪些層（`*_file` 字段）、頁碼如何對到 IIIF，見 [docs/ORIGINAL.md](docs/ORIGINAL.md)。詳見 [docs/VERSIONING.md](docs/VERSIONING.md)；規範全文在 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
+一章有哪些層（`*_file` 字段）、頁碼如何對到 IIIF，見 [docs/ORIGINAL.md](docs/ORIGINAL.md)。
+
+### 字格永久編號 `u`（2026-11-25 起以 `u` 為準）
+
+`original` 之 `NNN.char.json` 每格帶 `u`：**冊內唯一、發了永不改、作廢永不復用**；頂層 `u_max`（發過之最大號）、`u_retired`（作廢之號：`gone` 刪了／`into` 併入某號）。格位 key（`頁:列:格`）是**位置**，補字、重切會變；`u` 是**身份**，改字、補字、重切都不換。
+
+- 標點、專名、異體一律掛 `u`（punct 每條 `u`；entity 每條 `u_start`／`u_end`；norm 每條 `u`），格位 key 照寫供人讀，二者衝突**以 `u` 為準**。不再存字下標（`char_offset`／`span`，2026-11-25 全庫已刪）。
+- 要長期指一個字（校勘記、意見、外部數據），記「書 ID＋冊＋u」，勿只記格位 key。
+- cord 之 `cells[].id` 已刪（被 `u` 取代），寫了即報錯。
+- 改字走 `scripts/book-text/char_edits.py uid`（補字發 `u_max+1`、刪字記作廢、按 u 重掛標點專名，校驗字只報不改）；格位 key 與 u 不一致用 `scripts/book-text/remap_anchors.py --by-u` 修；已上 u 之冊不能再按格號對照表遷。
+- 校驗只認 u：F-OV-18（u 不重、≤`u_max`、不在 `u_retired`、伴生層之 u 在 char 裡且與 key 同格）、改版前後 u 連續（`local_check.py` 自動跑）、F-OV-17（不許再寫字下標）。
+
+完整用法見 guji-format [00 總覽 §4.7「字格永久編號 u 怎麼用」](https://github.com/open-guji/guji-format/blob/main/spec/00-%E6%80%BB%E8%A7%88.md#47-%E5%AD%97%E6%A0%BC%E6%B0%B8%E4%B9%85%E7%BC%96%E5%8F%B7-u-%E6%80%8E%E4%B9%88%E7%94%A82026-11-26-%E6%B1%87%E6%80%BB)，欄位定義見 02 §4.10、04、05、06。詳見 [docs/VERSIONING.md](docs/VERSIONING.md)；規範全文在 overview `项目进展/古籍文本/整体设计/2026-10-文本版本号与仓库流程.md`。
 
 ## 與 book-index 之繫連
 

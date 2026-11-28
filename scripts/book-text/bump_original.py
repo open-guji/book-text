@@ -75,9 +75,13 @@ def select_chapters(index, chapters):
         raise BumpError("index.json 没有 chapters")
     if not chapters:
         return chs
-    want = {c.zfill(3) for c in chapters}
-    got = [c for c in chs if OV.chapter_file(c) in want]
-    missing = want - {OV.chapter_file(c) for c in got}
+    # 章号按数值比（2026-11-27 册号位数统一：1、01、001 是同一章；章文件名位数随书定）
+    def _num(x):
+        x = str(x or "")
+        return int(x) if x.isdigit() else x
+    want = {_num(c) for c in chapters}
+    got = [c for c in chs if _num(OV.chapter_file(c)) in want]
+    missing = want - {_num(OV.chapter_file(c)) for c in got}
     if missing:
         raise BumpError(f"index.json 里没有这些册：{sorted(missing)}")
     return got
